@@ -1,0 +1,14 @@
+configVersion: 1.0.0
+generation:
+  comments:
+    disableComments: false
+    omitDescriptionIfSummaryPresent: false
+  baseServerURL: ""
+  sdkClassName: Hathora-Cloud
+  singleTagPerOp: false
+  tagNamespacingDisabled: false
+typescript:
+  version: 0.0.1
+  author: Hathora
+  maxMethodParams: "3"
+  packageName: '@hathora/cloud-sdk-typescript'
