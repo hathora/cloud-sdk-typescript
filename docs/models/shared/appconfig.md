@@ -1,0 +1,9 @@
+# AppConfig
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `appName`                                                                       | *string*                                                                        | :heavy_check_mark:                                                              | Readable name for an application. Must be unique within an organization.        | minecraft                                                                       |
+| `authConfiguration`                                                             | [AppConfigAuthConfiguration](../../models/shared/appconfigauthconfiguration.md) | :heavy_check_mark:                                                              | N/A                                                                             |                                                                                 |
