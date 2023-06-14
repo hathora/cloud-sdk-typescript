@@ -1,0 +1,15 @@
+# CreateRoomResponse
+
+
+## Fields
+
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `connectionInfoV2`                                                 | [shared.ConnectionInfoV2](../../models/shared/connectioninfov2.md) | :heavy_minus_sign:                                                 | N/A                                                                |
+| `contentType`                                                      | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `createRoom400ApplicationJSONString`                               | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
+| `createRoom403ApplicationJSONString`                               | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
+| `createRoom404ApplicationJSONString`                               | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
+| `createRoom500ApplicationJSONString`                               | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
+| `statusCode`                                                       | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `rawResponse`                                                      | [AxiosResponse>](https://axios-http.com/docs/res_schema)           | :heavy_minus_sign:                                                 | N/A                                                                |
