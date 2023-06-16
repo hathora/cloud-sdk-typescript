@@ -14,7 +14,6 @@ src/sdk/roomv1.ts
 src/sdk/roomv2.ts
 src/sdk/sdk.ts
 .eslintrc.yml
-.gitignore
 jest.config.js
 package-lock.json
 package.json
