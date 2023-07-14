@@ -23,7 +23,7 @@ Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { CreateRoomResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { ConnectionInfoV2Status, Region, TransportType } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -99,7 +99,6 @@ Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetActiveRoomsForProcessResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { RoomStatus } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -136,7 +135,6 @@ Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-ent
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetConnectionInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { ConnectionInfoV2Status, TransportType } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -170,7 +168,6 @@ Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetInactiveRoomsForProcessResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { RoomStatus } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -207,7 +204,6 @@ Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-ent
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetRoomInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { RoomStatus } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 

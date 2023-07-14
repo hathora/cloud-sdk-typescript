@@ -62,7 +62,7 @@ sdk.lobbyV2.createLobby({
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { CreateLocalLobbyResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { LobbyVisibility, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -100,7 +100,7 @@ sdk.lobbyV2.createLocalLobby({
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { CreatePrivateLobbyResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { LobbyVisibility, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -138,7 +138,7 @@ sdk.lobbyV2.createPrivateLobby({
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { CreatePublicLobbyResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { LobbyVisibility, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -176,7 +176,6 @@ Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-en
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetLobbyInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { LobbyVisibility, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -210,7 +209,7 @@ Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobb
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { ListActivePublicLobbiesResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { LobbyVisibility, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -244,7 +243,6 @@ Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lo
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { SetLobbyStateResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { LobbyVisibility, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 

@@ -11,7 +11,6 @@
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { SendVerificationEmailResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { VerificationEmailResponseStatus } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 

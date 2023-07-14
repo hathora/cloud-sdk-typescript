@@ -1,4 +1,6 @@
 <!-- Start SDK Example Usage -->
+
+
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { CreateAppResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";

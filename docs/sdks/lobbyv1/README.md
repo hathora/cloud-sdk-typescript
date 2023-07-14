@@ -85,7 +85,7 @@ sdk.lobbyV1.createPublicLobbyDeprecated("app-af469a92-5b45-4565-b3c4-b79878de67d
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { ListActivePublicLobbiesDeprecatedResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { LobbyVisibility, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 

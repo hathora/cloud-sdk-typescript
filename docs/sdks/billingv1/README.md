@@ -46,7 +46,6 @@ sdk.billingV1.getBalance({
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetInvoicesResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { InvoiceStatus } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -79,7 +78,6 @@ sdk.billingV1.getInvoices({
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetPaymentMethodResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { CardBrand } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 

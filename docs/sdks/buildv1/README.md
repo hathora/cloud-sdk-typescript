@@ -21,7 +21,6 @@ Generate a new `buildId` for an existing [application](https://hathora.dev/docs/
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { CreateBuildResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { BuildStatus, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -93,7 +92,6 @@ Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-en
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetBuildInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { BuildStatus, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -130,7 +128,6 @@ Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#b
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetBuildsResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { BuildStatus, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 

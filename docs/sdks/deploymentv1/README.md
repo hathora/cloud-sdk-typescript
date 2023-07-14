@@ -19,7 +19,7 @@ Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#dep
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { CreateDeploymentResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { DeploymentTransportType, PlanName, TransportType } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { PlanName, TransportType } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -84,7 +84,6 @@ Get details for an existing [deployment](https://hathora.dev/docs/concepts/hatho
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetDeploymentInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { DeploymentTransportType, PlanName, TransportType } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -121,7 +120,6 @@ Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entit
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetDeploymentsResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { DeploymentTransportType, PlanName, TransportType } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 

@@ -135,7 +135,6 @@ Returns an unsorted list of your organization’s [applications](https://hathora
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetAppsResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { DeploymentTransportType, PlanName, TransportType } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 

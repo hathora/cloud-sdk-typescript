@@ -17,7 +17,6 @@ Returns an array of all regions with a host and port that a client can directly 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetPingServiceEndpointsResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 

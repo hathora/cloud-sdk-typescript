@@ -19,7 +19,6 @@ Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetProcessInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { Region, TransportType } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -56,7 +55,7 @@ Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-e
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetRunningProcessesResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { Region, RoomStatus, TransportType } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
@@ -93,7 +92,7 @@ Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetStoppedProcessesResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { Region, TransportType } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 
