@@ -40,8 +40,8 @@ export class LobbyV1 {
 
         const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] =
-            "application/json;q=1, application/json;q=0.9, application/json;q=0.7, application/json;q=0.6, application/json;q=0.4, application/json;q=0.3, application/json;q=0";
+        headers["Accept"] = "application/json";
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -182,8 +182,8 @@ export class LobbyV1 {
 
         const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] =
-            "application/json;q=1, application/json;q=0.9, application/json;q=0.7, application/json;q=0.6, application/json;q=0.4, application/json;q=0.3, application/json;q=0";
+        headers["Accept"] = "application/json";
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -324,7 +324,8 @@ export class LobbyV1 {
 
         const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] = "application/json;q=1, application/json;q=0.7, application/json;q=0";
+        headers["Accept"] = "application/json";
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;

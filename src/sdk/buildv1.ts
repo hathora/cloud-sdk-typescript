@@ -12,6 +12,11 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 /**
  * Operations that allow you create and manage your [build](https://hathora.dev/docs/concepts/hathora-entities#build).
  */
+export enum RunBuildAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
+
 export class BuildV1 {
     private sdkConfiguration: SDKConfiguration;
 
@@ -45,7 +50,8 @@ export class BuildV1 {
         );
 
         const headers = { ...config?.headers };
-        headers["Accept"] = "application/json;q=1, application/json;q=0.7, application/json;q=0";
+        headers["Accept"] = "application/json";
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -141,7 +147,8 @@ export class BuildV1 {
         );
 
         const headers = { ...config?.headers };
-        headers["Accept"] = "application/json;q=1, application/json;q=0.7, application/json;q=0";
+        headers["Accept"] = "application/json";
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -239,7 +246,8 @@ export class BuildV1 {
         );
 
         const headers = { ...config?.headers };
-        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers["Accept"] = "application/json";
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -321,7 +329,8 @@ export class BuildV1 {
         );
 
         const headers = { ...config?.headers };
-        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers["Accept"] = "application/json";
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -391,7 +400,8 @@ export class BuildV1 {
         requestBody: operations.RunBuildRequestBody,
         appId: string,
         buildId: number,
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: RunBuildAcceptEnum
     ): Promise<operations.RunBuildResponse> {
         const req = new operations.RunBuildRequest({
             requestBody: requestBody,
@@ -425,7 +435,12 @@ export class BuildV1 {
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
             throw new Error("request body is required");
-        headers["Accept"] = "application/json;q=1, application/json;q=0.7, text/plain;q=0";
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;

@@ -11,6 +11,21 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 /**
  * Operations to get logs by [applications](https://hathora.dev/docs/concepts/hathora-entities#application), [processes](https://hathora.dev/docs/concepts/hathora-entities#process), and [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment). We store 20GB of logs data.
  */
+export enum GetLogsForAppAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
+
+export enum GetLogsForDeploymentAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
+
+export enum GetLogsForProcessAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
+
 export class LogV1 {
     private sdkConfiguration: SDKConfiguration;
 
@@ -24,7 +39,8 @@ export class LogV1 {
     async getLogsForApp(
         req: operations.GetLogsForAppRequest,
         security: operations.GetLogsForAppSecurity,
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: GetLogsForAppAcceptEnum
     ): Promise<operations.GetLogsForAppResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
             req = new operations.GetLogsForAppRequest(req);
@@ -46,7 +62,12 @@ export class LogV1 {
 
         const headers = { ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -108,7 +129,8 @@ export class LogV1 {
     async getLogsForDeployment(
         req: operations.GetLogsForDeploymentRequest,
         security: operations.GetLogsForDeploymentSecurity,
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: GetLogsForDeploymentAcceptEnum
     ): Promise<operations.GetLogsForDeploymentResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
             req = new operations.GetLogsForDeploymentRequest(req);
@@ -134,7 +156,12 @@ export class LogV1 {
 
         const headers = { ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -197,7 +224,8 @@ export class LogV1 {
     async getLogsForProcess(
         req: operations.GetLogsForProcessRequest,
         security: operations.GetLogsForProcessSecurity,
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: GetLogsForProcessAcceptEnum
     ): Promise<operations.GetLogsForProcessResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
             req = new operations.GetLogsForProcessRequest(req);
@@ -219,7 +247,12 @@ export class LogV1 {
 
         const headers = { ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;

@@ -18,19 +18,20 @@ Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetLogsForAppResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetLogsForAppResponse, GetLogsForAppSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
+const operationSecurity: GetLogsForAppSecurity = {
+  auth0: "",
+};
 
 sdk.logV1.getLogsForApp({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   follow: false,
   region: Region.Sydney,
   tailLines: 528895,
-}, {
-  auth0: "",
-}).then((res: GetLogsForAppResponse) => {
+}, operationSecurity).then((res: GetLogsForAppResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -59,18 +60,19 @@ Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/ha
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetLogsForDeploymentResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetLogsForDeploymentResponse, GetLogsForDeploymentSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
+const operationSecurity: GetLogsForDeploymentSecurity = {
+  auth0: "",
+};
 
 sdk.logV1.getLogsForDeployment({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   deploymentId: 1,
   follow: false,
   tailLines: 479977,
-}, {
-  auth0: "",
-}).then((res: GetLogsForDeploymentResponse) => {
+}, operationSecurity).then((res: GetLogsForDeploymentResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -99,18 +101,19 @@ Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hatho
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetLogsForProcessResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetLogsForProcessResponse, GetLogsForProcessSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
+const operationSecurity: GetLogsForProcessSecurity = {
+  auth0: "",
+};
 
 sdk.logV1.getLogsForProcess({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   follow: false,
   processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
   tailLines: 568045,
-}, {
-  auth0: "",
-}).then((res: GetLogsForProcessResponse) => {
+}, operationSecurity).then((res: GetLogsForProcessResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

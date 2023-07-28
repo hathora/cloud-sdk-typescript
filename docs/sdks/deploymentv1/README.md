@@ -18,14 +18,11 @@ Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#dep
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateDeploymentResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { PlanName, TransportType } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { CreateDeploymentRequest, CreateDeploymentResponse, CreateDeploymentSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { ContainerPort, DeploymentConfig, DeploymentConfigEnv, PlanName, TransportType } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
-
-sdk.deploymentV1.createDeployment({
-  auth0: "",
-}, {
+const deploymentConfig: DeploymentConfig = {
   additionalContainerPorts: [
     {
       name: "default",
@@ -52,7 +49,14 @@ sdk.deploymentV1.createDeployment({
   planName: PlanName.Tiny,
   roomsPerProcess: 3,
   transportType: TransportType.Udp,
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", 1).then((res: CreateDeploymentResponse) => {
+};
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const buildId: number = 1;
+const operationSecurity: CreateDeploymentSecurity = {
+  auth0: "",
+};
+
+sdk.deploymentV1.createDeployment(operationSecurity, deploymentConfig, appId, buildId).then((res: CreateDeploymentResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -83,13 +87,16 @@ Get details for an existing [deployment](https://hathora.dev/docs/concepts/hatho
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetDeploymentInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetDeploymentInfoRequest, GetDeploymentInfoResponse, GetDeploymentInfoSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.deploymentV1.getDeploymentInfo({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const deploymentId: number = 1;
+const operationSecurity: GetDeploymentInfoSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", 1).then((res: GetDeploymentInfoResponse) => {
+};
+
+sdk.deploymentV1.getDeploymentInfo(operationSecurity, appId, deploymentId).then((res: GetDeploymentInfoResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -119,13 +126,15 @@ Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entit
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetDeploymentsResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetDeploymentsRequest, GetDeploymentsResponse, GetDeploymentsSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.deploymentV1.getDeployments({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const operationSecurity: GetDeploymentsSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2").then((res: GetDeploymentsResponse) => {
+};
+
+sdk.deploymentV1.getDeployments(operationSecurity, appId).then((res: GetDeploymentsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

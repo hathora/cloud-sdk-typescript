@@ -20,13 +20,15 @@ Generate a new `buildId` for an existing [application](https://hathora.dev/docs/
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateBuildResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreateBuildRequest, CreateBuildResponse, CreateBuildSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.buildV1.createBuild({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const operationSecurity: CreateBuildSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2").then((res: CreateBuildResponse) => {
+};
+
+sdk.buildV1.createBuild(operationSecurity, appId).then((res: CreateBuildResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -55,13 +57,16 @@ Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for a
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { DeleteBuildResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { DeleteBuildRequest, DeleteBuildResponse, DeleteBuildSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.buildV1.deleteBuild({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const buildId: number = 1;
+const operationSecurity: DeleteBuildSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", 1).then((res: DeleteBuildResponse) => {
+};
+
+sdk.buildV1.deleteBuild(operationSecurity, appId, buildId).then((res: DeleteBuildResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -91,13 +96,16 @@ Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-en
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetBuildInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetBuildInfoRequest, GetBuildInfoResponse, GetBuildInfoSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.buildV1.getBuildInfo({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const buildId: number = 1;
+const operationSecurity: GetBuildInfoSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", 1).then((res: GetBuildInfoResponse) => {
+};
+
+sdk.buildV1.getBuildInfo(operationSecurity, appId, buildId).then((res: GetBuildInfoResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -127,13 +135,15 @@ Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#b
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetBuildsResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetBuildsRequest, GetBuildsResponse, GetBuildsSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.buildV1.getBuilds({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const operationSecurity: GetBuildsSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2").then((res: GetBuildsResponse) => {
+};
+
+sdk.buildV1.getBuilds(operationSecurity, appId).then((res: GetBuildsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -162,18 +172,28 @@ Provide a tarball that will generate a container image for an existing [applicat
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { RunBuildResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import {
+  RunBuildRequest,
+  RunBuildRequestBody,
+  RunBuildRequestBodyFile,
+  RunBuildResponse,
+  RunBuildSecurity,
+} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.buildV1.runBuild({
-  auth0: "",
-}, {
+const requestBody: RunBuildRequestBody = {
   file: {
     content: "corrupti".encode(),
     file: "illum",
   },
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", 1).then((res: RunBuildResponse) => {
+};
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const buildId: number = 1;
+const operationSecurity: RunBuildSecurity = {
+  auth0: "",
+};
+
+sdk.buildV1.runBuild(operationSecurity, requestBody, appId, buildId).then((res: RunBuildResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

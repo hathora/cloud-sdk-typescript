@@ -16,11 +16,12 @@ Operations that allow you to configure authentication for your [applications](ht
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { LoginAnonymousResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { LoginAnonymousRequest, LoginAnonymousResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
-sdk.authV1.loginAnonymous("app-af469a92-5b45-4565-b3c4-b79878de67d2").then((res: LoginAnonymousResponse) => {
+sdk.authV1.loginAnonymous(appId).then((res: LoginAnonymousResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -46,13 +47,16 @@ sdk.authV1.loginAnonymous("app-af469a92-5b45-4565-b3c4-b79878de67d2").then((res:
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { LoginGoogleResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { LoginGoogleRequest, LoginGoogleResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { LoginGoogleRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
-
-sdk.authV1.loginGoogle({
+const loginGoogleRequest: LoginGoogleRequest = {
   idToken: "quibusdam",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2").then((res: LoginGoogleResponse) => {
+};
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+
+sdk.authV1.loginGoogle(loginGoogleRequest, appId).then((res: LoginGoogleResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -79,13 +83,16 @@ sdk.authV1.loginGoogle({
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { LoginNicknameResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { LoginNicknameRequest, LoginNicknameResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { LoginNicknameRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
-
-sdk.authV1.loginNickname({
+const loginNicknameRequest: LoginNicknameRequest = {
   nickname: "unde",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2").then((res: LoginNicknameResponse) => {
+};
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+
+sdk.authV1.loginNickname(loginNicknameRequest, appId).then((res: LoginNicknameResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

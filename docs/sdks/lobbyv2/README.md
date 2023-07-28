@@ -22,16 +22,19 @@ Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) f
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateLobbyResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { LobbyVisibility, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { CreateLobbyRequest, CreateLobbyResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreateLobbyRequest, LobbyInitialConfig, LobbyVisibility, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
-
-sdk.lobbyV2.createLobby({
+const createLobbyRequest: CreateLobbyRequest = {
   initialConfig: {},
   region: Region.SaoPaulo,
   visibility: LobbyVisibility.Private,
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: CreateLobbyResponse) => {
+};
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
+
+sdk.lobbyV2.createLobby(createLobbyRequest, appId, roomId).then((res: CreateLobbyResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -61,15 +64,18 @@ sdk.lobbyV2.createLobby({
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateLocalLobbyResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { CreateLocalLobbyRequest, CreateLocalLobbyRequestBody, CreateLocalLobbyResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { LobbyInitialConfig, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
-
-sdk.lobbyV2.createLocalLobby({
+const requestBody: CreateLocalLobbyRequestBody = {
   initialConfig: {},
   region: Region.Chicago,
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: CreateLocalLobbyResponse) => {
+};
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
+
+sdk.lobbyV2.createLocalLobby(requestBody, appId, roomId).then((res: CreateLocalLobbyResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -99,15 +105,22 @@ sdk.lobbyV2.createLocalLobby({
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreatePrivateLobbyResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import {
+  CreatePrivateLobbyRequest,
+  CreatePrivateLobbyRequestBody,
+  CreatePrivateLobbyResponse,
+} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { LobbyInitialConfig, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
-
-sdk.lobbyV2.createPrivateLobby({
+const requestBody: CreatePrivateLobbyRequestBody = {
   initialConfig: {},
   region: Region.London,
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: CreatePrivateLobbyResponse) => {
+};
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
+
+sdk.lobbyV2.createPrivateLobby(requestBody, appId, roomId).then((res: CreatePrivateLobbyResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -137,15 +150,22 @@ sdk.lobbyV2.createPrivateLobby({
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreatePublicLobbyResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import {
+  CreatePublicLobbyRequest,
+  CreatePublicLobbyRequestBody,
+  CreatePublicLobbyResponse,
+} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { LobbyInitialConfig, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
-
-sdk.lobbyV2.createPublicLobby({
+const requestBody: CreatePublicLobbyRequestBody = {
   initialConfig: {},
   region: Region.Frankfurt,
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: CreatePublicLobbyResponse) => {
+};
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
+
+sdk.lobbyV2.createPublicLobby(requestBody, appId, roomId).then((res: CreatePublicLobbyResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -175,11 +195,13 @@ Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-en
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetLobbyInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetLobbyInfoRequest, GetLobbyInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
 
-sdk.lobbyV2.getLobbyInfo("app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: GetLobbyInfoResponse) => {
+sdk.lobbyV2.getLobbyInfo(appId, roomId).then((res: GetLobbyInfoResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -208,12 +230,14 @@ Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobb
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { ListActivePublicLobbiesResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { ListActivePublicLobbiesRequest, ListActivePublicLobbiesResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const region: Region = Region.Tokyo;
 
-sdk.lobbyV2.listActivePublicLobbies("app-af469a92-5b45-4565-b3c4-b79878de67d2", Region.Tokyo).then((res: ListActivePublicLobbiesResponse) => {
+sdk.lobbyV2.listActivePublicLobbies(appId, region).then((res: ListActivePublicLobbiesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -242,15 +266,20 @@ Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lo
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { SetLobbyStateResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { SetLobbyStateRequest, SetLobbyStateResponse, SetLobbyStateSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { SetLobbyStateRequest, SetLobbyStateRequestState } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
-
-sdk.lobbyV2.setLobbyState({
-  auth0: "",
-}, {
+const setLobbyStateRequest: SetLobbyStateRequest = {
   state: {},
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: SetLobbyStateResponse) => {
+};
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
+const operationSecurity: SetLobbyStateSecurity = {
+  auth0: "",
+};
+
+sdk.lobbyV2.setLobbyState(operationSecurity, setLobbyStateRequest, appId, roomId).then((res: SetLobbyStateResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

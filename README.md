@@ -22,9 +22,12 @@ yarn add https://github.com/hathora/cloud-sdk-typescript
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateAppResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreateAppResponse, CreateAppSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
+const operationSecurity: CreateAppSecurity = {
+  auth0: "",
+};
 
 sdk.appV1.createApp({
   appName: "minecraft",
@@ -35,9 +38,7 @@ sdk.appV1.createApp({
     },
     nickname: {},
   },
-}, {
-  auth0: "",
-}).then((res: CreateAppResponse) => {
+}, operationSecurity).then((res: CreateAppResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

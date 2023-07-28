@@ -16,10 +16,13 @@ Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#p
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetMetricsResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetMetricsResponse, GetMetricsSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { MetricName } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
+const operationSecurity: GetMetricsSecurity = {
+  auth0: "",
+};
 
 sdk.metricsV1.getMetrics({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -33,9 +36,7 @@ sdk.metricsV1.getMetrics({
   processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
   start: 202.18,
   step: 368241,
-}, {
-  auth0: "",
-}).then((res: GetMetricsResponse) => {
+}, operationSecurity).then((res: GetMetricsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

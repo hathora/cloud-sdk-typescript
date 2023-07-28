@@ -22,16 +22,20 @@ Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateRoomResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { CreateRoomRequest, CreateRoomResponse, CreateRoomSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreateRoomRequest, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
-
-sdk.roomV2.createRoom({
-  auth0: "",
-}, {
+const createRoomRequest: CreateRoomRequest = {
   region: Region.WashingtonDC,
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: CreateRoomResponse) => {
+};
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
+const operationSecurity: CreateRoomSecurity = {
+  auth0: "",
+};
+
+sdk.roomV2.createRoom(operationSecurity, createRoomRequest, appId, roomId).then((res: CreateRoomResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -62,13 +66,16 @@ Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using 
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { DestroyRoomResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { DestroyRoomRequest, DestroyRoomResponse, DestroyRoomSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.roomV2.destroyRoom({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
+const operationSecurity: DestroyRoomSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: DestroyRoomResponse) => {
+};
+
+sdk.roomV2.destroyRoom(operationSecurity, appId, roomId).then((res: DestroyRoomResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -98,13 +105,20 @@ Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) 
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetActiveRoomsForProcessResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import {
+  GetActiveRoomsForProcessRequest,
+  GetActiveRoomsForProcessResponse,
+  GetActiveRoomsForProcessSecurity,
+} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.roomV2.getActiveRoomsForProcess({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
+const operationSecurity: GetActiveRoomsForProcessSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "cbfcddd2-0006-43ae-996c-995fff7bed2e").then((res: GetActiveRoomsForProcessResponse) => {
+};
+
+sdk.roomV2.getActiveRoomsForProcess(operationSecurity, appId, processId).then((res: GetActiveRoomsForProcessResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -134,11 +148,13 @@ Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-ent
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetConnectionInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetConnectionInfoRequest, GetConnectionInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
 
-sdk.roomV2.getConnectionInfo("app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: GetConnectionInfoResponse) => {
+sdk.roomV2.getConnectionInfo(appId, roomId).then((res: GetConnectionInfoResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -167,13 +183,20 @@ Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetInactiveRoomsForProcessResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import {
+  GetInactiveRoomsForProcessRequest,
+  GetInactiveRoomsForProcessResponse,
+  GetInactiveRoomsForProcessSecurity,
+} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.roomV2.getInactiveRoomsForProcess({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
+const operationSecurity: GetInactiveRoomsForProcessSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "cbfcddd2-0006-43ae-996c-995fff7bed2e").then((res: GetInactiveRoomsForProcessResponse) => {
+};
+
+sdk.roomV2.getInactiveRoomsForProcess(operationSecurity, appId, processId).then((res: GetInactiveRoomsForProcessResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -203,13 +226,16 @@ Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-ent
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetRoomInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetRoomInfoRequest, GetRoomInfoResponse, GetRoomInfoSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.roomV2.getRoomInfo({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
+const operationSecurity: GetRoomInfoSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: GetRoomInfoResponse) => {
+};
+
+sdk.roomV2.getRoomInfo(operationSecurity, appId, roomId).then((res: GetRoomInfoResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -239,13 +265,16 @@ Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using 
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { SuspendRoomResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { SuspendRoomRequest, SuspendRoomResponse, SuspendRoomSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.roomV2.suspendRoom({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
+const operationSecurity: SuspendRoomSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: SuspendRoomResponse) => {
+};
+
+sdk.roomV2.suspendRoom(operationSecurity, appId, roomId).then((res: SuspendRoomResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

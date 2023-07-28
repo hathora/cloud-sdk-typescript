@@ -20,9 +20,12 @@ Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#ap
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateAppResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreateAppResponse, CreateAppSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
+const operationSecurity: CreateAppSecurity = {
+  auth0: "",
+};
 
 sdk.appV1.createApp({
   appName: "minecraft",
@@ -33,9 +36,7 @@ sdk.appV1.createApp({
     },
     nickname: {},
   },
-}, {
-  auth0: "",
-}).then((res: CreateAppResponse) => {
+}, operationSecurity).then((res: CreateAppResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -64,13 +65,15 @@ Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#appli
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { DeleteAppResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { DeleteAppRequest, DeleteAppResponse, DeleteAppSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.appV1.deleteApp({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const operationSecurity: DeleteAppSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2").then((res: DeleteAppResponse) => {
+};
+
+sdk.appV1.deleteApp(operationSecurity, appId).then((res: DeleteAppResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -99,13 +102,15 @@ Get details for an [application](https://hathora.dev/docs/concepts/hathora-entit
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetAppInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetAppInfoRequest, GetAppInfoResponse, GetAppInfoSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.appV1.getAppInfo({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const operationSecurity: GetAppInfoSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2").then((res: GetAppInfoResponse) => {
+};
+
+sdk.appV1.getAppInfo(operationSecurity, appId).then((res: GetAppInfoResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -134,13 +139,14 @@ Returns an unsorted list of your organization’s [applications](https://hathora
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetAppsResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetAppsResponse, GetAppsSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.appV1.getApps({
+const operationSecurity: GetAppsSecurity = {
   auth0: "",
-}).then((res: GetAppsResponse) => {
+};
+
+sdk.appV1.getApps(operationSecurity).then((res: GetAppsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -168,13 +174,16 @@ Update data for an existing [application](https://hathora.dev/docs/concepts/hath
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { UpdateAppResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { UpdateAppRequest, UpdateAppResponse, UpdateAppSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import {
+  AppConfig,
+  AppConfigAuthConfiguration,
+  AppConfigAuthConfigurationGoogle,
+  RecordStringNever,
+} from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
-
-sdk.appV1.updateApp({
-  auth0: "",
-}, {
+const appConfig: AppConfig = {
   appName: "minecraft",
   authConfiguration: {
     anonymous: {},
@@ -183,7 +192,13 @@ sdk.appV1.updateApp({
     },
     nickname: {},
   },
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2").then((res: UpdateAppResponse) => {
+};
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const operationSecurity: UpdateAppSecurity = {
+  auth0: "",
+};
+
+sdk.appV1.updateApp(operationSecurity, appConfig, appId).then((res: UpdateAppResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

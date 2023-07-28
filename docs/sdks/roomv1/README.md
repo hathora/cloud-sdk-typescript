@@ -18,16 +18,24 @@
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateRoomDeprecatedResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import {
+  CreateRoomDeprecatedRequest,
+  CreateRoomDeprecatedResponse,
+  CreateRoomDeprecatedSecurity,
+} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreateRoomRequest, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
-
-sdk.roomV1.createRoomDeprecated({
-  auth0: "",
-}, {
+const createRoomRequest: CreateRoomRequest = {
   region: Region.Tokyo,
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: CreateRoomDeprecatedResponse) => {
+};
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
+const operationSecurity: CreateRoomDeprecatedSecurity = {
+  auth0: "",
+};
+
+sdk.roomV1.createRoomDeprecated(operationSecurity, createRoomRequest, appId, roomId).then((res: CreateRoomDeprecatedResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -58,13 +66,20 @@ sdk.roomV1.createRoomDeprecated({
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { DestroyRoomDeprecatedResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import {
+  DestroyRoomDeprecatedRequest,
+  DestroyRoomDeprecatedResponse,
+  DestroyRoomDeprecatedSecurity,
+} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.roomV1.destroyRoomDeprecated({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
+const operationSecurity: DestroyRoomDeprecatedSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: DestroyRoomDeprecatedResponse) => {
+};
+
+sdk.roomV1.destroyRoomDeprecated(operationSecurity, appId, roomId).then((res: DestroyRoomDeprecatedResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -94,13 +109,20 @@ sdk.roomV1.destroyRoomDeprecated({
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetActiveRoomsForProcessDeprecatedResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import {
+  GetActiveRoomsForProcessDeprecatedRequest,
+  GetActiveRoomsForProcessDeprecatedResponse,
+  GetActiveRoomsForProcessDeprecatedSecurity,
+} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.roomV1.getActiveRoomsForProcessDeprecated({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
+const operationSecurity: GetActiveRoomsForProcessDeprecatedSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "cbfcddd2-0006-43ae-996c-995fff7bed2e").then((res: GetActiveRoomsForProcessDeprecatedResponse) => {
+};
+
+sdk.roomV1.getActiveRoomsForProcessDeprecated(operationSecurity, appId, processId).then((res: GetActiveRoomsForProcessDeprecatedResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -130,11 +152,13 @@ sdk.roomV1.getActiveRoomsForProcessDeprecated({
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetConnectionInfoDeprecatedResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetConnectionInfoDeprecatedRequest, GetConnectionInfoDeprecatedResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
 
-sdk.roomV1.getConnectionInfoDeprecated("app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: GetConnectionInfoDeprecatedResponse) => {
+sdk.roomV1.getConnectionInfoDeprecated(appId, roomId).then((res: GetConnectionInfoDeprecatedResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -163,13 +187,20 @@ sdk.roomV1.getConnectionInfoDeprecated("app-af469a92-5b45-4565-b3c4-b79878de67d2
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetInactiveRoomsForProcessDeprecatedResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import {
+  GetInactiveRoomsForProcessDeprecatedRequest,
+  GetInactiveRoomsForProcessDeprecatedResponse,
+  GetInactiveRoomsForProcessDeprecatedSecurity,
+} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.roomV1.getInactiveRoomsForProcessDeprecated({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
+const operationSecurity: GetInactiveRoomsForProcessDeprecatedSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "cbfcddd2-0006-43ae-996c-995fff7bed2e").then((res: GetInactiveRoomsForProcessDeprecatedResponse) => {
+};
+
+sdk.roomV1.getInactiveRoomsForProcessDeprecated(operationSecurity, appId, processId).then((res: GetInactiveRoomsForProcessDeprecatedResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -199,13 +230,20 @@ sdk.roomV1.getInactiveRoomsForProcessDeprecated({
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetRoomInfoDeprecatedResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import {
+  GetRoomInfoDeprecatedRequest,
+  GetRoomInfoDeprecatedResponse,
+  GetRoomInfoDeprecatedSecurity,
+} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.roomV1.getRoomInfoDeprecated({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
+const operationSecurity: GetRoomInfoDeprecatedSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: GetRoomInfoDeprecatedResponse) => {
+};
+
+sdk.roomV1.getRoomInfoDeprecated(operationSecurity, appId, roomId).then((res: GetRoomInfoDeprecatedResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -235,13 +273,20 @@ sdk.roomV1.getRoomInfoDeprecated({
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { SuspendRoomDeprecatedResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import {
+  SuspendRoomDeprecatedRequest,
+  SuspendRoomDeprecatedResponse,
+  SuspendRoomDeprecatedSecurity,
+} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 const sdk = new HathoraCloud();
-
-sdk.roomV1.suspendRoomDeprecated({
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const roomId: string = "2swovpy1fnunu";
+const operationSecurity: SuspendRoomDeprecatedSecurity = {
   auth0: "",
-}, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu").then((res: SuspendRoomDeprecatedResponse) => {
+};
+
+sdk.roomV1.suspendRoomDeprecated(operationSecurity, appId, roomId).then((res: SuspendRoomDeprecatedResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
