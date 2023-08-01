@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 5d493c13d7ba103babf8acc1a95da638
   docVersion: 0.0.1
-  speakeasyVersion: 1.65.2
-  generationVersion: 2.75.1
+  speakeasyVersion: 1.66.1
+  generationVersion: 2.75.2
 generation:
   comments:
     disableComments: false
@@ -13,7 +13,7 @@ generation:
   singleTagPerOp: false
   tagNamespacingDisabled: false
 typescript:
-  version: 1.14.0
+  version: 1.14.1
   author: Hathora
   maxMethodParams: "3"
   packageName: '@hathora/cloud-sdk-typescript'
