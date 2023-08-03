@@ -66,14 +66,14 @@ export class ProcessWithRooms extends SpeakeasyBase {
     exposedPort?: ExposedPort;
 
     /**
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "host" })
     host: string;
 
     /**
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "idleSince" })
@@ -81,7 +81,7 @@ export class ProcessWithRooms extends SpeakeasyBase {
     idleSince: Date;
 
     /**
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "port" })

@@ -18,7 +18,7 @@ export class DeploymentEnv extends SpeakeasyBase {
 }
 
 /**
- * @deprecated this enum will be removed in a future release, please migrate away from it as soon as possible
+ * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export enum DeploymentTransportType {
     Tcp = "tcp",
@@ -53,7 +53,7 @@ export class Deployment extends SpeakeasyBase {
     buildId: number;
 
     /**
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "containerPort" })
@@ -136,7 +136,7 @@ export class Deployment extends SpeakeasyBase {
     roomsPerProcess: number;
 
     /**
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "transportType" })

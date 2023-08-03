@@ -12,7 +12,7 @@
 
 ## ~~createRoomDeprecated~~
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -60,7 +60,7 @@ sdk.roomV1.createRoomDeprecated(operationSecurity, createRoomRequest, appId, roo
 
 ## ~~destroyRoomDeprecated~~
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -103,7 +103,7 @@ sdk.roomV1.destroyRoomDeprecated(operationSecurity, appId, roomId).then((res: De
 
 ## ~~getActiveRoomsForProcessDeprecated~~
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -146,7 +146,7 @@ sdk.roomV1.getActiveRoomsForProcessDeprecated(operationSecurity, appId, processI
 
 ## ~~getConnectionInfoDeprecated~~
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -181,7 +181,7 @@ sdk.roomV1.getConnectionInfoDeprecated(appId, roomId).then((res: GetConnectionIn
 
 ## ~~getInactiveRoomsForProcessDeprecated~~
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -224,7 +224,7 @@ sdk.roomV1.getInactiveRoomsForProcessDeprecated(operationSecurity, appId, proces
 
 ## ~~getRoomInfoDeprecated~~
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -267,7 +267,7 @@ sdk.roomV1.getRoomInfoDeprecated(operationSecurity, appId, roomId).then((res: Ge
 
 ## ~~suspendRoomDeprecated~~
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

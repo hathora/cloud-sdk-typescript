@@ -58,7 +58,7 @@ sdk.lobbyV2.createLobby(createLobbyRequest, appId, roomId).then((res: CreateLobb
 
 ## ~~createLocalLobby~~
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -99,7 +99,7 @@ sdk.lobbyV2.createLocalLobby(requestBody, appId, roomId).then((res: CreateLocalL
 
 ## ~~createPrivateLobby~~
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -144,7 +144,7 @@ sdk.lobbyV2.createPrivateLobby(requestBody, appId, roomId).then((res: CreatePriv
 
 ## ~~createPublicLobby~~
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

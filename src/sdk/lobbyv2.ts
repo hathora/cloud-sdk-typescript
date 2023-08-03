@@ -183,7 +183,7 @@ export class LobbyV2 {
     }
 
     /**
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createLocalLobby(
         requestBody: operations.CreateLocalLobbyRequestBody,
@@ -341,7 +341,7 @@ export class LobbyV2 {
     }
 
     /**
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createPrivateLobby(
         requestBody: operations.CreatePrivateLobbyRequestBody,
@@ -500,7 +500,7 @@ export class LobbyV2 {
     }
 
     /**
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createPublicLobby(
         requestBody: operations.CreatePublicLobbyRequestBody,

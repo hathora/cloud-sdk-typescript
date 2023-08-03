@@ -17,7 +17,7 @@ export class RoomV1 {
     }
 
     /**
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createRoomDeprecated(
         security: operations.CreateRoomDeprecatedSecurity,
@@ -159,7 +159,7 @@ export class RoomV1 {
     }
 
     /**
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async destroyRoomDeprecated(
         security: operations.DestroyRoomDeprecatedSecurity,
@@ -247,7 +247,7 @@ export class RoomV1 {
     }
 
     /**
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getActiveRoomsForProcessDeprecated(
         security: operations.GetActiveRoomsForProcessDeprecatedSecurity,
@@ -343,7 +343,7 @@ export class RoomV1 {
     }
 
     /**
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getConnectionInfoDeprecated(
         appId: string,
@@ -450,7 +450,7 @@ export class RoomV1 {
     }
 
     /**
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getInactiveRoomsForProcessDeprecated(
         security: operations.GetInactiveRoomsForProcessDeprecatedSecurity,
@@ -546,7 +546,7 @@ export class RoomV1 {
     }
 
     /**
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getRoomInfoDeprecated(
         security: operations.GetRoomInfoDeprecatedSecurity,
@@ -632,7 +632,7 @@ export class RoomV1 {
     }
 
     /**
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async suspendRoomDeprecated(
         security: operations.SuspendRoomDeprecatedSecurity,

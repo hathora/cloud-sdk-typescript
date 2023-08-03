@@ -1,6 +1,6 @@
 {
   "name": "@hathora/cloud-sdk-typescript",
-  "version": "1.14.1",
+  "version": "1.15.0",
   "author": "Hathora",
   "scripts": {
     "prepare": "tsc --build"

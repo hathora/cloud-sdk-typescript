@@ -8,7 +8,7 @@
 
 ## ~~createPrivateLobbyDeprecated~~
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -46,7 +46,7 @@ sdk.lobbyV1.createPrivateLobbyDeprecated(appId, local, region).then((res: Create
 
 ## ~~createPublicLobbyDeprecated~~
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -84,7 +84,7 @@ sdk.lobbyV1.createPublicLobbyDeprecated(appId, local, region).then((res: CreateP
 
 ## ~~listActivePublicLobbiesDeprecated~~
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
