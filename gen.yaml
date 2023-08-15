@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 5d493c13d7ba103babf8acc1a95da638
   docVersion: 0.0.1
-  speakeasyVersion: 1.69.1
-  generationVersion: 2.82.0
+  speakeasyVersion: 1.72.0
+  generationVersion: 2.84.1
 generation:
   comments:
     disableComments: false
@@ -19,10 +19,10 @@ features:
     deprecations: 2.81.1
     flattening: 2.81.1
     globalSecurity: 2.81.1
-    globalServerURLs: 2.81.1
+    globalServerURLs: 2.82.0
     methodSecurity: 2.81.1
 typescript:
-  version: 1.17.0
+  version: 1.18.0
   author: Hathora
   maxMethodParams: "3"
   packageName: '@hathora/cloud-sdk-typescript'
