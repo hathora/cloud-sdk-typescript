@@ -26,16 +26,13 @@ const operationSecurity: GetMetricsSecurity = {
 
 sdk.metricsV1.getMetrics({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  end: 9255.97,
+  end: 4799.77,
   metrics: [
-    MetricName.Cpu,
-    MetricName.Memory,
-    MetricName.Cpu,
     MetricName.RateEgress,
   ],
   processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
-  start: 202.18,
-  step: 368241,
+  start: 3927.85,
+  step: 925597,
 }, operationSecurity).then((res: GetMetricsResponse) => {
   if (res.statusCode == 200) {
     // handle response

@@ -110,7 +110,7 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-const region: Region = Region.SaoPaulo;
+const region: Region = Region.Seattle;
 const operationSecurity: GetStoppedProcessesSecurity = {
   auth0: "",
 };

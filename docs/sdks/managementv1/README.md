@@ -15,7 +15,7 @@ import { SendVerificationEmailResponse } from "@hathora/cloud-sdk-typescript/dis
 const sdk = new HathoraCloud();
 
 sdk.managementV1.sendVerificationEmail({
-  userId: "nisi",
+  userId: "voluptatum",
 }).then((res: SendVerificationEmailResponse) => {
   if (res.statusCode == 200) {
     // handle response

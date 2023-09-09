@@ -9,9 +9,6 @@ export enum VerificationEmailResponseStatus {
     Success = "success",
 }
 
-/**
- * Ok
- */
 export class VerificationEmailResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "status" })

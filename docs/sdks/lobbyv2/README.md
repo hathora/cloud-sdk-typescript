@@ -28,7 +28,7 @@ import { CreateLobbyRequest, LobbyInitialConfig, LobbyVisibility, Region } from 
 const sdk = new HathoraCloud();
 const createLobbyRequest: CreateLobbyRequest = {
   initialConfig: {},
-  region: Region.SaoPaulo,
+  region: Region.Chicago,
   visibility: LobbyVisibility.Private,
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
@@ -70,7 +70,7 @@ import { LobbyInitialConfig, Region } from "@hathora/cloud-sdk-typescript/dist/s
 const sdk = new HathoraCloud();
 const requestBody: CreateLocalLobbyRequestBody = {
   initialConfig: {},
-  region: Region.Chicago,
+  region: Region.Sydney,
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
@@ -115,7 +115,7 @@ import { LobbyInitialConfig, Region } from "@hathora/cloud-sdk-typescript/dist/s
 const sdk = new HathoraCloud();
 const requestBody: CreatePrivateLobbyRequestBody = {
   initialConfig: {},
-  region: Region.London,
+  region: Region.Seattle,
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
@@ -160,7 +160,7 @@ import { LobbyInitialConfig, Region } from "@hathora/cloud-sdk-typescript/dist/s
 const sdk = new HathoraCloud();
 const requestBody: CreatePublicLobbyRequestBody = {
   initialConfig: {},
-  region: Region.Frankfurt,
+  region: Region.SaoPaulo,
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
@@ -235,7 +235,7 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 const sdk = new HathoraCloud();
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-const region: Region = Region.Tokyo;
+const region: Region = Region.Chicago;
 
 sdk.lobbyV2.listActivePublicLobbies(appId, region).then((res: ListActivePublicLobbiesResponse) => {
   if (res.statusCode == 200) {
