@@ -24,5 +24,6 @@ features:
 typescript:
   version: 1.19.0
   author: Hathora
+  clientServerStatusCodesAsErrors: true
   maxMethodParams: "3"
   packageName: '@hathora/cloud-sdk-typescript'
