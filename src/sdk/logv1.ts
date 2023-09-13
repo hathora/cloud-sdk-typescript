@@ -51,16 +51,12 @@ export class LogV1 {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/logs/v1/{appId}/all", req);
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.GetLogsForAppSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...config?.headers };
+        const properties = utils.parseSecurityProperties(security);
+        const headers = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         if (acceptHeaderOverride !== undefined) {
             headers["Accept"] = acceptHeaderOverride.toString();
@@ -145,16 +141,12 @@ export class LogV1 {
             "/logs/v1/{appId}/deployment/{deploymentId}",
             req
         );
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.GetLogsForDeploymentSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...config?.headers };
+        const properties = utils.parseSecurityProperties(security);
+        const headers = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         if (acceptHeaderOverride !== undefined) {
             headers["Accept"] = acceptHeaderOverride.toString();
@@ -236,16 +228,12 @@ export class LogV1 {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/logs/v1/{appId}/process/{processId}", req);
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.GetLogsForProcessSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...config?.headers };
+        const properties = utils.parseSecurityProperties(security);
+        const headers = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         if (acceptHeaderOverride !== undefined) {
             headers["Accept"] = acceptHeaderOverride.toString();

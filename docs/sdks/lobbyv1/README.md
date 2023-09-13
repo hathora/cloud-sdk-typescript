@@ -20,7 +20,7 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 const sdk = new HathoraCloud();
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const local: boolean = false;
-const region: Region = Region.Chicago;
+const region: Region = Region.Singapore;
 
 sdk.lobbyV1.createPrivateLobbyDeprecated(appId, local, region).then((res: CreatePrivateLobbyDeprecatedResponse) => {
   if (res.statusCode == 200) {
@@ -58,7 +58,7 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 const sdk = new HathoraCloud();
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const local: boolean = false;
-const region: Region = Region.Sydney;
+const region: Region = Region.London;
 
 sdk.lobbyV1.createPublicLobbyDeprecated(appId, local, region).then((res: CreatePublicLobbyDeprecatedResponse) => {
   if (res.statusCode == 200) {
@@ -99,7 +99,7 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 const sdk = new HathoraCloud();
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const local: boolean = false;
-const region: Region = Region.Seattle;
+const region: Region = Region.Frankfurt;
 
 sdk.lobbyV1.listActivePublicLobbiesDeprecated(appId, local, region).then((res: ListActivePublicLobbiesDeprecatedResponse) => {
   if (res.statusCode == 200) {

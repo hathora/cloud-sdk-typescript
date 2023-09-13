@@ -29,18 +29,9 @@ const deploymentConfig: DeploymentConfig = {
       port: 8000,
       transportType: TransportType.Udp,
     },
-    {
-      name: "default",
-      port: 8000,
-      transportType: TransportType.Udp,
-    },
   ],
   containerPort: 4000,
   env: [
-    {
-      name: "EULA",
-      value: "TRUE",
-    },
     {
       name: "EULA",
       value: "TRUE",

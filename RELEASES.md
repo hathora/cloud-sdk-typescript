@@ -173,3 +173,51 @@ Based on:
 - Speakeasy CLI 1.74.15 (2.88.2) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [typescript v1.19.0] .
+
+## 2023-08-30 21:36:12
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.75.0 (2.89.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v1.20.0] .
+
+## 2023-09-01 00:03:47
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.77.0 (2.91.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v1.21.0] .
+
+## 2023-09-02 00:03:18
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.77.1 (2.91.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v1.21.1] .
+
+## 2023-09-03 00:03:41
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.77.2 (2.93.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v1.21.2] .
+
+## 2023-09-05 00:03:32
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.78.3 (2.96.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v1.22.0] .
+
+## 2023-09-09 00:03:22
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.82.3 (2.107.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v1.22.1] .

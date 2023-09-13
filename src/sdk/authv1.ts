@@ -32,9 +32,7 @@ export class AuthV1 {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/auth/v1/{appId}/login/anonymous", req);
-
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
 
@@ -124,9 +122,7 @@ export class AuthV1 {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
             throw new Error("request body is required");
@@ -231,9 +227,7 @@ export class AuthV1 {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
             throw new Error("request body is required");

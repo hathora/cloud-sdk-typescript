@@ -40,16 +40,12 @@ export class BuildV1 {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/builds/v1/{appId}/create", req);
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.CreateBuildSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...config?.headers };
+        const properties = utils.parseSecurityProperties(security);
+        const headers = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
         headers[
@@ -137,16 +133,12 @@ export class BuildV1 {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/builds/v1/{appId}/delete/{buildId}", req);
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.DeleteBuildSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...config?.headers };
+        const properties = utils.parseSecurityProperties(security);
+        const headers = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
         headers[
@@ -236,16 +228,12 @@ export class BuildV1 {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/builds/v1/{appId}/info/{buildId}", req);
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.GetBuildInfoSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...config?.headers };
+        const properties = utils.parseSecurityProperties(security);
+        const headers = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
         headers[
@@ -319,16 +307,12 @@ export class BuildV1 {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/builds/v1/{appId}/list", req);
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.GetBuildsSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...config?.headers };
+        const properties = utils.parseSecurityProperties(security);
+        const headers = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
         headers[
@@ -423,16 +407,12 @@ export class BuildV1 {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.RunBuildSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const properties = utils.parseSecurityProperties(security);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
             throw new Error("request body is required");
         if (acceptHeaderOverride !== undefined) {

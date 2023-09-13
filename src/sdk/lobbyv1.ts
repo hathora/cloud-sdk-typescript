@@ -35,9 +35,7 @@ export class LobbyV1 {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/lobby/v1/{appId}/create/private", req);
-
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-
         const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";
@@ -177,9 +175,7 @@ export class LobbyV1 {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/lobby/v1/{appId}/create/public", req);
-
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-
         const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";
@@ -319,9 +315,7 @@ export class LobbyV1 {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/lobby/v1/{appId}/list", req);
-
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-
         const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";

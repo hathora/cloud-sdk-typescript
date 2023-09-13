@@ -31,9 +31,7 @@ export class DiscoveryV1 {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = baseURL.replace(/\/$/, "") + "/discovery/v1/ping";
-
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
 

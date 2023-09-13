@@ -29,8 +29,8 @@ const operationSecurity: GetLogsForAppSecurity = {
 sdk.logV1.getLogsForApp({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   follow: false,
-  region: Region.Sydney,
-  tailLines: 528895,
+  region: Region.London,
+  tailLines: 477665,
 }, operationSecurity).then((res: GetLogsForAppResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -71,7 +71,7 @@ sdk.logV1.getLogsForDeployment({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   deploymentId: 1,
   follow: false,
-  tailLines: 479977,
+  tailLines: 791725,
 }, operationSecurity).then((res: GetLogsForDeploymentResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -112,7 +112,7 @@ sdk.logV1.getLogsForProcess({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   follow: false,
   processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
-  tailLines: 568045,
+  tailLines: 812169,
 }, operationSecurity).then((res: GetLogsForProcessResponse) => {
   if (res.statusCode == 200) {
     // handle response

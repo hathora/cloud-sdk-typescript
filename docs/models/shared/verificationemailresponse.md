@@ -1,7 +1,5 @@
 # VerificationEmailResponse
 
-Ok
-
 
 ## Fields
 

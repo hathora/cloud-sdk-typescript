@@ -42,16 +42,12 @@ export class ProcessesV1 {
             "/processes/v1/{appId}/info/{processId}",
             req
         );
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.GetProcessInfoSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...config?.headers };
+        const properties = utils.parseSecurityProperties(security);
+        const headers = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
         headers[
@@ -127,16 +123,12 @@ export class ProcessesV1 {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/processes/v1/{appId}/list/running", req);
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.GetRunningProcessesSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...config?.headers };
+        const properties = utils.parseSecurityProperties(security);
+        const headers = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";
 
@@ -220,16 +212,12 @@ export class ProcessesV1 {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/processes/v1/{appId}/list/stopped", req);
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.GetStoppedProcessesSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...config?.headers };
+        const properties = utils.parseSecurityProperties(security);
+        const headers = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";
 
