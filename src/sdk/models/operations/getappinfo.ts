@@ -29,9 +29,6 @@ export class GetAppInfoResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    getAppInfo404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

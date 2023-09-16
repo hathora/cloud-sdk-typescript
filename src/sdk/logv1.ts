@@ -11,20 +11,6 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 /**
  * Operations to get logs by [applications](https://hathora.dev/docs/concepts/hathora-entities#application), [processes](https://hathora.dev/docs/concepts/hathora-entities#process), and [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment). We store 20GB of logs data.
  */
-export enum GetLogsForAppAcceptEnum {
-    applicationJson = "application/json",
-    textPlain = "text/plain",
-}
-
-export enum GetLogsForDeploymentAcceptEnum {
-    applicationJson = "application/json",
-    textPlain = "text/plain",
-}
-
-export enum GetLogsForProcessAcceptEnum {
-    applicationJson = "application/json",
-    textPlain = "text/plain",
-}
 
 export class LogV1 {
     private sdkConfiguration: SDKConfiguration;
@@ -39,8 +25,7 @@ export class LogV1 {
     async getLogsForApp(
         req: operations.GetLogsForAppRequest,
         security: operations.GetLogsForAppSecurity,
-        config?: AxiosRequestConfig,
-        acceptHeaderOverride?: GetLogsForAppAcceptEnum
+        config?: AxiosRequestConfig
     ): Promise<operations.GetLogsForAppResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
             req = new operations.GetLogsForAppRequest(req);
@@ -58,11 +43,7 @@ export class LogV1 {
         const properties = utils.parseSecurityProperties(security);
         const headers = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        if (acceptHeaderOverride !== undefined) {
-            headers["Accept"] = acceptHeaderOverride.toString();
-        } else {
-            headers["Accept"] = "application/json;q=1, text/plain;q=0";
-        }
+        headers["Accept"] = "text/plain";
 
         headers[
             "user-agent"
@@ -102,18 +83,15 @@ export class LogV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getLogsForApp404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -125,8 +103,7 @@ export class LogV1 {
     async getLogsForDeployment(
         req: operations.GetLogsForDeploymentRequest,
         security: operations.GetLogsForDeploymentSecurity,
-        config?: AxiosRequestConfig,
-        acceptHeaderOverride?: GetLogsForDeploymentAcceptEnum
+        config?: AxiosRequestConfig
     ): Promise<operations.GetLogsForDeploymentResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
             req = new operations.GetLogsForDeploymentRequest(req);
@@ -148,11 +125,7 @@ export class LogV1 {
         const properties = utils.parseSecurityProperties(security);
         const headers = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        if (acceptHeaderOverride !== undefined) {
-            headers["Accept"] = acceptHeaderOverride.toString();
-        } else {
-            headers["Accept"] = "application/json;q=1, text/plain;q=0";
-        }
+        headers["Accept"] = "text/plain";
 
         headers[
             "user-agent"
@@ -193,18 +166,15 @@ export class LogV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getLogsForDeployment404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -216,8 +186,7 @@ export class LogV1 {
     async getLogsForProcess(
         req: operations.GetLogsForProcessRequest,
         security: operations.GetLogsForProcessSecurity,
-        config?: AxiosRequestConfig,
-        acceptHeaderOverride?: GetLogsForProcessAcceptEnum
+        config?: AxiosRequestConfig
     ): Promise<operations.GetLogsForProcessResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
             req = new operations.GetLogsForProcessRequest(req);
@@ -235,11 +204,7 @@ export class LogV1 {
         const properties = utils.parseSecurityProperties(security);
         const headers = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        if (acceptHeaderOverride !== undefined) {
-            headers["Accept"] = acceptHeaderOverride.toString();
-        } else {
-            headers["Accept"] = "application/json;q=1, text/plain;q=0";
-        }
+        headers["Accept"] = "text/plain";
 
         headers[
             "user-agent"
@@ -279,18 +244,15 @@ export class LogV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getLogsForProcess404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;

@@ -32,9 +32,6 @@ export class GetBuildInfoResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    getBuildInfo404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

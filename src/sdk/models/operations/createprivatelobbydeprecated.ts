@@ -24,24 +24,6 @@ export class CreatePrivateLobbyDeprecatedResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    @SpeakeasyMetadata()
-    createPrivateLobbyDeprecated400ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createPrivateLobbyDeprecated401ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createPrivateLobbyDeprecated404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createPrivateLobbyDeprecated422ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createPrivateLobbyDeprecated429ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createPrivateLobbyDeprecated500ApplicationJSONString?: string;
-
     /**
      * Ok
      */

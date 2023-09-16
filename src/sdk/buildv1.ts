@@ -12,10 +12,6 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 /**
  * Operations that allow you create and manage your [build](https://hathora.dev/docs/concepts/hathora-entities#build).
  */
-export enum RunBuildAcceptEnum {
-    applicationJson = "application/json",
-    textPlain = "text/plain",
-}
 
 export class BuildV1 {
     private sdkConfiguration: SDKConfiguration;
@@ -86,30 +82,16 @@ export class BuildV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createBuild404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createBuild500ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -139,7 +121,7 @@ export class BuildV1 {
         }
         const properties = utils.parseSecurityProperties(security);
         const headers = { ...config?.headers, ...properties.headers };
-        headers["Accept"] = "application/json";
+        headers["Accept"] = "*/*";
 
         headers[
             "user-agent"
@@ -165,46 +147,20 @@ export class BuildV1 {
             contentType: contentType,
             rawResponse: httpRes,
         });
-        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 204:
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteBuild404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 422:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteBuild422ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteBuild500ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                httpRes?.status == 422 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;
@@ -274,18 +230,15 @@ export class BuildV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getBuildInfo404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -359,18 +312,15 @@ export class BuildV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getBuilds404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -384,8 +334,7 @@ export class BuildV1 {
         requestBody: operations.RunBuildRequestBody,
         appId: string,
         buildId: number,
-        config?: AxiosRequestConfig,
-        acceptHeaderOverride?: RunBuildAcceptEnum
+        config?: AxiosRequestConfig
     ): Promise<operations.RunBuildResponse> {
         const req = new operations.RunBuildRequest({
             requestBody: requestBody,
@@ -415,11 +364,7 @@ export class BuildV1 {
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
             throw new Error("request body is required");
-        if (acceptHeaderOverride !== undefined) {
-            headers["Accept"] = acceptHeaderOverride.toString();
-        } else {
-            headers["Accept"] = "application/json;q=1, text/plain;q=0";
-        }
+        headers["Accept"] = "text/plain";
 
         headers[
             "user-agent"
@@ -460,30 +405,16 @@ export class BuildV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.runBuild404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.runBuild500ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;

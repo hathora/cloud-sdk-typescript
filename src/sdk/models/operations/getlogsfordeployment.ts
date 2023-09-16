@@ -37,9 +37,6 @@ export class GetLogsForDeploymentResponse extends SpeakeasyBase {
     getLogsForDeployment200TextPlainByteString?: string;
 
     @SpeakeasyMetadata()
-    getLogsForDeployment404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

@@ -17,12 +17,6 @@ export class GetPaymentMethodResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    @SpeakeasyMetadata()
-    getPaymentMethod404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    getPaymentMethod500ApplicationJSONString?: string;
-
     /**
      * Ok
      */

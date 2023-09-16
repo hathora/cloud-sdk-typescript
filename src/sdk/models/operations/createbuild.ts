@@ -26,12 +26,6 @@ export class CreateBuildResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    createBuild404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createBuild500ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

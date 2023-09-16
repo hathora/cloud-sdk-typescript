@@ -18,9 +18,6 @@ export class LoginNicknameResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    @SpeakeasyMetadata()
-    loginNickname404ApplicationJSONString?: string;
-
     /**
      * Ok
      */

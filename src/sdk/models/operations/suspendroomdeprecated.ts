@@ -29,10 +29,4 @@ export class SuspendRoomDeprecatedResponse extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    @SpeakeasyMetadata()
-    suspendRoomDeprecated404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    suspendRoomDeprecated500ApplicationJSONString?: string;
 }

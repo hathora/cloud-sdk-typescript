@@ -1,4 +1,4 @@
-# discoveryV1
+# DiscoveryV1
 
 ## Overview
 

@@ -25,9 +25,6 @@ export class GetRoomInfoDeprecatedResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    @SpeakeasyMetadata()
-    getRoomInfoDeprecated404ApplicationJSONString?: string;
-
     /**
      * Ok
      */

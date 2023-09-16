@@ -103,78 +103,20 @@ export class LobbyV2 {
                     );
                 }
                 break;
-            case httpRes?.status == 400:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createLobby400ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 401:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createLobby401ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createLobby404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 422:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createLobby422ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 429:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createLobby429ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createLobby500ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 400 ||
+                httpRes?.status == 401 ||
+                httpRes?.status == 404 ||
+                httpRes?.status == 422 ||
+                httpRes?.status == 429 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -259,78 +201,20 @@ export class LobbyV2 {
                     );
                 }
                 break;
-            case httpRes?.status == 400:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createLocalLobby400ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 401:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createLocalLobby401ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createLocalLobby404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 422:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createLocalLobby422ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 429:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createLocalLobby429ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createLocalLobby500ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 400 ||
+                httpRes?.status == 401 ||
+                httpRes?.status == 404 ||
+                httpRes?.status == 422 ||
+                httpRes?.status == 429 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -416,78 +300,20 @@ export class LobbyV2 {
                     );
                 }
                 break;
-            case httpRes?.status == 400:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createPrivateLobby400ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 401:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createPrivateLobby401ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createPrivateLobby404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 422:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createPrivateLobby422ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 429:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createPrivateLobby429ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createPrivateLobby500ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 400 ||
+                httpRes?.status == 401 ||
+                httpRes?.status == 404 ||
+                httpRes?.status == 422 ||
+                httpRes?.status == 429 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -572,78 +398,20 @@ export class LobbyV2 {
                     );
                 }
                 break;
-            case httpRes?.status == 400:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createPublicLobby400ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 401:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createPublicLobby401ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createPublicLobby404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 422:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createPublicLobby422ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 429:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createPublicLobby429ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createPublicLobby500ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 400 ||
+                httpRes?.status == 401 ||
+                httpRes?.status == 404 ||
+                httpRes?.status == 422 ||
+                httpRes?.status == 429 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -708,18 +476,15 @@ export class LobbyV2 {
                     );
                 }
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getLobbyInfo404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -792,6 +557,14 @@ export class LobbyV2 {
                     );
                 }
                 break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -880,30 +653,16 @@ export class LobbyV2 {
                     );
                 }
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.setLobbyState404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 422:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.setLobbyState422ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                httpRes?.status == 422 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;

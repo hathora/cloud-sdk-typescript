@@ -28,9 +28,6 @@ export class GetStoppedProcessesResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    @SpeakeasyMetadata()
-    getStoppedProcesses404ApplicationJSONString?: string;
-
     /**
      * Ok
      */

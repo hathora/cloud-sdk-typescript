@@ -46,12 +46,6 @@ export class GetMetricsResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    @SpeakeasyMetadata()
-    getMetrics404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    getMetrics422ApplicationJSONString?: string;
-
     /**
      * Ok
      */

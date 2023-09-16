@@ -25,9 +25,6 @@ export class GetInactiveRoomsForProcessResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    @SpeakeasyMetadata()
-    getInactiveRoomsForProcess404ApplicationJSONString?: string;
-
     /**
      * Ok
      */

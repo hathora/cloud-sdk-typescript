@@ -35,14 +35,8 @@ export class SetLobbyStateResponse extends SpeakeasyBase {
     lobby?: shared.Lobby;
 
     @SpeakeasyMetadata()
-    setLobbyState404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    @SpeakeasyMetadata()
-    setLobbyState422ApplicationJSONString?: string;
 }

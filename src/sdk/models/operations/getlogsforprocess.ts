@@ -37,9 +37,6 @@ export class GetLogsForProcessResponse extends SpeakeasyBase {
     getLogsForProcess200TextPlainByteString?: string;
 
     @SpeakeasyMetadata()
-    getLogsForProcess404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

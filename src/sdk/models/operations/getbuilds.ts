@@ -29,9 +29,6 @@ export class GetBuildsResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    getBuilds404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

@@ -22,24 +22,6 @@ export class CreateLobbyResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    createLobby400ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createLobby401ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createLobby404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createLobby422ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createLobby429ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createLobby500ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     lobby?: shared.Lobby;
 
     @SpeakeasyMetadata()

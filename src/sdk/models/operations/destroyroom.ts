@@ -25,12 +25,6 @@ export class DestroyRoomResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    destroyRoom404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    destroyRoom500ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

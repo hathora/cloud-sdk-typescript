@@ -32,18 +32,6 @@ export class CreateRoomResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    createRoom400ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createRoom403ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createRoom404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createRoom500ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

@@ -1,4 +1,4 @@
-# lobbyV2
+# LobbyV2
 
 ## Overview
 

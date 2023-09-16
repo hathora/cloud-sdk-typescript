@@ -36,10 +36,4 @@ export class UpdateAppResponse extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    @SpeakeasyMetadata()
-    updateApp404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    updateApp500ApplicationJSONString?: string;
 }

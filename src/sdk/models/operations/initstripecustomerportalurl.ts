@@ -23,9 +23,6 @@ export class InitStripeCustomerPortalUrlResponse extends SpeakeasyBase {
     initStripeCustomerPortalUrl200ApplicationJSONString?: string;
 
     @SpeakeasyMetadata()
-    initStripeCustomerPortalUrl404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

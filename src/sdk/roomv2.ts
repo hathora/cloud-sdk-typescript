@@ -107,54 +107,18 @@ export class RoomV2 {
                     );
                 }
                 break;
-            case httpRes?.status == 400:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createRoom400ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 403:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createRoom403ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createRoom404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createRoom500ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 400 ||
+                httpRes?.status == 403 ||
+                httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -184,7 +148,7 @@ export class RoomV2 {
         }
         const properties = utils.parseSecurityProperties(security);
         const headers = { ...config?.headers, ...properties.headers };
-        headers["Accept"] = "application/json";
+        headers["Accept"] = "*/*";
 
         headers[
             "user-agent"
@@ -210,34 +174,19 @@ export class RoomV2 {
             contentType: contentType,
             rawResponse: httpRes,
         });
-        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 204:
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.destroyRoom404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.destroyRoom500ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;
@@ -318,18 +267,15 @@ export class RoomV2 {
                     );
                 }
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getActiveRoomsForProcess404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -401,42 +347,17 @@ export class RoomV2 {
                     );
                 }
                 break;
-            case httpRes?.status == 400:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getConnectionInfo400ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getConnectionInfo404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getConnectionInfo500ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 400 ||
+                httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -517,18 +438,15 @@ export class RoomV2 {
                     );
                 }
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getInactiveRoomsForProcess404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -598,18 +516,15 @@ export class RoomV2 {
                     );
                 }
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getRoomInfo404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -639,7 +554,7 @@ export class RoomV2 {
         }
         const properties = utils.parseSecurityProperties(security);
         const headers = { ...config?.headers, ...properties.headers };
-        headers["Accept"] = "application/json";
+        headers["Accept"] = "*/*";
 
         headers[
             "user-agent"
@@ -665,34 +580,19 @@ export class RoomV2 {
             contentType: contentType,
             rawResponse: httpRes,
         });
-        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 204:
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.suspendRoom404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.suspendRoom500ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;

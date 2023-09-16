@@ -47,14 +47,8 @@ export class RunBuildResponse extends SpeakeasyBase {
     runBuild200TextPlainByteString?: string;
 
     @SpeakeasyMetadata()
-    runBuild404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    @SpeakeasyMetadata()
-    runBuild500ApplicationJSONString?: string;
 }

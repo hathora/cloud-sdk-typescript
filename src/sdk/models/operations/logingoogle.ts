@@ -18,12 +18,6 @@ export class LoginGoogleResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    @SpeakeasyMetadata()
-    loginGoogle401ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    loginGoogle404ApplicationJSONString?: string;
-
     /**
      * Ok
      */

@@ -103,42 +103,17 @@ export class DeploymentV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 400:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createDeployment400ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createDeployment404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createDeployment500ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 400 ||
+                httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -212,18 +187,15 @@ export class DeploymentV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getDeploymentInfo404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -297,18 +269,15 @@ export class DeploymentV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getDeployments404ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;

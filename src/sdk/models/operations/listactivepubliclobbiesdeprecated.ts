@@ -24,12 +24,6 @@ export class ListActivePublicLobbiesDeprecatedResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    @SpeakeasyMetadata()
-    listActivePublicLobbiesDeprecated401ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    listActivePublicLobbiesDeprecated404ApplicationJSONString?: string;
-
     /**
      * Ok
      */

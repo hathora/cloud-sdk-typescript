@@ -88,18 +88,15 @@ export class ManagementV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.sendVerificationEmail500ApplicationJSONString = decodedRes;
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;

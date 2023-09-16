@@ -29,18 +29,6 @@ export class CreateRoomDeprecatedResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    createRoomDeprecated400ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createRoomDeprecated403ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createRoomDeprecated404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createRoomDeprecated500ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     roomId?: string;
 
     @SpeakeasyMetadata()
