@@ -22,12 +22,6 @@ export class DeleteAppResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    deleteApp404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    deleteApp500ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

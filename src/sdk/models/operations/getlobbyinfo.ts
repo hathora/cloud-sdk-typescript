@@ -18,9 +18,6 @@ export class GetLobbyInfoResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    @SpeakeasyMetadata()
-    getLobbyInfo404ApplicationJSONString?: string;
-
     /**
      * Ok
      */

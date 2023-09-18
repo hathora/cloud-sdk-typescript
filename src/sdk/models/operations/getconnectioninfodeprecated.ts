@@ -24,15 +24,6 @@ export class GetConnectionInfoDeprecatedResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    getConnectionInfoDeprecated400ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    getConnectionInfoDeprecated404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    getConnectionInfoDeprecated500ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

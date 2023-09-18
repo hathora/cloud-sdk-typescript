@@ -41,9 +41,6 @@ export class GetLogsForAppResponse extends SpeakeasyBase {
     getLogsForApp200TextPlainByteString?: string;
 
     @SpeakeasyMetadata()
-    getLogsForApp404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

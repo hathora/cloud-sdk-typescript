@@ -17,9 +17,6 @@ export class GetInvoicesResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    @SpeakeasyMetadata()
-    getInvoices404ApplicationJSONString?: string;
-
     /**
      * Ok
      */

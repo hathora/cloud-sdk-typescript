@@ -25,15 +25,6 @@ export class DeleteBuildResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    deleteBuild404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    deleteBuild422ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    deleteBuild500ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

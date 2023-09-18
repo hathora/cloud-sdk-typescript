@@ -25,9 +25,6 @@ export class GetProcessInfoResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    @SpeakeasyMetadata()
-    getProcessInfo404ApplicationJSONString?: string;
-
     /**
      * Ok
      */

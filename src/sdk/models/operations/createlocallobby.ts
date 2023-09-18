@@ -40,24 +40,6 @@ export class CreateLocalLobbyResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    createLocalLobby400ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createLocalLobby401ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createLocalLobby404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createLocalLobby422ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createLocalLobby429ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createLocalLobby500ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     lobby?: shared.Lobby;
 
     @SpeakeasyMetadata()

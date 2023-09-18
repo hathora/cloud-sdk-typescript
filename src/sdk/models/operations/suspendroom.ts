@@ -29,10 +29,4 @@ export class SuspendRoomResponse extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    @SpeakeasyMetadata()
-    suspendRoom404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    suspendRoom500ApplicationJSONString?: string;
 }

@@ -1,4 +1,4 @@
-# lobbyV1
+# LobbyV1
 
 ### Available Operations
 

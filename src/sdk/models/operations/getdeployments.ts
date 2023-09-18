@@ -29,9 +29,6 @@ export class GetDeploymentsResponse extends SpeakeasyBase {
     deployments?: shared.Deployment[];
 
     @SpeakeasyMetadata()
-    getDeployments404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

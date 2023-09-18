@@ -21,12 +21,6 @@ export class CreateAppResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    createApp422ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createApp500ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

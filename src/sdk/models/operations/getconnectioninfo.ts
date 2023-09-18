@@ -25,15 +25,6 @@ export class GetConnectionInfoResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    getConnectionInfo400ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    getConnectionInfo404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    getConnectionInfo500ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

@@ -40,24 +40,6 @@ export class CreatePrivateLobbyResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    createPrivateLobby400ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createPrivateLobby401ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createPrivateLobby404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createPrivateLobby422ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createPrivateLobby429ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createPrivateLobby500ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     lobby?: shared.Lobby;
 
     @SpeakeasyMetadata()

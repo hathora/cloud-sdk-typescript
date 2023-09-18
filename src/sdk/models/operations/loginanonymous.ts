@@ -15,9 +15,6 @@ export class LoginAnonymousResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    @SpeakeasyMetadata()
-    loginAnonymous404ApplicationJSONString?: string;
-
     /**
      * Ok
      */

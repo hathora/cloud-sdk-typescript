@@ -25,9 +25,6 @@ export class GetRoomInfoResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    @SpeakeasyMetadata()
-    getRoomInfo404ApplicationJSONString?: string;
-
     /**
      * Ok
      */

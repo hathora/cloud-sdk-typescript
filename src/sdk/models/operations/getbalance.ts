@@ -23,9 +23,6 @@ export class GetBalanceResponse extends SpeakeasyBase {
     getBalance200ApplicationJSONDoubleNumber?: number;
 
     @SpeakeasyMetadata()
-    getBalance404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     statusCode: number;
 
     @SpeakeasyMetadata()

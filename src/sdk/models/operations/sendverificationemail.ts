@@ -16,9 +16,6 @@ export class SendVerificationEmailResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
 
-    @SpeakeasyMetadata()
-    sendVerificationEmail500ApplicationJSONString?: string;
-
     /**
      * Ok
      */

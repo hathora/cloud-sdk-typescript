@@ -29,15 +29,6 @@ export class CreateDeploymentResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    createDeployment400ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createDeployment404ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
-    createDeployment500ApplicationJSONString?: string;
-
-    @SpeakeasyMetadata()
     deployment?: shared.Deployment;
 
     @SpeakeasyMetadata()
