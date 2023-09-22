@@ -16,20 +16,21 @@ export class BillingV1 {
         this.sdkConfiguration = sdkConfig;
     }
 
-    async getBalance(
-        security: operations.GetBalanceSecurity,
-        config?: AxiosRequestConfig
-    ): Promise<operations.GetBalanceResponse> {
+    async getBalance(config?: AxiosRequestConfig): Promise<operations.GetBalanceResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
         const url: string = baseURL.replace(/\/$/, "") + "/billing/v1/balance";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetBalanceSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -85,20 +86,21 @@ export class BillingV1 {
         return res;
     }
 
-    async getInvoices(
-        security: operations.GetInvoicesSecurity,
-        config?: AxiosRequestConfig
-    ): Promise<operations.GetInvoicesResponse> {
+    async getInvoices(config?: AxiosRequestConfig): Promise<operations.GetInvoicesResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
         const url: string = baseURL.replace(/\/$/, "") + "/billing/v1/invoices";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetInvoicesSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -161,7 +163,6 @@ export class BillingV1 {
     }
 
     async getPaymentMethod(
-        security: operations.GetPaymentMethodSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.GetPaymentMethodResponse> {
         const baseURL: string = utils.templateUrl(
@@ -170,10 +171,14 @@ export class BillingV1 {
         );
         const url: string = baseURL.replace(/\/$/, "") + "/billing/v1/paymentmethod";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetPaymentMethodSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -235,7 +240,6 @@ export class BillingV1 {
 
     async initStripeCustomerPortalUrl(
         req: shared.CustomerPortalUrl,
-        security: operations.InitStripeCustomerPortalUrlSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.InitStripeCustomerPortalUrlResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -258,10 +262,14 @@ export class BillingV1 {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.InitStripeCustomerPortalUrlSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...reqBodyHeaders,
             ...config?.headers,

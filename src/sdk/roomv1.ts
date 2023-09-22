@@ -20,7 +20,6 @@ export class RoomV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createRoomDeprecated(
-        security: operations.CreateRoomDeprecatedSecurity,
         createRoomRequest: shared.CreateRoomRequest,
         appId: string,
         roomId?: string,
@@ -51,10 +50,14 @@ export class RoomV1 {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.CreateRoomDeprecatedSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...reqBodyHeaders,
             ...config?.headers,
@@ -125,7 +128,6 @@ export class RoomV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async destroyRoomDeprecated(
-        security: operations.DestroyRoomDeprecatedSecurity,
         appId: string,
         roomId: string,
         config?: AxiosRequestConfig
@@ -140,10 +142,14 @@ export class RoomV1 {
         );
         const url: string = utils.generateURL(baseURL, "/rooms/v1/{appId}/destroy/{roomId}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.DestroyRoomDeprecatedSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "*/*";
 
@@ -194,7 +200,6 @@ export class RoomV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getActiveRoomsForProcessDeprecated(
-        security: operations.GetActiveRoomsForProcessDeprecatedSecurity,
         appId: string,
         processId: string,
         config?: AxiosRequestConfig
@@ -213,10 +218,14 @@ export class RoomV1 {
             req
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetActiveRoomsForProcessDeprecatedSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -301,7 +310,15 @@ export class RoomV1 {
             req
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        const headers: RawAxiosRequestHeaders = { ...config?.headers };
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
         headers[
@@ -363,7 +380,6 @@ export class RoomV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getInactiveRoomsForProcessDeprecated(
-        security: operations.GetInactiveRoomsForProcessDeprecatedSecurity,
         appId: string,
         processId: string,
         config?: AxiosRequestConfig
@@ -382,10 +398,14 @@ export class RoomV1 {
             req
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetInactiveRoomsForProcessDeprecatedSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -452,7 +472,6 @@ export class RoomV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getRoomInfoDeprecated(
-        security: operations.GetRoomInfoDeprecatedSecurity,
         appId: string,
         roomId: string,
         config?: AxiosRequestConfig
@@ -467,10 +486,14 @@ export class RoomV1 {
         );
         const url: string = utils.generateURL(baseURL, "/rooms/v1/{appId}/info/{roomId}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetRoomInfoDeprecatedSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -531,7 +554,6 @@ export class RoomV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async suspendRoomDeprecated(
-        security: operations.SuspendRoomDeprecatedSecurity,
         appId: string,
         roomId: string,
         config?: AxiosRequestConfig
@@ -546,10 +568,14 @@ export class RoomV1 {
         );
         const url: string = utils.generateURL(baseURL, "/rooms/v1/{appId}/suspend/{roomId}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.SuspendRoomDeprecatedSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "*/*";
 

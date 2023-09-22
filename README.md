@@ -24,27 +24,26 @@ yarn add https://github.com/hathora/cloud-sdk-typescript
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateAppResponse, CreateAppSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreateAppResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
-const operationSecurity: CreateAppSecurity = {
-  auth0: "",
-};
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 
 sdk.appV1.createApp({
   appName: "minecraft",
   authConfiguration: {
     anonymous: {},
     google: {
-      clientId: "corrupti",
+      clientId: "provident",
     },
     nickname: {},
   },
-}, operationSecurity).then((res: CreateAppResponse) => {
+}).then((res: CreateAppResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -151,6 +150,32 @@ sdk.appV1.createApp({
 * [getRoomInfo](docs/sdks/roomv2/README.md#getroominfo) - Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`.
 * [suspendRoom](docs/sdks/roomv2/README.md#suspendroom) - Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`. The room is unallocated from the process but can be rescheduled later using the same `roomId`.
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+
+
+<!-- Start Pagination -->
+# Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `next` method that can be called to pull down the next group of results. If the
+return value of `next` is `null`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+
+
+<!-- End Pagination -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### Maturity
 

@@ -18,10 +18,14 @@ Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#dep
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateDeploymentRequest, CreateDeploymentResponse, CreateDeploymentSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreateDeploymentRequest, CreateDeploymentResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { ContainerPort, DeploymentConfig, DeploymentConfigEnv, PlanName, TransportType } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 const deploymentConfig: DeploymentConfig = {
   additionalContainerPorts: [
     {
@@ -43,11 +47,8 @@ const deploymentConfig: DeploymentConfig = {
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const buildId: number = 1;
-const operationSecurity: CreateDeploymentSecurity = {
-  auth0: "",
-};
 
-sdk.deploymentV1.createDeployment(operationSecurity, deploymentConfig, appId, buildId).then((res: CreateDeploymentResponse) => {
+sdk.deploymentV1.createDeployment(deploymentConfig, appId, buildId).then((res: CreateDeploymentResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -56,13 +57,12 @@ sdk.deploymentV1.createDeployment(operationSecurity, deploymentConfig, appId, bu
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `security`                                                                                 | [operations.CreateDeploymentSecurity](../../models/operations/createdeploymentsecurity.md) | :heavy_check_mark:                                                                         | The security requirements to use for the request.                                          |                                                                                            |
-| `deploymentConfig`                                                                         | [shared.DeploymentConfig](../../models/shared/deploymentconfig.md)                         | :heavy_check_mark:                                                                         | N/A                                                                                        |                                                                                            |
-| `appId`                                                                                    | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                   |
-| `buildId`                                                                                  | *number*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        | 1                                                                                          |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |                                                                                            |
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        | Example                                                            |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `deploymentConfig`                                                 | [shared.DeploymentConfig](../../models/shared/deploymentconfig.md) | :heavy_check_mark:                                                 | N/A                                                                |                                                                    |
+| `appId`                                                            | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                | app-af469a92-5b45-4565-b3c4-b79878de67d2                           |
+| `buildId`                                                          | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                | 1                                                                  |
+| `config`                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)       | :heavy_minus_sign:                                                 | Available config options for making requests.                      |                                                                    |
 
 
 ### Response
@@ -78,16 +78,17 @@ Get details for an existing [deployment](https://hathora.dev/docs/concepts/hatho
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetDeploymentInfoRequest, GetDeploymentInfoResponse, GetDeploymentInfoSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetDeploymentInfoRequest, GetDeploymentInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const deploymentId: number = 1;
-const operationSecurity: GetDeploymentInfoSecurity = {
-  auth0: "",
-};
 
-sdk.deploymentV1.getDeploymentInfo(operationSecurity, appId, deploymentId).then((res: GetDeploymentInfoResponse) => {
+sdk.deploymentV1.getDeploymentInfo(appId, deploymentId).then((res: GetDeploymentInfoResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -96,12 +97,11 @@ sdk.deploymentV1.getDeploymentInfo(operationSecurity, appId, deploymentId).then(
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `security`                                                                                   | [operations.GetDeploymentInfoSecurity](../../models/operations/getdeploymentinfosecurity.md) | :heavy_check_mark:                                                                           | The security requirements to use for the request.                                            |                                                                                              |
-| `appId`                                                                                      | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                     |
-| `deploymentId`                                                                               | *number*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          | 1                                                                                            |
-| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |                                                                                              |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `deploymentId`                                               | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          | 1                                                            |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -117,15 +117,16 @@ Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entit
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetDeploymentsRequest, GetDeploymentsResponse, GetDeploymentsSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetDeploymentsRequest, GetDeploymentsResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-const operationSecurity: GetDeploymentsSecurity = {
-  auth0: "",
-};
 
-sdk.deploymentV1.getDeployments(operationSecurity, appId).then((res: GetDeploymentsResponse) => {
+sdk.deploymentV1.getDeployments(appId).then((res: GetDeploymentsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -134,11 +135,10 @@ sdk.deploymentV1.getDeployments(operationSecurity, appId).then((res: GetDeployme
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `security`                                                                             | [operations.GetDeploymentsSecurity](../../models/operations/getdeploymentssecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |                                                                                        |
-| `appId`                                                                                | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    | app-af469a92-5b45-4565-b3c4-b79878de67d2                                               |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |                                                                                        |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response

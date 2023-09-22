@@ -5,13 +5,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
-export class RunBuildSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    auth0: string;
-}
-
 export class RunBuildRequestBodyFile extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "multipart_form, content=true" })
     content: Uint8Array;

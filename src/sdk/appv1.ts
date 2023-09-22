@@ -25,7 +25,6 @@ export class AppV1 {
      */
     async createApp(
         req: shared.AppConfig,
-        security: operations.CreateAppSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.CreateAppResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -48,10 +47,14 @@ export class AppV1 {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.CreateAppSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...reqBodyHeaders,
             ...config?.headers,
@@ -121,7 +124,6 @@ export class AppV1 {
      * Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Your organization will lose access to this application.
      */
     async deleteApp(
-        security: operations.DeleteAppSecurity,
         appId: string,
         config?: AxiosRequestConfig
     ): Promise<operations.DeleteAppResponse> {
@@ -134,10 +136,14 @@ export class AppV1 {
         );
         const url: string = utils.generateURL(baseURL, "/apps/v1/delete/{appId}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.DeleteAppSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "*/*";
 
@@ -187,7 +193,6 @@ export class AppV1 {
      * Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
      */
     async getAppInfo(
-        security: operations.GetAppInfoSecurity,
         appId: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetAppInfoResponse> {
@@ -200,10 +205,14 @@ export class AppV1 {
         );
         const url: string = utils.generateURL(baseURL, "/apps/v1/info/{appId}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetAppInfoSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -265,20 +274,21 @@ export class AppV1 {
     /**
      * Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
      */
-    async getApps(
-        security: operations.GetAppsSecurity,
-        config?: AxiosRequestConfig
-    ): Promise<operations.GetAppsResponse> {
+    async getApps(config?: AxiosRequestConfig): Promise<operations.GetAppsResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
         const url: string = baseURL.replace(/\/$/, "") + "/apps/v1/list";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetAppsSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -343,7 +353,6 @@ export class AppV1 {
      * Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
      */
     async updateApp(
-        security: operations.UpdateAppSecurity,
         appConfig: shared.AppConfig,
         appId: string,
         config?: AxiosRequestConfig
@@ -368,10 +377,14 @@ export class AppV1 {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.UpdateAppSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...reqBodyHeaders,
             ...config?.headers,

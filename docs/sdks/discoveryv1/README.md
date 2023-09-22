@@ -18,7 +18,11 @@ Returns an array of all regions with a host and port that a client can directly 
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { GetPingServiceEndpointsResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 
 sdk.discoveryV1.getPingServiceEndpoints().then((res: GetPingServiceEndpointsResponse) => {
   if (res.statusCode == 200) {

@@ -17,10 +17,14 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { CreatePrivateLobbyDeprecatedRequest, CreatePrivateLobbyDeprecatedResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const local: boolean = false;
-const region: Region = Region.Singapore;
+const region: Region = Region.London;
 
 sdk.lobbyV1.createPrivateLobbyDeprecated(appId, local, region).then((res: CreatePrivateLobbyDeprecatedResponse) => {
   if (res.statusCode == 200) {
@@ -55,10 +59,14 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { CreatePublicLobbyDeprecatedRequest, CreatePublicLobbyDeprecatedResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const local: boolean = false;
-const region: Region = Region.London;
+const region: Region = Region.Frankfurt;
 
 sdk.lobbyV1.createPublicLobbyDeprecated(appId, local, region).then((res: CreatePublicLobbyDeprecatedResponse) => {
   if (res.statusCode == 200) {
@@ -96,10 +104,14 @@ import {
 } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const local: boolean = false;
-const region: Region = Region.Frankfurt;
+const region: Region = Region.Chicago;
 
 sdk.lobbyV1.listActivePublicLobbiesDeprecated(appId, local, region).then((res: ListActivePublicLobbiesDeprecatedResponse) => {
   if (res.statusCode == 200) {

@@ -18,7 +18,11 @@ Operations that allow you to configure authentication for your [applications](ht
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { LoginAnonymousRequest, LoginAnonymousResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 sdk.authV1.loginAnonymous(appId).then((res: LoginAnonymousResponse) => {
@@ -50,9 +54,13 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { LoginGoogleRequest, LoginGoogleResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { LoginGoogleRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 const loginGoogleRequest: LoginGoogleRequest = {
-  idToken: "quibusdam",
+  idToken: "unde",
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
@@ -86,9 +94,13 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { LoginNicknameRequest, LoginNicknameResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { LoginNicknameRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 const loginNicknameRequest: LoginNicknameRequest = {
-  nickname: "unde",
+  nickname: "nulla",
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 

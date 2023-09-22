@@ -12,10 +12,14 @@
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { SendVerificationEmailResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 
 sdk.managementV1.sendVerificationEmail({
-  userId: "voluptatum",
+  userId: "iusto",
 }).then((res: SendVerificationEmailResponse) => {
   if (res.statusCode == 200) {
     // handle response

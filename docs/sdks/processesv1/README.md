@@ -18,16 +18,17 @@ Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetProcessInfoRequest, GetProcessInfoResponse, GetProcessInfoSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetProcessInfoRequest, GetProcessInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
-const operationSecurity: GetProcessInfoSecurity = {
-  auth0: "",
-};
 
-sdk.processesV1.getProcessInfo(operationSecurity, appId, processId).then((res: GetProcessInfoResponse) => {
+sdk.processesV1.getProcessInfo(appId, processId).then((res: GetProcessInfoResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -36,12 +37,11 @@ sdk.processesV1.getProcessInfo(operationSecurity, appId, processId).then((res: G
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `security`                                                                             | [operations.GetProcessInfoSecurity](../../models/operations/getprocessinfosecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |                                                                                        |
-| `appId`                                                                                | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    | app-af469a92-5b45-4565-b3c4-b79878de67d2                                               |
-| `processId`                                                                            | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    | cbfcddd2-0006-43ae-996c-995fff7bed2e                                                   |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |                                                                                        |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `processId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | cbfcddd2-0006-43ae-996c-995fff7bed2e                         |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -57,21 +57,18 @@ Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-e
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import {
-  GetRunningProcessesRequest,
-  GetRunningProcessesResponse,
-  GetRunningProcessesSecurity,
-} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetRunningProcessesRequest, GetRunningProcessesResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-const region: Region = Region.Sydney;
-const operationSecurity: GetRunningProcessesSecurity = {
-  auth0: "",
-};
+const region: Region = Region.Seattle;
 
-sdk.processesV1.getRunningProcesses(operationSecurity, appId, region).then((res: GetRunningProcessesResponse) => {
+sdk.processesV1.getRunningProcesses(appId, region).then((res: GetRunningProcessesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -80,12 +77,11 @@ sdk.processesV1.getRunningProcesses(operationSecurity, appId, region).then((res:
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `security`                                                                                       | [operations.GetRunningProcessesSecurity](../../models/operations/getrunningprocessessecurity.md) | :heavy_check_mark:                                                                               | The security requirements to use for the request.                                                |                                                                                                  |
-| `appId`                                                                                          | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                         |
-| `region`                                                                                         | [shared.Region](../../models/shared/region.md)                                                   | :heavy_minus_sign:                                                                               | Available regions to request a game server.                                                      |                                                                                                  |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |                                                                                                  |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `region`                                                     | [shared.Region](../../models/shared/region.md)               | :heavy_minus_sign:                                           | Available regions to request a game server.                  |                                                              |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -101,21 +97,18 @@ Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import {
-  GetStoppedProcessesRequest,
-  GetStoppedProcessesResponse,
-  GetStoppedProcessesSecurity,
-} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetStoppedProcessesRequest, GetStoppedProcessesResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-const region: Region = Region.Seattle;
-const operationSecurity: GetStoppedProcessesSecurity = {
-  auth0: "",
-};
+const region: Region = Region.London;
 
-sdk.processesV1.getStoppedProcesses(operationSecurity, appId, region).then((res: GetStoppedProcessesResponse) => {
+sdk.processesV1.getStoppedProcesses(appId, region).then((res: GetStoppedProcessesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -124,12 +117,11 @@ sdk.processesV1.getStoppedProcesses(operationSecurity, appId, region).then((res:
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `security`                                                                                       | [operations.GetStoppedProcessesSecurity](../../models/operations/getstoppedprocessessecurity.md) | :heavy_check_mark:                                                                               | The security requirements to use for the request.                                                |                                                                                                  |
-| `appId`                                                                                          | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                         |
-| `region`                                                                                         | [shared.Region](../../models/shared/region.md)                                                   | :heavy_minus_sign:                                                                               | Available regions to request a game server.                                                      |                                                                                                  |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |                                                                                                  |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `region`                                                     | [shared.Region](../../models/shared/region.md)               | :heavy_minus_sign:                                           | Available regions to request a game server.                  |                                                              |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response

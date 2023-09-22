@@ -40,6 +40,7 @@ export * from "./room";
 export * from "./roomallocation";
 export * from "./roomstatus";
 export * from "./roomwithoutallocations";
+export * from "./security";
 export * from "./setlobbystaterequest";
 export * from "./startingconnectioninfo";
 export * from "./transporttype";

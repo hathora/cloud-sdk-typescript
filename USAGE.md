@@ -3,12 +3,13 @@
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateAppResponse, CreateAppSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreateAppResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
-const operationSecurity: CreateAppSecurity = {
-  auth0: "",
-};
+const sdk = new HathoraCloud({
+  security: {
+    auth0: "",
+  },
+});
 
 sdk.appV1.createApp({
   appName: "minecraft",
@@ -19,7 +20,7 @@ sdk.appV1.createApp({
     },
     nickname: {},
   },
-}, operationSecurity).then((res: CreateAppResponse) => {
+}).then((res: CreateAppResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

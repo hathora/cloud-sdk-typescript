@@ -5,6 +5,7 @@
 import * as utils from "../internal/utils";
 import * as errors from "./models/errors";
 import * as operations from "./models/operations";
+import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -24,7 +25,6 @@ export class LogV1 {
      */
     async getLogsForApp(
         req: operations.GetLogsForAppRequest,
-        security: operations.GetLogsForAppSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.GetLogsForAppResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -37,10 +37,14 @@ export class LogV1 {
         );
         const url: string = utils.generateURL(baseURL, "/logs/v1/{appId}/all", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetLogsForAppSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "text/plain";
@@ -102,7 +106,6 @@ export class LogV1 {
      */
     async getLogsForDeployment(
         req: operations.GetLogsForDeploymentRequest,
-        security: operations.GetLogsForDeploymentSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.GetLogsForDeploymentResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -119,10 +122,14 @@ export class LogV1 {
             req
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetLogsForDeploymentSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "text/plain";
@@ -185,7 +192,6 @@ export class LogV1 {
      */
     async getLogsForProcess(
         req: operations.GetLogsForProcessRequest,
-        security: operations.GetLogsForProcessSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.GetLogsForProcessResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -198,10 +204,14 @@ export class LogV1 {
         );
         const url: string = utils.generateURL(baseURL, "/logs/v1/{appId}/process/{processId}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetLogsForProcessSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "text/plain";
