@@ -20,6 +20,9 @@ export class GetLogsForDeploymentRequest extends SpeakeasyBase {
 }
 
 export class GetLogsForDeploymentResponse extends SpeakeasyBase {
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
@@ -29,9 +32,15 @@ export class GetLogsForDeploymentResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     getLogsForDeployment200TextPlainByteString?: string;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
 }
