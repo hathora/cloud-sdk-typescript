@@ -20,7 +20,7 @@ const sdk = new HathoraCloud({
 });
 
 sdk.managementV1.sendVerificationEmail({
-  userId: "iusto",
+  userId: "off Hybrid grounded",
 }).then((res: SendVerificationEmailResponse) => {
   if (res.statusCode == 200) {
     // handle response

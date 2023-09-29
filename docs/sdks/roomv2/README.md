@@ -32,7 +32,7 @@ const sdk = new HathoraCloud({
   },
 });
 const createRoomRequest: CreateRoomRequest = {
-  region: Region.Singapore,
+  region: Region.Sydney,
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";

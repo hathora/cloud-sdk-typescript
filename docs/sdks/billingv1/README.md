@@ -122,7 +122,7 @@ const sdk = new HathoraCloud({
 });
 
 sdk.billingV1.initStripeCustomerPortalUrl({
-  returnUrl: "corrupti",
+  returnUrl: "ivory",
 }).then((res: InitStripeCustomerPortalUrlResponse) => {
   if (res.statusCode == 200) {
     // handle response

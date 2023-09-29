@@ -182,8 +182,8 @@ const sdk = new HathoraCloud({
 });
 const requestBody: RunBuildRequestBody = {
   file: {
-    content: "illum".encode(),
-    file: "vel",
+    content: "Ukkktj?kA=" as bytes <<<>>>,
+    file: "times Mini",
   },
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";

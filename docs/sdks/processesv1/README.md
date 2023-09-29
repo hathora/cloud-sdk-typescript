@@ -67,7 +67,7 @@ const sdk = new HathoraCloud({
   },
 });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-const region: Region = Region.Seattle;
+const region: Region = Region.Tokyo;
 
 sdk.processesV1.getRunningProcesses(appId, region).then((res: GetRunningProcessesResponse) => {
   if (res.statusCode == 200) {
@@ -107,7 +107,7 @@ const sdk = new HathoraCloud({
   },
 });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-const region: Region = Region.London;
+const region: Region = Region.Sydney;
 
 sdk.processesV1.getStoppedProcesses(appId, region).then((res: GetStoppedProcessesResponse) => {
   if (res.statusCode == 200) {

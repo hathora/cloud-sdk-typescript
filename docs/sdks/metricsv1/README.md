@@ -28,13 +28,13 @@ const sdk = new HathoraCloud({
 
 sdk.metricsV1.getMetrics({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  end: 5680.45,
+  end: 5456.86,
   metrics: [
-    MetricName.Memory,
+    MetricName.Cpu,
   ],
   processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
-  start: 9255.97,
-  step: 836079,
+  start: 4311.13,
+  step: 490659,
 }).then((res: GetMetricsResponse) => {
   if (res.statusCode == 200) {
     // handle response

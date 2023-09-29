@@ -112,7 +112,7 @@ const sdk = new HathoraCloud({
 });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const local: boolean = false;
-const region: Region = Region.Chicago;
+const region: Region = Region.Tokyo;
 
 sdk.lobbyV1.listActivePublicLobbiesDeprecated(appId, local, region).then((res: ListActivePublicLobbiesDeprecatedResponse) => {
   if (res.statusCode == 200) {

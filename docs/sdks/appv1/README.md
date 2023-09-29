@@ -34,7 +34,7 @@ sdk.appV1.createApp({
   authConfiguration: {
     anonymous: {},
     google: {
-      clientId: "distinctio",
+      clientId: "models ah Southeast",
     },
     nickname: {},
   },
@@ -193,7 +193,7 @@ const appConfig: AppConfig = {
   authConfiguration: {
     anonymous: {},
     google: {
-      clientId: "quibusdam",
+      clientId: "Lane",
     },
     nickname: {},
   },

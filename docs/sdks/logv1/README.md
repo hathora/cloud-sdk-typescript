@@ -31,8 +31,8 @@ const sdk = new HathoraCloud({
 sdk.logV1.getLogsForApp({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   follow: false,
-  region: Region.Frankfurt,
-  tailLines: 791725,
+  region: Region.Singapore,
+  tailLines: 68364,
 }).then((res: GetLogsForAppResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -73,7 +73,7 @@ sdk.logV1.getLogsForDeployment({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   deploymentId: 1,
   follow: false,
-  tailLines: 812169,
+  tailLines: 44181,
 }).then((res: GetLogsForDeploymentResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -114,7 +114,7 @@ sdk.logV1.getLogsForProcess({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   follow: false,
   processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
-  tailLines: 528895,
+  tailLines: 536456,
 }).then((res: GetLogsForProcessResponse) => {
   if (res.statusCode == 200) {
     // handle response

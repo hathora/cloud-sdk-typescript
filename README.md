@@ -39,7 +39,7 @@ sdk.appV1.createApp({
   authConfiguration: {
     anonymous: {},
     google: {
-      clientId: "provident",
+      clientId: "models ah Southeast",
     },
     nickname: {},
   },

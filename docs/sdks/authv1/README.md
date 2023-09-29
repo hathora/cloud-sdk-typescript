@@ -61,7 +61,7 @@ const sdk = new HathoraCloud({
   },
 });
 const loginGoogleRequest: LoginGoogleRequest = {
-  idToken: "unde",
+  idToken: "up",
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
@@ -101,7 +101,7 @@ const sdk = new HathoraCloud({
   },
 });
 const loginNicknameRequest: LoginNicknameRequest = {
-  nickname: "nulla",
+  nickname: "SMS",
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
