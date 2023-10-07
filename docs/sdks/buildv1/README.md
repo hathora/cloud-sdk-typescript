@@ -21,20 +21,22 @@ Generate a new `buildId` for an existing [application](https://hathora.dev/docs/
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateBuildRequest, CreateBuildResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreateBuildRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
-sdk.buildV1.createBuild(appId).then((res: CreateBuildResponse) => {
+  const res = await sdk.buildV1.createBuild(appId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -58,21 +60,23 @@ Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for a
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { DeleteBuildRequest, DeleteBuildResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { DeleteBuildRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const buildId: number = 1;
 
-sdk.buildV1.deleteBuild(appId, buildId).then((res: DeleteBuildResponse) => {
+  const res = await sdk.buildV1.deleteBuild(appId, buildId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -97,21 +101,23 @@ Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-en
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetBuildInfoRequest, GetBuildInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetBuildInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const buildId: number = 1;
 
-sdk.buildV1.getBuildInfo(appId, buildId).then((res: GetBuildInfoResponse) => {
+  const res = await sdk.buildV1.getBuildInfo(appId, buildId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -136,20 +142,22 @@ Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#b
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetBuildsRequest, GetBuildsResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetBuildsRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
-sdk.buildV1.getBuilds(appId).then((res: GetBuildsResponse) => {
+  const res = await sdk.buildV1.getBuilds(appId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -173,13 +181,14 @@ Provide a tarball that will generate a container image for an existing [applicat
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { RunBuildRequest, RunBuildRequestBody, RunBuildRequestBodyFile, RunBuildResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { RunBuildRequest, RunBuildRequestBody, RunBuildRequestBodyFile } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const requestBody: RunBuildRequestBody = {
   file: {
     content: "Ukkktj?kA=" as bytes <<<>>>,
@@ -189,11 +198,12 @@ const requestBody: RunBuildRequestBody = {
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const buildId: number = 1;
 
-sdk.buildV1.runBuild(requestBody, appId, buildId).then((res: RunBuildResponse) => {
+  const res = await sdk.buildV1.runBuild(requestBody, appId, buildId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

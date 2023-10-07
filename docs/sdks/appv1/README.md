@@ -21,28 +21,29 @@ Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#ap
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateAppResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
-
-sdk.appV1.createApp({
-  appName: "minecraft",
-  authConfiguration: {
-    anonymous: {},
-    google: {
-      clientId: "models ah Southeast",
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
     },
-    nickname: {},
-  },
-}).then((res: CreateAppResponse) => {
+  });
+
+  const res = await sdk.appV1.createApp({
+    appName: "minecraft",
+    authConfiguration: {
+      anonymous: {},
+      google: {
+        clientId: "models ah Southeast",
+      },
+      nickname: {},
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -66,20 +67,22 @@ Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#appli
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { DeleteAppRequest, DeleteAppResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { DeleteAppRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
-sdk.appV1.deleteApp(appId).then((res: DeleteAppResponse) => {
+  const res = await sdk.appV1.deleteApp(appId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -103,20 +106,22 @@ Get details for an [application](https://hathora.dev/docs/concepts/hathora-entit
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetAppInfoRequest, GetAppInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetAppInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
-sdk.appV1.getAppInfo(appId).then((res: GetAppInfoResponse) => {
+  const res = await sdk.appV1.getAppInfo(appId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -140,19 +145,20 @@ Returns an unsorted list of your organization’s [applications](https://hathora
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetAppsResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 
-sdk.appV1.getApps().then((res: GetAppsResponse) => {
+  const res = await sdk.appV1.getApps();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -175,7 +181,7 @@ Update data for an existing [application](https://hathora.dev/docs/concepts/hath
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { UpdateAppRequest, UpdateAppResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { UpdateAppRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import {
   AppConfig,
   AppConfigAuthConfiguration,
@@ -183,11 +189,12 @@ import {
   RecordStringNever,
 } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appConfig: AppConfig = {
   appName: "minecraft",
   authConfiguration: {
@@ -200,11 +207,12 @@ const appConfig: AppConfig = {
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
-sdk.appV1.updateApp(appConfig, appId).then((res: UpdateAppResponse) => {
+  const res = await sdk.appV1.updateApp(appConfig, appId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
-import { Expose, Type } from "class-transformer";
+import { Expose } from "class-transformer";
 
 export class CreatePublicLobbyRequestBody extends SpeakeasyBase {
     /**
@@ -13,8 +13,7 @@ export class CreatePublicLobbyRequestBody extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "initialConfig" })
-    @Type(() => shared.LobbyInitialConfig)
-    initialConfig: shared.LobbyInitialConfig;
+    initialConfig: Record<string, any>;
 
     /**
      * Available regions to request a game server.

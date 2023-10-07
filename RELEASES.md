@@ -301,3 +301,11 @@ Based on:
 - Speakeasy CLI 1.94.0 (2.147.0) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [typescript v1.26.2] .
+
+## 2023-10-07 00:03:24
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.96.1 (2.150.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v1.27.0] .

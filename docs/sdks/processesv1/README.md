@@ -19,21 +19,23 @@ Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetProcessInfoRequest, GetProcessInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetProcessInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
 
-sdk.processesV1.getProcessInfo(appId, processId).then((res: GetProcessInfoResponse) => {
+  const res = await sdk.processesV1.getProcessInfo(appId, processId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -58,22 +60,24 @@ Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-e
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetRunningProcessesRequest, GetRunningProcessesResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetRunningProcessesRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const region: Region = Region.Tokyo;
 
-sdk.processesV1.getRunningProcesses(appId, region).then((res: GetRunningProcessesResponse) => {
+  const res = await sdk.processesV1.getRunningProcesses(appId, region);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -98,22 +102,24 @@ Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetStoppedProcessesRequest, GetStoppedProcessesResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetStoppedProcessesRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const region: Region = Region.Sydney;
 
-sdk.processesV1.getStoppedProcesses(appId, region).then((res: GetStoppedProcessesResponse) => {
+  const res = await sdk.processesV1.getStoppedProcesses(appId, region);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

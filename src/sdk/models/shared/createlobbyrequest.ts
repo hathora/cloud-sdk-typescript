@@ -3,10 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { LobbyInitialConfig } from "./lobbyinitialconfig";
 import { LobbyVisibility } from "./lobbyvisibility";
 import { Region } from "./region";
-import { Expose, Type } from "class-transformer";
+import { Expose } from "class-transformer";
 
 export class CreateLobbyRequest extends SpeakeasyBase {
     /**
@@ -14,8 +13,7 @@ export class CreateLobbyRequest extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "initialConfig" })
-    @Type(() => LobbyInitialConfig)
-    initialConfig: LobbyInitialConfig;
+    initialConfig: Record<string, any>;
 
     /**
      * Available regions to request a game server.

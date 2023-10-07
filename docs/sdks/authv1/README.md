@@ -17,20 +17,22 @@ Operations that allow you to configure authentication for your [applications](ht
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { LoginAnonymousRequest, LoginAnonymousResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { LoginAnonymousRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
-sdk.authV1.loginAnonymous(appId).then((res: LoginAnonymousResponse) => {
+  const res = await sdk.authV1.loginAnonymous(appId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -52,24 +54,26 @@ sdk.authV1.loginAnonymous(appId).then((res: LoginAnonymousResponse) => {
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { LoginGoogleRequest, LoginGoogleResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { LoginGoogleRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { LoginGoogleRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const loginGoogleRequest: LoginGoogleRequest = {
   idToken: "up",
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
-sdk.authV1.loginGoogle(loginGoogleRequest, appId).then((res: LoginGoogleResponse) => {
+  const res = await sdk.authV1.loginGoogle(loginGoogleRequest, appId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -92,24 +96,26 @@ sdk.authV1.loginGoogle(loginGoogleRequest, appId).then((res: LoginGoogleResponse
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { LoginNicknameRequest, LoginNicknameResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { LoginNicknameRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { LoginNicknameRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const loginNicknameRequest: LoginNicknameRequest = {
   nickname: "SMS",
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
-sdk.authV1.loginNickname(loginNicknameRequest, appId).then((res: LoginNicknameResponse) => {
+  const res = await sdk.authV1.loginNickname(loginNicknameRequest, appId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

@@ -3,12 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose, Type } from "class-transformer";
-
-/**
- * JSON blob to store metadata for a room. Must be smaller than 1MB.
- */
-export class SetLobbyStateRequestState extends SpeakeasyBase {}
+import { Expose } from "class-transformer";
 
 export class SetLobbyStateRequest extends SpeakeasyBase {
     /**
@@ -16,6 +11,5 @@ export class SetLobbyStateRequest extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "state" })
-    @Type(() => SetLobbyStateRequestState)
-    state: SetLobbyStateRequestState;
+    state: Record<string, any>;
 }

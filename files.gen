@@ -110,7 +110,6 @@ src/sdk/models/shared/deploymentconfig.ts
 src/sdk/models/shared/discoveryresponse.ts
 src/sdk/models/shared/lobby.ts
 src/sdk/models/shared/lobbyvisibility.ts
-src/sdk/models/shared/lobbyinitialconfig.ts
 src/sdk/models/shared/createlobbyrequest.ts
 src/sdk/models/shared/setlobbystaterequest.ts
 src/sdk/models/shared/verificationemailresponse.ts
@@ -124,8 +123,6 @@ src/sdk/models/shared/processwithrooms.ts
 src/sdk/models/shared/roomwithoutallocations.ts
 src/sdk/models/shared/roomstatus.ts
 src/sdk/models/shared/createroomrequest.ts
-src/sdk/models/shared/startingconnectioninfo.ts
-src/sdk/models/shared/activeconnectioninfo.ts
 src/sdk/models/shared/room.ts
 src/sdk/models/shared/roomallocation.ts
 src/sdk/models/shared/connectioninfov2.ts
@@ -270,12 +267,9 @@ docs/models/shared/region.md
 docs/models/shared/deploymentconfigenv.md
 docs/models/shared/deploymentconfig.md
 docs/models/shared/discoveryresponse.md
-docs/models/shared/lobbystate.md
 docs/models/shared/lobby.md
 docs/models/shared/lobbyvisibility.md
-docs/models/shared/lobbyinitialconfig.md
 docs/models/shared/createlobbyrequest.md
-docs/models/shared/setlobbystaterequeststate.md
 docs/models/shared/setlobbystaterequest.md
 docs/models/shared/verificationemailresponsestatus.md
 docs/models/shared/verificationemailresponse.md
@@ -290,10 +284,6 @@ docs/models/shared/roomwithoutallocationscurrentallocation.md
 docs/models/shared/roomwithoutallocations.md
 docs/models/shared/roomstatus.md
 docs/models/shared/createroomrequest.md
-docs/models/shared/startingconnectioninfostatus.md
-docs/models/shared/startingconnectioninfo.md
-docs/models/shared/activeconnectioninfostatus.md
-docs/models/shared/activeconnectioninfo.md
 docs/models/shared/roomcurrentallocation.md
 docs/models/shared/room.md
 docs/models/shared/roomallocation.md

@@ -17,29 +17,27 @@ Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#p
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetMetricsResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { MetricName } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 
-sdk.metricsV1.getMetrics({
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  end: 5456.86,
-  metrics: [
-    MetricName.Cpu,
-  ],
-  processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
-  start: 4311.13,
-  step: 490659,
-}).then((res: GetMetricsResponse) => {
+  const res = await sdk.metricsV1.getMetrics({
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+    metrics: [
+      MetricName.RateEgress,
+    ],
+    processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

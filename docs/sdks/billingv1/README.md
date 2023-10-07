@@ -14,19 +14,20 @@
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetBalanceResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 
-sdk.billingV1.getBalance().then((res: GetBalanceResponse) => {
+  const res = await sdk.billingV1.getBalance();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -47,19 +48,20 @@ sdk.billingV1.getBalance().then((res: GetBalanceResponse) => {
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetInvoicesResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 
-sdk.billingV1.getInvoices().then((res: GetInvoicesResponse) => {
+  const res = await sdk.billingV1.getInvoices();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -80,19 +82,20 @@ sdk.billingV1.getInvoices().then((res: GetInvoicesResponse) => {
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetPaymentMethodResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 
-sdk.billingV1.getPaymentMethod().then((res: GetPaymentMethodResponse) => {
+  const res = await sdk.billingV1.getPaymentMethod();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -113,21 +116,22 @@ sdk.billingV1.getPaymentMethod().then((res: GetPaymentMethodResponse) => {
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { InitStripeCustomerPortalUrlResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 
-sdk.billingV1.initStripeCustomerPortalUrl({
-  returnUrl: "ivory",
-}).then((res: InitStripeCustomerPortalUrlResponse) => {
+  const res = await sdk.billingV1.initStripeCustomerPortalUrl({
+    returnUrl: "ivory",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

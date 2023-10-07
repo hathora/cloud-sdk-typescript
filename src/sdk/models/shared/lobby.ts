@@ -3,15 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { LobbyInitialConfig } from "./lobbyinitialconfig";
 import { LobbyVisibility } from "./lobbyvisibility";
 import { Region } from "./region";
-import { Expose, Transform, Type } from "class-transformer";
-
-/**
- * JSON blob to store metadata for a room. Must be smaller than 1MB.
- */
-export class LobbyState extends SpeakeasyBase {}
+import { Expose, Transform } from "class-transformer";
 
 /**
  * A lobby object allows you to store and manage metadata for your rooms.
@@ -44,8 +38,7 @@ export class Lobby extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "initialConfig" })
-    @Type(() => LobbyInitialConfig)
-    initialConfig: LobbyInitialConfig;
+    initialConfig: Record<string, any>;
 
     /**
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -73,8 +66,7 @@ export class Lobby extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "state" })
-    @Type(() => LobbyState)
-    state?: LobbyState;
+    state?: Record<string, any>;
 
     /**
      * Types of lobbies a player can create.

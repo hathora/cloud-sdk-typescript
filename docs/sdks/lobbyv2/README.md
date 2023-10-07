@@ -23,27 +23,31 @@ Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) f
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateLobbyRequest, CreateLobbyResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { CreateLobbyRequest, LobbyInitialConfig, LobbyVisibility, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { CreateLobbyRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreateLobbyRequest, LobbyVisibility, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const createLobbyRequest: CreateLobbyRequest = {
-  initialConfig: {},
-  region: Region.Seattle,
+  initialConfig: {
+    "West": "geez",
+  },
+  region: Region.Frankfurt,
   visibility: LobbyVisibility.Private,
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
 
-sdk.lobbyV2.createLobby(createLobbyRequest, appId, roomId).then((res: CreateLobbyResponse) => {
+  const res = await sdk.lobbyV2.createLobby(createLobbyRequest, appId, roomId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -69,26 +73,30 @@ sdk.lobbyV2.createLobby(createLobbyRequest, appId, roomId).then((res: CreateLobb
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateLocalLobbyRequest, CreateLocalLobbyRequestBody, CreateLocalLobbyResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { LobbyInitialConfig, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { CreateLocalLobbyRequest, CreateLocalLobbyRequestBody } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const requestBody: CreateLocalLobbyRequestBody = {
-  initialConfig: {},
+  initialConfig: {
+    "foolishly": "microchip",
+  },
   region: Region.Sydney,
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
 
-sdk.lobbyV2.createLocalLobby(requestBody, appId, roomId).then((res: CreateLocalLobbyResponse) => {
+  const res = await sdk.lobbyV2.createLocalLobby(requestBody, appId, roomId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -114,30 +122,30 @@ sdk.lobbyV2.createLocalLobby(requestBody, appId, roomId).then((res: CreateLocalL
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import {
-  CreatePrivateLobbyRequest,
-  CreatePrivateLobbyRequestBody,
-  CreatePrivateLobbyResponse,
-} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { LobbyInitialConfig, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { CreatePrivateLobbyRequest, CreatePrivateLobbyRequestBody } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const requestBody: CreatePrivateLobbyRequestBody = {
-  initialConfig: {},
-  region: Region.Chicago,
+  initialConfig: {
+    "innovative": "calculating",
+  },
+  region: Region.Seattle,
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
 
-sdk.lobbyV2.createPrivateLobby(requestBody, appId, roomId).then((res: CreatePrivateLobbyResponse) => {
+  const res = await sdk.lobbyV2.createPrivateLobby(requestBody, appId, roomId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -163,30 +171,30 @@ sdk.lobbyV2.createPrivateLobby(requestBody, appId, roomId).then((res: CreatePriv
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import {
-  CreatePublicLobbyRequest,
-  CreatePublicLobbyRequestBody,
-  CreatePublicLobbyResponse,
-} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { LobbyInitialConfig, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { CreatePublicLobbyRequest, CreatePublicLobbyRequestBody } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const requestBody: CreatePublicLobbyRequestBody = {
-  initialConfig: {},
-  region: Region.Sydney,
+  initialConfig: {
+    "evenly": "Quality",
+  },
+  region: Region.Seattle,
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
 
-sdk.lobbyV2.createPublicLobby(requestBody, appId, roomId).then((res: CreatePublicLobbyResponse) => {
+  const res = await sdk.lobbyV2.createPublicLobby(requestBody, appId, roomId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -212,21 +220,23 @@ Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-en
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetLobbyInfoRequest, GetLobbyInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetLobbyInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
 
-sdk.lobbyV2.getLobbyInfo(appId, roomId).then((res: GetLobbyInfoResponse) => {
+  const res = await sdk.lobbyV2.getLobbyInfo(appId, roomId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -251,22 +261,24 @@ Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobb
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { ListActivePublicLobbiesRequest, ListActivePublicLobbiesResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { ListActivePublicLobbiesRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const region: Region = Region.Seattle;
 
-sdk.lobbyV2.listActivePublicLobbies(appId, region).then((res: ListActivePublicLobbiesResponse) => {
+  const res = await sdk.lobbyV2.listActivePublicLobbies(appId, region);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -291,25 +303,29 @@ Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lo
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { SetLobbyStateRequest, SetLobbyStateResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { SetLobbyStateRequest, SetLobbyStateRequestState } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { SetLobbyStateRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { SetLobbyStateRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud({
-  security: {
-    auth0: "",
-  },
-});
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const setLobbyStateRequest: SetLobbyStateRequest = {
-  state: {},
+  state: {
+    "Diesel": "Gender",
+  },
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
 
-sdk.lobbyV2.setLobbyState(setLobbyStateRequest, appId, roomId).then((res: SetLobbyStateResponse) => {
+  const res = await sdk.lobbyV2.setLobbyState(setLobbyStateRequest, appId, roomId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

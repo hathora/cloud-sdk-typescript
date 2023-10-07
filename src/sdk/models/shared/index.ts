@@ -3,7 +3,6 @@
  */
 
 export * from "./achpaymentmethod";
-export * from "./activeconnectioninfo";
 export * from "./appconfig";
 export * from "./application";
 export * from "./applicationwithdeployment";
@@ -22,7 +21,6 @@ export * from "./exposedport";
 export * from "./invoice";
 export * from "./linkpaymentmethod";
 export * from "./lobby";
-export * from "./lobbyinitialconfig";
 export * from "./lobbyvisibility";
 export * from "./logingooglerequest";
 export * from "./loginnicknamerequest";
@@ -42,7 +40,6 @@ export * from "./roomstatus";
 export * from "./roomwithoutallocations";
 export * from "./security";
 export * from "./setlobbystaterequest";
-export * from "./startingconnectioninfo";
 export * from "./transporttype";
 export * from "./verificationemailrequest";
 export * from "./verificationemailresponse";
