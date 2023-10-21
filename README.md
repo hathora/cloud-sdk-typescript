@@ -27,28 +27,29 @@ yarn add https://github.com/hathora/cloud-sdk-typescript
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
-(async() => {
-  const sdk = new HathoraCloud({
-    security: {
-      auth0: "",
-    },
-  });
+(async () => {
+    const sdk = new HathoraCloud({
+        security: {
+            auth0: "",
+        },
+    });
 
-  const res = await sdk.appV1.createApp({
-    appName: "minecraft",
-    authConfiguration: {
-      anonymous: {},
-      google: {
-        clientId: "models ah Southeast",
-      },
-      nickname: {},
-    },
-  });
+    const res = await sdk.appV1.createApp({
+        appName: "minecraft",
+        authConfiguration: {
+            anonymous: {},
+            google: {
+                clientId: "string",
+            },
+            nickname: {},
+        },
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
+    if (res.statusCode == 200) {
+        // handle response
+    }
 })();
+
 ```
 <!-- End SDK Example Usage -->
 

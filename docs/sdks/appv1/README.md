@@ -34,7 +34,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
     authConfiguration: {
       anonymous: {},
       google: {
-        clientId: "models ah Southeast",
+        clientId: "string",
       },
       nickname: {},
     },
@@ -200,7 +200,7 @@ const appConfig: AppConfig = {
   authConfiguration: {
     anonymous: {},
     google: {
-      clientId: "Lane",
+      clientId: "string",
     },
     nickname: {},
   },

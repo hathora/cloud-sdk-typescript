@@ -20,7 +20,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
   });
 
   const res = await sdk.managementV1.sendVerificationEmail({
-    userId: "off Hybrid grounded",
+    userId: "string",
   });
 
   if (res.statusCode == 200) {

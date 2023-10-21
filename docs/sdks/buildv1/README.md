@@ -192,7 +192,7 @@ import { RunBuildRequest, RunBuildRequestBody, RunBuildRequestBodyFile } from "@
 const requestBody: RunBuildRequestBody = {
   file: {
     content: "Ukkktj?kA=" as bytes <<<>>>,
-    file: "times Mini",
+    file: "string",
   },
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";

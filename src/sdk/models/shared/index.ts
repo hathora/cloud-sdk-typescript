@@ -21,6 +21,7 @@ export * from "./exposedport";
 export * from "./invoice";
 export * from "./linkpaymentmethod";
 export * from "./lobby";
+export * from "./lobbyinitialconfig";
 export * from "./lobbyvisibility";
 export * from "./logingooglerequest";
 export * from "./loginnicknamerequest";

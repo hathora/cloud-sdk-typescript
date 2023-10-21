@@ -64,7 +64,7 @@ import { LoginGoogleRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/model
     },
   });
 const loginGoogleRequest: LoginGoogleRequest = {
-  idToken: "up",
+  idToken: "string",
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
@@ -106,7 +106,7 @@ import { LoginNicknameRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/mod
     },
   });
 const loginNicknameRequest: LoginNicknameRequest = {
-  nickname: "SMS",
+  nickname: "string",
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 

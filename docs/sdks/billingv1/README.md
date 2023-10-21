@@ -125,7 +125,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
   });
 
   const res = await sdk.billingV1.initStripeCustomerPortalUrl({
-    returnUrl: "ivory",
+    returnUrl: "string",
   });
 
   if (res.statusCode == 200) {
