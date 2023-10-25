@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 5d493c13d7ba103babf8acc1a95da638
   docVersion: 0.0.1
-  speakeasyVersion: 1.104.0
-  generationVersion: 2.169.0
+  speakeasyVersion: 1.107.0
+  generationVersion: 2.171.0
 generation:
   comments:
     disableComments: false
@@ -15,13 +15,13 @@ generation:
   tagNamespacingDisabled: false
 features:
   typescript:
-    core: 2.93.0
+    core: 2.94.0
     deprecations: 2.81.1
     flattening: 2.81.1
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
 typescript:
-  version: 1.28.0
+  version: 1.29.0
   author: Hathora
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false
