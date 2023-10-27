@@ -6,13 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class GetRunningProcessesSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    auth0: string;
-}
-
 export class GetRunningProcessesRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
     appId: string;
@@ -25,6 +18,9 @@ export class GetRunningProcessesRequest extends SpeakeasyBase {
 }
 
 export class GetRunningProcessesResponse extends SpeakeasyBase {
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
@@ -34,9 +30,15 @@ export class GetRunningProcessesResponse extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: shared.ProcessWithRooms })
     processWithRooms?: shared.ProcessWithRooms[];
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
 }

@@ -6,13 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class CreateRoomDeprecatedSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    auth0: string;
-}
-
 export class CreateRoomDeprecatedRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
     createRoomRequest: shared.CreateRoomRequest;
@@ -25,15 +18,24 @@ export class CreateRoomDeprecatedRequest extends SpeakeasyBase {
 }
 
 export class CreateRoomDeprecatedResponse extends SpeakeasyBase {
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
     @SpeakeasyMetadata()
     roomId?: string;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
 }

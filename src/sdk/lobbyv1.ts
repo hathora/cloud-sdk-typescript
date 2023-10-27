@@ -7,7 +7,7 @@ import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
 export class LobbyV1 {
     private sdkConfiguration: SDKConfiguration;
@@ -36,13 +36,23 @@ export class LobbyV1 {
         );
         const url: string = utils.generateURL(baseURL, "/lobby/v1/{appId}/create/private", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = {
+            ...utils.getHeadersFromRequest(req),
+            ...config?.headers,
+            ...properties.headers,
+        };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";
 
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -118,13 +128,23 @@ export class LobbyV1 {
         );
         const url: string = utils.generateURL(baseURL, "/lobby/v1/{appId}/create/public", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = {
+            ...utils.getHeadersFromRequest(req),
+            ...config?.headers,
+            ...properties.headers,
+        };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";
 
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -200,13 +220,23 @@ export class LobbyV1 {
         );
         const url: string = utils.generateURL(baseURL, "/lobby/v1/{appId}/list", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = {
+            ...utils.getHeadersFromRequest(req),
+            ...config?.headers,
+            ...properties.headers,
+        };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";
 
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,

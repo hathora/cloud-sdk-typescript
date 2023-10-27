@@ -1,4 +1,5 @@
 # LobbyV1
+(*lobbyV1*)
 
 ### Available Operations
 
@@ -14,19 +15,25 @@
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreatePrivateLobbyDeprecatedRequest, CreatePrivateLobbyDeprecatedResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreatePrivateLobbyDeprecatedRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const local: boolean = false;
-const region: Region = Region.Singapore;
+const region: Region = Region.London;
 
-sdk.lobbyV1.createPrivateLobbyDeprecated(appId, local, region).then((res: CreatePrivateLobbyDeprecatedResponse) => {
+  const res = await sdk.lobbyV1.createPrivateLobbyDeprecated(appId, local, region);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -52,19 +59,25 @@ sdk.lobbyV1.createPrivateLobbyDeprecated(appId, local, region).then((res: Create
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreatePublicLobbyDeprecatedRequest, CreatePublicLobbyDeprecatedResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreatePublicLobbyDeprecatedRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const local: boolean = false;
-const region: Region = Region.London;
+const region: Region = Region.Frankfurt;
 
-sdk.lobbyV1.createPublicLobbyDeprecated(appId, local, region).then((res: CreatePublicLobbyDeprecatedResponse) => {
+  const res = await sdk.lobbyV1.createPublicLobbyDeprecated(appId, local, region);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -90,22 +103,25 @@ sdk.lobbyV1.createPublicLobbyDeprecated(appId, local, region).then((res: CreateP
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import {
-  ListActivePublicLobbiesDeprecatedRequest,
-  ListActivePublicLobbiesDeprecatedResponse,
-} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { ListActivePublicLobbiesDeprecatedRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const local: boolean = false;
-const region: Region = Region.Frankfurt;
+const region: Region = Region.Tokyo;
 
-sdk.lobbyV1.listActivePublicLobbiesDeprecated(appId, local, region).then((res: ListActivePublicLobbiesDeprecatedResponse) => {
+  const res = await sdk.lobbyV1.listActivePublicLobbiesDeprecated(appId, local, region);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

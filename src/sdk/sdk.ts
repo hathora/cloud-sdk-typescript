@@ -14,6 +14,7 @@ import { LobbyV2 } from "./lobbyv2";
 import { LogV1 } from "./logv1";
 import { ManagementV1 } from "./managementv1";
 import { MetricsV1 } from "./metricsv1";
+import * as shared from "./models/shared";
 import { ProcessesV1 } from "./processesv1";
 import { RoomV1 } from "./roomv1";
 import { RoomV2 } from "./roomv2";
@@ -29,6 +30,11 @@ export const ServerList = ["https://api.hathora.dev", "/"] as const;
  * The available configuration options for the SDK
  */
 export type SDKProps = {
+    /**
+     * The security details required to authenticate the SDK
+     */
+    security?: shared.Security | (() => Promise<shared.Security>);
+
     /**
      * Allows overriding the default axios client used by the SDK
      */
@@ -51,12 +57,14 @@ export type SDKProps = {
 
 export class SDKConfiguration {
     defaultClient: AxiosInstance;
+    security?: shared.Security | (() => Promise<shared.Security>);
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.0.1";
-    sdkVersion = "1.22.2";
-    genVersion = "2.115.2";
+    sdkVersion = "1.29.0";
+    genVersion = "2.171.0";
+    userAgent = "speakeasy-sdk/typescript 1.29.0 2.171.0 0.0.1 @hathora/cloud-sdk-typescript";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -125,6 +133,7 @@ export class HathoraCloud {
         const defaultClient = props?.defaultClient ?? axios.create({ baseURL: serverURL });
         this.sdkConfiguration = new SDKConfiguration({
             defaultClient: defaultClient,
+            security: props?.security,
             serverURL: serverURL,
             retryConfig: props?.retryConfig,
         });

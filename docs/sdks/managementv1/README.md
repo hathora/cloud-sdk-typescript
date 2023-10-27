@@ -1,4 +1,5 @@
 # ManagementV1
+(*managementV1*)
 
 ### Available Operations
 
@@ -10,17 +11,22 @@
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { SendVerificationEmailResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 
-sdk.managementV1.sendVerificationEmail({
-  userId: "voluptatum",
-}).then((res: SendVerificationEmailResponse) => {
+  const res = await sdk.managementV1.sendVerificationEmail({
+    userId: "string",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

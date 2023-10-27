@@ -1,4 +1,5 @@
 # BuildV1
+(*buildV1*)
 
 ## Overview
 
@@ -20,28 +21,30 @@ Generate a new `buildId` for an existing [application](https://hathora.dev/docs/
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateBuildRequest, CreateBuildResponse, CreateBuildSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreateBuildRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-const operationSecurity: CreateBuildSecurity = {
-  auth0: "",
-};
 
-sdk.buildV1.createBuild(operationSecurity, appId).then((res: CreateBuildResponse) => {
+  const res = await sdk.buildV1.createBuild(appId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `security`                                                                       | [operations.CreateBuildSecurity](../../models/operations/createbuildsecurity.md) | :heavy_check_mark:                                                               | The security requirements to use for the request.                                |                                                                                  |
-| `appId`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              | app-af469a92-5b45-4565-b3c4-b79878de67d2                                         |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |                                                                                  |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -57,30 +60,32 @@ Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for a
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { DeleteBuildRequest, DeleteBuildResponse, DeleteBuildSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { DeleteBuildRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const buildId: number = 1;
-const operationSecurity: DeleteBuildSecurity = {
-  auth0: "",
-};
 
-sdk.buildV1.deleteBuild(operationSecurity, appId, buildId).then((res: DeleteBuildResponse) => {
+  const res = await sdk.buildV1.deleteBuild(appId, buildId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `security`                                                                       | [operations.DeleteBuildSecurity](../../models/operations/deletebuildsecurity.md) | :heavy_check_mark:                                                               | The security requirements to use for the request.                                |                                                                                  |
-| `appId`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              | app-af469a92-5b45-4565-b3c4-b79878de67d2                                         |
-| `buildId`                                                                        | *number*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              | 1                                                                                |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |                                                                                  |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `buildId`                                                    | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          | 1                                                            |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -96,30 +101,32 @@ Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-en
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetBuildInfoRequest, GetBuildInfoResponse, GetBuildInfoSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetBuildInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const buildId: number = 1;
-const operationSecurity: GetBuildInfoSecurity = {
-  auth0: "",
-};
 
-sdk.buildV1.getBuildInfo(operationSecurity, appId, buildId).then((res: GetBuildInfoResponse) => {
+  const res = await sdk.buildV1.getBuildInfo(appId, buildId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `security`                                                                         | [operations.GetBuildInfoSecurity](../../models/operations/getbuildinfosecurity.md) | :heavy_check_mark:                                                                 | The security requirements to use for the request.                                  |                                                                                    |
-| `appId`                                                                            | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                | app-af469a92-5b45-4565-b3c4-b79878de67d2                                           |
-| `buildId`                                                                          | *number*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                | 1                                                                                  |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |                                                                                    |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `buildId`                                                    | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          | 1                                                            |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -135,28 +142,30 @@ Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#b
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetBuildsRequest, GetBuildsResponse, GetBuildsSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetBuildsRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-const operationSecurity: GetBuildsSecurity = {
-  auth0: "",
-};
 
-sdk.buildV1.getBuilds(operationSecurity, appId).then((res: GetBuildsResponse) => {
+  const res = await sdk.buildV1.getBuilds(appId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `security`                                                                   | [operations.GetBuildsSecurity](../../models/operations/getbuildssecurity.md) | :heavy_check_mark:                                                           | The security requirements to use for the request.                            |                                                                              |
-| `appId`                                                                      | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                                     |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |                                                                              |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -172,39 +181,35 @@ Provide a tarball that will generate a container image for an existing [applicat
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import {
-  RunBuildRequest,
-  RunBuildRequestBody,
-  RunBuildRequestBodyFile,
-  RunBuildResponse,
-  RunBuildSecurity,
-} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { RunBuildRequest, RunBuildRequestBody, RunBuildRequestBodyFile } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const requestBody: RunBuildRequestBody = {
   file: {
-    content: "corrupti".encode(),
-    file: "illum",
+    content: "Ukkktj?kA=" as bytes <<<>>>,
+    file: "string",
   },
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const buildId: number = 1;
-const operationSecurity: RunBuildSecurity = {
-  auth0: "",
-};
 
-sdk.buildV1.runBuild(operationSecurity, requestBody, appId, buildId).then((res: RunBuildResponse) => {
+  const res = await sdk.buildV1.runBuild(requestBody, appId, buildId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
 | Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `security`                                                                       | [operations.RunBuildSecurity](../../models/operations/runbuildsecurity.md)       | :heavy_check_mark:                                                               | The security requirements to use for the request.                                |                                                                                  |
 | `requestBody`                                                                    | [operations.RunBuildRequestBody](../../models/operations/runbuildrequestbody.md) | :heavy_check_mark:                                                               | N/A                                                                              |                                                                                  |
 | `appId`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              | app-af469a92-5b45-4565-b3c4-b79878de67d2                                         |
 | `buildId`                                                                        | *number*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              | 1                                                                                |

@@ -1,4 +1,5 @@
 # AppV1
+(*appV1*)
 
 ## Overview
 
@@ -20,36 +21,37 @@ Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#ap
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateAppResponse, CreateAppSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
-const operationSecurity: CreateAppSecurity = {
-  auth0: "",
-};
-
-sdk.appV1.createApp({
-  appName: "minecraft",
-  authConfiguration: {
-    anonymous: {},
-    google: {
-      clientId: "provident",
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
     },
-    nickname: {},
-  },
-}, operationSecurity).then((res: CreateAppResponse) => {
+  });
+
+  const res = await sdk.appV1.createApp({
+    appName: "minecraft",
+    authConfiguration: {
+      anonymous: {},
+      google: {
+        clientId: "string",
+      },
+      nickname: {},
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `request`                                                                    | [shared.AppConfig](../../models/shared/appconfig.md)                         | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
-| `security`                                                                   | [operations.CreateAppSecurity](../../models/operations/createappsecurity.md) | :heavy_check_mark:                                                           | The security requirements to use for the request.                            |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [shared.AppConfig](../../models/shared/appconfig.md)         | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
@@ -65,28 +67,30 @@ Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#appli
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { DeleteAppRequest, DeleteAppResponse, DeleteAppSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { DeleteAppRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-const operationSecurity: DeleteAppSecurity = {
-  auth0: "",
-};
 
-sdk.appV1.deleteApp(operationSecurity, appId).then((res: DeleteAppResponse) => {
+  const res = await sdk.appV1.deleteApp(appId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `security`                                                                   | [operations.DeleteAppSecurity](../../models/operations/deleteappsecurity.md) | :heavy_check_mark:                                                           | The security requirements to use for the request.                            |                                                                              |
-| `appId`                                                                      | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                                     |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |                                                                              |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -102,28 +106,30 @@ Get details for an [application](https://hathora.dev/docs/concepts/hathora-entit
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetAppInfoRequest, GetAppInfoResponse, GetAppInfoSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetAppInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-const operationSecurity: GetAppInfoSecurity = {
-  auth0: "",
-};
 
-sdk.appV1.getAppInfo(operationSecurity, appId).then((res: GetAppInfoResponse) => {
+  const res = await sdk.appV1.getAppInfo(appId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `security`                                                                     | [operations.GetAppInfoSecurity](../../models/operations/getappinfosecurity.md) | :heavy_check_mark:                                                             | The security requirements to use for the request.                              |                                                                                |
-| `appId`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            | app-af469a92-5b45-4565-b3c4-b79878de67d2                                       |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |                                                                                |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -139,26 +145,27 @@ Returns an unsorted list of your organization’s [applications](https://hathora
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetAppsResponse, GetAppsSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
-const operationSecurity: GetAppsSecurity = {
-  auth0: "",
-};
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 
-sdk.appV1.getApps(operationSecurity).then((res: GetAppsResponse) => {
+  const res = await sdk.appV1.getApps();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `security`                                                               | [operations.GetAppsSecurity](../../models/operations/getappssecurity.md) | :heavy_check_mark:                                                       | The security requirements to use for the request.                        |
-| `config`                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)             | :heavy_minus_sign:                                                       | Available config options for making requests.                            |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
@@ -174,7 +181,7 @@ Update data for an existing [application](https://hathora.dev/docs/concepts/hath
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { UpdateAppRequest, UpdateAppResponse, UpdateAppSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { UpdateAppRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import {
   AppConfig,
   AppConfigAuthConfiguration,
@@ -182,37 +189,39 @@ import {
   RecordStringNever,
 } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appConfig: AppConfig = {
   appName: "minecraft",
   authConfiguration: {
     anonymous: {},
     google: {
-      clientId: "distinctio",
+      clientId: "string",
     },
     nickname: {},
   },
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-const operationSecurity: UpdateAppSecurity = {
-  auth0: "",
-};
 
-sdk.appV1.updateApp(operationSecurity, appConfig, appId).then((res: UpdateAppResponse) => {
+  const res = await sdk.appV1.updateApp(appConfig, appId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `security`                                                                   | [operations.UpdateAppSecurity](../../models/operations/updateappsecurity.md) | :heavy_check_mark:                                                           | The security requirements to use for the request.                            |                                                                              |
-| `appConfig`                                                                  | [shared.AppConfig](../../models/shared/appconfig.md)                         | :heavy_check_mark:                                                           | N/A                                                                          |                                                                              |
-| `appId`                                                                      | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                                     |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |                                                                              |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appConfig`                                                  | [shared.AppConfig](../../models/shared/appconfig.md)         | :heavy_check_mark:                                           | N/A                                                          |                                                              |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response

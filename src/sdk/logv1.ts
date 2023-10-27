@@ -5,8 +5,9 @@
 import * as utils from "../internal/utils";
 import * as errors from "./models/errors";
 import * as operations from "./models/operations";
+import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
 /**
  * Operations to get logs by [applications](https://hathora.dev/docs/concepts/hathora-entities#application), [processes](https://hathora.dev/docs/concepts/hathora-entities#process), and [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment). We store 20GB of logs data.
@@ -24,7 +25,6 @@ export class LogV1 {
      */
     async getLogsForApp(
         req: operations.GetLogsForAppRequest,
-        security: operations.GetLogsForAppSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.GetLogsForAppResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -37,17 +37,19 @@ export class LogV1 {
         );
         const url: string = utils.generateURL(baseURL, "/logs/v1/{appId}/all", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetLogsForAppSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
-        const headers = { ...config?.headers, ...properties.headers };
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "text/plain";
 
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -102,7 +104,6 @@ export class LogV1 {
      */
     async getLogsForDeployment(
         req: operations.GetLogsForDeploymentRequest,
-        security: operations.GetLogsForDeploymentSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.GetLogsForDeploymentResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -119,17 +120,19 @@ export class LogV1 {
             req
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetLogsForDeploymentSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
-        const headers = { ...config?.headers, ...properties.headers };
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "text/plain";
 
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -185,7 +188,6 @@ export class LogV1 {
      */
     async getLogsForProcess(
         req: operations.GetLogsForProcessRequest,
-        security: operations.GetLogsForProcessSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.GetLogsForProcessResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -198,17 +200,19 @@ export class LogV1 {
         );
         const url: string = utils.generateURL(baseURL, "/logs/v1/{appId}/process/{processId}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetLogsForProcessSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
-        const headers = { ...config?.headers, ...properties.headers };
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "text/plain";
 
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,

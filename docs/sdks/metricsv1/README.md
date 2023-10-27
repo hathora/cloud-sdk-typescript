@@ -1,4 +1,5 @@
 # MetricsV1
+(*metricsV1*)
 
 ## Overview
 
@@ -16,37 +17,35 @@ Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#p
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetMetricsResponse, GetMetricsSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { MetricName } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
-const operationSecurity: GetMetricsSecurity = {
-  auth0: "",
-};
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 
-sdk.metricsV1.getMetrics({
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  end: 4799.77,
-  metrics: [
-    MetricName.RateEgress,
-  ],
-  processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
-  start: 3927.85,
-  step: 925597,
-}, operationSecurity).then((res: GetMetricsResponse) => {
+  const res = await sdk.metricsV1.getMetrics({
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+    metrics: [
+      MetricName.RateEgress,
+    ],
+    processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `request`                                                                      | [operations.GetMetricsRequest](../../models/operations/getmetricsrequest.md)   | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-| `security`                                                                     | [operations.GetMetricsSecurity](../../models/operations/getmetricssecurity.md) | :heavy_check_mark:                                                             | The security requirements to use for the request.                              |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `request`                                                                    | [operations.GetMetricsRequest](../../models/operations/getmetricsrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
 
 
 ### Response

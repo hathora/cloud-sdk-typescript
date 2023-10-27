@@ -1,4 +1,5 @@
 # LogV1
+(*logV1*)
 
 ## Overview
 
@@ -18,33 +19,31 @@ Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetLogsForAppResponse, GetLogsForAppSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
-const operationSecurity: GetLogsForAppSecurity = {
-  auth0: "",
-};
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 
-sdk.logV1.getLogsForApp({
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  follow: false,
-  region: Region.London,
-  tailLines: 477665,
-}, operationSecurity).then((res: GetLogsForAppResponse) => {
+  const res = await sdk.logV1.getLogsForApp({
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.GetLogsForAppRequest](../../models/operations/getlogsforapprequest.md)   | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `security`                                                                           | [operations.GetLogsForAppSecurity](../../models/operations/getlogsforappsecurity.md) | :heavy_check_mark:                                                                   | The security requirements to use for the request.                                    |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [operations.GetLogsForAppRequest](../../models/operations/getlogsforapprequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
 
 
 ### Response
@@ -60,32 +59,31 @@ Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/ha
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetLogsForDeploymentResponse, GetLogsForDeploymentSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
-const operationSecurity: GetLogsForDeploymentSecurity = {
-  auth0: "",
-};
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 
-sdk.logV1.getLogsForDeployment({
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  deploymentId: 1,
-  follow: false,
-  tailLines: 791725,
-}, operationSecurity).then((res: GetLogsForDeploymentResponse) => {
+  const res = await sdk.logV1.getLogsForDeployment({
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+    deploymentId: 1,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `request`                                                                                          | [operations.GetLogsForDeploymentRequest](../../models/operations/getlogsfordeploymentrequest.md)   | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
-| `security`                                                                                         | [operations.GetLogsForDeploymentSecurity](../../models/operations/getlogsfordeploymentsecurity.md) | :heavy_check_mark:                                                                                 | The security requirements to use for the request.                                                  |
-| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [operations.GetLogsForDeploymentRequest](../../models/operations/getlogsfordeploymentrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
 
 
 ### Response
@@ -101,32 +99,31 @@ Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hatho
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetLogsForProcessResponse, GetLogsForProcessSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
-const operationSecurity: GetLogsForProcessSecurity = {
-  auth0: "",
-};
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 
-sdk.logV1.getLogsForProcess({
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  follow: false,
-  processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
-  tailLines: 812169,
-}, operationSecurity).then((res: GetLogsForProcessResponse) => {
+  const res = await sdk.logV1.getLogsForProcess({
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+    processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `request`                                                                                    | [operations.GetLogsForProcessRequest](../../models/operations/getlogsforprocessrequest.md)   | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
-| `security`                                                                                   | [operations.GetLogsForProcessSecurity](../../models/operations/getlogsforprocesssecurity.md) | :heavy_check_mark:                                                                           | The security requirements to use for the request.                                            |
-| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `request`                                                                                  | [operations.GetLogsForProcessRequest](../../models/operations/getlogsforprocessrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
 
 
 ### Response

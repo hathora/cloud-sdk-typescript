@@ -3,7 +3,6 @@
  */
 
 export * from "./achpaymentmethod";
-export * from "./activeconnectioninfo";
 export * from "./appconfig";
 export * from "./application";
 export * from "./applicationwithdeployment";
@@ -40,8 +39,8 @@ export * from "./room";
 export * from "./roomallocation";
 export * from "./roomstatus";
 export * from "./roomwithoutallocations";
+export * from "./security";
 export * from "./setlobbystaterequest";
-export * from "./startingconnectioninfo";
 export * from "./transporttype";
 export * from "./verificationemailrequest";
 export * from "./verificationemailresponse";

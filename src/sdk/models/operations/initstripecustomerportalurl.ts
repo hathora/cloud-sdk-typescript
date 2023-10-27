@@ -5,14 +5,10 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
-export class InitStripeCustomerPortalUrlSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    auth0: string;
-}
-
 export class InitStripeCustomerPortalUrlResponse extends SpeakeasyBase {
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
@@ -22,9 +18,15 @@ export class InitStripeCustomerPortalUrlResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     initStripeCustomerPortalUrl200ApplicationJSONString?: string;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
 }

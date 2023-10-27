@@ -1,4 +1,5 @@
 # RoomV2
+(*roomV2*)
 
 ## Overview
 
@@ -22,35 +23,37 @@ Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateRoomRequest, CreateRoomResponse, CreateRoomSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreateRoomRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 import { CreateRoomRequest, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const createRoomRequest: CreateRoomRequest = {
-  region: Region.Seattle,
+  region: Region.Sydney,
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
-const operationSecurity: CreateRoomSecurity = {
-  auth0: "",
-};
 
-sdk.roomV2.createRoom(operationSecurity, createRoomRequest, appId, roomId).then((res: CreateRoomResponse) => {
+  const res = await sdk.roomV2.createRoom(createRoomRequest, appId, roomId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `security`                                                                     | [operations.CreateRoomSecurity](../../models/operations/createroomsecurity.md) | :heavy_check_mark:                                                             | The security requirements to use for the request.                              |                                                                                |
-| `createRoomRequest`                                                            | [shared.CreateRoomRequest](../../models/shared/createroomrequest.md)           | :heavy_check_mark:                                                             | N/A                                                                            |                                                                                |
-| `appId`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            | app-af469a92-5b45-4565-b3c4-b79878de67d2                                       |
-| `roomId`                                                                       | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            | 2swovpy1fnunu                                                                  |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |                                                                                |
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          | Example                                                              |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `createRoomRequest`                                                  | [shared.CreateRoomRequest](../../models/shared/createroomrequest.md) | :heavy_check_mark:                                                   | N/A                                                                  |                                                                      |
+| `appId`                                                              | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  | app-af469a92-5b45-4565-b3c4-b79878de67d2                             |
+| `roomId`                                                             | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  | 2swovpy1fnunu                                                        |
+| `config`                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)         | :heavy_minus_sign:                                                   | Available config options for making requests.                        |                                                                      |
 
 
 ### Response
@@ -66,30 +69,32 @@ Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using 
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { DestroyRoomRequest, DestroyRoomResponse, DestroyRoomSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { DestroyRoomRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
-const operationSecurity: DestroyRoomSecurity = {
-  auth0: "",
-};
 
-sdk.roomV2.destroyRoom(operationSecurity, appId, roomId).then((res: DestroyRoomResponse) => {
+  const res = await sdk.roomV2.destroyRoom(appId, roomId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `security`                                                                       | [operations.DestroyRoomSecurity](../../models/operations/destroyroomsecurity.md) | :heavy_check_mark:                                                               | The security requirements to use for the request.                                |                                                                                  |
-| `appId`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              | app-af469a92-5b45-4565-b3c4-b79878de67d2                                         |
-| `roomId`                                                                         | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              | 2swovpy1fnunu                                                                    |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |                                                                                  |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `roomId`                                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | 2swovpy1fnunu                                                |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -105,34 +110,32 @@ Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) 
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import {
-  GetActiveRoomsForProcessRequest,
-  GetActiveRoomsForProcessResponse,
-  GetActiveRoomsForProcessSecurity,
-} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetActiveRoomsForProcessRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
-const operationSecurity: GetActiveRoomsForProcessSecurity = {
-  auth0: "",
-};
 
-sdk.roomV2.getActiveRoomsForProcess(operationSecurity, appId, processId).then((res: GetActiveRoomsForProcessResponse) => {
+  const res = await sdk.roomV2.getActiveRoomsForProcess(appId, processId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                | Example                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                 | [operations.GetActiveRoomsForProcessSecurity](../../models/operations/getactiveroomsforprocesssecurity.md) | :heavy_check_mark:                                                                                         | The security requirements to use for the request.                                                          |                                                                                                            |
-| `appId`                                                                                                    | *string*                                                                                                   | :heavy_check_mark:                                                                                         | N/A                                                                                                        | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                                   |
-| `processId`                                                                                                | *string*                                                                                                   | :heavy_check_mark:                                                                                         | N/A                                                                                                        | cbfcddd2-0006-43ae-996c-995fff7bed2e                                                                       |
-| `config`                                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                               | :heavy_minus_sign:                                                                                         | Available config options for making requests.                                                              |                                                                                                            |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `processId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | cbfcddd2-0006-43ae-996c-995fff7bed2e                         |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -148,17 +151,23 @@ Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-ent
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetConnectionInfoRequest, GetConnectionInfoResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetConnectionInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
 
-sdk.roomV2.getConnectionInfo(appId, roomId).then((res: GetConnectionInfoResponse) => {
+  const res = await sdk.roomV2.getConnectionInfo(appId, roomId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -183,34 +192,32 @@ Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import {
-  GetInactiveRoomsForProcessRequest,
-  GetInactiveRoomsForProcessResponse,
-  GetInactiveRoomsForProcessSecurity,
-} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetInactiveRoomsForProcessRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
-const operationSecurity: GetInactiveRoomsForProcessSecurity = {
-  auth0: "",
-};
 
-sdk.roomV2.getInactiveRoomsForProcess(operationSecurity, appId, processId).then((res: GetInactiveRoomsForProcessResponse) => {
+  const res = await sdk.roomV2.getInactiveRoomsForProcess(appId, processId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    | Example                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                     | [operations.GetInactiveRoomsForProcessSecurity](../../models/operations/getinactiveroomsforprocesssecurity.md) | :heavy_check_mark:                                                                                             | The security requirements to use for the request.                                                              |                                                                                                                |
-| `appId`                                                                                                        | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                                       |
-| `processId`                                                                                                    | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            | cbfcddd2-0006-43ae-996c-995fff7bed2e                                                                           |
-| `config`                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                   | :heavy_minus_sign:                                                                                             | Available config options for making requests.                                                                  |                                                                                                                |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `processId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | cbfcddd2-0006-43ae-996c-995fff7bed2e                         |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -226,30 +233,32 @@ Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-ent
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetRoomInfoRequest, GetRoomInfoResponse, GetRoomInfoSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetRoomInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
-const operationSecurity: GetRoomInfoSecurity = {
-  auth0: "",
-};
 
-sdk.roomV2.getRoomInfo(operationSecurity, appId, roomId).then((res: GetRoomInfoResponse) => {
+  const res = await sdk.roomV2.getRoomInfo(appId, roomId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `security`                                                                       | [operations.GetRoomInfoSecurity](../../models/operations/getroominfosecurity.md) | :heavy_check_mark:                                                               | The security requirements to use for the request.                                |                                                                                  |
-| `appId`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              | app-af469a92-5b45-4565-b3c4-b79878de67d2                                         |
-| `roomId`                                                                         | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              | 2swovpy1fnunu                                                                    |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |                                                                                  |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `roomId`                                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | 2swovpy1fnunu                                                |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -265,30 +274,32 @@ Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using 
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { SuspendRoomRequest, SuspendRoomResponse, SuspendRoomSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { SuspendRoomRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
-const operationSecurity: SuspendRoomSecurity = {
-  auth0: "",
-};
 
-sdk.roomV2.suspendRoom(operationSecurity, appId, roomId).then((res: SuspendRoomResponse) => {
+  const res = await sdk.roomV2.suspendRoom(appId, roomId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `security`                                                                       | [operations.SuspendRoomSecurity](../../models/operations/suspendroomsecurity.md) | :heavy_check_mark:                                                               | The security requirements to use for the request.                                |                                                                                  |
-| `appId`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              | app-af469a92-5b45-4565-b3c4-b79878de67d2                                         |
-| `roomId`                                                                         | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              | 2swovpy1fnunu                                                                    |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |                                                                                  |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `roomId`                                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | 2swovpy1fnunu                                                |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response

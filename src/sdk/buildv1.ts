@@ -7,7 +7,7 @@ import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
 /**
  * Operations that allow you create and manage your [build](https://hathora.dev/docs/concepts/hathora-entities#build).
@@ -24,7 +24,6 @@ export class BuildV1 {
      * Generate a new `buildId` for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. You need `buildId` to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
      */
     async createBuild(
-        security: operations.CreateBuildSecurity,
         appId: string,
         config?: AxiosRequestConfig
     ): Promise<operations.CreateBuildResponse> {
@@ -37,16 +36,18 @@ export class BuildV1 {
         );
         const url: string = utils.generateURL(baseURL, "/builds/v1/{appId}/create", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.CreateBuildSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
-        const headers = { ...config?.headers, ...properties.headers };
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -101,7 +102,6 @@ export class BuildV1 {
      * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId` and `buildId`.
      */
     async deleteBuild(
-        security: operations.DeleteBuildSecurity,
         appId: string,
         buildId: number,
         config?: AxiosRequestConfig
@@ -116,16 +116,18 @@ export class BuildV1 {
         );
         const url: string = utils.generateURL(baseURL, "/builds/v1/{appId}/delete/{buildId}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.DeleteBuildSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
-        const headers = { ...config?.headers, ...properties.headers };
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "*/*";
 
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -170,7 +172,6 @@ export class BuildV1 {
      * Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build) using `appId` and `buildId`.
      */
     async getBuildInfo(
-        security: operations.GetBuildInfoSecurity,
         appId: string,
         buildId: number,
         config?: AxiosRequestConfig
@@ -185,16 +186,18 @@ export class BuildV1 {
         );
         const url: string = utils.generateURL(baseURL, "/builds/v1/{appId}/info/{buildId}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetBuildInfoSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
-        const headers = { ...config?.headers, ...properties.headers };
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -248,7 +251,6 @@ export class BuildV1 {
      * Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
      */
     async getBuilds(
-        security: operations.GetBuildsSecurity,
         appId: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetBuildsResponse> {
@@ -261,16 +263,18 @@ export class BuildV1 {
         );
         const url: string = utils.generateURL(baseURL, "/builds/v1/{appId}/list", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetBuildsSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
-        const headers = { ...config?.headers, ...properties.headers };
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -330,7 +334,6 @@ export class BuildV1 {
      * Provide a tarball that will generate a container image for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Pass in `buildId` generated from Create Build.
      */
     async runBuild(
-        security: operations.RunBuildSecurity,
         requestBody: operations.RunBuildRequestBody,
         appId: string,
         buildId: number,
@@ -347,7 +350,7 @@ export class BuildV1 {
         );
         const url: string = utils.generateURL(baseURL, "/builds/v1/{appId}/run/{buildId}", req);
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "multipart");
@@ -357,18 +360,23 @@ export class BuildV1 {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.RunBuildSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
-        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
-        if (reqBody == null || Object.keys(reqBody).length === 0)
-            throw new Error("request body is required");
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = {
+            ...reqBodyHeaders,
+            ...config?.headers,
+            ...properties.headers,
+        };
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "text/plain";
 
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,

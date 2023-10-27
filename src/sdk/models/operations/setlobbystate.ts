@@ -6,13 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class SetLobbyStateSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    auth0: string;
-}
-
 export class SetLobbyStateRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
     setLobbyStateRequest: shared.SetLobbyStateRequest;
@@ -25,6 +18,9 @@ export class SetLobbyStateRequest extends SpeakeasyBase {
 }
 
 export class SetLobbyStateResponse extends SpeakeasyBase {
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
@@ -34,9 +30,15 @@ export class SetLobbyStateResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     lobby?: shared.Lobby;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
 }

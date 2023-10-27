@@ -1,4 +1,5 @@
 # DiscoveryV1
+(*discoveryV1*)
 
 ## Overview
 
@@ -16,15 +17,20 @@ Returns an array of all regions with a host and port that a client can directly 
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetPingServiceEndpointsResponse } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
-const sdk = new HathoraCloud();
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      auth0: "",
+    },
+  });
 
-sdk.discoveryV1.getPingServiceEndpoints().then((res: GetPingServiceEndpointsResponse) => {
+  const res = await sdk.discoveryV1.getPingServiceEndpoints();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

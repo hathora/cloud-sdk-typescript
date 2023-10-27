@@ -1,4 +1,4 @@
-# GetAppInfoSecurity
+# Security
 
 
 ## Fields
