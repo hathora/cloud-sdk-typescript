@@ -1,5 +1,5 @@
 # LogV1
-(*logV1*)
+(*.logV1*)
 
 ## Overview
 
@@ -31,6 +31,7 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
   const res = await sdk.logV1.getLogsForApp({
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -72,6 +73,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
     deploymentId: 1,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -111,6 +113,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
     processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

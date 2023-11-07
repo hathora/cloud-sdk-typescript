@@ -21,16 +21,16 @@ export class GetLogsForProcessRequest extends SpeakeasyBase {
 
 export class GetLogsForProcessResponse extends SpeakeasyBase {
     /**
+     * Ok
+     */
+    @SpeakeasyMetadata()
+    twoHundredTextPlainRes?: string;
+
+    /**
      * HTTP response content type for this operation
      */
     @SpeakeasyMetadata()
     contentType: string;
-
-    /**
-     * Ok
-     */
-    @SpeakeasyMetadata()
-    getLogsForProcess200TextPlainByteString?: string;
 
     /**
      * HTTP response status code for this operation

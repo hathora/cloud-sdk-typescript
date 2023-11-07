@@ -1,5 +1,5 @@
 # RoomV1
-(*roomV1*)
+(*.roomV1*)
 
 ### Available Operations
 
@@ -35,6 +35,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.roomV1.createRoomDeprecated(createRoomRequest, appId, roomId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -78,6 +79,7 @@ const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.roomV1.destroyRoomDeprecated(appId, roomId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -118,6 +120,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
 
   const res = await sdk.roomV1.getActiveRoomsForProcessDeprecated(appId, processId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -160,6 +163,7 @@ const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.roomV1.getConnectionInfoDeprecated(appId, roomId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -200,6 +204,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
 
   const res = await sdk.roomV1.getInactiveRoomsForProcessDeprecated(appId, processId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -242,6 +247,7 @@ const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.roomV1.getRoomInfoDeprecated(appId, roomId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -282,6 +288,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.roomV1.suspendRoomDeprecated(appId, roomId);
+
 
   if (res.statusCode == 200) {
     // handle response

@@ -5,17 +5,17 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
-export class RunBuildRequestBodyFile extends SpeakeasyBase {
+export class File extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "multipart_form, content=true" })
     content: Uint8Array;
 
     @SpeakeasyMetadata({ data: "multipart_form, name=file" })
-    file: string;
+    fileName: string;
 }
 
 export class RunBuildRequestBody extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "multipart_form, file=true" })
-    file: RunBuildRequestBodyFile;
+    file: File;
 }
 
 export class RunBuildRequest extends SpeakeasyBase {
@@ -31,16 +31,16 @@ export class RunBuildRequest extends SpeakeasyBase {
 
 export class RunBuildResponse extends SpeakeasyBase {
     /**
+     * Ok
+     */
+    @SpeakeasyMetadata()
+    twoHundredTextPlainRes?: string;
+
+    /**
      * HTTP response content type for this operation
      */
     @SpeakeasyMetadata()
     contentType: string;
-
-    /**
-     * Ok
-     */
-    @SpeakeasyMetadata()
-    runBuild200TextPlainByteString?: string;
 
     /**
      * HTTP response status code for this operation

@@ -7,16 +7,16 @@ import { AxiosResponse } from "axios";
 
 export class InitStripeCustomerPortalUrlResponse extends SpeakeasyBase {
     /**
+     * Ok
+     */
+    @SpeakeasyMetadata()
+    twoHundredApplicationJsonRes?: string;
+
+    /**
      * HTTP response content type for this operation
      */
     @SpeakeasyMetadata()
     contentType: string;
-
-    /**
-     * Ok
-     */
-    @SpeakeasyMetadata()
-    initStripeCustomerPortalUrl200ApplicationJSONString?: string;
 
     /**
      * HTTP response status code for this operation

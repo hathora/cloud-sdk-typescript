@@ -1,5 +1,5 @@
 # BuildV1
-(*buildV1*)
+(*.buildV1*)
 
 ## Overview
 
@@ -32,6 +32,7 @@ import { CreateBuildRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/model
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
   const res = await sdk.buildV1.createBuild(appId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -72,6 +73,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const buildId: number = 1;
 
   const res = await sdk.buildV1.deleteBuild(appId, buildId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -114,6 +116,7 @@ const buildId: number = 1;
 
   const res = await sdk.buildV1.getBuildInfo(appId, buildId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -154,6 +157,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
   const res = await sdk.buildV1.getBuilds(appId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -181,7 +185,7 @@ Provide a tarball that will generate a container image for an existing [applicat
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { RunBuildRequest, RunBuildRequestBody, RunBuildRequestBodyFile } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { File, RunBuildRequest, RunBuildRequestBody } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -191,14 +195,15 @@ import { RunBuildRequest, RunBuildRequestBody, RunBuildRequestBodyFile } from "@
   });
 const requestBody: RunBuildRequestBody = {
   file: {
-    content: "Ukkktj?kA=" as bytes <<<>>>,
-    file: "string",
+    content: new TextEncoder().encode("0xcBBBDB7B76"),
+    fileName: "times_mini.wav",
   },
 };
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const buildId: number = 1;
 
   const res = await sdk.buildV1.runBuild(requestBody, appId, buildId);
+
 
   if (res.statusCode == 200) {
     // handle response

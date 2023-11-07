@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class GetBuildsRequest extends SpeakeasyBase {
@@ -12,12 +12,6 @@ export class GetBuildsRequest extends SpeakeasyBase {
 }
 
 export class GetBuildsResponse extends SpeakeasyBase {
-    /**
-     * Ok
-     */
-    @SpeakeasyMetadata({ elemType: shared.Build })
-    builds?: shared.Build[];
-
     /**
      * HTTP response content type for this operation
      */
@@ -35,4 +29,10 @@ export class GetBuildsResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    /**
+     * Ok
+     */
+    @SpeakeasyMetadata({ elemType: shared.Build })
+    classes?: shared.Build[];
 }

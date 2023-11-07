@@ -10,7 +10,7 @@ import { Expose, Transform, Type } from "class-transformer";
 /**
  * Metadata on allocated instances of a room.
  */
-export class RoomCurrentAllocation extends SpeakeasyBase {
+export class CurrentAllocation extends SpeakeasyBase {
     /**
      * System generated unique identifier to a runtime instance of your game server.
      */
@@ -54,8 +54,8 @@ export class Room extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "currentAllocation" })
-    @Type(() => RoomCurrentAllocation)
-    currentAllocation: RoomCurrentAllocation;
+    @Type(() => CurrentAllocation)
+    currentAllocation: CurrentAllocation;
 
     /**
      * Unique identifier to a game session or match. Use either a system generated ID or pass in your own.

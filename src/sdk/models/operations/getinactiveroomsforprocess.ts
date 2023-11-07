@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class GetInactiveRoomsForProcessRequest extends SpeakeasyBase {
@@ -22,12 +22,6 @@ export class GetInactiveRoomsForProcessResponse extends SpeakeasyBase {
     contentType: string;
 
     /**
-     * Ok
-     */
-    @SpeakeasyMetadata({ elemType: shared.RoomWithoutAllocations })
-    roomWithoutAllocations?: shared.RoomWithoutAllocations[];
-
-    /**
      * HTTP response status code for this operation
      */
     @SpeakeasyMetadata()
@@ -38,4 +32,10 @@ export class GetInactiveRoomsForProcessResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    /**
+     * Ok
+     */
+    @SpeakeasyMetadata({ elemType: shared.RoomWithoutAllocations })
+    classes?: shared.RoomWithoutAllocations[];
 }

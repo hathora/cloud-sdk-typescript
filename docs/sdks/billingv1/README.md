@@ -1,5 +1,5 @@
 # BillingV1
-(*billingV1*)
+(*.billingV1*)
 
 ### Available Operations
 
@@ -23,6 +23,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
   });
 
   const res = await sdk.billingV1.getBalance();
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -58,6 +59,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
   const res = await sdk.billingV1.getInvoices();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -91,6 +93,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
   });
 
   const res = await sdk.billingV1.getPaymentMethod();
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -127,6 +130,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
   const res = await sdk.billingV1.initStripeCustomerPortalUrl({
     returnUrl: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

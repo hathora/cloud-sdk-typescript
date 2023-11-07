@@ -7,7 +7,7 @@ import { Deployment } from "./deployment";
 import { RecordStringNever } from "./recordstringnever";
 import { Expose, Transform, Type } from "class-transformer";
 
-export class ApplicationWithDeploymentAuthConfigurationGoogle extends SpeakeasyBase {
+export class ApplicationWithDeploymentGoogle extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "clientId" })
     clientId: string;
@@ -27,8 +27,8 @@ export class ApplicationWithDeploymentAuthConfiguration extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "google" })
-    @Type(() => ApplicationWithDeploymentAuthConfigurationGoogle)
-    google?: ApplicationWithDeploymentAuthConfigurationGoogle;
+    @Type(() => ApplicationWithDeploymentGoogle)
+    google?: ApplicationWithDeploymentGoogle;
 
     /**
      * Construct a type with a set of properties K of type T

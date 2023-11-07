@@ -1,4 +1,4 @@
-# ApplicationAuthConfigurationGoogle
+# ApplicationGoogle
 
 
 ## Fields

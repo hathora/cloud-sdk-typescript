@@ -1,5 +1,5 @@
 # AuthV1
-(*authV1*)
+(*.authV1*)
 
 ## Overview
 
@@ -28,6 +28,7 @@ import { LoginAnonymousRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/mo
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
   const res = await sdk.authV1.loginAnonymous(appId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -70,6 +71,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
   const res = await sdk.authV1.loginGoogle(loginGoogleRequest, appId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -111,6 +113,7 @@ const loginNicknameRequest: LoginNicknameRequest = {
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
   const res = await sdk.authV1.loginNickname(loginNicknameRequest, appId);
+
 
   if (res.statusCode == 200) {
     // handle response

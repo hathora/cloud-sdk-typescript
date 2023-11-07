@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { RecordStringNever } from "./recordstringnever";
 import { Expose, Transform, Type } from "class-transformer";
 
-export class ApplicationAuthConfigurationGoogle extends SpeakeasyBase {
+export class ApplicationGoogle extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "clientId" })
     clientId: string;
@@ -26,8 +26,8 @@ export class ApplicationAuthConfiguration extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "google" })
-    @Type(() => ApplicationAuthConfigurationGoogle)
-    google?: ApplicationAuthConfigurationGoogle;
+    @Type(() => ApplicationGoogle)
+    google?: ApplicationGoogle;
 
     /**
      * Construct a type with a set of properties K of type T

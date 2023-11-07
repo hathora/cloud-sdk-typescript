@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class CreateRoomDeprecatedRequest extends SpeakeasyBase {
@@ -18,14 +18,14 @@ export class CreateRoomDeprecatedRequest extends SpeakeasyBase {
 }
 
 export class CreateRoomDeprecatedResponse extends SpeakeasyBase {
+    @SpeakeasyMetadata()
+    twoHundredAndOneApplicationJsonRoomId?: string;
+
     /**
      * HTTP response content type for this operation
      */
     @SpeakeasyMetadata()
     contentType: string;
-
-    @SpeakeasyMetadata()
-    roomId?: string;
 
     /**
      * HTTP response status code for this operation

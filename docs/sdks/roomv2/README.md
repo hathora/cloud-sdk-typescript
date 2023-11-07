@@ -1,5 +1,5 @@
 # RoomV2
-(*roomV2*)
+(*.roomV2*)
 
 ## Overview
 
@@ -39,6 +39,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.roomV2.createRoom(createRoomRequest, appId, roomId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -82,6 +83,7 @@ const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.roomV2.destroyRoom(appId, roomId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -122,6 +124,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
 
   const res = await sdk.roomV2.getActiveRoomsForProcess(appId, processId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -164,6 +167,7 @@ const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.roomV2.getConnectionInfo(appId, roomId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -204,6 +208,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
 
   const res = await sdk.roomV2.getInactiveRoomsForProcess(appId, processId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -246,6 +251,7 @@ const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.roomV2.getRoomInfo(appId, roomId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -286,6 +292,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.roomV2.suspendRoom(appId, roomId);
+
 
   if (res.statusCode == 200) {
     // handle response

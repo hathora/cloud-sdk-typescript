@@ -1,5 +1,5 @@
 # ProcessesV1
-(*processesV1*)
+(*.processesV1*)
 
 ## Overview
 
@@ -31,6 +31,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
 
   const res = await sdk.processesV1.getProcessInfo(appId, processId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -74,6 +75,7 @@ const region: Region = Region.Tokyo;
 
   const res = await sdk.processesV1.getRunningProcesses(appId, region);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -115,6 +117,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const region: Region = Region.Sydney;
 
   const res = await sdk.processesV1.getStoppedProcesses(appId, region);
+
 
   if (res.statusCode == 200) {
     // handle response

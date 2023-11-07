@@ -1,5 +1,5 @@
 # MetricsV1
-(*metricsV1*)
+(*.metricsV1*)
 
 ## Overview
 
@@ -33,6 +33,7 @@ import { MetricName } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared
     ],
     processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

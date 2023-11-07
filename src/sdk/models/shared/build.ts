@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Region } from "./region";
 import { Expose, Transform, Type } from "class-transformer";
 
-export class BuildRegionalContainerTags extends SpeakeasyBase {
+export class RegionalContainerTags extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "containerTag" })
     containerTag: string;
@@ -32,7 +32,7 @@ export class BuildRegionalContainerTags extends SpeakeasyBase {
  *
  * `failed`: there was an issue creating and storing the container image in our container registry
  */
-export enum BuildStatus {
+export enum Status {
     Created = "created",
     Running = "running",
     Succeeded = "succeeded",
@@ -98,10 +98,10 @@ export class Build extends SpeakeasyBase {
     /**
      * An alias for the container image in our regional registries.
      */
-    @SpeakeasyMetadata({ elemType: BuildRegionalContainerTags })
+    @SpeakeasyMetadata({ elemType: RegionalContainerTags })
     @Expose({ name: "regionalContainerTags" })
-    @Type(() => BuildRegionalContainerTags)
-    regionalContainerTags: BuildRegionalContainerTags[];
+    @Type(() => RegionalContainerTags)
+    regionalContainerTags: RegionalContainerTags[];
 
     /**
      * When the container image starts getting built.
@@ -126,5 +126,5 @@ export class Build extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "status" })
-    status: BuildStatus;
+    status: Status;
 }

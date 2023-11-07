@@ -1,5 +1,5 @@
 # DiscoveryV1
-(*discoveryV1*)
+(*.discoveryV1*)
 
 ## Overview
 
@@ -26,6 +26,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
   });
 
   const res = await sdk.discoveryV1.getPingServiceEndpoints();
+
 
   if (res.statusCode == 200) {
     // handle response

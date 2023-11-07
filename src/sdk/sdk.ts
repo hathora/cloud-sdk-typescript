@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as shared from "../sdk/models/shared";
 import { AppV1 } from "./appv1";
 import { AuthV1 } from "./authv1";
 import { BillingV1 } from "./billingv1";
@@ -14,7 +15,6 @@ import { LobbyV2 } from "./lobbyv2";
 import { LogV1 } from "./logv1";
 import { ManagementV1 } from "./managementv1";
 import { MetricsV1 } from "./metricsv1";
-import * as shared from "./models/shared";
 import { ProcessesV1 } from "./processesv1";
 import { RoomV1 } from "./roomv1";
 import { RoomV2 } from "./roomv2";
@@ -24,7 +24,7 @@ import { AxiosInstance } from "axios";
 /**
  * Contains the list of servers available to the SDK
  */
-export const ServerList = ["https://api.hathora.dev", "/"] as const;
+export const ServerList = ["https://api.hathora.dev", "https:///"] as const;
 
 /**
  * The available configuration options for the SDK
@@ -62,9 +62,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.0.1";
-    sdkVersion = "1.29.0";
-    genVersion = "2.171.0";
-    userAgent = "speakeasy-sdk/typescript 1.29.0 2.171.0 0.0.1 @hathora/cloud-sdk-typescript";
+    sdkVersion = "2.0.0";
+    genVersion = "2.181.1";
+    userAgent = "speakeasy-sdk/typescript 2.0.0 2.181.1 0.0.1 @hathora/cloud-sdk-typescript";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);

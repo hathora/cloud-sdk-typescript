@@ -1,5 +1,5 @@
 # LobbyV1
-(*lobbyV1*)
+(*.lobbyV1*)
 
 ### Available Operations
 
@@ -29,6 +29,7 @@ const local: boolean = false;
 const region: Region = Region.London;
 
   const res = await sdk.lobbyV1.createPrivateLobbyDeprecated(appId, local, region);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -74,6 +75,7 @@ const region: Region = Region.Frankfurt;
 
   const res = await sdk.lobbyV1.createPublicLobbyDeprecated(appId, local, region);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -117,6 +119,7 @@ const local: boolean = false;
 const region: Region = Region.Tokyo;
 
   const res = await sdk.lobbyV1.listActivePublicLobbiesDeprecated(appId, local, region);
+
 
   if (res.statusCode == 200) {
     // handle response
