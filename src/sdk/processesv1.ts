@@ -21,16 +21,16 @@ export class ProcessesV1 {
     }
 
     /**
-     * Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+     * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      */
     async getProcessInfo(
-        appId: string,
         processId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetProcessInfoResponse> {
         const req = new operations.GetProcessInfoRequest({
-            appId: appId,
             processId: processId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
@@ -39,7 +39,8 @@ export class ProcessesV1 {
         const url: string = utils.generateURL(
             baseURL,
             "/processes/v1/{appId}/info/{processId}",
-            req
+            req,
+            this.sdkConfiguration.globals
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
@@ -91,6 +92,7 @@ export class ProcessesV1 {
                 break;
             case httpRes?.status == 404 ||
                 (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
                 throw new errors.SDKError(
                     "API error occurred",
@@ -104,10 +106,10 @@ export class ProcessesV1 {
     }
 
     /**
-     * Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
      */
     async getRunningProcesses(
-        appId: string,
+        appId?: string,
         region?: shared.Region,
         config?: AxiosRequestConfig
     ): Promise<operations.GetRunningProcessesResponse> {
@@ -119,7 +121,12 @@ export class ProcessesV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/processes/v1/{appId}/list/running", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/processes/v1/{appId}/list/running",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -130,7 +137,7 @@ export class ProcessesV1 {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
-        const queryParams: string = utils.serializeQueryParams(req);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "application/json";
 
         headers["user-agent"] = this.sdkConfiguration.userAgent;
@@ -191,10 +198,10 @@ export class ProcessesV1 {
     }
 
     /**
-     * Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
      */
     async getStoppedProcesses(
-        appId: string,
+        appId?: string,
         region?: shared.Region,
         config?: AxiosRequestConfig
     ): Promise<operations.GetStoppedProcessesResponse> {
@@ -206,7 +213,12 @@ export class ProcessesV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/processes/v1/{appId}/list/stopped", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/processes/v1/{appId}/list/stopped",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -217,7 +229,7 @@ export class ProcessesV1 {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
-        const queryParams: string = utils.serializeQueryParams(req);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "application/json";
 
         headers["user-agent"] = this.sdkConfiguration.userAgent;

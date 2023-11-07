@@ -7,7 +7,7 @@ import { AxiosResponse } from "axios";
 
 export class GetLogsForProcessRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=follow" })
     follow?: boolean;

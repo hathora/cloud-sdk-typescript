@@ -15,9 +15,6 @@ export class DiscoveryResponse extends SpeakeasyBase {
     @Expose({ name: "port" })
     port: number;
 
-    /**
-     * Available regions to request a game server.
-     */
     @SpeakeasyMetadata()
     @Expose({ name: "region" })
     region: Region;

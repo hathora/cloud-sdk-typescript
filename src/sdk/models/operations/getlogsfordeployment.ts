@@ -7,7 +7,7 @@ import { AxiosResponse } from "axios";
 
 export class GetLogsForDeploymentRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=deploymentId" })
     deploymentId: number;

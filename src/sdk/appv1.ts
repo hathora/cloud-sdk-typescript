@@ -122,7 +122,7 @@ export class AppV1 {
      * Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Your organization will lose access to this application.
      */
     async deleteApp(
-        appId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.DeleteAppResponse> {
         const req = new operations.DeleteAppRequest({
@@ -132,7 +132,12 @@ export class AppV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/apps/v1/delete/{appId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/apps/v1/delete/{appId}",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -189,7 +194,7 @@ export class AppV1 {
      * Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
      */
     async getAppInfo(
-        appId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetAppInfoResponse> {
         const req = new operations.GetAppInfoRequest({
@@ -199,7 +204,12 @@ export class AppV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/apps/v1/info/{appId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/apps/v1/info/{appId}",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -346,7 +356,7 @@ export class AppV1 {
      */
     async updateApp(
         appConfig: shared.AppConfig,
-        appId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.UpdateAppResponse> {
         const req = new operations.UpdateAppRequest({
@@ -357,7 +367,12 @@ export class AppV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/apps/v1/update/{appId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/apps/v1/update/{appId}",
+            req,
+            this.sdkConfiguration.globals
+        );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 

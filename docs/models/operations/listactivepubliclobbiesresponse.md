@@ -8,4 +8,4 @@
 | `contentType`                                           | *string*                                                | :heavy_check_mark:                                      | HTTP response content type for this operation           |
 | `statusCode`                                            | *number*                                                | :heavy_check_mark:                                      | HTTP response status code for this operation            |
 | `rawResponse`                                           | [AxiosResponse](https://axios-http.com/docs/res_schema) | :heavy_minus_sign:                                      | Raw HTTP response; suitable for custom response parsing |
-| `classes`                                               | [shared.Lobby](../../models/shared/lobby.md)[]          | :heavy_minus_sign:                                      | Ok                                                      |
+| `classes`                                               | [shared.LobbyV3](../../models/shared/lobbyv3.md)[]      | :heavy_minus_sign:                                      | Ok                                                      |

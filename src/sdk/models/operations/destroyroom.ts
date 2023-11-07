@@ -6,11 +6,11 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
 export class DestroyRoomRequest extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
-
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=roomId" })
     roomId: string;
+
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId?: string;
 }
 
 export class DestroyRoomResponse extends SpeakeasyBase {

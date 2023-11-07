@@ -8,7 +8,7 @@ import { LobbyVisibility } from "./lobbyvisibility";
 import { Region } from "./region";
 import { Expose, Type } from "class-transformer";
 
-export class CreateLobbyRequest extends SpeakeasyBase {
+export class CreateLobbyParams extends SpeakeasyBase {
     /**
      * User input to initialize the game state. Object must be smaller than 64KB.
      */
@@ -17,9 +17,6 @@ export class CreateLobbyRequest extends SpeakeasyBase {
     @Type(() => LobbyInitialConfig)
     initialConfig: LobbyInitialConfig;
 
-    /**
-     * Available regions to request a game server.
-     */
     @SpeakeasyMetadata()
     @Expose({ name: "region" })
     region: Region;

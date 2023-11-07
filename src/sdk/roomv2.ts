@@ -21,16 +21,16 @@ export class RoomV2 {
     }
 
     /**
-     * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId` and `region`.
+     * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
      */
     async createRoom(
-        createRoomRequest: shared.CreateRoomRequest,
-        appId: string,
+        createRoomParams: shared.CreateRoomParams,
+        appId?: string,
         roomId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.CreateRoomResponse> {
         const req = new operations.CreateRoomRequest({
-            createRoomRequest: createRoomRequest,
+            createRoomParams: createRoomParams,
             appId: appId,
             roomId: roomId,
         });
@@ -38,16 +38,17 @@ export class RoomV2 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/rooms/v2/{appId}/create", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/rooms/v2/{appId}/create",
+            req,
+            this.sdkConfiguration.globals
+        );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
-            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-                req,
-                "createRoomRequest",
-                "json"
-            );
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "createRoomParams", "json");
         } catch (e: unknown) {
             if (e instanceof Error) {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -67,7 +68,7 @@ export class RoomV2 {
             ...config?.headers,
             ...properties.headers,
         };
-        const queryParams: string = utils.serializeQueryParams(req);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
@@ -112,6 +113,7 @@ export class RoomV2 {
                 }
                 break;
             case httpRes?.status == 400 ||
+                httpRes?.status == 402 ||
                 httpRes?.status == 403 ||
                 httpRes?.status == 404 ||
                 (httpRes?.status >= 400 && httpRes?.status < 500) ||
@@ -129,22 +131,27 @@ export class RoomV2 {
     }
 
     /**
-     * Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`. All associated metadata is deleted.
+     * Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
      */
     async destroyRoom(
-        appId: string,
         roomId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.DestroyRoomResponse> {
         const req = new operations.DestroyRoomRequest({
-            appId: appId,
             roomId: roomId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/rooms/v2/{appId}/destroy/{roomId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/rooms/v2/{appId}/destroy/{roomId}",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -198,16 +205,16 @@ export class RoomV2 {
     }
 
     /**
-     * Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+     * Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      */
     async getActiveRoomsForProcess(
-        appId: string,
         processId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetActiveRoomsForProcessResponse> {
         const req = new operations.GetActiveRoomsForProcessRequest({
-            appId: appId,
             processId: processId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
@@ -216,7 +223,8 @@ export class RoomV2 {
         const url: string = utils.generateURL(
             baseURL,
             "/rooms/v2/{appId}/list/{processId}/active",
-            req
+            req,
+            this.sdkConfiguration.globals
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
@@ -288,16 +296,16 @@ export class RoomV2 {
     }
 
     /**
-     * Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`. Clients can call this endpoint without authentication.
+     * Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
      */
     async getConnectionInfo(
-        appId: string,
         roomId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetConnectionInfoResponse> {
         const req = new operations.GetConnectionInfoRequest({
-            appId: appId,
             roomId: roomId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
@@ -306,7 +314,8 @@ export class RoomV2 {
         const url: string = utils.generateURL(
             baseURL,
             "/rooms/v2/{appId}/connectioninfo/{roomId}",
-            req
+            req,
+            this.sdkConfiguration.globals
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
@@ -376,16 +385,16 @@ export class RoomV2 {
     }
 
     /**
-     * Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+     * Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      */
     async getInactiveRoomsForProcess(
-        appId: string,
         processId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetInactiveRoomsForProcessResponse> {
         const req = new operations.GetInactiveRoomsForProcessRequest({
-            appId: appId,
             processId: processId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
@@ -394,7 +403,8 @@ export class RoomV2 {
         const url: string = utils.generateURL(
             baseURL,
             "/rooms/v2/{appId}/list/{processId}/inactive",
-            req
+            req,
+            this.sdkConfiguration.globals
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
@@ -466,22 +476,27 @@ export class RoomV2 {
     }
 
     /**
-     * Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`.
+     * Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
      */
     async getRoomInfo(
-        appId: string,
         roomId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetRoomInfoResponse> {
         const req = new operations.GetRoomInfoRequest({
-            appId: appId,
             roomId: roomId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/rooms/v2/{appId}/info/{roomId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/rooms/v2/{appId}/info/{roomId}",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -545,22 +560,27 @@ export class RoomV2 {
     }
 
     /**
-     * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`. The room is unallocated from the process but can be rescheduled later using the same `roomId`.
+     * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same `roomId`.
      */
     async suspendRoom(
-        appId: string,
         roomId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.SuspendRoomResponse> {
         const req = new operations.SuspendRoomRequest({
-            appId: appId,
             roomId: roomId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/rooms/v2/{appId}/suspend/{roomId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/rooms/v2/{appId}/suspend/{roomId}",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -591,6 +611,99 @@ export class RoomV2 {
         }
 
         const res: operations.SuspendRoomResponse = new operations.SuspendRoomResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case httpRes?.status == 404 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async updateRoomConfig(
+        updateRoomConfigParams: shared.UpdateRoomConfigParams,
+        roomId: string,
+        appId?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.UpdateRoomConfigResponse> {
+        const req = new operations.UpdateRoomConfigRequest({
+            updateRoomConfigParams: updateRoomConfigParams,
+            roomId: roomId,
+            appId: appId,
+        });
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string = utils.generateURL(
+            baseURL,
+            "/rooms/v2/{appId}/update/{roomId}",
+            req,
+            this.sdkConfiguration.globals
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "updateRoomConfigParams",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = {
+            ...reqBodyHeaders,
+            ...config?.headers,
+            ...properties.headers,
+        };
+        if (reqBody == null) throw new Error("request body is required");
+        headers["Accept"] = "*/*";
+
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.UpdateRoomConfigResponse = new operations.UpdateRoomConfigResponse({
             statusCode: httpRes.status,
             contentType: contentType,
             rawResponse: httpRes,

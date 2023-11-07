@@ -8,14 +8,14 @@ import { Expose, Type } from "class-transformer";
 /**
  * JSON blob to store metadata for a room. Must be smaller than 1MB.
  */
-export class SetLobbyStateRequestState extends SpeakeasyBase {}
+export class SetLobbyStateParamsState extends SpeakeasyBase {}
 
-export class SetLobbyStateRequest extends SpeakeasyBase {
+export class SetLobbyStateParams extends SpeakeasyBase {
     /**
      * JSON blob to store metadata for a room. Must be smaller than 1MB.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "state" })
-    @Type(() => SetLobbyStateRequestState)
-    state: SetLobbyStateRequestState;
+    @Type(() => SetLobbyStateParamsState)
+    state: SetLobbyStateParamsState;
 }

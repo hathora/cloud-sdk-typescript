@@ -10,4 +10,5 @@ export enum MetricName {
     Memory = "memory",
     RateEgress = "rate_egress",
     TotalEgress = "total_egress",
+    ActiveConnections = "active_connections",
 }

@@ -7,13 +7,13 @@ Operations that allow you configure and manage an application's [build](https://
 
 ### Available Operations
 
-* [createDeployment](#createdeployment) - Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
-* [getDeploymentInfo](#getdeploymentinfo) - Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId`.
-* [getDeployments](#getdeployments) - Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+* [createDeployment](#createdeployment) - Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
+* [getDeploymentInfo](#getdeploymentinfo) - Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
+* [getDeployments](#getdeployments) - Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
 
 ## createDeployment
 
-Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
 
 ### Example Usage
 
@@ -25,8 +25,9 @@ import { ContainerPort, DeploymentConfig, DeploymentConfigEnv, PlanName, Transpo
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 const deploymentConfig: DeploymentConfig = {
   additionalContainerPorts: [
@@ -47,11 +48,10 @@ const deploymentConfig: DeploymentConfig = {
   roomsPerProcess: 3,
   transportType: TransportType.Tcp,
 };
-const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const buildId: number = 1;
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
-  const res = await sdk.deploymentV1.createDeployment(deploymentConfig, appId, buildId);
-
+  const res = await sdk.deploymentV1.createDeployment(deploymentConfig, buildId, appId);
 
   if (res.statusCode == 200) {
     // handle response
@@ -64,19 +64,23 @@ const buildId: number = 1;
 | Parameter                                                          | Type                                                               | Required                                                           | Description                                                        | Example                                                            |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
 | `deploymentConfig`                                                 | [shared.DeploymentConfig](../../models/shared/deploymentconfig.md) | :heavy_check_mark:                                                 | N/A                                                                |                                                                    |
-| `appId`                                                            | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                | app-af469a92-5b45-4565-b3c4-b79878de67d2                           |
 | `buildId`                                                          | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                | 1                                                                  |
+| `appId`                                                            | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                | app-af469a92-5b45-4565-b3c4-b79878de67d2                           |
 | `config`                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)       | :heavy_minus_sign:                                                 | Available config options for making requests.                      |                                                                    |
 
 
 ### Response
 
 **Promise<[operations.CreateDeploymentResponse](../../models/operations/createdeploymentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getDeploymentInfo
 
-Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId`.
+Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
 
 ### Example Usage
 
@@ -87,14 +91,14 @@ import { GetDeploymentInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
-const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const deploymentId: number = 1;
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
-  const res = await sdk.deploymentV1.getDeploymentInfo(appId, deploymentId);
-
+  const res = await sdk.deploymentV1.getDeploymentInfo(deploymentId, appId);
 
   if (res.statusCode == 200) {
     // handle response
@@ -106,19 +110,23 @@ const deploymentId: number = 1;
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
 | `deploymentId`                                               | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          | 1                                                            |
+| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
 **Promise<[operations.GetDeploymentInfoResponse](../../models/operations/getdeploymentinforesponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getDeployments
 
-Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
 
 ### Example Usage
 
@@ -129,13 +137,13 @@ import { GetDeploymentsRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/mo
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
   const res = await sdk.deploymentV1.getDeployments(appId);
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -147,11 +155,15 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
 **Promise<[operations.GetDeploymentsResponse](../../models/operations/getdeploymentsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

@@ -7,11 +7,11 @@ Service that allows clients to directly ping all Hathora regions to get latency 
 
 ### Available Operations
 
-* [getPingServiceEndpoints](#getpingserviceendpoints) - Returns an array of all regions with a host and port that a client can directly ping.
+* [getPingServiceEndpoints](#getpingserviceendpoints) - Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
 
 ## getPingServiceEndpoints
 
-Returns an array of all regions with a host and port that a client can directly ping.
+Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
 
 ### Example Usage
 
@@ -21,12 +21,12 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 
   const res = await sdk.discoveryV1.getPingServiceEndpoints();
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -44,4 +44,8 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 ### Response
 
 **Promise<[operations.GetPingServiceEndpointsResponse](../../models/operations/getpingserviceendpointsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

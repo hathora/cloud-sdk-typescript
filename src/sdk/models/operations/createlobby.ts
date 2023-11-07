@@ -6,15 +6,25 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
+export class CreateLobbySecurity extends SpeakeasyBase {
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    playerAuth: string;
+}
+
 export class CreateLobbyRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-    createLobbyRequest: shared.CreateLobbyRequest;
+    createLobbyV3Params: shared.CreateLobbyV3Params;
 
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=roomId" })
     roomId?: string;
+
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=shortCode" })
+    shortCode?: string;
 }
 
 export class CreateLobbyResponse extends SpeakeasyBase {
@@ -25,7 +35,7 @@ export class CreateLobbyResponse extends SpeakeasyBase {
     contentType: string;
 
     @SpeakeasyMetadata()
-    lobby?: shared.Lobby;
+    lobbyV3?: shared.LobbyV3;
 
     /**
      * HTTP response status code for this operation

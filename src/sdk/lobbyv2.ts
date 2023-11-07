@@ -10,7 +10,7 @@ import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
 /**
- * Operations to create and manage [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby).
+ * Deprecated. Use [LobbyV3](https://hathora.dev/api#tag/LobbyV3).
  */
 
 export class LobbyV2 {
@@ -21,16 +21,17 @@ export class LobbyV2 {
     }
 
     /**
-     * Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
      */
-    async createLobby(
-        createLobbyRequest: shared.CreateLobbyRequest,
-        appId: string,
+    async createLobbyDeprecated(
+        security: operations.CreateLobbyDeprecatedSecurity,
+        createLobbyParams: shared.CreateLobbyParams,
+        appId?: string,
         roomId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.CreateLobbyResponse> {
-        const req = new operations.CreateLobbyRequest({
-            createLobbyRequest: createLobbyRequest,
+    ): Promise<operations.CreateLobbyDeprecatedResponse> {
+        const req = new operations.CreateLobbyDeprecatedRequest({
+            createLobbyParams: createLobbyParams,
             appId: appId,
             roomId: roomId,
         });
@@ -38,14 +39,19 @@ export class LobbyV2 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/lobby/v2/{appId}/create", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/lobby/v2/{appId}/create",
+            req,
+            this.sdkConfiguration.globals
+        );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
                 req,
-                "createLobbyRequest",
+                "createLobbyParams",
                 "json"
             );
         } catch (e: unknown) {
@@ -54,21 +60,16 @@ export class LobbyV2 {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        let globalSecurity = this.sdkConfiguration.security;
-        if (typeof globalSecurity === "function") {
-            globalSecurity = await globalSecurity();
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.CreateLobbyDeprecatedSecurity(security);
         }
-        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
-        }
-        const properties = utils.parseSecurityProperties(globalSecurity);
+        const properties = utils.parseSecurityProperties(security);
         const headers: RawAxiosRequestHeaders = {
-            ...utils.getHeadersFromRequest(req),
             ...reqBodyHeaders,
             ...config?.headers,
             ...properties.headers,
         };
-        const queryParams: string = utils.serializeQueryParams(req);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
@@ -90,11 +91,12 @@ export class LobbyV2 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CreateLobbyResponse = new operations.CreateLobbyResponse({
-            statusCode: httpRes.status,
-            contentType: contentType,
-            rawResponse: httpRes,
-        });
+        const res: operations.CreateLobbyDeprecatedResponse =
+            new operations.CreateLobbyDeprecatedResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 201:
@@ -132,8 +134,9 @@ export class LobbyV2 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createLocalLobby(
+        security: operations.CreateLocalLobbySecurity,
         requestBody: operations.CreateLocalLobbyRequestBody,
-        appId: string,
+        appId?: string,
         roomId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.CreateLocalLobbyResponse> {
@@ -146,7 +149,12 @@ export class LobbyV2 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/lobby/v2/{appId}/create/local", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/lobby/v2/{appId}/create/local",
+            req,
+            this.sdkConfiguration.globals
+        );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -158,21 +166,16 @@ export class LobbyV2 {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        let globalSecurity = this.sdkConfiguration.security;
-        if (typeof globalSecurity === "function") {
-            globalSecurity = await globalSecurity();
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.CreateLocalLobbySecurity(security);
         }
-        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
-        }
-        const properties = utils.parseSecurityProperties(globalSecurity);
+        const properties = utils.parseSecurityProperties(security);
         const headers: RawAxiosRequestHeaders = {
-            ...utils.getHeadersFromRequest(req),
             ...reqBodyHeaders,
             ...config?.headers,
             ...properties.headers,
         };
-        const queryParams: string = utils.serializeQueryParams(req);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
@@ -236,8 +239,9 @@ export class LobbyV2 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createPrivateLobby(
+        security: operations.CreatePrivateLobbySecurity,
         requestBody: operations.CreatePrivateLobbyRequestBody,
-        appId: string,
+        appId?: string,
         roomId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.CreatePrivateLobbyResponse> {
@@ -250,7 +254,12 @@ export class LobbyV2 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/lobby/v2/{appId}/create/private", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/lobby/v2/{appId}/create/private",
+            req,
+            this.sdkConfiguration.globals
+        );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -262,21 +271,16 @@ export class LobbyV2 {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        let globalSecurity = this.sdkConfiguration.security;
-        if (typeof globalSecurity === "function") {
-            globalSecurity = await globalSecurity();
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.CreatePrivateLobbySecurity(security);
         }
-        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
-        }
-        const properties = utils.parseSecurityProperties(globalSecurity);
+        const properties = utils.parseSecurityProperties(security);
         const headers: RawAxiosRequestHeaders = {
-            ...utils.getHeadersFromRequest(req),
             ...reqBodyHeaders,
             ...config?.headers,
             ...properties.headers,
         };
-        const queryParams: string = utils.serializeQueryParams(req);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
@@ -341,8 +345,9 @@ export class LobbyV2 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createPublicLobby(
+        security: operations.CreatePublicLobbySecurity,
         requestBody: operations.CreatePublicLobbyRequestBody,
-        appId: string,
+        appId?: string,
         roomId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.CreatePublicLobbyResponse> {
@@ -355,7 +360,12 @@ export class LobbyV2 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/lobby/v2/{appId}/create/public", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/lobby/v2/{appId}/create/public",
+            req,
+            this.sdkConfiguration.globals
+        );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -367,21 +377,16 @@ export class LobbyV2 {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        let globalSecurity = this.sdkConfiguration.security;
-        if (typeof globalSecurity === "function") {
-            globalSecurity = await globalSecurity();
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.CreatePublicLobbySecurity(security);
         }
-        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
-        }
-        const properties = utils.parseSecurityProperties(globalSecurity);
+        const properties = utils.parseSecurityProperties(security);
         const headers: RawAxiosRequestHeaders = {
-            ...utils.getHeadersFromRequest(req),
             ...reqBodyHeaders,
             ...config?.headers,
             ...properties.headers,
         };
-        const queryParams: string = utils.serializeQueryParams(req);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
@@ -442,22 +447,27 @@ export class LobbyV2 {
     }
 
     /**
-     * Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`.
+     * Get details for a lobby.
      */
     async getLobbyInfo(
-        appId: string,
         roomId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetLobbyInfoResponse> {
         const req = new operations.GetLobbyInfoRequest({
-            appId: appId,
             roomId: roomId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/lobby/v2/{appId}/info/{roomId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/lobby/v2/{appId}/info/{roomId}",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -521,14 +531,14 @@ export class LobbyV2 {
     }
 
     /**
-     * Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
+     * Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
      */
-    async listActivePublicLobbies(
-        appId: string,
+    async listActivePublicLobbiesDeprecatedV2(
+        appId?: string,
         region?: shared.Region,
         config?: AxiosRequestConfig
-    ): Promise<operations.ListActivePublicLobbiesResponse> {
-        const req = new operations.ListActivePublicLobbiesRequest({
+    ): Promise<operations.ListActivePublicLobbiesDeprecatedV2Response> {
+        const req = new operations.ListActivePublicLobbiesDeprecatedV2Request({
             appId: appId,
             region: region,
         });
@@ -536,7 +546,12 @@ export class LobbyV2 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/lobby/v2/{appId}/list/public", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/lobby/v2/{appId}/list/public",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -547,7 +562,7 @@ export class LobbyV2 {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
-        const queryParams: string = utils.serializeQueryParams(req);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "application/json";
 
         headers["user-agent"] = this.sdkConfiguration.userAgent;
@@ -567,8 +582,8 @@ export class LobbyV2 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.ListActivePublicLobbiesResponse =
-            new operations.ListActivePublicLobbiesResponse({
+        const res: operations.ListActivePublicLobbiesDeprecatedV2Response =
+            new operations.ListActivePublicLobbiesDeprecatedV2Response({
                 statusCode: httpRes.status,
                 contentType: contentType,
                 rawResponse: httpRes,
@@ -607,31 +622,36 @@ export class LobbyV2 {
     }
 
     /**
-     * Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
      */
     async setLobbyState(
-        setLobbyStateRequest: shared.SetLobbyStateRequest,
-        appId: string,
+        setLobbyStateParams: shared.SetLobbyStateParams,
         roomId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.SetLobbyStateResponse> {
         const req = new operations.SetLobbyStateRequest({
-            setLobbyStateRequest: setLobbyStateRequest,
-            appId: appId,
+            setLobbyStateParams: setLobbyStateParams,
             roomId: roomId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/lobby/v2/{appId}/setState/{roomId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/lobby/v2/{appId}/setState/{roomId}",
+            req,
+            this.sdkConfiguration.globals
+        );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
                 req,
-                "setLobbyStateRequest",
+                "setLobbyStateParams",
                 "json"
             );
         } catch (e: unknown) {

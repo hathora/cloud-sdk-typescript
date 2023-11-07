@@ -6,6 +6,9 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { ExposedPort } from "./exposedport";
 import { Expose, Type } from "class-transformer";
 
+/**
+ * `exposedPort` will only be available when the `status` of a room is "active".
+ */
 export enum ConnectionInfoV2Status {
     Starting = "starting",
     Active = "active",
@@ -21,7 +24,7 @@ export class ConnectionInfoV2 extends SpeakeasyBase {
     additionalExposedPorts: ExposedPort[];
 
     /**
-     * Connection information to an exposed port on an active process.
+     * Connection details for an active process.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "exposedPort" })
@@ -29,12 +32,18 @@ export class ConnectionInfoV2 extends SpeakeasyBase {
     exposedPort?: ExposedPort;
 
     /**
-     * Unique identifier to a game session or match. Use either a system generated ID or pass in your own.
+     * Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
+     *
+     * @remarks
+     * Note: error will be returned if `roomId` is not globally unique.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "roomId" })
     roomId: string;
 
+    /**
+     * `exposedPort` will only be available when the `status` of a room is "active".
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "status" })
     status: ConnectionInfoV2Status;

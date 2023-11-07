@@ -18,12 +18,12 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 
   const res = await sdk.billingV1.getBalance();
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -41,7 +41,11 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 ### Response
 
 **Promise<[operations.GetBalanceResponse](../../models/operations/getbalanceresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getInvoices
 
@@ -53,12 +57,12 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 
   const res = await sdk.billingV1.getInvoices();
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -76,7 +80,11 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 ### Response
 
 **Promise<[operations.GetInvoicesResponse](../../models/operations/getinvoicesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getPaymentMethod
 
@@ -88,12 +96,12 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 
   const res = await sdk.billingV1.getPaymentMethod();
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -111,7 +119,11 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 ### Response
 
 **Promise<[operations.GetPaymentMethodResponse](../../models/operations/getpaymentmethodresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## initStripeCustomerPortalUrl
 
@@ -123,14 +135,14 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 
   const res = await sdk.billingV1.initStripeCustomerPortalUrl({
     returnUrl: "string",
   });
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -149,4 +161,8 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 ### Response
 
 **Promise<[operations.InitStripeCustomerPortalUrlResponse](../../models/operations/initstripecustomerportalurlresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

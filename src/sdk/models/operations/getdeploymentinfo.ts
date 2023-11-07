@@ -7,11 +7,11 @@ import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class GetDeploymentInfoRequest extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
-
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=deploymentId" })
     deploymentId: number;
+
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId?: string;
 }
 
 export class GetDeploymentInfoResponse extends SpeakeasyBase {

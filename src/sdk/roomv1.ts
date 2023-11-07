@@ -9,6 +9,10 @@ import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
+/**
+ * Deprecated. Use [RoomV2](https://hathora.dev/api#tag/RoomV2).
+ */
+
 export class RoomV1 {
     private sdkConfiguration: SDKConfiguration;
 
@@ -20,13 +24,13 @@ export class RoomV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createRoomDeprecated(
-        createRoomRequest: shared.CreateRoomRequest,
-        appId: string,
+        createRoomParams: shared.CreateRoomParams,
+        appId?: string,
         roomId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.CreateRoomDeprecatedResponse> {
         const req = new operations.CreateRoomDeprecatedRequest({
-            createRoomRequest: createRoomRequest,
+            createRoomParams: createRoomParams,
             appId: appId,
             roomId: roomId,
         });
@@ -34,16 +38,17 @@ export class RoomV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/rooms/v1/{appId}/create", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/rooms/v1/{appId}/create",
+            req,
+            this.sdkConfiguration.globals
+        );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
-            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-                req,
-                "createRoomRequest",
-                "json"
-            );
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "createRoomParams", "json");
         } catch (e: unknown) {
             if (e instanceof Error) {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -63,7 +68,7 @@ export class RoomV1 {
             ...config?.headers,
             ...properties.headers,
         };
-        const queryParams: string = utils.serializeQueryParams(req);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
@@ -106,6 +111,7 @@ export class RoomV1 {
                 }
                 break;
             case httpRes?.status == 400 ||
+                httpRes?.status == 402 ||
                 httpRes?.status == 403 ||
                 httpRes?.status == 404 ||
                 (httpRes?.status >= 400 && httpRes?.status < 500) ||
@@ -126,19 +132,24 @@ export class RoomV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async destroyRoomDeprecated(
-        appId: string,
         roomId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.DestroyRoomDeprecatedResponse> {
         const req = new operations.DestroyRoomDeprecatedRequest({
-            appId: appId,
             roomId: roomId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/rooms/v1/{appId}/destroy/{roomId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/rooms/v1/{appId}/destroy/{roomId}",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -196,13 +207,13 @@ export class RoomV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getActiveRoomsForProcessDeprecated(
-        appId: string,
         processId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetActiveRoomsForProcessDeprecatedResponse> {
         const req = new operations.GetActiveRoomsForProcessDeprecatedRequest({
-            appId: appId,
             processId: processId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
@@ -211,7 +222,8 @@ export class RoomV1 {
         const url: string = utils.generateURL(
             baseURL,
             "/rooms/v1/{appId}/list/{processId}/active",
-            req
+            req,
+            this.sdkConfiguration.globals
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
@@ -286,13 +298,13 @@ export class RoomV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getConnectionInfoDeprecated(
-        appId: string,
         roomId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetConnectionInfoDeprecatedResponse> {
         const req = new operations.GetConnectionInfoDeprecatedRequest({
-            appId: appId,
             roomId: roomId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
@@ -301,7 +313,8 @@ export class RoomV1 {
         const url: string = utils.generateURL(
             baseURL,
             "/rooms/v1/{appId}/connectioninfo/{roomId}",
-            req
+            req,
+            this.sdkConfiguration.globals
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
@@ -372,13 +385,13 @@ export class RoomV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getInactiveRoomsForProcessDeprecated(
-        appId: string,
         processId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetInactiveRoomsForProcessDeprecatedResponse> {
         const req = new operations.GetInactiveRoomsForProcessDeprecatedRequest({
-            appId: appId,
             processId: processId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
@@ -387,7 +400,8 @@ export class RoomV1 {
         const url: string = utils.generateURL(
             baseURL,
             "/rooms/v1/{appId}/list/{processId}/inactive",
-            req
+            req,
+            this.sdkConfiguration.globals
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
@@ -462,19 +476,24 @@ export class RoomV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getRoomInfoDeprecated(
-        appId: string,
         roomId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetRoomInfoDeprecatedResponse> {
         const req = new operations.GetRoomInfoDeprecatedRequest({
-            appId: appId,
             roomId: roomId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/rooms/v1/{appId}/info/{roomId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/rooms/v1/{appId}/info/{roomId}",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -542,19 +561,24 @@ export class RoomV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async suspendRoomDeprecated(
-        appId: string,
         roomId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.SuspendRoomDeprecatedResponse> {
         const req = new operations.SuspendRoomDeprecatedRequest({
-            appId: appId,
             roomId: roomId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/rooms/v1/{appId}/suspend/{roomId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/rooms/v1/{appId}/suspend/{roomId}",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {

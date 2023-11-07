@@ -7,4 +7,4 @@
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
 | `host`                                         | *string*                                       | :heavy_check_mark:                             | N/A                                            |
 | `port`                                         | *number*                                       | :heavy_check_mark:                             | N/A                                            |
-| `region`                                       | [shared.Region](../../models/shared/region.md) | :heavy_check_mark:                             | Available regions to request a game server.    |
+| `region`                                       | [shared.Region](../../models/shared/region.md) | :heavy_check_mark:                             | N/A                                            |

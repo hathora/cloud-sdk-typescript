@@ -11,26 +11,23 @@ export class RegionalContainerTags extends SpeakeasyBase {
     @Expose({ name: "containerTag" })
     containerTag: string;
 
-    /**
-     * Available regions to request a game server.
-     */
     @SpeakeasyMetadata()
     @Expose({ name: "region" })
     region: Region;
 }
 
 /**
- * Status of creating a build.
+ * Current status of your build.
  *
  * @remarks
  *
- * `created`: a new `buildId` was generated
+ * `created`: a build was created but not yet run
  *
- * `running`: the container image is being built
+ * `running`: the build process is actively executing
  *
- * `succeeded`: the container image was successfully built and stored in our registry
+ * `succeeded`: the game server artifact was successfully built and stored in the Hathora registries
  *
- * `failed`: there was an issue creating and storing the container image in our container registry
+ * `failed`: the build process was unsuccessful, most likely due to an error with the `Dockerfile`
  */
 export enum Status {
     Created = "created",
@@ -40,7 +37,7 @@ export enum Status {
 }
 
 /**
- * Build is a versioned artifact for a game server's container image and its data.
+ * A build represents a game server artifact and its associated metadata.
  */
 export class Build extends SpeakeasyBase {
     /**
@@ -57,8 +54,12 @@ export class Build extends SpeakeasyBase {
     @Expose({ name: "buildId" })
     buildId: number;
 
+    @SpeakeasyMetadata()
+    @Expose({ name: "buildTag" })
+    buildTag: string;
+
     /**
-     * When a new `buildId` is generated.
+     * When [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild) is called.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "createdAt" })
@@ -73,7 +74,7 @@ export class Build extends SpeakeasyBase {
     createdBy: string;
 
     /**
-     * When the container image was deleted.
+     * When the build was deleted.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "deletedAt" })
@@ -81,7 +82,7 @@ export class Build extends SpeakeasyBase {
     deletedAt: Date;
 
     /**
-     * When the container image finished being built.
+     * When [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) finished executing.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "finishedAt" })
@@ -89,14 +90,14 @@ export class Build extends SpeakeasyBase {
     finishedAt: Date;
 
     /**
-     * Image size in MB.
+     * The size (in bytes) of the Docker image built by Hathora.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "imageSize" })
     imageSize: number;
 
     /**
-     * An alias for the container image in our regional registries.
+     * Identifiers for the containers stored in Hathora's registries.
      */
     @SpeakeasyMetadata({ elemType: RegionalContainerTags })
     @Expose({ name: "regionalContainerTags" })
@@ -104,7 +105,7 @@ export class Build extends SpeakeasyBase {
     regionalContainerTags: RegionalContainerTags[];
 
     /**
-     * When the container image starts getting built.
+     * When [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) is called.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "startedAt" })
@@ -112,17 +113,17 @@ export class Build extends SpeakeasyBase {
     startedAt: Date;
 
     /**
-     * Status of creating a build.
+     * Current status of your build.
      *
      * @remarks
      *
-     * `created`: a new `buildId` was generated
+     * `created`: a build was created but not yet run
      *
-     * `running`: the container image is being built
+     * `running`: the build process is actively executing
      *
-     * `succeeded`: the container image was successfully built and stored in our registry
+     * `succeeded`: the game server artifact was successfully built and stored in the Hathora registries
      *
-     * `failed`: there was an issue creating and storing the container image in our container registry
+     * `failed`: the build process was unsuccessful, most likely due to an error with the `Dockerfile`
      */
     @SpeakeasyMetadata()
     @Expose({ name: "status" })

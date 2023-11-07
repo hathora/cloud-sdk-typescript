@@ -22,18 +22,17 @@ import { MetricName } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 
   const res = await sdk.metricsV1.getMetrics({
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
     metrics: [
       MetricName.RateEgress,
     ],
     processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
   });
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -52,4 +51,8 @@ import { MetricName } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared
 ### Response
 
 **Promise<[operations.GetMetricsResponse](../../models/operations/getmetricsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

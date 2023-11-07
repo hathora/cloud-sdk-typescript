@@ -8,7 +8,7 @@ import { AxiosResponse } from "axios";
 
 export class LoginAnonymousRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 }
 
 export class LoginAnonymousResponse extends SpeakeasyBase {

@@ -8,7 +8,7 @@ import { AxiosResponse } from "axios";
 
 export class GetMetricsRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 
     /**
      * Unix timestamp. Default is current time.

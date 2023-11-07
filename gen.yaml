@@ -1,19 +1,13 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 5d493c13d7ba103babf8acc1a95da638
+  docChecksum: 8b893b9f36e7a7735b285df2e0f3b04f
   docVersion: 0.0.1
-  speakeasyVersion: 1.114.1
-  generationVersion: 2.181.1
+  speakeasyVersion: 1.115.0
+  generationVersion: 2.183.0
 generation:
-  comments:
-    disableComments: false
-    omitDescriptionIfSummaryPresent: false
-  baseServerURL: ""
-  flattenGlobalSecurity: true
-  repoURL: https://github.com/hathora/cloud-sdk-typescript.git
+  comments: {}
   sdkClassName: Hathora-Cloud
-  singleTagPerOp: false
-  tagNamespacingDisabled: false
+  repoURL: https://github.com/hathora/cloud-sdk-typescript.git
 features:
   typescript:
     core: 3.1.0
@@ -21,8 +15,10 @@ features:
     flattening: 2.81.1
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
+    globals: 2.81.1
+    methodSecurity: 2.82.0
 typescript:
-  version: 2.0.0
+  version: 2.0.1
   author: Hathora
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false

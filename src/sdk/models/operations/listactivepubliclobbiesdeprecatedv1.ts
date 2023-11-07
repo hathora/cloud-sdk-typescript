@@ -6,21 +6,18 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
-export class ListActivePublicLobbiesDeprecatedRequest extends SpeakeasyBase {
+export class ListActivePublicLobbiesDeprecatedV1Request extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=local" })
     local?: boolean;
 
-    /**
-     * Available regions to request a game server.
-     */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=region" })
     region?: shared.Region;
 }
 
-export class ListActivePublicLobbiesDeprecatedResponse extends SpeakeasyBase {
+export class ListActivePublicLobbiesDeprecatedV1Response extends SpeakeasyBase {
     /**
      * Ok
      */

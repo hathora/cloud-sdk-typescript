@@ -21,18 +21,18 @@ export class DeploymentV1 {
     }
 
     /**
-     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
      */
     async createDeployment(
         deploymentConfig: shared.DeploymentConfig,
-        appId: string,
         buildId: number,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.CreateDeploymentResponse> {
         const req = new operations.CreateDeploymentRequest({
             deploymentConfig: deploymentConfig,
-            appId: appId,
             buildId: buildId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
@@ -41,7 +41,8 @@ export class DeploymentV1 {
         const url: string = utils.generateURL(
             baseURL,
             "/deployments/v1/{appId}/create/{buildId}",
-            req
+            req,
+            this.sdkConfiguration.globals
         );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -124,16 +125,16 @@ export class DeploymentV1 {
     }
 
     /**
-     * Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId`.
+     * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
      */
     async getDeploymentInfo(
-        appId: string,
         deploymentId: number,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetDeploymentInfoResponse> {
         const req = new operations.GetDeploymentInfoRequest({
-            appId: appId,
             deploymentId: deploymentId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
@@ -142,7 +143,8 @@ export class DeploymentV1 {
         const url: string = utils.generateURL(
             baseURL,
             "/deployments/v1/{appId}/info/{deploymentId}",
-            req
+            req,
+            this.sdkConfiguration.globals
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
@@ -207,10 +209,10 @@ export class DeploymentV1 {
     }
 
     /**
-     * Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
     async getDeployments(
-        appId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetDeploymentsResponse> {
         const req = new operations.GetDeploymentsRequest({
@@ -220,7 +222,12 @@ export class DeploymentV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/deployments/v1/{appId}/list", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/deployments/v1/{appId}/list",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {

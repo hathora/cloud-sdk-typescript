@@ -10,11 +10,11 @@ export class CreateDeploymentRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
     deploymentConfig: shared.DeploymentConfig;
 
-    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
-
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=buildId" })
     buildId: number;
+
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId?: string;
 }
 
 export class CreateDeploymentResponse extends SpeakeasyBase {

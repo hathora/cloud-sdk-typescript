@@ -1,7 +1,5 @@
 # Region
 
-Available regions to request a game server.
-
 
 ## Values
 

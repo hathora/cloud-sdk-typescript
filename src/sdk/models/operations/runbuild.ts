@@ -22,11 +22,11 @@ export class RunBuildRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=multipart/form-data" })
     requestBody: RunBuildRequestBody;
 
-    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
-
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=buildId" })
     buildId: number;
+
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId?: string;
 }
 
 export class RunBuildResponse extends SpeakeasyBase {
