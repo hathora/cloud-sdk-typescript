@@ -21,11 +21,9 @@ jobs:
       languages: |
         - typescript
       mode: pr
-      openapi_doc_auth_header: x-api-key
       openapi_docs: |
-        - https://app.speakeasyapi.dev/v1/apis/Hathora-Cloud/version/v1.0.0/schema/download
+        - https://hathora.dev/swagger.json
       speakeasy_version: latest
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      openapi_doc_auth_token: ${{ secrets.SPEAKEASY_API_KEY }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
