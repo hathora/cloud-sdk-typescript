@@ -5,9 +5,15 @@ management:
   speakeasyVersion: 1.114.1
   generationVersion: 2.181.1
 generation:
-  comments: {}
-  sdkClassName: Hathora-Cloud
+  comments:
+    disableComments: false
+    omitDescriptionIfSummaryPresent: false
+  baseServerURL: ""
+  flattenGlobalSecurity: true
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
+  sdkClassName: Hathora-Cloud
+  singleTagPerOp: false
+  tagNamespacingDisabled: false
 features:
   typescript:
     core: 3.1.0
