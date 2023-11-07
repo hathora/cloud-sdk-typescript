@@ -7,6 +7,13 @@ import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
+export class CreatePrivateLobbySecurity extends SpeakeasyBase {
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    playerAuth: string;
+}
+
 export class CreatePrivateLobbyRequestBody extends SpeakeasyBase {
     /**
      * User input to initialize the game state. Object must be smaller than 64KB.
@@ -16,9 +23,6 @@ export class CreatePrivateLobbyRequestBody extends SpeakeasyBase {
     @Type(() => shared.LobbyInitialConfig)
     initialConfig: shared.LobbyInitialConfig;
 
-    /**
-     * Available regions to request a game server.
-     */
     @SpeakeasyMetadata()
     @Expose({ name: "region" })
     region: shared.Region;
@@ -29,7 +33,7 @@ export class CreatePrivateLobbyRequest extends SpeakeasyBase {
     requestBody: CreatePrivateLobbyRequestBody;
 
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=roomId" })
     roomId?: string;

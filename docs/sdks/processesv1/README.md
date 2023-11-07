@@ -7,13 +7,13 @@ Operations to get data on active and stopped [processes](https://hathora.dev/doc
 
 ### Available Operations
 
-* [getProcessInfo](#getprocessinfo) - Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
-* [getRunningProcesses](#getrunningprocesses) - Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
-* [getStoppedProcesses](#getstoppedprocesses) - Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+* [getProcessInfo](#getprocessinfo) - Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
+* [getRunningProcesses](#getrunningprocesses) - Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
+* [getStoppedProcesses](#getstoppedprocesses) - Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
 
 ## getProcessInfo
 
-Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
 
 ### Example Usage
 
@@ -24,14 +24,14 @@ import { GetProcessInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/mo
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
-const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
+const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
-  const res = await sdk.processesV1.getProcessInfo(appId, processId);
-
+  const res = await sdk.processesV1.getProcessInfo(processId, appId);
 
   if (res.statusCode == 200) {
     // handle response
@@ -43,19 +43,23 @@ const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
 | `processId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | cbfcddd2-0006-43ae-996c-995fff7bed2e                         |
+| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
 **Promise<[operations.GetProcessInfoResponse](../../models/operations/getprocessinforesponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getRunningProcesses
 
-Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
 
 ### Example Usage
 
@@ -67,14 +71,14 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const region: Region = Region.Tokyo;
 
   const res = await sdk.processesV1.getRunningProcesses(appId, region);
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -86,19 +90,23 @@ const region: Region = Region.Tokyo;
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
-| `region`                                                     | [shared.Region](../../models/shared/region.md)               | :heavy_minus_sign:                                           | Available regions to request a game server.                  |                                                              |
+| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `region`                                                     | [shared.Region](../../models/shared/region.md)               | :heavy_minus_sign:                                           | N/A                                                          |                                                              |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
 **Promise<[operations.GetRunningProcessesResponse](../../models/operations/getrunningprocessesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getStoppedProcesses
 
-Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
 
 ### Example Usage
 
@@ -110,14 +118,14 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const region: Region = Region.Sydney;
 
   const res = await sdk.processesV1.getStoppedProcesses(appId, region);
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -129,12 +137,16 @@ const region: Region = Region.Sydney;
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
-| `region`                                                     | [shared.Region](../../models/shared/region.md)               | :heavy_minus_sign:                                           | Available regions to request a game server.                  |                                                              |
+| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `region`                                                     | [shared.Region](../../models/shared/region.md)               | :heavy_minus_sign:                                           | N/A                                                          |                                                              |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
 **Promise<[operations.GetStoppedProcessesResponse](../../models/operations/getstoppedprocessesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

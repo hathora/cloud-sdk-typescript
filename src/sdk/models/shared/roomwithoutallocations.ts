@@ -7,7 +7,7 @@ import { RoomStatus } from "./roomstatus";
 import { Expose, Transform, Type } from "class-transformer";
 
 /**
- * Metadata on allocated instances of a room.
+ * Metadata on an allocated instance of a room.
  */
 export class RoomWithoutAllocationsCurrentAllocation extends SpeakeasyBase {
     /**
@@ -51,8 +51,15 @@ export class RoomWithoutAllocations extends SpeakeasyBase {
     @Type(() => RoomWithoutAllocationsCurrentAllocation)
     currentAllocation: RoomWithoutAllocationsCurrentAllocation;
 
+    @SpeakeasyMetadata()
+    @Expose({ name: "roomConfig" })
+    roomConfig: string;
+
     /**
-     * Unique identifier to a game session or match. Use either a system generated ID or pass in your own.
+     * Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
+     *
+     * @remarks
+     * Note: error will be returned if `roomId` is not globally unique.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "roomId" })

@@ -10,7 +10,7 @@ import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
 /**
- * Operations that allow you to configure authentication for your [applications](https://hathora.dev/docs/concepts/hathora-entities#application).
+ * Operations that allow you to generate a Hathora-signed [JSON web token (JWT)](https://jwt.io/) for [player authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service).
  */
 
 export class AuthV1 {
@@ -20,8 +20,11 @@ export class AuthV1 {
         this.sdkConfiguration = sdkConfig;
     }
 
+    /**
+     * Returns a unique player token for an anonymous user.
+     */
     async loginAnonymous(
-        appId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.LoginAnonymousResponse> {
         const req = new operations.LoginAnonymousRequest({
@@ -31,7 +34,12 @@ export class AuthV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/auth/v1/{appId}/login/anonymous", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/auth/v1/{appId}/login/anonymous",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -97,9 +105,12 @@ export class AuthV1 {
         return res;
     }
 
+    /**
+     * Returns a unique player token using a Google-signed OIDC `idToken`.
+     */
     async loginGoogle(
         loginGoogleRequest: shared.LoginGoogleRequest,
-        appId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.LoginGoogleResponse> {
         const req = new operations.LoginGoogleRequest({
@@ -110,7 +121,12 @@ export class AuthV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/auth/v1/{appId}/login/google", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/auth/v1/{appId}/login/google",
+            req,
+            this.sdkConfiguration.globals
+        );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -197,9 +213,12 @@ export class AuthV1 {
         return res;
     }
 
+    /**
+     * Returns a unique player token with a specified nickname for a user.
+     */
     async loginNickname(
         loginNicknameRequest: shared.LoginNicknameRequest,
-        appId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.LoginNicknameResponse> {
         const req = new operations.LoginNicknameRequest({
@@ -210,7 +229,12 @@ export class AuthV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/auth/v1/{appId}/login/nickname", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/auth/v1/{appId}/login/nickname",
+            req,
+            this.sdkConfiguration.globals
+        );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 

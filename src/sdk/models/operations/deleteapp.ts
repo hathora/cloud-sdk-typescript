@@ -7,7 +7,7 @@ import { AxiosResponse } from "axios";
 
 export class DeleteAppRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 }
 
 export class DeleteAppResponse extends SpeakeasyBase {

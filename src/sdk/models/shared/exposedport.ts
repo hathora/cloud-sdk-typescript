@@ -7,7 +7,7 @@ import { TransportType } from "./transporttype";
 import { Expose } from "class-transformer";
 
 /**
- * Connection information to an exposed port on an active process.
+ * Connection details for an active process.
  */
 export class ExposedPort extends SpeakeasyBase {
     @SpeakeasyMetadata()

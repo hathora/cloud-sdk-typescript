@@ -11,7 +11,7 @@ export class UpdateAppRequest extends SpeakeasyBase {
     appConfig: shared.AppConfig;
 
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 }
 
 export class UpdateAppResponse extends SpeakeasyBase {

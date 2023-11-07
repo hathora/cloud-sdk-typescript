@@ -12,6 +12,7 @@ import { DeploymentV1 } from "./deploymentv1";
 import { DiscoveryV1 } from "./discoveryv1";
 import { LobbyV1 } from "./lobbyv1";
 import { LobbyV2 } from "./lobbyv2";
+import { LobbyV3 } from "./lobbyv3";
 import { LogV1 } from "./logv1";
 import { ManagementV1 } from "./managementv1";
 import { MetricsV1 } from "./metricsv1";
@@ -34,6 +35,11 @@ export type SDKProps = {
      * The security details required to authenticate the SDK
      */
     security?: shared.Security | (() => Promise<shared.Security>);
+
+    /**
+     * Allows setting the appId parameter for all supported operations
+     */
+    appId?: string;
 
     /**
      * Allows overriding the default axios client used by the SDK
@@ -62,9 +68,10 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.0.1";
-    sdkVersion = "2.0.0";
-    genVersion = "2.181.1";
-    userAgent = "speakeasy-sdk/typescript 2.0.0 2.181.1 0.0.1 @hathora/cloud-sdk-typescript";
+    sdkVersion = "2.0.1";
+    genVersion = "2.183.0";
+    userAgent = "speakeasy-sdk/typescript 2.0.1 2.183.0 0.0.1 @hathora/cloud-sdk-typescript";
+    globals: any;
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -80,12 +87,12 @@ export class HathoraCloud {
      */
     public appV1: AppV1;
     /**
-     * Operations that allow you to configure authentication for your [applications](https://hathora.dev/docs/concepts/hathora-entities#application).
+     * Operations that allow you to generate a Hathora-signed [JSON web token (JWT)](https://jwt.io/) for [player authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service).
      */
     public authV1: AuthV1;
     public billingV1: BillingV1;
     /**
-     * Operations that allow you create and manage your [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Operations that allow you create and manage your [builds](https://hathora.dev/docs/concepts/hathora-entities#build).
      */
     public buildV1: BuildV1;
     /**
@@ -96,11 +103,18 @@ export class HathoraCloud {
      * Service that allows clients to directly ping all Hathora regions to get latency information
      */
     public discoveryV1: DiscoveryV1;
+    /**
+     * Deprecated. Use [LobbyV3](https://hathora.dev/api#tag/LobbyV3).
+     */
     public lobbyV1: LobbyV1;
     /**
-     * Operations to create and manage [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby).
+     * Deprecated. Use [LobbyV3](https://hathora.dev/api#tag/LobbyV3).
      */
     public lobbyV2: LobbyV2;
+    /**
+     * Operations to create and manage lobbies using our [Lobby Service](https://hathora.dev/docs/lobbies-and-matchmaking/lobby-service).
+     */
+    public lobbyV3: LobbyV3;
     /**
      * Operations to get logs by [applications](https://hathora.dev/docs/concepts/hathora-entities#application), [processes](https://hathora.dev/docs/concepts/hathora-entities#process), and [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment). We store 20GB of logs data.
      */
@@ -114,6 +128,9 @@ export class HathoraCloud {
      * Operations to get data on active and stopped [processes](https://hathora.dev/docs/concepts/hathora-entities#process).
      */
     public processesV1: ProcessesV1;
+    /**
+     * Deprecated. Use [RoomV2](https://hathora.dev/api#tag/RoomV2).
+     */
     public roomV1: RoomV1;
     /**
      * Operations to create, manage, and connect to [rooms](https://hathora.dev/docs/concepts/hathora-entities#room).
@@ -135,6 +152,14 @@ export class HathoraCloud {
             defaultClient: defaultClient,
             security: props?.security,
             serverURL: serverURL,
+            globals: {
+                parameters: {
+                    queryParam: {},
+                    pathParam: {
+                        appId: props?.appId,
+                    },
+                },
+            },
             retryConfig: props?.retryConfig,
         });
 
@@ -146,6 +171,7 @@ export class HathoraCloud {
         this.discoveryV1 = new DiscoveryV1(this.sdkConfiguration);
         this.lobbyV1 = new LobbyV1(this.sdkConfiguration);
         this.lobbyV2 = new LobbyV2(this.sdkConfiguration);
+        this.lobbyV3 = new LobbyV3(this.sdkConfiguration);
         this.logV1 = new LogV1(this.sdkConfiguration);
         this.managementV1 = new ManagementV1(this.sdkConfiguration);
         this.metricsV1 = new MetricsV1(this.sdkConfiguration);

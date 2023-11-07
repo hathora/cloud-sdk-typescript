@@ -15,14 +15,14 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 
   const res = await sdk.managementV1.sendVerificationEmail({
     userId: "string",
   });
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -41,4 +41,8 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 ### Response
 
 **Promise<[operations.SendVerificationEmailResponse](../../models/operations/sendverificationemailresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

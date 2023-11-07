@@ -3,37 +3,8 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { RecordStringNever } from "./recordstringnever";
+import { AuthConfiguration } from "./authconfiguration";
 import { Expose, Type } from "class-transformer";
-
-export class Google extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    @Expose({ name: "clientId" })
-    clientId: string;
-}
-
-export class AuthConfiguration extends SpeakeasyBase {
-    /**
-     * Construct a type with a set of properties K of type T
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "anonymous" })
-    @Type(() => RecordStringNever)
-    anonymous?: RecordStringNever;
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "google" })
-    @Type(() => Google)
-    google?: Google;
-
-    /**
-     * Construct a type with a set of properties K of type T
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "nickname" })
-    @Type(() => RecordStringNever)
-    nickname?: RecordStringNever;
-}
 
 export class AppConfig extends SpeakeasyBase {
     /**
@@ -43,6 +14,9 @@ export class AppConfig extends SpeakeasyBase {
     @Expose({ name: "appName" })
     appName: string;
 
+    /**
+     * Configure [player authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service) for your application. Use Hathora's built-in auth providers or use your own [custom authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service#custom-auth-provider).
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "authConfiguration" })
     @Type(() => AuthConfiguration)

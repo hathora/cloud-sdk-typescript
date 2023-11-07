@@ -7,8 +7,11 @@ import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class CreateBuildRequest extends SpeakeasyBase {
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    createBuildParams: shared.CreateBuildParams;
+
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 }
 
 export class CreateBuildResponse extends SpeakeasyBase {

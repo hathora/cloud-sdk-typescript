@@ -11,7 +11,7 @@ export class LoginGoogleRequest extends SpeakeasyBase {
     loginGoogleRequest: shared.LoginGoogleRequest;
 
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 }
 
 export class LoginGoogleResponse extends SpeakeasyBase {

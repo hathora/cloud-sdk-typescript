@@ -19,6 +19,9 @@ export class ProcessWithRooms extends SpeakeasyBase {
     @Expose({ name: "activeConnections" })
     activeConnections: number;
 
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "activeConnectionsUpdatedAt" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
@@ -58,7 +61,7 @@ export class ProcessWithRooms extends SpeakeasyBase {
     egressedBytes: number;
 
     /**
-     * Connection information to an exposed port on an active process.
+     * Connection details for an active process.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "exposedPort" })
@@ -94,20 +97,20 @@ export class ProcessWithRooms extends SpeakeasyBase {
     @Expose({ name: "processId" })
     processId: string;
 
-    /**
-     * Available regions to request a game server.
-     */
     @SpeakeasyMetadata()
     @Expose({ name: "region" })
     region: Region;
 
     /**
-     * Tracks the number of room slots available on the process.
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "roomSlotsAvailable" })
     roomSlotsAvailable: number;
 
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "roomSlotsAvailableUpdatedAt" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
@@ -117,6 +120,18 @@ export class ProcessWithRooms extends SpeakeasyBase {
     @Expose({ name: "rooms" })
     @Type(() => RoomWithoutAllocations)
     rooms: RoomWithoutAllocations[];
+
+    /**
+     * Tracks the number of rooms that have been allocated to the process.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "roomsAllocated" })
+    roomsAllocated: number;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "roomsAllocatedUpdatedAt" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    roomsAllocatedUpdatedAt: Date;
 
     /**
      * Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process.

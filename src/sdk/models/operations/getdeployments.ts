@@ -8,7 +8,7 @@ import { AxiosResponse } from "axios";
 
 export class GetDeploymentsRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 }
 
 export class GetDeploymentsResponse extends SpeakeasyBase {

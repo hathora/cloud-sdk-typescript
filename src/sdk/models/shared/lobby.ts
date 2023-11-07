@@ -54,19 +54,23 @@ export class Lobby extends SpeakeasyBase {
     @Expose({ name: "local" })
     local: boolean;
 
-    /**
-     * Available regions to request a game server.
-     */
     @SpeakeasyMetadata()
     @Expose({ name: "region" })
     region: Region;
 
     /**
-     * Unique identifier to a game session or match. Use either a system generated ID or pass in your own.
+     * Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
+     *
+     * @remarks
+     * Note: error will be returned if `roomId` is not globally unique.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "roomId" })
     roomId: string;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "shortCode" })
+    shortCode: string;
 
     /**
      * JSON blob to store metadata for a room. Must be smaller than 1MB.

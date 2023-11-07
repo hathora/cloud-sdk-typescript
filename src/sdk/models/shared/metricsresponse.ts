@@ -11,6 +11,11 @@ import { Expose, Type } from "class-transformer";
  */
 export class MetricsResponse extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: MetricValue })
+    @Expose({ name: "active_connections" })
+    @Type(() => MetricValue)
+    activeConnections?: MetricValue[];
+
+    @SpeakeasyMetadata({ elemType: MetricValue })
     @Expose({ name: "cpu" })
     @Type(() => MetricValue)
     cpu?: MetricValue[];

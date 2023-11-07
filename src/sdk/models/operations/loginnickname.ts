@@ -11,7 +11,7 @@ export class LoginNicknameRequest extends SpeakeasyBase {
     loginNicknameRequest: shared.LoginNicknameRequest;
 
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 }
 
 export class LoginNicknameResponse extends SpeakeasyBase {

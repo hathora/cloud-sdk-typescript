@@ -3,40 +3,8 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { RecordStringNever } from "./recordstringnever";
+import { AuthConfiguration } from "./authconfiguration";
 import { Expose, Transform, Type } from "class-transformer";
-
-export class ApplicationGoogle extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    @Expose({ name: "clientId" })
-    clientId: string;
-}
-
-/**
- * Used to authenticate player requests. Use your own authentication or Hathora's Auth Client.
- */
-export class ApplicationAuthConfiguration extends SpeakeasyBase {
-    /**
-     * Construct a type with a set of properties K of type T
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "anonymous" })
-    @Type(() => RecordStringNever)
-    anonymous?: RecordStringNever;
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "google" })
-    @Type(() => ApplicationGoogle)
-    google?: ApplicationGoogle;
-
-    /**
-     * Construct a type with a set of properties K of type T
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "nickname" })
-    @Type(() => RecordStringNever)
-    nickname?: RecordStringNever;
-}
 
 /**
  * An application object is the top level namespace for the game server.
@@ -64,12 +32,12 @@ export class Application extends SpeakeasyBase {
     appSecret: string;
 
     /**
-     * Used to authenticate player requests. Use your own authentication or Hathora's Auth Client.
+     * Configure [player authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service) for your application. Use Hathora's built-in auth providers or use your own [custom authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service#custom-auth-provider).
      */
     @SpeakeasyMetadata()
     @Expose({ name: "authConfiguration" })
-    @Type(() => ApplicationAuthConfiguration)
-    authConfiguration: ApplicationAuthConfiguration;
+    @Type(() => AuthConfiguration)
+    authConfiguration: AuthConfiguration;
 
     /**
      * When the application was created.

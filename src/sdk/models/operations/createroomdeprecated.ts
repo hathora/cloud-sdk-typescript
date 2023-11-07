@@ -8,10 +8,10 @@ import { AxiosResponse } from "axios";
 
 export class CreateRoomDeprecatedRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-    createRoomRequest: shared.CreateRoomRequest;
+    createRoomParams: shared.CreateRoomParams;
 
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=roomId" })
     roomId?: string;

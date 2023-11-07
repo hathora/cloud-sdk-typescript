@@ -6,6 +6,9 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class LoginResponse extends SpeakeasyBase {
+    /**
+     * A unique Hathora-signed JWT player token.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "token" })
     token: string;

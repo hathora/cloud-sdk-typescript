@@ -25,8 +25,9 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 
   const res = await sdk.appV1.createApp({
@@ -39,7 +40,6 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
       nickname: {},
     },
   });
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -58,7 +58,11 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 ### Response
 
 **Promise<[operations.CreateAppResponse](../../models/operations/createappresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## deleteApp
 
@@ -73,13 +77,13 @@ import { DeleteAppRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
   const res = await sdk.appV1.deleteApp(appId);
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -91,14 +95,18 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
 **Promise<[operations.DeleteAppResponse](../../models/operations/deleteappresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getAppInfo
 
@@ -113,13 +121,13 @@ import { GetAppInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
   const res = await sdk.appV1.getAppInfo(appId);
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -131,14 +139,18 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
 **Promise<[operations.GetAppInfoResponse](../../models/operations/getappinforesponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getApps
 
@@ -152,12 +164,12 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 
   const res = await sdk.appV1.getApps();
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -175,7 +187,11 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 ### Response
 
 **Promise<[operations.GetAppsResponse](../../models/operations/getappsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## updateApp
 
@@ -191,8 +207,9 @@ import { AppConfig, AuthConfiguration, Google, RecordStringNever } from "@hathor
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 const appConfig: AppConfig = {
   appName: "minecraft",
@@ -208,7 +225,6 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
   const res = await sdk.appV1.updateApp(appConfig, appId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -220,11 +236,15 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `appConfig`                                                  | [shared.AppConfig](../../models/shared/appconfig.md)         | :heavy_check_mark:                                           | N/A                                                          |                                                              |
-| `appId`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
 **Promise<[operations.UpdateAppResponse](../../models/operations/updateappresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

@@ -6,11 +6,11 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
 export class DeleteBuildRequest extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
-
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=buildId" })
     buildId: number;
+
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId?: string;
 }
 
 export class DeleteBuildResponse extends SpeakeasyBase {

@@ -10,7 +10,7 @@ import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
 /**
- * Operations that allow you create and manage your [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+ * Operations that allow you create and manage your [builds](https://hathora.dev/docs/concepts/hathora-entities#build).
  */
 
 export class BuildV1 {
@@ -21,20 +21,41 @@ export class BuildV1 {
     }
 
     /**
-     * Generate a new `buildId` for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. You need `buildId` to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
      */
     async createBuild(
-        appId: string,
+        createBuildParams: shared.CreateBuildParams,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.CreateBuildResponse> {
         const req = new operations.CreateBuildRequest({
+            createBuildParams: createBuildParams,
             appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/builds/v1/{appId}/create", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/builds/v1/{appId}/create",
+            req,
+            this.sdkConfiguration.globals
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "createBuildParams",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -44,7 +65,12 @@ export class BuildV1 {
             globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
-        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        const headers: RawAxiosRequestHeaders = {
+            ...reqBodyHeaders,
+            ...config?.headers,
+            ...properties.headers,
+        };
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers["user-agent"] = this.sdkConfiguration.userAgent;
@@ -55,6 +81,7 @@ export class BuildV1 {
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
+            data: reqBody,
             ...config,
         });
 
@@ -99,22 +126,27 @@ export class BuildV1 {
     }
 
     /**
-     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId` and `buildId`.
+     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
      */
     async deleteBuild(
-        appId: string,
         buildId: number,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.DeleteBuildResponse> {
         const req = new operations.DeleteBuildRequest({
-            appId: appId,
             buildId: buildId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/builds/v1/{appId}/delete/{buildId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/builds/v1/{appId}/delete/{buildId}",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -169,22 +201,27 @@ export class BuildV1 {
     }
 
     /**
-     * Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build) using `appId` and `buildId`.
+     * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
      */
     async getBuildInfo(
-        appId: string,
         buildId: number,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetBuildInfoResponse> {
         const req = new operations.GetBuildInfoRequest({
-            appId: appId,
             buildId: buildId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/builds/v1/{appId}/info/{buildId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/builds/v1/{appId}/info/{buildId}",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -248,10 +285,10 @@ export class BuildV1 {
     }
 
     /**
-     * Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
     async getBuilds(
-        appId: string,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetBuildsResponse> {
         const req = new operations.GetBuildsRequest({
@@ -261,7 +298,12 @@ export class BuildV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/builds/v1/{appId}/list", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/builds/v1/{appId}/list",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -331,24 +373,29 @@ export class BuildV1 {
     }
 
     /**
-     * Provide a tarball that will generate a container image for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Pass in `buildId` generated from Create Build.
+     * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
      */
     async runBuild(
         requestBody: operations.RunBuildRequestBody,
-        appId: string,
         buildId: number,
+        appId?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RunBuildResponse> {
         const req = new operations.RunBuildRequest({
             requestBody: requestBody,
-            appId: appId,
             buildId: buildId,
+            appId: appId,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/builds/v1/{appId}/run/{buildId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/builds/v1/{appId}/run/{buildId}",
+            req,
+            this.sdkConfiguration.globals
+        );
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 

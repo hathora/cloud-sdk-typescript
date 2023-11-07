@@ -8,13 +8,13 @@ import { AxiosResponse } from "axios";
 
 export class SetLobbyStateRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-    setLobbyStateRequest: shared.SetLobbyStateRequest;
-
-    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    setLobbyStateParams: shared.SetLobbyStateParams;
 
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=roomId" })
     roomId: string;
+
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId?: string;
 }
 
 export class SetLobbyStateResponse extends SpeakeasyBase {

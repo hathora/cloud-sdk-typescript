@@ -7,11 +7,11 @@ import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class GetRoomInfoRequest extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
-
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=roomId" })
     roomId: string;
+
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId?: string;
 }
 
 export class GetRoomInfoResponse extends SpeakeasyBase {

@@ -1,6 +1,6 @@
 # ExposedPort
 
-Connection information to an exposed port on an active process.
+Connection details for an active process.
 
 
 ## Fields

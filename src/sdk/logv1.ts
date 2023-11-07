@@ -22,6 +22,8 @@ export class LogV1 {
 
     /**
      * Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     *
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getLogsForApp(
         req: operations.GetLogsForAppRequest,
@@ -35,7 +37,12 @@ export class LogV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/logs/v1/{appId}/all", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/logs/v1/{appId}/all",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -46,7 +53,7 @@ export class LogV1 {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
-        const queryParams: string = utils.serializeQueryParams(req);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "text/plain";
 
         headers["user-agent"] = this.sdkConfiguration.userAgent;
@@ -101,6 +108,8 @@ export class LogV1 {
 
     /**
      * Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`.
+     *
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getLogsForDeployment(
         req: operations.GetLogsForDeploymentRequest,
@@ -117,7 +126,8 @@ export class LogV1 {
         const url: string = utils.generateURL(
             baseURL,
             "/logs/v1/{appId}/deployment/{deploymentId}",
-            req
+            req,
+            this.sdkConfiguration.globals
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
@@ -129,7 +139,7 @@ export class LogV1 {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
-        const queryParams: string = utils.serializeQueryParams(req);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "text/plain";
 
         headers["user-agent"] = this.sdkConfiguration.userAgent;
@@ -198,7 +208,12 @@ export class LogV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/logs/v1/{appId}/process/{processId}", req);
+        const url: string = utils.generateURL(
+            baseURL,
+            "/logs/v1/{appId}/process/{processId}",
+            req,
+            this.sdkConfiguration.globals
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -209,7 +224,7 @@ export class LogV1 {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
-        const queryParams: string = utils.serializeQueryParams(req);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "text/plain";
 
         headers["user-agent"] = this.sdkConfiguration.userAgent;
@@ -250,6 +265,7 @@ export class LogV1 {
                 break;
             case httpRes?.status == 404 ||
                 (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
                 throw new errors.SDKError(
                     "API error occurred",

@@ -8,10 +8,10 @@ import { AxiosResponse } from "axios";
 
 export class ListActivePublicLobbiesRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 
     /**
-     * Region to filter by. If omitted, active public lobbies in all regions will be returned.
+     * If omitted, active public lobbies in all regions will be returned.
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=region" })
     region?: shared.Region;
@@ -39,6 +39,6 @@ export class ListActivePublicLobbiesResponse extends SpeakeasyBase {
     /**
      * Ok
      */
-    @SpeakeasyMetadata({ elemType: shared.Lobby })
-    classes?: shared.Lobby[];
+    @SpeakeasyMetadata({ elemType: shared.LobbyV3 })
+    classes?: shared.LobbyV3[];
 }

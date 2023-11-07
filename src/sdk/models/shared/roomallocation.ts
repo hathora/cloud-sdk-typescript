@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform } from "class-transformer";
 
 /**
- * Metadata on allocated instances of a room.
+ * Metadata on an allocated instance of a room.
  */
 export class RoomAllocation extends SpeakeasyBase {
     /**

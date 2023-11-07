@@ -8,14 +8,11 @@ import { AxiosResponse } from "axios";
 
 export class GetLogsForAppRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
+    appId?: string;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=follow" })
     follow?: boolean;
 
-    /**
-     * Available regions to request a game server.
-     */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=region" })
     region?: shared.Region;
 

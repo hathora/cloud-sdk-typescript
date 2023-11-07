@@ -1,14 +1,14 @@
 # Status
 
-Status of creating a build.
+Current status of your build.
 
-`created`: a new `buildId` was generated
+`created`: a build was created but not yet run
 
-`running`: the container image is being built
+`running`: the build process is actively executing
 
-`succeeded`: the container image was successfully built and stored in our registry
+`succeeded`: the game server artifact was successfully built and stored in the Hathora registries
 
-`failed`: there was an issue creating and storing the container image in our container registry
+`failed`: the build process was unsuccessful, most likely due to an error with the `Dockerfile`
 
 
 ## Values

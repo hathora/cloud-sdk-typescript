@@ -7,13 +7,15 @@ Operations to get logs by [applications](https://hathora.dev/docs/concepts/hatho
 
 ### Available Operations
 
-* [getLogsForApp](#getlogsforapp) - Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
-* [getLogsForDeployment](#getlogsfordeployment) - Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`.
+* [~~getLogsForApp~~](#getlogsforapp) - Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. :warning: **Deprecated**
+* [~~getLogsForDeployment~~](#getlogsfordeployment) - Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`. :warning: **Deprecated**
 * [getLogsForProcess](#getlogsforprocess) - Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
 
-## getLogsForApp
+## ~~getLogsForApp~~
 
 Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -24,14 +26,14 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
-  });
-
-  const res = await sdk.logV1.getLogsForApp({
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 
+  const res = await sdk.logV1.getLogsForApp({
+    tailLines: 100,
+  });
 
   if (res.statusCode == 200) {
     // handle response
@@ -50,11 +52,17 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 ### Response
 
 **Promise<[operations.GetLogsForAppResponse](../../models/operations/getlogsforappresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
-## getLogsForDeployment
+## ~~getLogsForDeployment~~
 
 Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -64,15 +72,15 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 
   const res = await sdk.logV1.getLogsForDeployment({
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
     deploymentId: 1,
+    tailLines: 100,
   });
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -91,7 +99,11 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 ### Response
 
 **Promise<[operations.GetLogsForDeploymentResponse](../../models/operations/getlogsfordeploymentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getLogsForProcess
 
@@ -105,15 +117,15 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 (async() => {
   const sdk = new HathoraCloud({
     security: {
-      auth0: "",
+      hathoraDevToken: "",
     },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 
   const res = await sdk.logV1.getLogsForProcess({
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
     processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+    tailLines: 100,
   });
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -132,4 +144,8 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 ### Response
 
 **Promise<[operations.GetLogsForProcessResponse](../../models/operations/getlogsforprocessresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

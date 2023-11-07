@@ -7,11 +7,11 @@ import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class GetProcessInfoRequest extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
-    appId: string;
-
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=processId" })
     processId: string;
+
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId?: string;
 }
 
 export class GetProcessInfoResponse extends SpeakeasyBase {
