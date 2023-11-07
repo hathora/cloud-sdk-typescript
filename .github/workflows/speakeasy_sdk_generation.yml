@@ -23,6 +23,7 @@ jobs:
       mode: pr
       openapi_docs: |
         - https://hathora.dev/swagger.json
+      publish_typescript: true
       speakeasy_version: latest
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
