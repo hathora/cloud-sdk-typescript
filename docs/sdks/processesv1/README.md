@@ -76,7 +76,7 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-const region: Region = Region.Tokyo;
+const region: Region = Region.Singapore;
 
   const res = await sdk.processesV1.getRunningProcesses(appId, region);
 

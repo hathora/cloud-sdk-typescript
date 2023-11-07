@@ -78,7 +78,7 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
   });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const local: boolean = false;
-const region: Region = Region.Frankfurt;
+const region: Region = Region.London;
 const operationSecurity: CreatePublicLobbyDeprecatedSecurity = {
   playerAuth: "",
 };
@@ -131,7 +131,7 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
   });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const local: boolean = false;
-const region: Region = Region.Sydney;
+const region: Region = Region.Tokyo;
 
   const res = await sdk.lobbyV1.listActivePublicLobbiesDeprecatedV1(appId, local, region);
 

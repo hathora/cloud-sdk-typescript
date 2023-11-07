@@ -7,17 +7,19 @@ Deprecated. Use [LobbyV3](https://hathora.dev/api#tag/LobbyV3).
 
 ### Available Operations
 
-* [createLobbyDeprecated](#createlobbydeprecated) - Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
+* [~~createLobbyDeprecated~~](#createlobbydeprecated) - Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players. :warning: **Deprecated**
 * [~~createLocalLobby~~](#createlocallobby) - :warning: **Deprecated**
 * [~~createPrivateLobby~~](#createprivatelobby) - :warning: **Deprecated**
 * [~~createPublicLobby~~](#createpubliclobby) - :warning: **Deprecated**
-* [getLobbyInfo](#getlobbyinfo) - Get details for a lobby.
-* [listActivePublicLobbiesDeprecatedV2](#listactivepubliclobbiesdeprecatedv2) - Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
-* [setLobbyState](#setlobbystate) - Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
+* [~~getLobbyInfo~~](#getlobbyinfo) - Get details for a lobby. :warning: **Deprecated**
+* [~~listActivePublicLobbiesDeprecatedV2~~](#listactivepubliclobbiesdeprecatedv2) - Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client. :warning: **Deprecated**
+* [~~setLobbyState~~](#setlobbystate) - Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores). :warning: **Deprecated**
 
-## createLobbyDeprecated
+## ~~createLobbyDeprecated~~
 
 Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -236,9 +238,11 @@ const operationSecurity: CreatePublicLobbySecurity = {
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 400-600         | */*             |
 
-## getLobbyInfo
+## ~~getLobbyInfo~~
 
 Get details for a lobby.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -282,9 +286,11 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 400-600         | */*             |
 
-## listActivePublicLobbiesDeprecatedV2
+## ~~listActivePublicLobbiesDeprecatedV2~~
 
 Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -329,9 +335,11 @@ const region: Region = Region.Frankfurt;
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 400-600         | */*             |
 
-## setLobbyState
+## ~~setLobbyState~~
 
 Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

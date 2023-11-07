@@ -6,6 +6,7 @@
 | Name           | Value          |
 | -------------- | -------------- |
 | `Seattle`      | Seattle        |
+| `LosAngeles`   | Los_Angeles    |
 | `WashingtonDC` | Washington_DC  |
 | `Chicago`      | Chicago        |
 | `London`       | London         |

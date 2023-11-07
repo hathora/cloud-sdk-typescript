@@ -97,7 +97,7 @@ export class Build extends SpeakeasyBase {
     imageSize: number;
 
     /**
-     * Identifiers for the containers stored in Hathora's registries.
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @SpeakeasyMetadata({ elemType: RegionalContainerTags })
     @Expose({ name: "regionalContainerTags" })
