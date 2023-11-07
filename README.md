@@ -12,13 +12,13 @@
 ### NPM
 
 ```bash
-npm add https://github.com/hathora/cloud-sdk-typescript
+npm add @hathora/cloud-sdk-typescript
 ```
 
 ### Yarn
 
 ```bash
-yarn add https://github.com/hathora/cloud-sdk-typescript
+yarn add @hathora/cloud-sdk-typescript
 ```
 <!-- End SDK Installation -->
 
@@ -457,7 +457,6 @@ import { DeleteAppRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/
 })();
 
 ```
-
 <!-- End Global Parameters -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

@@ -341,3 +341,23 @@ Based on:
 - Speakeasy CLI 1.115.0 (2.183.0) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [typescript v2.0.1] .
+
+## 2023-11-07 20:59:32
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.115.0 (2.183.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v2.1.0] .
+### Releases
+- [NPM v2.1.0] https://www.npmjs.com/package/@hathora/cloud-sdk-typescript/v/2.1.0 - .
+
+## 2023-11-07 21:03:19
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.115.0 (2.183.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v2.2.0] .
+### Releases
+- [NPM v2.2.0] https://www.npmjs.com/package/@hathora/cloud-sdk-typescript/v/2.2.0 - .
