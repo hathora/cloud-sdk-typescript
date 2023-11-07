@@ -6,13 +6,13 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { RecordStringNever } from "./recordstringnever";
 import { Expose, Type } from "class-transformer";
 
-export class AppConfigAuthConfigurationGoogle extends SpeakeasyBase {
+export class Google extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "clientId" })
     clientId: string;
 }
 
-export class AppConfigAuthConfiguration extends SpeakeasyBase {
+export class AuthConfiguration extends SpeakeasyBase {
     /**
      * Construct a type with a set of properties K of type T
      */
@@ -23,8 +23,8 @@ export class AppConfigAuthConfiguration extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "google" })
-    @Type(() => AppConfigAuthConfigurationGoogle)
-    google?: AppConfigAuthConfigurationGoogle;
+    @Type(() => Google)
+    google?: Google;
 
     /**
      * Construct a type with a set of properties K of type T
@@ -45,6 +45,6 @@ export class AppConfig extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "authConfiguration" })
-    @Type(() => AppConfigAuthConfiguration)
-    authConfiguration: AppConfigAuthConfiguration;
+    @Type(() => AuthConfiguration)
+    authConfiguration: AuthConfiguration;
 }

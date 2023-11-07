@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class GetStoppedProcessesRequest extends SpeakeasyBase {
@@ -25,12 +25,6 @@ export class GetStoppedProcessesResponse extends SpeakeasyBase {
     contentType: string;
 
     /**
-     * Ok
-     */
-    @SpeakeasyMetadata({ elemType: shared.Process })
-    processes?: shared.Process[];
-
-    /**
      * HTTP response status code for this operation
      */
     @SpeakeasyMetadata()
@@ -41,4 +35,10 @@ export class GetStoppedProcessesResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    /**
+     * Ok
+     */
+    @SpeakeasyMetadata({ elemType: shared.Process })
+    classes?: shared.Process[];
 }

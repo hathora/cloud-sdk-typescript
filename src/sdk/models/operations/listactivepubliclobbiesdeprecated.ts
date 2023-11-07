@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class ListActivePublicLobbiesDeprecatedRequest extends SpeakeasyBase {
@@ -22,16 +22,16 @@ export class ListActivePublicLobbiesDeprecatedRequest extends SpeakeasyBase {
 
 export class ListActivePublicLobbiesDeprecatedResponse extends SpeakeasyBase {
     /**
+     * Ok
+     */
+    @SpeakeasyMetadata({ elemType: shared.Lobby })
+    twoHundredApplicationJsonClasses?: shared.Lobby[];
+
+    /**
      * HTTP response content type for this operation
      */
     @SpeakeasyMetadata()
     contentType: string;
-
-    /**
-     * Ok
-     */
-    @SpeakeasyMetadata({ elemType: shared.Lobby })
-    lobbies?: shared.Lobby[];
 
     /**
      * HTTP response status code for this operation

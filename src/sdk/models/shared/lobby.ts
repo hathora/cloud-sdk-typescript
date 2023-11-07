@@ -11,7 +11,7 @@ import { Expose, Transform, Type } from "class-transformer";
 /**
  * JSON blob to store metadata for a room. Must be smaller than 1MB.
  */
-export class LobbyState extends SpeakeasyBase {}
+export class State extends SpeakeasyBase {}
 
 /**
  * A lobby object allows you to store and manage metadata for your rooms.
@@ -73,8 +73,8 @@ export class Lobby extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "state" })
-    @Type(() => LobbyState)
-    state?: LobbyState;
+    @Type(() => State)
+    state?: State;
 
     /**
      * Types of lobbies a player can create.

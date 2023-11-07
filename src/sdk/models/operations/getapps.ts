@@ -3,16 +3,10 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class GetAppsResponse extends SpeakeasyBase {
-    /**
-     * Ok
-     */
-    @SpeakeasyMetadata({ elemType: shared.ApplicationWithDeployment })
-    applicationWithDeployments?: shared.ApplicationWithDeployment[];
-
     /**
      * HTTP response content type for this operation
      */
@@ -30,4 +24,10 @@ export class GetAppsResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    /**
+     * Ok
+     */
+    @SpeakeasyMetadata({ elemType: shared.ApplicationWithDeployment })
+    classes?: shared.ApplicationWithDeployment[];
 }

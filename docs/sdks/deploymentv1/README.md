@@ -1,5 +1,5 @@
 # DeploymentV1
-(*deploymentV1*)
+(*.deploymentV1*)
 
 ## Overview
 
@@ -52,6 +52,7 @@ const buildId: number = 1;
 
   const res = await sdk.deploymentV1.createDeployment(deploymentConfig, appId, buildId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -94,6 +95,7 @@ const deploymentId: number = 1;
 
   const res = await sdk.deploymentV1.getDeploymentInfo(appId, deploymentId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -133,6 +135,7 @@ import { GetDeploymentsRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/mo
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
   const res = await sdk.deploymentV1.getDeployments(appId);
+
 
   if (res.statusCode == 200) {
     // handle response

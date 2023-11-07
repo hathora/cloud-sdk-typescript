@@ -13,12 +13,6 @@ export class GetBalanceResponse extends SpeakeasyBase {
     contentType: string;
 
     /**
-     * Ok
-     */
-    @SpeakeasyMetadata()
-    getBalance200ApplicationJSONDoubleNumber?: number;
-
-    /**
      * HTTP response status code for this operation
      */
     @SpeakeasyMetadata()
@@ -29,4 +23,10 @@ export class GetBalanceResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    /**
+     * Ok
+     */
+    @SpeakeasyMetadata()
+    number?: number;
 }

@@ -1,4 +1,4 @@
-# BuildStatus
+# Status
 
 Status of creating a build.
 

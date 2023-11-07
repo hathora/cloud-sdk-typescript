@@ -1,5 +1,5 @@
 # ManagementV1
-(*managementV1*)
+(*.managementV1*)
 
 ### Available Operations
 
@@ -22,6 +22,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
   const res = await sdk.managementV1.sendVerificationEmail({
     userId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

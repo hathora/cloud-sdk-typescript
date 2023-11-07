@@ -1,4 +1,4 @@
-# RoomCurrentAllocation
+# CurrentAllocation
 
 Metadata on allocated instances of a room.
 

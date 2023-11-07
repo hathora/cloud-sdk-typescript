@@ -1,5 +1,5 @@
 # AppV1
-(*appV1*)
+(*.appV1*)
 
 ## Overview
 
@@ -40,6 +40,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
     },
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -78,6 +79,7 @@ import { DeleteAppRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
   const res = await sdk.appV1.deleteApp(appId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -118,6 +120,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
   const res = await sdk.appV1.getAppInfo(appId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -155,6 +158,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
   const res = await sdk.appV1.getApps();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -182,12 +186,7 @@ Update data for an existing [application](https://hathora.dev/docs/concepts/hath
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { UpdateAppRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import {
-  AppConfig,
-  AppConfigAuthConfiguration,
-  AppConfigAuthConfigurationGoogle,
-  RecordStringNever,
-} from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { AppConfig, AuthConfiguration, Google, RecordStringNever } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -208,6 +207,7 @@ const appConfig: AppConfig = {
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
   const res = await sdk.appV1.updateApp(appConfig, appId);
+
 
   if (res.statusCode == 200) {
     // handle response

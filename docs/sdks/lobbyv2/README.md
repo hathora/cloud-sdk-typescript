@@ -1,5 +1,5 @@
 # LobbyV2
-(*lobbyV2*)
+(*.lobbyV2*)
 
 ## Overview
 
@@ -41,6 +41,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.lobbyV2.createLobby(createLobbyRequest, appId, roomId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -89,6 +90,7 @@ const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.lobbyV2.createLocalLobby(requestBody, appId, roomId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -135,6 +137,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.lobbyV2.createPrivateLobby(requestBody, appId, roomId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -183,6 +186,7 @@ const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.lobbyV2.createPublicLobby(requestBody, appId, roomId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -225,6 +229,7 @@ const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.lobbyV2.getLobbyInfo(appId, roomId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -266,6 +271,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const region: Region = Region.Seattle;
 
   const res = await sdk.lobbyV2.listActivePublicLobbies(appId, region);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -311,6 +317,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 const roomId: string = "2swovpy1fnunu";
 
   const res = await sdk.lobbyV2.setLobbyState(setLobbyStateRequest, appId, roomId);
+
 
   if (res.statusCode == 200) {
     // handle response

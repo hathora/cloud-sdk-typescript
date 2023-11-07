@@ -7,7 +7,7 @@ import { ContainerPort } from "./containerport";
 import { PlanName } from "./planname";
 import { Expose, Transform, Type } from "class-transformer";
 
-export class DeploymentEnv extends SpeakeasyBase {
+export class Env extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "name" })
     name: string;
@@ -92,10 +92,10 @@ export class Deployment extends SpeakeasyBase {
     /**
      * The environment variable that our process will have access to at runtime.
      */
-    @SpeakeasyMetadata({ elemType: DeploymentEnv })
+    @SpeakeasyMetadata({ elemType: Env })
     @Expose({ name: "env" })
-    @Type(() => DeploymentEnv)
-    env: DeploymentEnv[];
+    @Type(() => Env)
+    env: Env[];
 
     /**
      * A plan defines how much CPU and memory is required to run an instance of your game server.
