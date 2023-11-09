@@ -1,5 +1,5 @@
 # BillingV1
-(*.billingV1*)
+(*billingV1*)
 
 ### Available Operations
 
@@ -40,7 +40,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 ### Response
 
-**Promise<[operations.GetBalanceResponse](../../models/operations/getbalanceresponse.md)>**
+**Promise<[operations.GetBalanceResponse](../../sdk/models/operations/getbalanceresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -79,7 +79,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 ### Response
 
-**Promise<[operations.GetInvoicesResponse](../../models/operations/getinvoicesresponse.md)>**
+**Promise<[operations.GetInvoicesResponse](../../sdk/models/operations/getinvoicesresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -118,7 +118,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 ### Response
 
-**Promise<[operations.GetPaymentMethodResponse](../../models/operations/getpaymentmethodresponse.md)>**
+**Promise<[operations.GetPaymentMethodResponse](../../sdk/models/operations/getpaymentmethodresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -152,15 +152,15 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 ### Parameters
 
-| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `request`                                                            | [shared.CustomerPortalUrl](../../models/shared/customerportalurl.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
-| `config`                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)         | :heavy_minus_sign:                                                   | Available config options for making requests.                        |
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `request`                                                                | [shared.CustomerPortalUrl](../../sdk/models/shared/customerportalurl.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
+| `config`                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)             | :heavy_minus_sign:                                                       | Available config options for making requests.                            |
 
 
 ### Response
 
-**Promise<[operations.InitStripeCustomerPortalUrlResponse](../../models/operations/initstripecustomerportalurlresponse.md)>**
+**Promise<[operations.InitStripeCustomerPortalUrlResponse](../../sdk/models/operations/initstripecustomerportalurlresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

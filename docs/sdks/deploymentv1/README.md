@@ -1,5 +1,5 @@
 # DeploymentV1
-(*.deploymentV1*)
+(*deploymentV1*)
 
 ## Overview
 
@@ -61,17 +61,17 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Parameters
 
-| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        | Example                                                            |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `deploymentConfig`                                                 | [shared.DeploymentConfig](../../models/shared/deploymentconfig.md) | :heavy_check_mark:                                                 | N/A                                                                |                                                                    |
-| `buildId`                                                          | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                | 1                                                                  |
-| `appId`                                                            | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                | app-af469a92-5b45-4565-b3c4-b79878de67d2                           |
-| `config`                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)       | :heavy_minus_sign:                                                 | Available config options for making requests.                      |                                                                    |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `deploymentConfig`                                                        | [shared.DeploymentConfig](../../../sdk/models/shared/deploymentconfig.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
+| `buildId`                                                                 | *number*                                                                  | :heavy_check_mark:                                                        | N/A                                                                       | 1                                                                         |
+| `appId`                                                                   | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       | app-af469a92-5b45-4565-b3c4-b79878de67d2                                  |
+| `config`                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)              | :heavy_minus_sign:                                                        | Available config options for making requests.                             |                                                                           |
 
 
 ### Response
 
-**Promise<[operations.CreateDeploymentResponse](../../models/operations/createdeploymentresponse.md)>**
+**Promise<[operations.CreateDeploymentResponse](../../sdk/models/operations/createdeploymentresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -117,7 +117,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetDeploymentInfoResponse](../../models/operations/getdeploymentinforesponse.md)>**
+**Promise<[operations.GetDeploymentInfoResponse](../../sdk/models/operations/getdeploymentinforesponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -161,7 +161,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetDeploymentsResponse](../../models/operations/getdeploymentsresponse.md)>**
+**Promise<[operations.GetDeploymentsResponse](../../sdk/models/operations/getdeploymentsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

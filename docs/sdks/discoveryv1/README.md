@@ -1,5 +1,5 @@
 # DiscoveryV1
-(*.discoveryV1*)
+(*discoveryV1*)
 
 ## Overview
 
@@ -43,7 +43,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 ### Response
 
-**Promise<[operations.GetPingServiceEndpointsResponse](../../models/operations/getpingserviceendpointsresponse.md)>**
+**Promise<[operations.GetPingServiceEndpointsResponse](../../sdk/models/operations/getpingserviceendpointsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

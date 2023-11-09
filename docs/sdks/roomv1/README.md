@@ -1,5 +1,5 @@
 # RoomV1
-(*.roomV1*)
+(*roomV1*)
 
 ## Overview
 
@@ -50,17 +50,17 @@ const roomId: string = "2swovpy1fnunu";
 
 ### Parameters
 
-| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        | Example                                                            |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `createRoomParams`                                                 | [shared.CreateRoomParams](../../models/shared/createroomparams.md) | :heavy_check_mark:                                                 | N/A                                                                |                                                                    |
-| `appId`                                                            | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                | app-af469a92-5b45-4565-b3c4-b79878de67d2                           |
-| `roomId`                                                           | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                | 2swovpy1fnunu                                                      |
-| `config`                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)       | :heavy_minus_sign:                                                 | Available config options for making requests.                      |                                                                    |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `createRoomParams`                                                        | [shared.CreateRoomParams](../../../sdk/models/shared/createroomparams.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
+| `appId`                                                                   | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       | app-af469a92-5b45-4565-b3c4-b79878de67d2                                  |
+| `roomId`                                                                  | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       | 2swovpy1fnunu                                                             |
+| `config`                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)              | :heavy_minus_sign:                                                        | Available config options for making requests.                             |                                                                           |
 
 
 ### Response
 
-**Promise<[operations.CreateRoomDeprecatedResponse](../../models/operations/createroomdeprecatedresponse.md)>**
+**Promise<[operations.CreateRoomDeprecatedResponse](../../sdk/models/operations/createroomdeprecatedresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.DestroyRoomDeprecatedResponse](../../models/operations/destroyroomdeprecatedresponse.md)>**
+**Promise<[operations.DestroyRoomDeprecatedResponse](../../sdk/models/operations/destroyroomdeprecatedresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -152,7 +152,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetActiveRoomsForProcessDeprecatedResponse](../../models/operations/getactiveroomsforprocessdeprecatedresponse.md)>**
+**Promise<[operations.GetActiveRoomsForProcessDeprecatedResponse](../../sdk/models/operations/getactiveroomsforprocessdeprecatedresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -198,7 +198,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetConnectionInfoDeprecatedResponse](../../models/operations/getconnectioninfodeprecatedresponse.md)>**
+**Promise<[operations.GetConnectionInfoDeprecatedResponse](../../sdk/models/operations/getconnectioninfodeprecatedresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -244,7 +244,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetInactiveRoomsForProcessDeprecatedResponse](../../models/operations/getinactiveroomsforprocessdeprecatedresponse.md)>**
+**Promise<[operations.GetInactiveRoomsForProcessDeprecatedResponse](../../sdk/models/operations/getinactiveroomsforprocessdeprecatedresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -290,7 +290,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetRoomInfoDeprecatedResponse](../../models/operations/getroominfodeprecatedresponse.md)>**
+**Promise<[operations.GetRoomInfoDeprecatedResponse](../../sdk/models/operations/getroominfodeprecatedresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -336,7 +336,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.SuspendRoomDeprecatedResponse](../../models/operations/suspendroomdeprecatedresponse.md)>**
+**Promise<[operations.SuspendRoomDeprecatedResponse](../../sdk/models/operations/suspendroomdeprecatedresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

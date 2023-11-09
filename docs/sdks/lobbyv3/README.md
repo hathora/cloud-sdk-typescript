@@ -1,5 +1,5 @@
 # LobbyV3
-(*.lobbyV3*)
+(*lobbyV3*)
 
 ## Overview
 
@@ -49,16 +49,16 @@ const operationSecurity: CreateLobbySecurity = {
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.CreateLobbyRequest](../../models/operations/createlobbyrequest.md)   | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `security`                                                                       | [operations.CreateLobbySecurity](../../models/operations/createlobbysecurity.md) | :heavy_check_mark:                                                               | The security requirements to use for the request.                                |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.CreateLobbyRequest](../../sdk/models/operations/createlobbyrequest.md)   | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `security`                                                                           | [operations.CreateLobbySecurity](../../sdk/models/operations/createlobbysecurity.md) | :heavy_check_mark:                                                                   | The security requirements to use for the request.                                    |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.CreateLobbyResponse](../../models/operations/createlobbyresponse.md)>**
+**Promise<[operations.CreateLobbyResponse](../../sdk/models/operations/createlobbyresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -104,7 +104,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetLobbyInfoByRoomIdResponse](../../models/operations/getlobbyinfobyroomidresponse.md)>**
+**Promise<[operations.GetLobbyInfoByRoomIdResponse](../../sdk/models/operations/getlobbyinfobyroomidresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -150,7 +150,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetLobbyInfoByShortCodeResponse](../../models/operations/getlobbyinfobyshortcoderesponse.md)>**
+**Promise<[operations.GetLobbyInfoByShortCodeResponse](../../sdk/models/operations/getlobbyinfobyshortcoderesponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -191,13 +191,13 @@ const region: Region = Region.Seattle;
 | Parameter                                                          | Type                                                               | Required                                                           | Description                                                        | Example                                                            |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
 | `appId`                                                            | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                | app-af469a92-5b45-4565-b3c4-b79878de67d2                           |
-| `region`                                                           | [shared.Region](../../models/shared/region.md)                     | :heavy_minus_sign:                                                 | If omitted, active public lobbies in all regions will be returned. |                                                                    |
+| `region`                                                           | [shared.Region](../../../sdk/models/shared/region.md)              | :heavy_minus_sign:                                                 | If omitted, active public lobbies in all regions will be returned. |                                                                    |
 | `config`                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)       | :heavy_minus_sign:                                                 | Available config options for making requests.                      |                                                                    |
 
 
 ### Response
 
-**Promise<[operations.ListActivePublicLobbiesResponse](../../models/operations/listactivepubliclobbiesresponse.md)>**
+**Promise<[operations.ListActivePublicLobbiesResponse](../../sdk/models/operations/listactivepubliclobbiesresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

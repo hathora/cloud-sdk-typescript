@@ -21,7 +21,7 @@ export class BillingV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/billing/v1/balance";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/billing/v1/balance";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -38,7 +38,7 @@ export class BillingV1 {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -89,7 +89,7 @@ export class BillingV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/billing/v1/invoices";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/billing/v1/invoices";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -106,7 +106,7 @@ export class BillingV1 {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -165,7 +165,7 @@ export class BillingV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/billing/v1/paymentmethod";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/billing/v1/paymentmethod";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -182,7 +182,7 @@ export class BillingV1 {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -244,7 +244,7 @@ export class BillingV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/billing/v1/customerportalurl";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/billing/v1/customerportalurl";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -276,7 +276,7 @@ export class BillingV1 {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
