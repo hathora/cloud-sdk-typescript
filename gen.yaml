@@ -25,11 +25,11 @@ typescript:
   imports:
     option: openapi
     paths:
-      callbacks: sdk/models/callbacks
-      errors: sdk/models/errors
-      operations: sdk/models/operations
-      shared: sdk/models/shared
-      webhooks: sdk/models/webhooks
+      callbacks: ""
+      errors: ""
+      operations: ""
+      shared: ""
+      webhooks: ""
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   maxMethodParams: "3"
   packageName: '@hathora/cloud-sdk-typescript'
