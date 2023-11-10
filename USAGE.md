@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

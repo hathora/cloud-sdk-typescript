@@ -24,6 +24,8 @@ yarn add @hathora/cloud-sdk-typescript
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+### Example
+
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -183,7 +185,7 @@ Here's an example of one such pagination call:
 
 
 <!-- Start Error Handling -->
-# Error Handling
+## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
@@ -191,8 +193,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 400-600         | */*             |
 
-
-## Example
+Example
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
@@ -230,9 +231,9 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 
 <!-- Start Server Selection -->
-# Server Selection
+## Server Selection
 
-## Select Server by Index
+### Select Server by Index
 
 You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
@@ -241,7 +242,7 @@ You can override the default server globally by passing a server index to the `s
 | 0 | `https://api.hathora.dev` | None |
 | 1 | `https:///` | None |
 
-For example:
+#### Example
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
@@ -274,10 +275,9 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 ```
 
 
-## Override Server URL Per-Client
+### Override Server URL Per-Client
 
 The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
-
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -312,10 +312,9 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 
 <!-- Start Custom HTTP Client -->
-# Custom HTTP Client
+## Custom HTTP Client
 
 The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
-
 
 For example, you could specify a header for every request that your sdk makes as follows:
 
@@ -327,7 +326,6 @@ const httpClient = axios.create({
     headers: {'x-custom-header': 'someValue'}
 })
 
-
 const sdk = new HathoraCloud({defaultClient: httpClient});
 ```
 <!-- End Custom HTTP Client -->
@@ -335,9 +333,9 @@ const sdk = new HathoraCloud({defaultClient: httpClient});
 
 
 <!-- Start Authentication -->
-# Authentication
+## Authentication
 
-## Per-Client Security Schemes
+### Per-Client Security Schemes
 
 This SDK supports the following security scheme globally:
 
@@ -346,7 +344,6 @@ This SDK supports the following security scheme globally:
 | `hathoraDevToken` | http              | HTTP Bearer       |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
-
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -376,10 +373,9 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 ```
 
-## Per-Operation Security Schemes
+### Per-Operation Security Schemes
 
 Some operations in this SDK require the security scheme to be specified at the request level. For example:
-
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import {
@@ -417,14 +413,14 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 
 <!-- Start Global Parameters -->
-# Global Parameters
+## Global Parameters
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
 For example, you can set `appId` to `"app-af469a92-5b45-4565-b3c4-b79878de67d2"` at SDK initialization and then you do not have to pass the same value on calls to operations like `deleteApp`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
-## Available Globals
+### Available Globals
 
 The following global parameter is available.
 
@@ -433,8 +429,7 @@ The following global parameter is available.
 | appId | string |  | The appId parameter. |
 
 
-
-## Example
+### Example
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
