@@ -18,14 +18,14 @@ export class CreateRoomDeprecatedRequest extends SpeakeasyBase {
 }
 
 export class CreateRoomDeprecatedResponse extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    twoHundredAndOneApplicationJsonRoomId?: string;
-
     /**
      * HTTP response content type for this operation
      */
     @SpeakeasyMetadata()
     contentType: string;
+
+    @SpeakeasyMetadata()
+    roomId?: string;
 
     /**
      * HTTP response status code for this operation

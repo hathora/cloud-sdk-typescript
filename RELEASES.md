@@ -361,3 +361,43 @@ Based on:
 - [typescript v2.2.0] .
 ### Releases
 - [NPM v2.2.0] https://www.npmjs.com/package/@hathora/cloud-sdk-typescript/v/2.2.0 - .
+
+## 2023-11-07 22:23:01
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.115.0 (2.183.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v2.2.1] .
+### Releases
+- [NPM v2.2.1] https://www.npmjs.com/package/@hathora/cloud-sdk-typescript/v/2.2.1 - .
+
+## 2023-11-09 00:04:31
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.116.0 (2.185.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v2.2.2] .
+### Releases
+- [NPM v2.2.2] https://www.npmjs.com/package/@hathora/cloud-sdk-typescript/v/2.2.2 - .
+
+## 2023-11-10 00:03:29
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.118.3 (2.187.7) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v2.2.3] .
+### Releases
+- [NPM v2.2.3] https://www.npmjs.com/package/@hathora/cloud-sdk-typescript/v/2.2.3 - .
+
+## 2023-11-14 19:22:53
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.120.0 (2.188.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v2.2.4] .
+### Releases
+- [NPM v2.2.4] https://www.npmjs.com/package/@hathora/cloud-sdk-typescript/v/2.2.4 - .

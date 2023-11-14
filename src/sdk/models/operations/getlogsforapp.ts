@@ -22,12 +22,6 @@ export class GetLogsForAppRequest extends SpeakeasyBase {
 
 export class GetLogsForAppResponse extends SpeakeasyBase {
     /**
-     * Ok
-     */
-    @SpeakeasyMetadata()
-    twoHundredTextPlainRes?: string;
-
-    /**
      * HTTP response content type for this operation
      */
     @SpeakeasyMetadata()
@@ -44,4 +38,10 @@ export class GetLogsForAppResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    /**
+     * Ok
+     */
+    @SpeakeasyMetadata()
+    res?: string;
 }

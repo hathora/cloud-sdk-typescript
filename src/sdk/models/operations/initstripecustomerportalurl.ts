@@ -7,12 +7,6 @@ import { AxiosResponse } from "axios";
 
 export class InitStripeCustomerPortalUrlResponse extends SpeakeasyBase {
     /**
-     * Ok
-     */
-    @SpeakeasyMetadata()
-    twoHundredApplicationJsonRes?: string;
-
-    /**
      * HTTP response content type for this operation
      */
     @SpeakeasyMetadata()
@@ -29,4 +23,10 @@ export class InitStripeCustomerPortalUrlResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    /**
+     * Ok
+     */
+    @SpeakeasyMetadata()
+    res?: string;
 }

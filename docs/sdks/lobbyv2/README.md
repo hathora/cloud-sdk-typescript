@@ -1,5 +1,5 @@
 # LobbyV2
-(*.lobbyV2*)
+(*lobbyV2*)
 
 ## Overview
 
@@ -7,17 +7,19 @@ Deprecated. Use [LobbyV3](https://hathora.dev/api#tag/LobbyV3).
 
 ### Available Operations
 
-* [createLobbyDeprecated](#createlobbydeprecated) - Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
+* [~~createLobbyDeprecated~~](#createlobbydeprecated) - Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players. :warning: **Deprecated**
 * [~~createLocalLobby~~](#createlocallobby) - :warning: **Deprecated**
 * [~~createPrivateLobby~~](#createprivatelobby) - :warning: **Deprecated**
 * [~~createPublicLobby~~](#createpubliclobby) - :warning: **Deprecated**
-* [getLobbyInfo](#getlobbyinfo) - Get details for a lobby.
-* [listActivePublicLobbiesDeprecatedV2](#listactivepubliclobbiesdeprecatedv2) - Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
-* [setLobbyState](#setlobbystate) - Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
+* [~~getLobbyInfo~~](#getlobbyinfo) - Get details for a lobby. :warning: **Deprecated**
+* [~~listActivePublicLobbiesDeprecatedV2~~](#listactivepubliclobbiesdeprecatedv2) - Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client. :warning: **Deprecated**
+* [~~setLobbyState~~](#setlobbystate) - Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores). :warning: **Deprecated**
 
-## createLobbyDeprecated
+## ~~createLobbyDeprecated~~
 
 Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -51,23 +53,24 @@ const operationSecurity: CreateLobbyDeprecatedSecurity = {
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          | Example                                                                                              |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `security`                                                                                           | [operations.CreateLobbyDeprecatedSecurity](../../models/operations/createlobbydeprecatedsecurity.md) | :heavy_check_mark:                                                                                   | The security requirements to use for the request.                                                    |                                                                                                      |
-| `createLobbyParams`                                                                                  | [shared.CreateLobbyParams](../../models/shared/createlobbyparams.md)                                 | :heavy_check_mark:                                                                                   | N/A                                                                                                  |                                                                                                      |
-| `appId`                                                                                              | *string*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                             |
-| `roomId`                                                                                             | *string*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  | 2swovpy1fnunu                                                                                        |
-| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |                                                                                                      |
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              | Example                                                                                                  |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                               | [operations.CreateLobbyDeprecatedSecurity](../../sdk/models/operations/createlobbydeprecatedsecurity.md) | :heavy_check_mark:                                                                                       | The security requirements to use for the request.                                                        |                                                                                                          |
+| `createLobbyParams`                                                                                      | [shared.CreateLobbyParams](../../../sdk/models/shared/createlobbyparams.md)                              | :heavy_check_mark:                                                                                       | N/A                                                                                                      |                                                                                                          |
+| `appId`                                                                                                  | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | N/A                                                                                                      | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                                 |
+| `roomId`                                                                                                 | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | N/A                                                                                                      | 2swovpy1fnunu                                                                                            |
+| `config`                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                             | :heavy_minus_sign:                                                                                       | Available config options for making requests.                                                            |                                                                                                          |
 
 
 ### Response
 
-**Promise<[operations.CreateLobbyDeprecatedResponse](../../models/operations/createlobbydeprecatedresponse.md)>**
+**Promise<[operations.CreateLobbyDeprecatedResponse](../../sdk/models/operations/createlobbydeprecatedresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## ~~createLocalLobby~~
 
@@ -104,23 +107,24 @@ const operationSecurity: CreateLocalLobbySecurity = {
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `security`                                                                                       | [operations.CreateLocalLobbySecurity](../../models/operations/createlocallobbysecurity.md)       | :heavy_check_mark:                                                                               | The security requirements to use for the request.                                                |                                                                                                  |
-| `requestBody`                                                                                    | [operations.CreateLocalLobbyRequestBody](../../models/operations/createlocallobbyrequestbody.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |                                                                                                  |
-| `appId`                                                                                          | *string*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                         |
-| `roomId`                                                                                         | *string*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              | 2swovpy1fnunu                                                                                    |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |                                                                                                  |
+| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                              | [operations.CreateLocalLobbySecurity](../../sdk/models/operations/createlocallobbysecurity.md)          | :heavy_check_mark:                                                                                      | The security requirements to use for the request.                                                       |                                                                                                         |
+| `requestBody`                                                                                           | [operations.CreateLocalLobbyRequestBody](../../../sdk/models/operations/createlocallobbyrequestbody.md) | :heavy_check_mark:                                                                                      | N/A                                                                                                     |                                                                                                         |
+| `appId`                                                                                                 | *string*                                                                                                | :heavy_minus_sign:                                                                                      | N/A                                                                                                     | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                                |
+| `roomId`                                                                                                | *string*                                                                                                | :heavy_minus_sign:                                                                                      | N/A                                                                                                     | 2swovpy1fnunu                                                                                           |
+| `config`                                                                                                | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                            | :heavy_minus_sign:                                                                                      | Available config options for making requests.                                                           |                                                                                                         |
 
 
 ### Response
 
-**Promise<[operations.CreateLocalLobbyResponse](../../models/operations/createlocallobbyresponse.md)>**
+**Promise<[operations.CreateLocalLobbyResponse](../../sdk/models/operations/createlocallobbyresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## ~~createPrivateLobby~~
 
@@ -161,23 +165,24 @@ const operationSecurity: CreatePrivateLobbySecurity = {
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          | Example                                                                                              |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `security`                                                                                           | [operations.CreatePrivateLobbySecurity](../../models/operations/createprivatelobbysecurity.md)       | :heavy_check_mark:                                                                                   | The security requirements to use for the request.                                                    |                                                                                                      |
-| `requestBody`                                                                                        | [operations.CreatePrivateLobbyRequestBody](../../models/operations/createprivatelobbyrequestbody.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |                                                                                                      |
-| `appId`                                                                                              | *string*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                             |
-| `roomId`                                                                                             | *string*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  | 2swovpy1fnunu                                                                                        |
-| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |                                                                                                      |
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 | Example                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                  | [operations.CreatePrivateLobbySecurity](../../sdk/models/operations/createprivatelobbysecurity.md)          | :heavy_check_mark:                                                                                          | The security requirements to use for the request.                                                           |                                                                                                             |
+| `requestBody`                                                                                               | [operations.CreatePrivateLobbyRequestBody](../../../sdk/models/operations/createprivatelobbyrequestbody.md) | :heavy_check_mark:                                                                                          | N/A                                                                                                         |                                                                                                             |
+| `appId`                                                                                                     | *string*                                                                                                    | :heavy_minus_sign:                                                                                          | N/A                                                                                                         | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                                    |
+| `roomId`                                                                                                    | *string*                                                                                                    | :heavy_minus_sign:                                                                                          | N/A                                                                                                         | 2swovpy1fnunu                                                                                               |
+| `config`                                                                                                    | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                | :heavy_minus_sign:                                                                                          | Available config options for making requests.                                                               |                                                                                                             |
 
 
 ### Response
 
-**Promise<[operations.CreatePrivateLobbyResponse](../../models/operations/createprivatelobbyresponse.md)>**
+**Promise<[operations.CreatePrivateLobbyResponse](../../sdk/models/operations/createprivatelobbyresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## ~~createPublicLobby~~
 
@@ -218,27 +223,30 @@ const operationSecurity: CreatePublicLobbySecurity = {
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `security`                                                                                         | [operations.CreatePublicLobbySecurity](../../models/operations/createpubliclobbysecurity.md)       | :heavy_check_mark:                                                                                 | The security requirements to use for the request.                                                  |                                                                                                    |
-| `requestBody`                                                                                      | [operations.CreatePublicLobbyRequestBody](../../models/operations/createpubliclobbyrequestbody.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `appId`                                                                                            | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                           |
-| `roomId`                                                                                           | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                | 2swovpy1fnunu                                                                                      |
-| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |                                                                                                    |
+| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               | Example                                                                                                   |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                | [operations.CreatePublicLobbySecurity](../../sdk/models/operations/createpubliclobbysecurity.md)          | :heavy_check_mark:                                                                                        | The security requirements to use for the request.                                                         |                                                                                                           |
+| `requestBody`                                                                                             | [operations.CreatePublicLobbyRequestBody](../../../sdk/models/operations/createpubliclobbyrequestbody.md) | :heavy_check_mark:                                                                                        | N/A                                                                                                       |                                                                                                           |
+| `appId`                                                                                                   | *string*                                                                                                  | :heavy_minus_sign:                                                                                        | N/A                                                                                                       | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                                  |
+| `roomId`                                                                                                  | *string*                                                                                                  | :heavy_minus_sign:                                                                                        | N/A                                                                                                       | 2swovpy1fnunu                                                                                             |
+| `config`                                                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                              | :heavy_minus_sign:                                                                                        | Available config options for making requests.                                                             |                                                                                                           |
 
 
 ### Response
 
-**Promise<[operations.CreatePublicLobbyResponse](../../models/operations/createpubliclobbyresponse.md)>**
+**Promise<[operations.CreatePublicLobbyResponse](../../sdk/models/operations/createpubliclobbyresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
-## getLobbyInfo
+## ~~getLobbyInfo~~
 
 Get details for a lobby.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -275,16 +283,19 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetLobbyInfoResponse](../../models/operations/getlobbyinforesponse.md)>**
+**Promise<[operations.GetLobbyInfoResponse](../../sdk/models/operations/getlobbyinforesponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
-## listActivePublicLobbiesDeprecatedV2
+## ~~listActivePublicLobbiesDeprecatedV2~~
 
 Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -316,22 +327,24 @@ const region: Region = Region.Frankfurt;
 | Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             | Example                                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `appId`                                                                                 | *string*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                |
-| `region`                                                                                | [shared.Region](../../models/shared/region.md)                                          | :heavy_minus_sign:                                                                      | Region to filter by. If omitted, active public lobbies in all regions will be returned. |                                                                                         |
+| `region`                                                                                | [shared.Region](../../../sdk/models/shared/region.md)                                   | :heavy_minus_sign:                                                                      | Region to filter by. If omitted, active public lobbies in all regions will be returned. |                                                                                         |
 | `config`                                                                                | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                            | :heavy_minus_sign:                                                                      | Available config options for making requests.                                           |                                                                                         |
 
 
 ### Response
 
-**Promise<[operations.ListActivePublicLobbiesDeprecatedV2Response](../../models/operations/listactivepubliclobbiesdeprecatedv2response.md)>**
+**Promise<[operations.ListActivePublicLobbiesDeprecatedV2Response](../../sdk/models/operations/listactivepubliclobbiesdeprecatedv2response.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 400-600         | */*             |
 
-## setLobbyState
+## ~~setLobbyState~~
 
 Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -363,19 +376,20 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Parameters
 
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              | Example                                                                  |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `setLobbyStateParams`                                                    | [shared.SetLobbyStateParams](../../models/shared/setlobbystateparams.md) | :heavy_check_mark:                                                       | N/A                                                                      |                                                                          |
-| `roomId`                                                                 | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      | 2swovpy1fnunu                                                            |
-| `appId`                                                                  | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      | app-af469a92-5b45-4565-b3c4-b79878de67d2                                 |
-| `config`                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)             | :heavy_minus_sign:                                                       | Available config options for making requests.                            |                                                                          |
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `setLobbyStateParams`                                                           | [shared.SetLobbyStateParams](../../../sdk/models/shared/setlobbystateparams.md) | :heavy_check_mark:                                                              | N/A                                                                             |                                                                                 |
+| `roomId`                                                                        | *string*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             | 2swovpy1fnunu                                                                   |
+| `appId`                                                                         | *string*                                                                        | :heavy_minus_sign:                                                              | N/A                                                                             | app-af469a92-5b45-4565-b3c4-b79878de67d2                                        |
+| `config`                                                                        | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                    | :heavy_minus_sign:                                                              | Available config options for making requests.                                   |                                                                                 |
 
 
 ### Response
 
-**Promise<[operations.SetLobbyStateResponse](../../models/operations/setlobbystateresponse.md)>**
+**Promise<[operations.SetLobbyStateResponse](../../sdk/models/operations/setlobbystateresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,422          | application/json |
+| errors.SDKError  | 400-600          | */*              |

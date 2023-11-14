@@ -1,5 +1,5 @@
 # ProcessesV1
-(*.processesV1*)
+(*processesV1*)
 
 ## Overview
 
@@ -50,12 +50,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetProcessInfoResponse](../../models/operations/getprocessinforesponse.md)>**
+**Promise<[operations.GetProcessInfoResponse](../../sdk/models/operations/getprocessinforesponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getRunningProcesses
 
@@ -76,7 +77,7 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   });
 const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-const region: Region = Region.Tokyo;
+const region: Region = Region.Singapore;
 
   const res = await sdk.processesV1.getRunningProcesses(appId, region);
 
@@ -91,18 +92,19 @@ const region: Region = Region.Tokyo;
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
-| `region`                                                     | [shared.Region](../../models/shared/region.md)               | :heavy_minus_sign:                                           | N/A                                                          |                                                              |
+| `region`                                                     | [shared.Region](../../../sdk/models/shared/region.md)        | :heavy_minus_sign:                                           | N/A                                                          |                                                              |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
-**Promise<[operations.GetRunningProcessesResponse](../../models/operations/getrunningprocessesresponse.md)>**
+**Promise<[operations.GetRunningProcessesResponse](../../sdk/models/operations/getrunningprocessesresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getStoppedProcesses
 
@@ -138,15 +140,16 @@ const region: Region = Region.Sydney;
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
-| `region`                                                     | [shared.Region](../../models/shared/region.md)               | :heavy_minus_sign:                                           | N/A                                                          |                                                              |
+| `region`                                                     | [shared.Region](../../../sdk/models/shared/region.md)        | :heavy_minus_sign:                                           | N/A                                                          |                                                              |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
-**Promise<[operations.GetStoppedProcessesResponse](../../models/operations/getstoppedprocessesresponse.md)>**
+**Promise<[operations.GetStoppedProcessesResponse](../../sdk/models/operations/getstoppedprocessesresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |

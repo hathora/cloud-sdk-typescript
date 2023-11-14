@@ -28,7 +28,8 @@ export class ManagementV1 {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/management/v1/sendverificationemail";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/management/v1/sendverificationemail";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -60,7 +61,7 @@ export class ManagementV1 {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -68,7 +69,7 @@ export class ManagementV1 {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -77,20 +78,20 @@ export class ManagementV1 {
         const res: operations.SendVerificationEmailResponse =
             new operations.SendVerificationEmailResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.verificationEmailResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.VerificationEmailResponse
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -98,7 +99,6 @@ export class ManagementV1 {
                 }
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                httpRes?.status == 500 ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
                 throw new errors.SDKError(
                     "API error occurred",
@@ -106,6 +106,20 @@ export class ManagementV1 {
                     decodedRes,
                     httpRes
                 );
+            case httpRes?.status == 500:
+                if (utils.matchContentType(responseContentType, `application/json`)) {
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    err.rawResponse = httpRes;
+                    throw new errors.ApiError(err);
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + responseContentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
         }
 
         return res;

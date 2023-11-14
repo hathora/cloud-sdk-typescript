@@ -1,5 +1,5 @@
 # AppV1
-(*.appV1*)
+(*appV1*)
 
 ## Overview
 
@@ -51,18 +51,19 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [shared.AppConfig](../../models/shared/appconfig.md)         | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [shared.AppConfig](../../sdk/models/shared/appconfig.md)     | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.CreateAppResponse](../../models/operations/createappresponse.md)>**
+**Promise<[operations.CreateAppResponse](../../sdk/models/operations/createappresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 422,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## deleteApp
 
@@ -101,12 +102,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.DeleteAppResponse](../../models/operations/deleteappresponse.md)>**
+**Promise<[operations.DeleteAppResponse](../../sdk/models/operations/deleteappresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getAppInfo
 
@@ -145,12 +147,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetAppInfoResponse](../../models/operations/getappinforesponse.md)>**
+**Promise<[operations.GetAppInfoResponse](../../sdk/models/operations/getappinforesponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getApps
 
@@ -186,7 +189,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 ### Response
 
-**Promise<[operations.GetAppsResponse](../../models/operations/getappsresponse.md)>**
+**Promise<[operations.GetAppsResponse](../../sdk/models/operations/getappsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -235,16 +238,17 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `appConfig`                                                  | [shared.AppConfig](../../models/shared/appconfig.md)         | :heavy_check_mark:                                           | N/A                                                          |                                                              |
+| `appConfig`                                                  | [shared.AppConfig](../../../sdk/models/shared/appconfig.md)  | :heavy_check_mark:                                           | N/A                                                          |                                                              |
 | `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
-**Promise<[operations.UpdateAppResponse](../../models/operations/updateappresponse.md)>**
+**Promise<[operations.UpdateAppResponse](../../sdk/models/operations/updateappresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |

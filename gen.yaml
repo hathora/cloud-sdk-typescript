@@ -1,16 +1,19 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 8b893b9f36e7a7735b285df2e0f3b04f
+  docChecksum: b9c5c06218c4461eaae6d867176f299d
   docVersion: 0.0.1
-  speakeasyVersion: 1.115.0
-  generationVersion: 2.183.0
+  speakeasyVersion: 1.120.0
+  generationVersion: 2.188.3
 generation:
   comments: {}
   sdkClassName: Hathora-Cloud
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
+  usageSnippets:
+    optionalPropertyRendering: withExample
 features:
   typescript:
-    core: 3.1.0
+    acceptHeaders: 2.81.1
+    core: 3.1.3
     deprecations: 2.81.1
     flattening: 2.81.1
     globalSecurity: 2.82.0
@@ -18,7 +21,7 @@ features:
     globals: 2.81.1
     methodSecurity: 2.82.0
 typescript:
-  version: 2.2.0
+  version: 2.2.4
   author: Hathora
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false
@@ -32,6 +35,7 @@ typescript:
       webhooks: ""
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   maxMethodParams: "3"
+  outputModelSuffix: output
   packageName: '@hathora/cloud-sdk-typescript'
   published: true
   repoSubDirectory: .
