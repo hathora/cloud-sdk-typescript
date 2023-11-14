@@ -74,9 +74,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.CreateDeploymentResponse](../../sdk/models/operations/createdeploymentresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 400,404,500      | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getDeploymentInfo
 
@@ -120,9 +121,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.GetDeploymentInfoResponse](../../sdk/models/operations/getdeploymentinforesponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getDeployments
 
@@ -164,6 +166,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.GetDeploymentsResponse](../../sdk/models/operations/getdeploymentsresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |

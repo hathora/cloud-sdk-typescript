@@ -43,6 +43,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 **Promise<[operations.SendVerificationEmailResponse](../../sdk/models/operations/sendverificationemailresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 500              | application/json |
+| errors.SDKError  | 400-600          | */*              |

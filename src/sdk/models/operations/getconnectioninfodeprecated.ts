@@ -18,7 +18,7 @@ export class GetConnectionInfoDeprecatedResponse extends SpeakeasyBase {
      * Ok
      */
     @SpeakeasyMetadata()
-    twoHundredApplicationJsonConnectionInfo?: any;
+    connectionInfo?: any;
 
     /**
      * HTTP response content type for this operation

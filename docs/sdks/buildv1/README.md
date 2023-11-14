@@ -58,9 +58,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.CreateBuildResponse](../../sdk/models/operations/createbuildresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## deleteBuild
 
@@ -104,9 +105,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.DeleteBuildResponse](../../sdk/models/operations/deletebuildresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,422,500      | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getBuildInfo
 
@@ -150,9 +152,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.GetBuildInfoResponse](../../sdk/models/operations/getbuildinforesponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getBuilds
 
@@ -194,9 +197,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.GetBuildsResponse](../../sdk/models/operations/getbuildsresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## runBuild
 
@@ -247,6 +251,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.RunBuildResponse](../../sdk/models/operations/runbuildresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |

@@ -60,9 +60,10 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 **Promise<[operations.CreateAppResponse](../../sdk/models/operations/createappresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 422,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## deleteApp
 
@@ -104,9 +105,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.DeleteAppResponse](../../sdk/models/operations/deleteappresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getAppInfo
 
@@ -148,9 +150,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.GetAppInfoResponse](../../sdk/models/operations/getappinforesponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getApps
 
@@ -245,6 +248,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.UpdateAppResponse](../../sdk/models/operations/updateappresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |

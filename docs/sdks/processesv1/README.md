@@ -53,9 +53,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.GetProcessInfoResponse](../../sdk/models/operations/getprocessinforesponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getRunningProcesses
 
@@ -100,9 +101,10 @@ const region: Region = Region.Singapore;
 **Promise<[operations.GetRunningProcessesResponse](../../sdk/models/operations/getrunningprocessesresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getStoppedProcesses
 
@@ -147,6 +149,7 @@ const region: Region = Region.Sydney;
 **Promise<[operations.GetStoppedProcessesResponse](../../sdk/models/operations/getstoppedprocessesresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |

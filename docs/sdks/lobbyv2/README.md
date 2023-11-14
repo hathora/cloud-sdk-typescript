@@ -67,9 +67,10 @@ const operationSecurity: CreateLobbyDeprecatedSecurity = {
 **Promise<[operations.CreateLobbyDeprecatedResponse](../../sdk/models/operations/createlobbydeprecatedresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## ~~createLocalLobby~~
 
@@ -120,9 +121,10 @@ const operationSecurity: CreateLocalLobbySecurity = {
 **Promise<[operations.CreateLocalLobbyResponse](../../sdk/models/operations/createlocallobbyresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## ~~createPrivateLobby~~
 
@@ -177,9 +179,10 @@ const operationSecurity: CreatePrivateLobbySecurity = {
 **Promise<[operations.CreatePrivateLobbyResponse](../../sdk/models/operations/createprivatelobbyresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## ~~createPublicLobby~~
 
@@ -234,9 +237,10 @@ const operationSecurity: CreatePublicLobbySecurity = {
 **Promise<[operations.CreatePublicLobbyResponse](../../sdk/models/operations/createpubliclobbyresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## ~~getLobbyInfo~~
 
@@ -282,9 +286,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.GetLobbyInfoResponse](../../sdk/models/operations/getlobbyinforesponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## ~~listActivePublicLobbiesDeprecatedV2~~
 
@@ -384,6 +389,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.SetLobbyStateResponse](../../sdk/models/operations/setlobbystateresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,422          | application/json |
+| errors.SDKError  | 400-600          | */*              |

@@ -93,10 +93,21 @@ export class MetricsV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404 ||
-                httpRes?.status == 422 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                httpRes?.status == 500 ||
+            case [404, 422, 500].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    err.rawResponse = httpRes;
+                    throw new errors.ApiError(err);
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + responseContentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
                 throw new errors.SDKError(
                     "API error occurred",

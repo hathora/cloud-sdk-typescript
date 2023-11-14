@@ -91,8 +91,21 @@ export class AuthV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+            case httpRes?.status == 404:
+                if (utils.matchContentType(responseContentType, `application/json`)) {
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    err.rawResponse = httpRes;
+                    throw new errors.ApiError(err);
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + responseContentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
                 throw new errors.SDKError(
                     "API error occurred",
@@ -198,9 +211,21 @@ export class AuthV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 401 ||
-                httpRes?.status == 404 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+            case [401, 404].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    err.rawResponse = httpRes;
+                    throw new errors.ApiError(err);
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + responseContentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
                 throw new errors.SDKError(
                     "API error occurred",
@@ -306,8 +331,21 @@ export class AuthV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+            case httpRes?.status == 404:
+                if (utils.matchContentType(responseContentType, `application/json`)) {
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    err.rawResponse = httpRes;
+                    throw new errors.ApiError(err);
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + responseContentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
                 throw new errors.SDKError(
                     "API error occurred",

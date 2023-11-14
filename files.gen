@@ -138,6 +138,7 @@ src/sdk/models/shared/roomallocation.ts
 src/sdk/models/shared/connectioninfov2.ts
 src/sdk/models/shared/updateroomconfigparams.ts
 src/sdk/models/shared/security.ts
+src/sdk/models/errors/apierror.ts
 src/sdk/models/errors/index.ts
 src/sdk/models/operations/index.ts
 src/sdk/models/shared/index.ts
@@ -322,6 +323,7 @@ docs/sdk/models/shared/connectioninfov2status.md
 docs/sdk/models/shared/connectioninfov2.md
 docs/sdk/models/shared/updateroomconfigparams.md
 docs/sdk/models/shared/security.md
+docs/sdk/models/errors/apierror.md
 docs/sdks/hathoracloud/README.md
 docs/sdks/appv1/README.md
 docs/sdks/authv1/README.md

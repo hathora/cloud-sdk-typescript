@@ -19,12 +19,6 @@ export class ListActivePublicLobbiesDeprecatedV1Request extends SpeakeasyBase {
 
 export class ListActivePublicLobbiesDeprecatedV1Response extends SpeakeasyBase {
     /**
-     * Ok
-     */
-    @SpeakeasyMetadata({ elemType: shared.Lobby })
-    twoHundredApplicationJsonClasses?: shared.Lobby[];
-
-    /**
      * HTTP response content type for this operation
      */
     @SpeakeasyMetadata()
@@ -41,4 +35,10 @@ export class ListActivePublicLobbiesDeprecatedV1Response extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    /**
+     * Ok
+     */
+    @SpeakeasyMetadata({ elemType: shared.Lobby })
+    classes?: shared.Lobby[];
 }

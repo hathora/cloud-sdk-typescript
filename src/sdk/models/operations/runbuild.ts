@@ -31,12 +31,6 @@ export class RunBuildRequest extends SpeakeasyBase {
 
 export class RunBuildResponse extends SpeakeasyBase {
     /**
-     * Ok
-     */
-    @SpeakeasyMetadata()
-    twoHundredTextPlainRes?: string;
-
-    /**
      * HTTP response content type for this operation
      */
     @SpeakeasyMetadata()
@@ -53,4 +47,10 @@ export class RunBuildResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    /**
+     * Ok
+     */
+    @SpeakeasyMetadata()
+    res?: string;
 }

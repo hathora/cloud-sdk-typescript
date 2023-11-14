@@ -54,9 +54,10 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 **Promise<[operations.GetLogsForAppResponse](../../sdk/models/operations/getlogsforappresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## ~~getLogsForDeployment~~
 
@@ -101,9 +102,10 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 **Promise<[operations.GetLogsForDeploymentResponse](../../sdk/models/operations/getlogsfordeploymentresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getLogsForProcess
 
@@ -146,6 +148,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 **Promise<[operations.GetLogsForProcessResponse](../../sdk/models/operations/getlogsforprocessresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |

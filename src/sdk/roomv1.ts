@@ -100,7 +100,7 @@ export class RoomV1 {
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.twoHundredAndOneApplicationJsonRoomId = decodedRes;
+                    res.roomId = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -110,12 +110,21 @@ export class RoomV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 400 ||
-                httpRes?.status == 402 ||
-                httpRes?.status == 403 ||
-                httpRes?.status == 404 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                httpRes?.status == 500 ||
+            case [400, 402, 403, 404, 500].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    err.rawResponse = httpRes;
+                    throw new errors.ApiError(err);
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + responseContentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
                 throw new errors.SDKError(
                     "API error occurred",
@@ -160,7 +169,7 @@ export class RoomV1 {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
-        headers["Accept"] = "*/*";
+        headers["Accept"] = "application/json";
 
         headers["user-agent"] = this.sdkConfiguration.userAgent;
 
@@ -185,17 +194,30 @@ export class RoomV1 {
                 contentType: responseContentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 204:
                 break;
-            case httpRes?.status == 404 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                httpRes?.status == 500 ||
+            case [404, 500].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    err.rawResponse = httpRes;
+                    throw new errors.ApiError(err);
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + responseContentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
                 throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
-                    httpRes?.data,
+                    decodedRes,
                     httpRes
                 );
         }
@@ -280,8 +302,21 @@ export class RoomV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+            case httpRes?.status == 404:
+                if (utils.matchContentType(responseContentType, `application/json`)) {
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    err.rawResponse = httpRes;
+                    throw new errors.ApiError(err);
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + responseContentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
                 throw new errors.SDKError(
                     "API error occurred",
@@ -355,7 +390,7 @@ export class RoomV1 {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.twoHundredApplicationJsonConnectionInfo = JSON.parse(decodedRes);
+                    res.connectionInfo = JSON.parse(decodedRes);
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -365,10 +400,21 @@ export class RoomV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 400 ||
-                httpRes?.status == 404 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                httpRes?.status == 500 ||
+            case [400, 404, 500].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    err.rawResponse = httpRes;
+                    throw new errors.ApiError(err);
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + responseContentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
                 throw new errors.SDKError(
                     "API error occurred",
@@ -458,8 +504,21 @@ export class RoomV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+            case httpRes?.status == 404:
+                if (utils.matchContentType(responseContentType, `application/json`)) {
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    err.rawResponse = httpRes;
+                    throw new errors.ApiError(err);
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + responseContentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
                 throw new errors.SDKError(
                     "API error occurred",
@@ -543,8 +602,21 @@ export class RoomV1 {
                     );
                 }
                 break;
-            case httpRes?.status == 404 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+            case httpRes?.status == 404:
+                if (utils.matchContentType(responseContentType, `application/json`)) {
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    err.rawResponse = httpRes;
+                    throw new errors.ApiError(err);
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + responseContentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
                 throw new errors.SDKError(
                     "API error occurred",
@@ -589,7 +661,7 @@ export class RoomV1 {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
-        headers["Accept"] = "*/*";
+        headers["Accept"] = "application/json";
 
         headers["user-agent"] = this.sdkConfiguration.userAgent;
 
@@ -614,17 +686,30 @@ export class RoomV1 {
                 contentType: responseContentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 204:
                 break;
-            case httpRes?.status == 404 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                httpRes?.status == 500 ||
+            case [404, 500].includes(httpRes?.status):
+                if (utils.matchContentType(responseContentType, `application/json`)) {
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    err.rawResponse = httpRes;
+                    throw new errors.ApiError(err);
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + responseContentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
                 throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
-                    httpRes?.data,
+                    decodedRes,
                     httpRes
                 );
         }

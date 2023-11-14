@@ -53,6 +53,7 @@ import { MetricName } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared
 **Promise<[operations.GetMetricsResponse](../../sdk/models/operations/getmetricsresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,422,500      | application/json |
+| errors.SDKError  | 400-600          | */*              |

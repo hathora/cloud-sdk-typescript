@@ -63,9 +63,10 @@ const roomId: string = "2swovpy1fnunu";
 **Promise<[operations.CreateRoomDeprecatedResponse](../../sdk/models/operations/createroomdeprecatedresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object        | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ApiError     | 400,402,403,404,500 | application/json    |
+| errors.SDKError     | 400-600             | */*                 |
 
 ## ~~destroyRoomDeprecated~~
 
@@ -109,9 +110,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.DestroyRoomDeprecatedResponse](../../sdk/models/operations/destroyroomdeprecatedresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## ~~getActiveRoomsForProcessDeprecated~~
 
@@ -155,9 +157,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.GetActiveRoomsForProcessDeprecatedResponse](../../sdk/models/operations/getactiveroomsforprocessdeprecatedresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## ~~getConnectionInfoDeprecated~~
 
@@ -201,9 +204,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.GetConnectionInfoDeprecatedResponse](../../sdk/models/operations/getconnectioninfodeprecatedresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 400,404,500      | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## ~~getInactiveRoomsForProcessDeprecated~~
 
@@ -247,9 +251,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.GetInactiveRoomsForProcessDeprecatedResponse](../../sdk/models/operations/getinactiveroomsforprocessdeprecatedresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## ~~getRoomInfoDeprecated~~
 
@@ -293,9 +298,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.GetRoomInfoDeprecatedResponse](../../sdk/models/operations/getroominfodeprecatedresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## ~~suspendRoomDeprecated~~
 
@@ -339,6 +345,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.SuspendRoomDeprecatedResponse](../../sdk/models/operations/suspendroomdeprecatedresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |

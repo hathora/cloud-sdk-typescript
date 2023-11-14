@@ -57,9 +57,10 @@ const operationSecurity: CreatePrivateLobbyDeprecatedSecurity = {
 **Promise<[operations.CreatePrivateLobbyDeprecatedResponse](../../sdk/models/operations/createprivatelobbydeprecatedresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## ~~createPublicLobbyDeprecated~~
 
@@ -107,9 +108,10 @@ const operationSecurity: CreatePublicLobbyDeprecatedSecurity = {
 **Promise<[operations.CreatePublicLobbyDeprecatedResponse](../../sdk/models/operations/createpubliclobbydeprecatedresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## ~~listActivePublicLobbiesDeprecatedV1~~
 
@@ -156,6 +158,7 @@ const region: Region = Region.Tokyo;
 **Promise<[operations.ListActivePublicLobbiesDeprecatedV1Response](../../sdk/models/operations/listactivepubliclobbiesdeprecatedv1response.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401,404          | application/json |
+| errors.SDKError  | 400-600          | */*              |

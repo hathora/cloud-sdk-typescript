@@ -61,9 +61,10 @@ const operationSecurity: CreateLobbySecurity = {
 **Promise<[operations.CreateLobbyResponse](../../sdk/models/operations/createlobbyresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## getLobbyInfoByRoomId
 
@@ -107,9 +108,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.GetLobbyInfoByRoomIdResponse](../../sdk/models/operations/getlobbyinfobyroomidresponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getLobbyInfoByShortCode
 
@@ -153,9 +155,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 **Promise<[operations.GetLobbyInfoByShortCodeResponse](../../sdk/models/operations/getlobbyinfobyshortcoderesponse.md)>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## listActivePublicLobbies
 

@@ -26,16 +26,16 @@ export class CreatePrivateLobbyDeprecatedRequest extends SpeakeasyBase {
 
 export class CreatePrivateLobbyDeprecatedResponse extends SpeakeasyBase {
     /**
-     * Ok
-     */
-    @SpeakeasyMetadata()
-    twoHundredApplicationJsonRoomId?: string;
-
-    /**
      * HTTP response content type for this operation
      */
     @SpeakeasyMetadata()
     contentType: string;
+
+    /**
+     * Ok
+     */
+    @SpeakeasyMetadata()
+    roomId?: string;
 
     /**
      * HTTP response status code for this operation

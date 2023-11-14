@@ -189,42 +189,47 @@ Here's an example of one such pagination call:
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 422,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 Example
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
-(async () => {
-    const sdk = new HathoraCloud({
-        security: {
-            hathoraDevToken: "",
-        },
-        appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-    });
+(async() => {
+  const sdk = new HathoraCloud({
+    security: {
+      hathoraDevToken: "",
+    },
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  });
 
-    let res;
-    try {
-        res = await sdk.appV1.createApp({
-            appName: "minecraft",
-            authConfiguration: {
-                anonymous: {},
-                google: {
-                    clientId: "string",
-                },
-                nickname: {},
-            },
-        });
-    } catch (e) {}
+  
+  let res;
+  try {
+    res = await sdk.appV1.createApp({
+    appName: "minecraft",
+    authConfiguration: {
+      anonymous: {},
+      google: {
+        clientId: "string",
+      },
+      nickname: {},
+    },
+  });
+  } catch (e) { 
+    if (e instanceof errors.ApiError) {
+      console.error(e) // handle exception 
+    
+  }
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
+  if (res.statusCode == 200) {
+    // handle response
+  }
 })();
-
 ```
 <!-- End Error Handling -->
 
