@@ -3,7 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as models from "../models";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -22,11 +24,11 @@ export class AppV1 {
      * Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
     async createApp(
-        req: models.AppConfig,
+        req: shared.AppConfig,
         config?: AxiosRequestConfig
-    ): Promise<models.CreateAppResponse> {
+    ): Promise<operations.CreateAppResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new models.AppConfig(req);
+            req = new shared.AppConfig(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -50,7 +52,7 @@ export class AppV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new models.Security(globalSecurity);
+            globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -79,7 +81,7 @@ export class AppV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CreateAppResponse = new models.CreateAppResponse({
+        const res: operations.CreateAppResponse = new operations.CreateAppResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -90,10 +92,10 @@ export class AppV1 {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.application = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        models.Application
+                        shared.Application
                     );
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -103,11 +105,11 @@ export class AppV1 {
                 break;
             case [422, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
                     err.rawResponse = httpRes;
-                    throw new models.ApiErrorError(err);
+                    throw new errors.ApiError(err);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -117,7 +119,7 @@ export class AppV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -134,8 +136,8 @@ export class AppV1 {
     async deleteApp(
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<models.DeleteAppResponse> {
-        const req = new models.DeleteAppRequest({
+    ): Promise<operations.DeleteAppResponse> {
+        const req = new operations.DeleteAppRequest({
             appId: appId,
         });
         const baseURL: string = utils.templateUrl(
@@ -154,7 +156,7 @@ export class AppV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new models.Security(globalSecurity);
+            globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -177,7 +179,7 @@ export class AppV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.DeleteAppResponse = new models.DeleteAppResponse({
+        const res: operations.DeleteAppResponse = new operations.DeleteAppResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -188,11 +190,11 @@ export class AppV1 {
                 break;
             case [404, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
                     err.rawResponse = httpRes;
-                    throw new models.ApiErrorError(err);
+                    throw new errors.ApiError(err);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -202,7 +204,7 @@ export class AppV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -219,8 +221,8 @@ export class AppV1 {
     async getAppInfo(
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<models.GetAppInfoResponse> {
-        const req = new models.GetAppInfoRequest({
+    ): Promise<operations.GetAppInfoResponse> {
+        const req = new operations.GetAppInfoRequest({
             appId: appId,
         });
         const baseURL: string = utils.templateUrl(
@@ -239,7 +241,7 @@ export class AppV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new models.Security(globalSecurity);
+            globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -262,7 +264,7 @@ export class AppV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.GetAppInfoResponse = new models.GetAppInfoResponse({
+        const res: operations.GetAppInfoResponse = new operations.GetAppInfoResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -273,10 +275,10 @@ export class AppV1 {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.application = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        models.Application
+                        shared.Application
                     );
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -286,11 +288,11 @@ export class AppV1 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
                     err.rawResponse = httpRes;
-                    throw new models.ApiErrorError(err);
+                    throw new errors.ApiError(err);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -300,7 +302,7 @@ export class AppV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -314,7 +316,7 @@ export class AppV1 {
     /**
      * Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
      */
-    async getApps(config?: AxiosRequestConfig): Promise<models.GetAppsResponse> {
+    async getApps(config?: AxiosRequestConfig): Promise<operations.GetAppsResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -326,7 +328,7 @@ export class AppV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new models.Security(globalSecurity);
+            globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -349,7 +351,7 @@ export class AppV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.GetAppsResponse = new models.GetAppsResponse({
+        const res: operations.GetAppsResponse = new operations.GetAppsResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -362,11 +364,11 @@ export class AppV1 {
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.classes = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        models.ApplicationWithDeployment,
+                        shared.ApplicationWithDeployment,
                         resFieldDepth
                     );
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -376,7 +378,7 @@ export class AppV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -391,11 +393,11 @@ export class AppV1 {
      * Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
      */
     async updateApp(
-        appConfig: models.AppConfig,
+        appConfig: shared.AppConfig,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<models.UpdateAppResponse> {
-        const req = new models.UpdateAppRequest({
+    ): Promise<operations.UpdateAppResponse> {
+        const req = new operations.UpdateAppRequest({
             appConfig: appConfig,
             appId: appId,
         });
@@ -425,7 +427,7 @@ export class AppV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new models.Security(globalSecurity);
+            globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -454,7 +456,7 @@ export class AppV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.UpdateAppResponse = new models.UpdateAppResponse({
+        const res: operations.UpdateAppResponse = new operations.UpdateAppResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -465,10 +467,10 @@ export class AppV1 {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.application = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        models.Application
+                        shared.Application
                     );
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -478,11 +480,11 @@ export class AppV1 {
                 break;
             case [404, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
                     err.rawResponse = httpRes;
-                    throw new models.ApiErrorError(err);
+                    throw new errors.ApiError(err);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -492,7 +494,7 @@ export class AppV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,

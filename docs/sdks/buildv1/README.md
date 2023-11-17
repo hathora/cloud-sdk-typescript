@@ -20,7 +20,9 @@ Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build).
 ### Example Usage
 
 ```typescript
-import { CreateBuildParams, CreateBuildRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { CreateBuildRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { CreateBuildParams } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -44,22 +46,22 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `createBuildParams`                                          | [models.CreateBuildParams](../models/createbuildparams.md)   | :heavy_check_mark:                                           | N/A                                                          |                                                              |
-| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 | Example                                                                     |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `createBuildParams`                                                         | [shared.CreateBuildParams](../../../sdk/models/shared/createbuildparams.md) | :heavy_check_mark:                                                          | N/A                                                                         |                                                                             |
+| `appId`                                                                     | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         | app-af469a92-5b45-4565-b3c4-b79878de67d2                                    |
+| `config`                                                                    | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                | :heavy_minus_sign:                                                          | Available config options for making requests.                               |                                                                             |
 
 
 ### Response
 
-**Promise<[models.CreateBuildResponse](../../models/createbuildresponse.md)>**
+**Promise<[operations.CreateBuildResponse](../../sdk/models/operations/createbuildresponse.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404,500              | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## deleteBuild
 
@@ -68,7 +70,8 @@ Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All 
 ### Example Usage
 
 ```typescript
-import { DeleteBuildRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { DeleteBuildRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -99,13 +102,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[models.DeleteBuildResponse](../../models/deletebuildresponse.md)>**
+**Promise<[operations.DeleteBuildResponse](../../sdk/models/operations/deletebuildresponse.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404,422,500          | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,422,500      | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getBuildInfo
 
@@ -114,7 +117,8 @@ Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#bui
 ### Example Usage
 
 ```typescript
-import { GetBuildInfoRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { GetBuildInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -145,13 +149,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[models.GetBuildInfoResponse](../../models/getbuildinforesponse.md)>**
+**Promise<[operations.GetBuildInfoResponse](../../sdk/models/operations/getbuildinforesponse.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404                  | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getBuilds
 
@@ -160,7 +164,8 @@ Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#
 ### Example Usage
 
 ```typescript
-import { GetBuildsRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { GetBuildsRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -189,13 +194,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[models.GetBuildsResponse](../../models/getbuildsresponse.md)>**
+**Promise<[operations.GetBuildsResponse](../../sdk/models/operations/getbuildsresponse.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404                  | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## runBuild
 
@@ -204,7 +209,8 @@ Builds a game server artifact from a tarball you provide. Pass in the `buildId` 
 ### Example Usage
 
 ```typescript
-import { File, HathoraCloud, RunBuildRequest, RunBuildRequestBody } from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { File, RunBuildRequest, RunBuildRequestBody } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -232,20 +238,20 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Parameters
 
-| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `requestBody`                                                  | [models.RunBuildRequestBody](../models/runbuildrequestbody.md) | :heavy_check_mark:                                             | N/A                                                            |                                                                |
-| `buildId`                                                      | *number*                                                       | :heavy_check_mark:                                             | N/A                                                            | 1                                                              |
-| `appId`                                                        | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            | app-af469a92-5b45-4565-b3c4-b79878de67d2                       |
-| `config`                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)   | :heavy_minus_sign:                                             | Available config options for making requests.                  |                                                                |
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             | Example                                                                                 |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `requestBody`                                                                           | [operations.RunBuildRequestBody](../../../sdk/models/operations/runbuildrequestbody.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |                                                                                         |
+| `buildId`                                                                               | *number*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     | 1                                                                                       |
+| `appId`                                                                                 | *string*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                |
+| `config`                                                                                | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                            | :heavy_minus_sign:                                                                      | Available config options for making requests.                                           |                                                                                         |
 
 
 ### Response
 
-**Promise<[models.RunBuildResponse](../../models/runbuildresponse.md)>**
+**Promise<[operations.RunBuildResponse](../../sdk/models/operations/runbuildresponse.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404,500              | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |

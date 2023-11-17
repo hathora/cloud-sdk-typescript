@@ -3,7 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as models from "../models";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -38,12 +40,12 @@ export class LogV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getLogsForApp(
-        req: models.GetLogsForAppRequest,
+        req: operations.GetLogsForAppRequest,
         config?: AxiosRequestConfig,
         acceptHeaderOverride?: GetLogsForAppAcceptEnum
-    ): Promise<models.GetLogsForAppResponse> {
+    ): Promise<operations.GetLogsForAppResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new models.GetLogsForAppRequest(req);
+            req = new operations.GetLogsForAppRequest(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -62,7 +64,7 @@ export class LogV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new models.Security(globalSecurity);
+            globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -90,7 +92,7 @@ export class LogV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.GetLogsForAppResponse = new models.GetLogsForAppResponse({
+        const res: operations.GetLogsForAppResponse = new operations.GetLogsForAppResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -101,7 +103,7 @@ export class LogV1 {
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
                     res.res = decodedRes;
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -111,11 +113,11 @@ export class LogV1 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
                     err.rawResponse = httpRes;
-                    throw new models.ApiErrorError(err);
+                    throw new errors.ApiError(err);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -125,7 +127,7 @@ export class LogV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -142,12 +144,12 @@ export class LogV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getLogsForDeployment(
-        req: models.GetLogsForDeploymentRequest,
+        req: operations.GetLogsForDeploymentRequest,
         config?: AxiosRequestConfig,
         acceptHeaderOverride?: GetLogsForDeploymentAcceptEnum
-    ): Promise<models.GetLogsForDeploymentResponse> {
+    ): Promise<operations.GetLogsForDeploymentResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new models.GetLogsForDeploymentRequest(req);
+            req = new operations.GetLogsForDeploymentRequest(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -166,7 +168,7 @@ export class LogV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new models.Security(globalSecurity);
+            globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -194,18 +196,19 @@ export class LogV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.GetLogsForDeploymentResponse = new models.GetLogsForDeploymentResponse({
-            statusCode: httpRes.status,
-            contentType: responseContentType,
-            rawResponse: httpRes,
-        });
+        const res: operations.GetLogsForDeploymentResponse =
+            new operations.GetLogsForDeploymentResponse({
+                statusCode: httpRes.status,
+                contentType: responseContentType,
+                rawResponse: httpRes,
+            });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
                     res.res = decodedRes;
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -215,11 +218,11 @@ export class LogV1 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
                     err.rawResponse = httpRes;
-                    throw new models.ApiErrorError(err);
+                    throw new errors.ApiError(err);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -229,7 +232,7 @@ export class LogV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -244,12 +247,12 @@ export class LogV1 {
      * Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
      */
     async getLogsForProcess(
-        req: models.GetLogsForProcessRequest,
+        req: operations.GetLogsForProcessRequest,
         config?: AxiosRequestConfig,
         acceptHeaderOverride?: GetLogsForProcessAcceptEnum
-    ): Promise<models.GetLogsForProcessResponse> {
+    ): Promise<operations.GetLogsForProcessResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new models.GetLogsForProcessRequest(req);
+            req = new operations.GetLogsForProcessRequest(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -268,7 +271,7 @@ export class LogV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new models.Security(globalSecurity);
+            globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -296,7 +299,7 @@ export class LogV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.GetLogsForProcessResponse = new models.GetLogsForProcessResponse({
+        const res: operations.GetLogsForProcessResponse = new operations.GetLogsForProcessResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -307,7 +310,7 @@ export class LogV1 {
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
                     res.res = decodedRes;
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -317,11 +320,11 @@ export class LogV1 {
                 break;
             case [404, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
                     err.rawResponse = httpRes;
-                    throw new models.ApiErrorError(err);
+                    throw new errors.ApiError(err);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -331,7 +334,7 @@ export class LogV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,

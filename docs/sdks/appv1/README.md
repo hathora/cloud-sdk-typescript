@@ -51,19 +51,19 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [models.AppConfig](../../models/appconfig.md)                | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [shared.AppConfig](../../sdk/models/shared/appconfig.md)     | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[models.CreateAppResponse](../../models/createappresponse.md)>**
+**Promise<[operations.CreateAppResponse](../../sdk/models/operations/createappresponse.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 422,500              | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 422,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## deleteApp
 
@@ -72,7 +72,8 @@ Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#appli
 ### Example Usage
 
 ```typescript
-import { DeleteAppRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { DeleteAppRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -101,13 +102,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[models.DeleteAppResponse](../../models/deleteappresponse.md)>**
+**Promise<[operations.DeleteAppResponse](../../sdk/models/operations/deleteappresponse.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404,500              | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getAppInfo
 
@@ -116,7 +117,8 @@ Get details for an [application](https://hathora.dev/docs/concepts/hathora-entit
 ### Example Usage
 
 ```typescript
-import { GetAppInfoRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { GetAppInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -145,13 +147,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[models.GetAppInfoResponse](../../models/getappinforesponse.md)>**
+**Promise<[operations.GetAppInfoResponse](../../sdk/models/operations/getappinforesponse.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404                  | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## getApps
 
@@ -187,12 +189,12 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 ### Response
 
-**Promise<[models.GetAppsResponse](../../models/getappsresponse.md)>**
+**Promise<[operations.GetAppsResponse](../../sdk/models/operations/getappsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| models.SDKError | 400-600         | */*             |
+| errors.SDKError | 400-600         | */*             |
 
 ## updateApp
 
@@ -201,14 +203,9 @@ Update data for an existing [application](https://hathora.dev/docs/concepts/hath
 ### Example Usage
 
 ```typescript
-import {
-  AppConfig,
-  AuthConfiguration,
-  Google,
-  HathoraCloud,
-  RecordStringNever,
-  UpdateAppRequest,
-} from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { UpdateAppRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { AppConfig, AuthConfiguration, Google, RecordStringNever } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -241,17 +238,17 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `appConfig`                                                  | [models.AppConfig](../models/appconfig.md)                   | :heavy_check_mark:                                           | N/A                                                          |                                                              |
+| `appConfig`                                                  | [shared.AppConfig](../../../sdk/models/shared/appconfig.md)  | :heavy_check_mark:                                           | N/A                                                          |                                                              |
 | `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
-**Promise<[models.UpdateAppResponse](../../models/updateappresponse.md)>**
+**Promise<[operations.UpdateAppResponse](../../sdk/models/operations/updateappresponse.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404,500              | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,500          | application/json |
+| errors.SDKError  | 400-600          | */*              |

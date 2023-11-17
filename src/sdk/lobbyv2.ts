@@ -3,7 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as models from "../models";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -24,13 +26,13 @@ export class LobbyV2 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createLobbyDeprecated(
-        security: models.CreateLobbyDeprecatedSecurity,
-        createLobbyParams: models.CreateLobbyParams,
+        security: operations.CreateLobbyDeprecatedSecurity,
+        createLobbyParams: shared.CreateLobbyParams,
         appId?: string,
         roomId?: string,
         config?: AxiosRequestConfig
-    ): Promise<models.CreateLobbyDeprecatedResponse> {
-        const req = new models.CreateLobbyDeprecatedRequest({
+    ): Promise<operations.CreateLobbyDeprecatedResponse> {
+        const req = new operations.CreateLobbyDeprecatedRequest({
             createLobbyParams: createLobbyParams,
             appId: appId,
             roomId: roomId,
@@ -61,7 +63,7 @@ export class LobbyV2 {
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new models.CreateLobbyDeprecatedSecurity(security);
+            security = new operations.CreateLobbyDeprecatedSecurity(security);
         }
         const properties = utils.parseSecurityProperties(security);
         const headers: RawAxiosRequestHeaders = {
@@ -91,18 +93,19 @@ export class LobbyV2 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CreateLobbyDeprecatedResponse = new models.CreateLobbyDeprecatedResponse({
-            statusCode: httpRes.status,
-            contentType: responseContentType,
-            rawResponse: httpRes,
-        });
+        const res: operations.CreateLobbyDeprecatedResponse =
+            new operations.CreateLobbyDeprecatedResponse({
+                statusCode: httpRes.status,
+                contentType: responseContentType,
+                rawResponse: httpRes,
+            });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.lobby = utils.objectToClass(JSON.parse(decodedRes), models.Lobby);
+                    res.lobby = utils.objectToClass(JSON.parse(decodedRes), shared.Lobby);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -112,11 +115,11 @@ export class LobbyV2 {
                 break;
             case [400, 401, 404, 422, 429, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
                     err.rawResponse = httpRes;
-                    throw new models.ApiErrorError(err);
+                    throw new errors.ApiError(err);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -126,7 +129,7 @@ export class LobbyV2 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -141,13 +144,13 @@ export class LobbyV2 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createLocalLobby(
-        security: models.CreateLocalLobbySecurity,
-        requestBody: models.CreateLocalLobbyRequestBody,
+        security: operations.CreateLocalLobbySecurity,
+        requestBody: operations.CreateLocalLobbyRequestBody,
         appId?: string,
         roomId?: string,
         config?: AxiosRequestConfig
-    ): Promise<models.CreateLocalLobbyResponse> {
-        const req = new models.CreateLocalLobbyRequest({
+    ): Promise<operations.CreateLocalLobbyResponse> {
+        const req = new operations.CreateLocalLobbyRequest({
             requestBody: requestBody,
             appId: appId,
             roomId: roomId,
@@ -174,7 +177,7 @@ export class LobbyV2 {
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new models.CreateLocalLobbySecurity(security);
+            security = new operations.CreateLocalLobbySecurity(security);
         }
         const properties = utils.parseSecurityProperties(security);
         const headers: RawAxiosRequestHeaders = {
@@ -204,7 +207,7 @@ export class LobbyV2 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CreateLocalLobbyResponse = new models.CreateLocalLobbyResponse({
+        const res: operations.CreateLocalLobbyResponse = new operations.CreateLocalLobbyResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -213,9 +216,9 @@ export class LobbyV2 {
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.lobby = utils.objectToClass(JSON.parse(decodedRes), models.Lobby);
+                    res.lobby = utils.objectToClass(JSON.parse(decodedRes), shared.Lobby);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -225,11 +228,11 @@ export class LobbyV2 {
                 break;
             case [400, 401, 404, 422, 429, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
                     err.rawResponse = httpRes;
-                    throw new models.ApiErrorError(err);
+                    throw new errors.ApiError(err);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -239,7 +242,7 @@ export class LobbyV2 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -254,13 +257,13 @@ export class LobbyV2 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createPrivateLobby(
-        security: models.CreatePrivateLobbySecurity,
-        requestBody: models.CreatePrivateLobbyRequestBody,
+        security: operations.CreatePrivateLobbySecurity,
+        requestBody: operations.CreatePrivateLobbyRequestBody,
         appId?: string,
         roomId?: string,
         config?: AxiosRequestConfig
-    ): Promise<models.CreatePrivateLobbyResponse> {
-        const req = new models.CreatePrivateLobbyRequest({
+    ): Promise<operations.CreatePrivateLobbyResponse> {
+        const req = new operations.CreatePrivateLobbyRequest({
             requestBody: requestBody,
             appId: appId,
             roomId: roomId,
@@ -287,7 +290,7 @@ export class LobbyV2 {
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new models.CreatePrivateLobbySecurity(security);
+            security = new operations.CreatePrivateLobbySecurity(security);
         }
         const properties = utils.parseSecurityProperties(security);
         const headers: RawAxiosRequestHeaders = {
@@ -317,18 +320,19 @@ export class LobbyV2 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CreatePrivateLobbyResponse = new models.CreatePrivateLobbyResponse({
-            statusCode: httpRes.status,
-            contentType: responseContentType,
-            rawResponse: httpRes,
-        });
+        const res: operations.CreatePrivateLobbyResponse =
+            new operations.CreatePrivateLobbyResponse({
+                statusCode: httpRes.status,
+                contentType: responseContentType,
+                rawResponse: httpRes,
+            });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.lobby = utils.objectToClass(JSON.parse(decodedRes), models.Lobby);
+                    res.lobby = utils.objectToClass(JSON.parse(decodedRes), shared.Lobby);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -338,11 +342,11 @@ export class LobbyV2 {
                 break;
             case [400, 401, 404, 422, 429, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
                     err.rawResponse = httpRes;
-                    throw new models.ApiErrorError(err);
+                    throw new errors.ApiError(err);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -352,7 +356,7 @@ export class LobbyV2 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -367,13 +371,13 @@ export class LobbyV2 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createPublicLobby(
-        security: models.CreatePublicLobbySecurity,
-        requestBody: models.CreatePublicLobbyRequestBody,
+        security: operations.CreatePublicLobbySecurity,
+        requestBody: operations.CreatePublicLobbyRequestBody,
         appId?: string,
         roomId?: string,
         config?: AxiosRequestConfig
-    ): Promise<models.CreatePublicLobbyResponse> {
-        const req = new models.CreatePublicLobbyRequest({
+    ): Promise<operations.CreatePublicLobbyResponse> {
+        const req = new operations.CreatePublicLobbyRequest({
             requestBody: requestBody,
             appId: appId,
             roomId: roomId,
@@ -400,7 +404,7 @@ export class LobbyV2 {
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new models.CreatePublicLobbySecurity(security);
+            security = new operations.CreatePublicLobbySecurity(security);
         }
         const properties = utils.parseSecurityProperties(security);
         const headers: RawAxiosRequestHeaders = {
@@ -430,7 +434,7 @@ export class LobbyV2 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CreatePublicLobbyResponse = new models.CreatePublicLobbyResponse({
+        const res: operations.CreatePublicLobbyResponse = new operations.CreatePublicLobbyResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -439,9 +443,9 @@ export class LobbyV2 {
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.lobby = utils.objectToClass(JSON.parse(decodedRes), models.Lobby);
+                    res.lobby = utils.objectToClass(JSON.parse(decodedRes), shared.Lobby);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -451,11 +455,11 @@ export class LobbyV2 {
                 break;
             case [400, 401, 404, 422, 429, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
                     err.rawResponse = httpRes;
-                    throw new models.ApiErrorError(err);
+                    throw new errors.ApiError(err);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -465,7 +469,7 @@ export class LobbyV2 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -485,8 +489,8 @@ export class LobbyV2 {
         roomId: string,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<models.GetLobbyInfoResponse> {
-        const req = new models.GetLobbyInfoRequest({
+    ): Promise<operations.GetLobbyInfoResponse> {
+        const req = new operations.GetLobbyInfoRequest({
             roomId: roomId,
             appId: appId,
         });
@@ -506,7 +510,7 @@ export class LobbyV2 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new models.Security(globalSecurity);
+            globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -529,7 +533,7 @@ export class LobbyV2 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.GetLobbyInfoResponse = new models.GetLobbyInfoResponse({
+        const res: operations.GetLobbyInfoResponse = new operations.GetLobbyInfoResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -538,9 +542,9 @@ export class LobbyV2 {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.lobby = utils.objectToClass(JSON.parse(decodedRes), models.Lobby);
+                    res.lobby = utils.objectToClass(JSON.parse(decodedRes), shared.Lobby);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -550,11 +554,11 @@ export class LobbyV2 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
                     err.rawResponse = httpRes;
-                    throw new models.ApiErrorError(err);
+                    throw new errors.ApiError(err);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -564,7 +568,7 @@ export class LobbyV2 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -582,10 +586,10 @@ export class LobbyV2 {
      */
     async listActivePublicLobbiesDeprecatedV2(
         appId?: string,
-        region?: models.Region,
+        region?: shared.Region,
         config?: AxiosRequestConfig
-    ): Promise<models.ListActivePublicLobbiesDeprecatedV2Response> {
-        const req = new models.ListActivePublicLobbiesDeprecatedV2Request({
+    ): Promise<operations.ListActivePublicLobbiesDeprecatedV2Response> {
+        const req = new operations.ListActivePublicLobbiesDeprecatedV2Request({
             appId: appId,
             region: region,
         });
@@ -605,7 +609,7 @@ export class LobbyV2 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new models.Security(globalSecurity);
+            globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -629,8 +633,8 @@ export class LobbyV2 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.ListActivePublicLobbiesDeprecatedV2Response =
-            new models.ListActivePublicLobbiesDeprecatedV2Response({
+        const res: operations.ListActivePublicLobbiesDeprecatedV2Response =
+            new operations.ListActivePublicLobbiesDeprecatedV2Response({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -643,11 +647,11 @@ export class LobbyV2 {
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.classes = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        models.Lobby,
+                        shared.Lobby,
                         resFieldDepth
                     );
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -657,7 +661,7 @@ export class LobbyV2 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -674,12 +678,12 @@ export class LobbyV2 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async setLobbyState(
-        setLobbyStateParams: models.SetLobbyStateParams,
+        setLobbyStateParams: shared.SetLobbyStateParams,
         roomId: string,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<models.SetLobbyStateResponse> {
-        const req = new models.SetLobbyStateRequest({
+    ): Promise<operations.SetLobbyStateResponse> {
+        const req = new operations.SetLobbyStateRequest({
             setLobbyStateParams: setLobbyStateParams,
             roomId: roomId,
             appId: appId,
@@ -714,7 +718,7 @@ export class LobbyV2 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new models.Security(globalSecurity);
+            globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -743,7 +747,7 @@ export class LobbyV2 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.SetLobbyStateResponse = new models.SetLobbyStateResponse({
+        const res: operations.SetLobbyStateResponse = new operations.SetLobbyStateResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -752,9 +756,9 @@ export class LobbyV2 {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.lobby = utils.objectToClass(JSON.parse(decodedRes), models.Lobby);
+                    res.lobby = utils.objectToClass(JSON.parse(decodedRes), shared.Lobby);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -764,11 +768,11 @@ export class LobbyV2 {
                 break;
             case [404, 422].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
                     err.rawResponse = httpRes;
-                    throw new models.ApiErrorError(err);
+                    throw new errors.ApiError(err);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -778,7 +782,7 @@ export class LobbyV2 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
