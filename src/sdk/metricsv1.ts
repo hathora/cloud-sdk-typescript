@@ -3,7 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as models from "../models";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -22,11 +24,11 @@ export class MetricsV1 {
      * Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
      */
     async getMetrics(
-        req: models.GetMetricsRequest,
+        req: operations.GetMetricsRequest,
         config?: AxiosRequestConfig
-    ): Promise<models.GetMetricsResponse> {
+    ): Promise<operations.GetMetricsResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new models.GetMetricsRequest(req);
+            req = new operations.GetMetricsRequest(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -45,7 +47,7 @@ export class MetricsV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new models.Security(globalSecurity);
+            globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -69,7 +71,7 @@ export class MetricsV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.GetMetricsResponse = new models.GetMetricsResponse({
+        const res: operations.GetMetricsResponse = new operations.GetMetricsResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -80,10 +82,10 @@ export class MetricsV1 {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.metricsResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        models.MetricsResponse
+                        shared.MetricsResponse
                     );
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -93,11 +95,11 @@ export class MetricsV1 {
                 break;
             case [404, 422, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
                     err.rawResponse = httpRes;
-                    throw new models.ApiErrorError(err);
+                    throw new errors.ApiError(err);
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -107,7 +109,7 @@ export class MetricsV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,

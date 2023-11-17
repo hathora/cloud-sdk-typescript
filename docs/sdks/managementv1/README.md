@@ -32,18 +32,18 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [models.VerificationEmailRequest](../../models/verificationemailrequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
-| `config`                                                                    | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                | :heavy_minus_sign:                                                          | Available config options for making requests.                               |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [shared.VerificationEmailRequest](../../sdk/models/shared/verificationemailrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[models.SendVerificationEmailResponse](../../models/sendverificationemailresponse.md)>**
+**Promise<[operations.SendVerificationEmailResponse](../../sdk/models/operations/sendverificationemailresponse.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 500                  | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 500              | application/json |
+| errors.SDKError  | 400-600          | */*              |

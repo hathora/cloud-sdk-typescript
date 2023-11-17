@@ -3,7 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as models from "../models";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -23,7 +25,7 @@ export class DiscoveryV1 {
      */
     async getPingServiceEndpoints(
         config?: AxiosRequestConfig
-    ): Promise<models.GetPingServiceEndpointsResponse> {
+    ): Promise<operations.GetPingServiceEndpointsResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -35,7 +37,7 @@ export class DiscoveryV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new models.Security(globalSecurity);
+            globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -58,8 +60,8 @@ export class DiscoveryV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.GetPingServiceEndpointsResponse =
-            new models.GetPingServiceEndpointsResponse({
+        const res: operations.GetPingServiceEndpointsResponse =
+            new operations.GetPingServiceEndpointsResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -72,11 +74,11 @@ export class DiscoveryV1 {
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.discoveryResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        models.DiscoveryResponse,
+                        shared.DiscoveryResponse,
                         resFieldDepth
                     );
                 } else {
-                    throw new models.SDKError(
+                    throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -86,7 +88,7 @@ export class DiscoveryV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new models.SDKError(
+                throw new errors.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,

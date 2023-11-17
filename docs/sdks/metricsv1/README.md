@@ -16,7 +16,8 @@ Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#p
 ### Example Usage
 
 ```typescript
-import { HathoraCloud, MetricName } from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { MetricName } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -41,18 +42,18 @@ import { HathoraCloud, MetricName } from "@hathora/cloud-sdk-typescript";
 
 ### Parameters
 
-| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `request`                                                     | [models.GetMetricsRequest](../../models/getmetricsrequest.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
-| `config`                                                      | [AxiosRequestConfig](https://axios-http.com/docs/req_config)  | :heavy_minus_sign:                                            | Available config options for making requests.                 |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.GetMetricsRequest](../../sdk/models/operations/getmetricsrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
 
 
 ### Response
 
-**Promise<[models.GetMetricsResponse](../../models/getmetricsresponse.md)>**
+**Promise<[operations.GetMetricsResponse](../../sdk/models/operations/getmetricsresponse.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404,422,500          | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404,422,500      | application/json |
+| errors.SDKError  | 400-600          | */*              |

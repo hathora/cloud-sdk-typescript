@@ -7,7 +7,7 @@ import "reflect-metadata";
 import { getSimplePathParams, ppMetadataKey } from "./pathparams";
 
 import { plainToInstance } from "class-transformer";
-import { RFCDate } from "../../types";
+import { RFCDate } from "../../sdk/types";
 import { requestMetadataKey } from "./requestbody";
 
 export const SerializationMethodToContentType: Record<string, string> = {

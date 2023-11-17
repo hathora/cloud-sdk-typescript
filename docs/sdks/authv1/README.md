@@ -18,7 +18,8 @@ Returns a unique player token for an anonymous user.
 ### Example Usage
 
 ```typescript
-import { HathoraCloud, LoginAnonymousRequest } from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { LoginAnonymousRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -47,13 +48,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[models.LoginAnonymousResponse](../../models/loginanonymousresponse.md)>**
+**Promise<[operations.LoginAnonymousResponse](../../sdk/models/operations/loginanonymousresponse.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404                  | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## loginGoogle
 
@@ -62,7 +63,9 @@ Returns a unique player token using a Google-signed OIDC `idToken`.
 ### Example Usage
 
 ```typescript
-import { HathoraCloud, LoginGoogleRequest, LoginGoogleRequest1 } from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { LoginGoogleRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { LoginGoogleRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -86,22 +89,22 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `loginGoogleRequest`                                         | [models.LoginGoogleRequest](../models/logingooglerequest.md) | :heavy_check_mark:                                           | N/A                                                          |                                                              |
-| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `loginGoogleRequest`                                                          | [shared.LoginGoogleRequest](../../../sdk/models/shared/logingooglerequest.md) | :heavy_check_mark:                                                            | N/A                                                                           |                                                                               |
+| `appId`                                                                       | *string*                                                                      | :heavy_minus_sign:                                                            | N/A                                                                           | app-af469a92-5b45-4565-b3c4-b79878de67d2                                      |
+| `config`                                                                      | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                  | :heavy_minus_sign:                                                            | Available config options for making requests.                                 |                                                                               |
 
 
 ### Response
 
-**Promise<[models.LoginGoogleResponse](../../models/logingoogleresponse.md)>**
+**Promise<[operations.LoginGoogleResponse](../../sdk/models/operations/logingoogleresponse.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 401,404              | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401,404          | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 ## loginNickname
 
@@ -110,7 +113,9 @@ Returns a unique player token with a specified nickname for a user.
 ### Example Usage
 
 ```typescript
-import { HathoraCloud, LoginNicknameRequest, LoginNicknameRequest1 } from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { LoginNicknameRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { LoginNicknameRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -134,19 +139,19 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Parameters
 
-| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      | Example                                                          |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `loginNicknameRequest`                                           | [models.LoginNicknameRequest](../models/loginnicknamerequest.md) | :heavy_check_mark:                                               | N/A                                                              |                                                                  |
-| `appId`                                                          | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              | app-af469a92-5b45-4565-b3c4-b79878de67d2                         |
-| `config`                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)     | :heavy_minus_sign:                                               | Available config options for making requests.                    |                                                                  |
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `loginNicknameRequest`                                                            | [shared.LoginNicknameRequest](../../../sdk/models/shared/loginnicknamerequest.md) | :heavy_check_mark:                                                                | N/A                                                                               |                                                                                   |
+| `appId`                                                                           | *string*                                                                          | :heavy_minus_sign:                                                                | N/A                                                                               | app-af469a92-5b45-4565-b3c4-b79878de67d2                                          |
+| `config`                                                                          | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                      | :heavy_minus_sign:                                                                | Available config options for making requests.                                     |                                                                                   |
 
 
 ### Response
 
-**Promise<[models.LoginNicknameResponse](../../models/loginnicknameresponse.md)>**
+**Promise<[operations.LoginNicknameResponse](../../sdk/models/operations/loginnicknameresponse.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404                  | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 404              | application/json |
+| errors.SDKError  | 400-600          | */*              |
