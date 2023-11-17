@@ -21,7 +21,7 @@ features:
     globals: 2.81.1
     methodSecurity: 2.82.0
 typescript:
-  version: 2.2.5
+  version: 2.3.0
   author: Hathora
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false
@@ -33,6 +33,7 @@ typescript:
       operations: ""
       shared: ""
       webhooks: ""
+  inputModelSuffix: input
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   maxMethodParams: "3"
   outputModelSuffix: output

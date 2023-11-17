@@ -22,9 +22,7 @@ Deprecated. Use [RoomV2](https://hathora.dev/api#tag/RoomV2).
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateRoomDeprecatedRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { CreateRoomParams, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { CreateRoomDeprecatedRequest, CreateRoomParams, HathoraCloud, Region } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -50,23 +48,23 @@ const roomId: string = "2swovpy1fnunu";
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `createRoomParams`                                                        | [shared.CreateRoomParams](../../../sdk/models/shared/createroomparams.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
-| `appId`                                                                   | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       | app-af469a92-5b45-4565-b3c4-b79878de67d2                                  |
-| `roomId`                                                                  | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       | 2swovpy1fnunu                                                             |
-| `config`                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)              | :heavy_minus_sign:                                                        | Available config options for making requests.                             |                                                                           |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `createRoomParams`                                           | [models.CreateRoomParams](../models/createroomparams.md)     | :heavy_check_mark:                                           | N/A                                                          |                                                              |
+| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `roomId`                                                     | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | 2swovpy1fnunu                                                |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
-**Promise<[operations.CreateRoomDeprecatedResponse](../../sdk/models/operations/createroomdeprecatedresponse.md)>**
+**Promise<[models.CreateRoomDeprecatedResponse](../../models/createroomdeprecatedresponse.md)>**
 ### Errors
 
-| Error Object        | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.ApiError     | 400,402,403,404,500 | application/json    |
-| errors.SDKError     | 400-600             | */*                 |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 400,402,403,404,500  | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## ~~destroyRoomDeprecated~~
 
@@ -75,8 +73,7 @@ const roomId: string = "2swovpy1fnunu";
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { DestroyRoomDeprecatedRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { DestroyRoomDeprecatedRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -107,13 +104,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.DestroyRoomDeprecatedResponse](../../sdk/models/operations/destroyroomdeprecatedresponse.md)>**
+**Promise<[models.DestroyRoomDeprecatedResponse](../../models/destroyroomdeprecatedresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404,500          | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404,500              | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## ~~getActiveRoomsForProcessDeprecated~~
 
@@ -122,8 +119,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetActiveRoomsForProcessDeprecatedRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetActiveRoomsForProcessDeprecatedRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -154,13 +150,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetActiveRoomsForProcessDeprecatedResponse](../../sdk/models/operations/getactiveroomsforprocessdeprecatedresponse.md)>**
+**Promise<[models.GetActiveRoomsForProcessDeprecatedResponse](../../models/getactiveroomsforprocessdeprecatedresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404              | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404                  | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## ~~getConnectionInfoDeprecated~~
 
@@ -169,8 +165,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetConnectionInfoDeprecatedRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetConnectionInfoDeprecatedRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -201,13 +196,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetConnectionInfoDeprecatedResponse](../../sdk/models/operations/getconnectioninfodeprecatedresponse.md)>**
+**Promise<[models.GetConnectionInfoDeprecatedResponse](../../models/getconnectioninfodeprecatedresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 400,404,500      | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 400,404,500          | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## ~~getInactiveRoomsForProcessDeprecated~~
 
@@ -216,8 +211,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetInactiveRoomsForProcessDeprecatedRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetInactiveRoomsForProcessDeprecatedRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -248,13 +242,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetInactiveRoomsForProcessDeprecatedResponse](../../sdk/models/operations/getinactiveroomsforprocessdeprecatedresponse.md)>**
+**Promise<[models.GetInactiveRoomsForProcessDeprecatedResponse](../../models/getinactiveroomsforprocessdeprecatedresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404              | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404                  | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## ~~getRoomInfoDeprecated~~
 
@@ -263,8 +257,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetRoomInfoDeprecatedRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetRoomInfoDeprecatedRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -295,13 +288,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetRoomInfoDeprecatedResponse](../../sdk/models/operations/getroominfodeprecatedresponse.md)>**
+**Promise<[models.GetRoomInfoDeprecatedResponse](../../models/getroominfodeprecatedresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404              | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404                  | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## ~~suspendRoomDeprecated~~
 
@@ -310,8 +303,7 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { SuspendRoomDeprecatedRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { HathoraCloud, SuspendRoomDeprecatedRequest } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -342,10 +334,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.SuspendRoomDeprecatedResponse](../../sdk/models/operations/suspendroomdeprecatedresponse.md)>**
+**Promise<[models.SuspendRoomDeprecatedResponse](../../models/suspendroomdeprecatedresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404,500          | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404,500              | application/json     |
+| models.SDKError      | 400-600              | */*                  |

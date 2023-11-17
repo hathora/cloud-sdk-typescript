@@ -116,12 +116,12 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 * [~~listActivePublicLobbiesDeprecatedV2~~](docs/sdks/lobbyv2/README.md#listactivepubliclobbiesdeprecatedv2) - Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client. :warning: **Deprecated**
 * [~~setLobbyState~~](docs/sdks/lobbyv2/README.md#setlobbystate) - Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores). :warning: **Deprecated**
 
-### [lobbyV3](docs/sdks/lobbyv3/README.md)
+### [lobbyV3](docs/sdks/lobbyv3sdk/README.md)
 
-* [createLobby](docs/sdks/lobbyv3/README.md#createlobby) - Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
-* [getLobbyInfoByRoomId](docs/sdks/lobbyv3/README.md#getlobbyinfobyroomid) - Get details for a lobby.
-* [getLobbyInfoByShortCode](docs/sdks/lobbyv3/README.md#getlobbyinfobyshortcode) - Get details for a lobby. If 2 or more lobbies have the same `shortCode`, then the most recently created lobby will be returned.
-* [listActivePublicLobbies](docs/sdks/lobbyv3/README.md#listactivepubliclobbies) - Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
+* [createLobby](docs/sdks/lobbyv3sdk/README.md#createlobby) - Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
+* [getLobbyInfoByRoomId](docs/sdks/lobbyv3sdk/README.md#getlobbyinfobyroomid) - Get details for a lobby.
+* [getLobbyInfoByShortCode](docs/sdks/lobbyv3sdk/README.md#getlobbyinfobyshortcode) - Get details for a lobby. If 2 or more lobbies have the same `shortCode`, then the most recently created lobby will be returned.
+* [listActivePublicLobbies](docs/sdks/lobbyv3sdk/README.md#listactivepubliclobbies) - Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
 
 ### [logV1](docs/sdks/logv1/README.md)
 
@@ -190,10 +190,10 @@ Here's an example of one such pagination call:
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 422,500          | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 422,500              | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 Example
 
@@ -222,7 +222,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
     },
   });
   } catch (e) { 
-    if (e instanceof errors.ApiError) {
+    if (e instanceof models.ApiErrorError) {
       console.error(e) // handle exception 
     
   }
@@ -383,12 +383,12 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 Some operations in this SDK require the security scheme to be specified at the request level. For example:
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import {
     CreatePrivateLobbyDeprecatedRequest,
     CreatePrivateLobbyDeprecatedSecurity,
-} from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+    HathoraCloud,
+    Region,
+} from "@hathora/cloud-sdk-typescript";
 
 (async () => {
     const sdk = new HathoraCloud({
@@ -438,8 +438,7 @@ The following global parameter is available.
 ### Example
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { DeleteAppRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { DeleteAppRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 (async () => {
     const sdk = new HathoraCloud({

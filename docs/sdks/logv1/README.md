@@ -20,8 +20,7 @@ Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { HathoraCloud, Region } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -43,21 +42,21 @@ import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.GetLogsForAppRequest](../../sdk/models/operations/getlogsforapprequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [models.GetLogsForAppRequest](../../models/getlogsforapprequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |
 
 
 ### Response
 
-**Promise<[operations.GetLogsForAppResponse](../../sdk/models/operations/getlogsforappresponse.md)>**
+**Promise<[models.GetLogsForAppResponse](../../models/getlogsforappresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404              | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404                  | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## ~~getLogsForDeployment~~
 
@@ -91,21 +90,21 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `request`                                                                                            | [operations.GetLogsForDeploymentRequest](../../sdk/models/operations/getlogsfordeploymentrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
-| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `request`                                                                         | [models.GetLogsForDeploymentRequest](../../models/getlogsfordeploymentrequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+| `config`                                                                          | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                      | :heavy_minus_sign:                                                                | Available config options for making requests.                                     |
 
 
 ### Response
 
-**Promise<[operations.GetLogsForDeploymentResponse](../../sdk/models/operations/getlogsfordeploymentresponse.md)>**
+**Promise<[models.GetLogsForDeploymentResponse](../../models/getlogsfordeploymentresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404              | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404                  | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## getLogsForProcess
 
@@ -137,18 +136,18 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `request`                                                                                      | [operations.GetLogsForProcessRequest](../../sdk/models/operations/getlogsforprocessrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `request`                                                                   | [models.GetLogsForProcessRequest](../../models/getlogsforprocessrequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| `config`                                                                    | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                | :heavy_minus_sign:                                                          | Available config options for making requests.                               |
 
 
 ### Response
 
-**Promise<[operations.GetLogsForProcessResponse](../../sdk/models/operations/getlogsforprocessresponse.md)>**
+**Promise<[models.GetLogsForProcessResponse](../../models/getlogsforprocessresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404,500          | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404,500              | application/json     |
+| models.SDKError      | 400-600              | */*                  |

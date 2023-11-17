@@ -11,7 +11,7 @@ import {
 } from "./utils";
 
 import FormData from "form-data";
-import { RFCDate } from "../../sdk/types";
+import { RFCDate } from "../../types";
 import { classToPlain } from "class-transformer";
 
 export const requestMetadataKey = "request";

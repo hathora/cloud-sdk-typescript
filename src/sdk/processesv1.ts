@@ -3,9 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "../sdk/models/errors";
-import * as operations from "../sdk/models/operations";
-import * as shared from "../sdk/models/shared";
+import * as models from "../models";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -27,8 +25,8 @@ export class ProcessesV1 {
         processId: string,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.GetProcessInfoResponse> {
-        const req = new operations.GetProcessInfoRequest({
+    ): Promise<models.GetProcessInfoResponse> {
+        const req = new models.GetProcessInfoRequest({
             processId: processId,
             appId: appId,
         });
@@ -48,7 +46,7 @@ export class ProcessesV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -71,7 +69,7 @@ export class ProcessesV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.GetProcessInfoResponse = new operations.GetProcessInfoResponse({
+        const res: models.GetProcessInfoResponse = new models.GetProcessInfoResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -80,9 +78,9 @@ export class ProcessesV1 {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.process = utils.objectToClass(JSON.parse(decodedRes), shared.Process);
+                    res.process = utils.objectToClass(JSON.parse(decodedRes), models.Process);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -92,11 +90,11 @@ export class ProcessesV1 {
                 break;
             case [404, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -106,7 +104,7 @@ export class ProcessesV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -122,10 +120,10 @@ export class ProcessesV1 {
      */
     async getRunningProcesses(
         appId?: string,
-        region?: shared.Region,
+        region?: models.Region,
         config?: AxiosRequestConfig
-    ): Promise<operations.GetRunningProcessesResponse> {
-        const req = new operations.GetRunningProcessesRequest({
+    ): Promise<models.GetRunningProcessesResponse> {
+        const req = new models.GetRunningProcessesRequest({
             appId: appId,
             region: region,
         });
@@ -145,7 +143,7 @@ export class ProcessesV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -169,12 +167,11 @@ export class ProcessesV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.GetRunningProcessesResponse =
-            new operations.GetRunningProcessesResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.GetRunningProcessesResponse = new models.GetRunningProcessesResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
@@ -183,11 +180,11 @@ export class ProcessesV1 {
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.classes = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        shared.ProcessWithRooms,
+                        models.ProcessWithRooms,
                         resFieldDepth
                     );
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -197,11 +194,11 @@ export class ProcessesV1 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -211,7 +208,7 @@ export class ProcessesV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -227,10 +224,10 @@ export class ProcessesV1 {
      */
     async getStoppedProcesses(
         appId?: string,
-        region?: shared.Region,
+        region?: models.Region,
         config?: AxiosRequestConfig
-    ): Promise<operations.GetStoppedProcessesResponse> {
-        const req = new operations.GetStoppedProcessesRequest({
+    ): Promise<models.GetStoppedProcessesResponse> {
+        const req = new models.GetStoppedProcessesRequest({
             appId: appId,
             region: region,
         });
@@ -250,7 +247,7 @@ export class ProcessesV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -274,12 +271,11 @@ export class ProcessesV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.GetStoppedProcessesResponse =
-            new operations.GetStoppedProcessesResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.GetStoppedProcessesResponse = new models.GetStoppedProcessesResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
@@ -288,11 +284,11 @@ export class ProcessesV1 {
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.classes = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        shared.Process,
+                        models.Process,
                         resFieldDepth
                     );
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -302,11 +298,11 @@ export class ProcessesV1 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -316,7 +312,7 @@ export class ProcessesV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
