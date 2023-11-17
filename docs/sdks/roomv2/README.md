@@ -23,9 +23,7 @@ Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateRoomRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { CreateRoomParams, Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { CreateRoomParams, CreateRoomRequest, HathoraCloud, Region } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -51,23 +49,23 @@ const roomId: string = "2swovpy1fnunu";
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `createRoomParams`                                                        | [shared.CreateRoomParams](../../../sdk/models/shared/createroomparams.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
-| `appId`                                                                   | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       | app-af469a92-5b45-4565-b3c4-b79878de67d2                                  |
-| `roomId`                                                                  | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       | 2swovpy1fnunu                                                             |
-| `config`                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)              | :heavy_minus_sign:                                                        | Available config options for making requests.                             |                                                                           |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `createRoomParams`                                           | [models.CreateRoomParams](../models/createroomparams.md)     | :heavy_check_mark:                                           | N/A                                                          |                                                              |
+| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `roomId`                                                     | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | 2swovpy1fnunu                                                |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
-**Promise<[operations.CreateRoomResponse](../../sdk/models/operations/createroomresponse.md)>**
+**Promise<[models.CreateRoomResponse](../../models/createroomresponse.md)>**
 ### Errors
 
-| Error Object        | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.ApiError     | 400,402,403,404,500 | application/json    |
-| errors.SDKError     | 400-600             | */*                 |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 400,402,403,404,500  | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## destroyRoom
 
@@ -76,8 +74,7 @@ Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All a
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { DestroyRoomRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { DestroyRoomRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -108,13 +105,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.DestroyRoomResponse](../../sdk/models/operations/destroyroomresponse.md)>**
+**Promise<[models.DestroyRoomResponse](../../models/destroyroomresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404,500          | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404,500              | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## getActiveRoomsForProcess
 
@@ -123,8 +120,7 @@ Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) 
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetActiveRoomsForProcessRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetActiveRoomsForProcessRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -155,13 +151,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetActiveRoomsForProcessResponse](../../sdk/models/operations/getactiveroomsforprocessresponse.md)>**
+**Promise<[models.GetActiveRoomsForProcessResponse](../../models/getactiveroomsforprocessresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404              | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404                  | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## getConnectionInfo
 
@@ -170,8 +166,7 @@ Poll this endpoint to get connection details to a [room](https://hathora.dev/doc
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetConnectionInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetConnectionInfoRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -202,13 +197,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetConnectionInfoResponse](../../sdk/models/operations/getconnectioninforesponse.md)>**
+**Promise<[models.GetConnectionInfoResponse](../../models/getconnectioninforesponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 400,404,500      | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 400,404,500          | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## getInactiveRoomsForProcess
 
@@ -217,8 +212,7 @@ Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetInactiveRoomsForProcessRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetInactiveRoomsForProcessRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -249,13 +243,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetInactiveRoomsForProcessResponse](../../sdk/models/operations/getinactiveroomsforprocessresponse.md)>**
+**Promise<[models.GetInactiveRoomsForProcessResponse](../../models/getinactiveroomsforprocessresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404              | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404                  | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## getRoomInfo
 
@@ -264,8 +258,7 @@ Retreive current and historical allocation data for a [room](https://hathora.dev
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetRoomInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetRoomInfoRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -296,13 +289,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetRoomInfoResponse](../../sdk/models/operations/getroominforesponse.md)>**
+**Promise<[models.GetRoomInfoResponse](../../models/getroominforesponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404              | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404                  | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## suspendRoom
 
@@ -311,8 +304,7 @@ Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The r
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { SuspendRoomRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { HathoraCloud, SuspendRoomRequest } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -343,22 +335,20 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.SuspendRoomResponse](../../sdk/models/operations/suspendroomresponse.md)>**
+**Promise<[models.SuspendRoomResponse](../../models/suspendroomresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404,500          | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404,500              | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## updateRoomConfig
 
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { UpdateRoomConfigRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { UpdateRoomConfigParams } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { HathoraCloud, UpdateRoomConfigParams, UpdateRoomConfigRequest } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -383,20 +373,20 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Parameters
 
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `updateRoomConfigParams`                                                              | [shared.UpdateRoomConfigParams](../../../sdk/models/shared/updateroomconfigparams.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |                                                                                       |
-| `roomId`                                                                              | *string*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   | 2swovpy1fnunu                                                                         |
-| `appId`                                                                               | *string*                                                                              | :heavy_minus_sign:                                                                    | N/A                                                                                   | app-af469a92-5b45-4565-b3c4-b79878de67d2                                              |
-| `config`                                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                          | :heavy_minus_sign:                                                                    | Available config options for making requests.                                         |                                                                                       |
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          | Example                                                              |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `updateRoomConfigParams`                                             | [models.UpdateRoomConfigParams](../models/updateroomconfigparams.md) | :heavy_check_mark:                                                   | N/A                                                                  |                                                                      |
+| `roomId`                                                             | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  | 2swovpy1fnunu                                                        |
+| `appId`                                                              | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  | app-af469a92-5b45-4565-b3c4-b79878de67d2                             |
+| `config`                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)         | :heavy_minus_sign:                                                   | Available config options for making requests.                        |                                                                      |
 
 
 ### Response
 
-**Promise<[operations.UpdateRoomConfigResponse](../../sdk/models/operations/updateroomconfigresponse.md)>**
+**Promise<[models.UpdateRoomConfigResponse](../../models/updateroomconfigresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404,500          | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404,500              | application/json     |
+| models.SDKError      | 400-600              | */*                  |

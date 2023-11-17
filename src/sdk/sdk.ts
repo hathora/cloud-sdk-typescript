@@ -3,7 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
-import * as shared from "../sdk/models/shared";
+import * as models from "../models";
 import { AppV1 } from "./appv1";
 import { AuthV1 } from "./authv1";
 import { BillingV1 } from "./billingv1";
@@ -12,7 +12,7 @@ import { DeploymentV1 } from "./deploymentv1";
 import { DiscoveryV1 } from "./discoveryv1";
 import { LobbyV1 } from "./lobbyv1";
 import { LobbyV2 } from "./lobbyv2";
-import { LobbyV3 } from "./lobbyv3";
+import { LobbyV3SDK } from "./lobbyv3sdk";
 import { LogV1 } from "./logv1";
 import { ManagementV1 } from "./managementv1";
 import { MetricsV1 } from "./metricsv1";
@@ -34,7 +34,7 @@ export type SDKProps = {
     /**
      * The security details required to authenticate the SDK
      */
-    security?: shared.Security | (() => Promise<shared.Security>);
+    security?: models.Security | (() => Promise<models.Security>);
 
     /**
      * Allows setting the appId parameter for all supported operations
@@ -63,14 +63,14 @@ export type SDKProps = {
 
 export class SDKConfiguration {
     defaultClient: AxiosInstance;
-    security?: shared.Security | (() => Promise<shared.Security>);
+    security?: models.Security | (() => Promise<models.Security>);
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.0.1";
-    sdkVersion = "2.2.4";
+    sdkVersion = "2.3.0";
     genVersion = "2.188.3";
-    userAgent = "speakeasy-sdk/typescript 2.2.4 2.188.3 0.0.1 @hathora/cloud-sdk-typescript";
+    userAgent = "speakeasy-sdk/typescript 2.3.0 2.188.3 0.0.1 @hathora/cloud-sdk-typescript";
     globals: any;
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -114,7 +114,7 @@ export class HathoraCloud {
     /**
      * Operations to create and manage lobbies using our [Lobby Service](https://hathora.dev/docs/lobbies-and-matchmaking/lobby-service).
      */
-    public lobbyV3: LobbyV3;
+    public lobbyV3: LobbyV3SDK;
     /**
      * Operations to get logs by [applications](https://hathora.dev/docs/concepts/hathora-entities#application), [processes](https://hathora.dev/docs/concepts/hathora-entities#process), and [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment). We store 20GB of logs data.
      */
@@ -171,7 +171,7 @@ export class HathoraCloud {
         this.discoveryV1 = new DiscoveryV1(this.sdkConfiguration);
         this.lobbyV1 = new LobbyV1(this.sdkConfiguration);
         this.lobbyV2 = new LobbyV2(this.sdkConfiguration);
-        this.lobbyV3 = new LobbyV3(this.sdkConfiguration);
+        this.lobbyV3 = new LobbyV3SDK(this.sdkConfiguration);
         this.logV1 = new LogV1(this.sdkConfiguration);
         this.managementV1 = new ManagementV1(this.sdkConfiguration);
         this.metricsV1 = new MetricsV1(this.sdkConfiguration);

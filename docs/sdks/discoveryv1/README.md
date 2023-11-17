@@ -43,9 +43,9 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 ### Response
 
-**Promise<[operations.GetPingServiceEndpointsResponse](../../sdk/models/operations/getpingserviceendpointsresponse.md)>**
+**Promise<[models.GetPingServiceEndpointsResponse](../../models/getpingserviceendpointsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| models.SDKError | 400-600         | */*             |
