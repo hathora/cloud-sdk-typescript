@@ -21,7 +21,7 @@ features:
     globals: 2.81.1
     methodSecurity: 2.82.0
 typescript:
-  version: 2.2.6
+  version: 2.2.5
   author: Hathora
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false
