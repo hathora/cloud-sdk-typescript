@@ -3,9 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "../sdk/models/errors";
-import * as operations from "../sdk/models/operations";
-import * as shared from "../sdk/models/shared";
+import * as models from "../models";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -26,8 +24,8 @@ export class AuthV1 {
     async loginAnonymous(
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.LoginAnonymousResponse> {
-        const req = new operations.LoginAnonymousRequest({
+    ): Promise<models.LoginAnonymousResponse> {
+        const req = new models.LoginAnonymousRequest({
             appId: appId,
         });
         const baseURL: string = utils.templateUrl(
@@ -46,7 +44,7 @@ export class AuthV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -69,7 +67,7 @@ export class AuthV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.LoginAnonymousResponse = new operations.LoginAnonymousResponse({
+        const res: models.LoginAnonymousResponse = new models.LoginAnonymousResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -80,10 +78,10 @@ export class AuthV1 {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.loginResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        shared.LoginResponse
+                        models.LoginResponse
                     );
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -93,11 +91,11 @@ export class AuthV1 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -107,7 +105,7 @@ export class AuthV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -122,11 +120,11 @@ export class AuthV1 {
      * Returns a unique player token using a Google-signed OIDC `idToken`.
      */
     async loginGoogle(
-        loginGoogleRequest: shared.LoginGoogleRequest,
+        loginGoogleRequest: models.LoginGoogleRequest,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.LoginGoogleResponse> {
-        const req = new operations.LoginGoogleRequest({
+    ): Promise<models.LoginGoogleResponse> {
+        const req = new models.LoginGoogleRequest1({
             loginGoogleRequest: loginGoogleRequest,
             appId: appId,
         });
@@ -160,7 +158,7 @@ export class AuthV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -189,7 +187,7 @@ export class AuthV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.LoginGoogleResponse = new operations.LoginGoogleResponse({
+        const res: models.LoginGoogleResponse = new models.LoginGoogleResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -200,10 +198,10 @@ export class AuthV1 {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.loginResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        shared.LoginResponse
+                        models.LoginResponse
                     );
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -213,11 +211,11 @@ export class AuthV1 {
                 break;
             case [401, 404].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -227,7 +225,7 @@ export class AuthV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -242,11 +240,11 @@ export class AuthV1 {
      * Returns a unique player token with a specified nickname for a user.
      */
     async loginNickname(
-        loginNicknameRequest: shared.LoginNicknameRequest,
+        loginNicknameRequest: models.LoginNicknameRequest,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.LoginNicknameResponse> {
-        const req = new operations.LoginNicknameRequest({
+    ): Promise<models.LoginNicknameResponse> {
+        const req = new models.LoginNicknameRequest1({
             loginNicknameRequest: loginNicknameRequest,
             appId: appId,
         });
@@ -280,7 +278,7 @@ export class AuthV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -309,7 +307,7 @@ export class AuthV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.LoginNicknameResponse = new operations.LoginNicknameResponse({
+        const res: models.LoginNicknameResponse = new models.LoginNicknameResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -320,10 +318,10 @@ export class AuthV1 {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.loginResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        shared.LoginResponse
+                        models.LoginResponse
                     );
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -333,11 +331,11 @@ export class AuthV1 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -347,7 +345,7 @@ export class AuthV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,

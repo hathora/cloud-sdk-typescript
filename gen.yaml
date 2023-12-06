@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 management:
-  docChecksum: b9c5c06218c4461eaae6d867176f299d
+  docChecksum: d6a15bbe5cbafaa33b8e61bd64d99760
   docVersion: 0.0.1
   speakeasyVersion: 1.120.0
   generationVersion: 2.188.3
@@ -21,7 +21,7 @@ features:
     globals: 2.81.1
     methodSecurity: 2.82.0
 typescript:
-  version: 2.2.5
+  version: 2.2.6
   author: Hathora
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false
@@ -33,6 +33,7 @@ typescript:
       operations: ""
       shared: ""
       webhooks: ""
+  inputModelSuffix: input
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   maxMethodParams: "3"
   outputModelSuffix: output

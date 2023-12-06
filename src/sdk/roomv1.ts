@@ -3,9 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "../sdk/models/errors";
-import * as operations from "../sdk/models/operations";
-import * as shared from "../sdk/models/shared";
+import * as models from "../models";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -24,12 +22,12 @@ export class RoomV1 {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createRoomDeprecated(
-        createRoomParams: shared.CreateRoomParams,
+        createRoomParams: models.CreateRoomParams,
         appId?: string,
         roomId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.CreateRoomDeprecatedResponse> {
-        const req = new operations.CreateRoomDeprecatedRequest({
+    ): Promise<models.CreateRoomDeprecatedResponse> {
+        const req = new models.CreateRoomDeprecatedRequest({
             createRoomParams: createRoomParams,
             appId: appId,
             roomId: roomId,
@@ -60,7 +58,7 @@ export class RoomV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -90,19 +88,18 @@ export class RoomV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CreateRoomDeprecatedResponse =
-            new operations.CreateRoomDeprecatedResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.CreateRoomDeprecatedResponse = new models.CreateRoomDeprecatedResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.roomId = decodedRes;
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -112,11 +109,11 @@ export class RoomV1 {
                 break;
             case [400, 402, 403, 404, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -126,7 +123,7 @@ export class RoomV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -144,8 +141,8 @@ export class RoomV1 {
         roomId: string,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.DestroyRoomDeprecatedResponse> {
-        const req = new operations.DestroyRoomDeprecatedRequest({
+    ): Promise<models.DestroyRoomDeprecatedResponse> {
+        const req = new models.DestroyRoomDeprecatedRequest({
             roomId: roomId,
             appId: appId,
         });
@@ -165,7 +162,7 @@ export class RoomV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -188,23 +185,22 @@ export class RoomV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.DestroyRoomDeprecatedResponse =
-            new operations.DestroyRoomDeprecatedResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.DestroyRoomDeprecatedResponse = new models.DestroyRoomDeprecatedResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 204:
                 break;
             case [404, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -214,7 +210,7 @@ export class RoomV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -232,8 +228,8 @@ export class RoomV1 {
         processId: string,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.GetActiveRoomsForProcessDeprecatedResponse> {
-        const req = new operations.GetActiveRoomsForProcessDeprecatedRequest({
+    ): Promise<models.GetActiveRoomsForProcessDeprecatedResponse> {
+        const req = new models.GetActiveRoomsForProcessDeprecatedRequest({
             processId: processId,
             appId: appId,
         });
@@ -253,7 +249,7 @@ export class RoomV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -276,8 +272,8 @@ export class RoomV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.GetActiveRoomsForProcessDeprecatedResponse =
-            new operations.GetActiveRoomsForProcessDeprecatedResponse({
+        const res: models.GetActiveRoomsForProcessDeprecatedResponse =
+            new models.GetActiveRoomsForProcessDeprecatedResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -290,11 +286,11 @@ export class RoomV1 {
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.classes = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        shared.RoomWithoutAllocations,
+                        models.RoomWithoutAllocations,
                         resFieldDepth
                     );
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -304,11 +300,11 @@ export class RoomV1 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -318,7 +314,7 @@ export class RoomV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -336,8 +332,8 @@ export class RoomV1 {
         roomId: string,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.GetConnectionInfoDeprecatedResponse> {
-        const req = new operations.GetConnectionInfoDeprecatedRequest({
+    ): Promise<models.GetConnectionInfoDeprecatedResponse> {
+        const req = new models.GetConnectionInfoDeprecatedRequest({
             roomId: roomId,
             appId: appId,
         });
@@ -357,7 +353,7 @@ export class RoomV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -380,8 +376,8 @@ export class RoomV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.GetConnectionInfoDeprecatedResponse =
-            new operations.GetConnectionInfoDeprecatedResponse({
+        const res: models.GetConnectionInfoDeprecatedResponse =
+            new models.GetConnectionInfoDeprecatedResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -392,7 +388,7 @@ export class RoomV1 {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.connectionInfo = JSON.parse(decodedRes);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -402,11 +398,11 @@ export class RoomV1 {
                 break;
             case [400, 404, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -416,7 +412,7 @@ export class RoomV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -434,8 +430,8 @@ export class RoomV1 {
         processId: string,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.GetInactiveRoomsForProcessDeprecatedResponse> {
-        const req = new operations.GetInactiveRoomsForProcessDeprecatedRequest({
+    ): Promise<models.GetInactiveRoomsForProcessDeprecatedResponse> {
+        const req = new models.GetInactiveRoomsForProcessDeprecatedRequest({
             processId: processId,
             appId: appId,
         });
@@ -455,7 +451,7 @@ export class RoomV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -478,8 +474,8 @@ export class RoomV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.GetInactiveRoomsForProcessDeprecatedResponse =
-            new operations.GetInactiveRoomsForProcessDeprecatedResponse({
+        const res: models.GetInactiveRoomsForProcessDeprecatedResponse =
+            new models.GetInactiveRoomsForProcessDeprecatedResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -492,11 +488,11 @@ export class RoomV1 {
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.classes = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        shared.RoomWithoutAllocations,
+                        models.RoomWithoutAllocations,
                         resFieldDepth
                     );
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -506,11 +502,11 @@ export class RoomV1 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -520,7 +516,7 @@ export class RoomV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -538,8 +534,8 @@ export class RoomV1 {
         roomId: string,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.GetRoomInfoDeprecatedResponse> {
-        const req = new operations.GetRoomInfoDeprecatedRequest({
+    ): Promise<models.GetRoomInfoDeprecatedResponse> {
+        const req = new models.GetRoomInfoDeprecatedRequest({
             roomId: roomId,
             appId: appId,
         });
@@ -559,7 +555,7 @@ export class RoomV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -582,19 +578,18 @@ export class RoomV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.GetRoomInfoDeprecatedResponse =
-            new operations.GetRoomInfoDeprecatedResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.GetRoomInfoDeprecatedResponse = new models.GetRoomInfoDeprecatedResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.room = utils.objectToClass(JSON.parse(decodedRes), shared.Room);
+                    res.room = utils.objectToClass(JSON.parse(decodedRes), models.Room);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -604,11 +599,11 @@ export class RoomV1 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -618,7 +613,7 @@ export class RoomV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -636,8 +631,8 @@ export class RoomV1 {
         roomId: string,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.SuspendRoomDeprecatedResponse> {
-        const req = new operations.SuspendRoomDeprecatedRequest({
+    ): Promise<models.SuspendRoomDeprecatedResponse> {
+        const req = new models.SuspendRoomDeprecatedRequest({
             roomId: roomId,
             appId: appId,
         });
@@ -657,7 +652,7 @@ export class RoomV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -680,23 +675,22 @@ export class RoomV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.SuspendRoomDeprecatedResponse =
-            new operations.SuspendRoomDeprecatedResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.SuspendRoomDeprecatedResponse = new models.SuspendRoomDeprecatedResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 204:
                 break;
             case [404, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -706,7 +700,7 @@ export class RoomV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
