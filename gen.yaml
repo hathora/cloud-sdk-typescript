@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 management:
-  docChecksum: d6a15bbe5cbafaa33b8e61bd64d99760
+  docChecksum: 8c7636bc24c0d5e96568913317b394b9
   docVersion: 0.0.1
   speakeasyVersion: 1.120.0
   generationVersion: 2.188.3
@@ -21,7 +21,7 @@ features:
     globals: 2.81.1
     methodSecurity: 2.82.0
 typescript:
-  version: 2.2.6
+  version: 2.2.7
   author: Hathora
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false

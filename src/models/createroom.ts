@@ -3,8 +3,8 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../internal/utils";
-import { ConnectionInfoV2 } from "./connectioninfov2";
 import { CreateRoomParams } from "./createroomparams";
+import { CreateRoomResponse } from "./createroomresponse";
 import { AxiosResponse } from "axios";
 
 export class CreateRoomRequest extends SpeakeasyBase {
@@ -18,15 +18,15 @@ export class CreateRoomRequest extends SpeakeasyBase {
     roomId?: string;
 }
 
-export class CreateRoomResponse extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    connectionInfoV2?: ConnectionInfoV2;
-
+export class CreateRoomResponse1 extends SpeakeasyBase {
     /**
      * HTTP response content type for this operation
      */
     @SpeakeasyMetadata()
     contentType: string;
+
+    @SpeakeasyMetadata()
+    createRoomResponse?: CreateRoomResponse;
 
     /**
      * HTTP response status code for this operation

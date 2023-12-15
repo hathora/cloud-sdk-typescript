@@ -26,7 +26,7 @@ export class RoomV2 {
         appId?: string,
         roomId?: string,
         config?: AxiosRequestConfig
-    ): Promise<models.CreateRoomResponse> {
+    ): Promise<models.CreateRoomResponse1> {
         const req = new models.CreateRoomRequest({
             createRoomParams: createRoomParams,
             appId: appId,
@@ -88,7 +88,7 @@ export class RoomV2 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CreateRoomResponse = new models.CreateRoomResponse({
+        const res: models.CreateRoomResponse1 = new models.CreateRoomResponse1({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -97,9 +97,9 @@ export class RoomV2 {
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.connectionInfoV2 = utils.objectToClass(
+                    res.createRoomResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        models.ConnectionInfoV2
+                        models.CreateRoomResponse
                     );
                 } else {
                     throw new models.SDKError(

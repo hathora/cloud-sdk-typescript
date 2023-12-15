@@ -29,6 +29,7 @@ export * from "./createpubliclobbydeprecated";
 export * from "./createroom";
 export * from "./createroomdeprecated";
 export * from "./createroomparams";
+export * from "./createroomresponse";
 export * from "./customerportalurl";
 export * from "./deleteapp";
 export * from "./deletebuild";

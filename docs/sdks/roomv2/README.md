@@ -59,7 +59,7 @@ const roomId: string = "2swovpy1fnunu";
 
 ### Response
 
-**Promise<[models.CreateRoomResponse](../../models/createroomresponse.md)>**
+**Promise<[models.CreateRoomResponse1](../../models/createroomresponse1.md)>**
 ### Errors
 
 | Error Object         | Status Code          | Content Type         |
