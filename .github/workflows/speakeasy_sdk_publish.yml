@@ -7,7 +7,7 @@ name: Publish
       - RELEASES.md
 jobs:
   publish:
-    uses: hathora/cloud-sdk-typescript/.github/workflows/speakeasy/sdk-publish.yaml@main
+    uses: hathora/cloud-sdk-typescript/.github/workflows/manual-port-sdk-publish.yaml@main
     with:
       create_release: true
       publish_typescript: true

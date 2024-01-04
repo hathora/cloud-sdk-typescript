@@ -15,7 +15,7 @@ permissions:
     - cron: 0 0 * * *
 jobs:
   generate:
-    uses: hathora/cloud-sdk-typescript/.github/workflows/speakeasy/sdk-generation.yaml@main
+    uses: hathora/cloud-sdk-typescript/.github/workflows/manual-port-sdk-generation.yaml@main
     with:
       force: ${{ github.event.inputs.force }}
       languages: |
