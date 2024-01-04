@@ -15,7 +15,7 @@ permissions:
     - cron: 0 0 * * *
 jobs:
   generate:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v14
+    uses: hathora/cloud-sdk-typescript/.github/workflows/speakeasy/sdk-generation.yaml
     with:
       force: ${{ github.event.inputs.force }}
       languages: |
