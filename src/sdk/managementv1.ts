@@ -3,9 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "../sdk/models/errors";
-import * as operations from "../sdk/models/operations";
-import * as shared from "../sdk/models/shared";
+import * as models from "../models";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -17,11 +15,11 @@ export class ManagementV1 {
     }
 
     async sendVerificationEmail(
-        req: shared.VerificationEmailRequest,
+        req: models.VerificationEmailRequest,
         config?: AxiosRequestConfig
-    ): Promise<operations.SendVerificationEmailResponse> {
+    ): Promise<models.SendVerificationEmailResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new shared.VerificationEmailRequest(req);
+            req = new models.VerificationEmailRequest(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -46,7 +44,7 @@ export class ManagementV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -75,22 +73,21 @@ export class ManagementV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.SendVerificationEmailResponse =
-            new operations.SendVerificationEmailResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.SendVerificationEmailResponse = new models.SendVerificationEmailResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.verificationEmailResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        shared.VerificationEmailResponse
+                        models.VerificationEmailResponse
                     );
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -100,7 +97,7 @@ export class ManagementV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -108,11 +105,11 @@ export class ManagementV1 {
                 );
             case httpRes?.status == 500:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,

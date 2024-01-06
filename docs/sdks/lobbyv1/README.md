@@ -18,9 +18,12 @@ Deprecated. Use [LobbyV3](https://hathora.dev/api#tag/LobbyV3).
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreatePrivateLobbyDeprecatedRequest, CreatePrivateLobbyDeprecatedSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import {
+  CreatePrivateLobbyDeprecatedRequest,
+  CreatePrivateLobbyDeprecatedSecurity,
+  HathoraCloud,
+  Region,
+} from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -43,24 +46,24 @@ const operationSecurity: CreatePrivateLobbyDeprecatedSecurity = {
 
 ### Parameters
 
-| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            | Example                                                                                                                |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                             | [operations.CreatePrivateLobbyDeprecatedSecurity](../../sdk/models/operations/createprivatelobbydeprecatedsecurity.md) | :heavy_check_mark:                                                                                                     | The security requirements to use for the request.                                                                      |                                                                                                                        |
-| `appId`                                                                                                                | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                                               |
-| `local`                                                                                                                | *boolean*                                                                                                              | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |                                                                                                                        |
-| `region`                                                                                                               | [shared.Region](../../../sdk/models/shared/region.md)                                                                  | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |                                                                                                                        |
-| `config`                                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                           | :heavy_minus_sign:                                                                                                     | Available config options for making requests.                                                                          |                                                                                                                        |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `security`                                                                                   | [models.CreatePrivateLobbyDeprecatedSecurity](../../createprivatelobbydeprecatedsecurity.md) | :heavy_check_mark:                                                                           | The security requirements to use for the request.                                            |                                                                                              |
+| `appId`                                                                                      | *string*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                     |
+| `local`                                                                                      | *boolean*                                                                                    | :heavy_minus_sign:                                                                           | N/A                                                                                          |                                                                                              |
+| `region`                                                                                     | [models.Region](../models/region.md)                                                         | :heavy_minus_sign:                                                                           | N/A                                                                                          |                                                                                              |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |                                                                                              |
 
 
 ### Response
 
-**Promise<[operations.CreatePrivateLobbyDeprecatedResponse](../../sdk/models/operations/createprivatelobbydeprecatedresponse.md)>**
+**Promise<[models.CreatePrivateLobbyDeprecatedResponse](../../models/createprivatelobbydeprecatedresponse.md)>**
 ### Errors
 
 | Error Object            | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
-| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
-| errors.SDKError         | 400-600                 | */*                     |
+| models.ApiErrorError    | 400,401,404,422,429,500 | application/json        |
+| models.SDKError         | 400-600                 | */*                     |
 
 ## ~~createPublicLobbyDeprecated~~
 
@@ -69,9 +72,12 @@ const operationSecurity: CreatePrivateLobbyDeprecatedSecurity = {
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreatePublicLobbyDeprecatedRequest, CreatePublicLobbyDeprecatedSecurity } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import {
+  CreatePublicLobbyDeprecatedRequest,
+  CreatePublicLobbyDeprecatedSecurity,
+  HathoraCloud,
+  Region,
+} from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -94,24 +100,24 @@ const operationSecurity: CreatePublicLobbyDeprecatedSecurity = {
 
 ### Parameters
 
-| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          | Example                                                                                                              |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                           | [operations.CreatePublicLobbyDeprecatedSecurity](../../sdk/models/operations/createpubliclobbydeprecatedsecurity.md) | :heavy_check_mark:                                                                                                   | The security requirements to use for the request.                                                                    |                                                                                                                      |
-| `appId`                                                                                                              | *string*                                                                                                             | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                                             |
-| `local`                                                                                                              | *boolean*                                                                                                            | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |                                                                                                                      |
-| `region`                                                                                                             | [shared.Region](../../../sdk/models/shared/region.md)                                                                | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |                                                                                                                      |
-| `config`                                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                         | :heavy_minus_sign:                                                                                                   | Available config options for making requests.                                                                        |                                                                                                                      |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `security`                                                                                 | [models.CreatePublicLobbyDeprecatedSecurity](../../createpubliclobbydeprecatedsecurity.md) | :heavy_check_mark:                                                                         | The security requirements to use for the request.                                          |                                                                                            |
+| `appId`                                                                                    | *string*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                   |
+| `local`                                                                                    | *boolean*                                                                                  | :heavy_minus_sign:                                                                         | N/A                                                                                        |                                                                                            |
+| `region`                                                                                   | [models.Region](../models/region.md)                                                       | :heavy_minus_sign:                                                                         | N/A                                                                                        |                                                                                            |
+| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |                                                                                            |
 
 
 ### Response
 
-**Promise<[operations.CreatePublicLobbyDeprecatedResponse](../../sdk/models/operations/createpubliclobbydeprecatedresponse.md)>**
+**Promise<[models.CreatePublicLobbyDeprecatedResponse](../../models/createpubliclobbydeprecatedresponse.md)>**
 ### Errors
 
 | Error Object            | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
-| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
-| errors.SDKError         | 400-600                 | */*                     |
+| models.ApiErrorError    | 400,401,404,422,429,500 | application/json        |
+| models.SDKError         | 400-600                 | */*                     |
 
 ## ~~listActivePublicLobbiesDeprecatedV1~~
 
@@ -120,9 +126,7 @@ const operationSecurity: CreatePublicLobbyDeprecatedSecurity = {
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { ListActivePublicLobbiesDeprecatedV1Request } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { Region } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import { HathoraCloud, ListActivePublicLobbiesDeprecatedV1Request, Region } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -149,16 +153,16 @@ const region: Region = Region.Tokyo;
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
 | `local`                                                      | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |                                                              |
-| `region`                                                     | [shared.Region](../../../sdk/models/shared/region.md)        | :heavy_minus_sign:                                           | N/A                                                          |                                                              |
+| `region`                                                     | [models.Region](../models/region.md)                         | :heavy_minus_sign:                                           | N/A                                                          |                                                              |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
-**Promise<[operations.ListActivePublicLobbiesDeprecatedV1Response](../../sdk/models/operations/listactivepubliclobbiesdeprecatedv1response.md)>**
+**Promise<[models.ListActivePublicLobbiesDeprecatedV1Response](../../models/listactivepubliclobbiesdeprecatedv1response.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404          | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 401,404              | application/json     |
+| models.SDKError      | 400-600              | */*                  |

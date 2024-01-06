@@ -3,3 +3,7 @@
  */
 
 export * from "./sdk";
+export * from "./models";
+
+import * as types from "./types";
+export { types };

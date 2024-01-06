@@ -3,9 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "../sdk/models/errors";
-import * as operations from "../sdk/models/operations";
-import * as shared from "../sdk/models/shared";
+import * as models from "../models";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -28,11 +26,11 @@ export class BuildV1 {
      * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
      */
     async createBuild(
-        createBuildParams: shared.CreateBuildParams,
+        createBuildParams: models.CreateBuildParams,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.CreateBuildResponse> {
-        const req = new operations.CreateBuildRequest({
+    ): Promise<models.CreateBuildResponse> {
+        const req = new models.CreateBuildRequest({
             createBuildParams: createBuildParams,
             appId: appId,
         });
@@ -66,7 +64,7 @@ export class BuildV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -95,7 +93,7 @@ export class BuildV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CreateBuildResponse = new operations.CreateBuildResponse({
+        const res: models.CreateBuildResponse = new models.CreateBuildResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -104,9 +102,9 @@ export class BuildV1 {
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.build = utils.objectToClass(JSON.parse(decodedRes), shared.Build);
+                    res.build = utils.objectToClass(JSON.parse(decodedRes), models.Build);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -116,11 +114,11 @@ export class BuildV1 {
                 break;
             case [404, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -130,7 +128,7 @@ export class BuildV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -148,8 +146,8 @@ export class BuildV1 {
         buildId: number,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.DeleteBuildResponse> {
-        const req = new operations.DeleteBuildRequest({
+    ): Promise<models.DeleteBuildResponse> {
+        const req = new models.DeleteBuildRequest({
             buildId: buildId,
             appId: appId,
         });
@@ -169,7 +167,7 @@ export class BuildV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -192,7 +190,7 @@ export class BuildV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.DeleteBuildResponse = new operations.DeleteBuildResponse({
+        const res: models.DeleteBuildResponse = new models.DeleteBuildResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -203,11 +201,11 @@ export class BuildV1 {
                 break;
             case [404, 422, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -217,7 +215,7 @@ export class BuildV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -235,8 +233,8 @@ export class BuildV1 {
         buildId: number,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.GetBuildInfoResponse> {
-        const req = new operations.GetBuildInfoRequest({
+    ): Promise<models.GetBuildInfoResponse> {
+        const req = new models.GetBuildInfoRequest({
             buildId: buildId,
             appId: appId,
         });
@@ -256,7 +254,7 @@ export class BuildV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -279,7 +277,7 @@ export class BuildV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.GetBuildInfoResponse = new operations.GetBuildInfoResponse({
+        const res: models.GetBuildInfoResponse = new models.GetBuildInfoResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -288,9 +286,9 @@ export class BuildV1 {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.build = utils.objectToClass(JSON.parse(decodedRes), shared.Build);
+                    res.build = utils.objectToClass(JSON.parse(decodedRes), models.Build);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -300,11 +298,11 @@ export class BuildV1 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -314,7 +312,7 @@ export class BuildV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -331,8 +329,8 @@ export class BuildV1 {
     async getBuilds(
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.GetBuildsResponse> {
-        const req = new operations.GetBuildsRequest({
+    ): Promise<models.GetBuildsResponse> {
+        const req = new models.GetBuildsRequest({
             appId: appId,
         });
         const baseURL: string = utils.templateUrl(
@@ -351,7 +349,7 @@ export class BuildV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -374,7 +372,7 @@ export class BuildV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.GetBuildsResponse = new operations.GetBuildsResponse({
+        const res: models.GetBuildsResponse = new models.GetBuildsResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -387,11 +385,11 @@ export class BuildV1 {
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.classes = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        shared.Build,
+                        models.Build,
                         resFieldDepth
                     );
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -401,11 +399,11 @@ export class BuildV1 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -415,7 +413,7 @@ export class BuildV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -430,13 +428,13 @@ export class BuildV1 {
      * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
      */
     async runBuild(
-        requestBody: operations.RunBuildRequestBody,
+        requestBody: models.RunBuildRequestBody,
         buildId: number,
         appId?: string,
         config?: AxiosRequestConfig,
         acceptHeaderOverride?: RunBuildAcceptEnum
-    ): Promise<operations.RunBuildResponse> {
-        const req = new operations.RunBuildRequest({
+    ): Promise<models.RunBuildResponse> {
+        const req = new models.RunBuildRequest({
             requestBody: requestBody,
             buildId: buildId,
             appId: appId,
@@ -467,7 +465,7 @@ export class BuildV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -500,7 +498,7 @@ export class BuildV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.RunBuildResponse = new operations.RunBuildResponse({
+        const res: models.RunBuildResponse = new models.RunBuildResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -511,7 +509,7 @@ export class BuildV1 {
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
                     res.res = decodedRes;
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -521,11 +519,11 @@ export class BuildV1 {
                 break;
             case [404, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -535,7 +533,7 @@ export class BuildV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
