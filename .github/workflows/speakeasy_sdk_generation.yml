@@ -24,7 +24,7 @@ jobs:
       openapi_docs: |
         - https://hathora.dev/swagger.json
       publish_typescript: true
-      speakeasy_version: 1.120.0
+      speakeasy_version: latest
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
