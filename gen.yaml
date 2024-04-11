@@ -34,7 +34,7 @@ typescript:
       shared: ""
       webhooks: ""
   installationURL: https://github.com/hathora/cloud-sdk-typescript
-  maxMethodParams: 3
+  maxMethodParams: 4
   outputModelSuffix: output
   packageName: '@hathora/cloud-sdk-typescript'
   published: true
