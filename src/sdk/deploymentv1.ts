@@ -3,9 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "../sdk/models/errors";
-import * as operations from "../sdk/models/operations";
-import * as shared from "../sdk/models/shared";
+import * as models from "../models";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -24,12 +22,12 @@ export class DeploymentV1 {
      * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
      */
     async createDeployment(
-        deploymentConfig: shared.DeploymentConfig,
+        deploymentConfig: models.DeploymentConfig,
         buildId: number,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.CreateDeploymentResponse> {
-        const req = new operations.CreateDeploymentRequest({
+    ): Promise<models.CreateDeploymentResponse> {
+        const req = new models.CreateDeploymentRequest({
             deploymentConfig: deploymentConfig,
             buildId: buildId,
             appId: appId,
@@ -60,7 +58,7 @@ export class DeploymentV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -89,7 +87,7 @@ export class DeploymentV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CreateDeploymentResponse = new operations.CreateDeploymentResponse({
+        const res: models.CreateDeploymentResponse = new models.CreateDeploymentResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -98,9 +96,9 @@ export class DeploymentV1 {
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.deployment = utils.objectToClass(JSON.parse(decodedRes), shared.Deployment);
+                    res.deployment = utils.objectToClass(JSON.parse(decodedRes), models.Deployment);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -110,11 +108,11 @@ export class DeploymentV1 {
                 break;
             case [400, 404, 500].includes(httpRes?.status):
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -124,7 +122,7 @@ export class DeploymentV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -142,8 +140,8 @@ export class DeploymentV1 {
         deploymentId: number,
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.GetDeploymentInfoResponse> {
-        const req = new operations.GetDeploymentInfoRequest({
+    ): Promise<models.GetDeploymentInfoResponse> {
+        const req = new models.GetDeploymentInfoRequest({
             deploymentId: deploymentId,
             appId: appId,
         });
@@ -163,7 +161,7 @@ export class DeploymentV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -186,7 +184,7 @@ export class DeploymentV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.GetDeploymentInfoResponse = new operations.GetDeploymentInfoResponse({
+        const res: models.GetDeploymentInfoResponse = new models.GetDeploymentInfoResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -195,9 +193,9 @@ export class DeploymentV1 {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    res.deployment = utils.objectToClass(JSON.parse(decodedRes), shared.Deployment);
+                    res.deployment = utils.objectToClass(JSON.parse(decodedRes), models.Deployment);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -207,11 +205,11 @@ export class DeploymentV1 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -221,7 +219,7 @@ export class DeploymentV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -238,8 +236,8 @@ export class DeploymentV1 {
     async getDeployments(
         appId?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.GetDeploymentsResponse> {
-        const req = new operations.GetDeploymentsRequest({
+    ): Promise<models.GetDeploymentsResponse> {
+        const req = new models.GetDeploymentsRequest({
             appId: appId,
         });
         const baseURL: string = utils.templateUrl(
@@ -258,7 +256,7 @@ export class DeploymentV1 {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -281,7 +279,7 @@ export class DeploymentV1 {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.GetDeploymentsResponse = new operations.GetDeploymentsResponse({
+        const res: models.GetDeploymentsResponse = new models.GetDeploymentsResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -294,11 +292,11 @@ export class DeploymentV1 {
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.classes = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        shared.Deployment,
+                        models.Deployment,
                         resFieldDepth
                     );
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -308,11 +306,11 @@ export class DeploymentV1 {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ApiError);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ApiErrorError);
                     err.rawResponse = httpRes;
-                    throw new errors.ApiError(err);
+                    throw new models.ApiErrorError(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -322,7 +320,7 @@ export class DeploymentV1 {
                 break;
             case (httpRes?.status >= 400 && httpRes?.status < 500) ||
                 (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,

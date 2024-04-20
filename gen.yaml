@@ -1,6 +1,6 @@
 configVersion: 2.0.0
 management:
-  docChecksum: b9c5c06218c4461eaae6d867176f299d
+  docChecksum: 8c7636bc24c0d5e96568913317b394b9
   docVersion: 0.0.1
   speakeasyVersion: 1.120.0
   generationVersion: 2.188.3
@@ -17,7 +17,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false    
 typescript:
-  version: 2.2.5
+  version: 2.2.7
   additionalDependencies:
     dependencies: {}
     devDependencies: {}

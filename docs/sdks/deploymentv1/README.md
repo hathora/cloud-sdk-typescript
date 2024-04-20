@@ -18,9 +18,15 @@ Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#dep
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { CreateDeploymentRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
-import { ContainerPort, DeploymentConfig, DeploymentConfigEnv, PlanName, TransportType } from "@hathora/cloud-sdk-typescript/dist/sdk/models/shared";
+import {
+  ContainerPort,
+  CreateDeploymentRequest,
+  DeploymentConfig,
+  DeploymentConfigEnv,
+  HathoraCloud,
+  PlanName,
+  TransportType,
+} from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -61,23 +67,23 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `deploymentConfig`                                                        | [shared.DeploymentConfig](../../../sdk/models/shared/deploymentconfig.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
-| `buildId`                                                                 | *number*                                                                  | :heavy_check_mark:                                                        | N/A                                                                       | 1                                                                         |
-| `appId`                                                                   | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       | app-af469a92-5b45-4565-b3c4-b79878de67d2                                  |
-| `config`                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)              | :heavy_minus_sign:                                                        | Available config options for making requests.                             |                                                                           |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `deploymentConfig`                                           | [models.DeploymentConfig](../models/deploymentconfig.md)     | :heavy_check_mark:                                           | N/A                                                          |                                                              |
+| `buildId`                                                    | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          | 1                                                            |
+| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
 
-**Promise<[operations.CreateDeploymentResponse](../../sdk/models/operations/createdeploymentresponse.md)>**
+**Promise<[models.CreateDeploymentResponse](../../models/createdeploymentresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 400,404,500      | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 400,404,500          | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## getDeploymentInfo
 
@@ -86,8 +92,7 @@ Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entitie
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetDeploymentInfoRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetDeploymentInfoRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -118,13 +123,13 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetDeploymentInfoResponse](../../sdk/models/operations/getdeploymentinforesponse.md)>**
+**Promise<[models.GetDeploymentInfoResponse](../../models/getdeploymentinforesponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404              | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404                  | application/json     |
+| models.SDKError      | 400-600              | */*                  |
 
 ## getDeployments
 
@@ -133,8 +138,7 @@ Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-enti
 ### Example Usage
 
 ```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { GetDeploymentsRequest } from "@hathora/cloud-sdk-typescript/dist/sdk/models/operations";
+import { GetDeploymentsRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 (async() => {
   const sdk = new HathoraCloud({
@@ -163,10 +167,10 @@ const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
 
 ### Response
 
-**Promise<[operations.GetDeploymentsResponse](../../sdk/models/operations/getdeploymentsresponse.md)>**
+**Promise<[models.GetDeploymentsResponse](../../models/getdeploymentsresponse.md)>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404              | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ApiErrorError | 404                  | application/json     |
+| models.SDKError      | 400-600              | */*                  |
