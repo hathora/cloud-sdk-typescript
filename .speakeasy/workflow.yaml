@@ -1,0 +1,14 @@
+workflowVersion: 1.0.0
+sources:
+    my-source:
+        inputs:
+            - location: https://hathora.dev/swagger.json
+targets:
+    hathora-typescript:
+        target: typescript
+        source: my-source
+        codeSamples:
+            output: ".speakeasy/codeSamples.yaml"
+        publish:
+            npm:
+                token: $NPM_TOKEN

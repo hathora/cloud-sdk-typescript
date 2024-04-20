@@ -1,42 +1,43 @@
-configVersion: 1.0.0
+configVersion: 2.0.0
 management:
   docChecksum: 8c7636bc24c0d5e96568913317b394b9
   docVersion: 0.0.1
   speakeasyVersion: 1.120.0
   generationVersion: 2.188.3
 generation:
-  comments: {}
-  sdkClassName: Hathora-Cloud
-  repoURL: https://github.com/hathora/cloud-sdk-typescript.git
+  sdkClassName: HathoraCloud
+  maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
-features:
-  typescript:
-    acceptHeaders: 2.81.1
-    core: 3.1.3
-    deprecations: 2.81.1
-    flattening: 2.81.1
-    globalSecurity: 2.82.0
-    globalServerURLs: 2.82.0
-    globals: 2.81.1
-    methodSecurity: 2.82.0
+  useClassNamesForArrayFields: true
+  fixes:
+    nameResolutionDec2023: true
+    parameterOrderingFeb2024: true
+    requestResponseComponentNamesFeb2024: true
+  auth:
+    oAuth2ClientCredentialsEnabled: false    
 typescript:
   version: 2.2.7
+  additionalDependencies:
+    dependencies: {}
+    devDependencies: {}
+    peerDependencies: {}
   author: Hathora
   clientServerStatusCodesAsErrors: true
-  flattenGlobalSecurity: false
+  enumFormat: enum
+  flattenGlobalSecurity: true
   imports:
     option: openapi
     paths:
-      callbacks: ""
-      errors: ""
-      operations: ""
-      shared: ""
-      webhooks: ""
+      callbacks: models/callbacks
+      errors: models/errors
+      operations: models/operations
+      shared: models/components
+      webhooks: models/webhooks
   inputModelSuffix: input
   installationURL: https://github.com/hathora/cloud-sdk-typescript
-  maxMethodParams: "3"
+  maxMethodParams: 4
   outputModelSuffix: output
   packageName: '@hathora/cloud-sdk-typescript'
-  published: true
-  repoSubDirectory: .
+  responseFormat: flat
+  templateVersion: v2
