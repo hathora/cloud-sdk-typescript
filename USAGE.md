@@ -1,30 +1,20 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
-(async () => {
-    const sdk = new HathoraCloud({
-        security: {
-            hathoraDevToken: "",
-        },
-        appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-    });
+const hathoraCloud = new HathoraCloud({
+    hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
 
-    const res = await sdk.appV1.createApp({
-        appName: "minecraft",
-        authConfiguration: {
-            anonymous: {},
-            google: {
-                clientId: "string",
-            },
-            nickname: {},
-        },
-    });
+async function run() {
+    const result = await hathoraCloud.appV1.getApps();
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
+    // Handle the result
+    console.log(result);
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

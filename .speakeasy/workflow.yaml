@@ -1,4 +1,5 @@
 workflowVersion: 1.0.0
+speakeasyVersion: latest
 sources:
     my-source:
         inputs:
@@ -7,8 +8,8 @@ targets:
     hathora-typescript:
         target: typescript
         source: my-source
-        codeSamples:
-            output: ".speakeasy/codeSamples.yaml"
         publish:
             npm:
                 token: $NPM_TOKEN
+        codeSamples:
+            output: .speakeasy/codeSamples.yaml

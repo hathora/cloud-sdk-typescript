@@ -1,9 +1,4 @@
 configVersion: 2.0.0
-management:
-  docChecksum: 8c7636bc24c0d5e96568913317b394b9
-  docVersion: 0.0.1
-  speakeasyVersion: 1.120.0
-  generationVersion: 2.188.3
 generation:
   sdkClassName: HathoraCloud
   maintainOpenAPIOrder: true
@@ -15,13 +10,20 @@ generation:
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
   auth:
-    oAuth2ClientCredentialsEnabled: false    
+    oAuth2ClientCredentialsEnabled: false
+management:
+  version: ""
+  docChecksum: 8c7636bc24c0d5e96568913317b394b9
+  docVersion: 0.0.1
+  generationVersion: 2.188.3
+  speakeasyVersion: 1.120.0
 typescript:
   version: 2.2.7
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
+  additionalPackageJSON: {}
   author: Hathora
   clientServerStatusCodesAsErrors: true
   enumFormat: enum
@@ -37,6 +39,7 @@ typescript:
   inputModelSuffix: input
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   maxMethodParams: 4
+  methodArguments: require-security-and-request
   outputModelSuffix: output
   packageName: '@hathora/cloud-sdk-typescript'
   responseFormat: flat
