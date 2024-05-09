@@ -1,4 +1,4 @@
-# SuspendRoomResponse
+# SuspendRoomV2DeprecatedResponse
 
 
 ## Fields

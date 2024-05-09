@@ -14,6 +14,7 @@ import { BuildV2 } from "./buildv2";
 import { DeploymentV1 } from "./deploymentv1";
 import { DeploymentV2 } from "./deploymentv2";
 import { DiscoveryV1 } from "./discoveryv1";
+import { DiscoveryV2 } from "./discoveryv2";
 import { LobbyV1 } from "./lobbyv1";
 import { LobbyV2 } from "./lobbyv2";
 import { LobbyV3 } from "./lobbyv3";
@@ -92,6 +93,11 @@ export class HathoraCloud extends ClientSDK {
     private _discoveryV1?: DiscoveryV1;
     get discoveryV1(): DiscoveryV1 {
         return (this._discoveryV1 ??= new DiscoveryV1(this.options$));
+    }
+
+    private _discoveryV2?: DiscoveryV2;
+    get discoveryV2(): DiscoveryV2 {
+        return (this._discoveryV2 ??= new DiscoveryV2(this.options$));
     }
 
     private _lobbyV1?: LobbyV1;

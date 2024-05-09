@@ -586,13 +586,15 @@ export class RoomV2 extends ClientSDK {
 
     /**
      * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same `roomId`.
+     *
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    async suspendRoom(
+    async suspendRoomV2Deprecated(
         roomId: string,
         appId?: string | undefined,
         options?: RequestOptions
-    ): Promise<operations.SuspendRoomResponse | void> {
-        const input$: operations.SuspendRoomRequest = {
+    ): Promise<operations.SuspendRoomV2DeprecatedResponse | void> {
+        const input$: operations.SuspendRoomV2DeprecatedRequest = {
             roomId: roomId,
             appId: appId,
         };
@@ -602,7 +604,7 @@ export class RoomV2 extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.SuspendRoomRequest$.outboundSchema.parse(value$),
+            (value$) => operations.SuspendRoomV2DeprecatedRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -630,7 +632,7 @@ export class RoomV2 extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "SuspendRoom",
+            operationID: "SuspendRoomV2Deprecated",
             oAuth2Scopes: [],
             securitySource: this.options$.hathoraDevToken,
         };

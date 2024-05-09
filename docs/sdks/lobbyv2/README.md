@@ -81,7 +81,7 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.lobbyV2.createPublicLobby("<YOUR_BEARER_TOKEN_HERE>", {
     initialConfig: {},
-    region: Region.Sydney,
+    region: Region.SaoPaulo,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   // Handle the result
@@ -130,7 +130,7 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.lobbyV2.createLocalLobby("<YOUR_BEARER_TOKEN_HERE>", {
     initialConfig: {},
-    region: Region.Sydney,
+    region: Region.SaoPaulo,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   // Handle the result

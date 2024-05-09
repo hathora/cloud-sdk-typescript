@@ -528,7 +528,10 @@ export class BuildV2 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "404", "422", "4XX", "500", "5XX"] };
+        const doOptions = {
+            context,
+            errorCodes: ["401", "404", "422", "429", "4XX", "500", "5XX"],
+        };
         const request$ = this.createRequest$(
             context,
             {
@@ -553,7 +556,7 @@ export class BuildV2 extends ClientSDK {
 
         if (this.matchStatusCode(response, 204)) {
             return;
-        } else if (this.matchResponse(response, [401, 404, 422, 500], "application/json")) {
+        } else if (this.matchResponse(response, [401, 404, 422, 429, 500], "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
