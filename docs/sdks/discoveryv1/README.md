@@ -18,34 +18,33 @@ Returns an array of all regions with a host and port that a client can directly 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
-(async() => {
-  const sdk = new HathoraCloud({
-    security: {
-      hathoraDevToken: "",
-    },
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  });
+const hathoraCloud = new HathoraCloud({
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
 
-  const res = await sdk.discoveryV1.getPingServiceEndpoints();
+async function run() {
+  const result = await hathoraCloud.discoveryV1.getPingServiceEndpoints();
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
 
-**Promise<[models.GetPingServiceEndpointsResponse](../../models/getpingserviceendpointsresponse.md)>**
+**Promise<[components.PingEndpoints[]](../../models/.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| models.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

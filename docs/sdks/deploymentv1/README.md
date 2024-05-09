@@ -3,174 +3,213 @@
 
 ## Overview
 
-Operations that allow you configure and manage an application's [build](https://hathora.dev/docs/concepts/hathora-entities#build) at runtime.
+Deprecated. Use [DeploymentV2](https://hathora.dev/api#tag/DeploymentV2).
 
 ### Available Operations
 
-* [createDeployment](#createdeployment) - Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
-* [getDeploymentInfo](#getdeploymentinfo) - Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
-* [getDeployments](#getdeployments) - Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+* [~~getDeploymentsDeprecated~~](#getdeploymentsdeprecated) - Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). :warning: **Deprecated**
+* [~~getLatestDeploymentDeprecated~~](#getlatestdeploymentdeprecated) - Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). :warning: **Deprecated**
+* [~~getDeploymentInfoDeprecated~~](#getdeploymentinfodeprecated) - Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). :warning: **Deprecated**
+* [~~createDeploymentDeprecated~~](#createdeploymentdeprecated) - Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected. :warning: **Deprecated**
 
-## createDeployment
-
-Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
-
-### Example Usage
-
-```typescript
-import {
-  ContainerPort,
-  CreateDeploymentRequest,
-  DeploymentConfig,
-  DeploymentConfigEnv,
-  HathoraCloud,
-  PlanName,
-  TransportType,
-} from "@hathora/cloud-sdk-typescript";
-
-(async() => {
-  const sdk = new HathoraCloud({
-    security: {
-      hathoraDevToken: "",
-    },
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  });
-const deploymentConfig: DeploymentConfig = {
-  additionalContainerPorts: [
-    {
-      name: "default",
-      port: 8000,
-      transportType: TransportType.Udp,
-    },
-  ],
-  containerPort: 4000,
-  env: [
-    {
-      name: "EULA",
-      value: "TRUE",
-    },
-  ],
-  planName: PlanName.Tiny,
-  roomsPerProcess: 3,
-  transportType: TransportType.Tcp,
-};
-const buildId: number = 1;
-const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-
-  const res = await sdk.deploymentV1.createDeployment(deploymentConfig, buildId, appId);
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `deploymentConfig`                                           | [models.DeploymentConfig](../models/deploymentconfig.md)     | :heavy_check_mark:                                           | N/A                                                          |                                                              |
-| `buildId`                                                    | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          | 1                                                            |
-| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
-
-
-### Response
-
-**Promise<[models.CreateDeploymentResponse](../../models/createdeploymentresponse.md)>**
-### Errors
-
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 400,404,500          | application/json     |
-| models.SDKError      | 400-600              | */*                  |
-
-## getDeploymentInfo
-
-Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
-
-### Example Usage
-
-```typescript
-import { GetDeploymentInfoRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-(async() => {
-  const sdk = new HathoraCloud({
-    security: {
-      hathoraDevToken: "",
-    },
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  });
-const deploymentId: number = 1;
-const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-
-  const res = await sdk.deploymentV1.getDeploymentInfo(deploymentId, appId);
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `deploymentId`                                               | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          | 1                                                            |
-| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
-
-
-### Response
-
-**Promise<[models.GetDeploymentInfoResponse](../../models/getdeploymentinforesponse.md)>**
-### Errors
-
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404                  | application/json     |
-| models.SDKError      | 400-600              | */*                  |
-
-## getDeployments
+## ~~getDeploymentsDeprecated~~
 
 Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
 
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
 ### Example Usage
 
 ```typescript
-import { GetDeploymentsRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
-(async() => {
-  const sdk = new HathoraCloud({
-    security: {
-      hathoraDevToken: "",
-    },
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  });
-const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
+const hathoraCloud = new HathoraCloud({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
 
-  const res = await sdk.deploymentV1.getDeployments(appId);
+async function run() {
+  const result = await hathoraCloud.deploymentV1.getDeploymentsDeprecated("app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `appId`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 
 
 ### Response
 
-**Promise<[models.GetDeploymentsResponse](../../models/getdeploymentsresponse.md)>**
+**Promise<[components.Deployment[]](../../models/.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404                  | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401,404          | application/json |
+| errors.SDKError  | 4xx-5xx          | */*              |
+
+## ~~getLatestDeploymentDeprecated~~
+
+Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
+### Example Usage
+
+```typescript
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+const hathoraCloud = new HathoraCloud({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const result = await hathoraCloud.deploymentV1.getLatestDeploymentDeprecated("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `appId`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+
+
+### Response
+
+**Promise<[components.Deployment](../../models/components/deployment.md)>**
+### Errors
+
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401,404          | application/json |
+| errors.SDKError  | 4xx-5xx          | */*              |
+
+## ~~getDeploymentInfoDeprecated~~
+
+Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
+### Example Usage
+
+```typescript
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+const hathoraCloud = new HathoraCloud({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const result = await hathoraCloud.deploymentV1.getDeploymentInfoDeprecated(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `deploymentId`                                                                                                                                                                 | *number*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `appId`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+
+
+### Response
+
+**Promise<[components.Deployment](../../models/components/deployment.md)>**
+### Errors
+
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401,404          | application/json |
+| errors.SDKError  | 4xx-5xx          | */*              |
+
+## ~~createDeploymentDeprecated~~
+
+Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
+### Example Usage
+
+```typescript
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { PlanName, TransportType } from "@hathora/cloud-sdk-typescript/models/components";
+
+const hathoraCloud = new HathoraCloud({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const result = await hathoraCloud.deploymentV1.createDeploymentDeprecated(1, {
+    env: [
+      {
+        value: "TRUE",
+        name: "EULA",
+      },
+    ],
+    roomsPerProcess: 3,
+    planName: PlanName.Tiny,
+    additionalContainerPorts: [
+      {
+        transportType: TransportType.Udp,
+        port: 8000,
+        name: "default",
+      },
+    ],
+    transportType: TransportType.Tls,
+    containerPort: 4000,
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `buildId`                                                                                                                                                                      | *number*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `deploymentConfig`                                                                                                                                                             | [components.DeploymentConfig](../../models/components/deploymentconfig.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `appId`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+
+
+### Response
+
+**Promise<[components.Deployment](../../models/components/deployment.md)>**
+### Errors
+
+| Error Object        | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ApiError     | 400,401,404,429,500 | application/json    |
+| errors.SDKError     | 4xx-5xx             | */*                 |

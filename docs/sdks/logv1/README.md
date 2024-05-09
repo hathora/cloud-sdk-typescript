@@ -7,56 +7,10 @@ Operations to get logs by [applications](https://hathora.dev/docs/concepts/hatho
 
 ### Available Operations
 
-* [downloadLogForProcess](#downloadlogforprocess) - Download entire log file for a stopped process.
 * [~~getLogsForApp~~](#getlogsforapp) - Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. :warning: **Deprecated**
-* [~~getLogsForDeployment~~](#getlogsfordeployment) - Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`. :warning: **Deprecated**
 * [getLogsForProcess](#getlogsforprocess) - Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
-
-## downloadLogForProcess
-
-Download entire log file for a stopped process.
-
-### Example Usage
-
-```typescript
-import { DownloadLogForProcessRequest, HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-(async() => {
-  const sdk = new HathoraCloud({
-    security: {
-      hathoraDevToken: "",
-    },
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  });
-const processId: string = "cbfcddd2-0006-43ae-996c-995fff7bed2e";
-const appId: string = "app-af469a92-5b45-4565-b3c4-b79878de67d2";
-
-  const res = await sdk.logV1.downloadLogForProcess(processId, appId);
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `processId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | cbfcddd2-0006-43ae-996c-995fff7bed2e                         |
-| `appId`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          | app-af469a92-5b45-4565-b3c4-b79878de67d2                     |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
-
-
-### Response
-
-**Promise<[models.DownloadLogForProcessResponse](../../models/downloadlogforprocessresponse.md)>**
-### Errors
-
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 400,404,410,500      | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+* [downloadLogForProcess](#downloadlogforprocess) - Download entire log file for a stopped process.
+* [~~getLogsForDeployment~~](#getlogsfordeployment) - Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`. :warning: **Deprecated**
 
 ## ~~getLogsForApp~~
 
@@ -67,43 +21,135 @@ Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/
 ### Example Usage
 
 ```typescript
-import { HathoraCloud, Region } from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
-(async() => {
-  const sdk = new HathoraCloud({
-    security: {
-      hathoraDevToken: "",
-    },
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  });
+const hathoraCloud = new HathoraCloud({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
 
-  const res = await sdk.logV1.getLogsForApp({
-    tailLines: 100,
-  });
+async function run() {
+  const result = await hathoraCloud.logV1.getLogsForApp("app-af469a92-5b45-4565-b3c4-b79878de67d2", true, 100, Region.Singapore);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [models.GetLogsForAppRequest](../../models/getlogsforapprequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
-| `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `appId`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `follow`                                                                                                                                                                       | *boolean*                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `tailLines`                                                                                                                                                                    | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `region`                                                                                                                                                                       | [components.Region](../../models/components/region.md)                                                                                                                         | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 
 
 ### Response
 
-**Promise<[models.GetLogsForAppResponse](../../models/getlogsforappresponse.md)>**
+**Promise<[ReadableStream<Uint8Array>](../../models/.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404                  | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401,404          | application/json |
+| errors.SDKError  | 4xx-5xx          | */*              |
+
+## getLogsForProcess
+
+Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+
+### Example Usage
+
+```typescript
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+const hathoraCloud = new HathoraCloud({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const result = await hathoraCloud.logV1.getLogsForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2", true, 100);
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `processId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `appId`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `follow`                                                                                                                                                                       | *boolean*                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `tailLines`                                                                                                                                                                    | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+
+
+### Response
+
+**Promise<[ReadableStream<Uint8Array>](../../models/.md)>**
+### Errors
+
+| Error Object        | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ApiError     | 400,401,404,410,500 | application/json    |
+| errors.SDKError     | 4xx-5xx             | */*                 |
+
+## downloadLogForProcess
+
+Download entire log file for a stopped process.
+
+### Example Usage
+
+```typescript
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+const hathoraCloud = new HathoraCloud({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const result = await hathoraCloud.logV1.downloadLogForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `processId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `appId`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+
+
+### Response
+
+**Promise<[ReadableStream<Uint8Array>](../../models/.md)>**
+### Errors
+
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 400,401,404,410  | application/json |
+| errors.SDKError  | 4xx-5xx          | */*              |
 
 ## ~~getLogsForDeployment~~
 
@@ -116,85 +162,39 @@ Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/ha
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
-(async() => {
-  const sdk = new HathoraCloud({
-    security: {
-      hathoraDevToken: "",
-    },
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  });
+const hathoraCloud = new HathoraCloud({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
 
-  const res = await sdk.logV1.getLogsForDeployment({
-    deploymentId: 1,
-    tailLines: 100,
-  });
+async function run() {
+  const result = await hathoraCloud.logV1.getLogsForDeployment(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2", true, 100);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [models.GetLogsForDeploymentRequest](../../models/getlogsfordeploymentrequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
-| `config`                                                                          | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                      | :heavy_minus_sign:                                                                | Available config options for making requests.                                     |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `deploymentId`                                                                                                                                                                 | *number*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `appId`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `follow`                                                                                                                                                                       | *boolean*                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `tailLines`                                                                                                                                                                    | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 
 
 ### Response
 
-**Promise<[models.GetLogsForDeploymentResponse](../../models/getlogsfordeploymentresponse.md)>**
+**Promise<[ReadableStream<Uint8Array>](../../models/.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404                  | application/json     |
-| models.SDKError      | 400-600              | */*                  |
-
-## getLogsForProcess
-
-Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
-
-### Example Usage
-
-```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-(async() => {
-  const sdk = new HathoraCloud({
-    security: {
-      hathoraDevToken: "",
-    },
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  });
-
-  const res = await sdk.logV1.getLogsForProcess({
-    processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
-    tailLines: 100,
-  });
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
-```
-
-### Parameters
-
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [models.GetLogsForProcessRequest](../../models/getlogsforprocessrequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
-| `config`                                                                    | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                | :heavy_minus_sign:                                                          | Available config options for making requests.                               |
-
-
-### Response
-
-**Promise<[models.GetLogsForProcessResponse](../../models/getlogsforprocessresponse.md)>**
-### Errors
-
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 400,404,410,500      | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401,404          | application/json |
+| errors.SDKError  | 4xx-5xx          | */*              |
