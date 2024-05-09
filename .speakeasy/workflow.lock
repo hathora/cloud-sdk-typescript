@@ -1,0 +1,19 @@
+speakeasyVersion: 1.285.1
+sources: {}
+targets: {}
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        my-source:
+            inputs:
+                - location: https://hathora.dev/swagger.json
+    targets:
+        hathora-typescript:
+            target: typescript
+            source: my-source
+            publish:
+                npm:
+                    token: $NPM_TOKEN
+            codeSamples:
+                output: .speakeasy/codeSamples.yaml

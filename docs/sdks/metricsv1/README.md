@@ -16,43 +16,40 @@ Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#p
 ### Example Usage
 
 ```typescript
-import { HathoraCloud, MetricName } from "@hathora/cloud-sdk-typescript";
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
-(async() => {
-  const sdk = new HathoraCloud({
-    security: {
-      hathoraDevToken: "",
-    },
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  });
+const hathoraCloud = new HathoraCloud({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
 
-  const res = await sdk.metricsV1.getMetrics({
-    metrics: [
-      MetricName.RateEgress,
-    ],
+async function run() {
+  const result = await hathoraCloud.metricsV1.getMetrics({
     processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
   });
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `request`                                                     | [models.GetMetricsRequest](../../models/getmetricsrequest.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
-| `config`                                                      | [AxiosRequestConfig](https://axios-http.com/docs/req_config)  | :heavy_minus_sign:                                            | Available config options for making requests.                 |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetMetricsRequest](../../models/operations/getmetricsrequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
 
-**Promise<[models.GetMetricsResponse](../../models/getmetricsresponse.md)>**
+**Promise<[components.MetricsData](../../models/components/metricsdata.md)>**
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| models.ApiErrorError | 404,422,500          | application/json     |
-| models.SDKError      | 400-600              | */*                  |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401,404,422,500  | application/json |
+| errors.SDKError  | 4xx-5xx          | */*              |
