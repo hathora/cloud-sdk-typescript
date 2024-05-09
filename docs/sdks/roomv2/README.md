@@ -12,7 +12,7 @@ Operations to create, manage, and connect to [rooms](https://hathora.dev/docs/co
 * [getActiveRoomsForProcess](#getactiveroomsforprocess) - Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
 * [getInactiveRoomsForProcess](#getinactiveroomsforprocess) - Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
 * [destroyRoom](#destroyroom) - Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
-* [suspendRoom](#suspendroom) - Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same `roomId`.
+* [~~suspendRoomV2Deprecated~~](#suspendroomv2deprecated) - Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same `roomId`. :warning: **Deprecated**
 * [getConnectionInfo](#getconnectioninfo) - Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
 * [updateRoomConfig](#updateroomconfig)
 
@@ -34,7 +34,7 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.roomV2.createRoom({
     roomConfig: "{\"name\":\"my-room\"}",
-    region: Region.Sydney,
+    region: Region.SaoPaulo,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   // Handle the result
@@ -241,9 +241,11 @@ run();
 | errors.ApiError  | 401,404,429,500  | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
-## suspendRoom
+## ~~suspendRoomV2Deprecated~~
 
 Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same `roomId`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -256,7 +258,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.roomV2.suspendRoom("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.roomV2.suspendRoomV2Deprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   // Handle the result
   console.log(result)
@@ -277,7 +279,7 @@ run();
 
 ### Response
 
-**Promise<[operations.SuspendRoomResponse](../../models/operations/suspendroomresponse.md)>**
+**Promise<[operations.SuspendRoomV2DeprecatedResponse](../../models/operations/suspendroomv2deprecatedresponse.md)>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

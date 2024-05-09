@@ -11,7 +11,7 @@ import * as components from "../models/components";
 import * as errors from "../models/errors";
 import * as z from "zod";
 
-export class DiscoveryV1 extends ClientSDK {
+export class DiscoveryV2 extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
 
     constructor(options: SDKOptions = {}) {
@@ -39,23 +39,21 @@ export class DiscoveryV1 extends ClientSDK {
     }
 
     /**
-     * Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
-     *
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
      */
-    async getPingServiceEndpointsDeprecated(
+    async getPingServiceEndpoints(
         options?: RequestOptions
     ): Promise<Array<components.PingEndpoints>> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const path$ = this.templateURLComponent("/discovery/v1/ping")();
+        const path$ = this.templateURLComponent("/discovery/v2/ping")();
 
         const query$ = "";
 
         const context = {
-            operationID: "GetPingServiceEndpointsDeprecated",
+            operationID: "GetPingServiceEndpoints",
             oAuth2Scopes: [],
             securitySource: null,
         };

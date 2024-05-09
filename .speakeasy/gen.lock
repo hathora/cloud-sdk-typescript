@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 0d7fa78d9363ed4c8f421999c944f911
+  docChecksum: dd06123495cdc97e070fd867f254e823
   docVersion: 0.0.1
   speakeasyVersion: 1.285.1
   generationVersion: 2.326.3
-  releaseVersion: 2.2.7
-  configChecksum: 3e0f75709995ce9f0622c945d6def52a
+  releaseVersion: 2.2.8
+  configChecksum: 5129799d1582e48f83234288c35d96e3
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -37,6 +37,7 @@ generatedFiles:
   - src/sdk/deploymentv1.ts
   - src/sdk/deploymentv2.ts
   - src/sdk/discoveryv1.ts
+  - src/sdk/discoveryv2.ts
   - src/sdk/lobbyv1.ts
   - src/sdk/lobbyv2.ts
   - src/sdk/lobbyv3.ts
@@ -213,7 +214,7 @@ generatedFiles:
   - src/models/operations/getactiveroomsforprocess.ts
   - src/models/operations/getinactiveroomsforprocess.ts
   - src/models/operations/destroyroom.ts
-  - src/models/operations/suspendroom.ts
+  - src/models/operations/suspendroomv2deprecated.ts
   - src/models/operations/getconnectioninfo.ts
   - src/models/operations/updateroomconfig.ts
   - src/models/operations/getorgtokens.ts
@@ -408,8 +409,8 @@ generatedFiles:
   - docs/models/operations/getinactiveroomsforprocessrequest.md
   - docs/models/operations/destroyroomrequest.md
   - docs/models/operations/destroyroomresponse.md
-  - docs/models/operations/suspendroomrequest.md
-  - docs/models/operations/suspendroomresponse.md
+  - docs/models/operations/suspendroomv2deprecatedrequest.md
+  - docs/models/operations/suspendroomv2deprecatedresponse.md
   - docs/models/operations/getconnectioninforequest.md
   - docs/models/operations/updateroomconfigrequest.md
   - docs/models/operations/updateroomconfigresponse.md
@@ -425,6 +426,7 @@ generatedFiles:
   - docs/sdks/deploymentv1/README.md
   - docs/sdks/deploymentv2/README.md
   - docs/sdks/discoveryv1/README.md
+  - docs/sdks/discoveryv2/README.md
   - docs/sdks/lobbyv1/README.md
   - docs/sdks/lobbyv2/README.md
   - docs/sdks/lobbyv3/README.md

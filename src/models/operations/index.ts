@@ -71,7 +71,7 @@ export * from "./runbuild";
 export * from "./runbuilddeprecated";
 export * from "./setlobbystate";
 export * from "./stopprocess";
-export * from "./suspendroom";
 export * from "./suspendroomdeprecated";
+export * from "./suspendroomv2deprecated";
 export * from "./updateapp";
 export * from "./updateroomconfig";

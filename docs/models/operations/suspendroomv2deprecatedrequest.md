@@ -1,4 +1,4 @@
-# SuspendRoomRequest
+# SuspendRoomV2DeprecatedRequest
 
 
 ## Fields

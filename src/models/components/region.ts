@@ -16,6 +16,7 @@ export enum Region {
     Tokyo = "Tokyo",
     Sydney = "Sydney",
     SaoPaulo = "Sao_Paulo",
+    Dallas = "Dallas",
 }
 
 /** @internal */
