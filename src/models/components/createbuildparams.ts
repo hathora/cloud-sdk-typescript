@@ -13,11 +13,7 @@ export type CreateBuildParams = {
 
 /** @internal */
 export namespace CreateBuildParams$ {
-    export type Inbound = {
-        buildTag?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateBuildParams, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateBuildParams, z.ZodTypeDef, unknown> = z
         .object({
             buildTag: z.string().optional(),
         })

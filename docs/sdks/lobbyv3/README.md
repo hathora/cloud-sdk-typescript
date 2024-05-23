@@ -55,7 +55,7 @@ run();
 
 ### Response
 
-**Promise<[components.LobbyV3](../../models/components/lobbyv3.md)>**
+**Promise\<[components.LobbyV3](../../models/components/lobbyv3.md)\>**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
@@ -99,7 +99,7 @@ run();
 
 ### Response
 
-**Promise<[components.LobbyV3[]](../../models/.md)>**
+**Promise\<[components.LobbyV3[]](../../models/.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -141,7 +141,7 @@ run();
 
 ### Response
 
-**Promise<[components.LobbyV3](../../models/components/lobbyv3.md)>**
+**Promise\<[components.LobbyV3](../../models/components/lobbyv3.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -184,7 +184,7 @@ run();
 
 ### Response
 
-**Promise<[components.LobbyV3](../../models/components/lobbyv3.md)>**
+**Promise\<[components.LobbyV3](../../models/components/lobbyv3.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

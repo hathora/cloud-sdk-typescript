@@ -11,11 +11,7 @@ export type OrgInvitesPage = {
 
 /** @internal */
 export namespace OrgInvitesPage$ {
-    export type Inbound = {
-        invites: Array<OrgPermission$.Inbound>;
-    };
-
-    export const inboundSchema: z.ZodType<OrgInvitesPage, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<OrgInvitesPage, z.ZodTypeDef, unknown> = z
         .object({
             invites: z.array(OrgPermission$.inboundSchema),
         })

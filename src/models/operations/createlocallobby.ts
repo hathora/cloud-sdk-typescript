@@ -5,6 +5,10 @@
 import * as components from "../components";
 import * as z from "zod";
 
+export type CreateLocalLobbyGlobals = {
+    appId?: string | undefined;
+};
+
 export type CreateLocalLobbySecurity = {
     playerAuth: string;
 };
@@ -18,18 +22,41 @@ export type CreateLocalLobbyRequestBody = {
 };
 
 export type CreateLocalLobbyRequest = {
-    requestBody: CreateLocalLobbyRequestBody;
     appId?: string | undefined;
     roomId?: string | undefined;
+    requestBody: CreateLocalLobbyRequestBody;
 };
 
 /** @internal */
-export namespace CreateLocalLobbySecurity$ {
-    export type Inbound = {
-        playerAuth: string;
+export namespace CreateLocalLobbyGlobals$ {
+    export const inboundSchema: z.ZodType<CreateLocalLobbyGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
     };
 
-    export const inboundSchema: z.ZodType<CreateLocalLobbySecurity, z.ZodTypeDef, Inbound> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLocalLobbyGlobals> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace CreateLocalLobbySecurity$ {
+    export const inboundSchema: z.ZodType<CreateLocalLobbySecurity, z.ZodTypeDef, unknown> = z
         .object({
             playerAuth: z.string(),
         })
@@ -56,15 +83,10 @@ export namespace CreateLocalLobbySecurity$ {
 
 /** @internal */
 export namespace CreateLocalLobbyRequestBody$ {
-    export type Inbound = {
-        initialConfig: components.LobbyInitialConfig$.Inbound;
-        region: components.Region;
-    };
-
-    export const inboundSchema: z.ZodType<CreateLocalLobbyRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateLocalLobbyRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             initialConfig: components.LobbyInitialConfig$.inboundSchema,
-            region: components.Region$,
+            region: components.Region$.inboundSchema,
         })
         .transform((v) => {
             return {
@@ -75,13 +97,13 @@ export namespace CreateLocalLobbyRequestBody$ {
 
     export type Outbound = {
         initialConfig: components.LobbyInitialConfig$.Outbound;
-        region: components.Region;
+        region: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLocalLobbyRequestBody> = z
         .object({
             initialConfig: components.LobbyInitialConfig$.outboundSchema,
-            region: components.Region$,
+            region: components.Region$.outboundSchema,
         })
         .transform((v) => {
             return {
@@ -93,43 +115,37 @@ export namespace CreateLocalLobbyRequestBody$ {
 
 /** @internal */
 export namespace CreateLocalLobbyRequest$ {
-    export type Inbound = {
-        RequestBody: CreateLocalLobbyRequestBody$.Inbound;
-        appId?: string | undefined;
-        roomId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateLocalLobbyRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateLocalLobbyRequest, z.ZodTypeDef, unknown> = z
         .object({
-            RequestBody: z.lazy(() => CreateLocalLobbyRequestBody$.inboundSchema),
             appId: z.string().optional(),
             roomId: z.string().optional(),
+            RequestBody: z.lazy(() => CreateLocalLobbyRequestBody$.inboundSchema),
         })
         .transform((v) => {
             return {
-                requestBody: v.RequestBody,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
                 ...(v.roomId === undefined ? null : { roomId: v.roomId }),
+                requestBody: v.RequestBody,
             };
         });
 
     export type Outbound = {
-        RequestBody: CreateLocalLobbyRequestBody$.Outbound;
         appId?: string | undefined;
         roomId?: string | undefined;
+        RequestBody: CreateLocalLobbyRequestBody$.Outbound;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLocalLobbyRequest> = z
         .object({
-            requestBody: z.lazy(() => CreateLocalLobbyRequestBody$.outboundSchema),
             appId: z.string().optional(),
             roomId: z.string().optional(),
+            requestBody: z.lazy(() => CreateLocalLobbyRequestBody$.outboundSchema),
         })
         .transform((v) => {
             return {
-                RequestBody: v.requestBody,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
                 ...(v.roomId === undefined ? null : { roomId: v.roomId }),
+                RequestBody: v.requestBody,
             };
         });
 }

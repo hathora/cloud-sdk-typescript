@@ -4,17 +4,44 @@
 
 import * as z from "zod";
 
+export type LoginAnonymousGlobals = {
+    appId?: string | undefined;
+};
+
 export type LoginAnonymousRequest = {
     appId?: string | undefined;
 };
 
 /** @internal */
-export namespace LoginAnonymousRequest$ {
-    export type Inbound = {
+export namespace LoginAnonymousGlobals$ {
+    export const inboundSchema: z.ZodType<LoginAnonymousGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const inboundSchema: z.ZodType<LoginAnonymousRequest, z.ZodTypeDef, Inbound> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LoginAnonymousGlobals> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace LoginAnonymousRequest$ {
+    export const inboundSchema: z.ZodType<LoginAnonymousRequest, z.ZodTypeDef, unknown> = z
         .object({
             appId: z.string().optional(),
         })

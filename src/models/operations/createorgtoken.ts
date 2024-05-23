@@ -12,12 +12,7 @@ export type CreateOrgTokenRequest = {
 
 /** @internal */
 export namespace CreateOrgTokenRequest$ {
-    export type Inbound = {
-        orgId: string;
-        CreateOrgToken: components.CreateOrgToken$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<CreateOrgTokenRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateOrgTokenRequest, z.ZodTypeDef, unknown> = z
         .object({
             orgId: z.string(),
             CreateOrgToken: z.lazy(() => components.CreateOrgToken$.inboundSchema),

@@ -120,43 +120,16 @@ export class LogV1 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/octet-stream")) {
-            const responseBody = response.body ?? undefined;
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return z.instanceof(ReadableStream<Uint8Array>).parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [401, 404], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<ReadableStream<Uint8Array>>()
+            .stream(200, z.instanceof(ReadableStream<Uint8Array>))
+            .json([401, 404], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -170,8 +143,8 @@ export class LogV1 extends ClientSDK {
         options?: RequestOptions
     ): Promise<ReadableStream<Uint8Array>> {
         const input$: operations.GetLogsForProcessRequest = {
-            processId: processId,
             appId: appId,
+            processId: processId,
             follow: follow,
             tailLines: tailLines,
         };
@@ -245,43 +218,16 @@ export class LogV1 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/octet-stream")) {
-            const responseBody = response.body ?? undefined;
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return z.instanceof(ReadableStream<Uint8Array>).parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [400, 401, 404, 410, 500], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<ReadableStream<Uint8Array>>()
+            .stream(200, z.instanceof(ReadableStream<Uint8Array>))
+            .json([400, 401, 404, 410, 500], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -293,8 +239,8 @@ export class LogV1 extends ClientSDK {
         options?: RequestOptions
     ): Promise<ReadableStream<Uint8Array>> {
         const input$: operations.DownloadLogForProcessRequest = {
-            processId: processId,
             appId: appId,
+            processId: processId,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -355,43 +301,16 @@ export class LogV1 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/octet-stream")) {
-            const responseBody = response.body ?? undefined;
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return z.instanceof(ReadableStream<Uint8Array>).parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [400, 401, 404, 410], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<ReadableStream<Uint8Array>>()
+            .stream(200, z.instanceof(ReadableStream<Uint8Array>))
+            .json([400, 401, 404, 410], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -407,8 +326,8 @@ export class LogV1 extends ClientSDK {
         options?: RequestOptions
     ): Promise<ReadableStream<Uint8Array>> {
         const input$: operations.GetLogsForDeploymentRequest = {
-            deploymentId: deploymentId,
             appId: appId,
+            deploymentId: deploymentId,
             follow: follow,
             tailLines: tailLines,
         };
@@ -479,42 +398,15 @@ export class LogV1 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/octet-stream")) {
-            const responseBody = response.body ?? undefined;
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return z.instanceof(ReadableStream<Uint8Array>).parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [401, 404], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<ReadableStream<Uint8Array>>()
+            .stream(200, z.instanceof(ReadableStream<Uint8Array>))
+            .json([401, 404], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

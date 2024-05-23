@@ -11,12 +11,7 @@ export type RevokeOrgTokenRequest = {
 
 /** @internal */
 export namespace RevokeOrgTokenRequest$ {
-    export type Inbound = {
-        orgId: string;
-        orgTokenId: string;
-    };
-
-    export const inboundSchema: z.ZodType<RevokeOrgTokenRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RevokeOrgTokenRequest, z.ZodTypeDef, unknown> = z
         .object({
             orgId: z.string(),
             orgTokenId: z.string(),

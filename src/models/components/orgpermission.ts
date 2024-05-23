@@ -22,16 +22,7 @@ export type OrgPermission = {
 
 /** @internal */
 export namespace OrgPermission$ {
-    export type Inbound = {
-        updatedAt: string;
-        createdAt: string;
-        status: OrganizationInviteStatus$.Inbound;
-        userEmail: string;
-        invitedBy: string;
-        orgId: string;
-    };
-
-    export const inboundSchema: z.ZodType<OrgPermission, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<OrgPermission, z.ZodTypeDef, unknown> = z
         .object({
             updatedAt: z
                 .string()

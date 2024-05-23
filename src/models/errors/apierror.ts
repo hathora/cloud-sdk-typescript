@@ -27,11 +27,7 @@ export class ApiError extends Error {
 
 /** @internal */
 export namespace ApiError$ {
-    export type Inbound = {
-        message: string;
-    };
-
-    export const inboundSchema: z.ZodType<ApiError, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ApiError, z.ZodTypeDef, unknown> = z
         .object({
             message: z.string(),
         })

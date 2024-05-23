@@ -109,16 +109,9 @@ export type ProcessWithRooms = {
 
 /** @internal */
 export namespace ProcessWithRoomsExposedPort$ {
-    export type Inbound = {
-        transportType: TransportType;
-        port: number;
-        host: string;
-        name: string;
-    };
-
-    export const inboundSchema: z.ZodType<ProcessWithRoomsExposedPort, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ProcessWithRoomsExposedPort, z.ZodTypeDef, unknown> = z
         .object({
-            transportType: TransportType$,
+            transportType: TransportType$.inboundSchema,
             port: z.number().int(),
             host: z.string(),
             name: z.string(),
@@ -133,7 +126,7 @@ export namespace ProcessWithRoomsExposedPort$ {
         });
 
     export type Outbound = {
-        transportType: TransportType;
+        transportType: string;
         port: number;
         host: string;
         name: string;
@@ -141,7 +134,7 @@ export namespace ProcessWithRoomsExposedPort$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProcessWithRoomsExposedPort> = z
         .object({
-            transportType: TransportType$,
+            transportType: TransportType$.outboundSchema,
             port: z.number().int(),
             host: z.string(),
             name: z.string(),
@@ -158,34 +151,7 @@ export namespace ProcessWithRoomsExposedPort$ {
 
 /** @internal */
 export namespace ProcessWithRooms$ {
-    export type Inbound = {
-        egressedBytes: number;
-        idleSince: string | null;
-        activeConnectionsUpdatedAt: string;
-        activeConnections: number;
-        roomsAllocatedUpdatedAt: string;
-        roomsAllocated: number;
-        roomSlotsAvailableUpdatedAt: string;
-        roomSlotsAvailable: number;
-        draining: boolean;
-        terminatedAt: string | null;
-        stoppingAt: string | null;
-        startedAt: string | null;
-        startingAt: string;
-        roomsPerProcess: number;
-        additionalExposedPorts: Array<ExposedPort$.Inbound>;
-        exposedPort: ProcessWithRoomsExposedPort$.Inbound | null;
-        port: number;
-        host: string;
-        region: Region;
-        processId: string;
-        deploymentId: number;
-        appId: string;
-        rooms: Array<RoomWithoutAllocations$.Inbound>;
-        totalRooms: number;
-    };
-
-    export const inboundSchema: z.ZodType<ProcessWithRooms, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ProcessWithRooms, z.ZodTypeDef, unknown> = z
         .object({
             egressedBytes: z.number().int(),
             idleSince: z.nullable(
@@ -237,7 +203,7 @@ export namespace ProcessWithRooms$ {
             exposedPort: z.nullable(z.lazy(() => ProcessWithRoomsExposedPort$.inboundSchema)),
             port: z.number(),
             host: z.string(),
-            region: Region$,
+            region: Region$.inboundSchema,
             processId: z.string(),
             deploymentId: z.number().int(),
             appId: z.string(),
@@ -292,7 +258,7 @@ export namespace ProcessWithRooms$ {
         exposedPort: ProcessWithRoomsExposedPort$.Outbound | null;
         port: number;
         host: string;
-        region: Region;
+        region: string;
         processId: string;
         deploymentId: number;
         appId: string;
@@ -320,7 +286,7 @@ export namespace ProcessWithRooms$ {
             exposedPort: z.nullable(z.lazy(() => ProcessWithRoomsExposedPort$.outboundSchema)),
             port: z.number(),
             host: z.string(),
-            region: Region$,
+            region: Region$.outboundSchema,
             processId: z.string(),
             deploymentId: z.number().int(),
             appId: z.string(),

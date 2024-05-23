@@ -5,44 +5,70 @@
 import * as components from "../components";
 import * as z from "zod";
 
-export type LoginNicknameRequest = {
-    nicknameObject: components.NicknameObject;
+export type LoginNicknameGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace LoginNicknameRequest$ {
-    export type Inbound = {
-        NicknameObject: components.NicknameObject$.Inbound;
-        appId?: string | undefined;
-    };
+export type LoginNicknameRequest = {
+    appId?: string | undefined;
+    nicknameObject: components.NicknameObject;
+};
 
-    export const inboundSchema: z.ZodType<LoginNicknameRequest, z.ZodTypeDef, Inbound> = z
+/** @internal */
+export namespace LoginNicknameGlobals$ {
+    export const inboundSchema: z.ZodType<LoginNicknameGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            NicknameObject: components.NicknameObject$.inboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                nicknameObject: v.NicknameObject,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        NicknameObject: components.NicknameObject$.Outbound;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LoginNicknameRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LoginNicknameGlobals> = z
         .object({
-            nicknameObject: components.NicknameObject$.outboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                NicknameObject: v.nicknameObject,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace LoginNicknameRequest$ {
+    export const inboundSchema: z.ZodType<LoginNicknameRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            NicknameObject: components.NicknameObject$.inboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                nicknameObject: v.NicknameObject,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        NicknameObject: components.NicknameObject$.Outbound;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LoginNicknameRequest> = z
+        .object({
+            appId: z.string().optional(),
+            nicknameObject: components.NicknameObject$.outboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                NicknameObject: v.nicknameObject,
             };
         });
 }

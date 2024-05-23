@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise<[number](../../models/.md)>**
+**Promise\<[number](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -84,7 +84,7 @@ run();
 
 ### Response
 
-**Promise<[components.PaymentMethod](../../models/components/paymentmethod.md)>**
+**Promise\<[components.PaymentMethod](../../models/components/paymentmethod.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -127,7 +127,7 @@ run();
 
 ### Response
 
-**Promise<[string](../../models/.md)>**
+**Promise\<[string](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -167,7 +167,7 @@ run();
 
 ### Response
 
-**Promise<[components.Invoice[]](../../models/.md)>**
+**Promise\<[components.Invoice[]](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

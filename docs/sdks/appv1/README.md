@@ -47,7 +47,7 @@ run();
 
 ### Response
 
-**Promise<[components.ApplicationWithLatestDeploymentAndBuild[]](../../models/.md)>**
+**Promise\<[components.ApplicationWithLatestDeploymentAndBuild[]](../../models/.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -92,7 +92,7 @@ run();
 
 ### Response
 
-**Promise<[components.Application](../../models/components/application.md)>**
+**Promise\<[components.Application](../../models/components/application.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -139,7 +139,7 @@ run();
 
 ### Response
 
-**Promise<[components.Application](../../models/components/application.md)>**
+**Promise\<[components.Application](../../models/components/application.md)\>**
 ### Errors
 
 | Error Object        | Status Code         | Content Type        |
@@ -182,7 +182,7 @@ run();
 
 ### Response
 
-**Promise<[components.Application](../../models/components/application.md)>**
+**Promise\<[components.Application](../../models/components/application.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -205,10 +205,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.appV1.deleteApp("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  await hathoraCloud.appV1.deleteApp("app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
-  // Handle the result
-  console.log(result)
+  
 }
 
 run();
@@ -225,7 +224,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteAppResponse](../../models/operations/deleteappresponse.md)>**
+**Promise\<void\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

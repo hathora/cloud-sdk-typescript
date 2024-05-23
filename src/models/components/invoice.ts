@@ -17,19 +17,9 @@ export type Invoice = {
 
 /** @internal */
 export namespace Invoice$ {
-    export type Inbound = {
-        status: InvoiceStatus;
-        amountDue: number;
-        pdfUrl: string;
-        dueDate: string;
-        year: number;
-        month: number;
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, unknown> = z
         .object({
-            status: InvoiceStatus$,
+            status: InvoiceStatus$.inboundSchema,
             amountDue: z.number(),
             pdfUrl: z.string(),
             dueDate: z
@@ -53,7 +43,7 @@ export namespace Invoice$ {
         });
 
     export type Outbound = {
-        status: InvoiceStatus;
+        status: string;
         amountDue: number;
         pdfUrl: string;
         dueDate: string;
@@ -64,7 +54,7 @@ export namespace Invoice$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Invoice> = z
         .object({
-            status: InvoiceStatus$,
+            status: InvoiceStatus$.outboundSchema,
             amountDue: z.number(),
             pdfUrl: z.string(),
             dueDate: z.date().transform((v) => v.toISOString()),

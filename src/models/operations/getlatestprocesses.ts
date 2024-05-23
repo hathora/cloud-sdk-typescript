@@ -5,6 +5,10 @@
 import * as components from "../components";
 import * as z from "zod";
 
+export type GetLatestProcessesGlobals = {
+    appId?: string | undefined;
+};
+
 export type GetLatestProcessesRequest = {
     appId?: string | undefined;
     status?: Array<components.ProcessStatus> | undefined;
@@ -12,18 +16,39 @@ export type GetLatestProcessesRequest = {
 };
 
 /** @internal */
-export namespace GetLatestProcessesRequest$ {
-    export type Inbound = {
-        appId?: string | undefined;
-        status?: Array<components.ProcessStatus> | undefined;
-        region?: Array<components.Region> | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetLatestProcessesRequest, z.ZodTypeDef, Inbound> = z
+export namespace GetLatestProcessesGlobals$ {
+    export const inboundSchema: z.ZodType<GetLatestProcessesGlobals, z.ZodTypeDef, unknown> = z
         .object({
             appId: z.string().optional(),
-            status: z.array(components.ProcessStatus$).optional(),
-            region: z.array(components.Region$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLatestProcessesGlobals> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace GetLatestProcessesRequest$ {
+    export const inboundSchema: z.ZodType<GetLatestProcessesRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            status: z.array(components.ProcessStatus$.inboundSchema).optional(),
+            region: z.array(components.Region$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -35,15 +60,15 @@ export namespace GetLatestProcessesRequest$ {
 
     export type Outbound = {
         appId?: string | undefined;
-        status?: Array<components.ProcessStatus> | undefined;
-        region?: Array<components.Region> | undefined;
+        status?: Array<string> | undefined;
+        region?: Array<string> | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLatestProcessesRequest> = z
         .object({
             appId: z.string().optional(),
-            status: z.array(components.ProcessStatus$).optional(),
-            region: z.array(components.Region$).optional(),
+            status: z.array(components.ProcessStatus$.outboundSchema).optional(),
+            region: z.array(components.Region$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

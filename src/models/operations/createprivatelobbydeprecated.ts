@@ -5,6 +5,10 @@
 import * as components from "../components";
 import * as z from "zod";
 
+export type CreatePrivateLobbyDeprecatedGlobals = {
+    appId?: string | undefined;
+};
+
 export type CreatePrivateLobbyDeprecatedSecurity = {
     playerAuth: string;
 };
@@ -16,15 +20,46 @@ export type CreatePrivateLobbyDeprecatedRequest = {
 };
 
 /** @internal */
-export namespace CreatePrivateLobbyDeprecatedSecurity$ {
-    export type Inbound = {
-        playerAuth: string;
+export namespace CreatePrivateLobbyDeprecatedGlobals$ {
+    export const inboundSchema: z.ZodType<
+        CreatePrivateLobbyDeprecatedGlobals,
+        z.ZodTypeDef,
+        unknown
+    > = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
     };
 
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        CreatePrivateLobbyDeprecatedGlobals
+    > = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace CreatePrivateLobbyDeprecatedSecurity$ {
     export const inboundSchema: z.ZodType<
         CreatePrivateLobbyDeprecatedSecurity,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             playerAuth: z.string(),
@@ -56,20 +91,14 @@ export namespace CreatePrivateLobbyDeprecatedSecurity$ {
 
 /** @internal */
 export namespace CreatePrivateLobbyDeprecatedRequest$ {
-    export type Inbound = {
-        appId?: string | undefined;
-        region?: components.Region | undefined;
-        local?: boolean | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         CreatePrivateLobbyDeprecatedRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             appId: z.string().optional(),
-            region: components.Region$.optional(),
+            region: components.Region$.inboundSchema.optional(),
             local: z.boolean().default(false),
         })
         .transform((v) => {
@@ -82,7 +111,7 @@ export namespace CreatePrivateLobbyDeprecatedRequest$ {
 
     export type Outbound = {
         appId?: string | undefined;
-        region?: components.Region | undefined;
+        region?: string | undefined;
         local: boolean;
     };
 
@@ -93,7 +122,7 @@ export namespace CreatePrivateLobbyDeprecatedRequest$ {
     > = z
         .object({
             appId: z.string().optional(),
-            region: components.Region$.optional(),
+            region: components.Region$.outboundSchema.optional(),
             local: z.boolean().default(false),
         })
         .transform((v) => {

@@ -5,6 +5,10 @@
 import * as components from "../components";
 import * as z from "zod";
 
+export type ListActivePublicLobbiesDeprecatedV1Globals = {
+    appId?: string | undefined;
+};
+
 export type ListActivePublicLobbiesDeprecatedV1Request = {
     appId?: string | undefined;
     local?: boolean | undefined;
@@ -12,22 +16,51 @@ export type ListActivePublicLobbiesDeprecatedV1Request = {
 };
 
 /** @internal */
-export namespace ListActivePublicLobbiesDeprecatedV1Request$ {
-    export type Inbound = {
+export namespace ListActivePublicLobbiesDeprecatedV1Globals$ {
+    export const inboundSchema: z.ZodType<
+        ListActivePublicLobbiesDeprecatedV1Globals,
+        z.ZodTypeDef,
+        unknown
+    > = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
         appId?: string | undefined;
-        local?: boolean | undefined;
-        region?: components.Region | undefined;
     };
 
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        ListActivePublicLobbiesDeprecatedV1Globals
+    > = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace ListActivePublicLobbiesDeprecatedV1Request$ {
     export const inboundSchema: z.ZodType<
         ListActivePublicLobbiesDeprecatedV1Request,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             appId: z.string().optional(),
             local: z.boolean().default(false),
-            region: components.Region$.optional(),
+            region: components.Region$.inboundSchema.optional(),
         })
         .transform((v) => {
             return {
@@ -40,7 +73,7 @@ export namespace ListActivePublicLobbiesDeprecatedV1Request$ {
     export type Outbound = {
         appId?: string | undefined;
         local: boolean;
-        region?: components.Region | undefined;
+        region?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -51,7 +84,7 @@ export namespace ListActivePublicLobbiesDeprecatedV1Request$ {
         .object({
             appId: z.string().optional(),
             local: z.boolean().default(false),
-            region: components.Region$.optional(),
+            region: components.Region$.outboundSchema.optional(),
         })
         .transform((v) => {
             return {

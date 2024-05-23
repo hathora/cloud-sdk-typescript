@@ -13,17 +13,11 @@ export type PingEndpoints = {
 
 /** @internal */
 export namespace PingEndpoints$ {
-    export type Inbound = {
-        port: number;
-        host: string;
-        region: Region;
-    };
-
-    export const inboundSchema: z.ZodType<PingEndpoints, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PingEndpoints, z.ZodTypeDef, unknown> = z
         .object({
             port: z.number(),
             host: z.string(),
-            region: Region$,
+            region: Region$.inboundSchema,
         })
         .transform((v) => {
             return {
@@ -36,14 +30,14 @@ export namespace PingEndpoints$ {
     export type Outbound = {
         port: number;
         host: string;
-        region: Region;
+        region: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PingEndpoints> = z
         .object({
             port: z.number(),
             host: z.string(),
-            region: Region$,
+            region: Region$.outboundSchema,
         })
         .transform((v) => {
             return {

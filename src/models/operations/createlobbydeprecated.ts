@@ -5,23 +5,50 @@
 import * as components from "../components";
 import * as z from "zod";
 
+export type CreateLobbyDeprecatedGlobals = {
+    appId?: string | undefined;
+};
+
 export type CreateLobbyDeprecatedSecurity = {
     playerAuth: string;
 };
 
 export type CreateLobbyDeprecatedRequest = {
-    createLobbyParams: components.CreateLobbyParams;
     appId?: string | undefined;
     roomId?: string | undefined;
+    createLobbyParams: components.CreateLobbyParams;
 };
 
 /** @internal */
-export namespace CreateLobbyDeprecatedSecurity$ {
-    export type Inbound = {
-        playerAuth: string;
+export namespace CreateLobbyDeprecatedGlobals$ {
+    export const inboundSchema: z.ZodType<CreateLobbyDeprecatedGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
     };
 
-    export const inboundSchema: z.ZodType<CreateLobbyDeprecatedSecurity, z.ZodTypeDef, Inbound> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLobbyDeprecatedGlobals> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace CreateLobbyDeprecatedSecurity$ {
+    export const inboundSchema: z.ZodType<CreateLobbyDeprecatedSecurity, z.ZodTypeDef, unknown> = z
         .object({
             playerAuth: z.string(),
         })
@@ -49,43 +76,37 @@ export namespace CreateLobbyDeprecatedSecurity$ {
 
 /** @internal */
 export namespace CreateLobbyDeprecatedRequest$ {
-    export type Inbound = {
-        CreateLobbyParams: components.CreateLobbyParams$.Inbound;
-        appId?: string | undefined;
-        roomId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateLobbyDeprecatedRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateLobbyDeprecatedRequest, z.ZodTypeDef, unknown> = z
         .object({
-            CreateLobbyParams: components.CreateLobbyParams$.inboundSchema,
             appId: z.string().optional(),
             roomId: z.string().optional(),
+            CreateLobbyParams: components.CreateLobbyParams$.inboundSchema,
         })
         .transform((v) => {
             return {
-                createLobbyParams: v.CreateLobbyParams,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
                 ...(v.roomId === undefined ? null : { roomId: v.roomId }),
+                createLobbyParams: v.CreateLobbyParams,
             };
         });
 
     export type Outbound = {
-        CreateLobbyParams: components.CreateLobbyParams$.Outbound;
         appId?: string | undefined;
         roomId?: string | undefined;
+        CreateLobbyParams: components.CreateLobbyParams$.Outbound;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLobbyDeprecatedRequest> = z
         .object({
-            createLobbyParams: components.CreateLobbyParams$.outboundSchema,
             appId: z.string().optional(),
             roomId: z.string().optional(),
+            createLobbyParams: components.CreateLobbyParams$.outboundSchema,
         })
         .transform((v) => {
             return {
-                CreateLobbyParams: v.createLobbyParams,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
                 ...(v.roomId === undefined ? null : { roomId: v.roomId }),
+                CreateLobbyParams: v.createLobbyParams,
             };
         });
 }

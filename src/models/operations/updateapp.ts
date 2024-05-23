@@ -5,44 +5,70 @@
 import * as components from "../components";
 import * as z from "zod";
 
-export type UpdateAppRequest = {
-    appConfig: components.AppConfig;
+export type UpdateAppGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace UpdateAppRequest$ {
-    export type Inbound = {
-        AppConfig: components.AppConfig$.Inbound;
-        appId?: string | undefined;
-    };
+export type UpdateAppRequest = {
+    appId?: string | undefined;
+    appConfig: components.AppConfig;
+};
 
-    export const inboundSchema: z.ZodType<UpdateAppRequest, z.ZodTypeDef, Inbound> = z
+/** @internal */
+export namespace UpdateAppGlobals$ {
+    export const inboundSchema: z.ZodType<UpdateAppGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            AppConfig: components.AppConfig$.inboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                appConfig: v.AppConfig,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        AppConfig: components.AppConfig$.Outbound;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateAppRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateAppGlobals> = z
         .object({
-            appConfig: components.AppConfig$.outboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                AppConfig: v.appConfig,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace UpdateAppRequest$ {
+    export const inboundSchema: z.ZodType<UpdateAppRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            AppConfig: components.AppConfig$.inboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                appConfig: v.AppConfig,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        AppConfig: components.AppConfig$.Outbound;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateAppRequest> = z
+        .object({
+            appId: z.string().optional(),
+            appConfig: components.AppConfig$.outboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                AppConfig: v.appConfig,
             };
         });
 }

@@ -46,7 +46,7 @@ run();
 
 ### Response
 
-**Promise<[components.OrgPermission](../../models/components/orgpermission.md)>**
+**Promise\<[components.OrgPermission](../../models/components/orgpermission.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -67,12 +67,11 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.organizationsV1.rescindInvite("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
+  await hathoraCloud.organizationsV1.rescindInvite("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
     userEmail: "<value>",
   });
 
-  // Handle the result
-  console.log(result)
+  
 }
 
 run();
@@ -90,7 +89,7 @@ run();
 
 ### Response
 
-**Promise<[operations.RescindInviteResponse](../../models/operations/rescindinviteresponse.md)>**
+**Promise\<void\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -131,7 +130,7 @@ run();
 
 ### Response
 
-**Promise<[components.OrgInvitesPage](../../models/components/orginvitespage.md)>**
+**Promise\<[components.OrgInvitesPage](../../models/components/orginvitespage.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -171,7 +170,7 @@ run();
 
 ### Response
 
-**Promise<[components.OrgInvitesPage](../../models/components/orginvitespage.md)>**
+**Promise\<[components.OrgInvitesPage](../../models/components/orginvitespage.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -192,10 +191,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.organizationsV1.acceptInvite("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  await hathoraCloud.organizationsV1.acceptInvite("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
-  // Handle the result
-  console.log(result)
+  
 }
 
 run();
@@ -212,7 +210,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AcceptInviteResponse](../../models/operations/acceptinviteresponse.md)>**
+**Promise\<void\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -233,10 +231,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.organizationsV1.rejectInvite("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  await hathoraCloud.organizationsV1.rejectInvite("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
-  // Handle the result
-  console.log(result)
+  
 }
 
 run();
@@ -253,7 +250,7 @@ run();
 
 ### Response
 
-**Promise<[operations.RejectInviteResponse](../../models/operations/rejectinviteresponse.md)>**
+**Promise\<void\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

@@ -49,19 +49,7 @@ export type Application = {
 
 /** @internal */
 export namespace Application$ {
-    export type Inbound = {
-        deletedBy: string | null;
-        deletedAt: string | null;
-        createdAt: string;
-        createdBy: string;
-        orgId: string;
-        authConfiguration: AuthConfiguration$.Inbound;
-        appSecret: string;
-        appId: string;
-        appName: string;
-    };
-
-    export const inboundSchema: z.ZodType<Application, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Application, z.ZodTypeDef, unknown> = z
         .object({
             deletedBy: z.nullable(z.string()),
             deletedAt: z.nullable(

@@ -4,37 +4,71 @@
 
 import * as z from "zod";
 
-export type GetConnectionInfoDeprecatedRequest = {
-    roomId: string;
+export type GetConnectionInfoDeprecatedGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace GetConnectionInfoDeprecatedRequest$ {
-    export type Inbound = {
-        roomId: string;
-        appId?: string | undefined;
-    };
+export type GetConnectionInfoDeprecatedRequest = {
+    appId?: string | undefined;
+    roomId: string;
+};
 
+/** @internal */
+export namespace GetConnectionInfoDeprecatedGlobals$ {
     export const inboundSchema: z.ZodType<
-        GetConnectionInfoDeprecatedRequest,
+        GetConnectionInfoDeprecatedGlobals,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
-            roomId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                roomId: v.roomId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        roomId: string;
         appId?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        GetConnectionInfoDeprecatedGlobals
+    > = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace GetConnectionInfoDeprecatedRequest$ {
+    export const inboundSchema: z.ZodType<
+        GetConnectionInfoDeprecatedRequest,
+        z.ZodTypeDef,
+        unknown
+    > = z
+        .object({
+            appId: z.string().optional(),
+            roomId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                roomId: v.roomId,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        roomId: string;
     };
 
     export const outboundSchema: z.ZodType<
@@ -43,13 +77,13 @@ export namespace GetConnectionInfoDeprecatedRequest$ {
         GetConnectionInfoDeprecatedRequest
     > = z
         .object({
-            roomId: z.string(),
             appId: z.string().optional(),
+            roomId: z.string(),
         })
         .transform((v) => {
             return {
-                roomId: v.roomId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+                roomId: v.roomId,
             };
         });
 }

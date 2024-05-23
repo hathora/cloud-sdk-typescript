@@ -57,7 +57,7 @@ run();
 
 ### Response
 
-**Promise<[components.RoomConnectionData](../../models/components/roomconnectiondata.md)>**
+**Promise\<[components.RoomConnectionData](../../models/components/roomconnectiondata.md)\>**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
@@ -101,7 +101,7 @@ run();
 
 ### Response
 
-**Promise<[components.Room](../../models/components/room.md)>**
+**Promise\<[components.Room](../../models/components/room.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -145,7 +145,7 @@ run();
 
 ### Response
 
-**Promise<[components.RoomWithoutAllocations[]](../../models/.md)>**
+**Promise\<[components.RoomWithoutAllocations[]](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -189,7 +189,7 @@ run();
 
 ### Response
 
-**Promise<[components.RoomWithoutAllocations[]](../../models/.md)>**
+**Promise\<[components.RoomWithoutAllocations[]](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -212,10 +212,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.roomV2.destroyRoom("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  await hathoraCloud.roomV2.destroyRoom("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
-  // Handle the result
-  console.log(result)
+  
 }
 
 run();
@@ -233,7 +232,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DestroyRoomResponse](../../models/operations/destroyroomresponse.md)>**
+**Promise\<void\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -258,10 +257,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.roomV2.suspendRoomV2Deprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  await hathoraCloud.roomV2.suspendRoomV2Deprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
-  // Handle the result
-  console.log(result)
+  
 }
 
 run();
@@ -279,7 +277,7 @@ run();
 
 ### Response
 
-**Promise<[operations.SuspendRoomV2DeprecatedResponse](../../models/operations/suspendroomv2deprecatedresponse.md)>**
+**Promise\<void\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -322,7 +320,7 @@ run();
 
 ### Response
 
-**Promise<[components.ConnectionInfoV2](../../models/components/connectioninfov2.md)>**
+**Promise\<[components.ConnectionInfoV2](../../models/components/connectioninfov2.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -343,12 +341,11 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.roomV2.updateRoomConfig("2swovpy1fnunu", {
+  await hathoraCloud.roomV2.updateRoomConfig("2swovpy1fnunu", {
     roomConfig: "{\"name\":\"my-room\"}",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
-  // Handle the result
-  console.log(result)
+  
 }
 
 run();
@@ -367,7 +364,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UpdateRoomConfigResponse](../../models/operations/updateroomconfigresponse.md)>**
+**Promise\<void\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

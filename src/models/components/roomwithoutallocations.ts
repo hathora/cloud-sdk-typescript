@@ -56,14 +56,7 @@ export type RoomWithoutAllocations = {
 
 /** @internal */
 export namespace CurrentAllocation$ {
-    export type Inbound = {
-        unscheduledAt: string | null;
-        scheduledAt: string;
-        processId: string;
-        roomAllocationId: string;
-    };
-
-    export const inboundSchema: z.ZodType<CurrentAllocation, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CurrentAllocation, z.ZodTypeDef, unknown> = z
         .object({
             unscheduledAt: z.nullable(
                 z
@@ -113,20 +106,12 @@ export namespace CurrentAllocation$ {
 
 /** @internal */
 export namespace RoomWithoutAllocations$ {
-    export type Inbound = {
-        appId: string;
-        roomId: string;
-        roomConfig: string | null;
-        status: RoomStatus;
-        currentAllocation: CurrentAllocation$.Inbound | null;
-    };
-
-    export const inboundSchema: z.ZodType<RoomWithoutAllocations, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RoomWithoutAllocations, z.ZodTypeDef, unknown> = z
         .object({
             appId: z.string(),
             roomId: z.string(),
             roomConfig: z.nullable(z.string()),
-            status: RoomStatus$,
+            status: RoomStatus$.inboundSchema,
             currentAllocation: z.nullable(z.lazy(() => CurrentAllocation$.inboundSchema)),
         })
         .transform((v) => {
@@ -143,7 +128,7 @@ export namespace RoomWithoutAllocations$ {
         appId: string;
         roomId: string;
         roomConfig: string | null;
-        status: RoomStatus;
+        status: string;
         currentAllocation: CurrentAllocation$.Outbound | null;
     };
 
@@ -152,7 +137,7 @@ export namespace RoomWithoutAllocations$ {
             appId: z.string(),
             roomId: z.string(),
             roomConfig: z.nullable(z.string()),
-            status: RoomStatus$,
+            status: RoomStatus$.outboundSchema,
             currentAllocation: z.nullable(z.lazy(() => CurrentAllocation$.outboundSchema)),
         })
         .transform((v) => {

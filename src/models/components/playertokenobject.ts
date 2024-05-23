@@ -13,11 +13,7 @@ export type PlayerTokenObject = {
 
 /** @internal */
 export namespace PlayerTokenObject$ {
-    export type Inbound = {
-        token: string;
-    };
-
-    export const inboundSchema: z.ZodType<PlayerTokenObject, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PlayerTokenObject, z.ZodTypeDef, unknown> = z
         .object({
             token: z.string(),
         })

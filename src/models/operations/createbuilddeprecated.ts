@@ -5,44 +5,70 @@
 import * as components from "../components";
 import * as z from "zod";
 
-export type CreateBuildDeprecatedRequest = {
-    createBuildParams: components.CreateBuildParams;
+export type CreateBuildDeprecatedGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace CreateBuildDeprecatedRequest$ {
-    export type Inbound = {
-        CreateBuildParams: components.CreateBuildParams$.Inbound;
-        appId?: string | undefined;
-    };
+export type CreateBuildDeprecatedRequest = {
+    appId?: string | undefined;
+    createBuildParams: components.CreateBuildParams;
+};
 
-    export const inboundSchema: z.ZodType<CreateBuildDeprecatedRequest, z.ZodTypeDef, Inbound> = z
+/** @internal */
+export namespace CreateBuildDeprecatedGlobals$ {
+    export const inboundSchema: z.ZodType<CreateBuildDeprecatedGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            CreateBuildParams: components.CreateBuildParams$.inboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                createBuildParams: v.CreateBuildParams,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        CreateBuildParams: components.CreateBuildParams$.Outbound;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateBuildDeprecatedRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateBuildDeprecatedGlobals> = z
         .object({
-            createBuildParams: components.CreateBuildParams$.outboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                CreateBuildParams: v.createBuildParams,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace CreateBuildDeprecatedRequest$ {
+    export const inboundSchema: z.ZodType<CreateBuildDeprecatedRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            CreateBuildParams: components.CreateBuildParams$.inboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                createBuildParams: v.CreateBuildParams,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        CreateBuildParams: components.CreateBuildParams$.Outbound;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateBuildDeprecatedRequest> = z
+        .object({
+            appId: z.string().optional(),
+            createBuildParams: components.CreateBuildParams$.outboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                CreateBuildParams: v.createBuildParams,
             };
         });
 }

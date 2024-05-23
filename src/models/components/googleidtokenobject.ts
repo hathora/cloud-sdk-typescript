@@ -13,11 +13,7 @@ export type GoogleIdTokenObject = {
 
 /** @internal */
 export namespace GoogleIdTokenObject$ {
-    export type Inbound = {
-        idToken: string;
-    };
-
-    export const inboundSchema: z.ZodType<GoogleIdTokenObject, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GoogleIdTokenObject, z.ZodTypeDef, unknown> = z
         .object({
             idToken: z.string(),
         })

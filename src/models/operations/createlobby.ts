@@ -5,24 +5,51 @@
 import * as components from "../components";
 import * as z from "zod";
 
+export type CreateLobbyGlobals = {
+    appId?: string | undefined;
+};
+
 export type CreateLobbySecurity = {
     playerAuth: string;
 };
 
 export type CreateLobbyRequest = {
-    createLobbyV3Params: components.CreateLobbyV3Params;
     appId?: string | undefined;
     shortCode?: string | undefined;
     roomId?: string | undefined;
+    createLobbyV3Params: components.CreateLobbyV3Params;
 };
 
 /** @internal */
-export namespace CreateLobbySecurity$ {
-    export type Inbound = {
-        playerAuth: string;
+export namespace CreateLobbyGlobals$ {
+    export const inboundSchema: z.ZodType<CreateLobbyGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
     };
 
-    export const inboundSchema: z.ZodType<CreateLobbySecurity, z.ZodTypeDef, Inbound> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLobbyGlobals> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace CreateLobbySecurity$ {
+    export const inboundSchema: z.ZodType<CreateLobbySecurity, z.ZodTypeDef, unknown> = z
         .object({
             playerAuth: z.string(),
         })
@@ -49,49 +76,42 @@ export namespace CreateLobbySecurity$ {
 
 /** @internal */
 export namespace CreateLobbyRequest$ {
-    export type Inbound = {
-        CreateLobbyV3Params: components.CreateLobbyV3Params$.Inbound;
-        appId?: string | undefined;
-        shortCode?: string | undefined;
-        roomId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateLobbyRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateLobbyRequest, z.ZodTypeDef, unknown> = z
         .object({
-            CreateLobbyV3Params: components.CreateLobbyV3Params$.inboundSchema,
             appId: z.string().optional(),
             shortCode: z.string().optional(),
             roomId: z.string().optional(),
+            CreateLobbyV3Params: components.CreateLobbyV3Params$.inboundSchema,
         })
         .transform((v) => {
             return {
-                createLobbyV3Params: v.CreateLobbyV3Params,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
                 ...(v.shortCode === undefined ? null : { shortCode: v.shortCode }),
                 ...(v.roomId === undefined ? null : { roomId: v.roomId }),
+                createLobbyV3Params: v.CreateLobbyV3Params,
             };
         });
 
     export type Outbound = {
-        CreateLobbyV3Params: components.CreateLobbyV3Params$.Outbound;
         appId?: string | undefined;
         shortCode?: string | undefined;
         roomId?: string | undefined;
+        CreateLobbyV3Params: components.CreateLobbyV3Params$.Outbound;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLobbyRequest> = z
         .object({
-            createLobbyV3Params: components.CreateLobbyV3Params$.outboundSchema,
             appId: z.string().optional(),
             shortCode: z.string().optional(),
             roomId: z.string().optional(),
+            createLobbyV3Params: components.CreateLobbyV3Params$.outboundSchema,
         })
         .transform((v) => {
             return {
-                CreateLobbyV3Params: v.createLobbyV3Params,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
                 ...(v.shortCode === undefined ? null : { shortCode: v.shortCode }),
                 ...(v.roomId === undefined ? null : { roomId: v.roomId }),
+                CreateLobbyV3Params: v.createLobbyV3Params,
             };
         });
 }

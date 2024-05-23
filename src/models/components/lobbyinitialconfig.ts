@@ -11,9 +11,7 @@ export type LobbyInitialConfig = {};
 
 /** @internal */
 export namespace LobbyInitialConfig$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<LobbyInitialConfig, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<LobbyInitialConfig, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 

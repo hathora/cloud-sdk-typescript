@@ -4,19 +4,44 @@
 
 import * as z from "zod";
 
+export type DeleteAppGlobals = {
+    appId?: string | undefined;
+};
+
 export type DeleteAppRequest = {
     appId?: string | undefined;
 };
 
-export type DeleteAppResponse = {};
-
 /** @internal */
-export namespace DeleteAppRequest$ {
-    export type Inbound = {
+export namespace DeleteAppGlobals$ {
+    export const inboundSchema: z.ZodType<DeleteAppGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const inboundSchema: z.ZodType<DeleteAppRequest, z.ZodTypeDef, Inbound> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteAppGlobals> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace DeleteAppRequest$ {
+    export const inboundSchema: z.ZodType<DeleteAppRequest, z.ZodTypeDef, unknown> = z
         .object({
             appId: z.string().optional(),
         })
@@ -39,17 +64,4 @@ export namespace DeleteAppRequest$ {
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
-}
-
-/** @internal */
-export namespace DeleteAppResponse$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<DeleteAppResponse, z.ZodTypeDef, Inbound> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteAppResponse> = z.object(
-        {}
-    );
 }

@@ -5,51 +5,76 @@
 import * as components from "../components";
 import * as z from "zod";
 
-export type SetLobbyStateRequest = {
-    roomId: string;
-    setLobbyStateParams: components.SetLobbyStateParams;
+export type SetLobbyStateGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace SetLobbyStateRequest$ {
-    export type Inbound = {
-        roomId: string;
-        SetLobbyStateParams: components.SetLobbyStateParams$.Inbound;
-        appId?: string | undefined;
-    };
+export type SetLobbyStateRequest = {
+    appId?: string | undefined;
+    roomId: string;
+    setLobbyStateParams: components.SetLobbyStateParams;
+};
 
-    export const inboundSchema: z.ZodType<SetLobbyStateRequest, z.ZodTypeDef, Inbound> = z
+/** @internal */
+export namespace SetLobbyStateGlobals$ {
+    export const inboundSchema: z.ZodType<SetLobbyStateGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            roomId: z.string(),
-            SetLobbyStateParams: components.SetLobbyStateParams$.inboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                roomId: v.roomId,
-                setLobbyStateParams: v.SetLobbyStateParams,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        roomId: string;
-        SetLobbyStateParams: components.SetLobbyStateParams$.Outbound;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SetLobbyStateRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SetLobbyStateGlobals> = z
         .object({
-            roomId: z.string(),
-            setLobbyStateParams: components.SetLobbyStateParams$.outboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace SetLobbyStateRequest$ {
+    export const inboundSchema: z.ZodType<SetLobbyStateRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            roomId: z.string(),
+            SetLobbyStateParams: components.SetLobbyStateParams$.inboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                roomId: v.roomId,
+                setLobbyStateParams: v.SetLobbyStateParams,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        roomId: string;
+        SetLobbyStateParams: components.SetLobbyStateParams$.Outbound;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SetLobbyStateRequest> = z
+        .object({
+            appId: z.string().optional(),
+            roomId: z.string(),
+            setLobbyStateParams: components.SetLobbyStateParams$.outboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
                 roomId: v.roomId,
                 SetLobbyStateParams: v.setLobbyStateParams,
-                ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 }

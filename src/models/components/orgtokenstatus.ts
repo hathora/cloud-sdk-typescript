@@ -10,4 +10,7 @@ export enum OrgTokenStatus {
 }
 
 /** @internal */
-export const OrgTokenStatus$: z.ZodNativeEnum<typeof OrgTokenStatus> = z.nativeEnum(OrgTokenStatus);
+export namespace OrgTokenStatus$ {
+    export const inboundSchema = z.nativeEnum(OrgTokenStatus);
+    export const outboundSchema = inboundSchema;
+}

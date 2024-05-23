@@ -11,9 +11,7 @@ export type RecordStringNever = {};
 
 /** @internal */
 export namespace RecordStringNever$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<RecordStringNever, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<RecordStringNever, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 

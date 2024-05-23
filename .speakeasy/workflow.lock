@@ -1,6 +1,19 @@
-speakeasyVersion: 1.285.1
-sources: {}
-targets: {}
+speakeasyVersion: 1.295.1
+sources:
+    my-source:
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:e92dfef9b5bad78a31eb39a2e6fab55ed7c80d16d92b0f255b73bd7b9a4d31fc
+        sourceBlobDigest: sha256:3f4c4e934e62904dd6b28c54e6f36377e81b47f9f757de323c57381a1c258bfb
+        tags:
+            - latest
+            - main
+targets:
+    hathora-typescript:
+        source: my-source
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:e92dfef9b5bad78a31eb39a2e6fab55ed7c80d16d92b0f255b73bd7b9a4d31fc
+        sourceBlobDigest: sha256:3f4c4e934e62904dd6b28c54e6f36377e81b47f9f757de323c57381a1c258bfb
+        outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -8,6 +21,8 @@ workflow:
         my-source:
             inputs:
                 - location: https://hathora.dev/swagger.json
+            registry:
+                location: registry.speakeasyapi.dev/hathora/hathora/my-source
     targets:
         hathora-typescript:
             target: typescript

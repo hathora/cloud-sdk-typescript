@@ -16,24 +16,19 @@ export type OrganizationInviteStatus =
 
 /** @internal */
 export namespace OrganizationInviteStatus$ {
-    export type Inbound =
-        | InviteStatusPending$.Inbound
-        | InviteStatusAccepted$.Inbound
-        | InviteStatusRejected$.Inbound
-        | InviteStatusRescinded$.Inbound;
-
-    export type Outbound =
-        | InviteStatusPending$.Outbound
-        | InviteStatusAccepted$.Outbound
-        | InviteStatusRejected$.Outbound
-        | InviteStatusRescinded$.Outbound;
-    export const inboundSchema: z.ZodType<OrganizationInviteStatus, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<OrganizationInviteStatus, z.ZodTypeDef, unknown> =
         z.union([
             InviteStatusPending$.inboundSchema,
             InviteStatusAccepted$.inboundSchema,
             InviteStatusRejected$.inboundSchema,
             InviteStatusRescinded$.inboundSchema,
         ]);
+
+    export type Outbound =
+        | InviteStatusPending$.Outbound
+        | InviteStatusAccepted$.Outbound
+        | InviteStatusRejected$.Outbound
+        | InviteStatusRescinded$.Outbound;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OrganizationInviteStatus> =
         z.union([
             InviteStatusPending$.outboundSchema,

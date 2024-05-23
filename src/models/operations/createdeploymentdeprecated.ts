@@ -5,42 +5,75 @@
 import * as components from "../components";
 import * as z from "zod";
 
-export type CreateDeploymentDeprecatedRequest = {
-    buildId: number;
-    deploymentConfig: components.DeploymentConfig;
+export type CreateDeploymentDeprecatedGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace CreateDeploymentDeprecatedRequest$ {
-    export type Inbound = {
-        buildId: number;
-        DeploymentConfig: components.DeploymentConfig$.Inbound;
-        appId?: string | undefined;
-    };
+export type CreateDeploymentDeprecatedRequest = {
+    appId?: string | undefined;
+    buildId: number;
+    deploymentConfig: components.DeploymentConfig;
+};
 
+/** @internal */
+export namespace CreateDeploymentDeprecatedGlobals$ {
     export const inboundSchema: z.ZodType<
-        CreateDeploymentDeprecatedRequest,
+        CreateDeploymentDeprecatedGlobals,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
-            buildId: z.number().int(),
-            DeploymentConfig: components.DeploymentConfig$.inboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                buildId: v.buildId,
-                deploymentConfig: v.DeploymentConfig,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
+        appId?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        CreateDeploymentDeprecatedGlobals
+    > = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace CreateDeploymentDeprecatedRequest$ {
+    export const inboundSchema: z.ZodType<
+        CreateDeploymentDeprecatedRequest,
+        z.ZodTypeDef,
+        unknown
+    > = z
+        .object({
+            appId: z.string().optional(),
+            buildId: z.number().int(),
+            DeploymentConfig: components.DeploymentConfig$.inboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                buildId: v.buildId,
+                deploymentConfig: v.DeploymentConfig,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
         buildId: number;
         DeploymentConfig: components.DeploymentConfig$.Outbound;
-        appId?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -49,15 +82,15 @@ export namespace CreateDeploymentDeprecatedRequest$ {
         CreateDeploymentDeprecatedRequest
     > = z
         .object({
+            appId: z.string().optional(),
             buildId: z.number().int(),
             deploymentConfig: components.DeploymentConfig$.outboundSchema,
-            appId: z.string().optional(),
         })
         .transform((v) => {
             return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
                 buildId: v.buildId,
                 DeploymentConfig: v.deploymentConfig,
-                ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 }

@@ -5,44 +5,70 @@
 import * as components from "../components";
 import * as z from "zod";
 
-export type CreateProcessRequest = {
-    region: components.Region;
+export type CreateProcessGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace CreateProcessRequest$ {
-    export type Inbound = {
-        region: components.Region;
-        appId?: string | undefined;
-    };
+export type CreateProcessRequest = {
+    appId?: string | undefined;
+    region: components.Region;
+};
 
-    export const inboundSchema: z.ZodType<CreateProcessRequest, z.ZodTypeDef, Inbound> = z
+/** @internal */
+export namespace CreateProcessGlobals$ {
+    export const inboundSchema: z.ZodType<CreateProcessGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            region: components.Region$,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                region: v.region,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        region: components.Region;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateProcessRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateProcessGlobals> = z
         .object({
-            region: components.Region$,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                region: v.region,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace CreateProcessRequest$ {
+    export const inboundSchema: z.ZodType<CreateProcessRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            region: components.Region$.inboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                region: v.region,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        region: string;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateProcessRequest> = z
+        .object({
+            appId: z.string().optional(),
+            region: components.Region$.outboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                region: v.region,
             };
         });
 }

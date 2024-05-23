@@ -13,11 +13,7 @@ export type UpdateRoomConfigParams = {
 
 /** @internal */
 export namespace UpdateRoomConfigParams$ {
-    export type Inbound = {
-        roomConfig: string;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateRoomConfigParams, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateRoomConfigParams, z.ZodTypeDef, unknown> = z
         .object({
             roomConfig: z.string(),
         })

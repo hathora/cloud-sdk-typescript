@@ -5,51 +5,76 @@
 import * as components from "../components";
 import * as z from "zod";
 
+export type CreateRoomDeprecatedGlobals = {
+    appId?: string | undefined;
+};
+
 export type CreateRoomDeprecatedRequest = {
-    createRoomParams: components.CreateRoomParams;
     appId?: string | undefined;
     roomId?: string | undefined;
+    createRoomParams: components.CreateRoomParams;
 };
 
 /** @internal */
-export namespace CreateRoomDeprecatedRequest$ {
-    export type Inbound = {
-        CreateRoomParams: components.CreateRoomParams$.Inbound;
-        appId?: string | undefined;
-        roomId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateRoomDeprecatedRequest, z.ZodTypeDef, Inbound> = z
+export namespace CreateRoomDeprecatedGlobals$ {
+    export const inboundSchema: z.ZodType<CreateRoomDeprecatedGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            CreateRoomParams: components.CreateRoomParams$.inboundSchema,
             appId: z.string().optional(),
-            roomId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                createRoomParams: v.CreateRoomParams,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
-                ...(v.roomId === undefined ? null : { roomId: v.roomId }),
             };
         });
 
     export type Outbound = {
-        CreateRoomParams: components.CreateRoomParams$.Outbound;
+        appId?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateRoomDeprecatedGlobals> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace CreateRoomDeprecatedRequest$ {
+    export const inboundSchema: z.ZodType<CreateRoomDeprecatedRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            roomId: z.string().optional(),
+            CreateRoomParams: components.CreateRoomParams$.inboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                ...(v.roomId === undefined ? null : { roomId: v.roomId }),
+                createRoomParams: v.CreateRoomParams,
+            };
+        });
+
+    export type Outbound = {
         appId?: string | undefined;
         roomId?: string | undefined;
+        CreateRoomParams: components.CreateRoomParams$.Outbound;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateRoomDeprecatedRequest> = z
         .object({
-            createRoomParams: components.CreateRoomParams$.outboundSchema,
             appId: z.string().optional(),
             roomId: z.string().optional(),
+            createRoomParams: components.CreateRoomParams$.outboundSchema,
         })
         .transform((v) => {
             return {
-                CreateRoomParams: v.createRoomParams,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
                 ...(v.roomId === undefined ? null : { roomId: v.roomId }),
+                CreateRoomParams: v.createRoomParams,
             };
         });
 }

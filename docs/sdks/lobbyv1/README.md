@@ -49,7 +49,7 @@ run();
 
 ### Response
 
-**Promise<[string](../../models/.md)>**
+**Promise\<[string](../../models/.md)\>**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
@@ -95,7 +95,7 @@ run();
 
 ### Response
 
-**Promise<[string](../../models/.md)>**
+**Promise\<[string](../../models/.md)\>**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
@@ -140,7 +140,7 @@ run();
 
 ### Response
 
-**Promise<[components.Lobby[]](../../models/.md)>**
+**Promise\<[components.Lobby[]](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

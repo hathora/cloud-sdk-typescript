@@ -4,17 +4,44 @@
 
 import * as z from "zod";
 
+export type GetBuildsGlobals = {
+    appId?: string | undefined;
+};
+
 export type GetBuildsRequest = {
     appId?: string | undefined;
 };
 
 /** @internal */
-export namespace GetBuildsRequest$ {
-    export type Inbound = {
+export namespace GetBuildsGlobals$ {
+    export const inboundSchema: z.ZodType<GetBuildsGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const inboundSchema: z.ZodType<GetBuildsRequest, z.ZodTypeDef, Inbound> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBuildsGlobals> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace GetBuildsRequest$ {
+    export const inboundSchema: z.ZodType<GetBuildsRequest, z.ZodTypeDef, unknown> = z
         .object({
             appId: z.string().optional(),
         })

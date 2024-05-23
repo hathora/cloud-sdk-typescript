@@ -25,4 +25,7 @@ export enum PlanName {
 }
 
 /** @internal */
-export const PlanName$: z.ZodNativeEnum<typeof PlanName> = z.nativeEnum(PlanName);
+export namespace PlanName$ {
+    export const inboundSchema = z.nativeEnum(PlanName);
+    export const outboundSchema = inboundSchema;
+}

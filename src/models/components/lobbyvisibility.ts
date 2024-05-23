@@ -22,5 +22,7 @@ export enum LobbyVisibility {
 }
 
 /** @internal */
-export const LobbyVisibility$: z.ZodNativeEnum<typeof LobbyVisibility> =
-    z.nativeEnum(LobbyVisibility);
+export namespace LobbyVisibility$ {
+    export const inboundSchema = z.nativeEnum(LobbyVisibility);
+    export const outboundSchema = inboundSchema;
+}

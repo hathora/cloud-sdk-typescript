@@ -14,4 +14,7 @@ export enum ProcessStatus {
 }
 
 /** @internal */
-export const ProcessStatus$: z.ZodNativeEnum<typeof ProcessStatus> = z.nativeEnum(ProcessStatus);
+export namespace ProcessStatus$ {
+    export const inboundSchema = z.nativeEnum(ProcessStatus);
+    export const outboundSchema = inboundSchema;
+}

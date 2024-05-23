@@ -20,18 +20,16 @@ export type StartingConnectionInfo = {
 };
 
 /** @internal */
-export const Status$: z.ZodNativeEnum<typeof Status> = z.nativeEnum(Status);
+export namespace Status$ {
+    export const inboundSchema = z.nativeEnum(Status);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace StartingConnectionInfo$ {
-    export type Inbound = {
-        status: Status;
-        roomId: string;
-    };
-
-    export const inboundSchema: z.ZodType<StartingConnectionInfo, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<StartingConnectionInfo, z.ZodTypeDef, unknown> = z
         .object({
-            status: Status$,
+            status: Status$.inboundSchema,
             roomId: z.string(),
         })
         .transform((v) => {
@@ -42,13 +40,13 @@ export namespace StartingConnectionInfo$ {
         });
 
     export type Outbound = {
-        status: Status;
+        status: string;
         roomId: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StartingConnectionInfo> = z
         .object({
-            status: Status$,
+            status: Status$.outboundSchema,
             roomId: z.string(),
         })
         .transform((v) => {

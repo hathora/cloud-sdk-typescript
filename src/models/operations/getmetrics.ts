@@ -5,6 +5,10 @@
 import * as components from "../components";
 import * as z from "zod";
 
+export type GetMetricsGlobals = {
+    appId?: string | undefined;
+};
+
 export type GetMetricsRequest = {
     appId?: string | undefined;
     processId: string;
@@ -24,21 +28,39 @@ export type GetMetricsRequest = {
 };
 
 /** @internal */
-export namespace GetMetricsRequest$ {
-    export type Inbound = {
+export namespace GetMetricsGlobals$ {
+    export const inboundSchema: z.ZodType<GetMetricsGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
         appId?: string | undefined;
-        processId: string;
-        metrics?: Array<components.MetricName> | undefined;
-        end?: number | undefined;
-        start?: number | undefined;
-        step?: number | undefined;
     };
 
-    export const inboundSchema: z.ZodType<GetMetricsRequest, z.ZodTypeDef, Inbound> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetricsGlobals> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace GetMetricsRequest$ {
+    export const inboundSchema: z.ZodType<GetMetricsRequest, z.ZodTypeDef, unknown> = z
         .object({
             appId: z.string().optional(),
             processId: z.string(),
-            metrics: z.array(components.MetricName$).optional(),
+            metrics: z.array(components.MetricName$.inboundSchema).optional(),
             end: z.number().optional(),
             start: z.number().optional(),
             step: z.number().int().default(60),
@@ -57,7 +79,7 @@ export namespace GetMetricsRequest$ {
     export type Outbound = {
         appId?: string | undefined;
         processId: string;
-        metrics?: Array<components.MetricName> | undefined;
+        metrics?: Array<string> | undefined;
         end?: number | undefined;
         start?: number | undefined;
         step: number;
@@ -67,7 +89,7 @@ export namespace GetMetricsRequest$ {
         .object({
             appId: z.string().optional(),
             processId: z.string(),
-            metrics: z.array(components.MetricName$).optional(),
+            metrics: z.array(components.MetricName$.outboundSchema).optional(),
             end: z.number().optional(),
             start: z.number().optional(),
             step: z.number().int().default(60),

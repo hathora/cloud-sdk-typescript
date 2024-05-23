@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: dd06123495cdc97e070fd867f254e823
+  docChecksum: f9df5e98c2bb16f13a57f7face176a5e
   docVersion: 0.0.1
-  speakeasyVersion: 1.285.1
-  generationVersion: 2.326.3
-  releaseVersion: 2.2.8
-  configChecksum: 5129799d1582e48f83234288c35d96e3
+  speakeasyVersion: 1.295.1
+  generationVersion: 2.335.5
+  releaseVersion: 2.2.9
+  configChecksum: bab6a039362d5d7714ae345416b058fa
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.9.3
+    core: 3.9.6
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     flattening: 2.81.1
@@ -27,7 +27,7 @@ features:
     nullables: 0.1.0
     responseFormat: 0.2.3
     sdkHooks: 0.1.0
-    unions: 2.85.4
+    unions: 2.85.5
 generatedFiles:
   - src/sdk/appv1.ts
   - src/sdk/authv1.ts
@@ -61,6 +61,7 @@ generatedFiles:
   - src/lib/config.ts
   - src/lib/encodings.ts
   - src/lib/http.ts
+  - src/lib/primitives.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
   - src/lib/sdks.ts
@@ -70,6 +71,7 @@ generatedFiles:
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
   - src/types/blobs.ts
+  - src/types/enums.ts
   - src/types/index.ts
   - src/types/operations.ts
   - src/types/rfcdate.ts
@@ -96,6 +98,7 @@ generatedFiles:
   - src/models/components/invoice.ts
   - src/models/components/invoicestatus.ts
   - src/models/components/createbuildparams.ts
+  - src/models/components/buildwithuploadurl.ts
   - src/models/components/deployment.ts
   - src/models/components/planname.ts
   - src/models/components/deploymentconfig.ts
@@ -161,6 +164,7 @@ generatedFiles:
   - src/models/operations/getbuilds.ts
   - src/models/operations/getbuildinfo.ts
   - src/models/operations/createbuild.ts
+  - src/models/operations/createbuildwithuploadurl.ts
   - src/models/operations/runbuild.ts
   - src/models/operations/deletebuild.ts
   - src/models/operations/getdeploymentsdeprecated.ts
@@ -249,6 +253,9 @@ generatedFiles:
   - docs/models/components/invoice.md
   - docs/models/components/invoicestatus.md
   - docs/models/components/createbuildparams.md
+  - docs/models/components/buildwithuploadurlregionalcontainertags.md
+  - docs/models/components/uploadbodyparams.md
+  - docs/models/components/buildwithuploadurl.md
   - docs/models/components/env.md
   - docs/models/components/deploymenttransporttype.md
   - docs/models/components/deployment.md
@@ -318,102 +325,157 @@ generatedFiles:
   - docs/models/components/createorgtoken.md
   - docs/models/components/security.md
   - docs/models/errors/apierror.md
+  - docs/models/operations/updateappglobals.md
   - docs/models/operations/updateapprequest.md
+  - docs/models/operations/getappinfoglobals.md
   - docs/models/operations/getappinforequest.md
+  - docs/models/operations/deleteappglobals.md
   - docs/models/operations/deleteapprequest.md
-  - docs/models/operations/deleteappresponse.md
+  - docs/models/operations/loginanonymousglobals.md
   - docs/models/operations/loginanonymousrequest.md
+  - docs/models/operations/loginnicknameglobals.md
   - docs/models/operations/loginnicknamerequest.md
+  - docs/models/operations/logingoogleglobals.md
   - docs/models/operations/logingooglerequest.md
+  - docs/models/operations/getbuildsdeprecatedglobals.md
   - docs/models/operations/getbuildsdeprecatedrequest.md
+  - docs/models/operations/getbuildinfodeprecatedglobals.md
   - docs/models/operations/getbuildinfodeprecatedrequest.md
+  - docs/models/operations/createbuilddeprecatedglobals.md
   - docs/models/operations/createbuilddeprecatedrequest.md
+  - docs/models/operations/runbuilddeprecatedglobals.md
   - docs/models/operations/filet.md
   - docs/models/operations/runbuilddeprecatedrequestbody.md
   - docs/models/operations/runbuilddeprecatedrequest.md
+  - docs/models/operations/deletebuilddeprecatedglobals.md
   - docs/models/operations/deletebuilddeprecatedrequest.md
-  - docs/models/operations/deletebuilddeprecatedresponse.md
+  - docs/models/operations/getbuildsglobals.md
   - docs/models/operations/getbuildsrequest.md
+  - docs/models/operations/getbuildinfoglobals.md
   - docs/models/operations/getbuildinforequest.md
+  - docs/models/operations/createbuildglobals.md
   - docs/models/operations/createbuildrequest.md
+  - docs/models/operations/createbuildwithuploadurlglobals.md
+  - docs/models/operations/createbuildwithuploadurlrequest.md
+  - docs/models/operations/runbuildglobals.md
   - docs/models/operations/runbuildfile.md
   - docs/models/operations/runbuildrequestbody.md
   - docs/models/operations/runbuildrequest.md
+  - docs/models/operations/deletebuildglobals.md
   - docs/models/operations/deletebuildrequest.md
-  - docs/models/operations/deletebuildresponse.md
+  - docs/models/operations/getdeploymentsdeprecatedglobals.md
   - docs/models/operations/getdeploymentsdeprecatedrequest.md
+  - docs/models/operations/getlatestdeploymentdeprecatedglobals.md
   - docs/models/operations/getlatestdeploymentdeprecatedrequest.md
+  - docs/models/operations/getdeploymentinfodeprecatedglobals.md
   - docs/models/operations/getdeploymentinfodeprecatedrequest.md
+  - docs/models/operations/createdeploymentdeprecatedglobals.md
   - docs/models/operations/createdeploymentdeprecatedrequest.md
+  - docs/models/operations/getdeploymentsglobals.md
   - docs/models/operations/getdeploymentsrequest.md
+  - docs/models/operations/getlatestdeploymentglobals.md
   - docs/models/operations/getlatestdeploymentrequest.md
+  - docs/models/operations/getdeploymentinfoglobals.md
   - docs/models/operations/getdeploymentinforequest.md
+  - docs/models/operations/createdeploymentglobals.md
   - docs/models/operations/createdeploymentrequest.md
+  - docs/models/operations/createprivatelobbydeprecatedglobals.md
   - docs/models/operations/createprivatelobbydeprecatedsecurity.md
   - docs/models/operations/createprivatelobbydeprecatedrequest.md
+  - docs/models/operations/createpubliclobbydeprecatedglobals.md
   - docs/models/operations/createpubliclobbydeprecatedsecurity.md
   - docs/models/operations/createpubliclobbydeprecatedrequest.md
+  - docs/models/operations/listactivepubliclobbiesdeprecatedv1globals.md
   - docs/models/operations/listactivepubliclobbiesdeprecatedv1request.md
+  - docs/models/operations/createprivatelobbyglobals.md
   - docs/models/operations/createprivatelobbysecurity.md
   - docs/models/operations/createprivatelobbyrequestbody.md
   - docs/models/operations/createprivatelobbyrequest.md
+  - docs/models/operations/createpubliclobbyglobals.md
   - docs/models/operations/createpubliclobbysecurity.md
   - docs/models/operations/createpubliclobbyrequestbody.md
   - docs/models/operations/createpubliclobbyrequest.md
+  - docs/models/operations/createlocallobbyglobals.md
   - docs/models/operations/createlocallobbysecurity.md
   - docs/models/operations/createlocallobbyrequestbody.md
   - docs/models/operations/createlocallobbyrequest.md
+  - docs/models/operations/createlobbydeprecatedglobals.md
   - docs/models/operations/createlobbydeprecatedsecurity.md
   - docs/models/operations/createlobbydeprecatedrequest.md
+  - docs/models/operations/listactivepubliclobbiesdeprecatedv2globals.md
   - docs/models/operations/listactivepubliclobbiesdeprecatedv2request.md
+  - docs/models/operations/getlobbyinfoglobals.md
   - docs/models/operations/getlobbyinforequest.md
+  - docs/models/operations/setlobbystateglobals.md
   - docs/models/operations/setlobbystaterequest.md
+  - docs/models/operations/createlobbyglobals.md
   - docs/models/operations/createlobbysecurity.md
   - docs/models/operations/createlobbyrequest.md
+  - docs/models/operations/listactivepubliclobbiesglobals.md
   - docs/models/operations/listactivepubliclobbiesrequest.md
+  - docs/models/operations/getlobbyinfobyroomidglobals.md
   - docs/models/operations/getlobbyinfobyroomidrequest.md
+  - docs/models/operations/getlobbyinfobyshortcodeglobals.md
   - docs/models/operations/getlobbyinfobyshortcoderequest.md
+  - docs/models/operations/getlogsforappglobals.md
   - docs/models/operations/getlogsforapprequest.md
+  - docs/models/operations/getlogsforprocessglobals.md
   - docs/models/operations/getlogsforprocessrequest.md
+  - docs/models/operations/downloadlogforprocessglobals.md
   - docs/models/operations/downloadlogforprocessrequest.md
+  - docs/models/operations/getlogsfordeploymentglobals.md
   - docs/models/operations/getlogsfordeploymentrequest.md
+  - docs/models/operations/getmetricsglobals.md
   - docs/models/operations/getmetricsrequest.md
   - docs/models/operations/inviteuserrequest.md
   - docs/models/operations/rescindinviterequest.md
-  - docs/models/operations/rescindinviteresponse.md
   - docs/models/operations/getorgpendinginvitesrequest.md
   - docs/models/operations/acceptinviterequest.md
-  - docs/models/operations/acceptinviteresponse.md
   - docs/models/operations/rejectinviterequest.md
-  - docs/models/operations/rejectinviteresponse.md
+  - docs/models/operations/getrunningprocessesglobals.md
   - docs/models/operations/getrunningprocessesrequest.md
+  - docs/models/operations/getstoppedprocessesglobals.md
   - docs/models/operations/getstoppedprocessesrequest.md
+  - docs/models/operations/getprocessinfodeprecatedglobals.md
   - docs/models/operations/getprocessinfodeprecatedrequest.md
+  - docs/models/operations/getprocessinfoglobals.md
   - docs/models/operations/getprocessinforequest.md
+  - docs/models/operations/getlatestprocessesglobals.md
   - docs/models/operations/getlatestprocessesrequest.md
+  - docs/models/operations/stopprocessglobals.md
   - docs/models/operations/stopprocessrequest.md
-  - docs/models/operations/stopprocessresponse.md
+  - docs/models/operations/createprocessglobals.md
   - docs/models/operations/createprocessrequest.md
+  - docs/models/operations/createroomdeprecatedglobals.md
   - docs/models/operations/createroomdeprecatedrequest.md
+  - docs/models/operations/getroominfodeprecatedglobals.md
   - docs/models/operations/getroominfodeprecatedrequest.md
+  - docs/models/operations/getactiveroomsforprocessdeprecatedglobals.md
   - docs/models/operations/getactiveroomsforprocessdeprecatedrequest.md
+  - docs/models/operations/getinactiveroomsforprocessdeprecatedglobals.md
   - docs/models/operations/getinactiveroomsforprocessdeprecatedrequest.md
+  - docs/models/operations/destroyroomdeprecatedglobals.md
   - docs/models/operations/destroyroomdeprecatedrequest.md
-  - docs/models/operations/destroyroomdeprecatedresponse.md
+  - docs/models/operations/suspendroomdeprecatedglobals.md
   - docs/models/operations/suspendroomdeprecatedrequest.md
-  - docs/models/operations/suspendroomdeprecatedresponse.md
+  - docs/models/operations/getconnectioninfodeprecatedglobals.md
   - docs/models/operations/getconnectioninfodeprecatedrequest.md
+  - docs/models/operations/createroomglobals.md
   - docs/models/operations/createroomrequest.md
+  - docs/models/operations/getroominfoglobals.md
   - docs/models/operations/getroominforequest.md
+  - docs/models/operations/getactiveroomsforprocessglobals.md
   - docs/models/operations/getactiveroomsforprocessrequest.md
+  - docs/models/operations/getinactiveroomsforprocessglobals.md
   - docs/models/operations/getinactiveroomsforprocessrequest.md
+  - docs/models/operations/destroyroomglobals.md
   - docs/models/operations/destroyroomrequest.md
-  - docs/models/operations/destroyroomresponse.md
+  - docs/models/operations/suspendroomv2deprecatedglobals.md
   - docs/models/operations/suspendroomv2deprecatedrequest.md
-  - docs/models/operations/suspendroomv2deprecatedresponse.md
+  - docs/models/operations/getconnectioninfoglobals.md
   - docs/models/operations/getconnectioninforequest.md
+  - docs/models/operations/updateroomconfigglobals.md
   - docs/models/operations/updateroomconfigrequest.md
-  - docs/models/operations/updateroomconfigresponse.md
   - docs/models/operations/getorgtokensrequest.md
   - docs/models/operations/createorgtokenrequest.md
   - docs/models/operations/revokeorgtokenrequest.md

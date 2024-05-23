@@ -11,12 +11,7 @@ export type AchPaymentMethod = {
 
 /** @internal */
 export namespace AchPaymentMethod$ {
-    export type Inbound = {
-        last4?: string | undefined;
-        bankName?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AchPaymentMethod, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AchPaymentMethod, z.ZodTypeDef, unknown> = z
         .object({
             last4: z.string().optional(),
             bankName: z.string().optional(),

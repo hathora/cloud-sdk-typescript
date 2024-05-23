@@ -10,11 +10,7 @@ export type GetOrgTokensRequest = {
 
 /** @internal */
 export namespace GetOrgTokensRequest$ {
-    export type Inbound = {
-        orgId: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetOrgTokensRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOrgTokensRequest, z.ZodTypeDef, unknown> = z
         .object({
             orgId: z.string(),
         })

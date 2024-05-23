@@ -10,11 +10,7 @@ export type VerificationEmailRequest = {
 
 /** @internal */
 export namespace VerificationEmailRequest$ {
-    export type Inbound = {
-        userId: string;
-    };
-
-    export const inboundSchema: z.ZodType<VerificationEmailRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<VerificationEmailRequest, z.ZodTypeDef, unknown> = z
         .object({
             userId: z.string(),
         })

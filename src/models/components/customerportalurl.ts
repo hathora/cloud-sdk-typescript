@@ -10,11 +10,7 @@ export type CustomerPortalUrl = {
 
 /** @internal */
 export namespace CustomerPortalUrl$ {
-    export type Inbound = {
-        returnUrl: string;
-    };
-
-    export const inboundSchema: z.ZodType<CustomerPortalUrl, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CustomerPortalUrl, z.ZodTypeDef, unknown> = z
         .object({
             returnUrl: z.string(),
         })

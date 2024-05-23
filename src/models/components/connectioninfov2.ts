@@ -27,18 +27,11 @@ export type ConnectionInfoV2 = {
 
 /** @internal */
 export namespace ConnectionInfoV2$ {
-    export type Inbound = {
-        additionalExposedPorts: Array<ExposedPort$.Inbound>;
-        exposedPort?: ExposedPort$.Inbound | undefined;
-        status: RoomReadyStatus;
-        roomId: string;
-    };
-
-    export const inboundSchema: z.ZodType<ConnectionInfoV2, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ConnectionInfoV2, z.ZodTypeDef, unknown> = z
         .object({
             additionalExposedPorts: z.array(ExposedPort$.inboundSchema),
             exposedPort: ExposedPort$.inboundSchema.optional(),
-            status: RoomReadyStatus$,
+            status: RoomReadyStatus$.inboundSchema,
             roomId: z.string(),
         })
         .transform((v) => {
@@ -53,7 +46,7 @@ export namespace ConnectionInfoV2$ {
     export type Outbound = {
         additionalExposedPorts: Array<ExposedPort$.Outbound>;
         exposedPort?: ExposedPort$.Outbound | undefined;
-        status: RoomReadyStatus;
+        status: string;
         roomId: string;
     };
 
@@ -61,7 +54,7 @@ export namespace ConnectionInfoV2$ {
         .object({
             additionalExposedPorts: z.array(ExposedPort$.outboundSchema),
             exposedPort: ExposedPort$.outboundSchema.optional(),
-            status: RoomReadyStatus$,
+            status: RoomReadyStatus$.outboundSchema,
             roomId: z.string(),
         })
         .transform((v) => {

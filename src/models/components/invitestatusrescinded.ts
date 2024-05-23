@@ -21,22 +21,18 @@ export type InviteStatusRescinded = {
 };
 
 /** @internal */
-export const InviteStatusRescindedType$: z.ZodNativeEnum<typeof InviteStatusRescindedType> =
-    z.nativeEnum(InviteStatusRescindedType);
+export namespace InviteStatusRescindedType$ {
+    export const inboundSchema = z.nativeEnum(InviteStatusRescindedType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace InviteStatusRescinded$ {
-    export type Inbound = {
-        rescindedBy: string;
-        userId?: string | undefined;
-        type: InviteStatusRescindedType;
-    };
-
-    export const inboundSchema: z.ZodType<InviteStatusRescinded, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InviteStatusRescinded, z.ZodTypeDef, unknown> = z
         .object({
             rescindedBy: z.string(),
             userId: z.string().optional(),
-            type: InviteStatusRescindedType$,
+            type: InviteStatusRescindedType$.inboundSchema,
         })
         .transform((v) => {
             return {
@@ -49,14 +45,14 @@ export namespace InviteStatusRescinded$ {
     export type Outbound = {
         rescindedBy: string;
         userId?: string | undefined;
-        type: InviteStatusRescindedType;
+        type: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InviteStatusRescinded> = z
         .object({
             rescindedBy: z.string(),
             userId: z.string().optional(),
-            type: InviteStatusRescindedType$,
+            type: InviteStatusRescindedType$.outboundSchema,
         })
         .transform((v) => {
             return {

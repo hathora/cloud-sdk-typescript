@@ -4,6 +4,8 @@ sources:
     my-source:
         inputs:
             - location: https://hathora.dev/swagger.json
+        registry:
+            location: registry.speakeasyapi.dev/hathora/hathora/my-source
 targets:
     hathora-typescript:
         target: typescript

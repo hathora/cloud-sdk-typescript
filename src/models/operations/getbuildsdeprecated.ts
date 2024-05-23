@@ -4,17 +4,44 @@
 
 import * as z from "zod";
 
+export type GetBuildsDeprecatedGlobals = {
+    appId?: string | undefined;
+};
+
 export type GetBuildsDeprecatedRequest = {
     appId?: string | undefined;
 };
 
 /** @internal */
-export namespace GetBuildsDeprecatedRequest$ {
-    export type Inbound = {
+export namespace GetBuildsDeprecatedGlobals$ {
+    export const inboundSchema: z.ZodType<GetBuildsDeprecatedGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const inboundSchema: z.ZodType<GetBuildsDeprecatedRequest, z.ZodTypeDef, Inbound> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBuildsDeprecatedGlobals> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace GetBuildsDeprecatedRequest$ {
+    export const inboundSchema: z.ZodType<GetBuildsDeprecatedRequest, z.ZodTypeDef, unknown> = z
         .object({
             appId: z.string().optional(),
         })

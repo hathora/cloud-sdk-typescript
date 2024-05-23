@@ -45,7 +45,7 @@ run();
 
 ### Response
 
-**Promise<[components.PlayerTokenObject](../../models/components/playertokenobject.md)>**
+**Promise\<[components.PlayerTokenObject](../../models/components/playertokenobject.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -90,7 +90,7 @@ run();
 
 ### Response
 
-**Promise<[components.PlayerTokenObject](../../models/components/playertokenobject.md)>**
+**Promise\<[components.PlayerTokenObject](../../models/components/playertokenobject.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -135,7 +135,7 @@ run();
 
 ### Response
 
-**Promise<[components.PlayerTokenObject](../../models/components/playertokenobject.md)>**
+**Promise\<[components.PlayerTokenObject](../../models/components/playertokenobject.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
