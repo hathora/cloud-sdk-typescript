@@ -35,11 +35,7 @@ export type AuthConfiguration = {
 
 /** @internal */
 export namespace Google$ {
-    export type Inbound = {
-        clientId: string;
-    };
-
-    export const inboundSchema: z.ZodType<Google, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Google, z.ZodTypeDef, unknown> = z
         .object({
             clientId: z.string(),
         })
@@ -66,13 +62,7 @@ export namespace Google$ {
 
 /** @internal */
 export namespace AuthConfiguration$ {
-    export type Inbound = {
-        google?: Google$.Inbound | undefined;
-        nickname?: RecordStringNever$.Inbound | undefined;
-        anonymous?: RecordStringNever$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AuthConfiguration, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AuthConfiguration, z.ZodTypeDef, unknown> = z
         .object({
             google: z.lazy(() => Google$.inboundSchema).optional(),
             nickname: RecordStringNever$.inboundSchema.optional(),

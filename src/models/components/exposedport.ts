@@ -20,16 +20,9 @@ export type ExposedPort = {
 
 /** @internal */
 export namespace ExposedPort$ {
-    export type Inbound = {
-        transportType: TransportType;
-        port: number;
-        host: string;
-        name: string;
-    };
-
-    export const inboundSchema: z.ZodType<ExposedPort, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ExposedPort, z.ZodTypeDef, unknown> = z
         .object({
-            transportType: TransportType$,
+            transportType: TransportType$.inboundSchema,
             port: z.number().int(),
             host: z.string(),
             name: z.string(),
@@ -44,7 +37,7 @@ export namespace ExposedPort$ {
         });
 
     export type Outbound = {
-        transportType: TransportType;
+        transportType: string;
         port: number;
         host: string;
         name: string;
@@ -52,7 +45,7 @@ export namespace ExposedPort$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ExposedPort> = z
         .object({
-            transportType: TransportType$,
+            transportType: TransportType$.outboundSchema,
             port: z.number().int(),
             host: z.string(),
             name: z.string(),

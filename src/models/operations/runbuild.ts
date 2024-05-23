@@ -6,6 +6,10 @@ import * as b64$ from "../../lib/base64";
 import { blobLikeSchema } from "../../types";
 import * as z from "zod";
 
+export type RunBuildGlobals = {
+    appId?: string | undefined;
+};
+
 export type RunBuildFile = {
     fileName: string;
     content: Uint8Array | string;
@@ -16,19 +20,41 @@ export type RunBuildRequestBody = {
 };
 
 export type RunBuildRequest = {
+    appId?: string | undefined;
     buildId: number;
     requestBody: RunBuildRequestBody;
-    appId?: string | undefined;
 };
 
 /** @internal */
-export namespace RunBuildFile$ {
-    export type Inbound = {
-        fileName: string;
-        content: Uint8Array | string;
+export namespace RunBuildGlobals$ {
+    export const inboundSchema: z.ZodType<RunBuildGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
     };
 
-    export const inboundSchema: z.ZodType<RunBuildFile, z.ZodTypeDef, Inbound> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RunBuildGlobals> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace RunBuildFile$ {
+    export const inboundSchema: z.ZodType<RunBuildFile, z.ZodTypeDef, unknown> = z
         .object({
             fileName: z.string(),
             content: b64$.zodInbound,
@@ -60,11 +86,7 @@ export namespace RunBuildFile$ {
 
 /** @internal */
 export namespace RunBuildRequestBody$ {
-    export type Inbound = {
-        file: RunBuildFile$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<RunBuildRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RunBuildRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             file: z.lazy(() => RunBuildFile$.inboundSchema),
         })
@@ -91,43 +113,37 @@ export namespace RunBuildRequestBody$ {
 
 /** @internal */
 export namespace RunBuildRequest$ {
-    export type Inbound = {
-        buildId: number;
-        RequestBody: RunBuildRequestBody$.Inbound;
-        appId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<RunBuildRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RunBuildRequest, z.ZodTypeDef, unknown> = z
         .object({
+            appId: z.string().optional(),
             buildId: z.number().int(),
             RequestBody: z.lazy(() => RunBuildRequestBody$.inboundSchema),
-            appId: z.string().optional(),
         })
         .transform((v) => {
             return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
                 buildId: v.buildId,
                 requestBody: v.RequestBody,
-                ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
+        appId?: string | undefined;
         buildId: number;
         RequestBody: RunBuildRequestBody$.Outbound;
-        appId?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RunBuildRequest> = z
         .object({
+            appId: z.string().optional(),
             buildId: z.number().int(),
             requestBody: z.lazy(() => RunBuildRequestBody$.outboundSchema),
-            appId: z.string().optional(),
         })
         .transform((v) => {
             return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
                 buildId: v.buildId,
                 RequestBody: v.requestBody,
-                ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 }

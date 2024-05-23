@@ -61,12 +61,7 @@ export type DeploymentConfig = {
 
 /** @internal */
 export namespace DeploymentConfigEnv$ {
-    export type Inbound = {
-        value: string;
-        name: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeploymentConfigEnv, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeploymentConfigEnv, z.ZodTypeDef, unknown> = z
         .object({
             value: z.string(),
             name: z.string(),
@@ -98,24 +93,14 @@ export namespace DeploymentConfigEnv$ {
 
 /** @internal */
 export namespace DeploymentConfig$ {
-    export type Inbound = {
-        idleTimeoutEnabled?: boolean | undefined;
-        env: Array<DeploymentConfigEnv$.Inbound>;
-        roomsPerProcess: number;
-        planName: PlanName;
-        additionalContainerPorts?: Array<ContainerPort$.Inbound> | undefined;
-        transportType: TransportType;
-        containerPort: number;
-    };
-
-    export const inboundSchema: z.ZodType<DeploymentConfig, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeploymentConfig, z.ZodTypeDef, unknown> = z
         .object({
             idleTimeoutEnabled: z.boolean().default(true),
             env: z.array(z.lazy(() => DeploymentConfigEnv$.inboundSchema)),
             roomsPerProcess: z.number().int(),
-            planName: PlanName$,
+            planName: PlanName$.inboundSchema,
             additionalContainerPorts: z.array(ContainerPort$.inboundSchema).optional(),
-            transportType: TransportType$,
+            transportType: TransportType$.inboundSchema,
             containerPort: z.number().int(),
         })
         .transform((v) => {
@@ -136,9 +121,9 @@ export namespace DeploymentConfig$ {
         idleTimeoutEnabled: boolean;
         env: Array<DeploymentConfigEnv$.Outbound>;
         roomsPerProcess: number;
-        planName: PlanName;
+        planName: string;
         additionalContainerPorts?: Array<ContainerPort$.Outbound> | undefined;
-        transportType: TransportType;
+        transportType: string;
         containerPort: number;
     };
 
@@ -147,9 +132,9 @@ export namespace DeploymentConfig$ {
             idleTimeoutEnabled: z.boolean().default(true),
             env: z.array(z.lazy(() => DeploymentConfigEnv$.outboundSchema)),
             roomsPerProcess: z.number().int(),
-            planName: PlanName$,
+            planName: PlanName$.outboundSchema,
             additionalContainerPorts: z.array(ContainerPort$.outboundSchema).optional(),
-            transportType: TransportType$,
+            transportType: TransportType$.outboundSchema,
             containerPort: z.number().int(),
         })
         .transform((v) => {

@@ -16,4 +16,7 @@ export enum MetricName {
 }
 
 /** @internal */
-export const MetricName$: z.ZodNativeEnum<typeof MetricName> = z.nativeEnum(MetricName);
+export namespace MetricName$ {
+    export const inboundSchema = z.nativeEnum(MetricName);
+    export const outboundSchema = inboundSchema;
+}

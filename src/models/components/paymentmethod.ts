@@ -18,13 +18,7 @@ export type PaymentMethod = {
 
 /** @internal */
 export namespace PaymentMethod$ {
-    export type Inbound = {
-        card?: CardPaymentMethod$.Inbound | undefined;
-        ach?: AchPaymentMethod$.Inbound | undefined;
-        link?: LinkPaymentMethod$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PaymentMethod, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PaymentMethod, z.ZodTypeDef, unknown> = z
         .object({
             card: CardPaymentMethod$.inboundSchema.optional(),
             ach: AchPaymentMethod$.inboundSchema.optional(),

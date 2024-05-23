@@ -28,17 +28,11 @@ export type CreateLobbyV3Params = {
 
 /** @internal */
 export namespace CreateLobbyV3Params$ {
-    export type Inbound = {
-        visibility: LobbyVisibility;
-        roomConfig?: string | undefined;
-        region: Region;
-    };
-
-    export const inboundSchema: z.ZodType<CreateLobbyV3Params, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateLobbyV3Params, z.ZodTypeDef, unknown> = z
         .object({
-            visibility: LobbyVisibility$,
+            visibility: LobbyVisibility$.inboundSchema,
             roomConfig: z.string().optional(),
-            region: Region$,
+            region: Region$.inboundSchema,
         })
         .transform((v) => {
             return {
@@ -49,16 +43,16 @@ export namespace CreateLobbyV3Params$ {
         });
 
     export type Outbound = {
-        visibility: LobbyVisibility;
+        visibility: string;
         roomConfig?: string | undefined;
-        region: Region;
+        region: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLobbyV3Params> = z
         .object({
-            visibility: LobbyVisibility$,
+            visibility: LobbyVisibility$.outboundSchema,
             roomConfig: z.string().optional(),
-            region: Region$,
+            region: Region$.outboundSchema,
         })
         .transform((v) => {
             return {

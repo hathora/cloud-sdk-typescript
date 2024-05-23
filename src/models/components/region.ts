@@ -20,4 +20,7 @@ export enum Region {
 }
 
 /** @internal */
-export const Region$: z.ZodNativeEnum<typeof Region> = z.nativeEnum(Region);
+export namespace Region$ {
+    export const inboundSchema = z.nativeEnum(Region);
+    export const outboundSchema = inboundSchema;
+}

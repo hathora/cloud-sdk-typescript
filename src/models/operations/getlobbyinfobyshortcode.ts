@@ -4,45 +4,72 @@
 
 import * as z from "zod";
 
-export type GetLobbyInfoByShortCodeRequest = {
-    shortCode: string;
+export type GetLobbyInfoByShortCodeGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace GetLobbyInfoByShortCodeRequest$ {
-    export type Inbound = {
-        shortCode: string;
-        appId?: string | undefined;
-    };
+export type GetLobbyInfoByShortCodeRequest = {
+    appId?: string | undefined;
+    shortCode: string;
+};
 
-    export const inboundSchema: z.ZodType<GetLobbyInfoByShortCodeRequest, z.ZodTypeDef, Inbound> = z
+/** @internal */
+export namespace GetLobbyInfoByShortCodeGlobals$ {
+    export const inboundSchema: z.ZodType<GetLobbyInfoByShortCodeGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            shortCode: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                shortCode: v.shortCode,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        shortCode: string;
         appId?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLobbyInfoByShortCodeGlobals> =
+        z
+            .object({
+                appId: z.string().optional(),
+            })
+            .transform((v) => {
+                return {
+                    ...(v.appId === undefined ? null : { appId: v.appId }),
+                };
+            });
+}
+
+/** @internal */
+export namespace GetLobbyInfoByShortCodeRequest$ {
+    export const inboundSchema: z.ZodType<GetLobbyInfoByShortCodeRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            shortCode: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                shortCode: v.shortCode,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        shortCode: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLobbyInfoByShortCodeRequest> =
         z
             .object({
-                shortCode: z.string(),
                 appId: z.string().optional(),
+                shortCode: z.string(),
             })
             .transform((v) => {
                 return {
-                    shortCode: v.shortCode,
                     ...(v.appId === undefined ? null : { appId: v.appId }),
+                    shortCode: v.shortCode,
                 };
             });
 }

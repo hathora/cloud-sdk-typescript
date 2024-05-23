@@ -27,23 +27,17 @@ export type ActiveConnectionInfo = {
 };
 
 /** @internal */
-export const ActiveConnectionInfoStatus$: z.ZodNativeEnum<typeof ActiveConnectionInfoStatus> =
-    z.nativeEnum(ActiveConnectionInfoStatus);
+export namespace ActiveConnectionInfoStatus$ {
+    export const inboundSchema = z.nativeEnum(ActiveConnectionInfoStatus);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace ActiveConnectionInfo$ {
-    export type Inbound = {
-        status: ActiveConnectionInfoStatus;
-        transportType: TransportType;
-        port: number;
-        host: string;
-        roomId: string;
-    };
-
-    export const inboundSchema: z.ZodType<ActiveConnectionInfo, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ActiveConnectionInfo, z.ZodTypeDef, unknown> = z
         .object({
-            status: ActiveConnectionInfoStatus$,
-            transportType: TransportType$,
+            status: ActiveConnectionInfoStatus$.inboundSchema,
+            transportType: TransportType$.inboundSchema,
             port: z.number(),
             host: z.string(),
             roomId: z.string(),
@@ -59,8 +53,8 @@ export namespace ActiveConnectionInfo$ {
         });
 
     export type Outbound = {
-        status: ActiveConnectionInfoStatus;
-        transportType: TransportType;
+        status: string;
+        transportType: string;
         port: number;
         host: string;
         roomId: string;
@@ -68,8 +62,8 @@ export namespace ActiveConnectionInfo$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ActiveConnectionInfo> = z
         .object({
-            status: ActiveConnectionInfoStatus$,
-            transportType: TransportType$,
+            status: ActiveConnectionInfoStatus$.outboundSchema,
+            transportType: TransportType$.outboundSchema,
             port: z.number(),
             host: z.string(),
             roomId: z.string(),

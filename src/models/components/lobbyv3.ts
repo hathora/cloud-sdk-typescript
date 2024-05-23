@@ -51,18 +51,7 @@ export type LobbyV3 = {
 
 /** @internal */
 export namespace LobbyV3$ {
-    export type Inbound = {
-        shortCode: string;
-        createdAt: string;
-        createdBy: string;
-        roomConfig: string | null;
-        visibility: LobbyVisibility;
-        region: Region;
-        roomId: string;
-        appId: string;
-    };
-
-    export const inboundSchema: z.ZodType<LobbyV3, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<LobbyV3, z.ZodTypeDef, unknown> = z
         .object({
             shortCode: z.string(),
             createdAt: z
@@ -71,8 +60,8 @@ export namespace LobbyV3$ {
                 .transform((v) => new Date(v)),
             createdBy: z.string(),
             roomConfig: z.nullable(z.string()),
-            visibility: LobbyVisibility$,
-            region: Region$,
+            visibility: LobbyVisibility$.inboundSchema,
+            region: Region$.inboundSchema,
             roomId: z.string(),
             appId: z.string(),
         })
@@ -94,8 +83,8 @@ export namespace LobbyV3$ {
         createdAt: string;
         createdBy: string;
         roomConfig: string | null;
-        visibility: LobbyVisibility;
-        region: Region;
+        visibility: string;
+        region: string;
         roomId: string;
         appId: string;
     };
@@ -106,8 +95,8 @@ export namespace LobbyV3$ {
             createdAt: z.date().transform((v) => v.toISOString()),
             createdBy: z.string(),
             roomConfig: z.nullable(z.string()),
-            visibility: LobbyVisibility$,
-            region: Region$,
+            visibility: LobbyVisibility$.outboundSchema,
+            region: Region$.outboundSchema,
             roomId: z.string(),
             appId: z.string(),
         })

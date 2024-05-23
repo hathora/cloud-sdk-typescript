@@ -23,17 +23,7 @@ export type OrgToken = {
 
 /** @internal */
 export namespace OrgToken$ {
-    export type Inbound = {
-        createdAt: string;
-        createdBy: string;
-        lastFourCharsOfKey: string;
-        status: OrgTokenStatus;
-        name: string;
-        orgId: string;
-        orgTokenId: string;
-    };
-
-    export const inboundSchema: z.ZodType<OrgToken, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<OrgToken, z.ZodTypeDef, unknown> = z
         .object({
             createdAt: z
                 .string()
@@ -41,7 +31,7 @@ export namespace OrgToken$ {
                 .transform((v) => new Date(v)),
             createdBy: z.string(),
             lastFourCharsOfKey: z.string(),
-            status: OrgTokenStatus$,
+            status: OrgTokenStatus$.inboundSchema,
             name: z.string(),
             orgId: z.string(),
             orgTokenId: z.string(),
@@ -62,7 +52,7 @@ export namespace OrgToken$ {
         createdAt: string;
         createdBy: string;
         lastFourCharsOfKey: string;
-        status: OrgTokenStatus;
+        status: string;
         name: string;
         orgId: string;
         orgTokenId: string;
@@ -73,7 +63,7 @@ export namespace OrgToken$ {
             createdAt: z.date().transform((v) => v.toISOString()),
             createdBy: z.string(),
             lastFourCharsOfKey: z.string(),
-            status: OrgTokenStatus$,
+            status: OrgTokenStatus$.outboundSchema,
             name: z.string(),
             orgId: z.string(),
             orgTokenId: z.string(),

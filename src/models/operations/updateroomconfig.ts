@@ -5,66 +5,76 @@
 import * as components from "../components";
 import * as z from "zod";
 
-export type UpdateRoomConfigRequest = {
-    roomId: string;
-    updateRoomConfigParams: components.UpdateRoomConfigParams;
+export type UpdateRoomConfigGlobals = {
     appId?: string | undefined;
 };
 
-export type UpdateRoomConfigResponse = {};
+export type UpdateRoomConfigRequest = {
+    appId?: string | undefined;
+    roomId: string;
+    updateRoomConfigParams: components.UpdateRoomConfigParams;
+};
 
 /** @internal */
-export namespace UpdateRoomConfigRequest$ {
-    export type Inbound = {
-        roomId: string;
-        UpdateRoomConfigParams: components.UpdateRoomConfigParams$.Inbound;
-        appId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateRoomConfigRequest, z.ZodTypeDef, Inbound> = z
+export namespace UpdateRoomConfigGlobals$ {
+    export const inboundSchema: z.ZodType<UpdateRoomConfigGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            roomId: z.string(),
-            UpdateRoomConfigParams: components.UpdateRoomConfigParams$.inboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                roomId: v.roomId,
-                updateRoomConfigParams: v.UpdateRoomConfigParams,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        roomId: string;
-        UpdateRoomConfigParams: components.UpdateRoomConfigParams$.Outbound;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateRoomConfigRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateRoomConfigGlobals> = z
         .object({
-            roomId: z.string(),
-            updateRoomConfigParams: components.UpdateRoomConfigParams$.outboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                roomId: v.roomId,
-                UpdateRoomConfigParams: v.updateRoomConfigParams,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 }
 
 /** @internal */
-export namespace UpdateRoomConfigResponse$ {
-    export type Inbound = {};
+export namespace UpdateRoomConfigRequest$ {
+    export const inboundSchema: z.ZodType<UpdateRoomConfigRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            roomId: z.string(),
+            UpdateRoomConfigParams: components.UpdateRoomConfigParams$.inboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                roomId: v.roomId,
+                updateRoomConfigParams: v.UpdateRoomConfigParams,
+            };
+        });
 
-    export const inboundSchema: z.ZodType<UpdateRoomConfigResponse, z.ZodTypeDef, Inbound> =
-        z.object({});
+    export type Outbound = {
+        appId?: string | undefined;
+        roomId: string;
+        UpdateRoomConfigParams: components.UpdateRoomConfigParams$.Outbound;
+    };
 
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateRoomConfigResponse> =
-        z.object({});
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateRoomConfigRequest> = z
+        .object({
+            appId: z.string().optional(),
+            roomId: z.string(),
+            updateRoomConfigParams: components.UpdateRoomConfigParams$.outboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                roomId: v.roomId,
+                UpdateRoomConfigParams: v.updateRoomConfigParams,
+            };
+        });
 }

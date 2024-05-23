@@ -48,7 +48,7 @@ run();
 
 ### Response
 
-**Promise<[components.ProcessV2](../../models/components/processv2.md)>**
+**Promise\<[components.ProcessV2](../../models/components/processv2.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -98,7 +98,7 @@ run();
 
 ### Response
 
-**Promise<[components.ProcessV2[]](../../models/.md)>**
+**Promise\<[components.ProcessV2[]](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -121,10 +121,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.processesV2.stopProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  await hathoraCloud.processesV2.stopProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
-  // Handle the result
-  console.log(result)
+  
 }
 
 run();
@@ -142,7 +141,7 @@ run();
 
 ### Response
 
-**Promise<[operations.StopProcessResponse](../../models/operations/stopprocessresponse.md)>**
+**Promise\<void\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -187,7 +186,7 @@ run();
 
 ### Response
 
-**Promise<[components.ProcessV2](../../models/components/processv2.md)>**
+**Promise\<[components.ProcessV2](../../models/components/processv2.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

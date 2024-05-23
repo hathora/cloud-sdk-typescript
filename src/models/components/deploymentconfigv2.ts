@@ -51,12 +51,7 @@ export type DeploymentConfigV2 = {
 
 /** @internal */
 export namespace DeploymentConfigV2Env$ {
-    export type Inbound = {
-        value: string;
-        name: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeploymentConfigV2Env, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeploymentConfigV2Env, z.ZodTypeDef, unknown> = z
         .object({
             value: z.string(),
             name: z.string(),
@@ -88,24 +83,13 @@ export namespace DeploymentConfigV2Env$ {
 
 /** @internal */
 export namespace DeploymentConfigV2$ {
-    export type Inbound = {
-        idleTimeoutEnabled: boolean;
-        env: Array<DeploymentConfigV2Env$.Inbound>;
-        roomsPerProcess: number;
-        additionalContainerPorts?: Array<ContainerPort$.Inbound> | undefined;
-        transportType: TransportType;
-        containerPort: number;
-        requestedMemoryMB: number;
-        requestedCPU: number;
-    };
-
-    export const inboundSchema: z.ZodType<DeploymentConfigV2, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeploymentConfigV2, z.ZodTypeDef, unknown> = z
         .object({
             idleTimeoutEnabled: z.boolean(),
             env: z.array(z.lazy(() => DeploymentConfigV2Env$.inboundSchema)),
             roomsPerProcess: z.number().int(),
             additionalContainerPorts: z.array(ContainerPort$.inboundSchema).optional(),
-            transportType: TransportType$,
+            transportType: TransportType$.inboundSchema,
             containerPort: z.number().int(),
             requestedMemoryMB: z.number(),
             requestedCPU: z.number(),
@@ -130,7 +114,7 @@ export namespace DeploymentConfigV2$ {
         env: Array<DeploymentConfigV2Env$.Outbound>;
         roomsPerProcess: number;
         additionalContainerPorts?: Array<ContainerPort$.Outbound> | undefined;
-        transportType: TransportType;
+        transportType: string;
         containerPort: number;
         requestedMemoryMB: number;
         requestedCPU: number;
@@ -142,7 +126,7 @@ export namespace DeploymentConfigV2$ {
             env: z.array(z.lazy(() => DeploymentConfigV2Env$.outboundSchema)),
             roomsPerProcess: z.number().int(),
             additionalContainerPorts: z.array(ContainerPort$.outboundSchema).optional(),
-            transportType: TransportType$,
+            transportType: TransportType$.outboundSchema,
             containerPort: z.number().int(),
             requestedMemoryMB: z.number(),
             requestedCPU: z.number(),

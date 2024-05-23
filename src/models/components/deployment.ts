@@ -101,12 +101,7 @@ export type Deployment = {
 
 /** @internal */
 export namespace Env$ {
-    export type Inbound = {
-        value: string;
-        name: string;
-    };
-
-    export const inboundSchema: z.ZodType<Env, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Env, z.ZodTypeDef, unknown> = z
         .object({
             value: z.string(),
             name: z.string(),
@@ -137,38 +132,22 @@ export namespace Env$ {
 }
 
 /** @internal */
-export const DeploymentTransportType$: z.ZodNativeEnum<typeof DeploymentTransportType> =
-    z.nativeEnum(DeploymentTransportType);
+export namespace DeploymentTransportType$ {
+    export const inboundSchema = z.nativeEnum(DeploymentTransportType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Deployment$ {
-    export type Inbound = {
-        idleTimeoutEnabled?: boolean | undefined;
-        env: Array<Env$.Inbound>;
-        roomsPerProcess: number;
-        planName: PlanName;
-        additionalContainerPorts: Array<ContainerPort$.Inbound>;
-        defaultContainerPort: ContainerPort$.Inbound;
-        transportType: DeploymentTransportType;
-        containerPort: number;
-        createdAt: string;
-        createdBy: string;
-        requestedMemoryMB: number;
-        requestedCPU: number;
-        deploymentId: number;
-        buildId: number;
-        appId: string;
-    };
-
-    export const inboundSchema: z.ZodType<Deployment, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Deployment, z.ZodTypeDef, unknown> = z
         .object({
             idleTimeoutEnabled: z.boolean().default(true),
             env: z.array(z.lazy(() => Env$.inboundSchema)),
             roomsPerProcess: z.number().int(),
-            planName: PlanName$,
+            planName: PlanName$.inboundSchema,
             additionalContainerPorts: z.array(ContainerPort$.inboundSchema),
             defaultContainerPort: ContainerPort$.inboundSchema,
-            transportType: DeploymentTransportType$,
+            transportType: DeploymentTransportType$.inboundSchema,
             containerPort: z.number(),
             createdAt: z
                 .string()
@@ -205,10 +184,10 @@ export namespace Deployment$ {
         idleTimeoutEnabled: boolean;
         env: Array<Env$.Outbound>;
         roomsPerProcess: number;
-        planName: PlanName;
+        planName: string;
         additionalContainerPorts: Array<ContainerPort$.Outbound>;
         defaultContainerPort: ContainerPort$.Outbound;
-        transportType: DeploymentTransportType;
+        transportType: string;
         containerPort: number;
         createdAt: string;
         createdBy: string;
@@ -224,10 +203,10 @@ export namespace Deployment$ {
             idleTimeoutEnabled: z.boolean().default(true),
             env: z.array(z.lazy(() => Env$.outboundSchema)),
             roomsPerProcess: z.number().int(),
-            planName: PlanName$,
+            planName: PlanName$.outboundSchema,
             additionalContainerPorts: z.array(ContainerPort$.outboundSchema),
             defaultContainerPort: ContainerPort$.outboundSchema,
-            transportType: DeploymentTransportType$,
+            transportType: DeploymentTransportType$.outboundSchema,
             containerPort: z.number(),
             createdAt: z.date().transform((v) => v.toISOString()),
             createdBy: z.string(),

@@ -17,20 +17,17 @@ export type InviteStatusRejected = {
 };
 
 /** @internal */
-export const InviteStatusRejectedType$: z.ZodNativeEnum<typeof InviteStatusRejectedType> =
-    z.nativeEnum(InviteStatusRejectedType);
+export namespace InviteStatusRejectedType$ {
+    export const inboundSchema = z.nativeEnum(InviteStatusRejectedType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace InviteStatusRejected$ {
-    export type Inbound = {
-        userId: string;
-        type: InviteStatusRejectedType;
-    };
-
-    export const inboundSchema: z.ZodType<InviteStatusRejected, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InviteStatusRejected, z.ZodTypeDef, unknown> = z
         .object({
             userId: z.string(),
-            type: InviteStatusRejectedType$,
+            type: InviteStatusRejectedType$.inboundSchema,
         })
         .transform((v) => {
             return {
@@ -41,13 +38,13 @@ export namespace InviteStatusRejected$ {
 
     export type Outbound = {
         userId: string;
-        type: InviteStatusRejectedType;
+        type: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InviteStatusRejected> = z
         .object({
             userId: z.string(),
-            type: InviteStatusRejectedType$,
+            type: InviteStatusRejectedType$.outboundSchema,
         })
         .transform((v) => {
             return {

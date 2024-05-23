@@ -12,12 +12,7 @@ export type InviteUserRequest = {
 
 /** @internal */
 export namespace InviteUserRequest$ {
-    export type Inbound = {
-        orgId: string;
-        CreateUserInvite: components.CreateUserInvite$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<InviteUserRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InviteUserRequest, z.ZodTypeDef, unknown> = z
         .object({
             orgId: z.string(),
             CreateUserInvite: components.CreateUserInvite$.inboundSchema,

@@ -10,11 +10,7 @@ export type LinkPaymentMethod = {
 
 /** @internal */
 export namespace LinkPaymentMethod$ {
-    export type Inbound = {
-        email?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<LinkPaymentMethod, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<LinkPaymentMethod, z.ZodTypeDef, unknown> = z
         .object({
             email: z.string().optional(),
         })

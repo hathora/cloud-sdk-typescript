@@ -9,5 +9,7 @@ export enum VerificationEmailSuccess {
 }
 
 /** @internal */
-export const VerificationEmailSuccess$: z.ZodNativeEnum<typeof VerificationEmailSuccess> =
-    z.nativeEnum(VerificationEmailSuccess);
+export namespace VerificationEmailSuccess$ {
+    export const inboundSchema = z.nativeEnum(VerificationEmailSuccess);
+    export const outboundSchema = inboundSchema;
+}

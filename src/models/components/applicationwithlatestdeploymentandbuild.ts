@@ -115,15 +115,10 @@ export type ApplicationWithLatestDeploymentAndBuild = {
 
 /** @internal */
 export namespace ApplicationWithLatestDeploymentAndBuildEnv$ {
-    export type Inbound = {
-        value: string;
-        name: string;
-    };
-
     export const inboundSchema: z.ZodType<
         ApplicationWithLatestDeploymentAndBuildEnv,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             value: z.string(),
@@ -160,26 +155,10 @@ export namespace ApplicationWithLatestDeploymentAndBuildEnv$ {
 
 /** @internal */
 export namespace ApplicationWithLatestDeploymentAndBuildDeployment$ {
-    export type Inbound = {
-        idleTimeoutEnabled: boolean;
-        env: Array<ApplicationWithLatestDeploymentAndBuildEnv$.Inbound>;
-        roomsPerProcess: number;
-        additionalContainerPorts: Array<ContainerPort$.Inbound>;
-        defaultContainerPort: ContainerPort$.Inbound;
-        createdAt: string;
-        createdBy: string;
-        requestedMemoryMB: number;
-        requestedCPU: number;
-        deploymentId: number;
-        buildId: number;
-        appId: string;
-        build: Build$.Inbound;
-    };
-
     export const inboundSchema: z.ZodType<
         ApplicationWithLatestDeploymentAndBuildDeployment,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             idleTimeoutEnabled: z.boolean(),
@@ -274,23 +253,10 @@ export namespace ApplicationWithLatestDeploymentAndBuildDeployment$ {
 
 /** @internal */
 export namespace ApplicationWithLatestDeploymentAndBuild$ {
-    export type Inbound = {
-        deletedBy: string | null;
-        deletedAt: string | null;
-        createdAt: string;
-        createdBy: string;
-        orgId: string;
-        authConfiguration: AuthConfiguration$.Inbound;
-        appSecret: string;
-        appId: string;
-        appName: string;
-        deployment?: ApplicationWithLatestDeploymentAndBuildDeployment$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         ApplicationWithLatestDeploymentAndBuild,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             deletedBy: z.nullable(z.string()),

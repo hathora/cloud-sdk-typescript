@@ -18,15 +18,7 @@ export type MetricsData = {
 
 /** @internal */
 export namespace MetricsData$ {
-    export type Inbound = {
-        cpu?: Array<MetricValue$.Inbound> | undefined;
-        memory?: Array<MetricValue$.Inbound> | undefined;
-        rate_egress?: Array<MetricValue$.Inbound> | undefined;
-        total_egress?: Array<MetricValue$.Inbound> | undefined;
-        active_connections?: Array<MetricValue$.Inbound> | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<MetricsData, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<MetricsData, z.ZodTypeDef, unknown> = z
         .object({
             cpu: z.array(MetricValue$.inboundSchema).optional(),
             memory: z.array(MetricValue$.inboundSchema).optional(),

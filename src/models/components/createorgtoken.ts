@@ -13,11 +13,7 @@ export type CreateOrgToken = {
 
 /** @internal */
 export namespace CreateOrgToken$ {
-    export type Inbound = {
-        name: string;
-    };
-
-    export const inboundSchema: z.ZodType<CreateOrgToken, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateOrgToken, z.ZodTypeDef, unknown> = z
         .object({
             name: z.string(),
         })

@@ -4,56 +4,80 @@
 
 import * as z from "zod";
 
-export type GetLogsForDeploymentRequest = {
-    deploymentId: number;
+export type GetLogsForDeploymentGlobals = {
     appId?: string | undefined;
+};
+
+export type GetLogsForDeploymentRequest = {
+    appId?: string | undefined;
+    deploymentId: number;
     follow?: boolean | undefined;
     tailLines?: number | undefined;
 };
 
 /** @internal */
-export namespace GetLogsForDeploymentRequest$ {
-    export type Inbound = {
-        deploymentId: number;
+export namespace GetLogsForDeploymentGlobals$ {
+    export const inboundSchema: z.ZodType<GetLogsForDeploymentGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
         appId?: string | undefined;
-        follow?: boolean | undefined;
-        tailLines?: number | undefined;
     };
 
-    export const inboundSchema: z.ZodType<GetLogsForDeploymentRequest, z.ZodTypeDef, Inbound> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLogsForDeploymentGlobals> = z
         .object({
-            deploymentId: z.number().int(),
             appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace GetLogsForDeploymentRequest$ {
+    export const inboundSchema: z.ZodType<GetLogsForDeploymentRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            deploymentId: z.number().int(),
             follow: z.boolean().default(false),
             tailLines: z.number().int().default(100),
         })
         .transform((v) => {
             return {
-                deploymentId: v.deploymentId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+                deploymentId: v.deploymentId,
                 follow: v.follow,
                 tailLines: v.tailLines,
             };
         });
 
     export type Outbound = {
-        deploymentId: number;
         appId?: string | undefined;
+        deploymentId: number;
         follow: boolean;
         tailLines: number;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLogsForDeploymentRequest> = z
         .object({
-            deploymentId: z.number().int(),
             appId: z.string().optional(),
+            deploymentId: z.number().int(),
             follow: z.boolean().default(false),
             tailLines: z.number().int().default(100),
         })
         .transform((v) => {
             return {
-                deploymentId: v.deploymentId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+                deploymentId: v.deploymentId,
                 follow: v.follow,
                 tailLines: v.tailLines,
             };

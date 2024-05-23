@@ -4,45 +4,72 @@
 
 import * as z from "zod";
 
-export type GetBuildInfoDeprecatedRequest = {
-    buildId: number;
+export type GetBuildInfoDeprecatedGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace GetBuildInfoDeprecatedRequest$ {
-    export type Inbound = {
-        buildId: number;
-        appId?: string | undefined;
-    };
+export type GetBuildInfoDeprecatedRequest = {
+    appId?: string | undefined;
+    buildId: number;
+};
 
-    export const inboundSchema: z.ZodType<GetBuildInfoDeprecatedRequest, z.ZodTypeDef, Inbound> = z
+/** @internal */
+export namespace GetBuildInfoDeprecatedGlobals$ {
+    export const inboundSchema: z.ZodType<GetBuildInfoDeprecatedGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            buildId: z.number().int(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                buildId: v.buildId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        buildId: number;
         appId?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBuildInfoDeprecatedGlobals> =
+        z
+            .object({
+                appId: z.string().optional(),
+            })
+            .transform((v) => {
+                return {
+                    ...(v.appId === undefined ? null : { appId: v.appId }),
+                };
+            });
+}
+
+/** @internal */
+export namespace GetBuildInfoDeprecatedRequest$ {
+    export const inboundSchema: z.ZodType<GetBuildInfoDeprecatedRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            buildId: z.number().int(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                buildId: v.buildId,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        buildId: number;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBuildInfoDeprecatedRequest> =
         z
             .object({
-                buildId: z.number().int(),
                 appId: z.string().optional(),
+                buildId: z.number().int(),
             })
             .transform((v) => {
                 return {
-                    buildId: v.buildId,
                     ...(v.appId === undefined ? null : { appId: v.appId }),
+                    buildId: v.buildId,
                 };
             });
 }

@@ -8,15 +8,9 @@ export type RejectInviteRequest = {
     orgId: string;
 };
 
-export type RejectInviteResponse = {};
-
 /** @internal */
 export namespace RejectInviteRequest$ {
-    export type Inbound = {
-        orgId: string;
-    };
-
-    export const inboundSchema: z.ZodType<RejectInviteRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RejectInviteRequest, z.ZodTypeDef, unknown> = z
         .object({
             orgId: z.string(),
         })
@@ -39,19 +33,4 @@ export namespace RejectInviteRequest$ {
                 orgId: v.orgId,
             };
         });
-}
-
-/** @internal */
-export namespace RejectInviteResponse$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<RejectInviteResponse, z.ZodTypeDef, Inbound> = z.object(
-        {}
-    );
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RejectInviteResponse> = z.object(
-        {}
-    );
 }

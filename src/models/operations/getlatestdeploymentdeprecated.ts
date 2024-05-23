@@ -4,20 +4,55 @@
 
 import * as z from "zod";
 
+export type GetLatestDeploymentDeprecatedGlobals = {
+    appId?: string | undefined;
+};
+
 export type GetLatestDeploymentDeprecatedRequest = {
     appId?: string | undefined;
 };
 
 /** @internal */
-export namespace GetLatestDeploymentDeprecatedRequest$ {
-    export type Inbound = {
+export namespace GetLatestDeploymentDeprecatedGlobals$ {
+    export const inboundSchema: z.ZodType<
+        GetLatestDeploymentDeprecatedGlobals,
+        z.ZodTypeDef,
+        unknown
+    > = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
         appId?: string | undefined;
     };
 
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        GetLatestDeploymentDeprecatedGlobals
+    > = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace GetLatestDeploymentDeprecatedRequest$ {
     export const inboundSchema: z.ZodType<
         GetLatestDeploymentDeprecatedRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             appId: z.string().optional(),

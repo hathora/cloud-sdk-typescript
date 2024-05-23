@@ -17,20 +17,17 @@ export type InviteStatusAccepted = {
 };
 
 /** @internal */
-export const InviteStatusAcceptedType$: z.ZodNativeEnum<typeof InviteStatusAcceptedType> =
-    z.nativeEnum(InviteStatusAcceptedType);
+export namespace InviteStatusAcceptedType$ {
+    export const inboundSchema = z.nativeEnum(InviteStatusAcceptedType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace InviteStatusAccepted$ {
-    export type Inbound = {
-        userId: string;
-        type: InviteStatusAcceptedType;
-    };
-
-    export const inboundSchema: z.ZodType<InviteStatusAccepted, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InviteStatusAccepted, z.ZodTypeDef, unknown> = z
         .object({
             userId: z.string(),
-            type: InviteStatusAcceptedType$,
+            type: InviteStatusAcceptedType$.inboundSchema,
         })
         .transform((v) => {
             return {
@@ -41,13 +38,13 @@ export namespace InviteStatusAccepted$ {
 
     export type Outbound = {
         userId: string;
-        type: InviteStatusAcceptedType;
+        type: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InviteStatusAccepted> = z
         .object({
             userId: z.string(),
-            type: InviteStatusAcceptedType$,
+            type: InviteStatusAcceptedType$.outboundSchema,
         })
         .transform((v) => {
             return {

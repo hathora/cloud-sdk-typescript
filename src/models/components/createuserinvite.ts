@@ -10,11 +10,7 @@ export type CreateUserInvite = {
 
 /** @internal */
 export namespace CreateUserInvite$ {
-    export type Inbound = {
-        userEmail: string;
-    };
-
-    export const inboundSchema: z.ZodType<CreateUserInvite, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateUserInvite, z.ZodTypeDef, unknown> = z
         .object({
             userEmail: z.string(),
         })

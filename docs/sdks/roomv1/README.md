@@ -56,7 +56,7 @@ run();
 
 ### Response
 
-**Promise<[string](../../models/.md)>**
+**Promise\<[string](../../models/.md)\>**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
@@ -100,7 +100,7 @@ run();
 
 ### Response
 
-**Promise<[components.Room](../../models/components/room.md)>**
+**Promise\<[components.Room](../../models/components/room.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -144,7 +144,7 @@ run();
 
 ### Response
 
-**Promise<[components.RoomWithoutAllocations[]](../../models/.md)>**
+**Promise\<[components.RoomWithoutAllocations[]](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -188,7 +188,7 @@ run();
 
 ### Response
 
-**Promise<[components.RoomWithoutAllocations[]](../../models/.md)>**
+**Promise\<[components.RoomWithoutAllocations[]](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -211,10 +211,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.roomV1.destroyRoomDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  await hathoraCloud.roomV1.destroyRoomDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
-  // Handle the result
-  console.log(result)
+  
 }
 
 run();
@@ -232,7 +231,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DestroyRoomDeprecatedResponse](../../models/operations/destroyroomdeprecatedresponse.md)>**
+**Promise\<void\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -255,10 +254,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.roomV1.suspendRoomDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  await hathoraCloud.roomV1.suspendRoomDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
-  // Handle the result
-  console.log(result)
+  
 }
 
 run();
@@ -276,7 +274,7 @@ run();
 
 ### Response
 
-**Promise<[operations.SuspendRoomDeprecatedResponse](../../models/operations/suspendroomdeprecatedresponse.md)>**
+**Promise\<void\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -319,7 +317,7 @@ run();
 
 ### Response
 
-**Promise<[components.ConnectionInfo](../../models/components/connectioninfo.md)>**
+**Promise\<[components.ConnectionInfo](../../models/components/connectioninfo.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

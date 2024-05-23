@@ -13,13 +13,12 @@ export type ConnectionInfo = StartingConnectionInfo | ActiveConnectionInfo;
 
 /** @internal */
 export namespace ConnectionInfo$ {
-    export type Inbound = StartingConnectionInfo$.Inbound | ActiveConnectionInfo$.Inbound;
-
-    export type Outbound = StartingConnectionInfo$.Outbound | ActiveConnectionInfo$.Outbound;
-    export const inboundSchema: z.ZodType<ConnectionInfo, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<ConnectionInfo, z.ZodTypeDef, unknown> = z.union([
         StartingConnectionInfo$.inboundSchema,
         ActiveConnectionInfo$.inboundSchema,
     ]);
+
+    export type Outbound = StartingConnectionInfo$.Outbound | ActiveConnectionInfo$.Outbound;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectionInfo> = z.union([
         StartingConnectionInfo$.outboundSchema,
         ActiveConnectionInfo$.outboundSchema,

@@ -58,14 +58,7 @@ export type Room = {
 
 /** @internal */
 export namespace RoomCurrentAllocation$ {
-    export type Inbound = {
-        unscheduledAt: string | null;
-        scheduledAt: string;
-        processId: string;
-        roomAllocationId: string;
-    };
-
-    export const inboundSchema: z.ZodType<RoomCurrentAllocation, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RoomCurrentAllocation, z.ZodTypeDef, unknown> = z
         .object({
             unscheduledAt: z.nullable(
                 z
@@ -115,19 +108,10 @@ export namespace RoomCurrentAllocation$ {
 
 /** @internal */
 export namespace Room$ {
-    export type Inbound = {
-        currentAllocation: RoomCurrentAllocation$.Inbound | null;
-        status: RoomStatus;
-        allocations: Array<RoomAllocation$.Inbound>;
-        roomConfig: string | null;
-        roomId: string;
-        appId: string;
-    };
-
-    export const inboundSchema: z.ZodType<Room, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Room, z.ZodTypeDef, unknown> = z
         .object({
             currentAllocation: z.nullable(z.lazy(() => RoomCurrentAllocation$.inboundSchema)),
-            status: RoomStatus$,
+            status: RoomStatus$.inboundSchema,
             allocations: z.array(RoomAllocation$.inboundSchema),
             roomConfig: z.nullable(z.string()),
             roomId: z.string(),
@@ -146,7 +130,7 @@ export namespace Room$ {
 
     export type Outbound = {
         currentAllocation: RoomCurrentAllocation$.Outbound | null;
-        status: RoomStatus;
+        status: string;
         allocations: Array<RoomAllocation$.Outbound>;
         roomConfig: string | null;
         roomId: string;
@@ -156,7 +140,7 @@ export namespace Room$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Room> = z
         .object({
             currentAllocation: z.nullable(z.lazy(() => RoomCurrentAllocation$.outboundSchema)),
-            status: RoomStatus$,
+            status: RoomStatus$.outboundSchema,
             allocations: z.array(RoomAllocation$.outboundSchema),
             roomConfig: z.nullable(z.string()),
             roomId: z.string(),

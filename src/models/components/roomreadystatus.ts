@@ -10,5 +10,7 @@ export enum RoomReadyStatus {
 }
 
 /** @internal */
-export const RoomReadyStatus$: z.ZodNativeEnum<typeof RoomReadyStatus> =
-    z.nativeEnum(RoomReadyStatus);
+export namespace RoomReadyStatus$ {
+    export const inboundSchema = z.nativeEnum(RoomReadyStatus);
+    export const outboundSchema = inboundSchema;
+}

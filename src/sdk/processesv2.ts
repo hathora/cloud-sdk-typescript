@@ -49,8 +49,8 @@ export class ProcessesV2 extends ClientSDK {
         options?: RequestOptions
     ): Promise<components.ProcessV2> {
         const input$: operations.GetProcessInfoRequest = {
-            processId: processId,
             appId: appId,
+            processId: processId,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -111,43 +111,16 @@ export class ProcessesV2 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return components.ProcessV2$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [401, 404], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<components.ProcessV2>()
+            .json(200, components.ProcessV2$)
+            .json([401, 404], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -222,43 +195,16 @@ export class ProcessesV2 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return z.array(components.ProcessV2$.inboundSchema).parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [401, 404], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<Array<components.ProcessV2>>()
+            .json(200, z.array(components.ProcessV2$.inboundSchema))
+            .json([401, 404], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -268,10 +214,10 @@ export class ProcessesV2 extends ClientSDK {
         processId: string,
         appId?: string | undefined,
         options?: RequestOptions
-    ): Promise<operations.StopProcessResponse | void> {
+    ): Promise<void> {
         const input$: operations.StopProcessRequest = {
-            processId: processId,
             appId: appId,
+            processId: processId,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -332,35 +278,16 @@ export class ProcessesV2 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchStatusCode(response, 204)) {
-            return;
-        } else if (this.matchResponse(response, [401, 404, 500], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<void>()
+            .void(204, z.void())
+            .json([401, 404, 500], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -372,8 +299,8 @@ export class ProcessesV2 extends ClientSDK {
         options?: RequestOptions
     ): Promise<components.ProcessV2> {
         const input$: operations.CreateProcessRequest = {
-            region: region,
             appId: appId,
+            region: region,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -434,42 +361,15 @@ export class ProcessesV2 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 201, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return components.ProcessV2$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [401, 402, 404, 500], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<components.ProcessV2>()
+            .json(201, components.ProcessV2$)
+            .json([401, 402, 404, 500], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

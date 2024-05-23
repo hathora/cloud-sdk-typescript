@@ -11,11 +11,7 @@ export type ListOrgTokens = {
 
 /** @internal */
 export namespace ListOrgTokens$ {
-    export type Inbound = {
-        tokens: Array<OrgToken$.Inbound>;
-    };
-
-    export const inboundSchema: z.ZodType<ListOrgTokens, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ListOrgTokens, z.ZodTypeDef, unknown> = z
         .object({
             tokens: z.array(OrgToken$.inboundSchema),
         })

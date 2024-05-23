@@ -50,7 +50,7 @@ run();
 
 ### Response
 
-**Promise<[components.Build[]](../../models/.md)>**
+**Promise\<[components.Build[]](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -96,7 +96,7 @@ run();
 
 ### Response
 
-**Promise<[components.Build](../../models/components/build.md)>**
+**Promise\<[components.Build](../../models/components/build.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -144,7 +144,7 @@ run();
 
 ### Response
 
-**Promise<[components.Build](../../models/components/build.md)>**
+**Promise\<[components.Build](../../models/components/build.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -194,7 +194,7 @@ run();
 
 ### Response
 
-**Promise<[string](../../models/.md)>**
+**Promise\<[string](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -219,10 +219,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.buildV1.deleteBuildDeprecated(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  await hathoraCloud.buildV1.deleteBuildDeprecated(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
-  // Handle the result
-  console.log(result)
+  
 }
 
 run();
@@ -240,7 +239,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteBuildDeprecatedResponse](../../models/operations/deletebuilddeprecatedresponse.md)>**
+**Promise\<void\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

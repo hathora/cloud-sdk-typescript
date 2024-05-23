@@ -13,17 +13,16 @@ export type InviteStatusPending = {
 };
 
 /** @internal */
-export const Type$: z.ZodNativeEnum<typeof Type> = z.nativeEnum(Type);
+export namespace Type$ {
+    export const inboundSchema = z.nativeEnum(Type);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace InviteStatusPending$ {
-    export type Inbound = {
-        type: Type;
-    };
-
-    export const inboundSchema: z.ZodType<InviteStatusPending, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InviteStatusPending, z.ZodTypeDef, unknown> = z
         .object({
-            type: Type$,
+            type: Type$.inboundSchema,
         })
         .transform((v) => {
             return {
@@ -32,12 +31,12 @@ export namespace InviteStatusPending$ {
         });
 
     export type Outbound = {
-        type: Type;
+        type: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InviteStatusPending> = z
         .object({
-            type: Type$,
+            type: Type$.outboundSchema,
         })
         .transform((v) => {
             return {

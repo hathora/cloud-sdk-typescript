@@ -13,11 +13,7 @@ export type NicknameObject = {
 
 /** @internal */
 export namespace NicknameObject$ {
-    export type Inbound = {
-        nickname: string;
-    };
-
-    export const inboundSchema: z.ZodType<NicknameObject, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<NicknameObject, z.ZodTypeDef, unknown> = z
         .object({
             nickname: z.string(),
         })

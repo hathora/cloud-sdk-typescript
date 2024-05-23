@@ -5,44 +5,70 @@
 import * as components from "../components";
 import * as z from "zod";
 
-export type LoginGoogleRequest = {
-    googleIdTokenObject: components.GoogleIdTokenObject;
+export type LoginGoogleGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace LoginGoogleRequest$ {
-    export type Inbound = {
-        GoogleIdTokenObject: components.GoogleIdTokenObject$.Inbound;
-        appId?: string | undefined;
-    };
+export type LoginGoogleRequest = {
+    appId?: string | undefined;
+    googleIdTokenObject: components.GoogleIdTokenObject;
+};
 
-    export const inboundSchema: z.ZodType<LoginGoogleRequest, z.ZodTypeDef, Inbound> = z
+/** @internal */
+export namespace LoginGoogleGlobals$ {
+    export const inboundSchema: z.ZodType<LoginGoogleGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            GoogleIdTokenObject: components.GoogleIdTokenObject$.inboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                googleIdTokenObject: v.GoogleIdTokenObject,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        GoogleIdTokenObject: components.GoogleIdTokenObject$.Outbound;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LoginGoogleRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LoginGoogleGlobals> = z
         .object({
-            googleIdTokenObject: components.GoogleIdTokenObject$.outboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                GoogleIdTokenObject: v.googleIdTokenObject,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace LoginGoogleRequest$ {
+    export const inboundSchema: z.ZodType<LoginGoogleRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            GoogleIdTokenObject: components.GoogleIdTokenObject$.inboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                googleIdTokenObject: v.GoogleIdTokenObject,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        GoogleIdTokenObject: components.GoogleIdTokenObject$.Outbound;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LoginGoogleRequest> = z
+        .object({
+            appId: z.string().optional(),
+            googleIdTokenObject: components.GoogleIdTokenObject$.outboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                GoogleIdTokenObject: v.googleIdTokenObject,
             };
         });
 }

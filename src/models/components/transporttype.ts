@@ -14,4 +14,7 @@ export enum TransportType {
 }
 
 /** @internal */
-export const TransportType$: z.ZodNativeEnum<typeof TransportType> = z.nativeEnum(TransportType);
+export namespace TransportType$ {
+    export const inboundSchema = z.nativeEnum(TransportType);
+    export const outboundSchema = inboundSchema;
+}

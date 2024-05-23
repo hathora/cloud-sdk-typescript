@@ -6,6 +6,10 @@ import * as b64$ from "../../lib/base64";
 import { blobLikeSchema } from "../../types";
 import * as z from "zod";
 
+export type RunBuildDeprecatedGlobals = {
+    appId?: string | undefined;
+};
+
 export type FileT = {
     fileName: string;
     content: Uint8Array | string;
@@ -16,19 +20,41 @@ export type RunBuildDeprecatedRequestBody = {
 };
 
 export type RunBuildDeprecatedRequest = {
+    appId?: string | undefined;
     buildId: number;
     requestBody: RunBuildDeprecatedRequestBody;
-    appId?: string | undefined;
 };
 
 /** @internal */
-export namespace FileT$ {
-    export type Inbound = {
-        fileName: string;
-        content: Uint8Array | string;
+export namespace RunBuildDeprecatedGlobals$ {
+    export const inboundSchema: z.ZodType<RunBuildDeprecatedGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
     };
 
-    export const inboundSchema: z.ZodType<FileT, z.ZodTypeDef, Inbound> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RunBuildDeprecatedGlobals> = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace FileT$ {
+    export const inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
         .object({
             fileName: z.string(),
             content: b64$.zodInbound,
@@ -60,11 +86,7 @@ export namespace FileT$ {
 
 /** @internal */
 export namespace RunBuildDeprecatedRequestBody$ {
-    export type Inbound = {
-        file: FileT$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<RunBuildDeprecatedRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RunBuildDeprecatedRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             file: z.lazy(() => FileT$.inboundSchema),
         })
@@ -92,43 +114,37 @@ export namespace RunBuildDeprecatedRequestBody$ {
 
 /** @internal */
 export namespace RunBuildDeprecatedRequest$ {
-    export type Inbound = {
-        buildId: number;
-        RequestBody: RunBuildDeprecatedRequestBody$.Inbound;
-        appId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<RunBuildDeprecatedRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RunBuildDeprecatedRequest, z.ZodTypeDef, unknown> = z
         .object({
+            appId: z.string().optional(),
             buildId: z.number().int(),
             RequestBody: z.lazy(() => RunBuildDeprecatedRequestBody$.inboundSchema),
-            appId: z.string().optional(),
         })
         .transform((v) => {
             return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
                 buildId: v.buildId,
                 requestBody: v.RequestBody,
-                ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
+        appId?: string | undefined;
         buildId: number;
         RequestBody: RunBuildDeprecatedRequestBody$.Outbound;
-        appId?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RunBuildDeprecatedRequest> = z
         .object({
+            appId: z.string().optional(),
             buildId: z.number().int(),
             requestBody: z.lazy(() => RunBuildDeprecatedRequestBody$.outboundSchema),
-            appId: z.string().optional(),
         })
         .transform((v) => {
             return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
                 buildId: v.buildId,
                 RequestBody: v.requestBody,
-                ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 }

@@ -46,7 +46,7 @@ run();
 
 ### Response
 
-**Promise<[components.ListOrgTokens](../../models/components/listorgtokens.md)>**
+**Promise\<[components.ListOrgTokens](../../models/components/listorgtokens.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -92,7 +92,7 @@ run();
 
 ### Response
 
-**Promise<[components.CreatedOrgToken](../../models/components/createdorgtoken.md)>**
+**Promise\<[components.CreatedOrgToken](../../models/components/createdorgtoken.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -136,7 +136,7 @@ run();
 
 ### Response
 
-**Promise<[boolean](../../models/.md)>**
+**Promise\<[boolean](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

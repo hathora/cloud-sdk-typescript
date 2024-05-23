@@ -4,44 +4,70 @@
 
 import * as z from "zod";
 
-export type GetRoomInfoDeprecatedRequest = {
-    roomId: string;
+export type GetRoomInfoDeprecatedGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace GetRoomInfoDeprecatedRequest$ {
-    export type Inbound = {
-        roomId: string;
-        appId?: string | undefined;
-    };
+export type GetRoomInfoDeprecatedRequest = {
+    appId?: string | undefined;
+    roomId: string;
+};
 
-    export const inboundSchema: z.ZodType<GetRoomInfoDeprecatedRequest, z.ZodTypeDef, Inbound> = z
+/** @internal */
+export namespace GetRoomInfoDeprecatedGlobals$ {
+    export const inboundSchema: z.ZodType<GetRoomInfoDeprecatedGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            roomId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                roomId: v.roomId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        roomId: string;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetRoomInfoDeprecatedRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetRoomInfoDeprecatedGlobals> = z
         .object({
-            roomId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                roomId: v.roomId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace GetRoomInfoDeprecatedRequest$ {
+    export const inboundSchema: z.ZodType<GetRoomInfoDeprecatedRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            roomId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                roomId: v.roomId,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        roomId: string;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetRoomInfoDeprecatedRequest> = z
+        .object({
+            appId: z.string().optional(),
+            roomId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                roomId: v.roomId,
             };
         });
 }

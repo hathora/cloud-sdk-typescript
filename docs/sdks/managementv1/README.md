@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise<[components.VerificationEmailSuccess](../../models/components/verificationemailsuccess.md)>**
+**Promise\<[components.VerificationEmailSuccess](../../models/components/verificationemailsuccess.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

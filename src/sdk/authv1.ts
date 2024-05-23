@@ -82,43 +82,16 @@ export class AuthV1 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return components.PlayerTokenObject$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, 404, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<components.PlayerTokenObject>()
+            .json(200, components.PlayerTokenObject$)
+            .json(404, errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -130,8 +103,8 @@ export class AuthV1 extends ClientSDK {
         options?: RequestOptions
     ): Promise<components.PlayerTokenObject> {
         const input$: operations.LoginNicknameRequest = {
-            nicknameObject: nicknameObject,
             appId: appId,
+            nicknameObject: nicknameObject,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -167,43 +140,16 @@ export class AuthV1 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return components.PlayerTokenObject$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, 404, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<components.PlayerTokenObject>()
+            .json(200, components.PlayerTokenObject$)
+            .json(404, errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -215,8 +161,8 @@ export class AuthV1 extends ClientSDK {
         options?: RequestOptions
     ): Promise<components.PlayerTokenObject> {
         const input$: operations.LoginGoogleRequest = {
-            googleIdTokenObject: googleIdTokenObject,
             appId: appId,
+            googleIdTokenObject: googleIdTokenObject,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -252,42 +198,15 @@ export class AuthV1 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return components.PlayerTokenObject$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [401, 404], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<components.PlayerTokenObject>()
+            .json(200, components.PlayerTokenObject$)
+            .json([401, 404], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

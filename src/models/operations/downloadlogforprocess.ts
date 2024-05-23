@@ -4,44 +4,70 @@
 
 import * as z from "zod";
 
-export type DownloadLogForProcessRequest = {
-    processId: string;
+export type DownloadLogForProcessGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace DownloadLogForProcessRequest$ {
-    export type Inbound = {
-        processId: string;
-        appId?: string | undefined;
-    };
+export type DownloadLogForProcessRequest = {
+    appId?: string | undefined;
+    processId: string;
+};
 
-    export const inboundSchema: z.ZodType<DownloadLogForProcessRequest, z.ZodTypeDef, Inbound> = z
+/** @internal */
+export namespace DownloadLogForProcessGlobals$ {
+    export const inboundSchema: z.ZodType<DownloadLogForProcessGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            processId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                processId: v.processId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        processId: string;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DownloadLogForProcessRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DownloadLogForProcessGlobals> = z
         .object({
-            processId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                processId: v.processId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace DownloadLogForProcessRequest$ {
+    export const inboundSchema: z.ZodType<DownloadLogForProcessRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            processId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                processId: v.processId,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        processId: string;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DownloadLogForProcessRequest> = z
+        .object({
+            appId: z.string().optional(),
+            processId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                processId: v.processId,
             };
         });
 }

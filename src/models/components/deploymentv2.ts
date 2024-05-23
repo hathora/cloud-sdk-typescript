@@ -66,12 +66,7 @@ export type DeploymentV2 = {
 
 /** @internal */
 export namespace DeploymentV2Env$ {
-    export type Inbound = {
-        value: string;
-        name: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeploymentV2Env, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeploymentV2Env, z.ZodTypeDef, unknown> = z
         .object({
             value: z.string(),
             name: z.string(),
@@ -103,22 +98,7 @@ export namespace DeploymentV2Env$ {
 
 /** @internal */
 export namespace DeploymentV2$ {
-    export type Inbound = {
-        idleTimeoutEnabled: boolean;
-        env: Array<DeploymentV2Env$.Inbound>;
-        roomsPerProcess: number;
-        additionalContainerPorts: Array<ContainerPort$.Inbound>;
-        defaultContainerPort: ContainerPort$.Inbound;
-        createdAt: string;
-        createdBy: string;
-        requestedMemoryMB: number;
-        requestedCPU: number;
-        deploymentId: number;
-        buildId: number;
-        appId: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeploymentV2, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeploymentV2, z.ZodTypeDef, unknown> = z
         .object({
             idleTimeoutEnabled: z.boolean(),
             env: z.array(z.lazy(() => DeploymentV2Env$.inboundSchema)),

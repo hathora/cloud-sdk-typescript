@@ -10,11 +10,7 @@ export type GetOrgPendingInvitesRequest = {
 
 /** @internal */
 export namespace GetOrgPendingInvitesRequest$ {
-    export type Inbound = {
-        orgId: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetOrgPendingInvitesRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetOrgPendingInvitesRequest, z.ZodTypeDef, unknown> = z
         .object({
             orgId: z.string(),
         })

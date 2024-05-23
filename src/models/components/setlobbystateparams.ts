@@ -18,9 +18,7 @@ export type SetLobbyStateParams = {
 
 /** @internal */
 export namespace SetLobbyStateParamsState$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SetLobbyStateParamsState, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<SetLobbyStateParamsState, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -31,11 +29,7 @@ export namespace SetLobbyStateParamsState$ {
 
 /** @internal */
 export namespace SetLobbyStateParams$ {
-    export type Inbound = {
-        state: SetLobbyStateParamsState$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<SetLobbyStateParams, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SetLobbyStateParams, z.ZodTypeDef, unknown> = z
         .object({
             state: z.lazy(() => SetLobbyStateParamsState$.inboundSchema),
         })

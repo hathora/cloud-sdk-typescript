@@ -17,4 +17,7 @@ export enum CardBrand {
 }
 
 /** @internal */
-export const CardBrand$: z.ZodNativeEnum<typeof CardBrand> = z.nativeEnum(CardBrand);
+export namespace CardBrand$ {
+    export const inboundSchema = z.nativeEnum(CardBrand);
+    export const outboundSchema = inboundSchema;
+}

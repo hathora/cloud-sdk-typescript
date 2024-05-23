@@ -22,14 +22,7 @@ export type RoomAllocation = {
 
 /** @internal */
 export namespace RoomAllocation$ {
-    export type Inbound = {
-        unscheduledAt: string | null;
-        scheduledAt: string;
-        processId: string;
-        roomAllocationId: string;
-    };
-
-    export const inboundSchema: z.ZodType<RoomAllocation, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RoomAllocation, z.ZodTypeDef, unknown> = z
         .object({
             unscheduledAt: z.nullable(
                 z

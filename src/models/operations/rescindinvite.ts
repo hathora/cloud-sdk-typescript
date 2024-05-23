@@ -10,16 +10,9 @@ export type RescindInviteRequest = {
     rescindUserInvite: components.RescindUserInvite;
 };
 
-export type RescindInviteResponse = {};
-
 /** @internal */
 export namespace RescindInviteRequest$ {
-    export type Inbound = {
-        orgId: string;
-        RescindUserInvite: components.RescindUserInvite$.Inbound;
-    };
-
-    export const inboundSchema: z.ZodType<RescindInviteRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RescindInviteRequest, z.ZodTypeDef, unknown> = z
         .object({
             orgId: z.string(),
             RescindUserInvite: components.RescindUserInvite$.inboundSchema,
@@ -47,18 +40,4 @@ export namespace RescindInviteRequest$ {
                 RescindUserInvite: v.rescindUserInvite,
             };
         });
-}
-
-/** @internal */
-export namespace RescindInviteResponse$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<RescindInviteResponse, z.ZodTypeDef, Inbound> = z.object(
-        {}
-    );
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RescindInviteResponse> =
-        z.object({});
 }

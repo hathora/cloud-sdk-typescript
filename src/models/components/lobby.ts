@@ -65,9 +65,7 @@ export type Lobby = {
 
 /** @internal */
 export namespace State$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<State, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<State, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -76,20 +74,7 @@ export namespace State$ {
 
 /** @internal */
 export namespace Lobby$ {
-    export type Inbound = {
-        shortCode: string | null;
-        state?: State$.Inbound | null | undefined;
-        initialConfig: LobbyInitialConfig$.Inbound;
-        createdAt: string;
-        createdBy: string;
-        local: boolean;
-        visibility: LobbyVisibility;
-        region: Region;
-        roomId: string;
-        appId: string;
-    };
-
-    export const inboundSchema: z.ZodType<Lobby, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Lobby, z.ZodTypeDef, unknown> = z
         .object({
             shortCode: z.nullable(z.string()),
             state: z.nullable(z.lazy(() => State$.inboundSchema)).optional(),
@@ -100,8 +85,8 @@ export namespace Lobby$ {
                 .transform((v) => new Date(v)),
             createdBy: z.string(),
             local: z.boolean(),
-            visibility: LobbyVisibility$,
-            region: Region$,
+            visibility: LobbyVisibility$.inboundSchema,
+            region: Region$.inboundSchema,
             roomId: z.string(),
             appId: z.string(),
         })
@@ -127,8 +112,8 @@ export namespace Lobby$ {
         createdAt: string;
         createdBy: string;
         local: boolean;
-        visibility: LobbyVisibility;
-        region: Region;
+        visibility: string;
+        region: string;
         roomId: string;
         appId: string;
     };
@@ -141,8 +126,8 @@ export namespace Lobby$ {
             createdAt: z.date().transform((v) => v.toISOString()),
             createdBy: z.string(),
             local: z.boolean(),
-            visibility: LobbyVisibility$,
-            region: Region$,
+            visibility: LobbyVisibility$.outboundSchema,
+            region: Region$.outboundSchema,
             roomId: z.string(),
             appId: z.string(),
         })

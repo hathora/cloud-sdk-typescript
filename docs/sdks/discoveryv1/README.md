@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise<[components.PingEndpoints[]](../../models/.md)>**
+**Promise\<[components.PingEndpoints[]](../../models/.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

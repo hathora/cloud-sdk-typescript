@@ -18,12 +18,7 @@ export type AppConfig = {
 
 /** @internal */
 export namespace AppConfig$ {
-    export type Inbound = {
-        authConfiguration: AuthConfiguration$.Inbound;
-        appName: string;
-    };
-
-    export const inboundSchema: z.ZodType<AppConfig, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AppConfig, z.ZodTypeDef, unknown> = z
         .object({
             authConfiguration: AuthConfiguration$.inboundSchema,
             appName: z.string(),

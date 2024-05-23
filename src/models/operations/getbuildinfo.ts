@@ -4,44 +4,70 @@
 
 import * as z from "zod";
 
-export type GetBuildInfoRequest = {
-    buildId: number;
+export type GetBuildInfoGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace GetBuildInfoRequest$ {
-    export type Inbound = {
-        buildId: number;
-        appId?: string | undefined;
-    };
+export type GetBuildInfoRequest = {
+    appId?: string | undefined;
+    buildId: number;
+};
 
-    export const inboundSchema: z.ZodType<GetBuildInfoRequest, z.ZodTypeDef, Inbound> = z
+/** @internal */
+export namespace GetBuildInfoGlobals$ {
+    export const inboundSchema: z.ZodType<GetBuildInfoGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            buildId: z.number().int(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                buildId: v.buildId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        buildId: number;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBuildInfoRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBuildInfoGlobals> = z
         .object({
-            buildId: z.number().int(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                buildId: v.buildId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace GetBuildInfoRequest$ {
+    export const inboundSchema: z.ZodType<GetBuildInfoRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            buildId: z.number().int(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                buildId: v.buildId,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        buildId: number;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBuildInfoRequest> = z
+        .object({
+            appId: z.string().optional(),
+            buildId: z.number().int(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                buildId: v.buildId,
             };
         });
 }

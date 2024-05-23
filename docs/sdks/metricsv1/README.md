@@ -46,7 +46,7 @@ run();
 
 ### Response
 
-**Promise<[components.MetricsData](../../models/components/metricsdata.md)>**
+**Promise\<[components.MetricsData](../../models/components/metricsdata.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

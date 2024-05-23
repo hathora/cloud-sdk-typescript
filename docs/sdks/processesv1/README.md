@@ -50,7 +50,7 @@ run();
 
 ### Response
 
-**Promise<[components.ProcessWithRooms[]](../../models/.md)>**
+**Promise\<[components.ProcessWithRooms[]](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -97,7 +97,7 @@ run();
 
 ### Response
 
-**Promise<[components.Process[]](../../models/.md)>**
+**Promise\<[components.Process[]](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -143,7 +143,7 @@ run();
 
 ### Response
 
-**Promise<[components.Process](../../models/components/process.md)>**
+**Promise\<[components.Process](../../models/components/process.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

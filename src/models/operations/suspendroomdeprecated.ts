@@ -4,59 +4,70 @@
 
 import * as z from "zod";
 
-export type SuspendRoomDeprecatedRequest = {
-    roomId: string;
+export type SuspendRoomDeprecatedGlobals = {
     appId?: string | undefined;
 };
 
-export type SuspendRoomDeprecatedResponse = {};
+export type SuspendRoomDeprecatedRequest = {
+    appId?: string | undefined;
+    roomId: string;
+};
 
 /** @internal */
-export namespace SuspendRoomDeprecatedRequest$ {
-    export type Inbound = {
-        roomId: string;
-        appId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<SuspendRoomDeprecatedRequest, z.ZodTypeDef, Inbound> = z
+export namespace SuspendRoomDeprecatedGlobals$ {
+    export const inboundSchema: z.ZodType<SuspendRoomDeprecatedGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            roomId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                roomId: v.roomId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        roomId: string;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SuspendRoomDeprecatedRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SuspendRoomDeprecatedGlobals> = z
         .object({
-            roomId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                roomId: v.roomId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 }
 
 /** @internal */
-export namespace SuspendRoomDeprecatedResponse$ {
-    export type Inbound = {};
+export namespace SuspendRoomDeprecatedRequest$ {
+    export const inboundSchema: z.ZodType<SuspendRoomDeprecatedRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            roomId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                roomId: v.roomId,
+            };
+        });
 
-    export const inboundSchema: z.ZodType<SuspendRoomDeprecatedResponse, z.ZodTypeDef, Inbound> =
-        z.object({});
+    export type Outbound = {
+        appId?: string | undefined;
+        roomId: string;
+    };
 
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SuspendRoomDeprecatedResponse> =
-        z.object({});
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SuspendRoomDeprecatedRequest> = z
+        .object({
+            appId: z.string().optional(),
+            roomId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                roomId: v.roomId,
+            };
+        });
 }

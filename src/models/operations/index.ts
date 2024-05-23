@@ -5,6 +5,7 @@
 export * from "./acceptinvite";
 export * from "./createbuild";
 export * from "./createbuilddeprecated";
+export * from "./createbuildwithuploadurl";
 export * from "./createdeployment";
 export * from "./createdeploymentdeprecated";
 export * from "./createlobby";

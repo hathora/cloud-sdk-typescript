@@ -11,6 +11,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as components from "../models/components";
 import * as errors from "../models/errors";
 import * as operations from "../models/operations";
+import * as z from "zod";
 
 export class OrganizationsV1 extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -102,50 +103,23 @@ export class OrganizationsV1 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return components.OrgPermission$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [401, 422, 429], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<components.OrgPermission>()
+            .json(200, components.OrgPermission$)
+            .json([401, 422, 429], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     async rescindInvite(
         orgId: string,
         rescindUserInvite: components.RescindUserInvite,
         options?: RequestOptions
-    ): Promise<operations.RescindInviteResponse | void> {
+    ): Promise<void> {
         const input$: operations.RescindInviteRequest = {
             orgId: orgId,
             rescindUserInvite: rescindUserInvite,
@@ -204,35 +178,16 @@ export class OrganizationsV1 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchStatusCode(response, 204)) {
-            return;
-        } else if (this.matchResponse(response, [401, 404, 429, 500], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<void>()
+            .void(204, z.void())
+            .json([401, 404, 429, 500], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     async getOrgPendingInvites(
@@ -295,43 +250,16 @@ export class OrganizationsV1 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return components.OrgInvitesPage$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [401, 429], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<components.OrgInvitesPage>()
+            .json(200, components.OrgInvitesPage$)
+            .json([401, 429], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     async getUserPendingInvites(options?: RequestOptions): Promise<components.OrgInvitesPage> {
@@ -374,49 +302,19 @@ export class OrganizationsV1 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return components.OrgInvitesPage$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [401, 429], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<components.OrgInvitesPage>()
+            .json(200, components.OrgInvitesPage$)
+            .json([401, 429], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
-    async acceptInvite(
-        orgId: string,
-        options?: RequestOptions
-    ): Promise<operations.AcceptInviteResponse | void> {
+    async acceptInvite(orgId: string, options?: RequestOptions): Promise<void> {
         const input$: operations.AcceptInviteRequest = {
             orgId: orgId,
         };
@@ -473,41 +371,19 @@ export class OrganizationsV1 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchStatusCode(response, 204)) {
-            return;
-        } else if (this.matchResponse(response, [401, 404, 429], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<void>()
+            .void(204, z.void())
+            .json([401, 404, 429], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
-    async rejectInvite(
-        orgId: string,
-        options?: RequestOptions
-    ): Promise<operations.RejectInviteResponse | void> {
+    async rejectInvite(orgId: string, options?: RequestOptions): Promise<void> {
         const input$: operations.RejectInviteRequest = {
             orgId: orgId,
         };
@@ -564,34 +440,15 @@ export class OrganizationsV1 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchStatusCode(response, 204)) {
-            return;
-        } else if (this.matchResponse(response, [401, 404, 429], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<void>()
+            .void(204, z.void())
+            .json([401, 404, 429], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

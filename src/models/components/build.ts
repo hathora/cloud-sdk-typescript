@@ -57,15 +57,10 @@ export type Build = {
 
 /** @internal */
 export namespace RegionalContainerTags$ {
-    export type Inbound = {
-        containerTag: string;
-        region: Region;
-    };
-
-    export const inboundSchema: z.ZodType<RegionalContainerTags, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RegionalContainerTags, z.ZodTypeDef, unknown> = z
         .object({
             containerTag: z.string(),
-            region: Region$,
+            region: Region$.inboundSchema,
         })
         .transform((v) => {
             return {
@@ -76,13 +71,13 @@ export namespace RegionalContainerTags$ {
 
     export type Outbound = {
         containerTag: string;
-        region: Region;
+        region: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RegionalContainerTags> = z
         .object({
             containerTag: z.string(),
-            region: Region$,
+            region: Region$.outboundSchema,
         })
         .transform((v) => {
             return {
@@ -94,26 +89,12 @@ export namespace RegionalContainerTags$ {
 
 /** @internal */
 export namespace Build$ {
-    export type Inbound = {
-        buildTag?: string | null | undefined;
-        regionalContainerTags: Array<RegionalContainerTags$.Inbound>;
-        imageSize: number;
-        status: BuildStatus;
-        deletedAt: string | null;
-        finishedAt: string | null;
-        startedAt: string | null;
-        createdAt: string;
-        createdBy: string;
-        buildId: number;
-        appId: string;
-    };
-
-    export const inboundSchema: z.ZodType<Build, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Build, z.ZodTypeDef, unknown> = z
         .object({
             buildTag: z.nullable(z.string()).optional(),
             regionalContainerTags: z.array(z.lazy(() => RegionalContainerTags$.inboundSchema)),
             imageSize: z.number().int(),
-            status: BuildStatus$,
+            status: BuildStatus$.inboundSchema,
             deletedAt: z.nullable(
                 z
                     .string()
@@ -160,7 +141,7 @@ export namespace Build$ {
         buildTag?: string | null | undefined;
         regionalContainerTags: Array<RegionalContainerTags$.Outbound>;
         imageSize: number;
-        status: BuildStatus;
+        status: string;
         deletedAt: string | null;
         finishedAt: string | null;
         startedAt: string | null;
@@ -175,7 +156,7 @@ export namespace Build$ {
             buildTag: z.nullable(z.string()).optional(),
             regionalContainerTags: z.array(z.lazy(() => RegionalContainerTags$.outboundSchema)),
             imageSize: z.number().int(),
-            status: BuildStatus$,
+            status: BuildStatus$.outboundSchema,
             deletedAt: z.nullable(z.date().transform((v) => v.toISOString())),
             finishedAt: z.nullable(z.date().transform((v) => v.toISOString())),
             startedAt: z.nullable(z.date().transform((v) => v.toISOString())),

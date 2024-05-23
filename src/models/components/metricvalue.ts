@@ -11,12 +11,7 @@ export type MetricValue = {
 
 /** @internal */
 export namespace MetricValue$ {
-    export type Inbound = {
-        value: number;
-        timestamp: number;
-    };
-
-    export const inboundSchema: z.ZodType<MetricValue, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<MetricValue, z.ZodTypeDef, unknown> = z
         .object({
             value: z.number(),
             timestamp: z.number(),

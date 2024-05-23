@@ -53,7 +53,7 @@ run();
 
 ### Response
 
-**Promise<[ReadableStream<Uint8Array>](../../models/.md)>**
+**Promise\<[ReadableStream<Uint8Array>](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -99,7 +99,7 @@ run();
 
 ### Response
 
-**Promise<[ReadableStream<Uint8Array>](../../models/.md)>**
+**Promise\<[ReadableStream<Uint8Array>](../../models/.md)\>**
 ### Errors
 
 | Error Object        | Status Code         | Content Type        |
@@ -143,7 +143,7 @@ run();
 
 ### Response
 
-**Promise<[ReadableStream<Uint8Array>](../../models/.md)>**
+**Promise\<[ReadableStream<Uint8Array>](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -191,7 +191,7 @@ run();
 
 ### Response
 
-**Promise<[ReadableStream<Uint8Array>](../../models/.md)>**
+**Promise\<[ReadableStream<Uint8Array>](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

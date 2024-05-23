@@ -4,34 +4,65 @@
 
 import * as z from "zod";
 
-export type GetProcessInfoDeprecatedRequest = {
-    processId: string;
+export type GetProcessInfoDeprecatedGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace GetProcessInfoDeprecatedRequest$ {
-    export type Inbound = {
-        processId: string;
-        appId?: string | undefined;
-    };
+export type GetProcessInfoDeprecatedRequest = {
+    appId?: string | undefined;
+    processId: string;
+};
 
-    export const inboundSchema: z.ZodType<GetProcessInfoDeprecatedRequest, z.ZodTypeDef, Inbound> =
+/** @internal */
+export namespace GetProcessInfoDeprecatedGlobals$ {
+    export const inboundSchema: z.ZodType<GetProcessInfoDeprecatedGlobals, z.ZodTypeDef, unknown> =
         z
             .object({
-                processId: z.string(),
                 appId: z.string().optional(),
             })
             .transform((v) => {
                 return {
-                    processId: v.processId,
                     ...(v.appId === undefined ? null : { appId: v.appId }),
                 };
             });
 
     export type Outbound = {
-        processId: string;
         appId?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        GetProcessInfoDeprecatedGlobals
+    > = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace GetProcessInfoDeprecatedRequest$ {
+    export const inboundSchema: z.ZodType<GetProcessInfoDeprecatedRequest, z.ZodTypeDef, unknown> =
+        z
+            .object({
+                appId: z.string().optional(),
+                processId: z.string(),
+            })
+            .transform((v) => {
+                return {
+                    ...(v.appId === undefined ? null : { appId: v.appId }),
+                    processId: v.processId,
+                };
+            });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        processId: string;
     };
 
     export const outboundSchema: z.ZodType<
@@ -40,13 +71,13 @@ export namespace GetProcessInfoDeprecatedRequest$ {
         GetProcessInfoDeprecatedRequest
     > = z
         .object({
-            processId: z.string(),
             appId: z.string().optional(),
+            processId: z.string(),
         })
         .transform((v) => {
             return {
-                processId: v.processId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+                processId: v.processId,
             };
         });
 }

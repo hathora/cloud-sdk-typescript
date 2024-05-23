@@ -4,34 +4,65 @@
 
 import * as z from "zod";
 
-export type GetActiveRoomsForProcessRequest = {
-    processId: string;
+export type GetActiveRoomsForProcessGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace GetActiveRoomsForProcessRequest$ {
-    export type Inbound = {
-        processId: string;
-        appId?: string | undefined;
-    };
+export type GetActiveRoomsForProcessRequest = {
+    appId?: string | undefined;
+    processId: string;
+};
 
-    export const inboundSchema: z.ZodType<GetActiveRoomsForProcessRequest, z.ZodTypeDef, Inbound> =
+/** @internal */
+export namespace GetActiveRoomsForProcessGlobals$ {
+    export const inboundSchema: z.ZodType<GetActiveRoomsForProcessGlobals, z.ZodTypeDef, unknown> =
         z
             .object({
-                processId: z.string(),
                 appId: z.string().optional(),
             })
             .transform((v) => {
                 return {
-                    processId: v.processId,
                     ...(v.appId === undefined ? null : { appId: v.appId }),
                 };
             });
 
     export type Outbound = {
-        processId: string;
         appId?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        GetActiveRoomsForProcessGlobals
+    > = z
+        .object({
+            appId: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace GetActiveRoomsForProcessRequest$ {
+    export const inboundSchema: z.ZodType<GetActiveRoomsForProcessRequest, z.ZodTypeDef, unknown> =
+        z
+            .object({
+                appId: z.string().optional(),
+                processId: z.string(),
+            })
+            .transform((v) => {
+                return {
+                    ...(v.appId === undefined ? null : { appId: v.appId }),
+                    processId: v.processId,
+                };
+            });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        processId: string;
     };
 
     export const outboundSchema: z.ZodType<
@@ -40,13 +71,13 @@ export namespace GetActiveRoomsForProcessRequest$ {
         GetActiveRoomsForProcessRequest
     > = z
         .object({
-            processId: z.string(),
             appId: z.string().optional(),
+            processId: z.string(),
         })
         .transform((v) => {
             return {
-                processId: v.processId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+                processId: v.processId,
             };
         });
 }

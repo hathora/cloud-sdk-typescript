@@ -12,15 +12,10 @@ export type CardPaymentMethod = {
 
 /** @internal */
 export namespace CardPaymentMethod$ {
-    export type Inbound = {
-        last4: string;
-        brand: CardBrand;
-    };
-
-    export const inboundSchema: z.ZodType<CardPaymentMethod, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CardPaymentMethod, z.ZodTypeDef, unknown> = z
         .object({
             last4: z.string(),
-            brand: CardBrand$,
+            brand: CardBrand$.inboundSchema,
         })
         .transform((v) => {
             return {
@@ -31,13 +26,13 @@ export namespace CardPaymentMethod$ {
 
     export type Outbound = {
         last4: string;
-        brand: CardBrand;
+        brand: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CardPaymentMethod> = z
         .object({
             last4: z.string(),
-            brand: CardBrand$,
+            brand: CardBrand$.outboundSchema,
         })
         .transform((v) => {
             return {

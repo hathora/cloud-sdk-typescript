@@ -4,44 +4,70 @@
 
 import * as z from "zod";
 
-export type GetProcessInfoRequest = {
-    processId: string;
+export type GetProcessInfoGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace GetProcessInfoRequest$ {
-    export type Inbound = {
-        processId: string;
-        appId?: string | undefined;
-    };
+export type GetProcessInfoRequest = {
+    appId?: string | undefined;
+    processId: string;
+};
 
-    export const inboundSchema: z.ZodType<GetProcessInfoRequest, z.ZodTypeDef, Inbound> = z
+/** @internal */
+export namespace GetProcessInfoGlobals$ {
+    export const inboundSchema: z.ZodType<GetProcessInfoGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            processId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                processId: v.processId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        processId: string;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetProcessInfoRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetProcessInfoGlobals> = z
         .object({
-            processId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                processId: v.processId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace GetProcessInfoRequest$ {
+    export const inboundSchema: z.ZodType<GetProcessInfoRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            processId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                processId: v.processId,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        processId: string;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetProcessInfoRequest> = z
+        .object({
+            appId: z.string().optional(),
+            processId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                processId: v.processId,
             };
         });
 }

@@ -4,61 +4,70 @@
 
 import * as z from "zod";
 
-export type StopProcessRequest = {
-    processId: string;
+export type StopProcessGlobals = {
     appId?: string | undefined;
 };
 
-export type StopProcessResponse = {};
+export type StopProcessRequest = {
+    appId?: string | undefined;
+    processId: string;
+};
 
 /** @internal */
-export namespace StopProcessRequest$ {
-    export type Inbound = {
-        processId: string;
-        appId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<StopProcessRequest, z.ZodTypeDef, Inbound> = z
+export namespace StopProcessGlobals$ {
+    export const inboundSchema: z.ZodType<StopProcessGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            processId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                processId: v.processId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        processId: string;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StopProcessRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StopProcessGlobals> = z
         .object({
-            processId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                processId: v.processId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 }
 
 /** @internal */
-export namespace StopProcessResponse$ {
-    export type Inbound = {};
+export namespace StopProcessRequest$ {
+    export const inboundSchema: z.ZodType<StopProcessRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            processId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                processId: v.processId,
+            };
+        });
 
-    export const inboundSchema: z.ZodType<StopProcessResponse, z.ZodTypeDef, Inbound> = z.object(
-        {}
-    );
+    export type Outbound = {
+        appId?: string | undefined;
+        processId: string;
+    };
 
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StopProcessResponse> = z.object(
-        {}
-    );
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StopProcessRequest> = z
+        .object({
+            appId: z.string().optional(),
+            processId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                processId: v.processId,
+            };
+        });
 }

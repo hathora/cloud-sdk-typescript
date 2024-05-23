@@ -5,6 +5,10 @@
 import * as components from "../components";
 import * as z from "zod";
 
+export type ListActivePublicLobbiesGlobals = {
+    appId?: string | undefined;
+};
+
 export type ListActivePublicLobbiesRequest = {
     appId?: string | undefined;
     /**
@@ -14,16 +18,39 @@ export type ListActivePublicLobbiesRequest = {
 };
 
 /** @internal */
-export namespace ListActivePublicLobbiesRequest$ {
-    export type Inbound = {
-        appId?: string | undefined;
-        region?: components.Region | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ListActivePublicLobbiesRequest, z.ZodTypeDef, Inbound> = z
+export namespace ListActivePublicLobbiesGlobals$ {
+    export const inboundSchema: z.ZodType<ListActivePublicLobbiesGlobals, z.ZodTypeDef, unknown> = z
         .object({
             appId: z.string().optional(),
-            region: components.Region$.optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListActivePublicLobbiesGlobals> =
+        z
+            .object({
+                appId: z.string().optional(),
+            })
+            .transform((v) => {
+                return {
+                    ...(v.appId === undefined ? null : { appId: v.appId }),
+                };
+            });
+}
+
+/** @internal */
+export namespace ListActivePublicLobbiesRequest$ {
+    export const inboundSchema: z.ZodType<ListActivePublicLobbiesRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            region: components.Region$.inboundSchema.optional(),
         })
         .transform((v) => {
             return {
@@ -34,14 +61,14 @@ export namespace ListActivePublicLobbiesRequest$ {
 
     export type Outbound = {
         appId?: string | undefined;
-        region?: components.Region | undefined;
+        region?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListActivePublicLobbiesRequest> =
         z
             .object({
                 appId: z.string().optional(),
-                region: components.Region$.optional(),
+                region: components.Region$.outboundSchema.optional(),
             })
             .transform((v) => {
                 return {

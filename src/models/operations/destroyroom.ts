@@ -4,61 +4,70 @@
 
 import * as z from "zod";
 
-export type DestroyRoomRequest = {
-    roomId: string;
+export type DestroyRoomGlobals = {
     appId?: string | undefined;
 };
 
-export type DestroyRoomResponse = {};
+export type DestroyRoomRequest = {
+    appId?: string | undefined;
+    roomId: string;
+};
 
 /** @internal */
-export namespace DestroyRoomRequest$ {
-    export type Inbound = {
-        roomId: string;
-        appId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DestroyRoomRequest, z.ZodTypeDef, Inbound> = z
+export namespace DestroyRoomGlobals$ {
+    export const inboundSchema: z.ZodType<DestroyRoomGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            roomId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                roomId: v.roomId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        roomId: string;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DestroyRoomRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DestroyRoomGlobals> = z
         .object({
-            roomId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                roomId: v.roomId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 }
 
 /** @internal */
-export namespace DestroyRoomResponse$ {
-    export type Inbound = {};
+export namespace DestroyRoomRequest$ {
+    export const inboundSchema: z.ZodType<DestroyRoomRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            roomId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                roomId: v.roomId,
+            };
+        });
 
-    export const inboundSchema: z.ZodType<DestroyRoomResponse, z.ZodTypeDef, Inbound> = z.object(
-        {}
-    );
+    export type Outbound = {
+        appId?: string | undefined;
+        roomId: string;
+    };
 
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DestroyRoomResponse> = z.object(
-        {}
-    );
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DestroyRoomRequest> = z
+        .object({
+            appId: z.string().optional(),
+            roomId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                roomId: v.roomId,
+            };
+        });
 }

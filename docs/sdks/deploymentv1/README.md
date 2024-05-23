@@ -49,7 +49,7 @@ run();
 
 ### Response
 
-**Promise<[components.Deployment[]](../../models/.md)>**
+**Promise\<[components.Deployment[]](../../models/.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -94,7 +94,7 @@ run();
 
 ### Response
 
-**Promise<[components.Deployment](../../models/components/deployment.md)>**
+**Promise\<[components.Deployment](../../models/components/deployment.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -140,7 +140,7 @@ run();
 
 ### Response
 
-**Promise<[components.Deployment](../../models/components/deployment.md)>**
+**Promise\<[components.Deployment](../../models/components/deployment.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -206,10 +206,10 @@ run();
 
 ### Response
 
-**Promise<[components.Deployment](../../models/components/deployment.md)>**
+**Promise\<[components.Deployment](../../models/components/deployment.md)\>**
 ### Errors
 
-| Error Object        | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.ApiError     | 400,401,404,429,500 | application/json    |
-| errors.SDKError     | 4xx-5xx             | */*                 |
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
+| errors.SDKError         | 4xx-5xx                 | */*                     |

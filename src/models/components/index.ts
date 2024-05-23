@@ -10,6 +10,7 @@ export * from "./applicationwithlatestdeploymentandbuild";
 export * from "./authconfiguration";
 export * from "./build";
 export * from "./buildstatus";
+export * from "./buildwithuploadurl";
 export * from "./cardbrand";
 export * from "./cardpaymentmethod";
 export * from "./connectioninfo";

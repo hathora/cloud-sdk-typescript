@@ -50,9 +50,9 @@ export class RoomV2 extends ClientSDK {
         options?: RequestOptions
     ): Promise<components.RoomConnectionData> {
         const input$: operations.CreateRoomRequest = {
-            createRoomParams: createRoomParams,
             appId: appId,
             roomId: roomId,
+            createRoomParams: createRoomParams,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -115,45 +115,16 @@ export class RoomV2 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 201, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return components.RoomConnectionData$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (
-            this.matchResponse(response, [400, 401, 402, 403, 404, 429, 500], "application/json")
-        ) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<components.RoomConnectionData>()
+            .json(201, components.RoomConnectionData$)
+            .json([400, 401, 402, 403, 404, 429, 500], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -165,8 +136,8 @@ export class RoomV2 extends ClientSDK {
         options?: RequestOptions
     ): Promise<components.Room> {
         const input$: operations.GetRoomInfoRequest = {
-            roomId: roomId,
             appId: appId,
+            roomId: roomId,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -225,43 +196,16 @@ export class RoomV2 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return components.Room$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [401, 404], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<components.Room>()
+            .json(200, components.Room$)
+            .json([401, 404], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -273,8 +217,8 @@ export class RoomV2 extends ClientSDK {
         options?: RequestOptions
     ): Promise<Array<components.RoomWithoutAllocations>> {
         const input$: operations.GetActiveRoomsForProcessRequest = {
-            processId: processId,
             appId: appId,
+            processId: processId,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -335,43 +279,16 @@ export class RoomV2 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return z.array(components.RoomWithoutAllocations$.inboundSchema).parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [401, 404], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<Array<components.RoomWithoutAllocations>>()
+            .json(200, z.array(components.RoomWithoutAllocations$.inboundSchema))
+            .json([401, 404], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -383,8 +300,8 @@ export class RoomV2 extends ClientSDK {
         options?: RequestOptions
     ): Promise<Array<components.RoomWithoutAllocations>> {
         const input$: operations.GetInactiveRoomsForProcessRequest = {
-            processId: processId,
             appId: appId,
+            processId: processId,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -445,43 +362,16 @@ export class RoomV2 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return z.array(components.RoomWithoutAllocations$.inboundSchema).parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [401, 404], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<Array<components.RoomWithoutAllocations>>()
+            .json(200, z.array(components.RoomWithoutAllocations$.inboundSchema))
+            .json([401, 404], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -491,10 +381,10 @@ export class RoomV2 extends ClientSDK {
         roomId: string,
         appId?: string | undefined,
         options?: RequestOptions
-    ): Promise<operations.DestroyRoomResponse | void> {
+    ): Promise<void> {
         const input$: operations.DestroyRoomRequest = {
-            roomId: roomId,
             appId: appId,
+            roomId: roomId,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -553,35 +443,16 @@ export class RoomV2 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchStatusCode(response, 204)) {
-            return;
-        } else if (this.matchResponse(response, [401, 404, 429, 500], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<void>()
+            .void(204, z.void())
+            .json([401, 404, 429, 500], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -593,10 +464,10 @@ export class RoomV2 extends ClientSDK {
         roomId: string,
         appId?: string | undefined,
         options?: RequestOptions
-    ): Promise<operations.SuspendRoomV2DeprecatedResponse | void> {
+    ): Promise<void> {
         const input$: operations.SuspendRoomV2DeprecatedRequest = {
-            roomId: roomId,
             appId: appId,
+            roomId: roomId,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -655,35 +526,16 @@ export class RoomV2 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchStatusCode(response, 204)) {
-            return;
-        } else if (this.matchResponse(response, [401, 404, 429, 500], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<void>()
+            .void(204, z.void())
+            .json([401, 404, 429, 500], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -695,8 +547,8 @@ export class RoomV2 extends ClientSDK {
         options?: RequestOptions
     ): Promise<components.ConnectionInfoV2> {
         const input$: operations.GetConnectionInfoRequest = {
-            roomId: roomId,
             appId: appId,
+            roomId: roomId,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -741,43 +593,16 @@ export class RoomV2 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return components.ConnectionInfoV2$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, [400, 402, 404, 500], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<components.ConnectionInfoV2>()
+            .json(200, components.ConnectionInfoV2$)
+            .json([400, 402, 404, 500], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     async updateRoomConfig(
@@ -785,11 +610,11 @@ export class RoomV2 extends ClientSDK {
         updateRoomConfigParams: components.UpdateRoomConfigParams,
         appId?: string | undefined,
         options?: RequestOptions
-    ): Promise<operations.UpdateRoomConfigResponse | void> {
+    ): Promise<void> {
         const input$: operations.UpdateRoomConfigRequest = {
+            appId: appId,
             roomId: roomId,
             updateRoomConfigParams: updateRoomConfigParams,
-            appId: appId,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -849,34 +674,15 @@ export class RoomV2 extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchStatusCode(response, 204)) {
-            return;
-        } else if (this.matchResponse(response, [401, 404, 429, 500], "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.ApiError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<void>()
+            .void(204, z.void())
+            .json([401, 404, 429, 500], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

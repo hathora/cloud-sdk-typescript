@@ -4,44 +4,70 @@
 
 import * as z from "zod";
 
-export type GetConnectionInfoRequest = {
-    roomId: string;
+export type GetConnectionInfoGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace GetConnectionInfoRequest$ {
-    export type Inbound = {
-        roomId: string;
-        appId?: string | undefined;
-    };
+export type GetConnectionInfoRequest = {
+    appId?: string | undefined;
+    roomId: string;
+};
 
-    export const inboundSchema: z.ZodType<GetConnectionInfoRequest, z.ZodTypeDef, Inbound> = z
+/** @internal */
+export namespace GetConnectionInfoGlobals$ {
+    export const inboundSchema: z.ZodType<GetConnectionInfoGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            roomId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                roomId: v.roomId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        roomId: string;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetConnectionInfoRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetConnectionInfoGlobals> = z
         .object({
-            roomId: z.string(),
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                roomId: v.roomId,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace GetConnectionInfoRequest$ {
+    export const inboundSchema: z.ZodType<GetConnectionInfoRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            roomId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                roomId: v.roomId,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        roomId: string;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetConnectionInfoRequest> = z
+        .object({
+            appId: z.string().optional(),
+            roomId: z.string(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                roomId: v.roomId,
             };
         });
 }

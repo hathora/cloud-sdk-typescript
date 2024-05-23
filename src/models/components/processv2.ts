@@ -66,16 +66,9 @@ export type ProcessV2 = {
 
 /** @internal */
 export namespace ProcessV2ExposedPort$ {
-    export type Inbound = {
-        transportType: TransportType;
-        port: number;
-        host: string;
-        name: string;
-    };
-
-    export const inboundSchema: z.ZodType<ProcessV2ExposedPort, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ProcessV2ExposedPort, z.ZodTypeDef, unknown> = z
         .object({
-            transportType: TransportType$,
+            transportType: TransportType$.inboundSchema,
             port: z.number().int(),
             host: z.string(),
             name: z.string(),
@@ -90,7 +83,7 @@ export namespace ProcessV2ExposedPort$ {
         });
 
     export type Outbound = {
-        transportType: TransportType;
+        transportType: string;
         port: number;
         host: string;
         name: string;
@@ -98,7 +91,7 @@ export namespace ProcessV2ExposedPort$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProcessV2ExposedPort> = z
         .object({
-            transportType: TransportType$,
+            transportType: TransportType$.outboundSchema,
             port: z.number().int(),
             host: z.string(),
             name: z.string(),
@@ -115,25 +108,9 @@ export namespace ProcessV2ExposedPort$ {
 
 /** @internal */
 export namespace ProcessV2$ {
-    export type Inbound = {
-        status: ProcessStatus;
-        roomsAllocated: number;
-        terminatedAt: string | null;
-        stoppingAt: string | null;
-        startedAt: string | null;
-        createdAt: string;
-        roomsPerProcess: number;
-        additionalExposedPorts: Array<ExposedPort$.Inbound>;
-        exposedPort: ProcessV2ExposedPort$.Inbound | null;
-        region: Region;
-        processId: string;
-        deploymentId: number;
-        appId: string;
-    };
-
-    export const inboundSchema: z.ZodType<ProcessV2, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ProcessV2, z.ZodTypeDef, unknown> = z
         .object({
-            status: ProcessStatus$,
+            status: ProcessStatus$.inboundSchema,
             roomsAllocated: z.number().int(),
             terminatedAt: z.nullable(
                 z
@@ -160,7 +137,7 @@ export namespace ProcessV2$ {
             roomsPerProcess: z.number().int(),
             additionalExposedPorts: z.array(ExposedPort$.inboundSchema),
             exposedPort: z.nullable(z.lazy(() => ProcessV2ExposedPort$.inboundSchema)),
-            region: Region$,
+            region: Region$.inboundSchema,
             processId: z.string(),
             deploymentId: z.number().int(),
             appId: z.string(),
@@ -184,7 +161,7 @@ export namespace ProcessV2$ {
         });
 
     export type Outbound = {
-        status: ProcessStatus;
+        status: string;
         roomsAllocated: number;
         terminatedAt: string | null;
         stoppingAt: string | null;
@@ -193,7 +170,7 @@ export namespace ProcessV2$ {
         roomsPerProcess: number;
         additionalExposedPorts: Array<ExposedPort$.Outbound>;
         exposedPort: ProcessV2ExposedPort$.Outbound | null;
-        region: Region;
+        region: string;
         processId: string;
         deploymentId: number;
         appId: string;
@@ -201,7 +178,7 @@ export namespace ProcessV2$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProcessV2> = z
         .object({
-            status: ProcessStatus$,
+            status: ProcessStatus$.outboundSchema,
             roomsAllocated: z.number().int(),
             terminatedAt: z.nullable(z.date().transform((v) => v.toISOString())),
             stoppingAt: z.nullable(z.date().transform((v) => v.toISOString())),
@@ -210,7 +187,7 @@ export namespace ProcessV2$ {
             roomsPerProcess: z.number().int(),
             additionalExposedPorts: z.array(ExposedPort$.outboundSchema),
             exposedPort: z.nullable(z.lazy(() => ProcessV2ExposedPort$.outboundSchema)),
-            region: Region$,
+            region: Region$.outboundSchema,
             processId: z.string(),
             deploymentId: z.number().int(),
             appId: z.string(),

@@ -5,44 +5,70 @@
 import * as components from "../components";
 import * as z from "zod";
 
-export type CreateBuildRequest = {
-    createBuildParams: components.CreateBuildParams;
+export type CreateBuildGlobals = {
     appId?: string | undefined;
 };
 
-/** @internal */
-export namespace CreateBuildRequest$ {
-    export type Inbound = {
-        CreateBuildParams: components.CreateBuildParams$.Inbound;
-        appId?: string | undefined;
-    };
+export type CreateBuildRequest = {
+    appId?: string | undefined;
+    createBuildParams: components.CreateBuildParams;
+};
 
-    export const inboundSchema: z.ZodType<CreateBuildRequest, z.ZodTypeDef, Inbound> = z
+/** @internal */
+export namespace CreateBuildGlobals$ {
+    export const inboundSchema: z.ZodType<CreateBuildGlobals, z.ZodTypeDef, unknown> = z
         .object({
-            CreateBuildParams: components.CreateBuildParams$.inboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                createBuildParams: v.CreateBuildParams,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
             };
         });
 
     export type Outbound = {
-        CreateBuildParams: components.CreateBuildParams$.Outbound;
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateBuildRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateBuildGlobals> = z
         .object({
-            createBuildParams: components.CreateBuildParams$.outboundSchema,
             appId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                CreateBuildParams: v.createBuildParams,
                 ...(v.appId === undefined ? null : { appId: v.appId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace CreateBuildRequest$ {
+    export const inboundSchema: z.ZodType<CreateBuildRequest, z.ZodTypeDef, unknown> = z
+        .object({
+            appId: z.string().optional(),
+            CreateBuildParams: components.CreateBuildParams$.inboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                createBuildParams: v.CreateBuildParams,
+            };
+        });
+
+    export type Outbound = {
+        appId?: string | undefined;
+        CreateBuildParams: components.CreateBuildParams$.Outbound;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateBuildRequest> = z
+        .object({
+            appId: z.string().optional(),
+            createBuildParams: components.CreateBuildParams$.outboundSchema,
+        })
+        .transform((v) => {
+            return {
+                ...(v.appId === undefined ? null : { appId: v.appId }),
+                CreateBuildParams: v.createBuildParams,
             };
         });
 }
