@@ -7,6 +7,11 @@ import { Region, Region$ } from "./region";
 import * as z from "zod";
 
 /**
+ * UserId or email address for the user that created the lobby.
+ */
+export type LobbyV3CreatedBy = string | number;
+
+/**
  * A lobby object allows you to store and manage metadata for your rooms.
  */
 export type LobbyV3 = {
@@ -21,7 +26,7 @@ export type LobbyV3 = {
     /**
      * UserId or email address for the user that created the lobby.
      */
-    createdBy: string;
+    createdBy: string | number;
     roomConfig: string | null;
     /**
      * Types of lobbies a player can create.
@@ -50,6 +55,20 @@ export type LobbyV3 = {
 };
 
 /** @internal */
+export namespace LobbyV3CreatedBy$ {
+    export const inboundSchema: z.ZodType<LobbyV3CreatedBy, z.ZodTypeDef, unknown> = z.union([
+        z.string(),
+        z.number(),
+    ]);
+
+    export type Outbound = string | number;
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LobbyV3CreatedBy> = z.union([
+        z.string(),
+        z.number(),
+    ]);
+}
+
+/** @internal */
 export namespace LobbyV3$ {
     export const inboundSchema: z.ZodType<LobbyV3, z.ZodTypeDef, unknown> = z
         .object({
@@ -58,7 +77,7 @@ export namespace LobbyV3$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
-            createdBy: z.string(),
+            createdBy: z.union([z.string(), z.number()]),
             roomConfig: z.nullable(z.string()),
             visibility: LobbyVisibility$.inboundSchema,
             region: Region$.inboundSchema,
@@ -81,7 +100,7 @@ export namespace LobbyV3$ {
     export type Outbound = {
         shortCode: string;
         createdAt: string;
-        createdBy: string;
+        createdBy: string | number;
         roomConfig: string | null;
         visibility: string;
         region: string;
@@ -93,7 +112,7 @@ export namespace LobbyV3$ {
         .object({
             shortCode: z.string(),
             createdAt: z.date().transform((v) => v.toISOString()),
-            createdBy: z.string(),
+            createdBy: z.union([z.string(), z.number()]),
             roomConfig: z.nullable(z.string()),
             visibility: LobbyVisibility$.outboundSchema,
             region: Region$.outboundSchema,

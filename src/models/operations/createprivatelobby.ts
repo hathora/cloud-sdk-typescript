@@ -17,7 +17,7 @@ export type CreatePrivateLobbyRequestBody = {
     /**
      * User input to initialize the game state. Object must be smaller than 64KB.
      */
-    initialConfig: components.LobbyInitialConfig;
+    initialConfig?: any | undefined;
     region: components.Region;
 };
 
@@ -85,30 +85,30 @@ export namespace CreatePrivateLobbySecurity$ {
 export namespace CreatePrivateLobbyRequestBody$ {
     export const inboundSchema: z.ZodType<CreatePrivateLobbyRequestBody, z.ZodTypeDef, unknown> = z
         .object({
-            initialConfig: components.LobbyInitialConfig$.inboundSchema,
+            initialConfig: z.any().optional(),
             region: components.Region$.inboundSchema,
         })
         .transform((v) => {
             return {
-                initialConfig: v.initialConfig,
+                ...(v.initialConfig === undefined ? null : { initialConfig: v.initialConfig }),
                 region: v.region,
             };
         });
 
     export type Outbound = {
-        initialConfig: components.LobbyInitialConfig$.Outbound;
+        initialConfig?: any | undefined;
         region: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreatePrivateLobbyRequestBody> =
         z
             .object({
-                initialConfig: components.LobbyInitialConfig$.outboundSchema,
+                initialConfig: z.any().optional(),
                 region: components.Region$.outboundSchema,
             })
             .transform((v) => {
                 return {
-                    initialConfig: v.initialConfig,
+                    ...(v.initialConfig === undefined ? null : { initialConfig: v.initialConfig }),
                     region: v.region,
                 };
             });

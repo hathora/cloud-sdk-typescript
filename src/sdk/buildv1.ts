@@ -347,7 +347,10 @@ export class BuildV1 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "404", "429", "4XX", "500", "5XX"] };
+        const doOptions = {
+            context,
+            errorCodes: ["400", "401", "404", "429", "4XX", "500", "5XX"],
+        };
         const request$ = this.createRequest$(
             context,
             {
@@ -369,7 +372,7 @@ export class BuildV1 extends ClientSDK {
 
         const [result$] = await this.matcher<string>()
             .text(200, z.string())
-            .json([401, 404, 429, 500], errors.ApiError$, { err: true })
+            .json([400, 401, 404, 429, 500], errors.ApiError$, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

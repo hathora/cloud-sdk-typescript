@@ -31,7 +31,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.lobbyV2.createPrivateLobby("<YOUR_BEARER_TOKEN_HERE>", {
-    initialConfig: {},
+    initialConfig: "<value>",
     region: Region.Chicago,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
@@ -80,7 +80,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.lobbyV2.createPublicLobby("<YOUR_BEARER_TOKEN_HERE>", {
-    initialConfig: {},
+    initialConfig: "<value>",
     region: Region.SaoPaulo,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
@@ -129,7 +129,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.lobbyV2.createLocalLobby("<YOUR_BEARER_TOKEN_HERE>", {
-    initialConfig: {},
+    initialConfig: "<value>",
     region: Region.SaoPaulo,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
@@ -181,7 +181,7 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.lobbyV2.createLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", {
     visibility: LobbyVisibility.Private,
-    initialConfig: {},
+    initialConfig: "<value>",
     region: Region.Tokyo,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
@@ -322,7 +322,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.lobbyV2.setLobbyState("2swovpy1fnunu", {
-    state: {},
+    state: "<value>",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   // Handle the result

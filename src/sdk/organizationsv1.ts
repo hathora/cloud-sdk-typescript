@@ -40,6 +40,61 @@ export class OrganizationsV1 extends ClientSDK {
         void this.options$;
     }
 
+    /**
+     * Returns an unsorted list of all organizations that you are a member of (an accepted membership invite). An organization is uniquely identified by an `orgId`.
+     */
+    async getOrgs(options?: RequestOptions): Promise<components.OrgsPage> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
+
+        const path$ = this.templateURLComponent("/orgs/v1")();
+
+        const query$ = "";
+
+        let security$;
+        if (typeof this.options$.hathoraDevToken === "function") {
+            security$ = { hathoraDevToken: await this.options$.hathoraDevToken() };
+        } else if (this.options$.hathoraDevToken) {
+            security$ = { hathoraDevToken: this.options$.hathoraDevToken };
+        } else {
+            security$ = {};
+        }
+        const context = {
+            operationID: "GetOrgs",
+            oAuth2Scopes: [],
+            securitySource: this.options$.hathoraDevToken,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const doOptions = { context, errorCodes: ["401", "404", "429", "4XX", "5XX"] };
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, doOptions);
+
+        const responseFields$ = {
+            HttpMeta: { Response: response, Request: request$ },
+        };
+
+        const [result$] = await this.matcher<components.OrgsPage>()
+            .json(200, components.OrgsPage$)
+            .json([401, 404, 429], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
     async inviteUser(
         orgId: string,
         createUserInvite: components.CreateUserInvite,

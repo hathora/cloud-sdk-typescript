@@ -13,7 +13,7 @@ import * as errors from "../models/errors";
 import * as operations from "../models/operations";
 import * as z from "zod";
 
-export class OrgTokensV1 extends ClientSDK {
+export class TokensV1 extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
 
     constructor(options: SDKOptions = {}) {

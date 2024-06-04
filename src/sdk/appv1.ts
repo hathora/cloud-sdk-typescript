@@ -69,7 +69,7 @@ export class AppV1 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
+        const doOptions = { context, errorCodes: ["401", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -84,12 +84,17 @@ export class AppV1 extends ClientSDK {
 
         const response = await this.do$(request$, doOptions);
 
+        const responseFields$ = {
+            HttpMeta: { Response: response, Request: request$ },
+        };
+
         const [result$] = await this.matcher<
             Array<components.ApplicationWithLatestDeploymentAndBuild>
         >()
             .json(200, z.array(components.ApplicationWithLatestDeploymentAndBuild$.inboundSchema))
+            .json(401, errors.ApiError$, { err: true })
             .fail(["4XX", "5XX"])
-            .match(response);
+            .match(response, { extraFields: responseFields$ });
 
         return result$;
     }
