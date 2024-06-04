@@ -50,9 +50,10 @@ run();
 **Promise\<[components.ApplicationWithLatestDeploymentAndBuild[]](../../models/.md)\>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401              | application/json |
+| errors.SDKError  | 4xx-5xx          | */*              |
 
 ## createApp
 

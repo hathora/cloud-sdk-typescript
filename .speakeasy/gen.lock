@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: f9df5e98c2bb16f13a57f7face176a5e
+  docChecksum: 745a61c4354ede9033c31b2c0eba96ee
   docVersion: 0.0.1
-  speakeasyVersion: 1.295.1
-  generationVersion: 2.335.5
-  releaseVersion: 2.2.9
-  configChecksum: bab6a039362d5d7714ae345416b058fa
+  speakeasyVersion: 1.299.6
+  generationVersion: 2.338.12
+  releaseVersion: 2.2.10
+  configChecksum: 26f1f03c12e54baa8050331696037c54
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.9.6
+    core: 3.9.11
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     flattening: 2.81.1
@@ -49,7 +49,7 @@ generatedFiles:
   - src/sdk/processesv2.ts
   - src/sdk/roomv1.ts
   - src/sdk/roomv2.ts
-  - src/sdk/orgtokensv1.ts
+  - src/sdk/tokensv1.ts
   - src/sdk/sdk.ts
   - .eslintrc.js
   - .npmignore
@@ -61,7 +61,7 @@ generatedFiles:
   - src/lib/config.ts
   - src/lib/encodings.ts
   - src/lib/http.ts
-  - src/lib/primitives.ts
+  - src/lib/is-plain-object.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
   - src/lib/sdks.ts
@@ -107,7 +107,6 @@ generatedFiles:
   - src/models/components/pingendpoints.ts
   - src/models/components/lobby.ts
   - src/models/components/lobbyvisibility.ts
-  - src/models/components/lobbyinitialconfig.ts
   - src/models/components/createlobbyparams.ts
   - src/models/components/setlobbystateparams.ts
   - src/models/components/lobbyv3.ts
@@ -117,6 +116,8 @@ generatedFiles:
   - src/models/components/metricsdata.ts
   - src/models/components/metricvalue.ts
   - src/models/components/metricname.ts
+  - src/models/components/orgspage.ts
+  - src/models/components/organization.ts
   - src/models/components/orgpermission.ts
   - src/models/components/organizationinvitestatus.ts
   - src/models/components/invitestatuspending.ts
@@ -267,13 +268,12 @@ generatedFiles:
   - docs/models/components/deploymentconfigv2env.md
   - docs/models/components/deploymentconfigv2.md
   - docs/models/components/pingendpoints.md
-  - docs/models/components/state.md
+  - docs/models/components/createdby.md
   - docs/models/components/lobby.md
   - docs/models/components/lobbyvisibility.md
-  - docs/models/components/lobbyinitialconfig.md
   - docs/models/components/createlobbyparams.md
-  - docs/models/components/setlobbystateparamsstate.md
   - docs/models/components/setlobbystateparams.md
+  - docs/models/components/lobbyv3createdby.md
   - docs/models/components/lobbyv3.md
   - docs/models/components/createlobbyv3params.md
   - docs/models/components/verificationemailsuccess.md
@@ -281,6 +281,8 @@ generatedFiles:
   - docs/models/components/metricsdata.md
   - docs/models/components/metricvalue.md
   - docs/models/components/metricname.md
+  - docs/models/components/orgspage.md
+  - docs/models/components/organization.md
   - docs/models/components/orgpermission.md
   - docs/models/components/organizationinvitestatus.md
   - docs/models/components/type.md
@@ -500,7 +502,7 @@ generatedFiles:
   - docs/sdks/processesv2/README.md
   - docs/sdks/roomv1/README.md
   - docs/sdks/roomv2/README.md
-  - docs/sdks/orgtokensv1/README.md
+  - docs/sdks/tokensv1/README.md
   - USAGE.md
   - .gitattributes
   - src/hooks/hooks.ts

@@ -13,14 +13,11 @@ import * as z from "zod";
  *
  * `active`: ready to accept connections
  *
- * `suspended`: room is unallocated from the process but can be rescheduled later with the same `roomId`
- *
  * `destroyed`: all associated metadata is deleted
  */
 export enum RoomStatus {
     Scheduling = "scheduling",
     Active = "active",
-    Suspended = "suspended",
     Destroyed = "destroyed",
 }
 

@@ -1,5 +1,5 @@
-# OrgTokensV1
-(*orgTokensV1*)
+# TokensV1
+(*tokensV1*)
 
 ## Overview
 
@@ -26,7 +26,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.orgTokensV1.getOrgTokens("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  const result = await hathoraCloud.tokensV1.getOrgTokens("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   // Handle the result
   console.log(result)
@@ -69,7 +69,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.orgTokensV1.createOrgToken("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
+  const result = await hathoraCloud.tokensV1.createOrgToken("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
     name: "ci-token",
   });
 
@@ -115,7 +115,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.orgTokensV1.revokeOrgToken("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  const result = await hathoraCloud.tokensV1.revokeOrgToken("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   // Handle the result
   console.log(result)

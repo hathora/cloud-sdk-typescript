@@ -22,11 +22,11 @@ import { LogV1 } from "./logv1";
 import { ManagementV1 } from "./managementv1";
 import { MetricsV1 } from "./metricsv1";
 import { OrganizationsV1 } from "./organizationsv1";
-import { OrgTokensV1 } from "./orgtokensv1";
 import { ProcessesV1 } from "./processesv1";
 import { ProcessesV2 } from "./processesv2";
 import { RoomV1 } from "./roomv1";
 import { RoomV2 } from "./roomv2";
+import { TokensV1 } from "./tokensv1";
 
 export class HathoraCloud extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -155,8 +155,8 @@ export class HathoraCloud extends ClientSDK {
         return (this._roomV2 ??= new RoomV2(this.options$));
     }
 
-    private _orgTokensV1?: OrgTokensV1;
-    get orgTokensV1(): OrgTokensV1 {
-        return (this._orgTokensV1 ??= new OrgTokensV1(this.options$));
+    private _tokensV1?: TokensV1;
+    get tokensV1(): TokensV1 {
+        return (this._tokensV1 ??= new TokensV1(this.options$));
     }
 }

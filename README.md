@@ -151,6 +151,7 @@ run();
 
 ### [organizationsV1](docs/sdks/organizationsv1/README.md)
 
+* [getOrgs](docs/sdks/organizationsv1/README.md#getorgs) - Returns an unsorted list of all organizations that you are a member of (an accepted membership invite). An organization is uniquely identified by an `orgId`.
 * [inviteUser](docs/sdks/organizationsv1/README.md#inviteuser)
 * [rescindInvite](docs/sdks/organizationsv1/README.md#rescindinvite)
 * [getOrgPendingInvites](docs/sdks/organizationsv1/README.md#getorgpendinginvites)
@@ -192,11 +193,11 @@ run();
 * [getConnectionInfo](docs/sdks/roomv2/README.md#getconnectioninfo) - Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
 * [updateRoomConfig](docs/sdks/roomv2/README.md#updateroomconfig)
 
-### [orgTokensV1](docs/sdks/orgtokensv1/README.md)
+### [tokensV1](docs/sdks/tokensv1/README.md)
 
-* [getOrgTokens](docs/sdks/orgtokensv1/README.md#getorgtokens) - List all organization tokens for a given org.
-* [createOrgToken](docs/sdks/orgtokensv1/README.md#createorgtoken) - Create a new organization token.
-* [revokeOrgToken](docs/sdks/orgtokensv1/README.md#revokeorgtoken) - Revoke an organization token.
+* [getOrgTokens](docs/sdks/tokensv1/README.md#getorgtokens) - List all organization tokens for a given org.
+* [createOrgToken](docs/sdks/tokensv1/README.md#createorgtoken) - Create a new organization token.
+* [revokeOrgToken](docs/sdks/tokensv1/README.md#revokeorgtoken) - Revoke an organization token.
 <!-- End Available Resources and Operations [operations] -->
 
 
@@ -212,7 +213,7 @@ All SDK methods return a response object or throw an error. If Error objects are
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,422,429,500  | application/json |
+| errors.ApiError  | 401              | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
@@ -230,10 +231,7 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
     let result;
     try {
-        result = await hathoraCloud.appV1.createApp({
-            authConfiguration: {},
-            appName: "minecraft",
-        });
+        result = await hathoraCloud.appV1.getApps();
     } catch (err) {
         switch (true) {
             case err instanceof errors.SDKValidationError: {

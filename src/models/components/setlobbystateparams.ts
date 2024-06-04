@@ -4,52 +4,36 @@
 
 import * as z from "zod";
 
-/**
- * JSON blob to store metadata for a room. Must be smaller than 1MB.
- */
-export type SetLobbyStateParamsState = {};
-
 export type SetLobbyStateParams = {
     /**
      * JSON blob to store metadata for a room. Must be smaller than 1MB.
      */
-    state: SetLobbyStateParamsState;
+    state?: any | undefined;
 };
-
-/** @internal */
-export namespace SetLobbyStateParamsState$ {
-    export const inboundSchema: z.ZodType<SetLobbyStateParamsState, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SetLobbyStateParamsState> =
-        z.object({});
-}
 
 /** @internal */
 export namespace SetLobbyStateParams$ {
     export const inboundSchema: z.ZodType<SetLobbyStateParams, z.ZodTypeDef, unknown> = z
         .object({
-            state: z.lazy(() => SetLobbyStateParamsState$.inboundSchema),
+            state: z.any().optional(),
         })
         .transform((v) => {
             return {
-                state: v.state,
+                ...(v.state === undefined ? null : { state: v.state }),
             };
         });
 
     export type Outbound = {
-        state: SetLobbyStateParamsState$.Outbound;
+        state?: any | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SetLobbyStateParams> = z
         .object({
-            state: z.lazy(() => SetLobbyStateParamsState$.outboundSchema),
+            state: z.any().optional(),
         })
         .transform((v) => {
             return {
-                state: v.state,
+                ...(v.state === undefined ? null : { state: v.state }),
             };
         });
 }
