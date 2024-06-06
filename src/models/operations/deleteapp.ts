@@ -14,54 +14,30 @@ export type DeleteAppRequest = {
 
 /** @internal */
 export namespace DeleteAppGlobals$ {
-    export const inboundSchema: z.ZodType<DeleteAppGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const inboundSchema: z.ZodType<DeleteAppGlobals, z.ZodTypeDef, unknown> = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteAppGlobals> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteAppGlobals> = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
 export namespace DeleteAppRequest$ {
-    export const inboundSchema: z.ZodType<DeleteAppRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const inboundSchema: z.ZodType<DeleteAppRequest, z.ZodTypeDef, unknown> = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteAppRequest> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteAppRequest> = z.object({
+        appId: z.string().optional(),
+    });
 }

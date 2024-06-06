@@ -19,15 +19,9 @@ export namespace GetConnectionInfoDeprecatedGlobals$ {
         GetConnectionInfoDeprecatedGlobals,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -37,15 +31,9 @@ export namespace GetConnectionInfoDeprecatedGlobals$ {
         Outbound,
         z.ZodTypeDef,
         GetConnectionInfoDeprecatedGlobals
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
@@ -54,17 +42,10 @@ export namespace GetConnectionInfoDeprecatedRequest$ {
         GetConnectionInfoDeprecatedRequest,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-            roomId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                roomId: v.roomId,
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+        roomId: z.string(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -75,15 +56,8 @@ export namespace GetConnectionInfoDeprecatedRequest$ {
         Outbound,
         z.ZodTypeDef,
         GetConnectionInfoDeprecatedRequest
-    > = z
-        .object({
-            appId: z.string().optional(),
-            roomId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                roomId: v.roomId,
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+        roomId: z.string(),
+    });
 }

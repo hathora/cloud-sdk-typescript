@@ -17,45 +17,28 @@ export type GetLatestProcessesRequest = {
 
 /** @internal */
 export namespace GetLatestProcessesGlobals$ {
-    export const inboundSchema: z.ZodType<GetLatestProcessesGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetLatestProcessesGlobals, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLatestProcessesGlobals> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLatestProcessesGlobals> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 }
 
 /** @internal */
 export namespace GetLatestProcessesRequest$ {
-    export const inboundSchema: z.ZodType<GetLatestProcessesRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetLatestProcessesRequest, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
             status: z.array(components.ProcessStatus$.inboundSchema).optional(),
             region: z.array(components.Region$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                ...(v.status === undefined ? null : { status: v.status }),
-                ...(v.region === undefined ? null : { region: v.region }),
-            };
         });
 
     export type Outbound = {
@@ -64,17 +47,10 @@ export namespace GetLatestProcessesRequest$ {
         region?: Array<string> | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLatestProcessesRequest> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLatestProcessesRequest> =
+        z.object({
             appId: z.string().optional(),
             status: z.array(components.ProcessStatus$.outboundSchema).optional(),
             region: z.array(components.Region$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                ...(v.status === undefined ? null : { status: v.status }),
-                ...(v.region === undefined ? null : { region: v.region }),
-            };
         });
 }

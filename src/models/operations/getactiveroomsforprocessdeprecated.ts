@@ -19,15 +19,9 @@ export namespace GetActiveRoomsForProcessDeprecatedGlobals$ {
         GetActiveRoomsForProcessDeprecatedGlobals,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -37,15 +31,9 @@ export namespace GetActiveRoomsForProcessDeprecatedGlobals$ {
         Outbound,
         z.ZodTypeDef,
         GetActiveRoomsForProcessDeprecatedGlobals
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
@@ -54,17 +42,10 @@ export namespace GetActiveRoomsForProcessDeprecatedRequest$ {
         GetActiveRoomsForProcessDeprecatedRequest,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-            processId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                processId: v.processId,
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+        processId: z.string(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -75,15 +56,8 @@ export namespace GetActiveRoomsForProcessDeprecatedRequest$ {
         Outbound,
         z.ZodTypeDef,
         GetActiveRoomsForProcessDeprecatedRequest
-    > = z
-        .object({
-            appId: z.string().optional(),
-            processId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                processId: v.processId,
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+        processId: z.string(),
+    });
 }

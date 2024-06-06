@@ -10,31 +10,15 @@ export type Security = {
 
 /** @internal */
 export namespace Security$ {
-    export const inboundSchema: z.ZodType<Security, z.ZodTypeDef, unknown> = z
-        .object({
-            hathoraDevToken: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.hathoraDevToken === undefined
-                    ? null
-                    : { hathoraDevToken: v.hathoraDevToken }),
-            };
-        });
+    export const inboundSchema: z.ZodType<Security, z.ZodTypeDef, unknown> = z.object({
+        hathoraDevToken: z.string().optional(),
+    });
 
     export type Outbound = {
         hathoraDevToken?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Security> = z
-        .object({
-            hathoraDevToken: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.hathoraDevToken === undefined
-                    ? null
-                    : { hathoraDevToken: v.hathoraDevToken }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Security> = z.object({
+        hathoraDevToken: z.string().optional(),
+    });
 }

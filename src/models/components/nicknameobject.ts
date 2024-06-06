@@ -13,27 +13,15 @@ export type NicknameObject = {
 
 /** @internal */
 export namespace NicknameObject$ {
-    export const inboundSchema: z.ZodType<NicknameObject, z.ZodTypeDef, unknown> = z
-        .object({
-            nickname: z.string(),
-        })
-        .transform((v) => {
-            return {
-                nickname: v.nickname,
-            };
-        });
+    export const inboundSchema: z.ZodType<NicknameObject, z.ZodTypeDef, unknown> = z.object({
+        nickname: z.string(),
+    });
 
     export type Outbound = {
         nickname: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NicknameObject> = z
-        .object({
-            nickname: z.string(),
-        })
-        .transform((v) => {
-            return {
-                nickname: v.nickname,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NicknameObject> = z.object({
+        nickname: z.string(),
+    });
 }

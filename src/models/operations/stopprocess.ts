@@ -15,59 +15,33 @@ export type StopProcessRequest = {
 
 /** @internal */
 export namespace StopProcessGlobals$ {
-    export const inboundSchema: z.ZodType<StopProcessGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const inboundSchema: z.ZodType<StopProcessGlobals, z.ZodTypeDef, unknown> = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StopProcessGlobals> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StopProcessGlobals> = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
 export namespace StopProcessRequest$ {
-    export const inboundSchema: z.ZodType<StopProcessRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-            processId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                processId: v.processId,
-            };
-        });
+    export const inboundSchema: z.ZodType<StopProcessRequest, z.ZodTypeDef, unknown> = z.object({
+        appId: z.string().optional(),
+        processId: z.string(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
         processId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StopProcessRequest> = z
-        .object({
-            appId: z.string().optional(),
-            processId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                processId: v.processId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StopProcessRequest> = z.object({
+        appId: z.string().optional(),
+        processId: z.string(),
+    });
 }

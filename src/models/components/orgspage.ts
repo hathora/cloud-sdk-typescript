@@ -11,27 +11,15 @@ export type OrgsPage = {
 
 /** @internal */
 export namespace OrgsPage$ {
-    export const inboundSchema: z.ZodType<OrgsPage, z.ZodTypeDef, unknown> = z
-        .object({
-            orgs: z.array(Organization$.inboundSchema),
-        })
-        .transform((v) => {
-            return {
-                orgs: v.orgs,
-            };
-        });
+    export const inboundSchema: z.ZodType<OrgsPage, z.ZodTypeDef, unknown> = z.object({
+        orgs: z.array(Organization$.inboundSchema),
+    });
 
     export type Outbound = {
         orgs: Array<Organization$.Outbound>;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OrgsPage> = z
-        .object({
-            orgs: z.array(Organization$.outboundSchema),
-        })
-        .transform((v) => {
-            return {
-                orgs: v.orgs,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OrgsPage> = z.object({
+        orgs: z.array(Organization$.outboundSchema),
+    });
 }

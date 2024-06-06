@@ -19,15 +19,9 @@ export namespace GetDeploymentInfoDeprecatedGlobals$ {
         GetDeploymentInfoDeprecatedGlobals,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -37,15 +31,9 @@ export namespace GetDeploymentInfoDeprecatedGlobals$ {
         Outbound,
         z.ZodTypeDef,
         GetDeploymentInfoDeprecatedGlobals
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
@@ -54,17 +42,10 @@ export namespace GetDeploymentInfoDeprecatedRequest$ {
         GetDeploymentInfoDeprecatedRequest,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-            deploymentId: z.number().int(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                deploymentId: v.deploymentId,
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+        deploymentId: z.number().int(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -75,15 +56,8 @@ export namespace GetDeploymentInfoDeprecatedRequest$ {
         Outbound,
         z.ZodTypeDef,
         GetDeploymentInfoDeprecatedRequest
-    > = z
-        .object({
-            appId: z.string().optional(),
-            deploymentId: z.number().int(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                deploymentId: v.deploymentId,
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+        deploymentId: z.number().int(),
+    });
 }

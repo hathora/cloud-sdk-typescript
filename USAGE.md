@@ -8,7 +8,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-    const result = await hathoraCloud.appV1.getApps();
+    const result = await hathoraCloud.appsV1.getApps();
 
     // Handle the result
     console.log(result);

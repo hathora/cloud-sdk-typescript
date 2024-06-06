@@ -13,27 +13,15 @@ export type SetLobbyStateParams = {
 
 /** @internal */
 export namespace SetLobbyStateParams$ {
-    export const inboundSchema: z.ZodType<SetLobbyStateParams, z.ZodTypeDef, unknown> = z
-        .object({
-            state: z.any().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.state === undefined ? null : { state: v.state }),
-            };
-        });
+    export const inboundSchema: z.ZodType<SetLobbyStateParams, z.ZodTypeDef, unknown> = z.object({
+        state: z.any().optional(),
+    });
 
     export type Outbound = {
         state?: any | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SetLobbyStateParams> = z
-        .object({
-            state: z.any().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.state === undefined ? null : { state: v.state }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SetLobbyStateParams> = z.object({
+        state: z.any().optional(),
+    });
 }

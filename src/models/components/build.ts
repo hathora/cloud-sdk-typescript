@@ -57,85 +57,56 @@ export type Build = {
 
 /** @internal */
 export namespace RegionalContainerTags$ {
-    export const inboundSchema: z.ZodType<RegionalContainerTags, z.ZodTypeDef, unknown> = z
-        .object({
-            containerTag: z.string(),
-            region: Region$.inboundSchema,
-        })
-        .transform((v) => {
-            return {
-                containerTag: v.containerTag,
-                region: v.region,
-            };
-        });
+    export const inboundSchema: z.ZodType<RegionalContainerTags, z.ZodTypeDef, unknown> = z.object({
+        containerTag: z.string(),
+        region: Region$.inboundSchema,
+    });
 
     export type Outbound = {
         containerTag: string;
         region: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RegionalContainerTags> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RegionalContainerTags> =
+        z.object({
             containerTag: z.string(),
             region: Region$.outboundSchema,
-        })
-        .transform((v) => {
-            return {
-                containerTag: v.containerTag,
-                region: v.region,
-            };
         });
 }
 
 /** @internal */
 export namespace Build$ {
-    export const inboundSchema: z.ZodType<Build, z.ZodTypeDef, unknown> = z
-        .object({
-            buildTag: z.nullable(z.string()).optional(),
-            regionalContainerTags: z.array(z.lazy(() => RegionalContainerTags$.inboundSchema)),
-            imageSize: z.number().int(),
-            status: BuildStatus$.inboundSchema,
-            deletedAt: z.nullable(
-                z
-                    .string()
-                    .datetime({ offset: true })
-                    .transform((v) => new Date(v))
-            ),
-            finishedAt: z.nullable(
-                z
-                    .string()
-                    .datetime({ offset: true })
-                    .transform((v) => new Date(v))
-            ),
-            startedAt: z.nullable(
-                z
-                    .string()
-                    .datetime({ offset: true })
-                    .transform((v) => new Date(v))
-            ),
-            createdAt: z
+    export const inboundSchema: z.ZodType<Build, z.ZodTypeDef, unknown> = z.object({
+        buildTag: z.nullable(z.string()).optional(),
+        regionalContainerTags: z.array(z.lazy(() => RegionalContainerTags$.inboundSchema)),
+        imageSize: z.number().int(),
+        status: BuildStatus$.inboundSchema,
+        deletedAt: z.nullable(
+            z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            createdBy: z.string(),
-            buildId: z.number().int(),
-            appId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.buildTag === undefined ? null : { buildTag: v.buildTag }),
-                regionalContainerTags: v.regionalContainerTags,
-                imageSize: v.imageSize,
-                status: v.status,
-                deletedAt: v.deletedAt,
-                finishedAt: v.finishedAt,
-                startedAt: v.startedAt,
-                createdAt: v.createdAt,
-                createdBy: v.createdBy,
-                buildId: v.buildId,
-                appId: v.appId,
-            };
-        });
+                .transform((v) => new Date(v))
+        ),
+        finishedAt: z.nullable(
+            z
+                .string()
+                .datetime({ offset: true })
+                .transform((v) => new Date(v))
+        ),
+        startedAt: z.nullable(
+            z
+                .string()
+                .datetime({ offset: true })
+                .transform((v) => new Date(v))
+        ),
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+        createdBy: z.string(),
+        buildId: z.number().int(),
+        appId: z.string(),
+    });
 
     export type Outbound = {
         buildTag?: string | null | undefined;
@@ -151,33 +122,17 @@ export namespace Build$ {
         appId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Build> = z
-        .object({
-            buildTag: z.nullable(z.string()).optional(),
-            regionalContainerTags: z.array(z.lazy(() => RegionalContainerTags$.outboundSchema)),
-            imageSize: z.number().int(),
-            status: BuildStatus$.outboundSchema,
-            deletedAt: z.nullable(z.date().transform((v) => v.toISOString())),
-            finishedAt: z.nullable(z.date().transform((v) => v.toISOString())),
-            startedAt: z.nullable(z.date().transform((v) => v.toISOString())),
-            createdAt: z.date().transform((v) => v.toISOString()),
-            createdBy: z.string(),
-            buildId: z.number().int(),
-            appId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.buildTag === undefined ? null : { buildTag: v.buildTag }),
-                regionalContainerTags: v.regionalContainerTags,
-                imageSize: v.imageSize,
-                status: v.status,
-                deletedAt: v.deletedAt,
-                finishedAt: v.finishedAt,
-                startedAt: v.startedAt,
-                createdAt: v.createdAt,
-                createdBy: v.createdBy,
-                buildId: v.buildId,
-                appId: v.appId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Build> = z.object({
+        buildTag: z.nullable(z.string()).optional(),
+        regionalContainerTags: z.array(z.lazy(() => RegionalContainerTags$.outboundSchema)),
+        imageSize: z.number().int(),
+        status: BuildStatus$.outboundSchema,
+        deletedAt: z.nullable(z.date().transform((v) => v.toISOString())),
+        finishedAt: z.nullable(z.date().transform((v) => v.toISOString())),
+        startedAt: z.nullable(z.date().transform((v) => v.toISOString())),
+        createdAt: z.date().transform((v) => v.toISOString()),
+        createdBy: z.string(),
+        buildId: z.number().int(),
+        appId: z.string(),
+    });
 }

@@ -3,6 +3,7 @@
  */
 
 import * as b64$ from "../../lib/base64";
+import { remap as remap$ } from "../../lib/primitives";
 import { blobLikeSchema } from "../../types";
 import * as z from "zod";
 
@@ -27,73 +28,44 @@ export type RunBuildDeprecatedRequest = {
 
 /** @internal */
 export namespace RunBuildDeprecatedGlobals$ {
-    export const inboundSchema: z.ZodType<RunBuildDeprecatedGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<RunBuildDeprecatedGlobals, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RunBuildDeprecatedGlobals> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RunBuildDeprecatedGlobals> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 }
 
 /** @internal */
 export namespace FileT$ {
-    export const inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
-        .object({
-            fileName: z.string(),
-            content: b64$.zodInbound,
-        })
-        .transform((v) => {
-            return {
-                fileName: v.fileName,
-                content: v.content,
-            };
-        });
+    export const inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z.object({
+        fileName: z.string(),
+        content: b64$.zodInbound,
+    });
 
     export type Outbound = {
         fileName: string;
         content: Uint8Array;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, FileT> = z
-        .object({
-            fileName: z.string(),
-            content: b64$.zodOutbound,
-        })
-        .transform((v) => {
-            return {
-                fileName: v.fileName,
-                content: v.content,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, FileT> = z.object({
+        fileName: z.string(),
+        content: b64$.zodOutbound,
+    });
 }
 
 /** @internal */
 export namespace RunBuildDeprecatedRequestBody$ {
-    export const inboundSchema: z.ZodType<RunBuildDeprecatedRequestBody, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<RunBuildDeprecatedRequestBody, z.ZodTypeDef, unknown> =
+        z.object({
             file: z.lazy(() => FileT$.inboundSchema),
-        })
-        .transform((v) => {
-            return {
-                file: v.file,
-            };
         });
 
     export type Outbound = {
@@ -101,15 +73,9 @@ export namespace RunBuildDeprecatedRequestBody$ {
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RunBuildDeprecatedRequestBody> =
-        z
-            .object({
-                file: z.lazy(() => FileT$.outboundSchema).or(blobLikeSchema),
-            })
-            .transform((v) => {
-                return {
-                    file: v.file,
-                };
-            });
+        z.object({
+            file: z.lazy(() => FileT$.outboundSchema).or(blobLikeSchema),
+        });
 }
 
 /** @internal */
@@ -121,11 +87,9 @@ export namespace RunBuildDeprecatedRequest$ {
             RequestBody: z.lazy(() => RunBuildDeprecatedRequestBody$.inboundSchema),
         })
         .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                buildId: v.buildId,
-                requestBody: v.RequestBody,
-            };
+            return remap$(v, {
+                RequestBody: "requestBody",
+            });
         });
 
     export type Outbound = {
@@ -141,10 +105,8 @@ export namespace RunBuildDeprecatedRequest$ {
             requestBody: z.lazy(() => RunBuildDeprecatedRequestBody$.outboundSchema),
         })
         .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                buildId: v.buildId,
-                RequestBody: v.requestBody,
-            };
+            return remap$(v, {
+                requestBody: "RequestBody",
+            });
         });
 }

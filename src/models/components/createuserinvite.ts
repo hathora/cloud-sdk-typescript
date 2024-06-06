@@ -10,27 +10,15 @@ export type CreateUserInvite = {
 
 /** @internal */
 export namespace CreateUserInvite$ {
-    export const inboundSchema: z.ZodType<CreateUserInvite, z.ZodTypeDef, unknown> = z
-        .object({
-            userEmail: z.string(),
-        })
-        .transform((v) => {
-            return {
-                userEmail: v.userEmail,
-            };
-        });
+    export const inboundSchema: z.ZodType<CreateUserInvite, z.ZodTypeDef, unknown> = z.object({
+        userEmail: z.string(),
+    });
 
     export type Outbound = {
         userEmail: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateUserInvite> = z
-        .object({
-            userEmail: z.string(),
-        })
-        .transform((v) => {
-            return {
-                userEmail: v.userEmail,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateUserInvite> = z.object({
+        userEmail: z.string(),
+    });
 }

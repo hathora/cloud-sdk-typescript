@@ -22,31 +22,20 @@ export type OrgPermission = {
 
 /** @internal */
 export namespace OrgPermission$ {
-    export const inboundSchema: z.ZodType<OrgPermission, z.ZodTypeDef, unknown> = z
-        .object({
-            updatedAt: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            status: OrganizationInviteStatus$.inboundSchema,
-            userEmail: z.string(),
-            invitedBy: z.string(),
-            orgId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                updatedAt: v.updatedAt,
-                createdAt: v.createdAt,
-                status: v.status,
-                userEmail: v.userEmail,
-                invitedBy: v.invitedBy,
-                orgId: v.orgId,
-            };
-        });
+    export const inboundSchema: z.ZodType<OrgPermission, z.ZodTypeDef, unknown> = z.object({
+        updatedAt: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+        status: OrganizationInviteStatus$.inboundSchema,
+        userEmail: z.string(),
+        invitedBy: z.string(),
+        orgId: z.string(),
+    });
 
     export type Outbound = {
         updatedAt: string;
@@ -57,23 +46,12 @@ export namespace OrgPermission$ {
         orgId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OrgPermission> = z
-        .object({
-            updatedAt: z.date().transform((v) => v.toISOString()),
-            createdAt: z.date().transform((v) => v.toISOString()),
-            status: OrganizationInviteStatus$.outboundSchema,
-            userEmail: z.string(),
-            invitedBy: z.string(),
-            orgId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                updatedAt: v.updatedAt,
-                createdAt: v.createdAt,
-                status: v.status,
-                userEmail: v.userEmail,
-                invitedBy: v.invitedBy,
-                orgId: v.orgId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OrgPermission> = z.object({
+        updatedAt: z.date().transform((v) => v.toISOString()),
+        createdAt: z.date().transform((v) => v.toISOString()),
+        status: OrganizationInviteStatus$.outboundSchema,
+        userEmail: z.string(),
+        invitedBy: z.string(),
+        orgId: z.string(),
+    });
 }

@@ -13,27 +13,18 @@ export type UpdateRoomConfigParams = {
 
 /** @internal */
 export namespace UpdateRoomConfigParams$ {
-    export const inboundSchema: z.ZodType<UpdateRoomConfigParams, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<UpdateRoomConfigParams, z.ZodTypeDef, unknown> = z.object(
+        {
             roomConfig: z.string(),
-        })
-        .transform((v) => {
-            return {
-                roomConfig: v.roomConfig,
-            };
-        });
+        }
+    );
 
     export type Outbound = {
         roomConfig: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateRoomConfigParams> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateRoomConfigParams> =
+        z.object({
             roomConfig: z.string(),
-        })
-        .transform((v) => {
-            return {
-                roomConfig: v.roomConfig,
-            };
         });
 }

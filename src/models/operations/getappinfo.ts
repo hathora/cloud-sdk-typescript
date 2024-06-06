@@ -14,54 +14,30 @@ export type GetAppInfoRequest = {
 
 /** @internal */
 export namespace GetAppInfoGlobals$ {
-    export const inboundSchema: z.ZodType<GetAppInfoGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const inboundSchema: z.ZodType<GetAppInfoGlobals, z.ZodTypeDef, unknown> = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAppInfoGlobals> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAppInfoGlobals> = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
 export namespace GetAppInfoRequest$ {
-    export const inboundSchema: z.ZodType<GetAppInfoRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const inboundSchema: z.ZodType<GetAppInfoRequest, z.ZodTypeDef, unknown> = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAppInfoRequest> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAppInfoRequest> = z.object({
+        appId: z.string().optional(),
+    });
 }

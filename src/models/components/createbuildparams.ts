@@ -13,27 +13,15 @@ export type CreateBuildParams = {
 
 /** @internal */
 export namespace CreateBuildParams$ {
-    export const inboundSchema: z.ZodType<CreateBuildParams, z.ZodTypeDef, unknown> = z
-        .object({
-            buildTag: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.buildTag === undefined ? null : { buildTag: v.buildTag }),
-            };
-        });
+    export const inboundSchema: z.ZodType<CreateBuildParams, z.ZodTypeDef, unknown> = z.object({
+        buildTag: z.string().optional(),
+    });
 
     export type Outbound = {
         buildTag?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateBuildParams> = z
-        .object({
-            buildTag: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.buildTag === undefined ? null : { buildTag: v.buildTag }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateBuildParams> = z.object({
+        buildTag: z.string().optional(),
+    });
 }

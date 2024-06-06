@@ -23,30 +23,18 @@ export type OrgToken = {
 
 /** @internal */
 export namespace OrgToken$ {
-    export const inboundSchema: z.ZodType<OrgToken, z.ZodTypeDef, unknown> = z
-        .object({
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            createdBy: z.string(),
-            lastFourCharsOfKey: z.string(),
-            status: OrgTokenStatus$.inboundSchema,
-            name: z.string(),
-            orgId: z.string(),
-            orgTokenId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                createdAt: v.createdAt,
-                createdBy: v.createdBy,
-                lastFourCharsOfKey: v.lastFourCharsOfKey,
-                status: v.status,
-                name: v.name,
-                orgId: v.orgId,
-                orgTokenId: v.orgTokenId,
-            };
-        });
+    export const inboundSchema: z.ZodType<OrgToken, z.ZodTypeDef, unknown> = z.object({
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+        createdBy: z.string(),
+        lastFourCharsOfKey: z.string(),
+        status: OrgTokenStatus$.inboundSchema,
+        name: z.string(),
+        orgId: z.string(),
+        orgTokenId: z.string(),
+    });
 
     export type Outbound = {
         createdAt: string;
@@ -58,25 +46,13 @@ export namespace OrgToken$ {
         orgTokenId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OrgToken> = z
-        .object({
-            createdAt: z.date().transform((v) => v.toISOString()),
-            createdBy: z.string(),
-            lastFourCharsOfKey: z.string(),
-            status: OrgTokenStatus$.outboundSchema,
-            name: z.string(),
-            orgId: z.string(),
-            orgTokenId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                createdAt: v.createdAt,
-                createdBy: v.createdBy,
-                lastFourCharsOfKey: v.lastFourCharsOfKey,
-                status: v.status,
-                name: v.name,
-                orgId: v.orgId,
-                orgTokenId: v.orgTokenId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OrgToken> = z.object({
+        createdAt: z.date().transform((v) => v.toISOString()),
+        createdBy: z.string(),
+        lastFourCharsOfKey: z.string(),
+        status: OrgTokenStatus$.outboundSchema,
+        name: z.string(),
+        orgId: z.string(),
+        orgTokenId: z.string(),
+    });
 }

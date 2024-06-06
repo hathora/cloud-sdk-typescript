@@ -11,27 +11,15 @@ export type ListOrgTokens = {
 
 /** @internal */
 export namespace ListOrgTokens$ {
-    export const inboundSchema: z.ZodType<ListOrgTokens, z.ZodTypeDef, unknown> = z
-        .object({
-            tokens: z.array(OrgToken$.inboundSchema),
-        })
-        .transform((v) => {
-            return {
-                tokens: v.tokens,
-            };
-        });
+    export const inboundSchema: z.ZodType<ListOrgTokens, z.ZodTypeDef, unknown> = z.object({
+        tokens: z.array(OrgToken$.inboundSchema),
+    });
 
     export type Outbound = {
         tokens: Array<OrgToken$.Outbound>;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListOrgTokens> = z
-        .object({
-            tokens: z.array(OrgToken$.outboundSchema),
-        })
-        .transform((v) => {
-            return {
-                tokens: v.tokens,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListOrgTokens> = z.object({
+        tokens: z.array(OrgToken$.outboundSchema),
+    });
 }

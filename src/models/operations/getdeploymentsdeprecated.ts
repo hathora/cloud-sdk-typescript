@@ -15,15 +15,9 @@ export type GetDeploymentsDeprecatedRequest = {
 /** @internal */
 export namespace GetDeploymentsDeprecatedGlobals$ {
     export const inboundSchema: z.ZodType<GetDeploymentsDeprecatedGlobals, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                appId: z.string().optional(),
-            })
-            .transform((v) => {
-                return {
-                    ...(v.appId === undefined ? null : { appId: v.appId }),
-                };
-            });
+        z.object({
+            appId: z.string().optional(),
+        });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -33,29 +27,17 @@ export namespace GetDeploymentsDeprecatedGlobals$ {
         Outbound,
         z.ZodTypeDef,
         GetDeploymentsDeprecatedGlobals
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
 export namespace GetDeploymentsDeprecatedRequest$ {
     export const inboundSchema: z.ZodType<GetDeploymentsDeprecatedRequest, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                appId: z.string().optional(),
-            })
-            .transform((v) => {
-                return {
-                    ...(v.appId === undefined ? null : { appId: v.appId }),
-                };
-            });
+        z.object({
+            appId: z.string().optional(),
+        });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -65,13 +47,7 @@ export namespace GetDeploymentsDeprecatedRequest$ {
         Outbound,
         z.ZodTypeDef,
         GetDeploymentsDeprecatedRequest
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 }

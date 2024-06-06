@@ -15,43 +15,27 @@ export type DownloadLogForProcessRequest = {
 
 /** @internal */
 export namespace DownloadLogForProcessGlobals$ {
-    export const inboundSchema: z.ZodType<DownloadLogForProcessGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<DownloadLogForProcessGlobals, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DownloadLogForProcessGlobals> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DownloadLogForProcessGlobals> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 }
 
 /** @internal */
 export namespace DownloadLogForProcessRequest$ {
-    export const inboundSchema: z.ZodType<DownloadLogForProcessRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<DownloadLogForProcessRequest, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
             processId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                processId: v.processId,
-            };
         });
 
     export type Outbound = {
@@ -59,15 +43,9 @@ export namespace DownloadLogForProcessRequest$ {
         processId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DownloadLogForProcessRequest> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DownloadLogForProcessRequest> =
+        z.object({
             appId: z.string().optional(),
             processId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                processId: v.processId,
-            };
         });
 }

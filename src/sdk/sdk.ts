@@ -6,26 +6,26 @@ import { SDKHooks } from "../hooks";
 import { SDKOptions, serverURLFromOptions } from "../lib/config";
 import { HTTPClient } from "../lib/http";
 import { ClientSDK } from "../lib/sdks";
-import { AppV1 } from "./appv1";
+import { AppsV1 } from "./appsv1";
 import { AuthV1 } from "./authv1";
 import { BillingV1 } from "./billingv1";
-import { BuildV1 } from "./buildv1";
-import { BuildV2 } from "./buildv2";
-import { DeploymentV1 } from "./deploymentv1";
-import { DeploymentV2 } from "./deploymentv2";
+import { BuildsV1 } from "./buildsv1";
+import { BuildsV2 } from "./buildsv2";
+import { DeploymentsV1 } from "./deploymentsv1";
+import { DeploymentsV2 } from "./deploymentsv2";
 import { DiscoveryV1 } from "./discoveryv1";
 import { DiscoveryV2 } from "./discoveryv2";
-import { LobbyV1 } from "./lobbyv1";
-import { LobbyV2 } from "./lobbyv2";
-import { LobbyV3 } from "./lobbyv3";
-import { LogV1 } from "./logv1";
+import { LobbiesV1 } from "./lobbiesv1";
+import { LobbiesV2 } from "./lobbiesv2";
+import { LobbiesV3 } from "./lobbiesv3";
+import { LogsV1 } from "./logsv1";
 import { ManagementV1 } from "./managementv1";
 import { MetricsV1 } from "./metricsv1";
 import { OrganizationsV1 } from "./organizationsv1";
 import { ProcessesV1 } from "./processesv1";
 import { ProcessesV2 } from "./processesv2";
-import { RoomV1 } from "./roomv1";
-import { RoomV2 } from "./roomv2";
+import { RoomsV1 } from "./roomsv1";
+import { RoomsV2 } from "./roomsv2";
 import { TokensV1 } from "./tokensv1";
 
 export class HathoraCloud extends ClientSDK {
@@ -55,9 +55,9 @@ export class HathoraCloud extends ClientSDK {
         void this.options$;
     }
 
-    private _appV1?: AppV1;
-    get appV1(): AppV1 {
-        return (this._appV1 ??= new AppV1(this.options$));
+    private _appsV1?: AppsV1;
+    get appsV1(): AppsV1 {
+        return (this._appsV1 ??= new AppsV1(this.options$));
     }
 
     private _authV1?: AuthV1;
@@ -70,24 +70,24 @@ export class HathoraCloud extends ClientSDK {
         return (this._billingV1 ??= new BillingV1(this.options$));
     }
 
-    private _buildV1?: BuildV1;
-    get buildV1(): BuildV1 {
-        return (this._buildV1 ??= new BuildV1(this.options$));
+    private _buildsV1?: BuildsV1;
+    get buildsV1(): BuildsV1 {
+        return (this._buildsV1 ??= new BuildsV1(this.options$));
     }
 
-    private _buildV2?: BuildV2;
-    get buildV2(): BuildV2 {
-        return (this._buildV2 ??= new BuildV2(this.options$));
+    private _buildsV2?: BuildsV2;
+    get buildsV2(): BuildsV2 {
+        return (this._buildsV2 ??= new BuildsV2(this.options$));
     }
 
-    private _deploymentV1?: DeploymentV1;
-    get deploymentV1(): DeploymentV1 {
-        return (this._deploymentV1 ??= new DeploymentV1(this.options$));
+    private _deploymentsV1?: DeploymentsV1;
+    get deploymentsV1(): DeploymentsV1 {
+        return (this._deploymentsV1 ??= new DeploymentsV1(this.options$));
     }
 
-    private _deploymentV2?: DeploymentV2;
-    get deploymentV2(): DeploymentV2 {
-        return (this._deploymentV2 ??= new DeploymentV2(this.options$));
+    private _deploymentsV2?: DeploymentsV2;
+    get deploymentsV2(): DeploymentsV2 {
+        return (this._deploymentsV2 ??= new DeploymentsV2(this.options$));
     }
 
     private _discoveryV1?: DiscoveryV1;
@@ -100,24 +100,24 @@ export class HathoraCloud extends ClientSDK {
         return (this._discoveryV2 ??= new DiscoveryV2(this.options$));
     }
 
-    private _lobbyV1?: LobbyV1;
-    get lobbyV1(): LobbyV1 {
-        return (this._lobbyV1 ??= new LobbyV1(this.options$));
+    private _lobbiesV1?: LobbiesV1;
+    get lobbiesV1(): LobbiesV1 {
+        return (this._lobbiesV1 ??= new LobbiesV1(this.options$));
     }
 
-    private _lobbyV2?: LobbyV2;
-    get lobbyV2(): LobbyV2 {
-        return (this._lobbyV2 ??= new LobbyV2(this.options$));
+    private _lobbiesV2?: LobbiesV2;
+    get lobbiesV2(): LobbiesV2 {
+        return (this._lobbiesV2 ??= new LobbiesV2(this.options$));
     }
 
-    private _lobbyV3?: LobbyV3;
-    get lobbyV3(): LobbyV3 {
-        return (this._lobbyV3 ??= new LobbyV3(this.options$));
+    private _lobbiesV3?: LobbiesV3;
+    get lobbiesV3(): LobbiesV3 {
+        return (this._lobbiesV3 ??= new LobbiesV3(this.options$));
     }
 
-    private _logV1?: LogV1;
-    get logV1(): LogV1 {
-        return (this._logV1 ??= new LogV1(this.options$));
+    private _logsV1?: LogsV1;
+    get logsV1(): LogsV1 {
+        return (this._logsV1 ??= new LogsV1(this.options$));
     }
 
     private _managementV1?: ManagementV1;
@@ -145,14 +145,14 @@ export class HathoraCloud extends ClientSDK {
         return (this._processesV2 ??= new ProcessesV2(this.options$));
     }
 
-    private _roomV1?: RoomV1;
-    get roomV1(): RoomV1 {
-        return (this._roomV1 ??= new RoomV1(this.options$));
+    private _roomsV1?: RoomsV1;
+    get roomsV1(): RoomsV1 {
+        return (this._roomsV1 ??= new RoomsV1(this.options$));
     }
 
-    private _roomV2?: RoomV2;
-    get roomV2(): RoomV2 {
-        return (this._roomV2 ??= new RoomV2(this.options$));
+    private _roomsV2?: RoomsV2;
+    get roomsV2(): RoomsV2 {
+        return (this._roomsV2 ??= new RoomsV2(this.options$));
     }
 
     private _tokensV1?: TokensV1;

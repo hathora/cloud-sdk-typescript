@@ -32,9 +32,7 @@ export namespace ApiError$ {
             message: z.string(),
         })
         .transform((v) => {
-            return new ApiError({
-                message: v.message,
-            });
+            return new ApiError(v);
         });
 
     export type Outbound = {
@@ -45,14 +43,8 @@ export namespace ApiError$ {
         .instanceof(ApiError)
         .transform((v) => v.data$)
         .pipe(
-            z
-                .object({
-                    message: z.string(),
-                })
-                .transform((v) => {
-                    return {
-                        message: v.message,
-                    };
-                })
+            z.object({
+                message: z.string(),
+            })
         );
 }

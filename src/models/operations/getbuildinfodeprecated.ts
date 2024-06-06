@@ -15,14 +15,9 @@ export type GetBuildInfoDeprecatedRequest = {
 
 /** @internal */
 export namespace GetBuildInfoDeprecatedGlobals$ {
-    export const inboundSchema: z.ZodType<GetBuildInfoDeprecatedGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetBuildInfoDeprecatedGlobals, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 
     export type Outbound = {
@@ -30,29 +25,17 @@ export namespace GetBuildInfoDeprecatedGlobals$ {
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBuildInfoDeprecatedGlobals> =
-        z
-            .object({
-                appId: z.string().optional(),
-            })
-            .transform((v) => {
-                return {
-                    ...(v.appId === undefined ? null : { appId: v.appId }),
-                };
-            });
+        z.object({
+            appId: z.string().optional(),
+        });
 }
 
 /** @internal */
 export namespace GetBuildInfoDeprecatedRequest$ {
-    export const inboundSchema: z.ZodType<GetBuildInfoDeprecatedRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetBuildInfoDeprecatedRequest, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
             buildId: z.number().int(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                buildId: v.buildId,
-            };
         });
 
     export type Outbound = {
@@ -61,15 +44,8 @@ export namespace GetBuildInfoDeprecatedRequest$ {
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBuildInfoDeprecatedRequest> =
-        z
-            .object({
-                appId: z.string().optional(),
-                buildId: z.number().int(),
-            })
-            .transform((v) => {
-                return {
-                    ...(v.appId === undefined ? null : { appId: v.appId }),
-                    buildId: v.buildId,
-                };
-            });
+        z.object({
+            appId: z.string().optional(),
+            buildId: z.number().int(),
+        });
 }

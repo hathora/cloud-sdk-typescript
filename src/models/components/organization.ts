@@ -15,19 +15,11 @@ export type Organization = {
 
 /** @internal */
 export namespace Organization$ {
-    export const inboundSchema: z.ZodType<Organization, z.ZodTypeDef, unknown> = z
-        .object({
-            isSingleTenant: z.boolean(),
-            stripeCustomerId: z.string(),
-            orgId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                isSingleTenant: v.isSingleTenant,
-                stripeCustomerId: v.stripeCustomerId,
-                orgId: v.orgId,
-            };
-        });
+    export const inboundSchema: z.ZodType<Organization, z.ZodTypeDef, unknown> = z.object({
+        isSingleTenant: z.boolean(),
+        stripeCustomerId: z.string(),
+        orgId: z.string(),
+    });
 
     export type Outbound = {
         isSingleTenant: boolean;
@@ -35,17 +27,9 @@ export namespace Organization$ {
         orgId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Organization> = z
-        .object({
-            isSingleTenant: z.boolean(),
-            stripeCustomerId: z.string(),
-            orgId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                isSingleTenant: v.isSingleTenant,
-                stripeCustomerId: v.stripeCustomerId,
-                orgId: v.orgId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Organization> = z.object({
+        isSingleTenant: z.boolean(),
+        stripeCustomerId: z.string(),
+        orgId: z.string(),
+    });
 }

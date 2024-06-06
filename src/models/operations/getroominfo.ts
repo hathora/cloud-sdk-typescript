@@ -15,59 +15,33 @@ export type GetRoomInfoRequest = {
 
 /** @internal */
 export namespace GetRoomInfoGlobals$ {
-    export const inboundSchema: z.ZodType<GetRoomInfoGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const inboundSchema: z.ZodType<GetRoomInfoGlobals, z.ZodTypeDef, unknown> = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetRoomInfoGlobals> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetRoomInfoGlobals> = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
 export namespace GetRoomInfoRequest$ {
-    export const inboundSchema: z.ZodType<GetRoomInfoRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-            roomId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                roomId: v.roomId,
-            };
-        });
+    export const inboundSchema: z.ZodType<GetRoomInfoRequest, z.ZodTypeDef, unknown> = z.object({
+        appId: z.string().optional(),
+        roomId: z.string(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
         roomId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetRoomInfoRequest> = z
-        .object({
-            appId: z.string().optional(),
-            roomId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                roomId: v.roomId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetRoomInfoRequest> = z.object({
+        appId: z.string().optional(),
+        roomId: z.string(),
+    });
 }

@@ -61,61 +61,33 @@ export type DeploymentConfig = {
 
 /** @internal */
 export namespace DeploymentConfigEnv$ {
-    export const inboundSchema: z.ZodType<DeploymentConfigEnv, z.ZodTypeDef, unknown> = z
-        .object({
-            value: z.string(),
-            name: z.string(),
-        })
-        .transform((v) => {
-            return {
-                value: v.value,
-                name: v.name,
-            };
-        });
+    export const inboundSchema: z.ZodType<DeploymentConfigEnv, z.ZodTypeDef, unknown> = z.object({
+        value: z.string(),
+        name: z.string(),
+    });
 
     export type Outbound = {
         value: string;
         name: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeploymentConfigEnv> = z
-        .object({
-            value: z.string(),
-            name: z.string(),
-        })
-        .transform((v) => {
-            return {
-                value: v.value,
-                name: v.name,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeploymentConfigEnv> = z.object({
+        value: z.string(),
+        name: z.string(),
+    });
 }
 
 /** @internal */
 export namespace DeploymentConfig$ {
-    export const inboundSchema: z.ZodType<DeploymentConfig, z.ZodTypeDef, unknown> = z
-        .object({
-            idleTimeoutEnabled: z.boolean().default(true),
-            env: z.array(z.lazy(() => DeploymentConfigEnv$.inboundSchema)),
-            roomsPerProcess: z.number().int(),
-            planName: PlanName$.inboundSchema,
-            additionalContainerPorts: z.array(ContainerPort$.inboundSchema).optional(),
-            transportType: TransportType$.inboundSchema,
-            containerPort: z.number().int(),
-        })
-        .transform((v) => {
-            return {
-                idleTimeoutEnabled: v.idleTimeoutEnabled,
-                env: v.env,
-                roomsPerProcess: v.roomsPerProcess,
-                planName: v.planName,
-                ...(v.additionalContainerPorts === undefined
-                    ? null
-                    : { additionalContainerPorts: v.additionalContainerPorts }),
-                transportType: v.transportType,
-                containerPort: v.containerPort,
-            };
-        });
+    export const inboundSchema: z.ZodType<DeploymentConfig, z.ZodTypeDef, unknown> = z.object({
+        idleTimeoutEnabled: z.boolean().default(true),
+        env: z.array(z.lazy(() => DeploymentConfigEnv$.inboundSchema)),
+        roomsPerProcess: z.number().int(),
+        planName: PlanName$.inboundSchema,
+        additionalContainerPorts: z.array(ContainerPort$.inboundSchema).optional(),
+        transportType: TransportType$.inboundSchema,
+        containerPort: z.number().int(),
+    });
 
     export type Outbound = {
         idleTimeoutEnabled: boolean;
@@ -127,27 +99,13 @@ export namespace DeploymentConfig$ {
         containerPort: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeploymentConfig> = z
-        .object({
-            idleTimeoutEnabled: z.boolean().default(true),
-            env: z.array(z.lazy(() => DeploymentConfigEnv$.outboundSchema)),
-            roomsPerProcess: z.number().int(),
-            planName: PlanName$.outboundSchema,
-            additionalContainerPorts: z.array(ContainerPort$.outboundSchema).optional(),
-            transportType: TransportType$.outboundSchema,
-            containerPort: z.number().int(),
-        })
-        .transform((v) => {
-            return {
-                idleTimeoutEnabled: v.idleTimeoutEnabled,
-                env: v.env,
-                roomsPerProcess: v.roomsPerProcess,
-                planName: v.planName,
-                ...(v.additionalContainerPorts === undefined
-                    ? null
-                    : { additionalContainerPorts: v.additionalContainerPorts }),
-                transportType: v.transportType,
-                containerPort: v.containerPort,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeploymentConfig> = z.object({
+        idleTimeoutEnabled: z.boolean().default(true),
+        env: z.array(z.lazy(() => DeploymentConfigEnv$.outboundSchema)),
+        roomsPerProcess: z.number().int(),
+        planName: PlanName$.outboundSchema,
+        additionalContainerPorts: z.array(ContainerPort$.outboundSchema).optional(),
+        transportType: TransportType$.outboundSchema,
+        containerPort: z.number().int(),
+    });
 }

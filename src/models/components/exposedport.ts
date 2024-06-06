@@ -20,21 +20,12 @@ export type ExposedPort = {
 
 /** @internal */
 export namespace ExposedPort$ {
-    export const inboundSchema: z.ZodType<ExposedPort, z.ZodTypeDef, unknown> = z
-        .object({
-            transportType: TransportType$.inboundSchema,
-            port: z.number().int(),
-            host: z.string(),
-            name: z.string(),
-        })
-        .transform((v) => {
-            return {
-                transportType: v.transportType,
-                port: v.port,
-                host: v.host,
-                name: v.name,
-            };
-        });
+    export const inboundSchema: z.ZodType<ExposedPort, z.ZodTypeDef, unknown> = z.object({
+        transportType: TransportType$.inboundSchema,
+        port: z.number().int(),
+        host: z.string(),
+        name: z.string(),
+    });
 
     export type Outbound = {
         transportType: string;
@@ -43,19 +34,10 @@ export namespace ExposedPort$ {
         name: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ExposedPort> = z
-        .object({
-            transportType: TransportType$.outboundSchema,
-            port: z.number().int(),
-            host: z.string(),
-            name: z.string(),
-        })
-        .transform((v) => {
-            return {
-                transportType: v.transportType,
-                port: v.port,
-                host: v.host,
-                name: v.name,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ExposedPort> = z.object({
+        transportType: TransportType$.outboundSchema,
+        port: z.number().int(),
+        host: z.string(),
+        name: z.string(),
+    });
 }

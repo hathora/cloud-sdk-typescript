@@ -29,52 +29,29 @@ export type GetMetricsRequest = {
 
 /** @internal */
 export namespace GetMetricsGlobals$ {
-    export const inboundSchema: z.ZodType<GetMetricsGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const inboundSchema: z.ZodType<GetMetricsGlobals, z.ZodTypeDef, unknown> = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetricsGlobals> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetricsGlobals> = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
 export namespace GetMetricsRequest$ {
-    export const inboundSchema: z.ZodType<GetMetricsRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-            processId: z.string(),
-            metrics: z.array(components.MetricName$.inboundSchema).optional(),
-            end: z.number().optional(),
-            start: z.number().optional(),
-            step: z.number().int().default(60),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                processId: v.processId,
-                ...(v.metrics === undefined ? null : { metrics: v.metrics }),
-                ...(v.end === undefined ? null : { end: v.end }),
-                ...(v.start === undefined ? null : { start: v.start }),
-                step: v.step,
-            };
-        });
+    export const inboundSchema: z.ZodType<GetMetricsRequest, z.ZodTypeDef, unknown> = z.object({
+        appId: z.string().optional(),
+        processId: z.string(),
+        metrics: z.array(components.MetricName$.inboundSchema).optional(),
+        end: z.number().optional(),
+        start: z.number().optional(),
+        step: z.number().int().default(60),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -85,23 +62,12 @@ export namespace GetMetricsRequest$ {
         step: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetricsRequest> = z
-        .object({
-            appId: z.string().optional(),
-            processId: z.string(),
-            metrics: z.array(components.MetricName$.outboundSchema).optional(),
-            end: z.number().optional(),
-            start: z.number().optional(),
-            step: z.number().int().default(60),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                processId: v.processId,
-                ...(v.metrics === undefined ? null : { metrics: v.metrics }),
-                ...(v.end === undefined ? null : { end: v.end }),
-                ...(v.start === undefined ? null : { start: v.start }),
-                step: v.step,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetricsRequest> = z.object({
+        appId: z.string().optional(),
+        processId: z.string(),
+        metrics: z.array(components.MetricName$.outboundSchema).optional(),
+        end: z.number().optional(),
+        start: z.number().optional(),
+        step: z.number().int().default(60),
+    });
 }

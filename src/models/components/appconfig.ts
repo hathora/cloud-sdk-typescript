@@ -18,32 +18,18 @@ export type AppConfig = {
 
 /** @internal */
 export namespace AppConfig$ {
-    export const inboundSchema: z.ZodType<AppConfig, z.ZodTypeDef, unknown> = z
-        .object({
-            authConfiguration: AuthConfiguration$.inboundSchema,
-            appName: z.string(),
-        })
-        .transform((v) => {
-            return {
-                authConfiguration: v.authConfiguration,
-                appName: v.appName,
-            };
-        });
+    export const inboundSchema: z.ZodType<AppConfig, z.ZodTypeDef, unknown> = z.object({
+        authConfiguration: AuthConfiguration$.inboundSchema,
+        appName: z.string(),
+    });
 
     export type Outbound = {
         authConfiguration: AuthConfiguration$.Outbound;
         appName: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AppConfig> = z
-        .object({
-            authConfiguration: AuthConfiguration$.outboundSchema,
-            appName: z.string(),
-        })
-        .transform((v) => {
-            return {
-                authConfiguration: v.authConfiguration,
-                appName: v.appName,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AppConfig> = z.object({
+        authConfiguration: AuthConfiguration$.outboundSchema,
+        appName: z.string(),
+    });
 }

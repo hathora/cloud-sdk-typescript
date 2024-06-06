@@ -18,19 +18,11 @@ export type PaymentMethod = {
 
 /** @internal */
 export namespace PaymentMethod$ {
-    export const inboundSchema: z.ZodType<PaymentMethod, z.ZodTypeDef, unknown> = z
-        .object({
-            card: CardPaymentMethod$.inboundSchema.optional(),
-            ach: AchPaymentMethod$.inboundSchema.optional(),
-            link: LinkPaymentMethod$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.card === undefined ? null : { card: v.card }),
-                ...(v.ach === undefined ? null : { ach: v.ach }),
-                ...(v.link === undefined ? null : { link: v.link }),
-            };
-        });
+    export const inboundSchema: z.ZodType<PaymentMethod, z.ZodTypeDef, unknown> = z.object({
+        card: CardPaymentMethod$.inboundSchema.optional(),
+        ach: AchPaymentMethod$.inboundSchema.optional(),
+        link: LinkPaymentMethod$.inboundSchema.optional(),
+    });
 
     export type Outbound = {
         card?: CardPaymentMethod$.Outbound | undefined;
@@ -38,17 +30,9 @@ export namespace PaymentMethod$ {
         link?: LinkPaymentMethod$.Outbound | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PaymentMethod> = z
-        .object({
-            card: CardPaymentMethod$.outboundSchema.optional(),
-            ach: AchPaymentMethod$.outboundSchema.optional(),
-            link: LinkPaymentMethod$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.card === undefined ? null : { card: v.card }),
-                ...(v.ach === undefined ? null : { ach: v.ach }),
-                ...(v.link === undefined ? null : { link: v.link }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PaymentMethod> = z.object({
+        card: CardPaymentMethod$.outboundSchema.optional(),
+        ach: AchPaymentMethod$.outboundSchema.optional(),
+        link: LinkPaymentMethod$.outboundSchema.optional(),
+    });
 }

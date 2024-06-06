@@ -13,27 +13,15 @@ export type PlayerTokenObject = {
 
 /** @internal */
 export namespace PlayerTokenObject$ {
-    export const inboundSchema: z.ZodType<PlayerTokenObject, z.ZodTypeDef, unknown> = z
-        .object({
-            token: z.string(),
-        })
-        .transform((v) => {
-            return {
-                token: v.token,
-            };
-        });
+    export const inboundSchema: z.ZodType<PlayerTokenObject, z.ZodTypeDef, unknown> = z.object({
+        token: z.string(),
+    });
 
     export type Outbound = {
         token: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PlayerTokenObject> = z
-        .object({
-            token: z.string(),
-        })
-        .transform((v) => {
-            return {
-                token: v.token,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PlayerTokenObject> = z.object({
+        token: z.string(),
+    });
 }

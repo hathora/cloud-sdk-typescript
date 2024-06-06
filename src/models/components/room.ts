@@ -56,29 +56,20 @@ export type Room = {
 
 /** @internal */
 export namespace RoomCurrentAllocation$ {
-    export const inboundSchema: z.ZodType<RoomCurrentAllocation, z.ZodTypeDef, unknown> = z
-        .object({
-            unscheduledAt: z.nullable(
-                z
-                    .string()
-                    .datetime({ offset: true })
-                    .transform((v) => new Date(v))
-            ),
-            scheduledAt: z
+    export const inboundSchema: z.ZodType<RoomCurrentAllocation, z.ZodTypeDef, unknown> = z.object({
+        unscheduledAt: z.nullable(
+            z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            processId: z.string(),
-            roomAllocationId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                unscheduledAt: v.unscheduledAt,
-                scheduledAt: v.scheduledAt,
-                processId: v.processId,
-                roomAllocationId: v.roomAllocationId,
-            };
-        });
+                .transform((v) => new Date(v))
+        ),
+        scheduledAt: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+        processId: z.string(),
+        roomAllocationId: z.string(),
+    });
 
     export type Outbound = {
         unscheduledAt: string | null;
@@ -87,44 +78,25 @@ export namespace RoomCurrentAllocation$ {
         roomAllocationId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RoomCurrentAllocation> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RoomCurrentAllocation> =
+        z.object({
             unscheduledAt: z.nullable(z.date().transform((v) => v.toISOString())),
             scheduledAt: z.date().transform((v) => v.toISOString()),
             processId: z.string(),
             roomAllocationId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                unscheduledAt: v.unscheduledAt,
-                scheduledAt: v.scheduledAt,
-                processId: v.processId,
-                roomAllocationId: v.roomAllocationId,
-            };
         });
 }
 
 /** @internal */
 export namespace Room$ {
-    export const inboundSchema: z.ZodType<Room, z.ZodTypeDef, unknown> = z
-        .object({
-            currentAllocation: z.nullable(z.lazy(() => RoomCurrentAllocation$.inboundSchema)),
-            status: RoomStatus$.inboundSchema,
-            allocations: z.array(RoomAllocation$.inboundSchema),
-            roomConfig: z.nullable(z.string()),
-            roomId: z.string(),
-            appId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                currentAllocation: v.currentAllocation,
-                status: v.status,
-                allocations: v.allocations,
-                roomConfig: v.roomConfig,
-                roomId: v.roomId,
-                appId: v.appId,
-            };
-        });
+    export const inboundSchema: z.ZodType<Room, z.ZodTypeDef, unknown> = z.object({
+        currentAllocation: z.nullable(z.lazy(() => RoomCurrentAllocation$.inboundSchema)),
+        status: RoomStatus$.inboundSchema,
+        allocations: z.array(RoomAllocation$.inboundSchema),
+        roomConfig: z.nullable(z.string()),
+        roomId: z.string(),
+        appId: z.string(),
+    });
 
     export type Outbound = {
         currentAllocation: RoomCurrentAllocation$.Outbound | null;
@@ -135,23 +107,12 @@ export namespace Room$ {
         appId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Room> = z
-        .object({
-            currentAllocation: z.nullable(z.lazy(() => RoomCurrentAllocation$.outboundSchema)),
-            status: RoomStatus$.outboundSchema,
-            allocations: z.array(RoomAllocation$.outboundSchema),
-            roomConfig: z.nullable(z.string()),
-            roomId: z.string(),
-            appId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                currentAllocation: v.currentAllocation,
-                status: v.status,
-                allocations: v.allocations,
-                roomConfig: v.roomConfig,
-                roomId: v.roomId,
-                appId: v.appId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Room> = z.object({
+        currentAllocation: z.nullable(z.lazy(() => RoomCurrentAllocation$.outboundSchema)),
+        status: RoomStatus$.outboundSchema,
+        allocations: z.array(RoomAllocation$.outboundSchema),
+        roomConfig: z.nullable(z.string()),
+        roomId: z.string(),
+        appId: z.string(),
+    });
 }

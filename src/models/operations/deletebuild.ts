@@ -15,59 +15,33 @@ export type DeleteBuildRequest = {
 
 /** @internal */
 export namespace DeleteBuildGlobals$ {
-    export const inboundSchema: z.ZodType<DeleteBuildGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const inboundSchema: z.ZodType<DeleteBuildGlobals, z.ZodTypeDef, unknown> = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteBuildGlobals> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteBuildGlobals> = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
 export namespace DeleteBuildRequest$ {
-    export const inboundSchema: z.ZodType<DeleteBuildRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-            buildId: z.number().int(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                buildId: v.buildId,
-            };
-        });
+    export const inboundSchema: z.ZodType<DeleteBuildRequest, z.ZodTypeDef, unknown> = z.object({
+        appId: z.string().optional(),
+        buildId: z.number().int(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
         buildId: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteBuildRequest> = z
-        .object({
-            appId: z.string().optional(),
-            buildId: z.number().int(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                buildId: v.buildId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteBuildRequest> = z.object({
+        appId: z.string().optional(),
+        buildId: z.number().int(),
+    });
 }

@@ -25,15 +25,9 @@ export namespace CreatePrivateLobbyDeprecatedGlobals$ {
         CreatePrivateLobbyDeprecatedGlobals,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -43,15 +37,9 @@ export namespace CreatePrivateLobbyDeprecatedGlobals$ {
         Outbound,
         z.ZodTypeDef,
         CreatePrivateLobbyDeprecatedGlobals
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
@@ -60,15 +48,9 @@ export namespace CreatePrivateLobbyDeprecatedSecurity$ {
         CreatePrivateLobbyDeprecatedSecurity,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            playerAuth: z.string(),
-        })
-        .transform((v) => {
-            return {
-                playerAuth: v.playerAuth,
-            };
-        });
+    > = z.object({
+        playerAuth: z.string(),
+    });
 
     export type Outbound = {
         playerAuth: string;
@@ -78,15 +60,9 @@ export namespace CreatePrivateLobbyDeprecatedSecurity$ {
         Outbound,
         z.ZodTypeDef,
         CreatePrivateLobbyDeprecatedSecurity
-    > = z
-        .object({
-            playerAuth: z.string(),
-        })
-        .transform((v) => {
-            return {
-                playerAuth: v.playerAuth,
-            };
-        });
+    > = z.object({
+        playerAuth: z.string(),
+    });
 }
 
 /** @internal */
@@ -95,19 +71,11 @@ export namespace CreatePrivateLobbyDeprecatedRequest$ {
         CreatePrivateLobbyDeprecatedRequest,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-            region: components.Region$.inboundSchema.optional(),
-            local: z.boolean().default(false),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                ...(v.region === undefined ? null : { region: v.region }),
-                local: v.local,
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+        region: components.Region$.inboundSchema.optional(),
+        local: z.boolean().default(false),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -119,17 +87,9 @@ export namespace CreatePrivateLobbyDeprecatedRequest$ {
         Outbound,
         z.ZodTypeDef,
         CreatePrivateLobbyDeprecatedRequest
-    > = z
-        .object({
-            appId: z.string().optional(),
-            region: components.Region$.outboundSchema.optional(),
-            local: z.boolean().default(false),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                ...(v.region === undefined ? null : { region: v.region }),
-                local: v.local,
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+        region: components.Region$.outboundSchema.optional(),
+        local: z.boolean().default(false),
+    });
 }

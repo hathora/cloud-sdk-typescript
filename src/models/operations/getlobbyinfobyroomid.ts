@@ -15,43 +15,27 @@ export type GetLobbyInfoByRoomIdRequest = {
 
 /** @internal */
 export namespace GetLobbyInfoByRoomIdGlobals$ {
-    export const inboundSchema: z.ZodType<GetLobbyInfoByRoomIdGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetLobbyInfoByRoomIdGlobals, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLobbyInfoByRoomIdGlobals> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLobbyInfoByRoomIdGlobals> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 }
 
 /** @internal */
 export namespace GetLobbyInfoByRoomIdRequest$ {
-    export const inboundSchema: z.ZodType<GetLobbyInfoByRoomIdRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetLobbyInfoByRoomIdRequest, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
             roomId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                roomId: v.roomId,
-            };
         });
 
     export type Outbound = {
@@ -59,15 +43,9 @@ export namespace GetLobbyInfoByRoomIdRequest$ {
         roomId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLobbyInfoByRoomIdRequest> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLobbyInfoByRoomIdRequest> =
+        z.object({
             appId: z.string().optional(),
             roomId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                roomId: v.roomId,
-            };
         });
 }

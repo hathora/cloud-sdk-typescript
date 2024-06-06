@@ -15,14 +15,9 @@ export type GetLobbyInfoByShortCodeRequest = {
 
 /** @internal */
 export namespace GetLobbyInfoByShortCodeGlobals$ {
-    export const inboundSchema: z.ZodType<GetLobbyInfoByShortCodeGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetLobbyInfoByShortCodeGlobals, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 
     export type Outbound = {
@@ -30,29 +25,17 @@ export namespace GetLobbyInfoByShortCodeGlobals$ {
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLobbyInfoByShortCodeGlobals> =
-        z
-            .object({
-                appId: z.string().optional(),
-            })
-            .transform((v) => {
-                return {
-                    ...(v.appId === undefined ? null : { appId: v.appId }),
-                };
-            });
+        z.object({
+            appId: z.string().optional(),
+        });
 }
 
 /** @internal */
 export namespace GetLobbyInfoByShortCodeRequest$ {
-    export const inboundSchema: z.ZodType<GetLobbyInfoByShortCodeRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetLobbyInfoByShortCodeRequest, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
             shortCode: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                shortCode: v.shortCode,
-            };
         });
 
     export type Outbound = {
@@ -61,15 +44,8 @@ export namespace GetLobbyInfoByShortCodeRequest$ {
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLobbyInfoByShortCodeRequest> =
-        z
-            .object({
-                appId: z.string().optional(),
-                shortCode: z.string(),
-            })
-            .transform((v) => {
-                return {
-                    ...(v.appId === undefined ? null : { appId: v.appId }),
-                    shortCode: v.shortCode,
-                };
-            });
+        z.object({
+            appId: z.string().optional(),
+            shortCode: z.string(),
+        });
 }

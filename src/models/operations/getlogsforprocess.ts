@@ -17,47 +17,29 @@ export type GetLogsForProcessRequest = {
 
 /** @internal */
 export namespace GetLogsForProcessGlobals$ {
-    export const inboundSchema: z.ZodType<GetLogsForProcessGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetLogsForProcessGlobals, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLogsForProcessGlobals> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLogsForProcessGlobals> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 }
 
 /** @internal */
 export namespace GetLogsForProcessRequest$ {
-    export const inboundSchema: z.ZodType<GetLogsForProcessRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetLogsForProcessRequest, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
             processId: z.string(),
             follow: z.boolean().default(false),
             tailLines: z.number().int().default(100),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                processId: v.processId,
-                follow: v.follow,
-                tailLines: v.tailLines,
-            };
         });
 
     export type Outbound = {
@@ -67,19 +49,11 @@ export namespace GetLogsForProcessRequest$ {
         tailLines: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLogsForProcessRequest> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLogsForProcessRequest> =
+        z.object({
             appId: z.string().optional(),
             processId: z.string(),
             follow: z.boolean().default(false),
             tailLines: z.number().int().default(100),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                processId: v.processId,
-                follow: v.follow,
-                tailLines: v.tailLines,
-            };
         });
 }

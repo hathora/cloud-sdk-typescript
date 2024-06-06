@@ -15,43 +15,27 @@ export type DeleteBuildDeprecatedRequest = {
 
 /** @internal */
 export namespace DeleteBuildDeprecatedGlobals$ {
-    export const inboundSchema: z.ZodType<DeleteBuildDeprecatedGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<DeleteBuildDeprecatedGlobals, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteBuildDeprecatedGlobals> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteBuildDeprecatedGlobals> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 }
 
 /** @internal */
 export namespace DeleteBuildDeprecatedRequest$ {
-    export const inboundSchema: z.ZodType<DeleteBuildDeprecatedRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<DeleteBuildDeprecatedRequest, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
             buildId: z.number().int(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                buildId: v.buildId,
-            };
         });
 
     export type Outbound = {
@@ -59,15 +43,9 @@ export namespace DeleteBuildDeprecatedRequest$ {
         buildId: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteBuildDeprecatedRequest> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteBuildDeprecatedRequest> =
+        z.object({
             appId: z.string().optional(),
             buildId: z.number().int(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                buildId: v.buildId,
-            };
         });
 }
