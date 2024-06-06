@@ -10,27 +10,17 @@ export type VerificationEmailRequest = {
 
 /** @internal */
 export namespace VerificationEmailRequest$ {
-    export const inboundSchema: z.ZodType<VerificationEmailRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<VerificationEmailRequest, z.ZodTypeDef, unknown> =
+        z.object({
             userId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                userId: v.userId,
-            };
         });
 
     export type Outbound = {
         userId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, VerificationEmailRequest> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, VerificationEmailRequest> =
+        z.object({
             userId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                userId: v.userId,
-            };
         });
 }

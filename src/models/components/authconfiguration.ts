@@ -35,46 +35,26 @@ export type AuthConfiguration = {
 
 /** @internal */
 export namespace Google$ {
-    export const inboundSchema: z.ZodType<Google, z.ZodTypeDef, unknown> = z
-        .object({
-            clientId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                clientId: v.clientId,
-            };
-        });
+    export const inboundSchema: z.ZodType<Google, z.ZodTypeDef, unknown> = z.object({
+        clientId: z.string(),
+    });
 
     export type Outbound = {
         clientId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Google> = z
-        .object({
-            clientId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                clientId: v.clientId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Google> = z.object({
+        clientId: z.string(),
+    });
 }
 
 /** @internal */
 export namespace AuthConfiguration$ {
-    export const inboundSchema: z.ZodType<AuthConfiguration, z.ZodTypeDef, unknown> = z
-        .object({
-            google: z.lazy(() => Google$.inboundSchema).optional(),
-            nickname: RecordStringNever$.inboundSchema.optional(),
-            anonymous: RecordStringNever$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.google === undefined ? null : { google: v.google }),
-                ...(v.nickname === undefined ? null : { nickname: v.nickname }),
-                ...(v.anonymous === undefined ? null : { anonymous: v.anonymous }),
-            };
-        });
+    export const inboundSchema: z.ZodType<AuthConfiguration, z.ZodTypeDef, unknown> = z.object({
+        google: z.lazy(() => Google$.inboundSchema).optional(),
+        nickname: RecordStringNever$.inboundSchema.optional(),
+        anonymous: RecordStringNever$.inboundSchema.optional(),
+    });
 
     export type Outbound = {
         google?: Google$.Outbound | undefined;
@@ -82,17 +62,9 @@ export namespace AuthConfiguration$ {
         anonymous?: RecordStringNever$.Outbound | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AuthConfiguration> = z
-        .object({
-            google: z.lazy(() => Google$.outboundSchema).optional(),
-            nickname: RecordStringNever$.outboundSchema.optional(),
-            anonymous: RecordStringNever$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.google === undefined ? null : { google: v.google }),
-                ...(v.nickname === undefined ? null : { nickname: v.nickname }),
-                ...(v.anonymous === undefined ? null : { anonymous: v.anonymous }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AuthConfiguration> = z.object({
+        google: z.lazy(() => Google$.outboundSchema).optional(),
+        nickname: RecordStringNever$.outboundSchema.optional(),
+        anonymous: RecordStringNever$.outboundSchema.optional(),
+    });
 }

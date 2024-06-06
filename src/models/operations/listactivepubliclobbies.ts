@@ -19,14 +19,9 @@ export type ListActivePublicLobbiesRequest = {
 
 /** @internal */
 export namespace ListActivePublicLobbiesGlobals$ {
-    export const inboundSchema: z.ZodType<ListActivePublicLobbiesGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<ListActivePublicLobbiesGlobals, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 
     export type Outbound = {
@@ -34,29 +29,17 @@ export namespace ListActivePublicLobbiesGlobals$ {
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListActivePublicLobbiesGlobals> =
-        z
-            .object({
-                appId: z.string().optional(),
-            })
-            .transform((v) => {
-                return {
-                    ...(v.appId === undefined ? null : { appId: v.appId }),
-                };
-            });
+        z.object({
+            appId: z.string().optional(),
+        });
 }
 
 /** @internal */
 export namespace ListActivePublicLobbiesRequest$ {
-    export const inboundSchema: z.ZodType<ListActivePublicLobbiesRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<ListActivePublicLobbiesRequest, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
             region: components.Region$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                ...(v.region === undefined ? null : { region: v.region }),
-            };
         });
 
     export type Outbound = {
@@ -65,15 +48,8 @@ export namespace ListActivePublicLobbiesRequest$ {
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListActivePublicLobbiesRequest> =
-        z
-            .object({
-                appId: z.string().optional(),
-                region: components.Region$.outboundSchema.optional(),
-            })
-            .transform((v) => {
-                return {
-                    ...(v.appId === undefined ? null : { appId: v.appId }),
-                    ...(v.region === undefined ? null : { region: v.region }),
-                };
-            });
+        z.object({
+            appId: z.string().optional(),
+            region: components.Region$.outboundSchema.optional(),
+        });
 }

@@ -51,63 +51,35 @@ export type DeploymentConfigV2 = {
 
 /** @internal */
 export namespace DeploymentConfigV2Env$ {
-    export const inboundSchema: z.ZodType<DeploymentConfigV2Env, z.ZodTypeDef, unknown> = z
-        .object({
-            value: z.string(),
-            name: z.string(),
-        })
-        .transform((v) => {
-            return {
-                value: v.value,
-                name: v.name,
-            };
-        });
+    export const inboundSchema: z.ZodType<DeploymentConfigV2Env, z.ZodTypeDef, unknown> = z.object({
+        value: z.string(),
+        name: z.string(),
+    });
 
     export type Outbound = {
         value: string;
         name: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeploymentConfigV2Env> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeploymentConfigV2Env> =
+        z.object({
             value: z.string(),
             name: z.string(),
-        })
-        .transform((v) => {
-            return {
-                value: v.value,
-                name: v.name,
-            };
         });
 }
 
 /** @internal */
 export namespace DeploymentConfigV2$ {
-    export const inboundSchema: z.ZodType<DeploymentConfigV2, z.ZodTypeDef, unknown> = z
-        .object({
-            idleTimeoutEnabled: z.boolean(),
-            env: z.array(z.lazy(() => DeploymentConfigV2Env$.inboundSchema)),
-            roomsPerProcess: z.number().int(),
-            additionalContainerPorts: z.array(ContainerPort$.inboundSchema).optional(),
-            transportType: TransportType$.inboundSchema,
-            containerPort: z.number().int(),
-            requestedMemoryMB: z.number(),
-            requestedCPU: z.number(),
-        })
-        .transform((v) => {
-            return {
-                idleTimeoutEnabled: v.idleTimeoutEnabled,
-                env: v.env,
-                roomsPerProcess: v.roomsPerProcess,
-                ...(v.additionalContainerPorts === undefined
-                    ? null
-                    : { additionalContainerPorts: v.additionalContainerPorts }),
-                transportType: v.transportType,
-                containerPort: v.containerPort,
-                requestedMemoryMB: v.requestedMemoryMB,
-                requestedCPU: v.requestedCPU,
-            };
-        });
+    export const inboundSchema: z.ZodType<DeploymentConfigV2, z.ZodTypeDef, unknown> = z.object({
+        idleTimeoutEnabled: z.boolean(),
+        env: z.array(z.lazy(() => DeploymentConfigV2Env$.inboundSchema)),
+        roomsPerProcess: z.number().int(),
+        additionalContainerPorts: z.array(ContainerPort$.inboundSchema).optional(),
+        transportType: TransportType$.inboundSchema,
+        containerPort: z.number().int(),
+        requestedMemoryMB: z.number(),
+        requestedCPU: z.number(),
+    });
 
     export type Outbound = {
         idleTimeoutEnabled: boolean;
@@ -120,29 +92,14 @@ export namespace DeploymentConfigV2$ {
         requestedCPU: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeploymentConfigV2> = z
-        .object({
-            idleTimeoutEnabled: z.boolean(),
-            env: z.array(z.lazy(() => DeploymentConfigV2Env$.outboundSchema)),
-            roomsPerProcess: z.number().int(),
-            additionalContainerPorts: z.array(ContainerPort$.outboundSchema).optional(),
-            transportType: TransportType$.outboundSchema,
-            containerPort: z.number().int(),
-            requestedMemoryMB: z.number(),
-            requestedCPU: z.number(),
-        })
-        .transform((v) => {
-            return {
-                idleTimeoutEnabled: v.idleTimeoutEnabled,
-                env: v.env,
-                roomsPerProcess: v.roomsPerProcess,
-                ...(v.additionalContainerPorts === undefined
-                    ? null
-                    : { additionalContainerPorts: v.additionalContainerPorts }),
-                transportType: v.transportType,
-                containerPort: v.containerPort,
-                requestedMemoryMB: v.requestedMemoryMB,
-                requestedCPU: v.requestedCPU,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeploymentConfigV2> = z.object({
+        idleTimeoutEnabled: z.boolean(),
+        env: z.array(z.lazy(() => DeploymentConfigV2Env$.outboundSchema)),
+        roomsPerProcess: z.number().int(),
+        additionalContainerPorts: z.array(ContainerPort$.outboundSchema).optional(),
+        transportType: TransportType$.outboundSchema,
+        containerPort: z.number().int(),
+        requestedMemoryMB: z.number(),
+        requestedCPU: z.number(),
+    });
 }

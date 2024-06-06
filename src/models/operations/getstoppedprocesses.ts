@@ -16,43 +16,27 @@ export type GetStoppedProcessesRequest = {
 
 /** @internal */
 export namespace GetStoppedProcessesGlobals$ {
-    export const inboundSchema: z.ZodType<GetStoppedProcessesGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetStoppedProcessesGlobals, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetStoppedProcessesGlobals> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetStoppedProcessesGlobals> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 }
 
 /** @internal */
 export namespace GetStoppedProcessesRequest$ {
-    export const inboundSchema: z.ZodType<GetStoppedProcessesRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetStoppedProcessesRequest, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
             region: components.Region$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                ...(v.region === undefined ? null : { region: v.region }),
-            };
         });
 
     export type Outbound = {
@@ -60,15 +44,9 @@ export namespace GetStoppedProcessesRequest$ {
         region?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetStoppedProcessesRequest> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetStoppedProcessesRequest> =
+        z.object({
             appId: z.string().optional(),
             region: components.Region$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                ...(v.region === undefined ? null : { region: v.region }),
-            };
         });
 }

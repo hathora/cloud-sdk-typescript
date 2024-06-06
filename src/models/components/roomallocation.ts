@@ -22,29 +22,20 @@ export type RoomAllocation = {
 
 /** @internal */
 export namespace RoomAllocation$ {
-    export const inboundSchema: z.ZodType<RoomAllocation, z.ZodTypeDef, unknown> = z
-        .object({
-            unscheduledAt: z.nullable(
-                z
-                    .string()
-                    .datetime({ offset: true })
-                    .transform((v) => new Date(v))
-            ),
-            scheduledAt: z
+    export const inboundSchema: z.ZodType<RoomAllocation, z.ZodTypeDef, unknown> = z.object({
+        unscheduledAt: z.nullable(
+            z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            processId: z.string(),
-            roomAllocationId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                unscheduledAt: v.unscheduledAt,
-                scheduledAt: v.scheduledAt,
-                processId: v.processId,
-                roomAllocationId: v.roomAllocationId,
-            };
-        });
+                .transform((v) => new Date(v))
+        ),
+        scheduledAt: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+        processId: z.string(),
+        roomAllocationId: z.string(),
+    });
 
     export type Outbound = {
         unscheduledAt: string | null;
@@ -53,19 +44,10 @@ export namespace RoomAllocation$ {
         roomAllocationId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RoomAllocation> = z
-        .object({
-            unscheduledAt: z.nullable(z.date().transform((v) => v.toISOString())),
-            scheduledAt: z.date().transform((v) => v.toISOString()),
-            processId: z.string(),
-            roomAllocationId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                unscheduledAt: v.unscheduledAt,
-                scheduledAt: v.scheduledAt,
-                processId: v.processId,
-                roomAllocationId: v.roomAllocationId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RoomAllocation> = z.object({
+        unscheduledAt: z.nullable(z.date().transform((v) => v.toISOString())),
+        scheduledAt: z.date().transform((v) => v.toISOString()),
+        processId: z.string(),
+        roomAllocationId: z.string(),
+    });
 }

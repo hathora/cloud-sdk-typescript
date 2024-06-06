@@ -15,32 +15,18 @@ export type CreateRoomParams = {
 
 /** @internal */
 export namespace CreateRoomParams$ {
-    export const inboundSchema: z.ZodType<CreateRoomParams, z.ZodTypeDef, unknown> = z
-        .object({
-            roomConfig: z.string().optional(),
-            region: Region$.inboundSchema,
-        })
-        .transform((v) => {
-            return {
-                ...(v.roomConfig === undefined ? null : { roomConfig: v.roomConfig }),
-                region: v.region,
-            };
-        });
+    export const inboundSchema: z.ZodType<CreateRoomParams, z.ZodTypeDef, unknown> = z.object({
+        roomConfig: z.string().optional(),
+        region: Region$.inboundSchema,
+    });
 
     export type Outbound = {
         roomConfig?: string | undefined;
         region: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateRoomParams> = z
-        .object({
-            roomConfig: z.string().optional(),
-            region: Region$.outboundSchema,
-        })
-        .transform((v) => {
-            return {
-                ...(v.roomConfig === undefined ? null : { roomConfig: v.roomConfig }),
-                region: v.region,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateRoomParams> = z.object({
+        roomConfig: z.string().optional(),
+        region: Region$.outboundSchema,
+    });
 }

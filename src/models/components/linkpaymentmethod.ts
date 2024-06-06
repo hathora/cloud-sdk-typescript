@@ -10,27 +10,15 @@ export type LinkPaymentMethod = {
 
 /** @internal */
 export namespace LinkPaymentMethod$ {
-    export const inboundSchema: z.ZodType<LinkPaymentMethod, z.ZodTypeDef, unknown> = z
-        .object({
-            email: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.email === undefined ? null : { email: v.email }),
-            };
-        });
+    export const inboundSchema: z.ZodType<LinkPaymentMethod, z.ZodTypeDef, unknown> = z.object({
+        email: z.string().optional(),
+    });
 
     export type Outbound = {
         email?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LinkPaymentMethod> = z
-        .object({
-            email: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.email === undefined ? null : { email: v.email }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LinkPaymentMethod> = z.object({
+        email: z.string().optional(),
+    });
 }

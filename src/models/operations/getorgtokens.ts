@@ -10,27 +10,15 @@ export type GetOrgTokensRequest = {
 
 /** @internal */
 export namespace GetOrgTokensRequest$ {
-    export const inboundSchema: z.ZodType<GetOrgTokensRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            orgId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                orgId: v.orgId,
-            };
-        });
+    export const inboundSchema: z.ZodType<GetOrgTokensRequest, z.ZodTypeDef, unknown> = z.object({
+        orgId: z.string(),
+    });
 
     export type Outbound = {
         orgId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOrgTokensRequest> = z
-        .object({
-            orgId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                orgId: v.orgId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOrgTokensRequest> = z.object({
+        orgId: z.string(),
+    });
 }

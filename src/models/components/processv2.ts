@@ -66,21 +66,12 @@ export type ProcessV2 = {
 
 /** @internal */
 export namespace ProcessV2ExposedPort$ {
-    export const inboundSchema: z.ZodType<ProcessV2ExposedPort, z.ZodTypeDef, unknown> = z
-        .object({
-            transportType: TransportType$.inboundSchema,
-            port: z.number().int(),
-            host: z.string(),
-            name: z.string(),
-        })
-        .transform((v) => {
-            return {
-                transportType: v.transportType,
-                port: v.port,
-                host: v.host,
-                name: v.name,
-            };
-        });
+    export const inboundSchema: z.ZodType<ProcessV2ExposedPort, z.ZodTypeDef, unknown> = z.object({
+        transportType: TransportType$.inboundSchema,
+        port: z.number().int(),
+        host: z.string(),
+        name: z.string(),
+    });
 
     export type Outbound = {
         transportType: string;
@@ -89,76 +80,51 @@ export namespace ProcessV2ExposedPort$ {
         name: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProcessV2ExposedPort> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProcessV2ExposedPort> = z.object(
+        {
             transportType: TransportType$.outboundSchema,
             port: z.number().int(),
             host: z.string(),
             name: z.string(),
-        })
-        .transform((v) => {
-            return {
-                transportType: v.transportType,
-                port: v.port,
-                host: v.host,
-                name: v.name,
-            };
-        });
+        }
+    );
 }
 
 /** @internal */
 export namespace ProcessV2$ {
-    export const inboundSchema: z.ZodType<ProcessV2, z.ZodTypeDef, unknown> = z
-        .object({
-            status: ProcessStatus$.inboundSchema,
-            roomsAllocated: z.number().int(),
-            terminatedAt: z.nullable(
-                z
-                    .string()
-                    .datetime({ offset: true })
-                    .transform((v) => new Date(v))
-            ),
-            stoppingAt: z.nullable(
-                z
-                    .string()
-                    .datetime({ offset: true })
-                    .transform((v) => new Date(v))
-            ),
-            startedAt: z.nullable(
-                z
-                    .string()
-                    .datetime({ offset: true })
-                    .transform((v) => new Date(v))
-            ),
-            createdAt: z
+    export const inboundSchema: z.ZodType<ProcessV2, z.ZodTypeDef, unknown> = z.object({
+        status: ProcessStatus$.inboundSchema,
+        roomsAllocated: z.number().int(),
+        terminatedAt: z.nullable(
+            z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            roomsPerProcess: z.number().int(),
-            additionalExposedPorts: z.array(ExposedPort$.inboundSchema),
-            exposedPort: z.nullable(z.lazy(() => ProcessV2ExposedPort$.inboundSchema)),
-            region: Region$.inboundSchema,
-            processId: z.string(),
-            deploymentId: z.number().int(),
-            appId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                status: v.status,
-                roomsAllocated: v.roomsAllocated,
-                terminatedAt: v.terminatedAt,
-                stoppingAt: v.stoppingAt,
-                startedAt: v.startedAt,
-                createdAt: v.createdAt,
-                roomsPerProcess: v.roomsPerProcess,
-                additionalExposedPorts: v.additionalExposedPorts,
-                exposedPort: v.exposedPort,
-                region: v.region,
-                processId: v.processId,
-                deploymentId: v.deploymentId,
-                appId: v.appId,
-            };
-        });
+                .transform((v) => new Date(v))
+        ),
+        stoppingAt: z.nullable(
+            z
+                .string()
+                .datetime({ offset: true })
+                .transform((v) => new Date(v))
+        ),
+        startedAt: z.nullable(
+            z
+                .string()
+                .datetime({ offset: true })
+                .transform((v) => new Date(v))
+        ),
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+        roomsPerProcess: z.number().int(),
+        additionalExposedPorts: z.array(ExposedPort$.inboundSchema),
+        exposedPort: z.nullable(z.lazy(() => ProcessV2ExposedPort$.inboundSchema)),
+        region: Region$.inboundSchema,
+        processId: z.string(),
+        deploymentId: z.number().int(),
+        appId: z.string(),
+    });
 
     export type Outbound = {
         status: string;
@@ -176,37 +142,19 @@ export namespace ProcessV2$ {
         appId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProcessV2> = z
-        .object({
-            status: ProcessStatus$.outboundSchema,
-            roomsAllocated: z.number().int(),
-            terminatedAt: z.nullable(z.date().transform((v) => v.toISOString())),
-            stoppingAt: z.nullable(z.date().transform((v) => v.toISOString())),
-            startedAt: z.nullable(z.date().transform((v) => v.toISOString())),
-            createdAt: z.date().transform((v) => v.toISOString()),
-            roomsPerProcess: z.number().int(),
-            additionalExposedPorts: z.array(ExposedPort$.outboundSchema),
-            exposedPort: z.nullable(z.lazy(() => ProcessV2ExposedPort$.outboundSchema)),
-            region: Region$.outboundSchema,
-            processId: z.string(),
-            deploymentId: z.number().int(),
-            appId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                status: v.status,
-                roomsAllocated: v.roomsAllocated,
-                terminatedAt: v.terminatedAt,
-                stoppingAt: v.stoppingAt,
-                startedAt: v.startedAt,
-                createdAt: v.createdAt,
-                roomsPerProcess: v.roomsPerProcess,
-                additionalExposedPorts: v.additionalExposedPorts,
-                exposedPort: v.exposedPort,
-                region: v.region,
-                processId: v.processId,
-                deploymentId: v.deploymentId,
-                appId: v.appId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProcessV2> = z.object({
+        status: ProcessStatus$.outboundSchema,
+        roomsAllocated: z.number().int(),
+        terminatedAt: z.nullable(z.date().transform((v) => v.toISOString())),
+        stoppingAt: z.nullable(z.date().transform((v) => v.toISOString())),
+        startedAt: z.nullable(z.date().transform((v) => v.toISOString())),
+        createdAt: z.date().transform((v) => v.toISOString()),
+        roomsPerProcess: z.number().int(),
+        additionalExposedPorts: z.array(ExposedPort$.outboundSchema),
+        exposedPort: z.nullable(z.lazy(() => ProcessV2ExposedPort$.outboundSchema)),
+        region: Region$.outboundSchema,
+        processId: z.string(),
+        deploymentId: z.number().int(),
+        appId: z.string(),
+    });
 }

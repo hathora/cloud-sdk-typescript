@@ -27,21 +27,12 @@ export type ConnectionInfoV2 = {
 
 /** @internal */
 export namespace ConnectionInfoV2$ {
-    export const inboundSchema: z.ZodType<ConnectionInfoV2, z.ZodTypeDef, unknown> = z
-        .object({
-            additionalExposedPorts: z.array(ExposedPort$.inboundSchema),
-            exposedPort: ExposedPort$.inboundSchema.optional(),
-            status: RoomReadyStatus$.inboundSchema,
-            roomId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                additionalExposedPorts: v.additionalExposedPorts,
-                ...(v.exposedPort === undefined ? null : { exposedPort: v.exposedPort }),
-                status: v.status,
-                roomId: v.roomId,
-            };
-        });
+    export const inboundSchema: z.ZodType<ConnectionInfoV2, z.ZodTypeDef, unknown> = z.object({
+        additionalExposedPorts: z.array(ExposedPort$.inboundSchema),
+        exposedPort: ExposedPort$.inboundSchema.optional(),
+        status: RoomReadyStatus$.inboundSchema,
+        roomId: z.string(),
+    });
 
     export type Outbound = {
         additionalExposedPorts: Array<ExposedPort$.Outbound>;
@@ -50,19 +41,10 @@ export namespace ConnectionInfoV2$ {
         roomId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectionInfoV2> = z
-        .object({
-            additionalExposedPorts: z.array(ExposedPort$.outboundSchema),
-            exposedPort: ExposedPort$.outboundSchema.optional(),
-            status: RoomReadyStatus$.outboundSchema,
-            roomId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                additionalExposedPorts: v.additionalExposedPorts,
-                ...(v.exposedPort === undefined ? null : { exposedPort: v.exposedPort }),
-                status: v.status,
-                roomId: v.roomId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectionInfoV2> = z.object({
+        additionalExposedPorts: z.array(ExposedPort$.outboundSchema),
+        exposedPort: ExposedPort$.outboundSchema.optional(),
+        status: RoomReadyStatus$.outboundSchema,
+        roomId: z.string(),
+    });
 }

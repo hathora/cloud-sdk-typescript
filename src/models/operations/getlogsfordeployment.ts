@@ -17,47 +17,29 @@ export type GetLogsForDeploymentRequest = {
 
 /** @internal */
 export namespace GetLogsForDeploymentGlobals$ {
-    export const inboundSchema: z.ZodType<GetLogsForDeploymentGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetLogsForDeploymentGlobals, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLogsForDeploymentGlobals> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLogsForDeploymentGlobals> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 }
 
 /** @internal */
 export namespace GetLogsForDeploymentRequest$ {
-    export const inboundSchema: z.ZodType<GetLogsForDeploymentRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetLogsForDeploymentRequest, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
             deploymentId: z.number().int(),
             follow: z.boolean().default(false),
             tailLines: z.number().int().default(100),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                deploymentId: v.deploymentId,
-                follow: v.follow,
-                tailLines: v.tailLines,
-            };
         });
 
     export type Outbound = {
@@ -67,19 +49,11 @@ export namespace GetLogsForDeploymentRequest$ {
         tailLines: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLogsForDeploymentRequest> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLogsForDeploymentRequest> =
+        z.object({
             appId: z.string().optional(),
             deploymentId: z.number().int(),
             follow: z.boolean().default(false),
             tailLines: z.number().int().default(100),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                deploymentId: v.deploymentId,
-                follow: v.follow,
-                tailLines: v.tailLines,
-            };
         });
 }

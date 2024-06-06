@@ -78,36 +78,21 @@ export namespace CreatedBy$ {
 
 /** @internal */
 export namespace Lobby$ {
-    export const inboundSchema: z.ZodType<Lobby, z.ZodTypeDef, unknown> = z
-        .object({
-            shortCode: z.nullable(z.string()),
-            state: z.nullable(z.any()).optional(),
-            initialConfig: z.any().optional(),
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            createdBy: z.union([z.string(), z.number()]),
-            local: z.boolean(),
-            visibility: LobbyVisibility$.inboundSchema,
-            region: Region$.inboundSchema,
-            roomId: z.string(),
-            appId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                shortCode: v.shortCode,
-                ...(v.state === undefined ? null : { state: v.state }),
-                ...(v.initialConfig === undefined ? null : { initialConfig: v.initialConfig }),
-                createdAt: v.createdAt,
-                createdBy: v.createdBy,
-                local: v.local,
-                visibility: v.visibility,
-                region: v.region,
-                roomId: v.roomId,
-                appId: v.appId,
-            };
-        });
+    export const inboundSchema: z.ZodType<Lobby, z.ZodTypeDef, unknown> = z.object({
+        shortCode: z.nullable(z.string()),
+        state: z.nullable(z.any()).optional(),
+        initialConfig: z.any().optional(),
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+        createdBy: z.union([z.string(), z.number()]),
+        local: z.boolean(),
+        visibility: LobbyVisibility$.inboundSchema,
+        region: Region$.inboundSchema,
+        roomId: z.string(),
+        appId: z.string(),
+    });
 
     export type Outbound = {
         shortCode: string | null;
@@ -122,31 +107,16 @@ export namespace Lobby$ {
         appId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Lobby> = z
-        .object({
-            shortCode: z.nullable(z.string()),
-            state: z.nullable(z.any()).optional(),
-            initialConfig: z.any().optional(),
-            createdAt: z.date().transform((v) => v.toISOString()),
-            createdBy: z.union([z.string(), z.number()]),
-            local: z.boolean(),
-            visibility: LobbyVisibility$.outboundSchema,
-            region: Region$.outboundSchema,
-            roomId: z.string(),
-            appId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                shortCode: v.shortCode,
-                ...(v.state === undefined ? null : { state: v.state }),
-                ...(v.initialConfig === undefined ? null : { initialConfig: v.initialConfig }),
-                createdAt: v.createdAt,
-                createdBy: v.createdBy,
-                local: v.local,
-                visibility: v.visibility,
-                region: v.region,
-                roomId: v.roomId,
-                appId: v.appId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Lobby> = z.object({
+        shortCode: z.nullable(z.string()),
+        state: z.nullable(z.any()).optional(),
+        initialConfig: z.any().optional(),
+        createdAt: z.date().transform((v) => v.toISOString()),
+        createdBy: z.union([z.string(), z.number()]),
+        local: z.boolean(),
+        visibility: LobbyVisibility$.outboundSchema,
+        region: Region$.outboundSchema,
+        roomId: z.string(),
+        appId: z.string(),
+    });
 }

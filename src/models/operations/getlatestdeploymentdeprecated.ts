@@ -18,15 +18,9 @@ export namespace GetLatestDeploymentDeprecatedGlobals$ {
         GetLatestDeploymentDeprecatedGlobals,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -36,15 +30,9 @@ export namespace GetLatestDeploymentDeprecatedGlobals$ {
         Outbound,
         z.ZodTypeDef,
         GetLatestDeploymentDeprecatedGlobals
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
@@ -53,15 +41,9 @@ export namespace GetLatestDeploymentDeprecatedRequest$ {
         GetLatestDeploymentDeprecatedRequest,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -71,13 +53,7 @@ export namespace GetLatestDeploymentDeprecatedRequest$ {
         Outbound,
         z.ZodTypeDef,
         GetLatestDeploymentDeprecatedRequest
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 }

@@ -13,27 +13,15 @@ export type GoogleIdTokenObject = {
 
 /** @internal */
 export namespace GoogleIdTokenObject$ {
-    export const inboundSchema: z.ZodType<GoogleIdTokenObject, z.ZodTypeDef, unknown> = z
-        .object({
-            idToken: z.string(),
-        })
-        .transform((v) => {
-            return {
-                idToken: v.idToken,
-            };
-        });
+    export const inboundSchema: z.ZodType<GoogleIdTokenObject, z.ZodTypeDef, unknown> = z.object({
+        idToken: z.string(),
+    });
 
     export type Outbound = {
         idToken: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GoogleIdTokenObject> = z
-        .object({
-            idToken: z.string(),
-        })
-        .transform((v) => {
-            return {
-                idToken: v.idToken,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GoogleIdTokenObject> = z.object({
+        idToken: z.string(),
+    });
 }

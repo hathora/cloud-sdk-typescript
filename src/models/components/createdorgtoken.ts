@@ -12,32 +12,18 @@ export type CreatedOrgToken = {
 
 /** @internal */
 export namespace CreatedOrgToken$ {
-    export const inboundSchema: z.ZodType<CreatedOrgToken, z.ZodTypeDef, unknown> = z
-        .object({
-            plainTextToken: z.string(),
-            orgToken: OrgToken$.inboundSchema,
-        })
-        .transform((v) => {
-            return {
-                plainTextToken: v.plainTextToken,
-                orgToken: v.orgToken,
-            };
-        });
+    export const inboundSchema: z.ZodType<CreatedOrgToken, z.ZodTypeDef, unknown> = z.object({
+        plainTextToken: z.string(),
+        orgToken: OrgToken$.inboundSchema,
+    });
 
     export type Outbound = {
         plainTextToken: string;
         orgToken: OrgToken$.Outbound;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreatedOrgToken> = z
-        .object({
-            plainTextToken: z.string(),
-            orgToken: OrgToken$.outboundSchema,
-        })
-        .transform((v) => {
-            return {
-                plainTextToken: v.plainTextToken,
-                orgToken: v.orgToken,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreatedOrgToken> = z.object({
+        plainTextToken: z.string(),
+        orgToken: OrgToken$.outboundSchema,
+    });
 }

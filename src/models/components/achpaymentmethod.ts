@@ -11,32 +11,18 @@ export type AchPaymentMethod = {
 
 /** @internal */
 export namespace AchPaymentMethod$ {
-    export const inboundSchema: z.ZodType<AchPaymentMethod, z.ZodTypeDef, unknown> = z
-        .object({
-            last4: z.string().optional(),
-            bankName: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.last4 === undefined ? null : { last4: v.last4 }),
-                ...(v.bankName === undefined ? null : { bankName: v.bankName }),
-            };
-        });
+    export const inboundSchema: z.ZodType<AchPaymentMethod, z.ZodTypeDef, unknown> = z.object({
+        last4: z.string().optional(),
+        bankName: z.string().optional(),
+    });
 
     export type Outbound = {
         last4?: string | undefined;
         bankName?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AchPaymentMethod> = z
-        .object({
-            last4: z.string().optional(),
-            bankName: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.last4 === undefined ? null : { last4: v.last4 }),
-                ...(v.bankName === undefined ? null : { bankName: v.bankName }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AchPaymentMethod> = z.object({
+        last4: z.string().optional(),
+        bankName: z.string().optional(),
+    });
 }

@@ -21,15 +21,9 @@ export namespace ListActivePublicLobbiesDeprecatedV1Globals$ {
         ListActivePublicLobbiesDeprecatedV1Globals,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -39,15 +33,9 @@ export namespace ListActivePublicLobbiesDeprecatedV1Globals$ {
         Outbound,
         z.ZodTypeDef,
         ListActivePublicLobbiesDeprecatedV1Globals
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
@@ -56,19 +44,11 @@ export namespace ListActivePublicLobbiesDeprecatedV1Request$ {
         ListActivePublicLobbiesDeprecatedV1Request,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-            local: z.boolean().default(false),
-            region: components.Region$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                local: v.local,
-                ...(v.region === undefined ? null : { region: v.region }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+        local: z.boolean().default(false),
+        region: components.Region$.inboundSchema.optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -80,17 +60,9 @@ export namespace ListActivePublicLobbiesDeprecatedV1Request$ {
         Outbound,
         z.ZodTypeDef,
         ListActivePublicLobbiesDeprecatedV1Request
-    > = z
-        .object({
-            appId: z.string().optional(),
-            local: z.boolean().default(false),
-            region: components.Region$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                local: v.local,
-                ...(v.region === undefined ? null : { region: v.region }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+        local: z.boolean().default(false),
+        region: components.Region$.outboundSchema.optional(),
+    });
 }

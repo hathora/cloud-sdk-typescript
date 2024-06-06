@@ -31,23 +31,13 @@ export type RoomConnectionData = {
 
 /** @internal */
 export namespace RoomConnectionData$ {
-    export const inboundSchema: z.ZodType<RoomConnectionData, z.ZodTypeDef, unknown> = z
-        .object({
-            additionalExposedPorts: z.array(ExposedPort$.inboundSchema),
-            exposedPort: ExposedPort$.inboundSchema.optional(),
-            status: RoomReadyStatus$.inboundSchema,
-            roomId: z.string(),
-            processId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                additionalExposedPorts: v.additionalExposedPorts,
-                ...(v.exposedPort === undefined ? null : { exposedPort: v.exposedPort }),
-                status: v.status,
-                roomId: v.roomId,
-                processId: v.processId,
-            };
-        });
+    export const inboundSchema: z.ZodType<RoomConnectionData, z.ZodTypeDef, unknown> = z.object({
+        additionalExposedPorts: z.array(ExposedPort$.inboundSchema),
+        exposedPort: ExposedPort$.inboundSchema.optional(),
+        status: RoomReadyStatus$.inboundSchema,
+        roomId: z.string(),
+        processId: z.string(),
+    });
 
     export type Outbound = {
         additionalExposedPorts: Array<ExposedPort$.Outbound>;
@@ -57,21 +47,11 @@ export namespace RoomConnectionData$ {
         processId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RoomConnectionData> = z
-        .object({
-            additionalExposedPorts: z.array(ExposedPort$.outboundSchema),
-            exposedPort: ExposedPort$.outboundSchema.optional(),
-            status: RoomReadyStatus$.outboundSchema,
-            roomId: z.string(),
-            processId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                additionalExposedPorts: v.additionalExposedPorts,
-                ...(v.exposedPort === undefined ? null : { exposedPort: v.exposedPort }),
-                status: v.status,
-                roomId: v.roomId,
-                processId: v.processId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RoomConnectionData> = z.object({
+        additionalExposedPorts: z.array(ExposedPort$.outboundSchema),
+        exposedPort: ExposedPort$.outboundSchema.optional(),
+        status: RoomReadyStatus$.outboundSchema,
+        roomId: z.string(),
+        processId: z.string(),
+    });
 }

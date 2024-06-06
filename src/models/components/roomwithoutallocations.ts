@@ -54,29 +54,20 @@ export type RoomWithoutAllocations = {
 
 /** @internal */
 export namespace CurrentAllocation$ {
-    export const inboundSchema: z.ZodType<CurrentAllocation, z.ZodTypeDef, unknown> = z
-        .object({
-            unscheduledAt: z.nullable(
-                z
-                    .string()
-                    .datetime({ offset: true })
-                    .transform((v) => new Date(v))
-            ),
-            scheduledAt: z
+    export const inboundSchema: z.ZodType<CurrentAllocation, z.ZodTypeDef, unknown> = z.object({
+        unscheduledAt: z.nullable(
+            z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            processId: z.string(),
-            roomAllocationId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                unscheduledAt: v.unscheduledAt,
-                scheduledAt: v.scheduledAt,
-                processId: v.processId,
-                roomAllocationId: v.roomAllocationId,
-            };
-        });
+                .transform((v) => new Date(v))
+        ),
+        scheduledAt: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+        processId: z.string(),
+        roomAllocationId: z.string(),
+    });
 
     export type Outbound = {
         unscheduledAt: string | null;
@@ -85,42 +76,25 @@ export namespace CurrentAllocation$ {
         roomAllocationId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CurrentAllocation> = z
-        .object({
-            unscheduledAt: z.nullable(z.date().transform((v) => v.toISOString())),
-            scheduledAt: z.date().transform((v) => v.toISOString()),
-            processId: z.string(),
-            roomAllocationId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                unscheduledAt: v.unscheduledAt,
-                scheduledAt: v.scheduledAt,
-                processId: v.processId,
-                roomAllocationId: v.roomAllocationId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CurrentAllocation> = z.object({
+        unscheduledAt: z.nullable(z.date().transform((v) => v.toISOString())),
+        scheduledAt: z.date().transform((v) => v.toISOString()),
+        processId: z.string(),
+        roomAllocationId: z.string(),
+    });
 }
 
 /** @internal */
 export namespace RoomWithoutAllocations$ {
-    export const inboundSchema: z.ZodType<RoomWithoutAllocations, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<RoomWithoutAllocations, z.ZodTypeDef, unknown> = z.object(
+        {
             appId: z.string(),
             roomId: z.string(),
             roomConfig: z.nullable(z.string()),
             status: RoomStatus$.inboundSchema,
             currentAllocation: z.nullable(z.lazy(() => CurrentAllocation$.inboundSchema)),
-        })
-        .transform((v) => {
-            return {
-                appId: v.appId,
-                roomId: v.roomId,
-                roomConfig: v.roomConfig,
-                status: v.status,
-                currentAllocation: v.currentAllocation,
-            };
-        });
+        }
+    );
 
     export type Outbound = {
         appId: string;
@@ -130,21 +104,12 @@ export namespace RoomWithoutAllocations$ {
         currentAllocation: CurrentAllocation$.Outbound | null;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RoomWithoutAllocations> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RoomWithoutAllocations> =
+        z.object({
             appId: z.string(),
             roomId: z.string(),
             roomConfig: z.nullable(z.string()),
             status: RoomStatus$.outboundSchema,
             currentAllocation: z.nullable(z.lazy(() => CurrentAllocation$.outboundSchema)),
-        })
-        .transform((v) => {
-            return {
-                appId: v.appId,
-                roomId: v.roomId,
-                roomConfig: v.roomConfig,
-                status: v.status,
-                currentAllocation: v.currentAllocation,
-            };
         });
 }

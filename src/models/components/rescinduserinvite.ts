@@ -10,27 +10,15 @@ export type RescindUserInvite = {
 
 /** @internal */
 export namespace RescindUserInvite$ {
-    export const inboundSchema: z.ZodType<RescindUserInvite, z.ZodTypeDef, unknown> = z
-        .object({
-            userEmail: z.string(),
-        })
-        .transform((v) => {
-            return {
-                userEmail: v.userEmail,
-            };
-        });
+    export const inboundSchema: z.ZodType<RescindUserInvite, z.ZodTypeDef, unknown> = z.object({
+        userEmail: z.string(),
+    });
 
     export type Outbound = {
         userEmail: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RescindUserInvite> = z
-        .object({
-            userEmail: z.string(),
-        })
-        .transform((v) => {
-            return {
-                userEmail: v.userEmail,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RescindUserInvite> = z.object({
+        userEmail: z.string(),
+    });
 }

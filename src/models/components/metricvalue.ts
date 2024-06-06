@@ -11,32 +11,18 @@ export type MetricValue = {
 
 /** @internal */
 export namespace MetricValue$ {
-    export const inboundSchema: z.ZodType<MetricValue, z.ZodTypeDef, unknown> = z
-        .object({
-            value: z.number(),
-            timestamp: z.number(),
-        })
-        .transform((v) => {
-            return {
-                value: v.value,
-                timestamp: v.timestamp,
-            };
-        });
+    export const inboundSchema: z.ZodType<MetricValue, z.ZodTypeDef, unknown> = z.object({
+        value: z.number(),
+        timestamp: z.number(),
+    });
 
     export type Outbound = {
         value: number;
         timestamp: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MetricValue> = z
-        .object({
-            value: z.number(),
-            timestamp: z.number(),
-        })
-        .transform((v) => {
-            return {
-                value: v.value,
-                timestamp: v.timestamp,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MetricValue> = z.object({
+        value: z.number(),
+        timestamp: z.number(),
+    });
 }

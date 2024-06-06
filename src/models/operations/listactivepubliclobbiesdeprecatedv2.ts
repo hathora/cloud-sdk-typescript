@@ -23,15 +23,9 @@ export namespace ListActivePublicLobbiesDeprecatedV2Globals$ {
         ListActivePublicLobbiesDeprecatedV2Globals,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -41,15 +35,9 @@ export namespace ListActivePublicLobbiesDeprecatedV2Globals$ {
         Outbound,
         z.ZodTypeDef,
         ListActivePublicLobbiesDeprecatedV2Globals
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
@@ -58,17 +46,10 @@ export namespace ListActivePublicLobbiesDeprecatedV2Request$ {
         ListActivePublicLobbiesDeprecatedV2Request,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-            region: components.Region$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                ...(v.region === undefined ? null : { region: v.region }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+        region: components.Region$.inboundSchema.optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -79,15 +60,8 @@ export namespace ListActivePublicLobbiesDeprecatedV2Request$ {
         Outbound,
         z.ZodTypeDef,
         ListActivePublicLobbiesDeprecatedV2Request
-    > = z
-        .object({
-            appId: z.string().optional(),
-            region: components.Region$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                ...(v.region === undefined ? null : { region: v.region }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+        region: components.Region$.outboundSchema.optional(),
+    });
 }

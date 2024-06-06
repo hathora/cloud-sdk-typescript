@@ -119,17 +119,10 @@ export namespace ApplicationWithLatestDeploymentAndBuildEnv$ {
         ApplicationWithLatestDeploymentAndBuildEnv,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            value: z.string(),
-            name: z.string(),
-        })
-        .transform((v) => {
-            return {
-                value: v.value,
-                name: v.name,
-            };
-        });
+    > = z.object({
+        value: z.string(),
+        name: z.string(),
+    });
 
     export type Outbound = {
         value: string;
@@ -140,17 +133,10 @@ export namespace ApplicationWithLatestDeploymentAndBuildEnv$ {
         Outbound,
         z.ZodTypeDef,
         ApplicationWithLatestDeploymentAndBuildEnv
-    > = z
-        .object({
-            value: z.string(),
-            name: z.string(),
-        })
-        .transform((v) => {
-            return {
-                value: v.value,
-                name: v.name,
-            };
-        });
+    > = z.object({
+        value: z.string(),
+        name: z.string(),
+    });
 }
 
 /** @internal */
@@ -159,42 +145,24 @@ export namespace ApplicationWithLatestDeploymentAndBuildDeployment$ {
         ApplicationWithLatestDeploymentAndBuildDeployment,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            idleTimeoutEnabled: z.boolean(),
-            env: z.array(z.lazy(() => ApplicationWithLatestDeploymentAndBuildEnv$.inboundSchema)),
-            roomsPerProcess: z.number().int(),
-            additionalContainerPorts: z.array(ContainerPort$.inboundSchema),
-            defaultContainerPort: ContainerPort$.inboundSchema,
-            createdAt: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            createdBy: z.string(),
-            requestedMemoryMB: z.number(),
-            requestedCPU: z.number(),
-            deploymentId: z.number().int(),
-            buildId: z.number().int(),
-            appId: z.string(),
-            build: Build$.inboundSchema,
-        })
-        .transform((v) => {
-            return {
-                idleTimeoutEnabled: v.idleTimeoutEnabled,
-                env: v.env,
-                roomsPerProcess: v.roomsPerProcess,
-                additionalContainerPorts: v.additionalContainerPorts,
-                defaultContainerPort: v.defaultContainerPort,
-                createdAt: v.createdAt,
-                createdBy: v.createdBy,
-                requestedMemoryMB: v.requestedMemoryMB,
-                requestedCPU: v.requestedCPU,
-                deploymentId: v.deploymentId,
-                buildId: v.buildId,
-                appId: v.appId,
-                build: v.build,
-            };
-        });
+    > = z.object({
+        idleTimeoutEnabled: z.boolean(),
+        env: z.array(z.lazy(() => ApplicationWithLatestDeploymentAndBuildEnv$.inboundSchema)),
+        roomsPerProcess: z.number().int(),
+        additionalContainerPorts: z.array(ContainerPort$.inboundSchema),
+        defaultContainerPort: ContainerPort$.inboundSchema,
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+        createdBy: z.string(),
+        requestedMemoryMB: z.number(),
+        requestedCPU: z.number(),
+        deploymentId: z.number().int(),
+        buildId: z.number().int(),
+        appId: z.string(),
+        build: Build$.inboundSchema,
+    });
 
     export type Outbound = {
         idleTimeoutEnabled: boolean;
@@ -216,39 +184,21 @@ export namespace ApplicationWithLatestDeploymentAndBuildDeployment$ {
         Outbound,
         z.ZodTypeDef,
         ApplicationWithLatestDeploymentAndBuildDeployment
-    > = z
-        .object({
-            idleTimeoutEnabled: z.boolean(),
-            env: z.array(z.lazy(() => ApplicationWithLatestDeploymentAndBuildEnv$.outboundSchema)),
-            roomsPerProcess: z.number().int(),
-            additionalContainerPorts: z.array(ContainerPort$.outboundSchema),
-            defaultContainerPort: ContainerPort$.outboundSchema,
-            createdAt: z.date().transform((v) => v.toISOString()),
-            createdBy: z.string(),
-            requestedMemoryMB: z.number(),
-            requestedCPU: z.number(),
-            deploymentId: z.number().int(),
-            buildId: z.number().int(),
-            appId: z.string(),
-            build: Build$.outboundSchema,
-        })
-        .transform((v) => {
-            return {
-                idleTimeoutEnabled: v.idleTimeoutEnabled,
-                env: v.env,
-                roomsPerProcess: v.roomsPerProcess,
-                additionalContainerPorts: v.additionalContainerPorts,
-                defaultContainerPort: v.defaultContainerPort,
-                createdAt: v.createdAt,
-                createdBy: v.createdBy,
-                requestedMemoryMB: v.requestedMemoryMB,
-                requestedCPU: v.requestedCPU,
-                deploymentId: v.deploymentId,
-                buildId: v.buildId,
-                appId: v.appId,
-                build: v.build,
-            };
-        });
+    > = z.object({
+        idleTimeoutEnabled: z.boolean(),
+        env: z.array(z.lazy(() => ApplicationWithLatestDeploymentAndBuildEnv$.outboundSchema)),
+        roomsPerProcess: z.number().int(),
+        additionalContainerPorts: z.array(ContainerPort$.outboundSchema),
+        defaultContainerPort: ContainerPort$.outboundSchema,
+        createdAt: z.date().transform((v) => v.toISOString()),
+        createdBy: z.string(),
+        requestedMemoryMB: z.number(),
+        requestedCPU: z.number(),
+        deploymentId: z.number().int(),
+        buildId: z.number().int(),
+        appId: z.string(),
+        build: Build$.outboundSchema,
+    });
 }
 
 /** @internal */
@@ -257,43 +207,28 @@ export namespace ApplicationWithLatestDeploymentAndBuild$ {
         ApplicationWithLatestDeploymentAndBuild,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            deletedBy: z.nullable(z.string()),
-            deletedAt: z.nullable(
-                z
-                    .string()
-                    .datetime({ offset: true })
-                    .transform((v) => new Date(v))
-            ),
-            createdAt: z
+    > = z.object({
+        deletedBy: z.nullable(z.string()),
+        deletedAt: z.nullable(
+            z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            createdBy: z.string(),
-            orgId: z.string(),
-            authConfiguration: AuthConfiguration$.inboundSchema,
-            appSecret: z.string(),
-            appId: z.string(),
-            appName: z.string(),
-            deployment: z
-                .lazy(() => ApplicationWithLatestDeploymentAndBuildDeployment$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return {
-                deletedBy: v.deletedBy,
-                deletedAt: v.deletedAt,
-                createdAt: v.createdAt,
-                createdBy: v.createdBy,
-                orgId: v.orgId,
-                authConfiguration: v.authConfiguration,
-                appSecret: v.appSecret,
-                appId: v.appId,
-                appName: v.appName,
-                ...(v.deployment === undefined ? null : { deployment: v.deployment }),
-            };
-        });
+                .transform((v) => new Date(v))
+        ),
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+        createdBy: z.string(),
+        orgId: z.string(),
+        authConfiguration: AuthConfiguration$.inboundSchema,
+        appSecret: z.string(),
+        appId: z.string(),
+        appName: z.string(),
+        deployment: z
+            .lazy(() => ApplicationWithLatestDeploymentAndBuildDeployment$.inboundSchema)
+            .optional(),
+    });
 
     export type Outbound = {
         deletedBy: string | null;
@@ -312,33 +247,18 @@ export namespace ApplicationWithLatestDeploymentAndBuild$ {
         Outbound,
         z.ZodTypeDef,
         ApplicationWithLatestDeploymentAndBuild
-    > = z
-        .object({
-            deletedBy: z.nullable(z.string()),
-            deletedAt: z.nullable(z.date().transform((v) => v.toISOString())),
-            createdAt: z.date().transform((v) => v.toISOString()),
-            createdBy: z.string(),
-            orgId: z.string(),
-            authConfiguration: AuthConfiguration$.outboundSchema,
-            appSecret: z.string(),
-            appId: z.string(),
-            appName: z.string(),
-            deployment: z
-                .lazy(() => ApplicationWithLatestDeploymentAndBuildDeployment$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return {
-                deletedBy: v.deletedBy,
-                deletedAt: v.deletedAt,
-                createdAt: v.createdAt,
-                createdBy: v.createdBy,
-                orgId: v.orgId,
-                authConfiguration: v.authConfiguration,
-                appSecret: v.appSecret,
-                appId: v.appId,
-                appName: v.appName,
-                ...(v.deployment === undefined ? null : { deployment: v.deployment }),
-            };
-        });
+    > = z.object({
+        deletedBy: z.nullable(z.string()),
+        deletedAt: z.nullable(z.date().transform((v) => v.toISOString())),
+        createdAt: z.date().transform((v) => v.toISOString()),
+        createdBy: z.string(),
+        orgId: z.string(),
+        authConfiguration: AuthConfiguration$.outboundSchema,
+        appSecret: z.string(),
+        appId: z.string(),
+        appName: z.string(),
+        deployment: z
+            .lazy(() => ApplicationWithLatestDeploymentAndBuildDeployment$.outboundSchema)
+            .optional(),
+    });
 }

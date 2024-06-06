@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 745a61c4354ede9033c31b2c0eba96ee
+  docChecksum: 53e36cebc1d6ed2da766af26147d99c1
   docVersion: 0.0.1
-  speakeasyVersion: 1.299.6
-  generationVersion: 2.338.12
-  releaseVersion: 2.2.10
-  configChecksum: 26f1f03c12e54baa8050331696037c54
+  speakeasyVersion: 1.300.0
+  generationVersion: 2.338.14
+  releaseVersion: 2.3.0
+  configChecksum: c3e3df4831abb25583a324f181334fa6
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.9.11
+    core: 3.9.12
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     flattening: 2.81.1
@@ -23,32 +23,34 @@ features:
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
     globals: 2.82.1
+    groups: 2.81.2
     methodSecurity: 2.82.4
     nullables: 0.1.0
+    openEnums: 0.1.0
     responseFormat: 0.2.3
     sdkHooks: 0.1.0
     unions: 2.85.5
 generatedFiles:
-  - src/sdk/appv1.ts
+  - src/sdk/appsv1.ts
   - src/sdk/authv1.ts
   - src/sdk/billingv1.ts
-  - src/sdk/buildv1.ts
-  - src/sdk/buildv2.ts
-  - src/sdk/deploymentv1.ts
-  - src/sdk/deploymentv2.ts
+  - src/sdk/buildsv1.ts
+  - src/sdk/buildsv2.ts
+  - src/sdk/deploymentsv1.ts
+  - src/sdk/deploymentsv2.ts
   - src/sdk/discoveryv1.ts
   - src/sdk/discoveryv2.ts
-  - src/sdk/lobbyv1.ts
-  - src/sdk/lobbyv2.ts
-  - src/sdk/lobbyv3.ts
-  - src/sdk/logv1.ts
+  - src/sdk/lobbiesv1.ts
+  - src/sdk/lobbiesv2.ts
+  - src/sdk/lobbiesv3.ts
+  - src/sdk/logsv1.ts
   - src/sdk/managementv1.ts
   - src/sdk/metricsv1.ts
   - src/sdk/organizationsv1.ts
   - src/sdk/processesv1.ts
   - src/sdk/processesv2.ts
-  - src/sdk/roomv1.ts
-  - src/sdk/roomv2.ts
+  - src/sdk/roomsv1.ts
+  - src/sdk/roomsv2.ts
   - src/sdk/tokensv1.ts
   - src/sdk/sdk.ts
   - .eslintrc.js
@@ -62,6 +64,7 @@ generatedFiles:
   - src/lib/encodings.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
+  - src/lib/primitives.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
   - src/lib/sdks.ts
@@ -482,26 +485,26 @@ generatedFiles:
   - docs/models/operations/createorgtokenrequest.md
   - docs/models/operations/revokeorgtokenrequest.md
   - docs/sdks/hathoracloud/README.md
-  - docs/sdks/appv1/README.md
+  - docs/sdks/appsv1/README.md
   - docs/sdks/authv1/README.md
   - docs/sdks/billingv1/README.md
-  - docs/sdks/buildv1/README.md
-  - docs/sdks/buildv2/README.md
-  - docs/sdks/deploymentv1/README.md
-  - docs/sdks/deploymentv2/README.md
+  - docs/sdks/buildsv1/README.md
+  - docs/sdks/buildsv2/README.md
+  - docs/sdks/deploymentsv1/README.md
+  - docs/sdks/deploymentsv2/README.md
   - docs/sdks/discoveryv1/README.md
   - docs/sdks/discoveryv2/README.md
-  - docs/sdks/lobbyv1/README.md
-  - docs/sdks/lobbyv2/README.md
-  - docs/sdks/lobbyv3/README.md
-  - docs/sdks/logv1/README.md
+  - docs/sdks/lobbiesv1/README.md
+  - docs/sdks/lobbiesv2/README.md
+  - docs/sdks/lobbiesv3/README.md
+  - docs/sdks/logsv1/README.md
   - docs/sdks/managementv1/README.md
   - docs/sdks/metricsv1/README.md
   - docs/sdks/organizationsv1/README.md
   - docs/sdks/processesv1/README.md
   - docs/sdks/processesv2/README.md
-  - docs/sdks/roomv1/README.md
-  - docs/sdks/roomv2/README.md
+  - docs/sdks/roomsv1/README.md
+  - docs/sdks/roomsv2/README.md
   - docs/sdks/tokensv1/README.md
   - USAGE.md
   - .gitattributes

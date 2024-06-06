@@ -15,59 +15,35 @@ export type GetProcessInfoRequest = {
 
 /** @internal */
 export namespace GetProcessInfoGlobals$ {
-    export const inboundSchema: z.ZodType<GetProcessInfoGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    export const inboundSchema: z.ZodType<GetProcessInfoGlobals, z.ZodTypeDef, unknown> = z.object({
+        appId: z.string().optional(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetProcessInfoGlobals> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetProcessInfoGlobals> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 }
 
 /** @internal */
 export namespace GetProcessInfoRequest$ {
-    export const inboundSchema: z.ZodType<GetProcessInfoRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-            processId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                processId: v.processId,
-            };
-        });
+    export const inboundSchema: z.ZodType<GetProcessInfoRequest, z.ZodTypeDef, unknown> = z.object({
+        appId: z.string().optional(),
+        processId: z.string(),
+    });
 
     export type Outbound = {
         appId?: string | undefined;
         processId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetProcessInfoRequest> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetProcessInfoRequest> =
+        z.object({
             appId: z.string().optional(),
             processId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                processId: v.processId,
-            };
         });
 }

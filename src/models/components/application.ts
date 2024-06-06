@@ -49,39 +49,25 @@ export type Application = {
 
 /** @internal */
 export namespace Application$ {
-    export const inboundSchema: z.ZodType<Application, z.ZodTypeDef, unknown> = z
-        .object({
-            deletedBy: z.nullable(z.string()),
-            deletedAt: z.nullable(
-                z
-                    .string()
-                    .datetime({ offset: true })
-                    .transform((v) => new Date(v))
-            ),
-            createdAt: z
+    export const inboundSchema: z.ZodType<Application, z.ZodTypeDef, unknown> = z.object({
+        deletedBy: z.nullable(z.string()),
+        deletedAt: z.nullable(
+            z
                 .string()
                 .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            createdBy: z.string(),
-            orgId: z.string(),
-            authConfiguration: AuthConfiguration$.inboundSchema,
-            appSecret: z.string(),
-            appId: z.string(),
-            appName: z.string(),
-        })
-        .transform((v) => {
-            return {
-                deletedBy: v.deletedBy,
-                deletedAt: v.deletedAt,
-                createdAt: v.createdAt,
-                createdBy: v.createdBy,
-                orgId: v.orgId,
-                authConfiguration: v.authConfiguration,
-                appSecret: v.appSecret,
-                appId: v.appId,
-                appName: v.appName,
-            };
-        });
+                .transform((v) => new Date(v))
+        ),
+        createdAt: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+        createdBy: z.string(),
+        orgId: z.string(),
+        authConfiguration: AuthConfiguration$.inboundSchema,
+        appSecret: z.string(),
+        appId: z.string(),
+        appName: z.string(),
+    });
 
     export type Outbound = {
         deletedBy: string | null;
@@ -95,29 +81,15 @@ export namespace Application$ {
         appName: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Application> = z
-        .object({
-            deletedBy: z.nullable(z.string()),
-            deletedAt: z.nullable(z.date().transform((v) => v.toISOString())),
-            createdAt: z.date().transform((v) => v.toISOString()),
-            createdBy: z.string(),
-            orgId: z.string(),
-            authConfiguration: AuthConfiguration$.outboundSchema,
-            appSecret: z.string(),
-            appId: z.string(),
-            appName: z.string(),
-        })
-        .transform((v) => {
-            return {
-                deletedBy: v.deletedBy,
-                deletedAt: v.deletedAt,
-                createdAt: v.createdAt,
-                createdBy: v.createdBy,
-                orgId: v.orgId,
-                authConfiguration: v.authConfiguration,
-                appSecret: v.appSecret,
-                appId: v.appId,
-                appName: v.appName,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Application> = z.object({
+        deletedBy: z.nullable(z.string()),
+        deletedAt: z.nullable(z.date().transform((v) => v.toISOString())),
+        createdAt: z.date().transform((v) => v.toISOString()),
+        createdBy: z.string(),
+        orgId: z.string(),
+        authConfiguration: AuthConfiguration$.outboundSchema,
+        appSecret: z.string(),
+        appId: z.string(),
+        appName: z.string(),
+    });
 }

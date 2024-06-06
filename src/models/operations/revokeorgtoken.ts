@@ -11,32 +11,19 @@ export type RevokeOrgTokenRequest = {
 
 /** @internal */
 export namespace RevokeOrgTokenRequest$ {
-    export const inboundSchema: z.ZodType<RevokeOrgTokenRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            orgId: z.string(),
-            orgTokenId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                orgId: v.orgId,
-                orgTokenId: v.orgTokenId,
-            };
-        });
+    export const inboundSchema: z.ZodType<RevokeOrgTokenRequest, z.ZodTypeDef, unknown> = z.object({
+        orgId: z.string(),
+        orgTokenId: z.string(),
+    });
 
     export type Outbound = {
         orgId: string;
         orgTokenId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RevokeOrgTokenRequest> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RevokeOrgTokenRequest> =
+        z.object({
             orgId: z.string(),
             orgTokenId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                orgId: v.orgId,
-                orgTokenId: v.orgTokenId,
-            };
         });
 }

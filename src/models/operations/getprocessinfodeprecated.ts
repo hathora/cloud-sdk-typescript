@@ -16,15 +16,9 @@ export type GetProcessInfoDeprecatedRequest = {
 /** @internal */
 export namespace GetProcessInfoDeprecatedGlobals$ {
     export const inboundSchema: z.ZodType<GetProcessInfoDeprecatedGlobals, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                appId: z.string().optional(),
-            })
-            .transform((v) => {
-                return {
-                    ...(v.appId === undefined ? null : { appId: v.appId }),
-                };
-            });
+        z.object({
+            appId: z.string().optional(),
+        });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -34,31 +28,18 @@ export namespace GetProcessInfoDeprecatedGlobals$ {
         Outbound,
         z.ZodTypeDef,
         GetProcessInfoDeprecatedGlobals
-    > = z
-        .object({
-            appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+    });
 }
 
 /** @internal */
 export namespace GetProcessInfoDeprecatedRequest$ {
     export const inboundSchema: z.ZodType<GetProcessInfoDeprecatedRequest, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                appId: z.string().optional(),
-                processId: z.string(),
-            })
-            .transform((v) => {
-                return {
-                    ...(v.appId === undefined ? null : { appId: v.appId }),
-                    processId: v.processId,
-                };
-            });
+        z.object({
+            appId: z.string().optional(),
+            processId: z.string(),
+        });
 
     export type Outbound = {
         appId?: string | undefined;
@@ -69,15 +50,8 @@ export namespace GetProcessInfoDeprecatedRequest$ {
         Outbound,
         z.ZodTypeDef,
         GetProcessInfoDeprecatedRequest
-    > = z
-        .object({
-            appId: z.string().optional(),
-            processId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                processId: v.processId,
-            };
-        });
+    > = z.object({
+        appId: z.string().optional(),
+        processId: z.string(),
+    });
 }

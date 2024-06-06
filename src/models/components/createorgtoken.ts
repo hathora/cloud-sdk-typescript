@@ -13,27 +13,15 @@ export type CreateOrgToken = {
 
 /** @internal */
 export namespace CreateOrgToken$ {
-    export const inboundSchema: z.ZodType<CreateOrgToken, z.ZodTypeDef, unknown> = z
-        .object({
-            name: z.string(),
-        })
-        .transform((v) => {
-            return {
-                name: v.name,
-            };
-        });
+    export const inboundSchema: z.ZodType<CreateOrgToken, z.ZodTypeDef, unknown> = z.object({
+        name: z.string(),
+    });
 
     export type Outbound = {
         name: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateOrgToken> = z
-        .object({
-            name: z.string(),
-        })
-        .transform((v) => {
-            return {
-                name: v.name,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateOrgToken> = z.object({
+        name: z.string(),
+    });
 }

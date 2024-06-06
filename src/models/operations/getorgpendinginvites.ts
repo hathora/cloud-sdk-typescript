@@ -10,27 +10,17 @@ export type GetOrgPendingInvitesRequest = {
 
 /** @internal */
 export namespace GetOrgPendingInvitesRequest$ {
-    export const inboundSchema: z.ZodType<GetOrgPendingInvitesRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetOrgPendingInvitesRequest, z.ZodTypeDef, unknown> =
+        z.object({
             orgId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                orgId: v.orgId,
-            };
         });
 
     export type Outbound = {
         orgId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOrgPendingInvitesRequest> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOrgPendingInvitesRequest> =
+        z.object({
             orgId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                orgId: v.orgId,
-            };
         });
 }

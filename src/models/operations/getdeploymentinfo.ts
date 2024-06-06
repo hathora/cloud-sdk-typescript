@@ -15,43 +15,27 @@ export type GetDeploymentInfoRequest = {
 
 /** @internal */
 export namespace GetDeploymentInfoGlobals$ {
-    export const inboundSchema: z.ZodType<GetDeploymentInfoGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetDeploymentInfoGlobals, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 
     export type Outbound = {
         appId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetDeploymentInfoGlobals> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetDeploymentInfoGlobals> =
+        z.object({
             appId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-            };
         });
 }
 
 /** @internal */
 export namespace GetDeploymentInfoRequest$ {
-    export const inboundSchema: z.ZodType<GetDeploymentInfoRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetDeploymentInfoRequest, z.ZodTypeDef, unknown> =
+        z.object({
             appId: z.string().optional(),
             deploymentId: z.number().int(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                deploymentId: v.deploymentId,
-            };
         });
 
     export type Outbound = {
@@ -59,15 +43,9 @@ export namespace GetDeploymentInfoRequest$ {
         deploymentId: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetDeploymentInfoRequest> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetDeploymentInfoRequest> =
+        z.object({
             appId: z.string().optional(),
             deploymentId: z.number().int(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.appId === undefined ? null : { appId: v.appId }),
-                deploymentId: v.deploymentId,
-            };
         });
 }

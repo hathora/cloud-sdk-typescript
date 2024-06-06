@@ -28,19 +28,11 @@ export type CreateLobbyParams = {
 
 /** @internal */
 export namespace CreateLobbyParams$ {
-    export const inboundSchema: z.ZodType<CreateLobbyParams, z.ZodTypeDef, unknown> = z
-        .object({
-            visibility: LobbyVisibility$.inboundSchema,
-            initialConfig: z.any().optional(),
-            region: Region$.inboundSchema,
-        })
-        .transform((v) => {
-            return {
-                visibility: v.visibility,
-                ...(v.initialConfig === undefined ? null : { initialConfig: v.initialConfig }),
-                region: v.region,
-            };
-        });
+    export const inboundSchema: z.ZodType<CreateLobbyParams, z.ZodTypeDef, unknown> = z.object({
+        visibility: LobbyVisibility$.inboundSchema,
+        initialConfig: z.any().optional(),
+        region: Region$.inboundSchema,
+    });
 
     export type Outbound = {
         visibility: string;
@@ -48,17 +40,9 @@ export namespace CreateLobbyParams$ {
         region: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLobbyParams> = z
-        .object({
-            visibility: LobbyVisibility$.outboundSchema,
-            initialConfig: z.any().optional(),
-            region: Region$.outboundSchema,
-        })
-        .transform((v) => {
-            return {
-                visibility: v.visibility,
-                ...(v.initialConfig === undefined ? null : { initialConfig: v.initialConfig }),
-                region: v.region,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLobbyParams> = z.object({
+        visibility: LobbyVisibility$.outboundSchema,
+        initialConfig: z.any().optional(),
+        region: Region$.outboundSchema,
+    });
 }
