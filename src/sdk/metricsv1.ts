@@ -4,7 +4,10 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -59,11 +62,11 @@ export class MetricsV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            processId: enc$.encodeSimple("processId", payload$.processId, {
+            processId: encodeSimple$("processId", payload$.processId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -72,17 +75,12 @@ export class MetricsV1 extends ClientSDK {
             pathParams$
         );
 
-        const query$ = [
-            enc$.encodeForm("end", payload$.end, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("metrics", payload$.metrics, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("start", payload$.start, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("step", payload$.step, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            metrics: payload$.metrics,
+            end: payload$.end,
+            start: payload$.start,
+            step: payload$.step,
+        });
 
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {

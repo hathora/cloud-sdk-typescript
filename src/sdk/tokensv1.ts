@@ -4,7 +4,7 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -59,7 +59,7 @@ export class TokensV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            orgId: enc$.encodeSimple("orgId", payload$.orgId, {
+            orgId: encodeSimple$("orgId", payload$.orgId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -134,10 +134,10 @@ export class TokensV1 extends ClientSDK {
             (value$) => operations.CreateOrgTokenRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.CreateOrgToken, { explode: true });
+        const body$ = encodeJSON$("body", payload$.CreateOrgToken, { explode: true });
 
         const pathParams$ = {
-            orgId: enc$.encodeSimple("orgId", payload$.orgId, {
+            orgId: encodeSimple$("orgId", payload$.orgId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -214,11 +214,11 @@ export class TokensV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            orgId: enc$.encodeSimple("orgId", payload$.orgId, {
+            orgId: encodeSimple$("orgId", payload$.orgId, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            orgTokenId: enc$.encodeSimple("orgTokenId", payload$.orgTokenId, {
+            orgTokenId: encodeSimple$("orgTokenId", payload$.orgTokenId, {
                 explode: false,
                 charEncoding: "percent",
             }),

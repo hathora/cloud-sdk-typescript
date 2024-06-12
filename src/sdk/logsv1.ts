@@ -4,7 +4,10 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -70,23 +73,18 @@ export class LogsV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
         const path$ = this.templateURLComponent("/logs/v1/{appId}/all")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("follow", payload$.follow, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("region", payload$.region, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("tailLines", payload$.tailLines, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            follow: payload$.follow,
+            tailLines: payload$.tailLines,
+            region: payload$.region,
+        });
 
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
@@ -160,11 +158,11 @@ export class LogsV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            processId: enc$.encodeSimple("processId", payload$.processId, {
+            processId: encodeSimple$("processId", payload$.processId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -173,15 +171,10 @@ export class LogsV1 extends ClientSDK {
             pathParams$
         );
 
-        const query$ = [
-            enc$.encodeForm("follow", payload$.follow, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("tailLines", payload$.tailLines, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            follow: payload$.follow,
+            tailLines: payload$.tailLines,
+        });
 
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
@@ -254,11 +247,11 @@ export class LogsV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            processId: enc$.encodeSimple("processId", payload$.processId, {
+            processId: encodeSimple$("processId", payload$.processId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -343,11 +336,11 @@ export class LogsV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            deploymentId: enc$.encodeSimple("deploymentId", payload$.deploymentId, {
+            deploymentId: encodeSimple$("deploymentId", payload$.deploymentId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -356,15 +349,10 @@ export class LogsV1 extends ClientSDK {
             pathParams$
         );
 
-        const query$ = [
-            enc$.encodeForm("follow", payload$.follow, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("tailLines", payload$.tailLines, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            follow: payload$.follow,
+            tailLines: payload$.tailLines,
+        });
 
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {

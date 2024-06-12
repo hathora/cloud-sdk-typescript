@@ -4,7 +4,7 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -114,10 +114,10 @@ export class OrganizationsV1 extends ClientSDK {
             (value$) => operations.InviteUserRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.CreateUserInvite, { explode: true });
+        const body$ = encodeJSON$("body", payload$.CreateUserInvite, { explode: true });
 
         const pathParams$ = {
-            orgId: enc$.encodeSimple("orgId", payload$.orgId, {
+            orgId: encodeSimple$("orgId", payload$.orgId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -189,10 +189,10 @@ export class OrganizationsV1 extends ClientSDK {
             (value$) => operations.RescindInviteRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.RescindUserInvite, { explode: true });
+        const body$ = encodeJSON$("body", payload$.RescindUserInvite, { explode: true });
 
         const pathParams$ = {
-            orgId: enc$.encodeSimple("orgId", payload$.orgId, {
+            orgId: encodeSimple$("orgId", payload$.orgId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -264,7 +264,7 @@ export class OrganizationsV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            orgId: enc$.encodeSimple("orgId", payload$.orgId, {
+            orgId: encodeSimple$("orgId", payload$.orgId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -385,7 +385,7 @@ export class OrganizationsV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            orgId: enc$.encodeSimple("orgId", payload$.orgId, {
+            orgId: encodeSimple$("orgId", payload$.orgId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -454,7 +454,7 @@ export class OrganizationsV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            orgId: enc$.encodeSimple("orgId", payload$.orgId, {
+            orgId: encodeSimple$("orgId", payload$.orgId, {
                 explode: false,
                 charEncoding: "percent",
             }),

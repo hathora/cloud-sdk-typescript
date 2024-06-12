@@ -4,7 +4,11 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -68,25 +72,20 @@ export class LobbiesV3 extends ClientSDK {
             (value$) => operations.CreateLobbyRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.CreateLobbyV3Params, { explode: true });
+        const body$ = encodeJSON$("body", payload$.CreateLobbyV3Params, { explode: true });
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
         const path$ = this.templateURLComponent("/lobby/v3/{appId}/create")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("roomId", payload$.roomId, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("shortCode", payload$.shortCode, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            roomId: payload$.roomId,
+            shortCode: payload$.shortCode,
+        });
 
         const security$: SecurityInput[][] = [
             [
@@ -156,18 +155,16 @@ export class LobbiesV3 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
         const path$ = this.templateURLComponent("/lobby/v3/{appId}/list/public")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("region", payload$.region, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            region: payload$.region,
+        });
 
         const context = {
             operationID: "ListActivePublicLobbies",
@@ -216,11 +213,11 @@ export class LobbiesV3 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            roomId: enc$.encodeSimple("roomId", payload$.roomId, {
+            roomId: encodeSimple$("roomId", payload$.roomId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -283,11 +280,11 @@ export class LobbiesV3 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            shortCode: enc$.encodeSimple("shortCode", payload$.shortCode, {
+            shortCode: encodeSimple$("shortCode", payload$.shortCode, {
                 explode: false,
                 charEncoding: "percent",
             }),
