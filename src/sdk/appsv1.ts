@@ -4,7 +4,7 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -117,7 +117,7 @@ export class AppsV1 extends ClientSDK {
             (value$) => components.AppConfig$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
+        const body$ = encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/apps/v1/create")();
 
@@ -189,10 +189,10 @@ export class AppsV1 extends ClientSDK {
             (value$) => operations.UpdateAppRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.AppConfig, { explode: true });
+        const body$ = encodeJSON$("body", payload$.AppConfig, { explode: true });
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -270,7 +270,7 @@ export class AppsV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -342,7 +342,7 @@ export class AppsV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),

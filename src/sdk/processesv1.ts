@@ -4,7 +4,10 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -66,18 +69,16 @@ export class ProcessesV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
         const path$ = this.templateURLComponent("/processes/v1/{appId}/list/running")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("region", payload$.region, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            region: payload$.region,
+        });
 
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
@@ -149,18 +150,16 @@ export class ProcessesV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
         const path$ = this.templateURLComponent("/processes/v1/{appId}/list/stopped")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("region", payload$.region, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            region: payload$.region,
+        });
 
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
@@ -232,11 +231,11 @@ export class ProcessesV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
-            processId: enc$.encodeSimple("processId", payload$.processId, {
+            processId: encodeSimple$("processId", payload$.processId, {
                 explode: false,
                 charEncoding: "percent",
             }),

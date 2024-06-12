@@ -4,7 +4,10 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -69,19 +72,17 @@ export class LobbiesV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
         const path$ = this.templateURLComponent("/lobby/v1/{appId}/create/private")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("local", payload$.local, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("region", payload$.region, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            region: payload$.region,
+            local: payload$.local,
+        });
 
         const security$: SecurityInput[][] = [
             [
@@ -158,19 +159,17 @@ export class LobbiesV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
         const path$ = this.templateURLComponent("/lobby/v1/{appId}/create/public")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("local", payload$.local, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("region", payload$.region, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            region: payload$.region,
+            local: payload$.local,
+        });
 
         const security$: SecurityInput[][] = [
             [
@@ -247,19 +246,17 @@ export class LobbiesV1 extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            appId: enc$.encodeSimple("appId", payload$.appId ?? this.options$.appId, {
+            appId: encodeSimple$("appId", payload$.appId ?? this.options$.appId, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
         const path$ = this.templateURLComponent("/lobby/v1/{appId}/list")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("local", payload$.local, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("region", payload$.region, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            local: payload$.local,
+            region: payload$.region,
+        });
 
         const context = {
             operationID: "ListActivePublicLobbiesDeprecatedV1",
