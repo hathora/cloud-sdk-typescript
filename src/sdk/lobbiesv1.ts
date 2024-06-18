@@ -80,8 +80,8 @@ export class LobbiesV1 extends ClientSDK {
         const path$ = this.templateURLComponent("/lobby/v1/{appId}/create/private")(pathParams$);
 
         const query$ = encodeFormQuery$({
-            region: payload$.region,
             local: payload$.local,
+            region: payload$.region,
         });
 
         const security$: SecurityInput[][] = [
@@ -167,8 +167,8 @@ export class LobbiesV1 extends ClientSDK {
         const path$ = this.templateURLComponent("/lobby/v1/{appId}/create/public")(pathParams$);
 
         const query$ = encodeFormQuery$({
-            region: payload$.region,
             local: payload$.local,
+            region: payload$.region,
         });
 
         const security$: SecurityInput[][] = [

@@ -160,8 +160,8 @@ export class ProcessesV2 extends ClientSDK {
         const path$ = this.templateURLComponent("/processes/v2/{appId}/list/latest")(pathParams$);
 
         const query$ = encodeFormQuery$({
-            status: payload$.status,
             region: payload$.region,
+            status: payload$.status,
         });
 
         let security$;
