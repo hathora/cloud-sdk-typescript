@@ -82,8 +82,8 @@ export class LogsV1 extends ClientSDK {
 
         const query$ = encodeFormQuery$({
             follow: payload$.follow,
-            tailLines: payload$.tailLines,
             region: payload$.region,
+            tailLines: payload$.tailLines,
         });
 
         let security$;

@@ -76,8 +76,8 @@ export class MetricsV1 extends ClientSDK {
         );
 
         const query$ = encodeFormQuery$({
-            metrics: payload$.metrics,
             end: payload$.end,
+            metrics: payload$.metrics,
             start: payload$.start,
             step: payload$.step,
         });
