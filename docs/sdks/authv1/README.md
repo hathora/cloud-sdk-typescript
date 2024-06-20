@@ -50,7 +50,7 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404              | application/json |
+| errors.ApiError  | 404,429          | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## loginNickname
@@ -95,7 +95,7 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404              | application/json |
+| errors.ApiError  | 404,429          | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## loginGoogle
@@ -140,5 +140,5 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404          | application/json |
+| errors.ApiError  | 401,404,429      | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |

@@ -251,9 +251,10 @@ run();
 **Promise\<[components.Lobby[]](../../models/.md)\>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401,429          | application/json |
+| errors.SDKError  | 4xx-5xx          | */*              |
 
 ## ~~getLobbyInfo~~
 
@@ -297,7 +298,7 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404              | application/json |
+| errors.ApiError  | 404,429          | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## ~~setLobbyState~~

@@ -18,7 +18,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.3.2
+  version: 2.4.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -44,3 +44,4 @@ typescript:
   packageName: '@hathora/cloud-sdk-typescript'
   responseFormat: flat
   templateVersion: v2
+  useIndexModules: true

@@ -16,10 +16,25 @@
 npm add @hathora/cloud-sdk-typescript
 ```
 
+### PNPM
+
+```bash
+pnpm add @hathora/cloud-sdk-typescript
+```
+
+### Bun
+
+```bash
+bun add @hathora/cloud-sdk-typescript
+```
+
 ### Yarn
 
 ```bash
-yarn add @hathora/cloud-sdk-typescript
+yarn add @hathora/cloud-sdk-typescript zod
+
+# Note that Yarn does not install peer dependencies automatically. You will need
+# to install zod as shown above.
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -152,6 +167,7 @@ run();
 ### [organizationsV1](docs/sdks/organizationsv1/README.md)
 
 * [getOrgs](docs/sdks/organizationsv1/README.md#getorgs) - Returns an unsorted list of all organizations that you are a member of (an accepted membership invite). An organization is uniquely identified by an `orgId`.
+* [getOrgMembers](docs/sdks/organizationsv1/README.md#getorgmembers)
 * [inviteUser](docs/sdks/organizationsv1/README.md#inviteuser)
 * [rescindInvite](docs/sdks/organizationsv1/README.md#rescindinvite)
 * [getOrgPendingInvites](docs/sdks/organizationsv1/README.md#getorgpendinginvites)
@@ -213,7 +229,7 @@ All SDK methods return a response object or throw an error. If Error objects are
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401              | application/json |
+| errors.ApiError  | 401,429          | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
@@ -221,7 +237,7 @@ Validation errors can also occur when either method arguments or data returned f
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import * as errors from "@hathora/cloud-sdk-typescript/models/errors";
+import { SDKValidationError } from "@hathora/cloud-sdk-typescript/models/errors";
 
 const hathoraCloud = new HathoraCloud({
     hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
@@ -234,7 +250,7 @@ async function run() {
         result = await hathoraCloud.appsV1.getApps();
     } catch (err) {
         switch (true) {
-            case err instanceof errors.SDKValidationError: {
+            case err instanceof SDKValidationError: {
                 // Validation errors can be pretty-printed
                 console.error(err.pretty());
                 // Raw value may also be inspected
