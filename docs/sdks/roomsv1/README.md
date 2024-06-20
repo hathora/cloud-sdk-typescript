@@ -101,7 +101,7 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,422      | application/json |
+| errors.ApiError  | 401,404,422,429  | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## ~~getActiveRoomsForProcessDeprecated~~
@@ -145,7 +145,7 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404          | application/json |
+| errors.ApiError  | 401,404,429      | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## ~~getInactiveRoomsForProcessDeprecated~~
@@ -189,7 +189,7 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404          | application/json |
+| errors.ApiError  | 401,404,429      | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## ~~destroyRoomDeprecated~~
@@ -316,7 +316,7 @@ run();
 **Promise\<[components.ConnectionInfo](../../models/components/connectioninfo.md)\>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 400,402,404,500  | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
+| Error Object        | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ApiError     | 400,402,404,429,500 | application/json    |
+| errors.SDKError     | 4xx-5xx             | */*                 |

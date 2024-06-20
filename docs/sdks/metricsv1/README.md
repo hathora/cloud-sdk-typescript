@@ -49,7 +49,7 @@ run();
 **Promise\<[components.MetricsData](../../models/components/metricsdata.md)\>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,422,500  | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
+| Error Object        | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ApiError     | 401,404,422,429,500 | application/json    |
+| errors.SDKError     | 4xx-5xx             | */*                 |

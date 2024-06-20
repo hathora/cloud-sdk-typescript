@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 53e36cebc1d6ed2da766af26147d99c1
+  docChecksum: b23bc3f0fcf53aed56d191405da129f6
   docVersion: 0.0.1
-  speakeasyVersion: 1.308.1
-  generationVersion: 2.342.6
-  releaseVersion: 2.3.2
-  configChecksum: 64dc66d7182dd879269625a46d774d00
+  speakeasyVersion: 1.310.0
+  generationVersion: 2.347.4
+  releaseVersion: 2.4.0
+  configChecksum: a99a82350801aa36fa385ae0305df76f
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.9.14
+    core: 3.10.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     flattening: 2.81.1
@@ -53,7 +53,7 @@ generatedFiles:
   - src/sdk/roomsv2.ts
   - src/sdk/tokensv1.ts
   - src/sdk/sdk.ts
-  - .eslintrc.js
+  - .eslintrc.cjs
   - .npmignore
   - RUNTIMES.md
   - jsr.json
@@ -121,6 +121,8 @@ generatedFiles:
   - src/models/components/metricname.ts
   - src/models/components/orgspage.ts
   - src/models/components/organization.ts
+  - src/models/components/orgmemberspage.ts
+  - src/models/components/orgmember.ts
   - src/models/components/orgpermission.ts
   - src/models/components/organizationinvitestatus.ts
   - src/models/components/invitestatuspending.ts
@@ -198,6 +200,7 @@ generatedFiles:
   - src/models/operations/downloadlogforprocess.ts
   - src/models/operations/getlogsfordeployment.ts
   - src/models/operations/getmetrics.ts
+  - src/models/operations/getorgmembers.ts
   - src/models/operations/inviteuser.ts
   - src/models/operations/rescindinvite.ts
   - src/models/operations/getorgpendinginvites.ts
@@ -286,6 +289,8 @@ generatedFiles:
   - docs/models/components/metricname.md
   - docs/models/components/orgspage.md
   - docs/models/components/organization.md
+  - docs/models/components/orgmemberspage.md
+  - docs/models/components/orgmember.md
   - docs/models/components/orgpermission.md
   - docs/models/components/organizationinvitestatus.md
   - docs/models/components/type.md
@@ -432,6 +437,7 @@ generatedFiles:
   - docs/models/operations/getlogsfordeploymentrequest.md
   - docs/models/operations/getmetricsglobals.md
   - docs/models/operations/getmetricsrequest.md
+  - docs/models/operations/getorgmembersrequest.md
   - docs/models/operations/inviteuserrequest.md
   - docs/models/operations/rescindinviterequest.md
   - docs/models/operations/getorgpendinginvitesrequest.md

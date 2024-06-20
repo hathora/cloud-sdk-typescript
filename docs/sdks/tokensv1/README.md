@@ -51,7 +51,7 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404          | application/json |
+| errors.ApiError  | 401,404,429      | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## createOrgToken
@@ -97,7 +97,7 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,422      | application/json |
+| errors.ApiError  | 401,404,422,429  | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## revokeOrgToken
@@ -141,5 +141,5 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404          | application/json |
+| errors.ApiError  | 401,404,429      | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |

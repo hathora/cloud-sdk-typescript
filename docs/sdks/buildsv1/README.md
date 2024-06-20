@@ -51,7 +51,7 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404          | application/json |
+| errors.ApiError  | 401,404,429      | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## ~~getBuildInfoDeprecated~~
@@ -97,7 +97,7 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404          | application/json |
+| errors.ApiError  | 401,404,429      | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## ~~createBuildDeprecated~~
@@ -238,7 +238,7 @@ run();
 **Promise\<void\>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,422,500  | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
+| Error Object        | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ApiError     | 401,404,422,429,500 | application/json    |
+| errors.SDKError     | 4xx-5xx             | */*                 |

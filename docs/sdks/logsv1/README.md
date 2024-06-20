@@ -54,7 +54,7 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404          | application/json |
+| errors.ApiError  | 401,404,429      | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## getLogsForProcess
@@ -98,10 +98,10 @@ run();
 **Promise\<[ReadableStream<Uint8Array>](../../models/.md)\>**
 ### Errors
 
-| Error Object        | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.ApiError     | 400,401,404,410,500 | application/json    |
-| errors.SDKError     | 4xx-5xx             | */*                 |
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400,401,404,410,429,500 | application/json        |
+| errors.SDKError         | 4xx-5xx                 | */*                     |
 
 ## downloadLogForProcess
 
@@ -142,10 +142,10 @@ run();
 **Promise\<[ReadableStream<Uint8Array>](../../models/.md)\>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 400,401,404,410  | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
+| Error Object        | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ApiError     | 400,401,404,410,429 | application/json    |
+| errors.SDKError     | 4xx-5xx             | */*                 |
 
 ## ~~getLogsForDeployment~~
 
@@ -192,5 +192,5 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404          | application/json |
+| errors.ApiError  | 401,404,429      | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |

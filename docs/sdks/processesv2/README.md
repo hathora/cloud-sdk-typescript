@@ -53,7 +53,7 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404          | application/json |
+| errors.ApiError  | 401,404,429      | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## getLatestProcesses
@@ -103,7 +103,7 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404          | application/json |
+| errors.ApiError  | 401,404,429      | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## stopProcess
@@ -146,7 +146,7 @@ run();
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,500      | application/json |
+| errors.ApiError  | 401,404,429,500  | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## createProcess
@@ -189,7 +189,7 @@ run();
 **Promise\<[components.ProcessV2](../../models/components/processv2.md)\>**
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,402,404,500  | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
+| Error Object        | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ApiError     | 401,402,404,429,500 | application/json    |
+| errors.SDKError     | 4xx-5xx             | */*                 |
