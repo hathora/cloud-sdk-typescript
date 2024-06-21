@@ -21,7 +21,6 @@ Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/ha
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
@@ -29,7 +28,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.processesV1.getRunningProcesses("app-af469a92-5b45-4565-b3c4-b79878de67d2", Region.Tokyo);
+  const result = await hathoraCloud.processesV1.getRunningProcesses("app-af469a92-5b45-4565-b3c4-b79878de67d2", "Tokyo");
 
   // Handle the result
   console.log(result)
@@ -68,7 +67,6 @@ Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/ha
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
@@ -76,7 +74,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.processesV1.getStoppedProcesses("app-af469a92-5b45-4565-b3c4-b79878de67d2", Region.Sydney);
+  const result = await hathoraCloud.processesV1.getStoppedProcesses("app-af469a92-5b45-4565-b3c4-b79878de67d2", "Sydney");
 
   // Handle the result
   console.log(result)

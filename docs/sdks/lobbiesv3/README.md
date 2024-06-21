@@ -16,7 +16,6 @@ Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathor
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { LobbyVisibility, Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -24,9 +23,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.lobbiesV3.createLobby("<YOUR_BEARER_TOKEN_HERE>", {
-    visibility: LobbyVisibility.Private,
+    visibility: "private",
     roomConfig: "{\"name\":\"my-room\"}",
-    region: Region.Seattle,
+    region: "Seattle",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "LFG4", "2swovpy1fnunu");
 
   // Handle the result
@@ -67,14 +66,13 @@ Get all active lobbies for a given [application](https://hathora.dev/docs/concep
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV3.listActivePublicLobbies("app-af469a92-5b45-4565-b3c4-b79878de67d2", Region.Seattle);
+  const result = await hathoraCloud.lobbiesV3.listActivePublicLobbies("app-af469a92-5b45-4565-b3c4-b79878de67d2", "Seattle");
 
   // Handle the result
   console.log(result)

@@ -425,7 +425,6 @@ run();
 Some operations in this SDK require the security scheme to be specified at the request level. For example:
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -435,7 +434,7 @@ async function run() {
     const result = await hathoraCloud.lobbiesV1.createPrivateLobbyDeprecated(
         "<YOUR_BEARER_TOKEN_HERE>",
         "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-        Region.London,
+        "London",
         false
     );
 

@@ -64,7 +64,6 @@ Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathor
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { ProcessStatus, Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
@@ -73,9 +72,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.processesV2.getLatestProcesses("app-af469a92-5b45-4565-b3c4-b79878de67d2", [
-    ProcessStatus.Stopped,
+    "stopped",
   ], [
-    Region.Frankfurt,
+    "Frankfurt",
   ]);
 
   // Handle the result
@@ -157,7 +156,6 @@ Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) 
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
@@ -165,7 +163,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.processesV2.createProcess(Region.Tokyo, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.processesV2.createProcess("Tokyo", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   // Handle the result
   console.log(result)
