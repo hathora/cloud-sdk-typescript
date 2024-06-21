@@ -146,7 +146,6 @@ Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#dep
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { TransportType } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
@@ -165,12 +164,12 @@ async function run() {
     roomsPerProcess: 3,
     additionalContainerPorts: [
       {
-        transportType: TransportType.Udp,
+        transportType: "udp",
         port: 8000,
         name: "default",
       },
     ],
-    transportType: TransportType.Tcp,
+    transportType: "tcp",
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,

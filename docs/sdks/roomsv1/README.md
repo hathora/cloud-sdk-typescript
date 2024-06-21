@@ -19,7 +19,6 @@
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
@@ -29,7 +28,7 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.roomsV1.createRoomDeprecated({
     roomConfig: "{\"name\":\"my-room\"}",
-    region: Region.Chicago,
+    region: "Chicago",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   // Handle the result

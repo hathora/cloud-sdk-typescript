@@ -15,14 +15,13 @@
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV1.createPrivateLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", "app-af469a92-5b45-4565-b3c4-b79878de67d2", Region.London, false);
+  const result = await hathoraCloud.lobbiesV1.createPrivateLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", "app-af469a92-5b45-4565-b3c4-b79878de67d2", "London", false);
 
   // Handle the result
   console.log(result)
@@ -61,14 +60,13 @@ run();
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV1.createPublicLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", "app-af469a92-5b45-4565-b3c4-b79878de67d2", Region.Frankfurt, false);
+  const result = await hathoraCloud.lobbiesV1.createPublicLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", "app-af469a92-5b45-4565-b3c4-b79878de67d2", "Frankfurt", false);
 
   // Handle the result
   console.log(result)
@@ -107,14 +105,13 @@ run();
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV1.listActivePublicLobbiesDeprecatedV1("app-af469a92-5b45-4565-b3c4-b79878de67d2", false, Region.Sydney);
+  const result = await hathoraCloud.lobbiesV1.listActivePublicLobbiesDeprecatedV1("app-af469a92-5b45-4565-b3c4-b79878de67d2", false, "Sydney");
 
   // Handle the result
   console.log(result)

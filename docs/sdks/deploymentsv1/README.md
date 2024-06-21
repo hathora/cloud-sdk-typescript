@@ -154,7 +154,6 @@ Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#dep
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { PlanName, TransportType } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
@@ -170,15 +169,15 @@ async function run() {
       },
     ],
     roomsPerProcess: 3,
-    planName: PlanName.Tiny,
+    planName: "tiny",
     additionalContainerPorts: [
       {
-        transportType: TransportType.Udp,
+        transportType: "udp",
         port: 8000,
         name: "default",
       },
     ],
-    transportType: TransportType.Tls,
+    transportType: "tls",
     containerPort: 4000,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 

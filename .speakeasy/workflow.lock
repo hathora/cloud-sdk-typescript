@@ -1,9 +1,9 @@
-speakeasyVersion: 1.310.0
+speakeasyVersion: 1.313.0
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:f506622ec98c2539ef8b18012e57bc0e72fcd6895f6b8a8de590c996362d7ea0
-        sourceBlobDigest: sha256:e777a220587b9989184dceb142228717e0e27173a03e932ed542212bf696798d
+        sourceRevisionDigest: sha256:c5a8e7751df0081b121cbb74b9afe7676f192da995d53dd060005ace4ec943cd
+        sourceBlobDigest: sha256:e5126326a51796163878807c80f558e1545ca40472bdf58785525cd957c464bc
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     hathora-typescript:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:f506622ec98c2539ef8b18012e57bc0e72fcd6895f6b8a8de590c996362d7ea0
-        sourceBlobDigest: sha256:e777a220587b9989184dceb142228717e0e27173a03e932ed542212bf696798d
+        sourceRevisionDigest: sha256:c5a8e7751df0081b121cbb74b9afe7676f192da995d53dd060005ace4ec943cd
+        sourceBlobDigest: sha256:e5126326a51796163878807c80f558e1545ca40472bdf58785525cd957c464bc
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0

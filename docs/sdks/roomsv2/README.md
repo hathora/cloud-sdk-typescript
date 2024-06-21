@@ -20,7 +20,6 @@ Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
@@ -30,7 +29,7 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.roomsV2.createRoom({
     roomConfig: "{\"name\":\"my-room\"}",
-    region: Region.SaoPaulo,
+    region: "Sao_Paulo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   // Handle the result

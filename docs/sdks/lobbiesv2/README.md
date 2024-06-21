@@ -19,7 +19,6 @@
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -28,7 +27,7 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.lobbiesV2.createPrivateLobby("<YOUR_BEARER_TOKEN_HERE>", {
     initialConfig: "<value>",
-    region: Region.Chicago,
+    region: "Chicago",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   // Handle the result
@@ -68,7 +67,6 @@ run();
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -77,7 +75,7 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.lobbiesV2.createPublicLobby("<YOUR_BEARER_TOKEN_HERE>", {
     initialConfig: "<value>",
-    region: Region.SaoPaulo,
+    region: "Sao_Paulo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   // Handle the result
@@ -117,7 +115,6 @@ run();
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -126,7 +123,7 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.lobbiesV2.createLocalLobby("<YOUR_BEARER_TOKEN_HERE>", {
     initialConfig: "<value>",
-    region: Region.SaoPaulo,
+    region: "Sao_Paulo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   // Handle the result
@@ -168,7 +165,6 @@ Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathor
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { LobbyVisibility, Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -176,9 +172,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.lobbiesV2.createLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", {
-    visibility: LobbyVisibility.Private,
+    visibility: "private",
     initialConfig: "<value>",
-    region: Region.Tokyo,
+    region: "Tokyo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   // Handle the result
@@ -220,14 +216,13 @@ Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
 const hathoraCloud = new HathoraCloud({
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV2.listActivePublicLobbiesDeprecatedV2("app-af469a92-5b45-4565-b3c4-b79878de67d2", Region.Frankfurt);
+  const result = await hathoraCloud.lobbiesV2.listActivePublicLobbiesDeprecatedV2("app-af469a92-5b45-4565-b3c4-b79878de67d2", "Frankfurt");
 
   // Handle the result
   console.log(result)
