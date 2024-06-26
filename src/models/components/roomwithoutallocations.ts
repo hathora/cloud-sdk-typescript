@@ -36,7 +36,7 @@ export type RoomWithoutAllocations = {
      * Note: error will be returned if `roomId` is not globally unique.
      */
     roomId: string;
-    roomConfig: string | null;
+    roomConfig?: string | null | undefined;
     /**
      * The allocation status of a room.
      *
@@ -90,7 +90,7 @@ export namespace RoomWithoutAllocations$ {
         {
             appId: z.string(),
             roomId: z.string(),
-            roomConfig: z.nullable(z.string()),
+            roomConfig: z.nullable(z.string()).optional(),
             status: RoomStatus$.inboundSchema,
             currentAllocation: z.nullable(z.lazy(() => CurrentAllocation$.inboundSchema)),
         }
@@ -99,7 +99,7 @@ export namespace RoomWithoutAllocations$ {
     export type Outbound = {
         appId: string;
         roomId: string;
-        roomConfig: string | null;
+        roomConfig?: string | null | undefined;
         status: string;
         currentAllocation: CurrentAllocation$.Outbound | null;
     };
@@ -108,7 +108,7 @@ export namespace RoomWithoutAllocations$ {
         z.object({
             appId: z.string(),
             roomId: z.string(),
-            roomConfig: z.nullable(z.string()),
+            roomConfig: z.nullable(z.string()).optional(),
             status: RoomStatus$.outboundSchema,
             currentAllocation: z.nullable(z.lazy(() => CurrentAllocation$.outboundSchema)),
         });

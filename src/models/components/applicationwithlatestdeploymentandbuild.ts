@@ -40,9 +40,6 @@ export type ApplicationWithLatestDeploymentAndBuildDeployment = {
      * When the deployment was created.
      */
     createdAt: Date;
-    /**
-     * UserId or email address for the user that created the deployment.
-     */
     createdBy: string;
     /**
      * The amount of memory allocated to your process.
@@ -75,7 +72,7 @@ export type ApplicationWithLatestDeploymentAndBuildDeployment = {
  */
 export type ApplicationWithLatestDeploymentAndBuild = {
     /**
-     * UserId or email address for the user that deleted the application.
+     * The email address or token id for the user that deleted the application.
      */
     deletedBy: string | null;
     /**
@@ -86,9 +83,6 @@ export type ApplicationWithLatestDeploymentAndBuild = {
      * When the application was created.
      */
     createdAt: Date;
-    /**
-     * UserId or email address for the user that created the application.
-     */
     createdBy: string;
     /**
      * System generated unique identifier for an organization. Not guaranteed to have a specific format.

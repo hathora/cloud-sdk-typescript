@@ -95,6 +95,60 @@ export class OrganizationsV1 extends ClientSDK {
         return result$;
     }
 
+    async getUserPendingInvites(
+        options?: RequestOptions
+    ): Promise<components.PendingOrgInvitesPage> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
+
+        const path$ = this.templateURLComponent("/orgs/v1/user/invites/pending")();
+
+        const query$ = "";
+
+        let security$;
+        if (typeof this.options$.hathoraDevToken === "function") {
+            security$ = { hathoraDevToken: await this.options$.hathoraDevToken() };
+        } else if (this.options$.hathoraDevToken) {
+            security$ = { hathoraDevToken: this.options$.hathoraDevToken };
+        } else {
+            security$ = {};
+        }
+        const context = {
+            operationID: "GetUserPendingInvites",
+            oAuth2Scopes: [],
+            securitySource: this.options$.hathoraDevToken,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const doOptions = { context, errorCodes: ["401", "429", "4XX", "5XX"] };
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, doOptions);
+
+        const responseFields$ = {
+            HttpMeta: { Response: response, Request: request$ },
+        };
+
+        const [result$] = await this.matcher<components.PendingOrgInvitesPage>()
+            .json(200, components.PendingOrgInvitesPage$)
+            .json([401, 429], errors.ApiError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
     async getOrgMembers(
         orgId: string,
         options?: RequestOptions
@@ -171,7 +225,7 @@ export class OrganizationsV1 extends ClientSDK {
         orgId: string,
         createUserInvite: components.CreateUserInvite,
         options?: RequestOptions
-    ): Promise<components.OrgPermission> {
+    ): Promise<components.PendingOrgInvite> {
         const input$: operations.InviteUserRequest = {
             orgId: orgId,
             createUserInvite: createUserInvite,
@@ -233,8 +287,8 @@ export class OrganizationsV1 extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<components.OrgPermission>()
-            .json(200, components.OrgPermission$)
+        const [result$] = await this.matcher<components.PendingOrgInvite>()
+            .json(200, components.PendingOrgInvite$)
             .json([401, 422, 429], errors.ApiError$, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
@@ -320,7 +374,7 @@ export class OrganizationsV1 extends ClientSDK {
     async getOrgPendingInvites(
         orgId: string,
         options?: RequestOptions
-    ): Promise<components.OrgInvitesPage> {
+    ): Promise<components.PendingOrgInvitesPage> {
         const input$: operations.GetOrgPendingInvitesRequest = {
             orgId: orgId,
         };
@@ -380,60 +434,8 @@ export class OrganizationsV1 extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<components.OrgInvitesPage>()
-            .json(200, components.OrgInvitesPage$)
-            .json([401, 429], errors.ApiError$, { err: true })
-            .fail(["4XX", "5XX"])
-            .match(response, { extraFields: responseFields$ });
-
-        return result$;
-    }
-
-    async getUserPendingInvites(options?: RequestOptions): Promise<components.OrgInvitesPage> {
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
-
-        const path$ = this.templateURLComponent("/orgs/v1/user/invites/pending")();
-
-        const query$ = "";
-
-        let security$;
-        if (typeof this.options$.hathoraDevToken === "function") {
-            security$ = { hathoraDevToken: await this.options$.hathoraDevToken() };
-        } else if (this.options$.hathoraDevToken) {
-            security$ = { hathoraDevToken: this.options$.hathoraDevToken };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "GetUserPendingInvites",
-            oAuth2Scopes: [],
-            securitySource: this.options$.hathoraDevToken,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
-
-        const doOptions = { context, errorCodes: ["401", "429", "4XX", "5XX"] };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "GET",
-                path: path$,
-                headers: headers$,
-                query: query$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
-
-        const responseFields$ = {
-            HttpMeta: { Response: response, Request: request$ },
-        };
-
-        const [result$] = await this.matcher<components.OrgInvitesPage>()
-            .json(200, components.OrgInvitesPage$)
+        const [result$] = await this.matcher<components.PendingOrgInvitesPage>()
+            .json(200, components.PendingOrgInvitesPage$)
             .json([401, 429], errors.ApiError$, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });

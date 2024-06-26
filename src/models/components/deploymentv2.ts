@@ -38,9 +38,6 @@ export type DeploymentV2 = {
      * When the deployment was created.
      */
     createdAt: Date;
-    /**
-     * UserId or email address for the user that created the deployment.
-     */
     createdBy: string;
     /**
      * The amount of memory allocated to your process.

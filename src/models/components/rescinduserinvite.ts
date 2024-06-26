@@ -5,6 +5,9 @@
 import * as z from "zod";
 
 export type RescindUserInvite = {
+    /**
+     * A user's email.
+     */
     userEmail: string;
 };
 

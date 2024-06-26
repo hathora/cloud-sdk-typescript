@@ -167,11 +167,11 @@ run();
 ### [organizationsV1](docs/sdks/organizationsv1/README.md)
 
 * [getOrgs](docs/sdks/organizationsv1/README.md#getorgs) - Returns an unsorted list of all organizations that you are a member of (an accepted membership invite). An organization is uniquely identified by an `orgId`.
+* [getUserPendingInvites](docs/sdks/organizationsv1/README.md#getuserpendinginvites)
 * [getOrgMembers](docs/sdks/organizationsv1/README.md#getorgmembers)
 * [inviteUser](docs/sdks/organizationsv1/README.md#inviteuser)
 * [rescindInvite](docs/sdks/organizationsv1/README.md#rescindinvite)
 * [getOrgPendingInvites](docs/sdks/organizationsv1/README.md#getorgpendinginvites)
-* [getUserPendingInvites](docs/sdks/organizationsv1/README.md#getuserpendinginvites)
 * [acceptInvite](docs/sdks/organizationsv1/README.md#acceptinvite)
 * [rejectInvite](docs/sdks/organizationsv1/README.md#rejectinvite)
 
