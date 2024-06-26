@@ -10,7 +10,7 @@ import * as z from "zod";
  */
 export type Application = {
     /**
-     * UserId or email address for the user that deleted the application.
+     * The email address or token id for the user that deleted the application.
      */
     deletedBy: string | null;
     /**
@@ -21,9 +21,6 @@ export type Application = {
      * When the application was created.
      */
     createdAt: Date;
-    /**
-     * UserId or email address for the user that created the application.
-     */
     createdBy: string;
     /**
      * System generated unique identifier for an organization. Not guaranteed to have a specific format.

@@ -4,11 +4,11 @@
 ### Available Operations
 
 * [getOrgs](#getorgs) - Returns an unsorted list of all organizations that you are a member of (an accepted membership invite). An organization is uniquely identified by an `orgId`.
+* [getUserPendingInvites](#getuserpendinginvites)
 * [getOrgMembers](#getorgmembers)
 * [inviteUser](#inviteuser)
 * [rescindInvite](#rescindinvite)
 * [getOrgPendingInvites](#getorgpendinginvites)
-* [getUserPendingInvites](#getuserpendinginvites)
 * [acceptInvite](#acceptinvite)
 * [rejectInvite](#rejectinvite)
 
@@ -52,6 +52,46 @@ run();
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.ApiError  | 401,404,429      | application/json |
+| errors.SDKError  | 4xx-5xx          | */*              |
+
+## getUserPendingInvites
+
+### Example Usage
+
+```typescript
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+const hathoraCloud = new HathoraCloud({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const result = await hathoraCloud.organizationsV1.getUserPendingInvites();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise\<[components.PendingOrgInvitesPage](../../models/components/pendingorginvitespage.md)\>**
+### Errors
+
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401,429          | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 ## getOrgMembers
@@ -109,7 +149,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.organizationsV1.inviteUser("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
-    userEmail: "<value>",
+    userEmail: "noreply@hathora.dev",
   });
 
   // Handle the result
@@ -131,7 +171,7 @@ run();
 
 ### Response
 
-**Promise\<[components.OrgPermission](../../models/components/orgpermission.md)\>**
+**Promise\<[components.PendingOrgInvite](../../models/components/pendingorginvite.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
@@ -153,7 +193,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   await hathoraCloud.organizationsV1.rescindInvite("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
-    userEmail: "<value>",
+    userEmail: "noreply@hathora.dev",
   });
 
   
@@ -215,47 +255,7 @@ run();
 
 ### Response
 
-**Promise\<[components.OrgInvitesPage](../../models/components/orginvitespage.md)\>**
-### Errors
-
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,429          | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
-## getUserPendingInvites
-
-### Example Usage
-
-```typescript
-import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-});
-
-async function run() {
-  const result = await hathoraCloud.organizationsV1.getUserPendingInvites();
-
-  // Handle the result
-  console.log(result)
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-
-
-### Response
-
-**Promise\<[components.OrgInvitesPage](../../models/components/orginvitespage.md)\>**
+**Promise\<[components.PendingOrgInvitesPage](../../models/components/pendingorginvitespage.md)\>**
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

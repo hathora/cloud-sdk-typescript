@@ -40,7 +40,7 @@ export type Room = {
      */
     status: RoomStatus;
     allocations: Array<RoomAllocation>;
-    roomConfig: string | null;
+    roomConfig?: string | null | undefined;
     /**
      * Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
      *
@@ -93,7 +93,7 @@ export namespace Room$ {
         currentAllocation: z.nullable(z.lazy(() => RoomCurrentAllocation$.inboundSchema)),
         status: RoomStatus$.inboundSchema,
         allocations: z.array(RoomAllocation$.inboundSchema),
-        roomConfig: z.nullable(z.string()),
+        roomConfig: z.nullable(z.string()).optional(),
         roomId: z.string(),
         appId: z.string(),
     });
@@ -102,7 +102,7 @@ export namespace Room$ {
         currentAllocation: RoomCurrentAllocation$.Outbound | null;
         status: string;
         allocations: Array<RoomAllocation$.Outbound>;
-        roomConfig: string | null;
+        roomConfig?: string | null | undefined;
         roomId: string;
         appId: string;
     };
@@ -111,7 +111,7 @@ export namespace Room$ {
         currentAllocation: z.nullable(z.lazy(() => RoomCurrentAllocation$.outboundSchema)),
         status: RoomStatus$.outboundSchema,
         allocations: z.array(RoomAllocation$.outboundSchema),
-        roomConfig: z.nullable(z.string()),
+        roomConfig: z.nullable(z.string()).optional(),
         roomId: z.string(),
         appId: z.string(),
     });

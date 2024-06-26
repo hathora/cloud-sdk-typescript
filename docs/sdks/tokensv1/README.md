@@ -115,7 +115,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.tokensV1.revokeOrgToken("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  const result = await hathoraCloud.tokensV1.revokeOrgToken("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "org-token-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   // Handle the result
   console.log(result)

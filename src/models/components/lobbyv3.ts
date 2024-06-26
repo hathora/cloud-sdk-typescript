@@ -27,7 +27,7 @@ export type LobbyV3 = {
      * UserId or email address for the user that created the lobby.
      */
     createdBy: string | number;
-    roomConfig: string | null;
+    roomConfig?: string | null | undefined;
     /**
      * Types of lobbies a player can create.
      *
@@ -77,7 +77,7 @@ export namespace LobbyV3$ {
             .datetime({ offset: true })
             .transform((v) => new Date(v)),
         createdBy: z.union([z.string(), z.number()]),
-        roomConfig: z.nullable(z.string()),
+        roomConfig: z.nullable(z.string()).optional(),
         visibility: LobbyVisibility$.inboundSchema,
         region: Region$.inboundSchema,
         roomId: z.string(),
@@ -88,7 +88,7 @@ export namespace LobbyV3$ {
         shortCode: string;
         createdAt: string;
         createdBy: string | number;
-        roomConfig: string | null;
+        roomConfig?: string | null | undefined;
         visibility: string;
         region: string;
         roomId: string;
@@ -99,7 +99,7 @@ export namespace LobbyV3$ {
         shortCode: z.string(),
         createdAt: z.date().transform((v) => v.toISOString()),
         createdBy: z.union([z.string(), z.number()]),
-        roomConfig: z.nullable(z.string()),
+        roomConfig: z.nullable(z.string()).optional(),
         visibility: LobbyVisibility$.outboundSchema,
         region: Region$.outboundSchema,
         roomId: z.string(),

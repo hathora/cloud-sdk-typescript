@@ -46,9 +46,6 @@ export type BuildWithUploadUrl = {
      * When [`CreateBuild()`](https://hathora.dev/api#tag/BuildV2/operation/CreateBuild) is called.
      */
     createdAt: Date;
-    /**
-     * UserId or email address for the user that created the build.
-     */
     createdBy: string;
     /**
      * System generated id for a build. Increments by 1.

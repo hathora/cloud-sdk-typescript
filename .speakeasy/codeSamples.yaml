@@ -3,11 +3,11 @@ info:
   title: CodeSamples overlay for typescript target
   version: 0.0.0
 actions:
-  - target: $["paths"]["/rooms/v1/{appId}/create"]["post"]
+  - target: $["paths"]["/billing/v1/paymentmethod"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "CreateRoomDeprecated"
+          "label": "GetPaymentMethod"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -17,53 +17,75 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.roomsV1.createRoomDeprecated({
-                roomConfig: "{\"name\":\"my-room\"}",
-                region: "Chicago",
-              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+              const result = await hathoraCloud.billingV1.getPaymentMethod();
 
               // Handle the result
               console.log(result)
             }
 
             run();
-  - target: $["paths"]["/rooms/v2/{appId}/connectioninfo/{roomId}"]["get"]
+  - target: $["paths"]["/builds/v1/{appId}/run/{buildId}"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "GetConnectionInfo"
+          "label": "RunBuildDeprecated"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+            import { openAsBlob } from "node:fs";
 
             const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
               appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
             });
 
             async function run() {
-              const result = await hathoraCloud.roomsV2.getConnectionInfo("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+              const result = await hathoraCloud.buildsV1.runBuildDeprecated(1, {
+                file: await openAsBlob("./sample-file"),
+              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
               // Handle the result
               console.log(result)
             }
 
             run();
-  - target: $["paths"]["/lobby/v2/{appId}/create/public"]["post"]
+  - target: $["paths"]["/lobby/v2/{appId}/setState/{roomId}"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "CreatePublicLobby"
+          "label": "SetLobbyState"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
             const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
               appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
             });
 
             async function run() {
-              const result = await hathoraCloud.lobbiesV2.createPublicLobby("<YOUR_BEARER_TOKEN_HERE>", {
-                initialConfig: "<value>",
-                region: "Sao_Paulo",
-              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+              const result = await hathoraCloud.lobbiesV2.setLobbyState("2swovpy1fnunu", {
+                state: "<value>",
+              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/logs/v1/{appId}/process/{processId}/download"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "DownloadLogForProcess"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.logsV1.downloadLogForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
               // Handle the result
               console.log(result)
@@ -92,32 +114,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/orgs/v1/{orgId}/members"]["get"]
+  - target: $["paths"]["/auth/v1/{appId}/login/nickname"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "GetOrgMembers"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.organizationsV1.getOrgMembers("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/discovery/v1/ping"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetPingServiceEndpointsDeprecated"
+          "label": "LoginNickname"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -126,504 +127,9 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.discoveryV1.getPingServiceEndpointsDeprecated();
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/lobby/v3/{appId}/create"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "CreateLobby"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.lobbiesV3.createLobby("<YOUR_BEARER_TOKEN_HERE>", {
-                visibility: "private",
-                roomConfig: "{\"name\":\"my-room\"}",
-                region: "Seattle",
-              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "LFG4", "2swovpy1fnunu");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/processes/v2/{appId}/list/latest"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetLatestProcesses"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.processesV2.getLatestProcesses("app-af469a92-5b45-4565-b3c4-b79878de67d2", [
-                "stopped",
-              ], [
-                "Frankfurt",
-              ]);
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/builds/v1/{appId}/create"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "CreateBuildDeprecated"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.buildsV1.createBuildDeprecated({
-                buildTag: "0.1.14-14c793",
+              const result = await hathoraCloud.authV1.loginNickname({
+                nickname: "squiddytwoshoes",
               }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/deployments/v2/{appId}/info/{deploymentId}"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetDeploymentInfo"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.deploymentsV2.getDeploymentInfo(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/orgs/v1/{orgId}/invites/rescind"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "RescindInvite"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.organizationsV1.rescindInvite(\"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\", {\n    userEmail: \"<value>\",\n  });\n\n  \n}\n\nrun();"
-  - target: $["paths"]["/tokens/v1/orgs/{orgId}/create"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "CreateOrgToken"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.tokensV1.createOrgToken("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
-                name: "ci-token",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/apps/v1/create"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "CreateApp"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.appsV1.createApp({
-                authConfiguration: {},
-                appName: "minecraft",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/apps/v1/info/{appId}"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetAppInfo"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.appsV1.getAppInfo("app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/billing/v1/balance"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetBalance"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.billingV1.getBalance();
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/rooms/v2/{appId}/info/{roomId}"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetRoomInfo"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.roomsV2.getRoomInfo("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/tokens/v1/orgs/{orgId}"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetOrgTokens"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.tokensV1.getOrgTokens("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/lobby/v1/{appId}/create/public"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "CreatePublicLobbyDeprecated"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.lobbiesV1.createPublicLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", "app-af469a92-5b45-4565-b3c4-b79878de67d2", "Frankfurt", false);
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/lobby/v2/{appId}/create"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "CreateLobbyDeprecated"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.lobbiesV2.createLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", {
-                visibility: "private",
-                initialConfig: "<value>",
-                region: "Tokyo",
-              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/rooms/v2/{appId}/create"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "CreateRoom"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.roomsV2.createRoom({
-                roomConfig: "{\"name\":\"my-room\"}",
-                region: "Sao_Paulo",
-              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/logs/v1/{appId}/deployment/{deploymentId}"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetLogsForDeployment"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.logsV1.getLogsForDeployment(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2", true, 100);
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/orgs/v1/user/invites/pending"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetUserPendingInvites"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.organizationsV1.getUserPendingInvites();
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/rooms/v1/{appId}/connectioninfo/{roomId}"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetConnectionInfoDeprecated"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.roomsV1.getConnectionInfoDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/apps/v1/list"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetApps"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.appsV1.getApps();
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/billing/v1/invoices"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetInvoices"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.billingV1.getInvoices();
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/lobby/v1/{appId}/create/private"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "CreatePrivateLobbyDeprecated"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.lobbiesV1.createPrivateLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", "app-af469a92-5b45-4565-b3c4-b79878de67d2", "London", false);
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/logs/v1/{appId}/all"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetLogsForApp"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.logsV1.getLogsForApp("app-af469a92-5b45-4565-b3c4-b79878de67d2", true, 100, "Tokyo");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/orgs/v1/{orgId}/invites/pending"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetOrgPendingInvites"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.organizationsV1.getOrgPendingInvites("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/orgs/v1/{orgId}/invites/reject"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "RejectInvite"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.organizationsV1.rejectInvite(\"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n  \n}\n\nrun();"
-  - target: $["paths"]["/rooms/v1/{appId}/destroy/{roomId}"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "DestroyRoomDeprecated"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.roomsV1.destroyRoomDeprecated(\"2swovpy1fnunu\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
-  - target: $["paths"]["/tokens/v1/orgs/{orgId}/tokens/{orgTokenId}/revoke"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "RevokeOrgToken"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.tokensV1.revokeOrgToken("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
               // Handle the result
               console.log(result)
@@ -651,45 +157,6 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/deployments/v1/{appId}/create/{buildId}"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "CreateDeploymentDeprecated"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.deploymentsV1.createDeploymentDeprecated(1, {
-                env: [
-                  {
-                    value: "TRUE",
-                    name: "EULA",
-                  },
-                ],
-                roomsPerProcess: 3,
-                planName: "tiny",
-                additionalContainerPorts: [
-                  {
-                    transportType: "udp",
-                    port: 8000,
-                    name: "default",
-                  },
-                ],
-                transportType: "tls",
-                containerPort: 4000,
-              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
   - target: $["paths"]["/discovery/v2/ping"]["get"]
     update:
       "x-codeSamples":
@@ -704,6 +171,81 @@ actions:
 
             async function run() {
               const result = await hathoraCloud.discoveryV2.getPingServiceEndpoints();
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/lobby/v1/{appId}/create/public"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "CreatePublicLobbyDeprecated"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.lobbiesV1.createPublicLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", "app-af469a92-5b45-4565-b3c4-b79878de67d2", "Frankfurt", false);
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/orgs/v1/{orgId}/invites/rescind"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "RescindInvite"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.organizationsV1.rescindInvite(\"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\", {\n    userEmail: \"noreply@hathora.dev\",\n  });\n\n  \n}\n\nrun();"
+  - target: $["paths"]["/rooms/v1/{appId}/suspend/{roomId}"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "SuspendRoomDeprecated"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.roomsV1.suspendRoomDeprecated(\"2swovpy1fnunu\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
+  - target: $["paths"]["/rooms/v2/{appId}/connectioninfo/{roomId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetConnectionInfo"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.roomsV2.getConnectionInfo("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/tokens/v1/orgs/{orgId}/create"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "CreateOrgToken"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.tokensV1.createOrgToken("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
+                name: "ci-token",
+              });
 
               // Handle the result
               console.log(result)
@@ -733,122 +275,43 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/metrics/v1/{appId}/process/{processId}"]["get"]
+  - target: $["paths"]["/auth/v1/{appId}/login/google"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "GetMetrics"
+          "label": "LoginGoogle"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
             const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
               appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
             });
 
             async function run() {
-              const result = await hathoraCloud.metricsV1.getMetrics({
-                processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/rooms/v1/{appId}/list/{processId}/active"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetActiveRoomsForProcessDeprecated"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.roomsV1.getActiveRoomsForProcessDeprecated("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/rooms/v1/{appId}/list/{processId}/inactive"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetInactiveRoomsForProcessDeprecated"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.roomsV1.getInactiveRoomsForProcessDeprecated("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/rooms/v2/{appId}/list/{processId}/inactive"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetInactiveRoomsForProcess"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.roomsV2.getInactiveRoomsForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/rooms/v2/{appId}/destroy/{roomId}"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "DestroyRoom"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.roomsV2.destroyRoom(\"2swovpy1fnunu\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
-  - target: $["paths"]["/rooms/v2/{appId}/suspend/{roomId}"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "SuspendRoomV2Deprecated"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.roomsV2.suspendRoomV2Deprecated(\"2swovpy1fnunu\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
-  - target: $["paths"]["/apps/v1/update/{appId}"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "UpdateApp"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.appsV1.updateApp({
-                authConfiguration: {},
-                appName: "minecraft",
+              const result = await hathoraCloud.authV1.loginGoogle({
+                idToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6ImZkNDhhNzUxMzhkOWQ0OGYwYWE2MzVlZjU2OWM0ZTE5NmY3YWU4ZDYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiODQ4NDEyODI2Nzg4LW00bXNyYjZxNDRkbTJ1ZTNrZ3Z1aTBmcTdrZGE1NWxzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiODQ4NDEyODI2Nzg4LW00bXNyYjZxNDRkbTJ1ZTNrZ3Z1aTBmcTdrZGE1NWxzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTE0NTQyMzMwNzI3MTU2MTMzNzc2IiwiZW1haWwiOiJocGFdkeivmeuzQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoidno1NGhhdTNxbnVR",
               }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/builds/v1/{appId}/list"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetBuildsDeprecated"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.buildsV1.getBuildsDeprecated("app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
               // Handle the result
               console.log(result)
@@ -896,6 +359,148 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/lobby/v3/{appId}/info/roomid/{roomId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetLobbyInfoByRoomId"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.lobbiesV3.getLobbyInfoByRoomId("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/metrics/v1/{appId}/process/{processId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetMetrics"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.metricsV1.getMetrics({
+                processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/apps/v1/create"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "CreateApp"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.appsV1.createApp({
+                authConfiguration: {},
+                appName: "minecraft",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/lobby/v2/{appId}/create"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "CreateLobbyDeprecated"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.lobbiesV2.createLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", {
+                visibility: "private",
+                initialConfig: "<value>",
+                region: "Tokyo",
+              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/rooms/v2/{appId}/list/{processId}/inactive"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetInactiveRoomsForProcess"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.roomsV2.getInactiveRoomsForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/rooms/v2/{appId}/suspend/{roomId}"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "SuspendRoomV2Deprecated"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.roomsV2.suspendRoomV2Deprecated(\"2swovpy1fnunu\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
+  - target: $["paths"]["/builds/v2/{appId}/run/{buildId}"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "RunBuild"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+            import { openAsBlob } from "node:fs";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.buildsV2.runBuild(1, {
+                file: await openAsBlob("./sample-file"),
+              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
   - target: $["paths"]["/lobby/v2/{appId}/info/{roomId}"]["get"]
     update:
       "x-codeSamples":
@@ -916,11 +521,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/deployments/v2/{appId}/list"]["get"]
+  - target: $["paths"]["/orgs/v1/user/invites/pending"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "GetDeployments"
+          "label": "GetUserPendingInvites"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -930,7 +535,75 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.deploymentsV2.getDeployments("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+              const result = await hathoraCloud.organizationsV1.getUserPendingInvites();
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/auth/v1/{appId}/login/anonymous"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "LoginAnonymous"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.authV1.loginAnonymous("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/builds/v1/{appId}/delete/{buildId}"]["delete"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "DeleteBuildDeprecated"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.buildsV1.deleteBuildDeprecated(1, \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
+  - target: $["paths"]["/builds/v2/{appId}/info/{buildId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetBuildInfo"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.buildsV2.getBuildInfo(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/deployments/v2/{appId}/info/{deploymentId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetDeploymentInfo"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.deploymentsV2.getDeploymentInfo(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
               // Handle the result
               console.log(result)
@@ -960,11 +633,35 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/lobby/v2/{appId}/setState/{roomId}"]["post"]
+  - target: $["paths"]["/lobby/v3/{appId}/create"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "SetLobbyState"
+          "label": "CreateLobby"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.lobbiesV3.createLobby("<YOUR_BEARER_TOKEN_HERE>", {
+                visibility: "private",
+                roomConfig: "{\"name\":\"my-room\"}",
+                region: "Seattle",
+              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "LFG4", "2swovpy1fnunu");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/logs/v1/{appId}/all"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetLogsForApp"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -974,8 +671,51 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.lobbiesV2.setLobbyState("2swovpy1fnunu", {
-                state: "<value>",
+              const result = await hathoraCloud.logsV1.getLogsForApp("app-af469a92-5b45-4565-b3c4-b79878de67d2", true, 100, "Tokyo");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/orgs/v1"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetOrgs"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.organizationsV1.getOrgs();
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/apps/v1/update/{appId}"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "UpdateApp"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.appsV1.updateApp({
+                authConfiguration: {},
+                appName: "minecraft",
               }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
               // Handle the result
@@ -983,31 +723,17 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/lobby/v1/{appId}/list"]["get"]
+  - target: $["paths"]["/processes/v2/{appId}/stop/{processId}"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "ListActivePublicLobbiesDeprecatedV1"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.lobbiesV1.listActivePublicLobbiesDeprecatedV1("app-af469a92-5b45-4565-b3c4-b79878de67d2", false, "Sydney");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/processes/v1/{appId}/list/running"]["get"]
+          "label": "StopProcess"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.processesV2.stopProcess(\"cbfcddd2-0006-43ae-996c-995fff7bed2e\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
+  - target: $["paths"]["/rooms/v2/{appId}/info/{roomId}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "GetRunningProcesses"
+          "label": "GetRoomInfo"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -1017,18 +743,24 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.processesV1.getRunningProcesses("app-af469a92-5b45-4565-b3c4-b79878de67d2", "Tokyo");
+              const result = await hathoraCloud.roomsV2.getRoomInfo("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
               // Handle the result
               console.log(result)
             }
 
             run();
-  - target: $["paths"]["/processes/v2/{appId}/info/{processId}"]["get"]
+  - target: $["paths"]["/orgs/v1/{orgId}/invites/reject"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "GetProcessInfo"
+          "label": "RejectInvite"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.organizationsV1.rejectInvite(\"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n  \n}\n\nrun();"
+  - target: $["paths"]["/builds/v2/{appId}/create"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "CreateBuild"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -1038,166 +770,9 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.processesV2.getProcessInfo("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/processes/v2/{appId}/create/{region}"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "CreateProcess"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.processesV2.createProcess("Tokyo", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/auth/v1/{appId}/login/nickname"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "LoginNickname"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.authV1.loginNickname({
-                nickname: "squiddytwoshoes",
+              const result = await hathoraCloud.buildsV2.createBuild({
+                buildTag: "0.1.14-14c793",
               }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/builds/v2/{appId}/list"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetBuilds"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.buildsV2.getBuilds("app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/deployments/v2/{appId}/latest"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetLatestDeployment"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.deploymentsV2.getLatestDeployment("app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/lobby/v3/{appId}/info/shortcode/{shortCode}"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetLobbyInfoByShortCode"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.lobbiesV3.getLobbyInfoByShortCode("LFG4", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/processes/v1/{appId}/info/{processId}"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetProcessInfoDeprecated"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.processesV1.getProcessInfoDeprecated("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/rooms/v1/{appId}/suspend/{roomId}"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "SuspendRoomDeprecated"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.roomsV1.suspendRoomDeprecated(\"2swovpy1fnunu\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
-  - target: $["paths"]["/rooms/v2/{appId}/update/{roomId}"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "UpdateRoomConfig"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.roomsV2.updateRoomConfig(\"2swovpy1fnunu\", {\n    roomConfig: \"{\\\"name\\\":\\\"my-room\\\"}\",\n  }, \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
-  - target: $["paths"]["/builds/v1/{appId}/list"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetBuildsDeprecated"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.buildsV1.getBuildsDeprecated("app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
               // Handle the result
               console.log(result)
@@ -1225,31 +800,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/lobby/v2/{appId}/list/public"]["get"]
+  - target: $["paths"]["/deployments/v1/{appId}/info/{deploymentId}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "ListActivePublicLobbiesDeprecatedV2"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.lobbiesV2.listActivePublicLobbiesDeprecatedV2("app-af469a92-5b45-4565-b3c4-b79878de67d2", "Frankfurt");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/builds/v2/{appId}/create"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "CreateBuild"
+          "label": "GetDeploymentInfoDeprecated"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -1259,8 +814,45 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.buildsV2.createBuild({
-                buildTag: "0.1.14-14c793",
+              const result = await hathoraCloud.deploymentsV1.getDeploymentInfoDeprecated(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/deployments/v1/{appId}/create/{buildId}"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "CreateDeploymentDeprecated"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.deploymentsV1.createDeploymentDeprecated(1, {
+                env: [
+                  {
+                    value: "TRUE",
+                    name: "EULA",
+                  },
+                ],
+                roomsPerProcess: 3,
+                planName: "tiny",
+                additionalContainerPorts: [
+                  {
+                    transportType: "udp",
+                    port: 8000,
+                    name: "default",
+                  },
+                ],
+                transportType: "tls",
+                containerPort: 4000,
               }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
               // Handle the result
@@ -1268,11 +860,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/logs/v1/{appId}/process/{processId}"]["get"]
+  - target: $["paths"]["/rooms/v1/{appId}/list/{processId}/inactive"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "GetLogsForProcess"
+          "label": "GetInactiveRoomsForProcessDeprecated"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -1282,18 +874,180 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.logsV1.getLogsForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2", true, 100);
+              const result = await hathoraCloud.roomsV1.getInactiveRoomsForProcessDeprecated("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
               // Handle the result
               console.log(result)
             }
 
             run();
-  - target: $["paths"]["/auth/v1/{appId}/login/anonymous"]["post"]
+  - target: $["paths"]["/rooms/v2/{appId}/create"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "LoginAnonymous"
+          "label": "CreateRoom"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.roomsV2.createRoom({
+                roomConfig: "{\"name\":\"my-room\"}",
+                region: "Sao_Paulo",
+              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/apps/v1/delete/{appId}"]["delete"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "DeleteApp"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.appsV1.deleteApp(\"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
+  - target: $["paths"]["/deployments/v2/{appId}/list"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetDeployments"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.deploymentsV2.getDeployments("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/processes/v1/{appId}/list/running"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetRunningProcesses"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.processesV1.getRunningProcesses("app-af469a92-5b45-4565-b3c4-b79878de67d2", "Tokyo");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/processes/v1/{appId}/info/{processId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetProcessInfoDeprecated"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.processesV1.getProcessInfoDeprecated("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/rooms/v2/{appId}/destroy/{roomId}"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "DestroyRoom"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.roomsV2.destroyRoom(\"2swovpy1fnunu\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
+  - target: $["paths"]["/tokens/v1/orgs/{orgId}/tokens/{orgTokenId}/revoke"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "RevokeOrgToken"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.tokensV1.revokeOrgToken("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "org-token-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/apps/v1/list"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetApps"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.appsV1.getApps();
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/rooms/v1/{appId}/list/{processId}/active"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetActiveRoomsForProcessDeprecated"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.roomsV1.getActiveRoomsForProcessDeprecated("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/rooms/v1/{appId}/connectioninfo/{roomId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetConnectionInfoDeprecated"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -1302,7 +1056,131 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.authV1.loginAnonymous("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+              const result = await hathoraCloud.roomsV1.getConnectionInfoDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/rooms/v2/{appId}/list/{processId}/active"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetActiveRoomsForProcess"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.roomsV2.getActiveRoomsForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/processes/v2/{appId}/create/{region}"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "CreateProcess"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.processesV2.createProcess("Tokyo", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/discovery/v1/ping"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetPingServiceEndpointsDeprecated"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.discoveryV1.getPingServiceEndpointsDeprecated();
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/lobby/v1/{appId}/list"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "ListActivePublicLobbiesDeprecatedV1"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.lobbiesV1.listActivePublicLobbiesDeprecatedV1("app-af469a92-5b45-4565-b3c4-b79878de67d2", false, "Sydney");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/orgs/v1/{orgId}/members"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetOrgMembers"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.organizationsV1.getOrgMembers("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/orgs/v1/{orgId}/invites/pending"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetOrgPendingInvites"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.organizationsV1.getOrgPendingInvites("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
               // Handle the result
               console.log(result)
@@ -1330,11 +1208,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/builds/v2/{appId}/info/{buildId}"]["get"]
+  - target: $["paths"]["/processes/v1/{appId}/list/stopped"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "GetBuildInfo"
+          "label": "GetStoppedProcesses"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -1344,7 +1222,215 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.buildsV2.getBuildInfo(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+              const result = await hathoraCloud.processesV1.getStoppedProcesses("app-af469a92-5b45-4565-b3c4-b79878de67d2", "Sydney");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/rooms/v2/{appId}/update/{roomId}"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "UpdateRoomConfig"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.roomsV2.updateRoomConfig(\"2swovpy1fnunu\", {\n    roomConfig: \"{\\\"name\\\":\\\"my-room\\\"}\",\n  }, \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
+  - target: $["paths"]["/builds/v2/{appId}/delete/{buildId}"]["delete"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "DeleteBuild"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.buildsV2.deleteBuild(1, \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
+  - target: $["paths"]["/billing/v1/invoices"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetInvoices"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.billingV1.getInvoices();
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/builds/v2/{appId}/list"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetBuilds"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.buildsV2.getBuilds("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/lobby/v1/{appId}/create/private"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "CreatePrivateLobbyDeprecated"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.lobbiesV1.createPrivateLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", "app-af469a92-5b45-4565-b3c4-b79878de67d2", "London", false);
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/orgs/v1/{orgId}/invites"]["put"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "InviteUser"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.organizationsV1.inviteUser("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
+                userEmail: "noreply@hathora.dev",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/processes/v2/{appId}/info/{processId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetProcessInfo"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.processesV2.getProcessInfo("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/rooms/v1/{appId}/info/{roomId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetRoomInfoDeprecated"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.roomsV1.getRoomInfoDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/billing/v1/balance"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetBalance"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.billingV1.getBalance();
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/logs/v1/{appId}/deployment/{deploymentId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetLogsForDeployment"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.logsV1.getLogsForDeployment(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2", true, 100);
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/orgs/v1/{orgId}/invites/accept"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "AcceptInvite"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.organizationsV1.acceptInvite(\"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n  \n}\n\nrun();"
+  - target: $["paths"]["/tokens/v1/orgs/{orgId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetOrgTokens"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.tokensV1.getOrgTokens("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
               // Handle the result
               console.log(result)
@@ -1374,31 +1460,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/lobby/v3/{appId}/info/roomid/{roomId}"]["get"]
+  - target: $["paths"]["/logs/v1/{appId}/process/{processId}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "GetLobbyInfoByRoomId"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.lobbiesV3.getLobbyInfoByRoomId("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/rooms/v1/{appId}/info/{roomId}"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetRoomInfoDeprecated"
+          "label": "GetLogsForProcess"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -1408,138 +1474,7 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.roomsV1.getRoomInfoDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/builds/v1/{appId}/run/{buildId}"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "RunBuildDeprecated"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-            import { openAsBlob } from "node:fs";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.buildsV1.runBuildDeprecated(1, {
-                file: await openAsBlob("./sample-file"),
-              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/builds/v1/{appId}/delete/{buildId}"]["delete"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "DeleteBuildDeprecated"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.buildsV1.deleteBuildDeprecated(1, \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
-  - target: $["paths"]["/builds/v2/{appId}/createWithUploadUrl"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "CreateBuildWithUploadUrl"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.buildsV2.createBuildWithUploadUrl({
-                buildTag: "0.1.14-14c793",
-              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/builds/v2/{appId}/delete/{buildId}"]["delete"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "DeleteBuild"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.buildsV2.deleteBuild(1, \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
-  - target: $["paths"]["/deployments/v1/{appId}/info/{deploymentId}"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetDeploymentInfoDeprecated"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.deploymentsV1.getDeploymentInfoDeprecated(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/orgs/v1/{orgId}/invites/accept"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "AcceptInvite"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.organizationsV1.acceptInvite(\"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n  \n}\n\nrun();"
-  - target: $["paths"]["/processes/v1/{appId}/list/stopped"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetStoppedProcesses"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.processesV1.getStoppedProcesses("app-af469a92-5b45-4565-b3c4-b79878de67d2", "Sydney");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/builds/v2/{appId}/run/{buildId}"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "RunBuild"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-            import { openAsBlob } from "node:fs";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.buildsV2.runBuild(1, {
-                file: await openAsBlob("./sample-file"),
-              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+              const result = await hathoraCloud.logsV1.getLogsForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2", true, 100);
 
               // Handle the result
               console.log(result)
@@ -1566,11 +1501,54 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/logs/v1/{appId}/process/{processId}/download"]["get"]
+  - target: $["paths"]["/lobby/v2/{appId}/create/public"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "DownloadLogForProcess"
+          "label": "CreatePublicLobby"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.lobbiesV2.createPublicLobby("<YOUR_BEARER_TOKEN_HERE>", {
+                initialConfig: "<value>",
+                region: "Sao_Paulo",
+              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/lobby/v3/{appId}/info/shortcode/{shortCode}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetLobbyInfoByShortCode"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.lobbiesV3.getLobbyInfoByShortCode("LFG4", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/rooms/v1/{appId}/create"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "CreateRoomDeprecated"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -1580,18 +1558,21 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.logsV1.downloadLogForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+              const result = await hathoraCloud.roomsV1.createRoomDeprecated({
+                roomConfig: "{\"name\":\"my-room\"}",
+                region: "Chicago",
+              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
               // Handle the result
               console.log(result)
             }
 
             run();
-  - target: $["paths"]["/orgs/v1"]["get"]
+  - target: $["paths"]["/builds/v2/{appId}/createWithUploadUrl"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "GetOrgs"
+          "label": "CreateBuildWithUploadUrl"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -1601,57 +1582,8 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.organizationsV1.getOrgs();
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/orgs/v1/{orgId}/invites"]["put"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "InviteUser"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.organizationsV1.inviteUser("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
-                userEmail: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/apps/v1/delete/{appId}"]["delete"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "DeleteApp"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.appsV1.deleteApp(\"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
-  - target: $["paths"]["/auth/v1/{appId}/login/google"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "LoginGoogle"
-          "source": |-
-            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-
-            const hathoraCloud = new HathoraCloud({
-              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-            });
-
-            async function run() {
-              const result = await hathoraCloud.authV1.loginGoogle({
-                idToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6ImZkNDhhNzUxMzhkOWQ0OGYwYWE2MzVlZjU2OWM0ZTE5NmY3YWU4ZDYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiODQ4NDEyODI2Nzg4LW00bXNyYjZxNDRkbTJ1ZTNrZ3Z1aTBmcTdrZGE1NWxzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiODQ4NDEyODI2Nzg4LW00bXNyYjZxNDRkbTJ1ZTNrZ3Z1aTBmcTdrZGE1NWxzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTE0NTQyMzMwNzI3MTU2MTMzNzc2IiwiZW1haWwiOiJocGFdkeivmeuzQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoidno1NGhhdTNxbnVR",
+              const result = await hathoraCloud.buildsV2.createBuildWithUploadUrl({
+                buildTag: "0.1.14-14c793",
               }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
               // Handle the result
@@ -1659,11 +1591,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/billing/v1/paymentmethod"]["get"]
+  - target: $["paths"]["/builds/v1/{appId}/create"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "GetPaymentMethod"
+          "label": "CreateBuildDeprecated"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -1673,24 +1605,20 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.billingV1.getPaymentMethod();
+              const result = await hathoraCloud.buildsV1.createBuildDeprecated({
+                buildTag: "0.1.14-14c793",
+              }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
               // Handle the result
               console.log(result)
             }
 
             run();
-  - target: $["paths"]["/processes/v2/{appId}/stop/{processId}"]["post"]
+  - target: $["paths"]["/deployments/v2/{appId}/latest"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "StopProcess"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.processesV2.stopProcess(\"cbfcddd2-0006-43ae-996c-995fff7bed2e\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
-  - target: $["paths"]["/rooms/v2/{appId}/list/{processId}/active"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "GetActiveRoomsForProcess"
+          "label": "GetLatestDeployment"
           "source": |-
             import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -1700,7 +1628,79 @@ actions:
             });
 
             async function run() {
-              const result = await hathoraCloud.roomsV2.getActiveRoomsForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+              const result = await hathoraCloud.deploymentsV2.getLatestDeployment("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/lobby/v2/{appId}/list/public"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "ListActivePublicLobbiesDeprecatedV2"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.lobbiesV2.listActivePublicLobbiesDeprecatedV2("app-af469a92-5b45-4565-b3c4-b79878de67d2", "Frankfurt");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/processes/v2/{appId}/list/latest"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetLatestProcesses"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.processesV2.getLatestProcesses("app-af469a92-5b45-4565-b3c4-b79878de67d2", [
+                "stopped",
+              ], [
+                "Frankfurt",
+              ]);
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/rooms/v1/{appId}/destroy/{roomId}"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "DestroyRoomDeprecated"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.roomsV1.destroyRoomDeprecated(\"2swovpy1fnunu\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  \n}\n\nrun();"
+  - target: $["paths"]["/apps/v1/info/{appId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetAppInfo"
+          "source": |-
+            import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+            const hathoraCloud = new HathoraCloud({
+              hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+              appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+            });
+
+            async function run() {
+              const result = await hathoraCloud.appsV1.getAppInfo("app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
               // Handle the result
               console.log(result)

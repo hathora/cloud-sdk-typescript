@@ -4,9 +4,7 @@
 
 import * as z from "zod";
 
-export type OrgMember = {
-    lastLogin?: Date | undefined;
-    updatedAt: Date;
+export type PendingOrgInvite = {
     createdAt: Date;
     invitedBy: string;
     /**
@@ -20,17 +18,8 @@ export type OrgMember = {
 };
 
 /** @internal */
-export namespace OrgMember$ {
-    export const inboundSchema: z.ZodType<OrgMember, z.ZodTypeDef, unknown> = z.object({
-        lastLogin: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
-            .optional(),
-        updatedAt: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v)),
+export namespace PendingOrgInvite$ {
+    export const inboundSchema: z.ZodType<PendingOrgInvite, z.ZodTypeDef, unknown> = z.object({
         createdAt: z
             .string()
             .datetime({ offset: true })
@@ -41,20 +30,13 @@ export namespace OrgMember$ {
     });
 
     export type Outbound = {
-        lastLogin?: string | undefined;
-        updatedAt: string;
         createdAt: string;
         invitedBy: string;
         userEmail: string;
         orgId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OrgMember> = z.object({
-        lastLogin: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        updatedAt: z.date().transform((v) => v.toISOString()),
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PendingOrgInvite> = z.object({
         createdAt: z.date().transform((v) => v.toISOString()),
         invitedBy: z.string(),
         userEmail: z.string(),

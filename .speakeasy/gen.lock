@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: b23bc3f0fcf53aed56d191405da129f6
+  docChecksum: aab9fbbed986e8a2acaae5f2f1efe3f9
   docVersion: 0.0.1
-  speakeasyVersion: 1.314.2
-  generationVersion: 2.349.6
-  releaseVersion: 2.4.2
-  configChecksum: 263538c61c39a4843116d5c475c2098a
+  speakeasyVersion: 1.318.0
+  generationVersion: 2.352.0
+  releaseVersion: 2.4.3
+  configChecksum: f97d70c6bd09d4b788b9336ce4d85585
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -121,17 +121,12 @@ generatedFiles:
   - src/models/components/metricname.ts
   - src/models/components/orgspage.ts
   - src/models/components/organization.ts
+  - src/models/components/pendingorginvitespage.ts
+  - src/models/components/pendingorginvite.ts
   - src/models/components/orgmemberspage.ts
   - src/models/components/orgmember.ts
-  - src/models/components/orgpermission.ts
-  - src/models/components/organizationinvitestatus.ts
-  - src/models/components/invitestatuspending.ts
-  - src/models/components/invitestatusaccepted.ts
-  - src/models/components/invitestatusrejected.ts
-  - src/models/components/invitestatusrescinded.ts
   - src/models/components/createuserinvite.ts
   - src/models/components/rescinduserinvite.ts
-  - src/models/components/orginvitespage.ts
   - src/models/components/processwithrooms.ts
   - src/models/components/roomwithoutallocations.ts
   - src/models/components/roomstatus.ts
@@ -289,21 +284,12 @@ generatedFiles:
   - docs/models/components/metricname.md
   - docs/models/components/orgspage.md
   - docs/models/components/organization.md
+  - docs/models/components/pendingorginvitespage.md
+  - docs/models/components/pendingorginvite.md
   - docs/models/components/orgmemberspage.md
   - docs/models/components/orgmember.md
-  - docs/models/components/orgpermission.md
-  - docs/models/components/organizationinvitestatus.md
-  - docs/models/components/type.md
-  - docs/models/components/invitestatuspending.md
-  - docs/models/components/invitestatusacceptedtype.md
-  - docs/models/components/invitestatusaccepted.md
-  - docs/models/components/invitestatusrejectedtype.md
-  - docs/models/components/invitestatusrejected.md
-  - docs/models/components/invitestatusrescindedtype.md
-  - docs/models/components/invitestatusrescinded.md
   - docs/models/components/createuserinvite.md
   - docs/models/components/rescinduserinvite.md
-  - docs/models/components/orginvitespage.md
   - docs/models/components/processwithroomsexposedport.md
   - docs/models/components/processwithrooms.md
   - docs/models/components/currentallocation.md
