@@ -14,38 +14,76 @@ export type GetConnectionInfoRequest = {
 };
 
 /** @internal */
+export const GetConnectionInfoGlobals$inboundSchema: z.ZodType<
+    GetConnectionInfoGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type GetConnectionInfoGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const GetConnectionInfoGlobals$outboundSchema: z.ZodType<
+    GetConnectionInfoGlobals$Outbound,
+    z.ZodTypeDef,
+    GetConnectionInfoGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetConnectionInfoGlobals$ {
-    export const inboundSchema: z.ZodType<GetConnectionInfoGlobals, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetConnectionInfoGlobals> =
-        z.object({
-            appId: z.string().optional(),
-        });
+    /** @deprecated use `GetConnectionInfoGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetConnectionInfoGlobals$inboundSchema;
+    /** @deprecated use `GetConnectionInfoGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetConnectionInfoGlobals$outboundSchema;
+    /** @deprecated use `GetConnectionInfoGlobals$Outbound` instead. */
+    export type Outbound = GetConnectionInfoGlobals$Outbound;
 }
 
 /** @internal */
+export const GetConnectionInfoRequest$inboundSchema: z.ZodType<
+    GetConnectionInfoRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+    roomId: z.string(),
+});
+
+/** @internal */
+export type GetConnectionInfoRequest$Outbound = {
+    appId?: string | undefined;
+    roomId: string;
+};
+
+/** @internal */
+export const GetConnectionInfoRequest$outboundSchema: z.ZodType<
+    GetConnectionInfoRequest$Outbound,
+    z.ZodTypeDef,
+    GetConnectionInfoRequest
+> = z.object({
+    appId: z.string().optional(),
+    roomId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetConnectionInfoRequest$ {
-    export const inboundSchema: z.ZodType<GetConnectionInfoRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-            roomId: z.string(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        roomId: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetConnectionInfoRequest> =
-        z.object({
-            appId: z.string().optional(),
-            roomId: z.string(),
-        });
+    /** @deprecated use `GetConnectionInfoRequest$inboundSchema` instead. */
+    export const inboundSchema = GetConnectionInfoRequest$inboundSchema;
+    /** @deprecated use `GetConnectionInfoRequest$outboundSchema` instead. */
+    export const outboundSchema = GetConnectionInfoRequest$outboundSchema;
+    /** @deprecated use `GetConnectionInfoRequest$Outbound` instead. */
+    export type Outbound = GetConnectionInfoRequest$Outbound;
 }

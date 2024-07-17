@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -47,13 +47,10 @@ export class TokensV1 extends ClientSDK {
         const input$: operations.GetOrgTokensRequest = {
             orgId: orgId,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetOrgTokensRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetOrgTokensRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -67,6 +64,10 @@ export class TokensV1 extends ClientSDK {
         const path$ = this.templateURLComponent("/tokens/v1/orgs/{orgId}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
@@ -83,7 +84,6 @@ export class TokensV1 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "404", "429", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -93,19 +93,25 @@ export class TokensV1 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "404", "429", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<components.ListOrgTokens>()
-            .json(200, components.ListOrgTokens$)
-            .json([401, 404, 429], errors.ApiError$, { err: true })
+            .json(200, components.ListOrgTokens$inboundSchema)
+            .json([401, 404, 429], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -124,14 +130,10 @@ export class TokensV1 extends ClientSDK {
             orgId: orgId,
             createOrgToken: createOrgToken,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CreateOrgTokenRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CreateOrgTokenRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.CreateOrgToken, { explode: true });
@@ -145,6 +147,11 @@ export class TokensV1 extends ClientSDK {
         const path$ = this.templateURLComponent("/tokens/v1/orgs/{orgId}/create")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
@@ -161,7 +168,6 @@ export class TokensV1 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "404", "422", "429", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -171,19 +177,25 @@ export class TokensV1 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "404", "422", "429", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<components.CreatedOrgToken>()
-            .json(201, components.CreatedOrgToken$)
-            .json([401, 404, 422, 429], errors.ApiError$, { err: true })
+            .json(201, components.CreatedOrgToken$inboundSchema)
+            .json([401, 404, 422, 429], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -202,13 +214,10 @@ export class TokensV1 extends ClientSDK {
             orgId: orgId,
             orgTokenId: orgTokenId,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.RevokeOrgTokenRequest$.outboundSchema.parse(value$),
+            (value$) => operations.RevokeOrgTokenRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -229,6 +238,10 @@ export class TokensV1 extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
             security$ = { hathoraDevToken: await this.options$.hathoraDevToken() };
@@ -244,7 +257,6 @@ export class TokensV1 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "404", "429", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -254,11 +266,17 @@ export class TokensV1 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "404", "429", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -266,7 +284,7 @@ export class TokensV1 extends ClientSDK {
 
         const [result$] = await this.matcher<boolean>()
             .json(200, z.boolean())
-            .json([401, 404, 429], errors.ApiError$, { err: true })
+            .json([401, 404, 429], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

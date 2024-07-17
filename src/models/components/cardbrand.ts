@@ -19,14 +19,24 @@ export const CardBrand = {
 export type CardBrand = OpenEnum<typeof CardBrand>;
 
 /** @internal */
-export namespace CardBrand$ {
-    export const inboundSchema: z.ZodType<CardBrand, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(CardBrand),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
+export const CardBrand$inboundSchema: z.ZodType<CardBrand, z.ZodTypeDef, unknown> = z.union([
+    z.nativeEnum(CardBrand),
+    z.string().transform(catchUnrecognizedEnum),
+]);
 
-    export const outboundSchema: z.ZodType<CardBrand, z.ZodTypeDef, CardBrand> = z.union([
-        z.nativeEnum(CardBrand),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+/** @internal */
+export const CardBrand$outboundSchema: z.ZodType<CardBrand, z.ZodTypeDef, CardBrand> = z.union([
+    z.nativeEnum(CardBrand),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CardBrand$ {
+    /** @deprecated use `CardBrand$inboundSchema` instead. */
+    export const inboundSchema = CardBrand$inboundSchema;
+    /** @deprecated use `CardBrand$outboundSchema` instead. */
+    export const outboundSchema = CardBrand$outboundSchema;
 }

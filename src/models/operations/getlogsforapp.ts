@@ -17,44 +17,82 @@ export type GetLogsForAppRequest = {
 };
 
 /** @internal */
+export const GetLogsForAppGlobals$inboundSchema: z.ZodType<
+    GetLogsForAppGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type GetLogsForAppGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const GetLogsForAppGlobals$outboundSchema: z.ZodType<
+    GetLogsForAppGlobals$Outbound,
+    z.ZodTypeDef,
+    GetLogsForAppGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetLogsForAppGlobals$ {
-    export const inboundSchema: z.ZodType<GetLogsForAppGlobals, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLogsForAppGlobals> = z.object(
-        {
-            appId: z.string().optional(),
-        }
-    );
+    /** @deprecated use `GetLogsForAppGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetLogsForAppGlobals$inboundSchema;
+    /** @deprecated use `GetLogsForAppGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetLogsForAppGlobals$outboundSchema;
+    /** @deprecated use `GetLogsForAppGlobals$Outbound` instead. */
+    export type Outbound = GetLogsForAppGlobals$Outbound;
 }
 
 /** @internal */
+export const GetLogsForAppRequest$inboundSchema: z.ZodType<
+    GetLogsForAppRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+    follow: z.boolean().default(false),
+    tailLines: z.number().int().default(100),
+    region: components.Region$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetLogsForAppRequest$Outbound = {
+    appId?: string | undefined;
+    follow: boolean;
+    tailLines: number;
+    region?: string | undefined;
+};
+
+/** @internal */
+export const GetLogsForAppRequest$outboundSchema: z.ZodType<
+    GetLogsForAppRequest$Outbound,
+    z.ZodTypeDef,
+    GetLogsForAppRequest
+> = z.object({
+    appId: z.string().optional(),
+    follow: z.boolean().default(false),
+    tailLines: z.number().int().default(100),
+    region: components.Region$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetLogsForAppRequest$ {
-    export const inboundSchema: z.ZodType<GetLogsForAppRequest, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-        follow: z.boolean().default(false),
-        tailLines: z.number().int().default(100),
-        region: components.Region$.inboundSchema.optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        follow: boolean;
-        tailLines: number;
-        region?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLogsForAppRequest> = z.object(
-        {
-            appId: z.string().optional(),
-            follow: z.boolean().default(false),
-            tailLines: z.number().int().default(100),
-            region: components.Region$.outboundSchema.optional(),
-        }
-    );
+    /** @deprecated use `GetLogsForAppRequest$inboundSchema` instead. */
+    export const inboundSchema = GetLogsForAppRequest$inboundSchema;
+    /** @deprecated use `GetLogsForAppRequest$outboundSchema` instead. */
+    export const outboundSchema = GetLogsForAppRequest$outboundSchema;
+    /** @deprecated use `GetLogsForAppRequest$Outbound` instead. */
+    export type Outbound = GetLogsForAppRequest$Outbound;
 }

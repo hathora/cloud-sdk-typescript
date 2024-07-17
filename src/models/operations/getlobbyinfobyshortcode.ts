@@ -14,38 +14,76 @@ export type GetLobbyInfoByShortCodeRequest = {
 };
 
 /** @internal */
+export const GetLobbyInfoByShortCodeGlobals$inboundSchema: z.ZodType<
+    GetLobbyInfoByShortCodeGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type GetLobbyInfoByShortCodeGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const GetLobbyInfoByShortCodeGlobals$outboundSchema: z.ZodType<
+    GetLobbyInfoByShortCodeGlobals$Outbound,
+    z.ZodTypeDef,
+    GetLobbyInfoByShortCodeGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetLobbyInfoByShortCodeGlobals$ {
-    export const inboundSchema: z.ZodType<GetLobbyInfoByShortCodeGlobals, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLobbyInfoByShortCodeGlobals> =
-        z.object({
-            appId: z.string().optional(),
-        });
+    /** @deprecated use `GetLobbyInfoByShortCodeGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetLobbyInfoByShortCodeGlobals$inboundSchema;
+    /** @deprecated use `GetLobbyInfoByShortCodeGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetLobbyInfoByShortCodeGlobals$outboundSchema;
+    /** @deprecated use `GetLobbyInfoByShortCodeGlobals$Outbound` instead. */
+    export type Outbound = GetLobbyInfoByShortCodeGlobals$Outbound;
 }
 
 /** @internal */
+export const GetLobbyInfoByShortCodeRequest$inboundSchema: z.ZodType<
+    GetLobbyInfoByShortCodeRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+    shortCode: z.string(),
+});
+
+/** @internal */
+export type GetLobbyInfoByShortCodeRequest$Outbound = {
+    appId?: string | undefined;
+    shortCode: string;
+};
+
+/** @internal */
+export const GetLobbyInfoByShortCodeRequest$outboundSchema: z.ZodType<
+    GetLobbyInfoByShortCodeRequest$Outbound,
+    z.ZodTypeDef,
+    GetLobbyInfoByShortCodeRequest
+> = z.object({
+    appId: z.string().optional(),
+    shortCode: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetLobbyInfoByShortCodeRequest$ {
-    export const inboundSchema: z.ZodType<GetLobbyInfoByShortCodeRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-            shortCode: z.string(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        shortCode: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLobbyInfoByShortCodeRequest> =
-        z.object({
-            appId: z.string().optional(),
-            shortCode: z.string(),
-        });
+    /** @deprecated use `GetLobbyInfoByShortCodeRequest$inboundSchema` instead. */
+    export const inboundSchema = GetLobbyInfoByShortCodeRequest$inboundSchema;
+    /** @deprecated use `GetLobbyInfoByShortCodeRequest$outboundSchema` instead. */
+    export const outboundSchema = GetLobbyInfoByShortCodeRequest$outboundSchema;
+    /** @deprecated use `GetLobbyInfoByShortCodeRequest$Outbound` instead. */
+    export type Outbound = GetLobbyInfoByShortCodeRequest$Outbound;
 }

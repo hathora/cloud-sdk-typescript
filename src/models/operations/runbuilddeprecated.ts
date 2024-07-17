@@ -27,86 +27,158 @@ export type RunBuildDeprecatedRequest = {
 };
 
 /** @internal */
+export const RunBuildDeprecatedGlobals$inboundSchema: z.ZodType<
+    RunBuildDeprecatedGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type RunBuildDeprecatedGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const RunBuildDeprecatedGlobals$outboundSchema: z.ZodType<
+    RunBuildDeprecatedGlobals$Outbound,
+    z.ZodTypeDef,
+    RunBuildDeprecatedGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RunBuildDeprecatedGlobals$ {
-    export const inboundSchema: z.ZodType<RunBuildDeprecatedGlobals, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RunBuildDeprecatedGlobals> =
-        z.object({
-            appId: z.string().optional(),
-        });
+    /** @deprecated use `RunBuildDeprecatedGlobals$inboundSchema` instead. */
+    export const inboundSchema = RunBuildDeprecatedGlobals$inboundSchema;
+    /** @deprecated use `RunBuildDeprecatedGlobals$outboundSchema` instead. */
+    export const outboundSchema = RunBuildDeprecatedGlobals$outboundSchema;
+    /** @deprecated use `RunBuildDeprecatedGlobals$Outbound` instead. */
+    export type Outbound = RunBuildDeprecatedGlobals$Outbound;
 }
 
 /** @internal */
+export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z.object({
+    fileName: z.string(),
+    content: b64$.zodInbound,
+});
+
+/** @internal */
+export type FileT$Outbound = {
+    fileName: string;
+    content: Uint8Array;
+};
+
+/** @internal */
+export const FileT$outboundSchema: z.ZodType<FileT$Outbound, z.ZodTypeDef, FileT> = z.object({
+    fileName: z.string(),
+    content: b64$.zodOutbound,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace FileT$ {
-    export const inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z.object({
-        fileName: z.string(),
-        content: b64$.zodInbound,
-    });
-
-    export type Outbound = {
-        fileName: string;
-        content: Uint8Array;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, FileT> = z.object({
-        fileName: z.string(),
-        content: b64$.zodOutbound,
-    });
+    /** @deprecated use `FileT$inboundSchema` instead. */
+    export const inboundSchema = FileT$inboundSchema;
+    /** @deprecated use `FileT$outboundSchema` instead. */
+    export const outboundSchema = FileT$outboundSchema;
+    /** @deprecated use `FileT$Outbound` instead. */
+    export type Outbound = FileT$Outbound;
 }
 
 /** @internal */
+export const RunBuildDeprecatedRequestBody$inboundSchema: z.ZodType<
+    RunBuildDeprecatedRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    file: z.lazy(() => FileT$inboundSchema),
+});
+
+/** @internal */
+export type RunBuildDeprecatedRequestBody$Outbound = {
+    file: FileT$Outbound | Blob;
+};
+
+/** @internal */
+export const RunBuildDeprecatedRequestBody$outboundSchema: z.ZodType<
+    RunBuildDeprecatedRequestBody$Outbound,
+    z.ZodTypeDef,
+    RunBuildDeprecatedRequestBody
+> = z.object({
+    file: z.lazy(() => FileT$outboundSchema).or(blobLikeSchema),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RunBuildDeprecatedRequestBody$ {
-    export const inboundSchema: z.ZodType<RunBuildDeprecatedRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            file: z.lazy(() => FileT$.inboundSchema),
-        });
-
-    export type Outbound = {
-        file: FileT$.Outbound | Blob;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RunBuildDeprecatedRequestBody> =
-        z.object({
-            file: z.lazy(() => FileT$.outboundSchema).or(blobLikeSchema),
-        });
+    /** @deprecated use `RunBuildDeprecatedRequestBody$inboundSchema` instead. */
+    export const inboundSchema = RunBuildDeprecatedRequestBody$inboundSchema;
+    /** @deprecated use `RunBuildDeprecatedRequestBody$outboundSchema` instead. */
+    export const outboundSchema = RunBuildDeprecatedRequestBody$outboundSchema;
+    /** @deprecated use `RunBuildDeprecatedRequestBody$Outbound` instead. */
+    export type Outbound = RunBuildDeprecatedRequestBody$Outbound;
 }
 
 /** @internal */
+export const RunBuildDeprecatedRequest$inboundSchema: z.ZodType<
+    RunBuildDeprecatedRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        appId: z.string().optional(),
+        buildId: z.number().int(),
+        RequestBody: z.lazy(() => RunBuildDeprecatedRequestBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            RequestBody: "requestBody",
+        });
+    });
+
+/** @internal */
+export type RunBuildDeprecatedRequest$Outbound = {
+    appId?: string | undefined;
+    buildId: number;
+    RequestBody: RunBuildDeprecatedRequestBody$Outbound;
+};
+
+/** @internal */
+export const RunBuildDeprecatedRequest$outboundSchema: z.ZodType<
+    RunBuildDeprecatedRequest$Outbound,
+    z.ZodTypeDef,
+    RunBuildDeprecatedRequest
+> = z
+    .object({
+        appId: z.string().optional(),
+        buildId: z.number().int(),
+        requestBody: z.lazy(() => RunBuildDeprecatedRequestBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            requestBody: "RequestBody",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RunBuildDeprecatedRequest$ {
-    export const inboundSchema: z.ZodType<RunBuildDeprecatedRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-            buildId: z.number().int(),
-            RequestBody: z.lazy(() => RunBuildDeprecatedRequestBody$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                RequestBody: "requestBody",
-            });
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        buildId: number;
-        RequestBody: RunBuildDeprecatedRequestBody$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RunBuildDeprecatedRequest> = z
-        .object({
-            appId: z.string().optional(),
-            buildId: z.number().int(),
-            requestBody: z.lazy(() => RunBuildDeprecatedRequestBody$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                requestBody: "RequestBody",
-            });
-        });
+    /** @deprecated use `RunBuildDeprecatedRequest$inboundSchema` instead. */
+    export const inboundSchema = RunBuildDeprecatedRequest$inboundSchema;
+    /** @deprecated use `RunBuildDeprecatedRequest$outboundSchema` instead. */
+    export const outboundSchema = RunBuildDeprecatedRequest$outboundSchema;
+    /** @deprecated use `RunBuildDeprecatedRequest$Outbound` instead. */
+    export type Outbound = RunBuildDeprecatedRequest$Outbound;
 }

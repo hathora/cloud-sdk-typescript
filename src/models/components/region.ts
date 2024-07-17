@@ -22,14 +22,24 @@ export const Region = {
 export type Region = OpenEnum<typeof Region>;
 
 /** @internal */
-export namespace Region$ {
-    export const inboundSchema: z.ZodType<Region, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(Region),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
+export const Region$inboundSchema: z.ZodType<Region, z.ZodTypeDef, unknown> = z.union([
+    z.nativeEnum(Region),
+    z.string().transform(catchUnrecognizedEnum),
+]);
 
-    export const outboundSchema: z.ZodType<Region, z.ZodTypeDef, Region> = z.union([
-        z.nativeEnum(Region),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+/** @internal */
+export const Region$outboundSchema: z.ZodType<Region, z.ZodTypeDef, Region> = z.union([
+    z.nativeEnum(Region),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Region$ {
+    /** @deprecated use `Region$inboundSchema` instead. */
+    export const inboundSchema = Region$inboundSchema;
+    /** @deprecated use `Region$outboundSchema` instead. */
+    export const outboundSchema = Region$outboundSchema;
 }

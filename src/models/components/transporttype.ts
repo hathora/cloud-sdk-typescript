@@ -19,14 +19,21 @@ export const TransportType = {
 export type TransportType = OpenEnum<typeof TransportType>;
 
 /** @internal */
-export namespace TransportType$ {
-    export const inboundSchema: z.ZodType<TransportType, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(TransportType),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
+export const TransportType$inboundSchema: z.ZodType<TransportType, z.ZodTypeDef, unknown> = z.union(
+    [z.nativeEnum(TransportType), z.string().transform(catchUnrecognizedEnum)]
+);
 
-    export const outboundSchema: z.ZodType<TransportType, z.ZodTypeDef, TransportType> = z.union([
-        z.nativeEnum(TransportType),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+/** @internal */
+export const TransportType$outboundSchema: z.ZodType<TransportType, z.ZodTypeDef, TransportType> =
+    z.union([z.nativeEnum(TransportType), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TransportType$ {
+    /** @deprecated use `TransportType$inboundSchema` instead. */
+    export const inboundSchema = TransportType$inboundSchema;
+    /** @deprecated use `TransportType$outboundSchema` instead. */
+    export const outboundSchema = TransportType$outboundSchema;
 }

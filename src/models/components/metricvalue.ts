@@ -10,19 +10,36 @@ export type MetricValue = {
 };
 
 /** @internal */
+export const MetricValue$inboundSchema: z.ZodType<MetricValue, z.ZodTypeDef, unknown> = z.object({
+    value: z.number(),
+    timestamp: z.number(),
+});
+
+/** @internal */
+export type MetricValue$Outbound = {
+    value: number;
+    timestamp: number;
+};
+
+/** @internal */
+export const MetricValue$outboundSchema: z.ZodType<
+    MetricValue$Outbound,
+    z.ZodTypeDef,
+    MetricValue
+> = z.object({
+    value: z.number(),
+    timestamp: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MetricValue$ {
-    export const inboundSchema: z.ZodType<MetricValue, z.ZodTypeDef, unknown> = z.object({
-        value: z.number(),
-        timestamp: z.number(),
-    });
-
-    export type Outbound = {
-        value: number;
-        timestamp: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MetricValue> = z.object({
-        value: z.number(),
-        timestamp: z.number(),
-    });
+    /** @deprecated use `MetricValue$inboundSchema` instead. */
+    export const inboundSchema = MetricValue$inboundSchema;
+    /** @deprecated use `MetricValue$outboundSchema` instead. */
+    export const outboundSchema = MetricValue$outboundSchema;
+    /** @deprecated use `MetricValue$Outbound` instead. */
+    export type Outbound = MetricValue$Outbound;
 }

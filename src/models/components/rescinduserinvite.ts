@@ -12,16 +12,34 @@ export type RescindUserInvite = {
 };
 
 /** @internal */
+export const RescindUserInvite$inboundSchema: z.ZodType<RescindUserInvite, z.ZodTypeDef, unknown> =
+    z.object({
+        userEmail: z.string(),
+    });
+
+/** @internal */
+export type RescindUserInvite$Outbound = {
+    userEmail: string;
+};
+
+/** @internal */
+export const RescindUserInvite$outboundSchema: z.ZodType<
+    RescindUserInvite$Outbound,
+    z.ZodTypeDef,
+    RescindUserInvite
+> = z.object({
+    userEmail: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RescindUserInvite$ {
-    export const inboundSchema: z.ZodType<RescindUserInvite, z.ZodTypeDef, unknown> = z.object({
-        userEmail: z.string(),
-    });
-
-    export type Outbound = {
-        userEmail: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RescindUserInvite> = z.object({
-        userEmail: z.string(),
-    });
+    /** @deprecated use `RescindUserInvite$inboundSchema` instead. */
+    export const inboundSchema = RescindUserInvite$inboundSchema;
+    /** @deprecated use `RescindUserInvite$outboundSchema` instead. */
+    export const outboundSchema = RescindUserInvite$outboundSchema;
+    /** @deprecated use `RescindUserInvite$Outbound` instead. */
+    export type Outbound = RescindUserInvite$Outbound;
 }

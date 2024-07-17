@@ -17,51 +17,91 @@ export type CreateRoomDeprecatedRequest = {
 };
 
 /** @internal */
+export const CreateRoomDeprecatedGlobals$inboundSchema: z.ZodType<
+    CreateRoomDeprecatedGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type CreateRoomDeprecatedGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const CreateRoomDeprecatedGlobals$outboundSchema: z.ZodType<
+    CreateRoomDeprecatedGlobals$Outbound,
+    z.ZodTypeDef,
+    CreateRoomDeprecatedGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateRoomDeprecatedGlobals$ {
-    export const inboundSchema: z.ZodType<CreateRoomDeprecatedGlobals, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateRoomDeprecatedGlobals> =
-        z.object({
-            appId: z.string().optional(),
-        });
+    /** @deprecated use `CreateRoomDeprecatedGlobals$inboundSchema` instead. */
+    export const inboundSchema = CreateRoomDeprecatedGlobals$inboundSchema;
+    /** @deprecated use `CreateRoomDeprecatedGlobals$outboundSchema` instead. */
+    export const outboundSchema = CreateRoomDeprecatedGlobals$outboundSchema;
+    /** @deprecated use `CreateRoomDeprecatedGlobals$Outbound` instead. */
+    export type Outbound = CreateRoomDeprecatedGlobals$Outbound;
 }
 
 /** @internal */
+export const CreateRoomDeprecatedRequest$inboundSchema: z.ZodType<
+    CreateRoomDeprecatedRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        appId: z.string().optional(),
+        roomId: z.string().optional(),
+        CreateRoomParams: components.CreateRoomParams$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            CreateRoomParams: "createRoomParams",
+        });
+    });
+
+/** @internal */
+export type CreateRoomDeprecatedRequest$Outbound = {
+    appId?: string | undefined;
+    roomId?: string | undefined;
+    CreateRoomParams: components.CreateRoomParams$Outbound;
+};
+
+/** @internal */
+export const CreateRoomDeprecatedRequest$outboundSchema: z.ZodType<
+    CreateRoomDeprecatedRequest$Outbound,
+    z.ZodTypeDef,
+    CreateRoomDeprecatedRequest
+> = z
+    .object({
+        appId: z.string().optional(),
+        roomId: z.string().optional(),
+        createRoomParams: components.CreateRoomParams$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            createRoomParams: "CreateRoomParams",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateRoomDeprecatedRequest$ {
-    export const inboundSchema: z.ZodType<CreateRoomDeprecatedRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-            roomId: z.string().optional(),
-            CreateRoomParams: components.CreateRoomParams$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                CreateRoomParams: "createRoomParams",
-            });
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        roomId?: string | undefined;
-        CreateRoomParams: components.CreateRoomParams$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateRoomDeprecatedRequest> = z
-        .object({
-            appId: z.string().optional(),
-            roomId: z.string().optional(),
-            createRoomParams: components.CreateRoomParams$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                createRoomParams: "CreateRoomParams",
-            });
-        });
+    /** @deprecated use `CreateRoomDeprecatedRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateRoomDeprecatedRequest$inboundSchema;
+    /** @deprecated use `CreateRoomDeprecatedRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateRoomDeprecatedRequest$outboundSchema;
+    /** @deprecated use `CreateRoomDeprecatedRequest$Outbound` instead. */
+    export type Outbound = CreateRoomDeprecatedRequest$Outbound;
 }

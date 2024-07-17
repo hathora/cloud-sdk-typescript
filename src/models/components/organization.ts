@@ -14,22 +14,39 @@ export type Organization = {
 };
 
 /** @internal */
+export const Organization$inboundSchema: z.ZodType<Organization, z.ZodTypeDef, unknown> = z.object({
+    isSingleTenant: z.boolean(),
+    stripeCustomerId: z.string(),
+    orgId: z.string(),
+});
+
+/** @internal */
+export type Organization$Outbound = {
+    isSingleTenant: boolean;
+    stripeCustomerId: string;
+    orgId: string;
+};
+
+/** @internal */
+export const Organization$outboundSchema: z.ZodType<
+    Organization$Outbound,
+    z.ZodTypeDef,
+    Organization
+> = z.object({
+    isSingleTenant: z.boolean(),
+    stripeCustomerId: z.string(),
+    orgId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Organization$ {
-    export const inboundSchema: z.ZodType<Organization, z.ZodTypeDef, unknown> = z.object({
-        isSingleTenant: z.boolean(),
-        stripeCustomerId: z.string(),
-        orgId: z.string(),
-    });
-
-    export type Outbound = {
-        isSingleTenant: boolean;
-        stripeCustomerId: string;
-        orgId: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Organization> = z.object({
-        isSingleTenant: z.boolean(),
-        stripeCustomerId: z.string(),
-        orgId: z.string(),
-    });
+    /** @deprecated use `Organization$inboundSchema` instead. */
+    export const inboundSchema = Organization$inboundSchema;
+    /** @deprecated use `Organization$outboundSchema` instead. */
+    export const outboundSchema = Organization$outboundSchema;
+    /** @deprecated use `Organization$Outbound` instead. */
+    export type Outbound = Organization$Outbound;
 }

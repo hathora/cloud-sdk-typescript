@@ -14,50 +14,76 @@ export type GetInactiveRoomsForProcessDeprecatedRequest = {
 };
 
 /** @internal */
+export const GetInactiveRoomsForProcessDeprecatedGlobals$inboundSchema: z.ZodType<
+    GetInactiveRoomsForProcessDeprecatedGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type GetInactiveRoomsForProcessDeprecatedGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const GetInactiveRoomsForProcessDeprecatedGlobals$outboundSchema: z.ZodType<
+    GetInactiveRoomsForProcessDeprecatedGlobals$Outbound,
+    z.ZodTypeDef,
+    GetInactiveRoomsForProcessDeprecatedGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetInactiveRoomsForProcessDeprecatedGlobals$ {
-    export const inboundSchema: z.ZodType<
-        GetInactiveRoomsForProcessDeprecatedGlobals,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetInactiveRoomsForProcessDeprecatedGlobals
-    > = z.object({
-        appId: z.string().optional(),
-    });
+    /** @deprecated use `GetInactiveRoomsForProcessDeprecatedGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetInactiveRoomsForProcessDeprecatedGlobals$inboundSchema;
+    /** @deprecated use `GetInactiveRoomsForProcessDeprecatedGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetInactiveRoomsForProcessDeprecatedGlobals$outboundSchema;
+    /** @deprecated use `GetInactiveRoomsForProcessDeprecatedGlobals$Outbound` instead. */
+    export type Outbound = GetInactiveRoomsForProcessDeprecatedGlobals$Outbound;
 }
 
 /** @internal */
+export const GetInactiveRoomsForProcessDeprecatedRequest$inboundSchema: z.ZodType<
+    GetInactiveRoomsForProcessDeprecatedRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+    processId: z.string(),
+});
+
+/** @internal */
+export type GetInactiveRoomsForProcessDeprecatedRequest$Outbound = {
+    appId?: string | undefined;
+    processId: string;
+};
+
+/** @internal */
+export const GetInactiveRoomsForProcessDeprecatedRequest$outboundSchema: z.ZodType<
+    GetInactiveRoomsForProcessDeprecatedRequest$Outbound,
+    z.ZodTypeDef,
+    GetInactiveRoomsForProcessDeprecatedRequest
+> = z.object({
+    appId: z.string().optional(),
+    processId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetInactiveRoomsForProcessDeprecatedRequest$ {
-    export const inboundSchema: z.ZodType<
-        GetInactiveRoomsForProcessDeprecatedRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        appId: z.string().optional(),
-        processId: z.string(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        processId: string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetInactiveRoomsForProcessDeprecatedRequest
-    > = z.object({
-        appId: z.string().optional(),
-        processId: z.string(),
-    });
+    /** @deprecated use `GetInactiveRoomsForProcessDeprecatedRequest$inboundSchema` instead. */
+    export const inboundSchema = GetInactiveRoomsForProcessDeprecatedRequest$inboundSchema;
+    /** @deprecated use `GetInactiveRoomsForProcessDeprecatedRequest$outboundSchema` instead. */
+    export const outboundSchema = GetInactiveRoomsForProcessDeprecatedRequest$outboundSchema;
+    /** @deprecated use `GetInactiveRoomsForProcessDeprecatedRequest$Outbound` instead. */
+    export type Outbound = GetInactiveRoomsForProcessDeprecatedRequest$Outbound;
 }

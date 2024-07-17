@@ -13,14 +13,21 @@ export const InvoiceStatus = {
 export type InvoiceStatus = OpenEnum<typeof InvoiceStatus>;
 
 /** @internal */
-export namespace InvoiceStatus$ {
-    export const inboundSchema: z.ZodType<InvoiceStatus, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(InvoiceStatus),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
+export const InvoiceStatus$inboundSchema: z.ZodType<InvoiceStatus, z.ZodTypeDef, unknown> = z.union(
+    [z.nativeEnum(InvoiceStatus), z.string().transform(catchUnrecognizedEnum)]
+);
 
-    export const outboundSchema: z.ZodType<InvoiceStatus, z.ZodTypeDef, InvoiceStatus> = z.union([
-        z.nativeEnum(InvoiceStatus),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+/** @internal */
+export const InvoiceStatus$outboundSchema: z.ZodType<InvoiceStatus, z.ZodTypeDef, InvoiceStatus> =
+    z.union([z.nativeEnum(InvoiceStatus), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace InvoiceStatus$ {
+    /** @deprecated use `InvoiceStatus$inboundSchema` instead. */
+    export const inboundSchema = InvoiceStatus$inboundSchema;
+    /** @deprecated use `InvoiceStatus$outboundSchema` instead. */
+    export const outboundSchema = InvoiceStatus$outboundSchema;
 }

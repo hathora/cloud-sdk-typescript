@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -49,13 +49,10 @@ export class AuthV1 extends ClientSDK {
         const input$: operations.LoginAnonymousRequest = {
             appId: appId,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.LoginAnonymousRequest$.outboundSchema.parse(value$),
+            (value$) => operations.LoginAnonymousRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -70,24 +67,39 @@ export class AuthV1 extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         const context = { operationID: "LoginAnonymous", oAuth2Scopes: [], securitySource: null };
 
-        const doOptions = { context, errorCodes: ["404", "429", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
-            { method: "POST", path: path$, headers: headers$, query: query$, body: body$ },
+            {
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["404", "429", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<components.PlayerTokenObject>()
-            .json(200, components.PlayerTokenObject$)
-            .json([404, 429], errors.ApiError$, { err: true })
+            .json(200, components.PlayerTokenObject$inboundSchema)
+            .json([404, 429], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -106,14 +118,10 @@ export class AuthV1 extends ClientSDK {
             appId: appId,
             nicknameObject: nicknameObject,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.LoginNicknameRequest$.outboundSchema.parse(value$),
+            (value$) => operations.LoginNicknameRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.NicknameObject, { explode: true });
@@ -128,24 +136,40 @@ export class AuthV1 extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
+
         const context = { operationID: "LoginNickname", oAuth2Scopes: [], securitySource: null };
 
-        const doOptions = { context, errorCodes: ["404", "429", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
-            { method: "POST", path: path$, headers: headers$, query: query$, body: body$ },
+            {
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["404", "429", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<components.PlayerTokenObject>()
-            .json(200, components.PlayerTokenObject$)
-            .json([404, 429], errors.ApiError$, { err: true })
+            .json(200, components.PlayerTokenObject$inboundSchema)
+            .json([404, 429], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -164,14 +188,10 @@ export class AuthV1 extends ClientSDK {
             appId: appId,
             googleIdTokenObject: googleIdTokenObject,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.LoginGoogleRequest$.outboundSchema.parse(value$),
+            (value$) => operations.LoginGoogleRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.GoogleIdTokenObject, { explode: true });
@@ -186,24 +206,40 @@ export class AuthV1 extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
+
         const context = { operationID: "LoginGoogle", oAuth2Scopes: [], securitySource: null };
 
-        const doOptions = { context, errorCodes: ["401", "404", "429", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
-            { method: "POST", path: path$, headers: headers$, query: query$, body: body$ },
+            {
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "404", "429", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<components.PlayerTokenObject>()
-            .json(200, components.PlayerTokenObject$)
-            .json([401, 404, 429], errors.ApiError$, { err: true })
+            .json(200, components.PlayerTokenObject$inboundSchema)
+            .json([401, 404, 429], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

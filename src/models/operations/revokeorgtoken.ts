@@ -10,20 +10,40 @@ export type RevokeOrgTokenRequest = {
 };
 
 /** @internal */
+export const RevokeOrgTokenRequest$inboundSchema: z.ZodType<
+    RevokeOrgTokenRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    orgId: z.string(),
+    orgTokenId: z.string(),
+});
+
+/** @internal */
+export type RevokeOrgTokenRequest$Outbound = {
+    orgId: string;
+    orgTokenId: string;
+};
+
+/** @internal */
+export const RevokeOrgTokenRequest$outboundSchema: z.ZodType<
+    RevokeOrgTokenRequest$Outbound,
+    z.ZodTypeDef,
+    RevokeOrgTokenRequest
+> = z.object({
+    orgId: z.string(),
+    orgTokenId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RevokeOrgTokenRequest$ {
-    export const inboundSchema: z.ZodType<RevokeOrgTokenRequest, z.ZodTypeDef, unknown> = z.object({
-        orgId: z.string(),
-        orgTokenId: z.string(),
-    });
-
-    export type Outbound = {
-        orgId: string;
-        orgTokenId: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RevokeOrgTokenRequest> =
-        z.object({
-            orgId: z.string(),
-            orgTokenId: z.string(),
-        });
+    /** @deprecated use `RevokeOrgTokenRequest$inboundSchema` instead. */
+    export const inboundSchema = RevokeOrgTokenRequest$inboundSchema;
+    /** @deprecated use `RevokeOrgTokenRequest$outboundSchema` instead. */
+    export const outboundSchema = RevokeOrgTokenRequest$outboundSchema;
+    /** @deprecated use `RevokeOrgTokenRequest$Outbound` instead. */
+    export type Outbound = RevokeOrgTokenRequest$Outbound;
 }

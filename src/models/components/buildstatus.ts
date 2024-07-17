@@ -14,14 +14,22 @@ export const BuildStatus = {
 export type BuildStatus = OpenEnum<typeof BuildStatus>;
 
 /** @internal */
-export namespace BuildStatus$ {
-    export const inboundSchema: z.ZodType<BuildStatus, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(BuildStatus),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
+export const BuildStatus$inboundSchema: z.ZodType<BuildStatus, z.ZodTypeDef, unknown> = z.union([
+    z.nativeEnum(BuildStatus),
+    z.string().transform(catchUnrecognizedEnum),
+]);
 
-    export const outboundSchema: z.ZodType<BuildStatus, z.ZodTypeDef, BuildStatus> = z.union([
-        z.nativeEnum(BuildStatus),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+/** @internal */
+export const BuildStatus$outboundSchema: z.ZodType<BuildStatus, z.ZodTypeDef, BuildStatus> =
+    z.union([z.nativeEnum(BuildStatus), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BuildStatus$ {
+    /** @deprecated use `BuildStatus$inboundSchema` instead. */
+    export const inboundSchema = BuildStatus$inboundSchema;
+    /** @deprecated use `BuildStatus$outboundSchema` instead. */
+    export const outboundSchema = BuildStatus$outboundSchema;
 }

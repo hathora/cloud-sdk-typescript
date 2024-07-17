@@ -17,51 +17,91 @@ export type CreateDeploymentRequest = {
 };
 
 /** @internal */
+export const CreateDeploymentGlobals$inboundSchema: z.ZodType<
+    CreateDeploymentGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type CreateDeploymentGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const CreateDeploymentGlobals$outboundSchema: z.ZodType<
+    CreateDeploymentGlobals$Outbound,
+    z.ZodTypeDef,
+    CreateDeploymentGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateDeploymentGlobals$ {
-    export const inboundSchema: z.ZodType<CreateDeploymentGlobals, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateDeploymentGlobals> =
-        z.object({
-            appId: z.string().optional(),
-        });
+    /** @deprecated use `CreateDeploymentGlobals$inboundSchema` instead. */
+    export const inboundSchema = CreateDeploymentGlobals$inboundSchema;
+    /** @deprecated use `CreateDeploymentGlobals$outboundSchema` instead. */
+    export const outboundSchema = CreateDeploymentGlobals$outboundSchema;
+    /** @deprecated use `CreateDeploymentGlobals$Outbound` instead. */
+    export type Outbound = CreateDeploymentGlobals$Outbound;
 }
 
 /** @internal */
+export const CreateDeploymentRequest$inboundSchema: z.ZodType<
+    CreateDeploymentRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        appId: z.string().optional(),
+        buildId: z.number().int(),
+        DeploymentConfigV2: components.DeploymentConfigV2$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            DeploymentConfigV2: "deploymentConfigV2",
+        });
+    });
+
+/** @internal */
+export type CreateDeploymentRequest$Outbound = {
+    appId?: string | undefined;
+    buildId: number;
+    DeploymentConfigV2: components.DeploymentConfigV2$Outbound;
+};
+
+/** @internal */
+export const CreateDeploymentRequest$outboundSchema: z.ZodType<
+    CreateDeploymentRequest$Outbound,
+    z.ZodTypeDef,
+    CreateDeploymentRequest
+> = z
+    .object({
+        appId: z.string().optional(),
+        buildId: z.number().int(),
+        deploymentConfigV2: components.DeploymentConfigV2$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            deploymentConfigV2: "DeploymentConfigV2",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateDeploymentRequest$ {
-    export const inboundSchema: z.ZodType<CreateDeploymentRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-            buildId: z.number().int(),
-            DeploymentConfigV2: components.DeploymentConfigV2$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                DeploymentConfigV2: "deploymentConfigV2",
-            });
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        buildId: number;
-        DeploymentConfigV2: components.DeploymentConfigV2$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateDeploymentRequest> = z
-        .object({
-            appId: z.string().optional(),
-            buildId: z.number().int(),
-            deploymentConfigV2: components.DeploymentConfigV2$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                deploymentConfigV2: "DeploymentConfigV2",
-            });
-        });
+    /** @deprecated use `CreateDeploymentRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateDeploymentRequest$inboundSchema;
+    /** @deprecated use `CreateDeploymentRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateDeploymentRequest$outboundSchema;
+    /** @deprecated use `CreateDeploymentRequest$Outbound` instead. */
+    export type Outbound = CreateDeploymentRequest$Outbound;
 }

@@ -13,38 +13,50 @@ export class ApiError extends Error {
     data$: ApiErrorData;
 
     constructor(err: ApiErrorData) {
-        super("");
-        this.data$ = err;
-
-        this.message =
+        const message =
             "message" in err && typeof err.message === "string"
                 ? err.message
-                : "API error occurred";
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
+        this.data$ = err;
 
         this.name = "ApiError";
     }
 }
 
 /** @internal */
-export namespace ApiError$ {
-    export const inboundSchema: z.ZodType<ApiError, z.ZodTypeDef, unknown> = z
-        .object({
+export const ApiError$inboundSchema: z.ZodType<ApiError, z.ZodTypeDef, unknown> = z
+    .object({
+        message: z.string(),
+    })
+    .transform((v) => {
+        return new ApiError(v);
+    });
+
+/** @internal */
+export type ApiError$Outbound = {
+    message: string;
+};
+
+/** @internal */
+export const ApiError$outboundSchema: z.ZodType<ApiError$Outbound, z.ZodTypeDef, ApiError> = z
+    .instanceof(ApiError)
+    .transform((v) => v.data$)
+    .pipe(
+        z.object({
             message: z.string(),
         })
-        .transform((v) => {
-            return new ApiError(v);
-        });
+    );
 
-    export type Outbound = {
-        message: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApiError> = z
-        .instanceof(ApiError)
-        .transform((v) => v.data$)
-        .pipe(
-            z.object({
-                message: z.string(),
-            })
-        );
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ApiError$ {
+    /** @deprecated use `ApiError$inboundSchema` instead. */
+    export const inboundSchema = ApiError$inboundSchema;
+    /** @deprecated use `ApiError$outboundSchema` instead. */
+    export const outboundSchema = ApiError$outboundSchema;
+    /** @deprecated use `ApiError$Outbound` instead. */
+    export type Outbound = ApiError$Outbound;
 }

@@ -29,88 +29,166 @@ export type CreateLocalLobbyRequest = {
 };
 
 /** @internal */
+export const CreateLocalLobbyGlobals$inboundSchema: z.ZodType<
+    CreateLocalLobbyGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type CreateLocalLobbyGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const CreateLocalLobbyGlobals$outboundSchema: z.ZodType<
+    CreateLocalLobbyGlobals$Outbound,
+    z.ZodTypeDef,
+    CreateLocalLobbyGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateLocalLobbyGlobals$ {
-    export const inboundSchema: z.ZodType<CreateLocalLobbyGlobals, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLocalLobbyGlobals> =
-        z.object({
-            appId: z.string().optional(),
-        });
+    /** @deprecated use `CreateLocalLobbyGlobals$inboundSchema` instead. */
+    export const inboundSchema = CreateLocalLobbyGlobals$inboundSchema;
+    /** @deprecated use `CreateLocalLobbyGlobals$outboundSchema` instead. */
+    export const outboundSchema = CreateLocalLobbyGlobals$outboundSchema;
+    /** @deprecated use `CreateLocalLobbyGlobals$Outbound` instead. */
+    export type Outbound = CreateLocalLobbyGlobals$Outbound;
 }
 
 /** @internal */
+export const CreateLocalLobbySecurity$inboundSchema: z.ZodType<
+    CreateLocalLobbySecurity,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    playerAuth: z.string(),
+});
+
+/** @internal */
+export type CreateLocalLobbySecurity$Outbound = {
+    playerAuth: string;
+};
+
+/** @internal */
+export const CreateLocalLobbySecurity$outboundSchema: z.ZodType<
+    CreateLocalLobbySecurity$Outbound,
+    z.ZodTypeDef,
+    CreateLocalLobbySecurity
+> = z.object({
+    playerAuth: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateLocalLobbySecurity$ {
-    export const inboundSchema: z.ZodType<CreateLocalLobbySecurity, z.ZodTypeDef, unknown> =
-        z.object({
-            playerAuth: z.string(),
-        });
-
-    export type Outbound = {
-        playerAuth: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLocalLobbySecurity> =
-        z.object({
-            playerAuth: z.string(),
-        });
+    /** @deprecated use `CreateLocalLobbySecurity$inboundSchema` instead. */
+    export const inboundSchema = CreateLocalLobbySecurity$inboundSchema;
+    /** @deprecated use `CreateLocalLobbySecurity$outboundSchema` instead. */
+    export const outboundSchema = CreateLocalLobbySecurity$outboundSchema;
+    /** @deprecated use `CreateLocalLobbySecurity$Outbound` instead. */
+    export type Outbound = CreateLocalLobbySecurity$Outbound;
 }
 
 /** @internal */
+export const CreateLocalLobbyRequestBody$inboundSchema: z.ZodType<
+    CreateLocalLobbyRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    initialConfig: z.any().optional(),
+    region: components.Region$inboundSchema,
+});
+
+/** @internal */
+export type CreateLocalLobbyRequestBody$Outbound = {
+    initialConfig?: any | undefined;
+    region: string;
+};
+
+/** @internal */
+export const CreateLocalLobbyRequestBody$outboundSchema: z.ZodType<
+    CreateLocalLobbyRequestBody$Outbound,
+    z.ZodTypeDef,
+    CreateLocalLobbyRequestBody
+> = z.object({
+    initialConfig: z.any().optional(),
+    region: components.Region$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateLocalLobbyRequestBody$ {
-    export const inboundSchema: z.ZodType<CreateLocalLobbyRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            initialConfig: z.any().optional(),
-            region: components.Region$.inboundSchema,
-        });
-
-    export type Outbound = {
-        initialConfig?: any | undefined;
-        region: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLocalLobbyRequestBody> =
-        z.object({
-            initialConfig: z.any().optional(),
-            region: components.Region$.outboundSchema,
-        });
+    /** @deprecated use `CreateLocalLobbyRequestBody$inboundSchema` instead. */
+    export const inboundSchema = CreateLocalLobbyRequestBody$inboundSchema;
+    /** @deprecated use `CreateLocalLobbyRequestBody$outboundSchema` instead. */
+    export const outboundSchema = CreateLocalLobbyRequestBody$outboundSchema;
+    /** @deprecated use `CreateLocalLobbyRequestBody$Outbound` instead. */
+    export type Outbound = CreateLocalLobbyRequestBody$Outbound;
 }
 
 /** @internal */
+export const CreateLocalLobbyRequest$inboundSchema: z.ZodType<
+    CreateLocalLobbyRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        appId: z.string().optional(),
+        roomId: z.string().optional(),
+        RequestBody: z.lazy(() => CreateLocalLobbyRequestBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            RequestBody: "requestBody",
+        });
+    });
+
+/** @internal */
+export type CreateLocalLobbyRequest$Outbound = {
+    appId?: string | undefined;
+    roomId?: string | undefined;
+    RequestBody: CreateLocalLobbyRequestBody$Outbound;
+};
+
+/** @internal */
+export const CreateLocalLobbyRequest$outboundSchema: z.ZodType<
+    CreateLocalLobbyRequest$Outbound,
+    z.ZodTypeDef,
+    CreateLocalLobbyRequest
+> = z
+    .object({
+        appId: z.string().optional(),
+        roomId: z.string().optional(),
+        requestBody: z.lazy(() => CreateLocalLobbyRequestBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            requestBody: "RequestBody",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateLocalLobbyRequest$ {
-    export const inboundSchema: z.ZodType<CreateLocalLobbyRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-            roomId: z.string().optional(),
-            RequestBody: z.lazy(() => CreateLocalLobbyRequestBody$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                RequestBody: "requestBody",
-            });
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        roomId?: string | undefined;
-        RequestBody: CreateLocalLobbyRequestBody$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLocalLobbyRequest> = z
-        .object({
-            appId: z.string().optional(),
-            roomId: z.string().optional(),
-            requestBody: z.lazy(() => CreateLocalLobbyRequestBody$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                requestBody: "RequestBody",
-            });
-        });
+    /** @deprecated use `CreateLocalLobbyRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateLocalLobbyRequest$inboundSchema;
+    /** @deprecated use `CreateLocalLobbyRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateLocalLobbyRequest$outboundSchema;
+    /** @deprecated use `CreateLocalLobbyRequest$Outbound` instead. */
+    export type Outbound = CreateLocalLobbyRequest$Outbound;
 }

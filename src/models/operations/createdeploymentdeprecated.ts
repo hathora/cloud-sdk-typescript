@@ -17,65 +17,91 @@ export type CreateDeploymentDeprecatedRequest = {
 };
 
 /** @internal */
+export const CreateDeploymentDeprecatedGlobals$inboundSchema: z.ZodType<
+    CreateDeploymentDeprecatedGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type CreateDeploymentDeprecatedGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const CreateDeploymentDeprecatedGlobals$outboundSchema: z.ZodType<
+    CreateDeploymentDeprecatedGlobals$Outbound,
+    z.ZodTypeDef,
+    CreateDeploymentDeprecatedGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateDeploymentDeprecatedGlobals$ {
-    export const inboundSchema: z.ZodType<
-        CreateDeploymentDeprecatedGlobals,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateDeploymentDeprecatedGlobals
-    > = z.object({
-        appId: z.string().optional(),
-    });
+    /** @deprecated use `CreateDeploymentDeprecatedGlobals$inboundSchema` instead. */
+    export const inboundSchema = CreateDeploymentDeprecatedGlobals$inboundSchema;
+    /** @deprecated use `CreateDeploymentDeprecatedGlobals$outboundSchema` instead. */
+    export const outboundSchema = CreateDeploymentDeprecatedGlobals$outboundSchema;
+    /** @deprecated use `CreateDeploymentDeprecatedGlobals$Outbound` instead. */
+    export type Outbound = CreateDeploymentDeprecatedGlobals$Outbound;
 }
 
 /** @internal */
+export const CreateDeploymentDeprecatedRequest$inboundSchema: z.ZodType<
+    CreateDeploymentDeprecatedRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        appId: z.string().optional(),
+        buildId: z.number().int(),
+        DeploymentConfig: components.DeploymentConfig$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            DeploymentConfig: "deploymentConfig",
+        });
+    });
+
+/** @internal */
+export type CreateDeploymentDeprecatedRequest$Outbound = {
+    appId?: string | undefined;
+    buildId: number;
+    DeploymentConfig: components.DeploymentConfig$Outbound;
+};
+
+/** @internal */
+export const CreateDeploymentDeprecatedRequest$outboundSchema: z.ZodType<
+    CreateDeploymentDeprecatedRequest$Outbound,
+    z.ZodTypeDef,
+    CreateDeploymentDeprecatedRequest
+> = z
+    .object({
+        appId: z.string().optional(),
+        buildId: z.number().int(),
+        deploymentConfig: components.DeploymentConfig$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            deploymentConfig: "DeploymentConfig",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateDeploymentDeprecatedRequest$ {
-    export const inboundSchema: z.ZodType<
-        CreateDeploymentDeprecatedRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            appId: z.string().optional(),
-            buildId: z.number().int(),
-            DeploymentConfig: components.DeploymentConfig$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                DeploymentConfig: "deploymentConfig",
-            });
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        buildId: number;
-        DeploymentConfig: components.DeploymentConfig$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateDeploymentDeprecatedRequest
-    > = z
-        .object({
-            appId: z.string().optional(),
-            buildId: z.number().int(),
-            deploymentConfig: components.DeploymentConfig$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                deploymentConfig: "DeploymentConfig",
-            });
-        });
+    /** @deprecated use `CreateDeploymentDeprecatedRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateDeploymentDeprecatedRequest$inboundSchema;
+    /** @deprecated use `CreateDeploymentDeprecatedRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateDeploymentDeprecatedRequest$outboundSchema;
+    /** @deprecated use `CreateDeploymentDeprecatedRequest$Outbound` instead. */
+    export type Outbound = CreateDeploymentDeprecatedRequest$Outbound;
 }

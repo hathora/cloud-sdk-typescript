@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeJSON as encodeJSON$,
@@ -58,14 +58,10 @@ export class RoomsV2 extends ClientSDK {
             roomId: roomId,
             createRoomParams: createRoomParams,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CreateRoomRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CreateRoomRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.CreateRoomParams, { explode: true });
@@ -80,6 +76,11 @@ export class RoomsV2 extends ClientSDK {
 
         const query$ = encodeFormQuery$({
             roomId: payload$.roomId,
+        });
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
         });
 
         let security$;
@@ -97,10 +98,6 @@ export class RoomsV2 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "401", "402", "403", "404", "422", "429", "4XX", "500", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -110,19 +107,27 @@ export class RoomsV2 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "401", "402", "403", "404", "422", "429", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<components.RoomConnectionData>()
-            .json(201, components.RoomConnectionData$)
-            .json([400, 401, 402, 403, 404, 422, 429, 500], errors.ApiError$, { err: true })
+            .json(201, components.RoomConnectionData$inboundSchema)
+            .json([400, 401, 402, 403, 404, 422, 429, 500], errors.ApiError$inboundSchema, {
+                err: true,
+            })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -141,13 +146,10 @@ export class RoomsV2 extends ClientSDK {
             appId: appId,
             roomId: roomId,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetRoomInfoRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetRoomInfoRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -166,6 +168,10 @@ export class RoomsV2 extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
             security$ = { hathoraDevToken: await this.options$.hathoraDevToken() };
@@ -181,7 +187,6 @@ export class RoomsV2 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "404", "422", "429", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -191,19 +196,25 @@ export class RoomsV2 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "404", "422", "429", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<components.Room>()
-            .json(200, components.Room$)
-            .json([401, 404, 422, 429], errors.ApiError$, { err: true })
+            .json(200, components.Room$inboundSchema)
+            .json([401, 404, 422, 429], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -222,13 +233,10 @@ export class RoomsV2 extends ClientSDK {
             appId: appId,
             processId: processId,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetActiveRoomsForProcessRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetActiveRoomsForProcessRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -249,6 +257,10 @@ export class RoomsV2 extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
             security$ = { hathoraDevToken: await this.options$.hathoraDevToken() };
@@ -264,7 +276,6 @@ export class RoomsV2 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "404", "429", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -274,19 +285,25 @@ export class RoomsV2 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "404", "429", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<Array<components.RoomWithoutAllocations>>()
-            .json(200, z.array(components.RoomWithoutAllocations$.inboundSchema))
-            .json([401, 404, 429], errors.ApiError$, { err: true })
+            .json(200, z.array(components.RoomWithoutAllocations$inboundSchema))
+            .json([401, 404, 429], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -305,13 +322,10 @@ export class RoomsV2 extends ClientSDK {
             appId: appId,
             processId: processId,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetInactiveRoomsForProcessRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetInactiveRoomsForProcessRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -332,6 +346,10 @@ export class RoomsV2 extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
             security$ = { hathoraDevToken: await this.options$.hathoraDevToken() };
@@ -347,7 +365,6 @@ export class RoomsV2 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "404", "429", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -357,19 +374,25 @@ export class RoomsV2 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "404", "429", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<Array<components.RoomWithoutAllocations>>()
-            .json(200, z.array(components.RoomWithoutAllocations$.inboundSchema))
-            .json([401, 404, 429], errors.ApiError$, { err: true })
+            .json(200, z.array(components.RoomWithoutAllocations$inboundSchema))
+            .json([401, 404, 429], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -388,13 +411,10 @@ export class RoomsV2 extends ClientSDK {
             appId: appId,
             roomId: roomId,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DestroyRoomRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DestroyRoomRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -413,6 +433,10 @@ export class RoomsV2 extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
             security$ = { hathoraDevToken: await this.options$.hathoraDevToken() };
@@ -428,7 +452,6 @@ export class RoomsV2 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "404", "429", "4XX", "500", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -438,11 +461,17 @@ export class RoomsV2 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "404", "429", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -450,7 +479,7 @@ export class RoomsV2 extends ClientSDK {
 
         const [result$] = await this.matcher<void>()
             .void(204, z.void())
-            .json([401, 404, 429, 500], errors.ApiError$, { err: true })
+            .json([401, 404, 429, 500], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -471,13 +500,10 @@ export class RoomsV2 extends ClientSDK {
             appId: appId,
             roomId: roomId,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.SuspendRoomV2DeprecatedRequest$.outboundSchema.parse(value$),
+            (value$) => operations.SuspendRoomV2DeprecatedRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -496,6 +522,10 @@ export class RoomsV2 extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
             security$ = { hathoraDevToken: await this.options$.hathoraDevToken() };
@@ -511,7 +541,6 @@ export class RoomsV2 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "404", "429", "4XX", "500", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -521,11 +550,17 @@ export class RoomsV2 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "404", "429", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -533,7 +568,7 @@ export class RoomsV2 extends ClientSDK {
 
         const [result$] = await this.matcher<void>()
             .void(204, z.void())
-            .json([401, 404, 429, 500], errors.ApiError$, { err: true })
+            .json([401, 404, 429, 500], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -552,13 +587,10 @@ export class RoomsV2 extends ClientSDK {
             appId: appId,
             roomId: roomId,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetConnectionInfoRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetConnectionInfoRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -579,31 +611,43 @@ export class RoomsV2 extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         const context = {
             operationID: "GetConnectionInfo",
             oAuth2Scopes: [],
             securitySource: null,
         };
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "402", "404", "422", "429", "4XX", "500", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
-            { method: "GET", path: path$, headers: headers$, query: query$, body: body$ },
+            {
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "402", "404", "422", "429", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<components.ConnectionInfoV2>()
-            .json(200, components.ConnectionInfoV2$)
-            .json([400, 402, 404, 422, 429, 500], errors.ApiError$, { err: true })
+            .json(200, components.ConnectionInfoV2$inboundSchema)
+            .json([400, 402, 404, 422, 429, 500], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -621,14 +665,10 @@ export class RoomsV2 extends ClientSDK {
             roomId: roomId,
             updateRoomConfigParams: updateRoomConfigParams,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UpdateRoomConfigRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdateRoomConfigRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.UpdateRoomConfigParams, { explode: true });
@@ -647,6 +687,11 @@ export class RoomsV2 extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
             security$ = { hathoraDevToken: await this.options$.hathoraDevToken() };
@@ -662,7 +707,6 @@ export class RoomsV2 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "404", "429", "4XX", "500", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -672,11 +716,17 @@ export class RoomsV2 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "404", "429", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -684,7 +734,7 @@ export class RoomsV2 extends ClientSDK {
 
         const [result$] = await this.matcher<void>()
             .void(204, z.void())
-            .json([401, 404, 429, 500], errors.ApiError$, { err: true })
+            .json([401, 404, 429, 500], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

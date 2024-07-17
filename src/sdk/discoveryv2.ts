@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { HTTPClient } from "../lib/http.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -42,13 +42,13 @@ export class DiscoveryV2 extends ClientSDK {
     async getPingServiceEndpoints(
         options?: RequestOptions
     ): Promise<Array<components.PingEndpoints>> {
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
-
         const path$ = this.templateURLComponent("/discovery/v2/ping")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         const context = {
             operationID: "GetPingServiceEndpoints",
@@ -56,17 +56,27 @@ export class DiscoveryV2 extends ClientSDK {
             securitySource: null,
         };
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
-            { method: "GET", path: path$, headers: headers$, query: query$ },
+            {
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const [result$] = await this.matcher<Array<components.PingEndpoints>>()
-            .json(200, z.array(components.PingEndpoints$.inboundSchema))
+            .json(200, z.array(components.PingEndpoints$inboundSchema))
             .fail(["4XX", "5XX"])
             .match(response);
 

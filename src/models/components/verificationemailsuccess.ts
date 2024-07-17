@@ -11,19 +11,29 @@ export const VerificationEmailSuccess = {
 export type VerificationEmailSuccess = OpenEnum<typeof VerificationEmailSuccess>;
 
 /** @internal */
-export namespace VerificationEmailSuccess$ {
-    export const inboundSchema: z.ZodType<VerificationEmailSuccess, z.ZodTypeDef, unknown> =
-        z.union([
-            z.nativeEnum(VerificationEmailSuccess),
-            z.string().transform(catchUnrecognizedEnum),
-        ]);
+export const VerificationEmailSuccess$inboundSchema: z.ZodType<
+    VerificationEmailSuccess,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(VerificationEmailSuccess), z.string().transform(catchUnrecognizedEnum)]);
 
-    export const outboundSchema: z.ZodType<
-        VerificationEmailSuccess,
-        z.ZodTypeDef,
-        VerificationEmailSuccess
-    > = z.union([
-        z.nativeEnum(VerificationEmailSuccess),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+/** @internal */
+export const VerificationEmailSuccess$outboundSchema: z.ZodType<
+    VerificationEmailSuccess,
+    z.ZodTypeDef,
+    VerificationEmailSuccess
+> = z.union([
+    z.nativeEnum(VerificationEmailSuccess),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace VerificationEmailSuccess$ {
+    /** @deprecated use `VerificationEmailSuccess$inboundSchema` instead. */
+    export const inboundSchema = VerificationEmailSuccess$inboundSchema;
+    /** @deprecated use `VerificationEmailSuccess$outboundSchema` instead. */
+    export const outboundSchema = VerificationEmailSuccess$outboundSchema;
 }

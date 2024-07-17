@@ -14,34 +14,76 @@ export type StopProcessRequest = {
 };
 
 /** @internal */
+export const StopProcessGlobals$inboundSchema: z.ZodType<
+    StopProcessGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type StopProcessGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const StopProcessGlobals$outboundSchema: z.ZodType<
+    StopProcessGlobals$Outbound,
+    z.ZodTypeDef,
+    StopProcessGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace StopProcessGlobals$ {
-    export const inboundSchema: z.ZodType<StopProcessGlobals, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StopProcessGlobals> = z.object({
-        appId: z.string().optional(),
-    });
+    /** @deprecated use `StopProcessGlobals$inboundSchema` instead. */
+    export const inboundSchema = StopProcessGlobals$inboundSchema;
+    /** @deprecated use `StopProcessGlobals$outboundSchema` instead. */
+    export const outboundSchema = StopProcessGlobals$outboundSchema;
+    /** @deprecated use `StopProcessGlobals$Outbound` instead. */
+    export type Outbound = StopProcessGlobals$Outbound;
 }
 
 /** @internal */
+export const StopProcessRequest$inboundSchema: z.ZodType<
+    StopProcessRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+    processId: z.string(),
+});
+
+/** @internal */
+export type StopProcessRequest$Outbound = {
+    appId?: string | undefined;
+    processId: string;
+};
+
+/** @internal */
+export const StopProcessRequest$outboundSchema: z.ZodType<
+    StopProcessRequest$Outbound,
+    z.ZodTypeDef,
+    StopProcessRequest
+> = z.object({
+    appId: z.string().optional(),
+    processId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace StopProcessRequest$ {
-    export const inboundSchema: z.ZodType<StopProcessRequest, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-        processId: z.string(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        processId: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StopProcessRequest> = z.object({
-        appId: z.string().optional(),
-        processId: z.string(),
-    });
+    /** @deprecated use `StopProcessRequest$inboundSchema` instead. */
+    export const inboundSchema = StopProcessRequest$inboundSchema;
+    /** @deprecated use `StopProcessRequest$outboundSchema` instead. */
+    export const outboundSchema = StopProcessRequest$outboundSchema;
+    /** @deprecated use `StopProcessRequest$Outbound` instead. */
+    export type Outbound = StopProcessRequest$Outbound;
 }

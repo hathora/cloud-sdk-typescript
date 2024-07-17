@@ -40,14 +40,24 @@ export const PlanName = {
 export type PlanName = OpenEnum<typeof PlanName>;
 
 /** @internal */
-export namespace PlanName$ {
-    export const inboundSchema: z.ZodType<PlanName, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(PlanName),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
+export const PlanName$inboundSchema: z.ZodType<PlanName, z.ZodTypeDef, unknown> = z.union([
+    z.nativeEnum(PlanName),
+    z.string().transform(catchUnrecognizedEnum),
+]);
 
-    export const outboundSchema: z.ZodType<PlanName, z.ZodTypeDef, PlanName> = z.union([
-        z.nativeEnum(PlanName),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+/** @internal */
+export const PlanName$outboundSchema: z.ZodType<PlanName, z.ZodTypeDef, PlanName> = z.union([
+    z.nativeEnum(PlanName),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PlanName$ {
+    /** @deprecated use `PlanName$inboundSchema` instead. */
+    export const inboundSchema = PlanName$inboundSchema;
+    /** @deprecated use `PlanName$outboundSchema` instead. */
+    export const outboundSchema = PlanName$outboundSchema;
 }

@@ -12,16 +12,34 @@ export type CreateUserInvite = {
 };
 
 /** @internal */
+export const CreateUserInvite$inboundSchema: z.ZodType<CreateUserInvite, z.ZodTypeDef, unknown> =
+    z.object({
+        userEmail: z.string(),
+    });
+
+/** @internal */
+export type CreateUserInvite$Outbound = {
+    userEmail: string;
+};
+
+/** @internal */
+export const CreateUserInvite$outboundSchema: z.ZodType<
+    CreateUserInvite$Outbound,
+    z.ZodTypeDef,
+    CreateUserInvite
+> = z.object({
+    userEmail: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateUserInvite$ {
-    export const inboundSchema: z.ZodType<CreateUserInvite, z.ZodTypeDef, unknown> = z.object({
-        userEmail: z.string(),
-    });
-
-    export type Outbound = {
-        userEmail: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateUserInvite> = z.object({
-        userEmail: z.string(),
-    });
+    /** @deprecated use `CreateUserInvite$inboundSchema` instead. */
+    export const inboundSchema = CreateUserInvite$inboundSchema;
+    /** @deprecated use `CreateUserInvite$outboundSchema` instead. */
+    export const outboundSchema = CreateUserInvite$outboundSchema;
+    /** @deprecated use `CreateUserInvite$Outbound` instead. */
+    export type Outbound = CreateUserInvite$Outbound;
 }

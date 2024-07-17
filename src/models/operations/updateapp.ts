@@ -16,46 +16,81 @@ export type UpdateAppRequest = {
 };
 
 /** @internal */
+export const UpdateAppGlobals$inboundSchema: z.ZodType<UpdateAppGlobals, z.ZodTypeDef, unknown> =
+    z.object({
+        appId: z.string().optional(),
+    });
+
+/** @internal */
+export type UpdateAppGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const UpdateAppGlobals$outboundSchema: z.ZodType<
+    UpdateAppGlobals$Outbound,
+    z.ZodTypeDef,
+    UpdateAppGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateAppGlobals$ {
-    export const inboundSchema: z.ZodType<UpdateAppGlobals, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateAppGlobals> = z.object({
-        appId: z.string().optional(),
-    });
+    /** @deprecated use `UpdateAppGlobals$inboundSchema` instead. */
+    export const inboundSchema = UpdateAppGlobals$inboundSchema;
+    /** @deprecated use `UpdateAppGlobals$outboundSchema` instead. */
+    export const outboundSchema = UpdateAppGlobals$outboundSchema;
+    /** @deprecated use `UpdateAppGlobals$Outbound` instead. */
+    export type Outbound = UpdateAppGlobals$Outbound;
 }
 
 /** @internal */
+export const UpdateAppRequest$inboundSchema: z.ZodType<UpdateAppRequest, z.ZodTypeDef, unknown> = z
+    .object({
+        appId: z.string().optional(),
+        AppConfig: components.AppConfig$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            AppConfig: "appConfig",
+        });
+    });
+
+/** @internal */
+export type UpdateAppRequest$Outbound = {
+    appId?: string | undefined;
+    AppConfig: components.AppConfig$Outbound;
+};
+
+/** @internal */
+export const UpdateAppRequest$outboundSchema: z.ZodType<
+    UpdateAppRequest$Outbound,
+    z.ZodTypeDef,
+    UpdateAppRequest
+> = z
+    .object({
+        appId: z.string().optional(),
+        appConfig: components.AppConfig$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            appConfig: "AppConfig",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateAppRequest$ {
-    export const inboundSchema: z.ZodType<UpdateAppRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-            AppConfig: components.AppConfig$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                AppConfig: "appConfig",
-            });
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        AppConfig: components.AppConfig$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateAppRequest> = z
-        .object({
-            appId: z.string().optional(),
-            appConfig: components.AppConfig$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                appConfig: "AppConfig",
-            });
-        });
+    /** @deprecated use `UpdateAppRequest$inboundSchema` instead. */
+    export const inboundSchema = UpdateAppRequest$inboundSchema;
+    /** @deprecated use `UpdateAppRequest$outboundSchema` instead. */
+    export const outboundSchema = UpdateAppRequest$outboundSchema;
+    /** @deprecated use `UpdateAppRequest$Outbound` instead. */
+    export type Outbound = UpdateAppRequest$Outbound;
 }

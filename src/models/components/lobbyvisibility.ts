@@ -35,12 +35,23 @@ export const LobbyVisibility = {
 export type LobbyVisibility = OpenEnum<typeof LobbyVisibility>;
 
 /** @internal */
-export namespace LobbyVisibility$ {
-    export const inboundSchema: z.ZodType<LobbyVisibility, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(LobbyVisibility),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
+export const LobbyVisibility$inboundSchema: z.ZodType<LobbyVisibility, z.ZodTypeDef, unknown> =
+    z.union([z.nativeEnum(LobbyVisibility), z.string().transform(catchUnrecognizedEnum)]);
 
-    export const outboundSchema: z.ZodType<LobbyVisibility, z.ZodTypeDef, LobbyVisibility> =
-        z.union([z.nativeEnum(LobbyVisibility), z.string().and(z.custom<Unrecognized<string>>())]);
+/** @internal */
+export const LobbyVisibility$outboundSchema: z.ZodType<
+    LobbyVisibility,
+    z.ZodTypeDef,
+    LobbyVisibility
+> = z.union([z.nativeEnum(LobbyVisibility), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LobbyVisibility$ {
+    /** @deprecated use `LobbyVisibility$inboundSchema` instead. */
+    export const inboundSchema = LobbyVisibility$inboundSchema;
+    /** @deprecated use `LobbyVisibility$outboundSchema` instead. */
+    export const outboundSchema = LobbyVisibility$outboundSchema;
 }

@@ -12,31 +12,52 @@ export type CreateOrgTokenRequest = {
 };
 
 /** @internal */
+export const CreateOrgTokenRequest$inboundSchema: z.ZodType<
+    CreateOrgTokenRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        orgId: z.string(),
+        CreateOrgToken: z.lazy(() => components.CreateOrgToken$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            CreateOrgToken: "createOrgToken",
+        });
+    });
+
+/** @internal */
+export type CreateOrgTokenRequest$Outbound = {
+    orgId: string;
+    CreateOrgToken: components.CreateOrgToken$Outbound;
+};
+
+/** @internal */
+export const CreateOrgTokenRequest$outboundSchema: z.ZodType<
+    CreateOrgTokenRequest$Outbound,
+    z.ZodTypeDef,
+    CreateOrgTokenRequest
+> = z
+    .object({
+        orgId: z.string(),
+        createOrgToken: z.lazy(() => components.CreateOrgToken$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            createOrgToken: "CreateOrgToken",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateOrgTokenRequest$ {
-    export const inboundSchema: z.ZodType<CreateOrgTokenRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            orgId: z.string(),
-            CreateOrgToken: z.lazy(() => components.CreateOrgToken$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                CreateOrgToken: "createOrgToken",
-            });
-        });
-
-    export type Outbound = {
-        orgId: string;
-        CreateOrgToken: components.CreateOrgToken$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateOrgTokenRequest> = z
-        .object({
-            orgId: z.string(),
-            createOrgToken: z.lazy(() => components.CreateOrgToken$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                createOrgToken: "CreateOrgToken",
-            });
-        });
+    /** @deprecated use `CreateOrgTokenRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateOrgTokenRequest$inboundSchema;
+    /** @deprecated use `CreateOrgTokenRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateOrgTokenRequest$outboundSchema;
+    /** @deprecated use `CreateOrgTokenRequest$Outbound` instead. */
+    export type Outbound = CreateOrgTokenRequest$Outbound;
 }

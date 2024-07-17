@@ -9,18 +9,37 @@ export type GetOrgPendingInvitesRequest = {
 };
 
 /** @internal */
+export const GetOrgPendingInvitesRequest$inboundSchema: z.ZodType<
+    GetOrgPendingInvitesRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    orgId: z.string(),
+});
+
+/** @internal */
+export type GetOrgPendingInvitesRequest$Outbound = {
+    orgId: string;
+};
+
+/** @internal */
+export const GetOrgPendingInvitesRequest$outboundSchema: z.ZodType<
+    GetOrgPendingInvitesRequest$Outbound,
+    z.ZodTypeDef,
+    GetOrgPendingInvitesRequest
+> = z.object({
+    orgId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetOrgPendingInvitesRequest$ {
-    export const inboundSchema: z.ZodType<GetOrgPendingInvitesRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            orgId: z.string(),
-        });
-
-    export type Outbound = {
-        orgId: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOrgPendingInvitesRequest> =
-        z.object({
-            orgId: z.string(),
-        });
+    /** @deprecated use `GetOrgPendingInvitesRequest$inboundSchema` instead. */
+    export const inboundSchema = GetOrgPendingInvitesRequest$inboundSchema;
+    /** @deprecated use `GetOrgPendingInvitesRequest$outboundSchema` instead. */
+    export const outboundSchema = GetOrgPendingInvitesRequest$outboundSchema;
+    /** @deprecated use `GetOrgPendingInvitesRequest$Outbound` instead. */
+    export type Outbound = GetOrgPendingInvitesRequest$Outbound;
 }

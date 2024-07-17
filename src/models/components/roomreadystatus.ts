@@ -12,12 +12,23 @@ export const RoomReadyStatus = {
 export type RoomReadyStatus = OpenEnum<typeof RoomReadyStatus>;
 
 /** @internal */
-export namespace RoomReadyStatus$ {
-    export const inboundSchema: z.ZodType<RoomReadyStatus, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(RoomReadyStatus),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
+export const RoomReadyStatus$inboundSchema: z.ZodType<RoomReadyStatus, z.ZodTypeDef, unknown> =
+    z.union([z.nativeEnum(RoomReadyStatus), z.string().transform(catchUnrecognizedEnum)]);
 
-    export const outboundSchema: z.ZodType<RoomReadyStatus, z.ZodTypeDef, RoomReadyStatus> =
-        z.union([z.nativeEnum(RoomReadyStatus), z.string().and(z.custom<Unrecognized<string>>())]);
+/** @internal */
+export const RoomReadyStatus$outboundSchema: z.ZodType<
+    RoomReadyStatus,
+    z.ZodTypeDef,
+    RoomReadyStatus
+> = z.union([z.nativeEnum(RoomReadyStatus), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RoomReadyStatus$ {
+    /** @deprecated use `RoomReadyStatus$inboundSchema` instead. */
+    export const inboundSchema = RoomReadyStatus$inboundSchema;
+    /** @deprecated use `RoomReadyStatus$outboundSchema` instead. */
+    export const outboundSchema = RoomReadyStatus$outboundSchema;
 }
