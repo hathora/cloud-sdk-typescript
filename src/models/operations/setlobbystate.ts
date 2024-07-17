@@ -17,51 +17,91 @@ export type SetLobbyStateRequest = {
 };
 
 /** @internal */
+export const SetLobbyStateGlobals$inboundSchema: z.ZodType<
+    SetLobbyStateGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type SetLobbyStateGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const SetLobbyStateGlobals$outboundSchema: z.ZodType<
+    SetLobbyStateGlobals$Outbound,
+    z.ZodTypeDef,
+    SetLobbyStateGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SetLobbyStateGlobals$ {
-    export const inboundSchema: z.ZodType<SetLobbyStateGlobals, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SetLobbyStateGlobals> = z.object(
-        {
-            appId: z.string().optional(),
-        }
-    );
+    /** @deprecated use `SetLobbyStateGlobals$inboundSchema` instead. */
+    export const inboundSchema = SetLobbyStateGlobals$inboundSchema;
+    /** @deprecated use `SetLobbyStateGlobals$outboundSchema` instead. */
+    export const outboundSchema = SetLobbyStateGlobals$outboundSchema;
+    /** @deprecated use `SetLobbyStateGlobals$Outbound` instead. */
+    export type Outbound = SetLobbyStateGlobals$Outbound;
 }
 
 /** @internal */
+export const SetLobbyStateRequest$inboundSchema: z.ZodType<
+    SetLobbyStateRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        appId: z.string().optional(),
+        roomId: z.string(),
+        SetLobbyStateParams: components.SetLobbyStateParams$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            SetLobbyStateParams: "setLobbyStateParams",
+        });
+    });
+
+/** @internal */
+export type SetLobbyStateRequest$Outbound = {
+    appId?: string | undefined;
+    roomId: string;
+    SetLobbyStateParams: components.SetLobbyStateParams$Outbound;
+};
+
+/** @internal */
+export const SetLobbyStateRequest$outboundSchema: z.ZodType<
+    SetLobbyStateRequest$Outbound,
+    z.ZodTypeDef,
+    SetLobbyStateRequest
+> = z
+    .object({
+        appId: z.string().optional(),
+        roomId: z.string(),
+        setLobbyStateParams: components.SetLobbyStateParams$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            setLobbyStateParams: "SetLobbyStateParams",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SetLobbyStateRequest$ {
-    export const inboundSchema: z.ZodType<SetLobbyStateRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-            roomId: z.string(),
-            SetLobbyStateParams: components.SetLobbyStateParams$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                SetLobbyStateParams: "setLobbyStateParams",
-            });
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        roomId: string;
-        SetLobbyStateParams: components.SetLobbyStateParams$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SetLobbyStateRequest> = z
-        .object({
-            appId: z.string().optional(),
-            roomId: z.string(),
-            setLobbyStateParams: components.SetLobbyStateParams$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                setLobbyStateParams: "SetLobbyStateParams",
-            });
-        });
+    /** @deprecated use `SetLobbyStateRequest$inboundSchema` instead. */
+    export const inboundSchema = SetLobbyStateRequest$inboundSchema;
+    /** @deprecated use `SetLobbyStateRequest$outboundSchema` instead. */
+    export const outboundSchema = SetLobbyStateRequest$outboundSchema;
+    /** @deprecated use `SetLobbyStateRequest$Outbound` instead. */
+    export type Outbound = SetLobbyStateRequest$Outbound;
 }

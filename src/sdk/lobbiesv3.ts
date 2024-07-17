@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeJSON as encodeJSON$,
@@ -62,14 +62,10 @@ export class LobbiesV3 extends ClientSDK {
             roomId: roomId,
             createLobbyV3Params: createLobbyV3Params,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CreateLobbyRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CreateLobbyRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.CreateLobbyV3Params, { explode: true });
@@ -87,6 +83,11 @@ export class LobbiesV3 extends ClientSDK {
             shortCode: payload$.shortCode,
         });
 
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
+
         const security$: SecurityInput[][] = [
             [
                 {
@@ -99,10 +100,6 @@ export class LobbiesV3 extends ClientSDK {
         const securitySettings$ = this.resolveSecurity(...security$);
         const context = { operationID: "CreateLobby", oAuth2Scopes: [], securitySource: security$ };
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "401", "402", "404", "422", "429", "4XX", "500", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -112,19 +109,25 @@ export class LobbiesV3 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "401", "402", "404", "422", "429", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<components.LobbyV3>()
-            .json(201, components.LobbyV3$)
-            .json([400, 401, 402, 404, 422, 429, 500], errors.ApiError$, { err: true })
+            .json(201, components.LobbyV3$inboundSchema)
+            .json([400, 401, 402, 404, 422, 429, 500], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -143,13 +146,10 @@ export class LobbiesV3 extends ClientSDK {
             appId: appId,
             region: region,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.ListActivePublicLobbiesRequest$.outboundSchema.parse(value$),
+            (value$) => operations.ListActivePublicLobbiesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -166,28 +166,43 @@ export class LobbiesV3 extends ClientSDK {
             region: payload$.region,
         });
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         const context = {
             operationID: "ListActivePublicLobbies",
             oAuth2Scopes: [],
             securitySource: null,
         };
 
-        const doOptions = { context, errorCodes: ["401", "429", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
-            { method: "GET", path: path$, headers: headers$, query: query$, body: body$ },
+            {
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "429", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<Array<components.LobbyV3>>()
-            .json(200, z.array(components.LobbyV3$.inboundSchema))
-            .json([401, 429], errors.ApiError$, { err: true })
+            .json(200, z.array(components.LobbyV3$inboundSchema))
+            .json([401, 429], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -206,13 +221,10 @@ export class LobbiesV3 extends ClientSDK {
             appId: appId,
             roomId: roomId,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetLobbyInfoByRoomIdRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetLobbyInfoByRoomIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -233,28 +245,43 @@ export class LobbiesV3 extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         const context = {
             operationID: "GetLobbyInfoByRoomId",
             oAuth2Scopes: [],
             securitySource: null,
         };
 
-        const doOptions = { context, errorCodes: ["404", "422", "429", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
-            { method: "GET", path: path$, headers: headers$, query: query$, body: body$ },
+            {
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["404", "422", "429", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<components.LobbyV3>()
-            .json(200, components.LobbyV3$)
-            .json([404, 422, 429], errors.ApiError$, { err: true })
+            .json(200, components.LobbyV3$inboundSchema)
+            .json([404, 422, 429], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -273,13 +300,10 @@ export class LobbiesV3 extends ClientSDK {
             appId: appId,
             shortCode: shortCode,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetLobbyInfoByShortCodeRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetLobbyInfoByShortCodeRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -300,28 +324,43 @@ export class LobbiesV3 extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         const context = {
             operationID: "GetLobbyInfoByShortCode",
             oAuth2Scopes: [],
             securitySource: null,
         };
 
-        const doOptions = { context, errorCodes: ["404", "429", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
-            { method: "GET", path: path$, headers: headers$, query: query$, body: body$ },
+            {
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["404", "429", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<components.LobbyV3>()
-            .json(200, components.LobbyV3$)
-            .json([404, 429], errors.ApiError$, { err: true })
+            .json(200, components.LobbyV3$inboundSchema)
+            .json([404, 429], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

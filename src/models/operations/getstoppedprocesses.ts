@@ -15,38 +15,76 @@ export type GetStoppedProcessesRequest = {
 };
 
 /** @internal */
+export const GetStoppedProcessesGlobals$inboundSchema: z.ZodType<
+    GetStoppedProcessesGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type GetStoppedProcessesGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const GetStoppedProcessesGlobals$outboundSchema: z.ZodType<
+    GetStoppedProcessesGlobals$Outbound,
+    z.ZodTypeDef,
+    GetStoppedProcessesGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetStoppedProcessesGlobals$ {
-    export const inboundSchema: z.ZodType<GetStoppedProcessesGlobals, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetStoppedProcessesGlobals> =
-        z.object({
-            appId: z.string().optional(),
-        });
+    /** @deprecated use `GetStoppedProcessesGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetStoppedProcessesGlobals$inboundSchema;
+    /** @deprecated use `GetStoppedProcessesGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetStoppedProcessesGlobals$outboundSchema;
+    /** @deprecated use `GetStoppedProcessesGlobals$Outbound` instead. */
+    export type Outbound = GetStoppedProcessesGlobals$Outbound;
 }
 
 /** @internal */
+export const GetStoppedProcessesRequest$inboundSchema: z.ZodType<
+    GetStoppedProcessesRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+    region: components.Region$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetStoppedProcessesRequest$Outbound = {
+    appId?: string | undefined;
+    region?: string | undefined;
+};
+
+/** @internal */
+export const GetStoppedProcessesRequest$outboundSchema: z.ZodType<
+    GetStoppedProcessesRequest$Outbound,
+    z.ZodTypeDef,
+    GetStoppedProcessesRequest
+> = z.object({
+    appId: z.string().optional(),
+    region: components.Region$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetStoppedProcessesRequest$ {
-    export const inboundSchema: z.ZodType<GetStoppedProcessesRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-            region: components.Region$.inboundSchema.optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        region?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetStoppedProcessesRequest> =
-        z.object({
-            appId: z.string().optional(),
-            region: components.Region$.outboundSchema.optional(),
-        });
+    /** @deprecated use `GetStoppedProcessesRequest$inboundSchema` instead. */
+    export const inboundSchema = GetStoppedProcessesRequest$inboundSchema;
+    /** @deprecated use `GetStoppedProcessesRequest$outboundSchema` instead. */
+    export const outboundSchema = GetStoppedProcessesRequest$outboundSchema;
+    /** @deprecated use `GetStoppedProcessesRequest$Outbound` instead. */
+    export type Outbound = GetStoppedProcessesRequest$Outbound;
 }

@@ -3,8 +3,13 @@
  */
 
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
-import { ContainerPort, ContainerPort$ } from "./containerport.js";
-import { PlanName, PlanName$ } from "./planname.js";
+import {
+    ContainerPort,
+    ContainerPort$inboundSchema,
+    ContainerPort$Outbound,
+    ContainerPort$outboundSchema,
+} from "./containerport.js";
+import { PlanName, PlanName$inboundSchema, PlanName$outboundSchema } from "./planname.js";
 import * as z from "zod";
 
 export type Env = {
@@ -102,88 +107,115 @@ export type Deployment = {
 };
 
 /** @internal */
+export const Env$inboundSchema: z.ZodType<Env, z.ZodTypeDef, unknown> = z.object({
+    value: z.string(),
+    name: z.string(),
+});
+
+/** @internal */
+export type Env$Outbound = {
+    value: string;
+    name: string;
+};
+
+/** @internal */
+export const Env$outboundSchema: z.ZodType<Env$Outbound, z.ZodTypeDef, Env> = z.object({
+    value: z.string(),
+    name: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Env$ {
-    export const inboundSchema: z.ZodType<Env, z.ZodTypeDef, unknown> = z.object({
-        value: z.string(),
-        name: z.string(),
-    });
-
-    export type Outbound = {
-        value: string;
-        name: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Env> = z.object({
-        value: z.string(),
-        name: z.string(),
-    });
+    /** @deprecated use `Env$inboundSchema` instead. */
+    export const inboundSchema = Env$inboundSchema;
+    /** @deprecated use `Env$outboundSchema` instead. */
+    export const outboundSchema = Env$outboundSchema;
+    /** @deprecated use `Env$Outbound` instead. */
+    export type Outbound = Env$Outbound;
 }
 
 /** @internal */
+export const DeploymentTransportType$inboundSchema: z.ZodType<
+    DeploymentTransportType,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(DeploymentTransportType), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const DeploymentTransportType$outboundSchema: z.ZodType<
+    DeploymentTransportType,
+    z.ZodTypeDef,
+    DeploymentTransportType
+> = z.union([
+    z.nativeEnum(DeploymentTransportType),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeploymentTransportType$ {
-    export const inboundSchema: z.ZodType<DeploymentTransportType, z.ZodTypeDef, unknown> = z.union(
-        [z.nativeEnum(DeploymentTransportType), z.string().transform(catchUnrecognizedEnum)]
-    );
-
-    export const outboundSchema: z.ZodType<
-        DeploymentTransportType,
-        z.ZodTypeDef,
-        DeploymentTransportType
-    > = z.union([
-        z.nativeEnum(DeploymentTransportType),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `DeploymentTransportType$inboundSchema` instead. */
+    export const inboundSchema = DeploymentTransportType$inboundSchema;
+    /** @deprecated use `DeploymentTransportType$outboundSchema` instead. */
+    export const outboundSchema = DeploymentTransportType$outboundSchema;
 }
 
 /** @internal */
-export namespace Deployment$ {
-    export const inboundSchema: z.ZodType<Deployment, z.ZodTypeDef, unknown> = z.object({
-        idleTimeoutEnabled: z.boolean().default(true),
-        env: z.array(z.lazy(() => Env$.inboundSchema)),
-        roomsPerProcess: z.number().int(),
-        planName: PlanName$.inboundSchema,
-        additionalContainerPorts: z.array(ContainerPort$.inboundSchema),
-        defaultContainerPort: ContainerPort$.inboundSchema,
-        transportType: DeploymentTransportType$.inboundSchema,
-        containerPort: z.number(),
-        createdAt: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v)),
-        createdBy: z.string(),
-        requestedMemoryMB: z.number().int(),
-        requestedCPU: z.number(),
-        deploymentId: z.number().int(),
-        buildId: z.number().int(),
-        appId: z.string(),
-    });
+export const Deployment$inboundSchema: z.ZodType<Deployment, z.ZodTypeDef, unknown> = z.object({
+    idleTimeoutEnabled: z.boolean().default(true),
+    env: z.array(z.lazy(() => Env$inboundSchema)),
+    roomsPerProcess: z.number().int(),
+    planName: PlanName$inboundSchema,
+    additionalContainerPorts: z.array(ContainerPort$inboundSchema),
+    defaultContainerPort: ContainerPort$inboundSchema,
+    transportType: DeploymentTransportType$inboundSchema,
+    containerPort: z.number(),
+    createdAt: z
+        .string()
+        .datetime({ offset: true })
+        .transform((v) => new Date(v)),
+    createdBy: z.string(),
+    requestedMemoryMB: z.number().int(),
+    requestedCPU: z.number(),
+    deploymentId: z.number().int(),
+    buildId: z.number().int(),
+    appId: z.string(),
+});
 
-    export type Outbound = {
-        idleTimeoutEnabled: boolean;
-        env: Array<Env$.Outbound>;
-        roomsPerProcess: number;
-        planName: string;
-        additionalContainerPorts: Array<ContainerPort$.Outbound>;
-        defaultContainerPort: ContainerPort$.Outbound;
-        transportType: string;
-        containerPort: number;
-        createdAt: string;
-        createdBy: string;
-        requestedMemoryMB: number;
-        requestedCPU: number;
-        deploymentId: number;
-        buildId: number;
-        appId: string;
-    };
+/** @internal */
+export type Deployment$Outbound = {
+    idleTimeoutEnabled: boolean;
+    env: Array<Env$Outbound>;
+    roomsPerProcess: number;
+    planName: string;
+    additionalContainerPorts: Array<ContainerPort$Outbound>;
+    defaultContainerPort: ContainerPort$Outbound;
+    transportType: string;
+    containerPort: number;
+    createdAt: string;
+    createdBy: string;
+    requestedMemoryMB: number;
+    requestedCPU: number;
+    deploymentId: number;
+    buildId: number;
+    appId: string;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Deployment> = z.object({
+/** @internal */
+export const Deployment$outboundSchema: z.ZodType<Deployment$Outbound, z.ZodTypeDef, Deployment> =
+    z.object({
         idleTimeoutEnabled: z.boolean().default(true),
-        env: z.array(z.lazy(() => Env$.outboundSchema)),
+        env: z.array(z.lazy(() => Env$outboundSchema)),
         roomsPerProcess: z.number().int(),
-        planName: PlanName$.outboundSchema,
-        additionalContainerPorts: z.array(ContainerPort$.outboundSchema),
-        defaultContainerPort: ContainerPort$.outboundSchema,
-        transportType: DeploymentTransportType$.outboundSchema,
+        planName: PlanName$outboundSchema,
+        additionalContainerPorts: z.array(ContainerPort$outboundSchema),
+        defaultContainerPort: ContainerPort$outboundSchema,
+        transportType: DeploymentTransportType$outboundSchema,
         containerPort: z.number(),
         createdAt: z.date().transform((v) => v.toISOString()),
         createdBy: z.string(),
@@ -193,4 +225,16 @@ export namespace Deployment$ {
         buildId: z.number().int(),
         appId: z.string(),
     });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Deployment$ {
+    /** @deprecated use `Deployment$inboundSchema` instead. */
+    export const inboundSchema = Deployment$inboundSchema;
+    /** @deprecated use `Deployment$outboundSchema` instead. */
+    export const outboundSchema = Deployment$outboundSchema;
+    /** @deprecated use `Deployment$Outbound` instead. */
+    export type Outbound = Deployment$Outbound;
 }

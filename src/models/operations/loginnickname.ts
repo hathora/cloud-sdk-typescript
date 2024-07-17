@@ -16,48 +16,88 @@ export type LoginNicknameRequest = {
 };
 
 /** @internal */
+export const LoginNicknameGlobals$inboundSchema: z.ZodType<
+    LoginNicknameGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type LoginNicknameGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const LoginNicknameGlobals$outboundSchema: z.ZodType<
+    LoginNicknameGlobals$Outbound,
+    z.ZodTypeDef,
+    LoginNicknameGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LoginNicknameGlobals$ {
-    export const inboundSchema: z.ZodType<LoginNicknameGlobals, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LoginNicknameGlobals> = z.object(
-        {
-            appId: z.string().optional(),
-        }
-    );
+    /** @deprecated use `LoginNicknameGlobals$inboundSchema` instead. */
+    export const inboundSchema = LoginNicknameGlobals$inboundSchema;
+    /** @deprecated use `LoginNicknameGlobals$outboundSchema` instead. */
+    export const outboundSchema = LoginNicknameGlobals$outboundSchema;
+    /** @deprecated use `LoginNicknameGlobals$Outbound` instead. */
+    export type Outbound = LoginNicknameGlobals$Outbound;
 }
 
 /** @internal */
+export const LoginNicknameRequest$inboundSchema: z.ZodType<
+    LoginNicknameRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        appId: z.string().optional(),
+        NicknameObject: components.NicknameObject$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            NicknameObject: "nicknameObject",
+        });
+    });
+
+/** @internal */
+export type LoginNicknameRequest$Outbound = {
+    appId?: string | undefined;
+    NicknameObject: components.NicknameObject$Outbound;
+};
+
+/** @internal */
+export const LoginNicknameRequest$outboundSchema: z.ZodType<
+    LoginNicknameRequest$Outbound,
+    z.ZodTypeDef,
+    LoginNicknameRequest
+> = z
+    .object({
+        appId: z.string().optional(),
+        nicknameObject: components.NicknameObject$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            nicknameObject: "NicknameObject",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LoginNicknameRequest$ {
-    export const inboundSchema: z.ZodType<LoginNicknameRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-            NicknameObject: components.NicknameObject$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                NicknameObject: "nicknameObject",
-            });
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        NicknameObject: components.NicknameObject$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LoginNicknameRequest> = z
-        .object({
-            appId: z.string().optional(),
-            nicknameObject: components.NicknameObject$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                nicknameObject: "NicknameObject",
-            });
-        });
+    /** @deprecated use `LoginNicknameRequest$inboundSchema` instead. */
+    export const inboundSchema = LoginNicknameRequest$inboundSchema;
+    /** @deprecated use `LoginNicknameRequest$outboundSchema` instead. */
+    export const outboundSchema = LoginNicknameRequest$outboundSchema;
+    /** @deprecated use `LoginNicknameRequest$Outbound` instead. */
+    export type Outbound = LoginNicknameRequest$Outbound;
 }

@@ -17,51 +17,91 @@ export type UpdateRoomConfigRequest = {
 };
 
 /** @internal */
+export const UpdateRoomConfigGlobals$inboundSchema: z.ZodType<
+    UpdateRoomConfigGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type UpdateRoomConfigGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const UpdateRoomConfigGlobals$outboundSchema: z.ZodType<
+    UpdateRoomConfigGlobals$Outbound,
+    z.ZodTypeDef,
+    UpdateRoomConfigGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateRoomConfigGlobals$ {
-    export const inboundSchema: z.ZodType<UpdateRoomConfigGlobals, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateRoomConfigGlobals> =
-        z.object({
-            appId: z.string().optional(),
-        });
+    /** @deprecated use `UpdateRoomConfigGlobals$inboundSchema` instead. */
+    export const inboundSchema = UpdateRoomConfigGlobals$inboundSchema;
+    /** @deprecated use `UpdateRoomConfigGlobals$outboundSchema` instead. */
+    export const outboundSchema = UpdateRoomConfigGlobals$outboundSchema;
+    /** @deprecated use `UpdateRoomConfigGlobals$Outbound` instead. */
+    export type Outbound = UpdateRoomConfigGlobals$Outbound;
 }
 
 /** @internal */
+export const UpdateRoomConfigRequest$inboundSchema: z.ZodType<
+    UpdateRoomConfigRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        appId: z.string().optional(),
+        roomId: z.string(),
+        UpdateRoomConfigParams: components.UpdateRoomConfigParams$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            UpdateRoomConfigParams: "updateRoomConfigParams",
+        });
+    });
+
+/** @internal */
+export type UpdateRoomConfigRequest$Outbound = {
+    appId?: string | undefined;
+    roomId: string;
+    UpdateRoomConfigParams: components.UpdateRoomConfigParams$Outbound;
+};
+
+/** @internal */
+export const UpdateRoomConfigRequest$outboundSchema: z.ZodType<
+    UpdateRoomConfigRequest$Outbound,
+    z.ZodTypeDef,
+    UpdateRoomConfigRequest
+> = z
+    .object({
+        appId: z.string().optional(),
+        roomId: z.string(),
+        updateRoomConfigParams: components.UpdateRoomConfigParams$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updateRoomConfigParams: "UpdateRoomConfigParams",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateRoomConfigRequest$ {
-    export const inboundSchema: z.ZodType<UpdateRoomConfigRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-            roomId: z.string(),
-            UpdateRoomConfigParams: components.UpdateRoomConfigParams$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                UpdateRoomConfigParams: "updateRoomConfigParams",
-            });
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        roomId: string;
-        UpdateRoomConfigParams: components.UpdateRoomConfigParams$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateRoomConfigRequest> = z
-        .object({
-            appId: z.string().optional(),
-            roomId: z.string(),
-            updateRoomConfigParams: components.UpdateRoomConfigParams$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updateRoomConfigParams: "UpdateRoomConfigParams",
-            });
-        });
+    /** @deprecated use `UpdateRoomConfigRequest$inboundSchema` instead. */
+    export const inboundSchema = UpdateRoomConfigRequest$inboundSchema;
+    /** @deprecated use `UpdateRoomConfigRequest$outboundSchema` instead. */
+    export const outboundSchema = UpdateRoomConfigRequest$outboundSchema;
+    /** @deprecated use `UpdateRoomConfigRequest$Outbound` instead. */
+    export type Outbound = UpdateRoomConfigRequest$Outbound;
 }

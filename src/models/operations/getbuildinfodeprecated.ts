@@ -14,38 +14,76 @@ export type GetBuildInfoDeprecatedRequest = {
 };
 
 /** @internal */
+export const GetBuildInfoDeprecatedGlobals$inboundSchema: z.ZodType<
+    GetBuildInfoDeprecatedGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type GetBuildInfoDeprecatedGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const GetBuildInfoDeprecatedGlobals$outboundSchema: z.ZodType<
+    GetBuildInfoDeprecatedGlobals$Outbound,
+    z.ZodTypeDef,
+    GetBuildInfoDeprecatedGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetBuildInfoDeprecatedGlobals$ {
-    export const inboundSchema: z.ZodType<GetBuildInfoDeprecatedGlobals, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBuildInfoDeprecatedGlobals> =
-        z.object({
-            appId: z.string().optional(),
-        });
+    /** @deprecated use `GetBuildInfoDeprecatedGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetBuildInfoDeprecatedGlobals$inboundSchema;
+    /** @deprecated use `GetBuildInfoDeprecatedGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetBuildInfoDeprecatedGlobals$outboundSchema;
+    /** @deprecated use `GetBuildInfoDeprecatedGlobals$Outbound` instead. */
+    export type Outbound = GetBuildInfoDeprecatedGlobals$Outbound;
 }
 
 /** @internal */
+export const GetBuildInfoDeprecatedRequest$inboundSchema: z.ZodType<
+    GetBuildInfoDeprecatedRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+    buildId: z.number().int(),
+});
+
+/** @internal */
+export type GetBuildInfoDeprecatedRequest$Outbound = {
+    appId?: string | undefined;
+    buildId: number;
+};
+
+/** @internal */
+export const GetBuildInfoDeprecatedRequest$outboundSchema: z.ZodType<
+    GetBuildInfoDeprecatedRequest$Outbound,
+    z.ZodTypeDef,
+    GetBuildInfoDeprecatedRequest
+> = z.object({
+    appId: z.string().optional(),
+    buildId: z.number().int(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetBuildInfoDeprecatedRequest$ {
-    export const inboundSchema: z.ZodType<GetBuildInfoDeprecatedRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-            buildId: z.number().int(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        buildId: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBuildInfoDeprecatedRequest> =
-        z.object({
-            appId: z.string().optional(),
-            buildId: z.number().int(),
-        });
+    /** @deprecated use `GetBuildInfoDeprecatedRequest$inboundSchema` instead. */
+    export const inboundSchema = GetBuildInfoDeprecatedRequest$inboundSchema;
+    /** @deprecated use `GetBuildInfoDeprecatedRequest$outboundSchema` instead. */
+    export const outboundSchema = GetBuildInfoDeprecatedRequest$outboundSchema;
+    /** @deprecated use `GetBuildInfoDeprecatedRequest$Outbound` instead. */
+    export type Outbound = GetBuildInfoDeprecatedRequest$Outbound;
 }

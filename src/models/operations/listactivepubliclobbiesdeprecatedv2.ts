@@ -18,50 +18,76 @@ export type ListActivePublicLobbiesDeprecatedV2Request = {
 };
 
 /** @internal */
+export const ListActivePublicLobbiesDeprecatedV2Globals$inboundSchema: z.ZodType<
+    ListActivePublicLobbiesDeprecatedV2Globals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type ListActivePublicLobbiesDeprecatedV2Globals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const ListActivePublicLobbiesDeprecatedV2Globals$outboundSchema: z.ZodType<
+    ListActivePublicLobbiesDeprecatedV2Globals$Outbound,
+    z.ZodTypeDef,
+    ListActivePublicLobbiesDeprecatedV2Globals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListActivePublicLobbiesDeprecatedV2Globals$ {
-    export const inboundSchema: z.ZodType<
-        ListActivePublicLobbiesDeprecatedV2Globals,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListActivePublicLobbiesDeprecatedV2Globals
-    > = z.object({
-        appId: z.string().optional(),
-    });
+    /** @deprecated use `ListActivePublicLobbiesDeprecatedV2Globals$inboundSchema` instead. */
+    export const inboundSchema = ListActivePublicLobbiesDeprecatedV2Globals$inboundSchema;
+    /** @deprecated use `ListActivePublicLobbiesDeprecatedV2Globals$outboundSchema` instead. */
+    export const outboundSchema = ListActivePublicLobbiesDeprecatedV2Globals$outboundSchema;
+    /** @deprecated use `ListActivePublicLobbiesDeprecatedV2Globals$Outbound` instead. */
+    export type Outbound = ListActivePublicLobbiesDeprecatedV2Globals$Outbound;
 }
 
 /** @internal */
+export const ListActivePublicLobbiesDeprecatedV2Request$inboundSchema: z.ZodType<
+    ListActivePublicLobbiesDeprecatedV2Request,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+    region: components.Region$inboundSchema.optional(),
+});
+
+/** @internal */
+export type ListActivePublicLobbiesDeprecatedV2Request$Outbound = {
+    appId?: string | undefined;
+    region?: string | undefined;
+};
+
+/** @internal */
+export const ListActivePublicLobbiesDeprecatedV2Request$outboundSchema: z.ZodType<
+    ListActivePublicLobbiesDeprecatedV2Request$Outbound,
+    z.ZodTypeDef,
+    ListActivePublicLobbiesDeprecatedV2Request
+> = z.object({
+    appId: z.string().optional(),
+    region: components.Region$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListActivePublicLobbiesDeprecatedV2Request$ {
-    export const inboundSchema: z.ZodType<
-        ListActivePublicLobbiesDeprecatedV2Request,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        appId: z.string().optional(),
-        region: components.Region$.inboundSchema.optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        region?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListActivePublicLobbiesDeprecatedV2Request
-    > = z.object({
-        appId: z.string().optional(),
-        region: components.Region$.outboundSchema.optional(),
-    });
+    /** @deprecated use `ListActivePublicLobbiesDeprecatedV2Request$inboundSchema` instead. */
+    export const inboundSchema = ListActivePublicLobbiesDeprecatedV2Request$inboundSchema;
+    /** @deprecated use `ListActivePublicLobbiesDeprecatedV2Request$outboundSchema` instead. */
+    export const outboundSchema = ListActivePublicLobbiesDeprecatedV2Request$outboundSchema;
+    /** @deprecated use `ListActivePublicLobbiesDeprecatedV2Request$Outbound` instead. */
+    export type Outbound = ListActivePublicLobbiesDeprecatedV2Request$Outbound;
 }

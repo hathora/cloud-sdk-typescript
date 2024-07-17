@@ -12,16 +12,37 @@ export type GoogleIdTokenObject = {
 };
 
 /** @internal */
+export const GoogleIdTokenObject$inboundSchema: z.ZodType<
+    GoogleIdTokenObject,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    idToken: z.string(),
+});
+
+/** @internal */
+export type GoogleIdTokenObject$Outbound = {
+    idToken: string;
+};
+
+/** @internal */
+export const GoogleIdTokenObject$outboundSchema: z.ZodType<
+    GoogleIdTokenObject$Outbound,
+    z.ZodTypeDef,
+    GoogleIdTokenObject
+> = z.object({
+    idToken: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GoogleIdTokenObject$ {
-    export const inboundSchema: z.ZodType<GoogleIdTokenObject, z.ZodTypeDef, unknown> = z.object({
-        idToken: z.string(),
-    });
-
-    export type Outbound = {
-        idToken: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GoogleIdTokenObject> = z.object({
-        idToken: z.string(),
-    });
+    /** @deprecated use `GoogleIdTokenObject$inboundSchema` instead. */
+    export const inboundSchema = GoogleIdTokenObject$inboundSchema;
+    /** @deprecated use `GoogleIdTokenObject$outboundSchema` instead. */
+    export const outboundSchema = GoogleIdTokenObject$outboundSchema;
+    /** @deprecated use `GoogleIdTokenObject$Outbound` instead. */
+    export type Outbound = GoogleIdTokenObject$Outbound;
 }

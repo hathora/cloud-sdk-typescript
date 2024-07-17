@@ -16,14 +16,21 @@ export const ProcessStatus = {
 export type ProcessStatus = OpenEnum<typeof ProcessStatus>;
 
 /** @internal */
-export namespace ProcessStatus$ {
-    export const inboundSchema: z.ZodType<ProcessStatus, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(ProcessStatus),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
+export const ProcessStatus$inboundSchema: z.ZodType<ProcessStatus, z.ZodTypeDef, unknown> = z.union(
+    [z.nativeEnum(ProcessStatus), z.string().transform(catchUnrecognizedEnum)]
+);
 
-    export const outboundSchema: z.ZodType<ProcessStatus, z.ZodTypeDef, ProcessStatus> = z.union([
-        z.nativeEnum(ProcessStatus),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+/** @internal */
+export const ProcessStatus$outboundSchema: z.ZodType<ProcessStatus, z.ZodTypeDef, ProcessStatus> =
+    z.union([z.nativeEnum(ProcessStatus), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ProcessStatus$ {
+    /** @deprecated use `ProcessStatus$inboundSchema` instead. */
+    export const inboundSchema = ProcessStatus$inboundSchema;
+    /** @deprecated use `ProcessStatus$outboundSchema` instead. */
+    export const outboundSchema = ProcessStatus$outboundSchema;
 }

@@ -21,8 +21,8 @@ export type RoomAllocation = {
 };
 
 /** @internal */
-export namespace RoomAllocation$ {
-    export const inboundSchema: z.ZodType<RoomAllocation, z.ZodTypeDef, unknown> = z.object({
+export const RoomAllocation$inboundSchema: z.ZodType<RoomAllocation, z.ZodTypeDef, unknown> =
+    z.object({
         unscheduledAt: z.nullable(
             z
                 .string()
@@ -37,17 +37,35 @@ export namespace RoomAllocation$ {
         roomAllocationId: z.string(),
     });
 
-    export type Outbound = {
-        unscheduledAt: string | null;
-        scheduledAt: string;
-        processId: string;
-        roomAllocationId: string;
-    };
+/** @internal */
+export type RoomAllocation$Outbound = {
+    unscheduledAt: string | null;
+    scheduledAt: string;
+    processId: string;
+    roomAllocationId: string;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RoomAllocation> = z.object({
-        unscheduledAt: z.nullable(z.date().transform((v) => v.toISOString())),
-        scheduledAt: z.date().transform((v) => v.toISOString()),
-        processId: z.string(),
-        roomAllocationId: z.string(),
-    });
+/** @internal */
+export const RoomAllocation$outboundSchema: z.ZodType<
+    RoomAllocation$Outbound,
+    z.ZodTypeDef,
+    RoomAllocation
+> = z.object({
+    unscheduledAt: z.nullable(z.date().transform((v) => v.toISOString())),
+    scheduledAt: z.date().transform((v) => v.toISOString()),
+    processId: z.string(),
+    roomAllocationId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RoomAllocation$ {
+    /** @deprecated use `RoomAllocation$inboundSchema` instead. */
+    export const inboundSchema = RoomAllocation$inboundSchema;
+    /** @deprecated use `RoomAllocation$outboundSchema` instead. */
+    export const outboundSchema = RoomAllocation$outboundSchema;
+    /** @deprecated use `RoomAllocation$Outbound` instead. */
+    export type Outbound = RoomAllocation$Outbound;
 }

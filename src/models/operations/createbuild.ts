@@ -16,46 +16,88 @@ export type CreateBuildRequest = {
 };
 
 /** @internal */
+export const CreateBuildGlobals$inboundSchema: z.ZodType<
+    CreateBuildGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type CreateBuildGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const CreateBuildGlobals$outboundSchema: z.ZodType<
+    CreateBuildGlobals$Outbound,
+    z.ZodTypeDef,
+    CreateBuildGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateBuildGlobals$ {
-    export const inboundSchema: z.ZodType<CreateBuildGlobals, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateBuildGlobals> = z.object({
-        appId: z.string().optional(),
-    });
+    /** @deprecated use `CreateBuildGlobals$inboundSchema` instead. */
+    export const inboundSchema = CreateBuildGlobals$inboundSchema;
+    /** @deprecated use `CreateBuildGlobals$outboundSchema` instead. */
+    export const outboundSchema = CreateBuildGlobals$outboundSchema;
+    /** @deprecated use `CreateBuildGlobals$Outbound` instead. */
+    export type Outbound = CreateBuildGlobals$Outbound;
 }
 
 /** @internal */
+export const CreateBuildRequest$inboundSchema: z.ZodType<
+    CreateBuildRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        appId: z.string().optional(),
+        CreateBuildParams: components.CreateBuildParams$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            CreateBuildParams: "createBuildParams",
+        });
+    });
+
+/** @internal */
+export type CreateBuildRequest$Outbound = {
+    appId?: string | undefined;
+    CreateBuildParams: components.CreateBuildParams$Outbound;
+};
+
+/** @internal */
+export const CreateBuildRequest$outboundSchema: z.ZodType<
+    CreateBuildRequest$Outbound,
+    z.ZodTypeDef,
+    CreateBuildRequest
+> = z
+    .object({
+        appId: z.string().optional(),
+        createBuildParams: components.CreateBuildParams$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            createBuildParams: "CreateBuildParams",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateBuildRequest$ {
-    export const inboundSchema: z.ZodType<CreateBuildRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            appId: z.string().optional(),
-            CreateBuildParams: components.CreateBuildParams$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                CreateBuildParams: "createBuildParams",
-            });
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        CreateBuildParams: components.CreateBuildParams$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateBuildRequest> = z
-        .object({
-            appId: z.string().optional(),
-            createBuildParams: components.CreateBuildParams$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                createBuildParams: "CreateBuildParams",
-            });
-        });
+    /** @deprecated use `CreateBuildRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateBuildRequest$inboundSchema;
+    /** @deprecated use `CreateBuildRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateBuildRequest$outboundSchema;
+    /** @deprecated use `CreateBuildRequest$Outbound` instead. */
+    export type Outbound = CreateBuildRequest$Outbound;
 }

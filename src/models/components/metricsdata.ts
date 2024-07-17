@@ -3,7 +3,12 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import { MetricValue, MetricValue$ } from "./metricvalue.js";
+import {
+    MetricValue,
+    MetricValue$inboundSchema,
+    MetricValue$Outbound,
+    MetricValue$outboundSchema,
+} from "./metricvalue.js";
 import * as z from "zod";
 
 /**
@@ -18,44 +23,61 @@ export type MetricsData = {
 };
 
 /** @internal */
+export const MetricsData$inboundSchema: z.ZodType<MetricsData, z.ZodTypeDef, unknown> = z
+    .object({
+        cpu: z.array(MetricValue$inboundSchema).optional(),
+        memory: z.array(MetricValue$inboundSchema).optional(),
+        rate_egress: z.array(MetricValue$inboundSchema).optional(),
+        total_egress: z.array(MetricValue$inboundSchema).optional(),
+        active_connections: z.array(MetricValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            rate_egress: "rateEgress",
+            total_egress: "totalEgress",
+            active_connections: "activeConnections",
+        });
+    });
+
+/** @internal */
+export type MetricsData$Outbound = {
+    cpu?: Array<MetricValue$Outbound> | undefined;
+    memory?: Array<MetricValue$Outbound> | undefined;
+    rate_egress?: Array<MetricValue$Outbound> | undefined;
+    total_egress?: Array<MetricValue$Outbound> | undefined;
+    active_connections?: Array<MetricValue$Outbound> | undefined;
+};
+
+/** @internal */
+export const MetricsData$outboundSchema: z.ZodType<
+    MetricsData$Outbound,
+    z.ZodTypeDef,
+    MetricsData
+> = z
+    .object({
+        cpu: z.array(MetricValue$outboundSchema).optional(),
+        memory: z.array(MetricValue$outboundSchema).optional(),
+        rateEgress: z.array(MetricValue$outboundSchema).optional(),
+        totalEgress: z.array(MetricValue$outboundSchema).optional(),
+        activeConnections: z.array(MetricValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            rateEgress: "rate_egress",
+            totalEgress: "total_egress",
+            activeConnections: "active_connections",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MetricsData$ {
-    export const inboundSchema: z.ZodType<MetricsData, z.ZodTypeDef, unknown> = z
-        .object({
-            cpu: z.array(MetricValue$.inboundSchema).optional(),
-            memory: z.array(MetricValue$.inboundSchema).optional(),
-            rate_egress: z.array(MetricValue$.inboundSchema).optional(),
-            total_egress: z.array(MetricValue$.inboundSchema).optional(),
-            active_connections: z.array(MetricValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                rate_egress: "rateEgress",
-                total_egress: "totalEgress",
-                active_connections: "activeConnections",
-            });
-        });
-
-    export type Outbound = {
-        cpu?: Array<MetricValue$.Outbound> | undefined;
-        memory?: Array<MetricValue$.Outbound> | undefined;
-        rate_egress?: Array<MetricValue$.Outbound> | undefined;
-        total_egress?: Array<MetricValue$.Outbound> | undefined;
-        active_connections?: Array<MetricValue$.Outbound> | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MetricsData> = z
-        .object({
-            cpu: z.array(MetricValue$.outboundSchema).optional(),
-            memory: z.array(MetricValue$.outboundSchema).optional(),
-            rateEgress: z.array(MetricValue$.outboundSchema).optional(),
-            totalEgress: z.array(MetricValue$.outboundSchema).optional(),
-            activeConnections: z.array(MetricValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                rateEgress: "rate_egress",
-                totalEgress: "total_egress",
-                activeConnections: "active_connections",
-            });
-        });
+    /** @deprecated use `MetricsData$inboundSchema` instead. */
+    export const inboundSchema = MetricsData$inboundSchema;
+    /** @deprecated use `MetricsData$outboundSchema` instead. */
+    export const outboundSchema = MetricsData$outboundSchema;
+    /** @deprecated use `MetricsData$Outbound` instead. */
+    export type Outbound = MetricsData$Outbound;
 }

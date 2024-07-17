@@ -17,27 +17,45 @@ export type CreateRoomRequest = {
 };
 
 /** @internal */
+export const CreateRoomGlobals$inboundSchema: z.ZodType<CreateRoomGlobals, z.ZodTypeDef, unknown> =
+    z.object({
+        appId: z.string().optional(),
+    });
+
+/** @internal */
+export type CreateRoomGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const CreateRoomGlobals$outboundSchema: z.ZodType<
+    CreateRoomGlobals$Outbound,
+    z.ZodTypeDef,
+    CreateRoomGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateRoomGlobals$ {
-    export const inboundSchema: z.ZodType<CreateRoomGlobals, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateRoomGlobals> = z.object({
-        appId: z.string().optional(),
-    });
+    /** @deprecated use `CreateRoomGlobals$inboundSchema` instead. */
+    export const inboundSchema = CreateRoomGlobals$inboundSchema;
+    /** @deprecated use `CreateRoomGlobals$outboundSchema` instead. */
+    export const outboundSchema = CreateRoomGlobals$outboundSchema;
+    /** @deprecated use `CreateRoomGlobals$Outbound` instead. */
+    export type Outbound = CreateRoomGlobals$Outbound;
 }
 
 /** @internal */
-export namespace CreateRoomRequest$ {
-    export const inboundSchema: z.ZodType<CreateRoomRequest, z.ZodTypeDef, unknown> = z
+export const CreateRoomRequest$inboundSchema: z.ZodType<CreateRoomRequest, z.ZodTypeDef, unknown> =
+    z
         .object({
             appId: z.string().optional(),
             roomId: z.string().optional(),
-            CreateRoomParams: components.CreateRoomParams$.inboundSchema,
+            CreateRoomParams: components.CreateRoomParams$inboundSchema,
         })
         .transform((v) => {
             return remap$(v, {
@@ -45,21 +63,39 @@ export namespace CreateRoomRequest$ {
             });
         });
 
-    export type Outbound = {
-        appId?: string | undefined;
-        roomId?: string | undefined;
-        CreateRoomParams: components.CreateRoomParams$.Outbound;
-    };
+/** @internal */
+export type CreateRoomRequest$Outbound = {
+    appId?: string | undefined;
+    roomId?: string | undefined;
+    CreateRoomParams: components.CreateRoomParams$Outbound;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateRoomRequest> = z
-        .object({
-            appId: z.string().optional(),
-            roomId: z.string().optional(),
-            createRoomParams: components.CreateRoomParams$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                createRoomParams: "CreateRoomParams",
-            });
+/** @internal */
+export const CreateRoomRequest$outboundSchema: z.ZodType<
+    CreateRoomRequest$Outbound,
+    z.ZodTypeDef,
+    CreateRoomRequest
+> = z
+    .object({
+        appId: z.string().optional(),
+        roomId: z.string().optional(),
+        createRoomParams: components.CreateRoomParams$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            createRoomParams: "CreateRoomParams",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateRoomRequest$ {
+    /** @deprecated use `CreateRoomRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateRoomRequest$inboundSchema;
+    /** @deprecated use `CreateRoomRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateRoomRequest$outboundSchema;
+    /** @deprecated use `CreateRoomRequest$Outbound` instead. */
+    export type Outbound = CreateRoomRequest$Outbound;
 }

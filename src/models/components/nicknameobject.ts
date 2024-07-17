@@ -12,16 +12,34 @@ export type NicknameObject = {
 };
 
 /** @internal */
+export const NicknameObject$inboundSchema: z.ZodType<NicknameObject, z.ZodTypeDef, unknown> =
+    z.object({
+        nickname: z.string(),
+    });
+
+/** @internal */
+export type NicknameObject$Outbound = {
+    nickname: string;
+};
+
+/** @internal */
+export const NicknameObject$outboundSchema: z.ZodType<
+    NicknameObject$Outbound,
+    z.ZodTypeDef,
+    NicknameObject
+> = z.object({
+    nickname: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace NicknameObject$ {
-    export const inboundSchema: z.ZodType<NicknameObject, z.ZodTypeDef, unknown> = z.object({
-        nickname: z.string(),
-    });
-
-    export type Outbound = {
-        nickname: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NicknameObject> = z.object({
-        nickname: z.string(),
-    });
+    /** @deprecated use `NicknameObject$inboundSchema` instead. */
+    export const inboundSchema = NicknameObject$inboundSchema;
+    /** @deprecated use `NicknameObject$outboundSchema` instead. */
+    export const outboundSchema = NicknameObject$outboundSchema;
+    /** @deprecated use `NicknameObject$Outbound` instead. */
+    export type Outbound = NicknameObject$Outbound;
 }

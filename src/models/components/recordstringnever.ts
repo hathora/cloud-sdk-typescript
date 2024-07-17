@@ -10,12 +10,28 @@ import * as z from "zod";
 export type RecordStringNever = {};
 
 /** @internal */
+export const RecordStringNever$inboundSchema: z.ZodType<RecordStringNever, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type RecordStringNever$Outbound = {};
+
+/** @internal */
+export const RecordStringNever$outboundSchema: z.ZodType<
+    RecordStringNever$Outbound,
+    z.ZodTypeDef,
+    RecordStringNever
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RecordStringNever$ {
-    export const inboundSchema: z.ZodType<RecordStringNever, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RecordStringNever> = z.object(
-        {}
-    );
+    /** @deprecated use `RecordStringNever$inboundSchema` instead. */
+    export const inboundSchema = RecordStringNever$inboundSchema;
+    /** @deprecated use `RecordStringNever$outboundSchema` instead. */
+    export const outboundSchema = RecordStringNever$outboundSchema;
+    /** @deprecated use `RecordStringNever$Outbound` instead. */
+    export type Outbound = RecordStringNever$Outbound;
 }

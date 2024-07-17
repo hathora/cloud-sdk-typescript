@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -46,13 +46,13 @@ export class AppsV1 extends ClientSDK {
     async getApps(
         options?: RequestOptions
     ): Promise<Array<components.ApplicationWithLatestDeploymentAndBuild>> {
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
-
         const path$ = this.templateURLComponent("/apps/v1/list")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
@@ -69,7 +69,6 @@ export class AppsV1 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "429", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -78,11 +77,17 @@ export class AppsV1 extends ClientSDK {
                 path: path$,
                 headers: headers$,
                 query: query$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "429", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -91,8 +96,8 @@ export class AppsV1 extends ClientSDK {
         const [result$] = await this.matcher<
             Array<components.ApplicationWithLatestDeploymentAndBuild>
         >()
-            .json(200, z.array(components.ApplicationWithLatestDeploymentAndBuild$.inboundSchema))
-            .json([401, 429], errors.ApiError$, { err: true })
+            .json(200, z.array(components.ApplicationWithLatestDeploymentAndBuild$inboundSchema))
+            .json([401, 429], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -107,14 +112,10 @@ export class AppsV1 extends ClientSDK {
         options?: RequestOptions
     ): Promise<components.Application> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => components.AppConfig$.outboundSchema.parse(value$),
+            (value$) => components.AppConfig$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -122,6 +123,11 @@ export class AppsV1 extends ClientSDK {
         const path$ = this.templateURLComponent("/apps/v1/create")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
@@ -138,7 +144,6 @@ export class AppsV1 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "422", "429", "4XX", "500", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -148,19 +153,25 @@ export class AppsV1 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "422", "429", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<components.Application>()
-            .json(201, components.Application$)
-            .json([401, 422, 429, 500], errors.ApiError$, { err: true })
+            .json(201, components.Application$inboundSchema)
+            .json([401, 422, 429, 500], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -179,14 +190,10 @@ export class AppsV1 extends ClientSDK {
             appId: appId,
             appConfig: appConfig,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UpdateAppRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdateAppRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.AppConfig, { explode: true });
@@ -200,6 +207,11 @@ export class AppsV1 extends ClientSDK {
         const path$ = this.templateURLComponent("/apps/v1/update/{appId}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
@@ -216,10 +228,6 @@ export class AppsV1 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["401", "404", "422", "429", "4XX", "500", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -229,19 +237,25 @@ export class AppsV1 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "404", "422", "429", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<components.Application>()
-            .json(200, components.Application$)
-            .json([401, 404, 422, 429, 500], errors.ApiError$, { err: true })
+            .json(200, components.Application$inboundSchema)
+            .json([401, 404, 422, 429, 500], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -258,13 +272,10 @@ export class AppsV1 extends ClientSDK {
         const input$: operations.GetAppInfoRequest = {
             appId: appId,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetAppInfoRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetAppInfoRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -278,6 +289,10 @@ export class AppsV1 extends ClientSDK {
         const path$ = this.templateURLComponent("/apps/v1/info/{appId}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
@@ -294,7 +309,6 @@ export class AppsV1 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "404", "429", "4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -304,19 +318,25 @@ export class AppsV1 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "404", "429", "4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<components.Application>()
-            .json(200, components.Application$)
-            .json([401, 404, 429], errors.ApiError$, { err: true })
+            .json(200, components.Application$inboundSchema)
+            .json([401, 404, 429], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -330,13 +350,10 @@ export class AppsV1 extends ClientSDK {
         const input$: operations.DeleteAppRequest = {
             appId: appId,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteAppRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteAppRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -350,6 +367,10 @@ export class AppsV1 extends ClientSDK {
         const path$ = this.templateURLComponent("/apps/v1/delete/{appId}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.hathoraDevToken === "function") {
@@ -366,7 +387,6 @@ export class AppsV1 extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["401", "404", "429", "4XX", "500", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -376,11 +396,17 @@ export class AppsV1 extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["401", "404", "429", "4XX", "500", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -388,7 +414,7 @@ export class AppsV1 extends ClientSDK {
 
         const [result$] = await this.matcher<void>()
             .void(204, z.void())
-            .json([401, 404, 429, 500], errors.ApiError$, { err: true })
+            .json([401, 404, 429, 500], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

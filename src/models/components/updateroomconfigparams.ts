@@ -12,19 +12,37 @@ export type UpdateRoomConfigParams = {
 };
 
 /** @internal */
+export const UpdateRoomConfigParams$inboundSchema: z.ZodType<
+    UpdateRoomConfigParams,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    roomConfig: z.string(),
+});
+
+/** @internal */
+export type UpdateRoomConfigParams$Outbound = {
+    roomConfig: string;
+};
+
+/** @internal */
+export const UpdateRoomConfigParams$outboundSchema: z.ZodType<
+    UpdateRoomConfigParams$Outbound,
+    z.ZodTypeDef,
+    UpdateRoomConfigParams
+> = z.object({
+    roomConfig: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateRoomConfigParams$ {
-    export const inboundSchema: z.ZodType<UpdateRoomConfigParams, z.ZodTypeDef, unknown> = z.object(
-        {
-            roomConfig: z.string(),
-        }
-    );
-
-    export type Outbound = {
-        roomConfig: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateRoomConfigParams> =
-        z.object({
-            roomConfig: z.string(),
-        });
+    /** @deprecated use `UpdateRoomConfigParams$inboundSchema` instead. */
+    export const inboundSchema = UpdateRoomConfigParams$inboundSchema;
+    /** @deprecated use `UpdateRoomConfigParams$outboundSchema` instead. */
+    export const outboundSchema = UpdateRoomConfigParams$outboundSchema;
+    /** @deprecated use `UpdateRoomConfigParams$Outbound` instead. */
+    export type Outbound = UpdateRoomConfigParams$Outbound;
 }

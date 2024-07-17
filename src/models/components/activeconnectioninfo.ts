@@ -3,7 +3,11 @@
  */
 
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
-import { TransportType, TransportType$ } from "./transporttype.js";
+import {
+    TransportType,
+    TransportType$inboundSchema,
+    TransportType$outboundSchema,
+} from "./transporttype.js";
 import * as z from "zod";
 
 export const ActiveConnectionInfoStatus = {
@@ -29,48 +33,80 @@ export type ActiveConnectionInfo = {
 };
 
 /** @internal */
-export namespace ActiveConnectionInfoStatus$ {
-    export const inboundSchema: z.ZodType<ActiveConnectionInfoStatus, z.ZodTypeDef, unknown> =
-        z.union([
-            z.nativeEnum(ActiveConnectionInfoStatus),
-            z.string().transform(catchUnrecognizedEnum),
-        ]);
+export const ActiveConnectionInfoStatus$inboundSchema: z.ZodType<
+    ActiveConnectionInfoStatus,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(ActiveConnectionInfoStatus),
+    z.string().transform(catchUnrecognizedEnum),
+]);
 
-    export const outboundSchema: z.ZodType<
-        ActiveConnectionInfoStatus,
-        z.ZodTypeDef,
-        ActiveConnectionInfoStatus
-    > = z.union([
-        z.nativeEnum(ActiveConnectionInfoStatus),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+/** @internal */
+export const ActiveConnectionInfoStatus$outboundSchema: z.ZodType<
+    ActiveConnectionInfoStatus,
+    z.ZodTypeDef,
+    ActiveConnectionInfoStatus
+> = z.union([
+    z.nativeEnum(ActiveConnectionInfoStatus),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ActiveConnectionInfoStatus$ {
+    /** @deprecated use `ActiveConnectionInfoStatus$inboundSchema` instead. */
+    export const inboundSchema = ActiveConnectionInfoStatus$inboundSchema;
+    /** @deprecated use `ActiveConnectionInfoStatus$outboundSchema` instead. */
+    export const outboundSchema = ActiveConnectionInfoStatus$outboundSchema;
 }
 
 /** @internal */
+export const ActiveConnectionInfo$inboundSchema: z.ZodType<
+    ActiveConnectionInfo,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    status: ActiveConnectionInfoStatus$inboundSchema,
+    transportType: TransportType$inboundSchema,
+    port: z.number(),
+    host: z.string(),
+    roomId: z.string(),
+});
+
+/** @internal */
+export type ActiveConnectionInfo$Outbound = {
+    status: string;
+    transportType: string;
+    port: number;
+    host: string;
+    roomId: string;
+};
+
+/** @internal */
+export const ActiveConnectionInfo$outboundSchema: z.ZodType<
+    ActiveConnectionInfo$Outbound,
+    z.ZodTypeDef,
+    ActiveConnectionInfo
+> = z.object({
+    status: ActiveConnectionInfoStatus$outboundSchema,
+    transportType: TransportType$outboundSchema,
+    port: z.number(),
+    host: z.string(),
+    roomId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ActiveConnectionInfo$ {
-    export const inboundSchema: z.ZodType<ActiveConnectionInfo, z.ZodTypeDef, unknown> = z.object({
-        status: ActiveConnectionInfoStatus$.inboundSchema,
-        transportType: TransportType$.inboundSchema,
-        port: z.number(),
-        host: z.string(),
-        roomId: z.string(),
-    });
-
-    export type Outbound = {
-        status: string;
-        transportType: string;
-        port: number;
-        host: string;
-        roomId: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ActiveConnectionInfo> = z.object(
-        {
-            status: ActiveConnectionInfoStatus$.outboundSchema,
-            transportType: TransportType$.outboundSchema,
-            port: z.number(),
-            host: z.string(),
-            roomId: z.string(),
-        }
-    );
+    /** @deprecated use `ActiveConnectionInfo$inboundSchema` instead. */
+    export const inboundSchema = ActiveConnectionInfo$inboundSchema;
+    /** @deprecated use `ActiveConnectionInfo$outboundSchema` instead. */
+    export const outboundSchema = ActiveConnectionInfo$outboundSchema;
+    /** @deprecated use `ActiveConnectionInfo$Outbound` instead. */
+    export type Outbound = ActiveConnectionInfo$Outbound;
 }

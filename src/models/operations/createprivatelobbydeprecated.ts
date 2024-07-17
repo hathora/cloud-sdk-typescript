@@ -20,76 +20,115 @@ export type CreatePrivateLobbyDeprecatedRequest = {
 };
 
 /** @internal */
+export const CreatePrivateLobbyDeprecatedGlobals$inboundSchema: z.ZodType<
+    CreatePrivateLobbyDeprecatedGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type CreatePrivateLobbyDeprecatedGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const CreatePrivateLobbyDeprecatedGlobals$outboundSchema: z.ZodType<
+    CreatePrivateLobbyDeprecatedGlobals$Outbound,
+    z.ZodTypeDef,
+    CreatePrivateLobbyDeprecatedGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreatePrivateLobbyDeprecatedGlobals$ {
-    export const inboundSchema: z.ZodType<
-        CreatePrivateLobbyDeprecatedGlobals,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreatePrivateLobbyDeprecatedGlobals
-    > = z.object({
-        appId: z.string().optional(),
-    });
+    /** @deprecated use `CreatePrivateLobbyDeprecatedGlobals$inboundSchema` instead. */
+    export const inboundSchema = CreatePrivateLobbyDeprecatedGlobals$inboundSchema;
+    /** @deprecated use `CreatePrivateLobbyDeprecatedGlobals$outboundSchema` instead. */
+    export const outboundSchema = CreatePrivateLobbyDeprecatedGlobals$outboundSchema;
+    /** @deprecated use `CreatePrivateLobbyDeprecatedGlobals$Outbound` instead. */
+    export type Outbound = CreatePrivateLobbyDeprecatedGlobals$Outbound;
 }
 
 /** @internal */
+export const CreatePrivateLobbyDeprecatedSecurity$inboundSchema: z.ZodType<
+    CreatePrivateLobbyDeprecatedSecurity,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    playerAuth: z.string(),
+});
+
+/** @internal */
+export type CreatePrivateLobbyDeprecatedSecurity$Outbound = {
+    playerAuth: string;
+};
+
+/** @internal */
+export const CreatePrivateLobbyDeprecatedSecurity$outboundSchema: z.ZodType<
+    CreatePrivateLobbyDeprecatedSecurity$Outbound,
+    z.ZodTypeDef,
+    CreatePrivateLobbyDeprecatedSecurity
+> = z.object({
+    playerAuth: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreatePrivateLobbyDeprecatedSecurity$ {
-    export const inboundSchema: z.ZodType<
-        CreatePrivateLobbyDeprecatedSecurity,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        playerAuth: z.string(),
-    });
-
-    export type Outbound = {
-        playerAuth: string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreatePrivateLobbyDeprecatedSecurity
-    > = z.object({
-        playerAuth: z.string(),
-    });
+    /** @deprecated use `CreatePrivateLobbyDeprecatedSecurity$inboundSchema` instead. */
+    export const inboundSchema = CreatePrivateLobbyDeprecatedSecurity$inboundSchema;
+    /** @deprecated use `CreatePrivateLobbyDeprecatedSecurity$outboundSchema` instead. */
+    export const outboundSchema = CreatePrivateLobbyDeprecatedSecurity$outboundSchema;
+    /** @deprecated use `CreatePrivateLobbyDeprecatedSecurity$Outbound` instead. */
+    export type Outbound = CreatePrivateLobbyDeprecatedSecurity$Outbound;
 }
 
 /** @internal */
+export const CreatePrivateLobbyDeprecatedRequest$inboundSchema: z.ZodType<
+    CreatePrivateLobbyDeprecatedRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+    region: components.Region$inboundSchema.optional(),
+    local: z.boolean().default(false),
+});
+
+/** @internal */
+export type CreatePrivateLobbyDeprecatedRequest$Outbound = {
+    appId?: string | undefined;
+    region?: string | undefined;
+    local: boolean;
+};
+
+/** @internal */
+export const CreatePrivateLobbyDeprecatedRequest$outboundSchema: z.ZodType<
+    CreatePrivateLobbyDeprecatedRequest$Outbound,
+    z.ZodTypeDef,
+    CreatePrivateLobbyDeprecatedRequest
+> = z.object({
+    appId: z.string().optional(),
+    region: components.Region$outboundSchema.optional(),
+    local: z.boolean().default(false),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreatePrivateLobbyDeprecatedRequest$ {
-    export const inboundSchema: z.ZodType<
-        CreatePrivateLobbyDeprecatedRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        appId: z.string().optional(),
-        region: components.Region$.inboundSchema.optional(),
-        local: z.boolean().default(false),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        region?: string | undefined;
-        local: boolean;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreatePrivateLobbyDeprecatedRequest
-    > = z.object({
-        appId: z.string().optional(),
-        region: components.Region$.outboundSchema.optional(),
-        local: z.boolean().default(false),
-    });
+    /** @deprecated use `CreatePrivateLobbyDeprecatedRequest$inboundSchema` instead. */
+    export const inboundSchema = CreatePrivateLobbyDeprecatedRequest$inboundSchema;
+    /** @deprecated use `CreatePrivateLobbyDeprecatedRequest$outboundSchema` instead. */
+    export const outboundSchema = CreatePrivateLobbyDeprecatedRequest$outboundSchema;
+    /** @deprecated use `CreatePrivateLobbyDeprecatedRequest$Outbound` instead. */
+    export type Outbound = CreatePrivateLobbyDeprecatedRequest$Outbound;
 }

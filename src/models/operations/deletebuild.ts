@@ -14,34 +14,76 @@ export type DeleteBuildRequest = {
 };
 
 /** @internal */
+export const DeleteBuildGlobals$inboundSchema: z.ZodType<
+    DeleteBuildGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type DeleteBuildGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const DeleteBuildGlobals$outboundSchema: z.ZodType<
+    DeleteBuildGlobals$Outbound,
+    z.ZodTypeDef,
+    DeleteBuildGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteBuildGlobals$ {
-    export const inboundSchema: z.ZodType<DeleteBuildGlobals, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteBuildGlobals> = z.object({
-        appId: z.string().optional(),
-    });
+    /** @deprecated use `DeleteBuildGlobals$inboundSchema` instead. */
+    export const inboundSchema = DeleteBuildGlobals$inboundSchema;
+    /** @deprecated use `DeleteBuildGlobals$outboundSchema` instead. */
+    export const outboundSchema = DeleteBuildGlobals$outboundSchema;
+    /** @deprecated use `DeleteBuildGlobals$Outbound` instead. */
+    export type Outbound = DeleteBuildGlobals$Outbound;
 }
 
 /** @internal */
+export const DeleteBuildRequest$inboundSchema: z.ZodType<
+    DeleteBuildRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+    buildId: z.number().int(),
+});
+
+/** @internal */
+export type DeleteBuildRequest$Outbound = {
+    appId?: string | undefined;
+    buildId: number;
+};
+
+/** @internal */
+export const DeleteBuildRequest$outboundSchema: z.ZodType<
+    DeleteBuildRequest$Outbound,
+    z.ZodTypeDef,
+    DeleteBuildRequest
+> = z.object({
+    appId: z.string().optional(),
+    buildId: z.number().int(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteBuildRequest$ {
-    export const inboundSchema: z.ZodType<DeleteBuildRequest, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-        buildId: z.number().int(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        buildId: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteBuildRequest> = z.object({
-        appId: z.string().optional(),
-        buildId: z.number().int(),
-    });
+    /** @deprecated use `DeleteBuildRequest$inboundSchema` instead. */
+    export const inboundSchema = DeleteBuildRequest$inboundSchema;
+    /** @deprecated use `DeleteBuildRequest$outboundSchema` instead. */
+    export const outboundSchema = DeleteBuildRequest$outboundSchema;
+    /** @deprecated use `DeleteBuildRequest$Outbound` instead. */
+    export type Outbound = DeleteBuildRequest$Outbound;
 }

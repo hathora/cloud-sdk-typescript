@@ -12,16 +12,34 @@ export type CreateBuildParams = {
 };
 
 /** @internal */
+export const CreateBuildParams$inboundSchema: z.ZodType<CreateBuildParams, z.ZodTypeDef, unknown> =
+    z.object({
+        buildTag: z.string().optional(),
+    });
+
+/** @internal */
+export type CreateBuildParams$Outbound = {
+    buildTag?: string | undefined;
+};
+
+/** @internal */
+export const CreateBuildParams$outboundSchema: z.ZodType<
+    CreateBuildParams$Outbound,
+    z.ZodTypeDef,
+    CreateBuildParams
+> = z.object({
+    buildTag: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateBuildParams$ {
-    export const inboundSchema: z.ZodType<CreateBuildParams, z.ZodTypeDef, unknown> = z.object({
-        buildTag: z.string().optional(),
-    });
-
-    export type Outbound = {
-        buildTag?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateBuildParams> = z.object({
-        buildTag: z.string().optional(),
-    });
+    /** @deprecated use `CreateBuildParams$inboundSchema` instead. */
+    export const inboundSchema = CreateBuildParams$inboundSchema;
+    /** @deprecated use `CreateBuildParams$outboundSchema` instead. */
+    export const outboundSchema = CreateBuildParams$outboundSchema;
+    /** @deprecated use `CreateBuildParams$Outbound` instead. */
+    export type Outbound = CreateBuildParams$Outbound;
 }

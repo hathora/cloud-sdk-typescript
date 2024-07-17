@@ -9,16 +9,37 @@ export type GetOrgTokensRequest = {
 };
 
 /** @internal */
+export const GetOrgTokensRequest$inboundSchema: z.ZodType<
+    GetOrgTokensRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    orgId: z.string(),
+});
+
+/** @internal */
+export type GetOrgTokensRequest$Outbound = {
+    orgId: string;
+};
+
+/** @internal */
+export const GetOrgTokensRequest$outboundSchema: z.ZodType<
+    GetOrgTokensRequest$Outbound,
+    z.ZodTypeDef,
+    GetOrgTokensRequest
+> = z.object({
+    orgId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetOrgTokensRequest$ {
-    export const inboundSchema: z.ZodType<GetOrgTokensRequest, z.ZodTypeDef, unknown> = z.object({
-        orgId: z.string(),
-    });
-
-    export type Outbound = {
-        orgId: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOrgTokensRequest> = z.object({
-        orgId: z.string(),
-    });
+    /** @deprecated use `GetOrgTokensRequest$inboundSchema` instead. */
+    export const inboundSchema = GetOrgTokensRequest$inboundSchema;
+    /** @deprecated use `GetOrgTokensRequest$outboundSchema` instead. */
+    export const outboundSchema = GetOrgTokensRequest$outboundSchema;
+    /** @deprecated use `GetOrgTokensRequest$Outbound` instead. */
+    export type Outbound = GetOrgTokensRequest$Outbound;
 }

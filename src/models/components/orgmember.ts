@@ -20,36 +20,38 @@ export type OrgMember = {
 };
 
 /** @internal */
-export namespace OrgMember$ {
-    export const inboundSchema: z.ZodType<OrgMember, z.ZodTypeDef, unknown> = z.object({
-        lastLogin: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
-            .optional(),
-        updatedAt: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v)),
-        createdAt: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v)),
-        invitedBy: z.string(),
-        userEmail: z.string(),
-        orgId: z.string(),
-    });
+export const OrgMember$inboundSchema: z.ZodType<OrgMember, z.ZodTypeDef, unknown> = z.object({
+    lastLogin: z
+        .string()
+        .datetime({ offset: true })
+        .transform((v) => new Date(v))
+        .optional(),
+    updatedAt: z
+        .string()
+        .datetime({ offset: true })
+        .transform((v) => new Date(v)),
+    createdAt: z
+        .string()
+        .datetime({ offset: true })
+        .transform((v) => new Date(v)),
+    invitedBy: z.string(),
+    userEmail: z.string(),
+    orgId: z.string(),
+});
 
-    export type Outbound = {
-        lastLogin?: string | undefined;
-        updatedAt: string;
-        createdAt: string;
-        invitedBy: string;
-        userEmail: string;
-        orgId: string;
-    };
+/** @internal */
+export type OrgMember$Outbound = {
+    lastLogin?: string | undefined;
+    updatedAt: string;
+    createdAt: string;
+    invitedBy: string;
+    userEmail: string;
+    orgId: string;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OrgMember> = z.object({
+/** @internal */
+export const OrgMember$outboundSchema: z.ZodType<OrgMember$Outbound, z.ZodTypeDef, OrgMember> =
+    z.object({
         lastLogin: z
             .date()
             .transform((v) => v.toISOString())
@@ -60,4 +62,16 @@ export namespace OrgMember$ {
         userEmail: z.string(),
         orgId: z.string(),
     });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OrgMember$ {
+    /** @deprecated use `OrgMember$inboundSchema` instead. */
+    export const inboundSchema = OrgMember$inboundSchema;
+    /** @deprecated use `OrgMember$outboundSchema` instead. */
+    export const outboundSchema = OrgMember$outboundSchema;
+    /** @deprecated use `OrgMember$Outbound` instead. */
+    export type Outbound = OrgMember$Outbound;
 }

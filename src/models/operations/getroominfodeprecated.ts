@@ -14,38 +14,76 @@ export type GetRoomInfoDeprecatedRequest = {
 };
 
 /** @internal */
+export const GetRoomInfoDeprecatedGlobals$inboundSchema: z.ZodType<
+    GetRoomInfoDeprecatedGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type GetRoomInfoDeprecatedGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const GetRoomInfoDeprecatedGlobals$outboundSchema: z.ZodType<
+    GetRoomInfoDeprecatedGlobals$Outbound,
+    z.ZodTypeDef,
+    GetRoomInfoDeprecatedGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetRoomInfoDeprecatedGlobals$ {
-    export const inboundSchema: z.ZodType<GetRoomInfoDeprecatedGlobals, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetRoomInfoDeprecatedGlobals> =
-        z.object({
-            appId: z.string().optional(),
-        });
+    /** @deprecated use `GetRoomInfoDeprecatedGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetRoomInfoDeprecatedGlobals$inboundSchema;
+    /** @deprecated use `GetRoomInfoDeprecatedGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetRoomInfoDeprecatedGlobals$outboundSchema;
+    /** @deprecated use `GetRoomInfoDeprecatedGlobals$Outbound` instead. */
+    export type Outbound = GetRoomInfoDeprecatedGlobals$Outbound;
 }
 
 /** @internal */
+export const GetRoomInfoDeprecatedRequest$inboundSchema: z.ZodType<
+    GetRoomInfoDeprecatedRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+    roomId: z.string(),
+});
+
+/** @internal */
+export type GetRoomInfoDeprecatedRequest$Outbound = {
+    appId?: string | undefined;
+    roomId: string;
+};
+
+/** @internal */
+export const GetRoomInfoDeprecatedRequest$outboundSchema: z.ZodType<
+    GetRoomInfoDeprecatedRequest$Outbound,
+    z.ZodTypeDef,
+    GetRoomInfoDeprecatedRequest
+> = z.object({
+    appId: z.string().optional(),
+    roomId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetRoomInfoDeprecatedRequest$ {
-    export const inboundSchema: z.ZodType<GetRoomInfoDeprecatedRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-            roomId: z.string(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        roomId: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetRoomInfoDeprecatedRequest> =
-        z.object({
-            appId: z.string().optional(),
-            roomId: z.string(),
-        });
+    /** @deprecated use `GetRoomInfoDeprecatedRequest$inboundSchema` instead. */
+    export const inboundSchema = GetRoomInfoDeprecatedRequest$inboundSchema;
+    /** @deprecated use `GetRoomInfoDeprecatedRequest$outboundSchema` instead. */
+    export const outboundSchema = GetRoomInfoDeprecatedRequest$outboundSchema;
+    /** @deprecated use `GetRoomInfoDeprecatedRequest$Outbound` instead. */
+    export type Outbound = GetRoomInfoDeprecatedRequest$Outbound;
 }

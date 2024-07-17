@@ -28,46 +28,82 @@ export type GetMetricsRequest = {
 };
 
 /** @internal */
+export const GetMetricsGlobals$inboundSchema: z.ZodType<GetMetricsGlobals, z.ZodTypeDef, unknown> =
+    z.object({
+        appId: z.string().optional(),
+    });
+
+/** @internal */
+export type GetMetricsGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const GetMetricsGlobals$outboundSchema: z.ZodType<
+    GetMetricsGlobals$Outbound,
+    z.ZodTypeDef,
+    GetMetricsGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetMetricsGlobals$ {
-    export const inboundSchema: z.ZodType<GetMetricsGlobals, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetricsGlobals> = z.object({
-        appId: z.string().optional(),
-    });
+    /** @deprecated use `GetMetricsGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetMetricsGlobals$inboundSchema;
+    /** @deprecated use `GetMetricsGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetMetricsGlobals$outboundSchema;
+    /** @deprecated use `GetMetricsGlobals$Outbound` instead. */
+    export type Outbound = GetMetricsGlobals$Outbound;
 }
 
 /** @internal */
+export const GetMetricsRequest$inboundSchema: z.ZodType<GetMetricsRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        appId: z.string().optional(),
+        processId: z.string(),
+        metrics: z.array(components.MetricName$inboundSchema).optional(),
+        end: z.number().optional(),
+        start: z.number().optional(),
+        step: z.number().int().default(60),
+    });
+
+/** @internal */
+export type GetMetricsRequest$Outbound = {
+    appId?: string | undefined;
+    processId: string;
+    metrics?: Array<string> | undefined;
+    end?: number | undefined;
+    start?: number | undefined;
+    step: number;
+};
+
+/** @internal */
+export const GetMetricsRequest$outboundSchema: z.ZodType<
+    GetMetricsRequest$Outbound,
+    z.ZodTypeDef,
+    GetMetricsRequest
+> = z.object({
+    appId: z.string().optional(),
+    processId: z.string(),
+    metrics: z.array(components.MetricName$outboundSchema).optional(),
+    end: z.number().optional(),
+    start: z.number().optional(),
+    step: z.number().int().default(60),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetMetricsRequest$ {
-    export const inboundSchema: z.ZodType<GetMetricsRequest, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-        processId: z.string(),
-        metrics: z.array(components.MetricName$.inboundSchema).optional(),
-        end: z.number().optional(),
-        start: z.number().optional(),
-        step: z.number().int().default(60),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        processId: string;
-        metrics?: Array<string> | undefined;
-        end?: number | undefined;
-        start?: number | undefined;
-        step: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetricsRequest> = z.object({
-        appId: z.string().optional(),
-        processId: z.string(),
-        metrics: z.array(components.MetricName$.outboundSchema).optional(),
-        end: z.number().optional(),
-        start: z.number().optional(),
-        step: z.number().int().default(60),
-    });
+    /** @deprecated use `GetMetricsRequest$inboundSchema` instead. */
+    export const inboundSchema = GetMetricsRequest$inboundSchema;
+    /** @deprecated use `GetMetricsRequest$outboundSchema` instead. */
+    export const outboundSchema = GetMetricsRequest$outboundSchema;
+    /** @deprecated use `GetMetricsRequest$Outbound` instead. */
+    export type Outbound = GetMetricsRequest$Outbound;
 }

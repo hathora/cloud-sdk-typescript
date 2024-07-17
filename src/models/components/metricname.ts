@@ -21,14 +21,24 @@ export const MetricName = {
 export type MetricName = OpenEnum<typeof MetricName>;
 
 /** @internal */
-export namespace MetricName$ {
-    export const inboundSchema: z.ZodType<MetricName, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(MetricName),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
+export const MetricName$inboundSchema: z.ZodType<MetricName, z.ZodTypeDef, unknown> = z.union([
+    z.nativeEnum(MetricName),
+    z.string().transform(catchUnrecognizedEnum),
+]);
 
-    export const outboundSchema: z.ZodType<MetricName, z.ZodTypeDef, MetricName> = z.union([
-        z.nativeEnum(MetricName),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+/** @internal */
+export const MetricName$outboundSchema: z.ZodType<MetricName, z.ZodTypeDef, MetricName> = z.union([
+    z.nativeEnum(MetricName),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace MetricName$ {
+    /** @deprecated use `MetricName$inboundSchema` instead. */
+    export const inboundSchema = MetricName$inboundSchema;
+    /** @deprecated use `MetricName$outboundSchema` instead. */
+    export const outboundSchema = MetricName$outboundSchema;
 }

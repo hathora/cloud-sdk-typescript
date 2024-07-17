@@ -12,16 +12,34 @@ export type PlayerTokenObject = {
 };
 
 /** @internal */
+export const PlayerTokenObject$inboundSchema: z.ZodType<PlayerTokenObject, z.ZodTypeDef, unknown> =
+    z.object({
+        token: z.string(),
+    });
+
+/** @internal */
+export type PlayerTokenObject$Outbound = {
+    token: string;
+};
+
+/** @internal */
+export const PlayerTokenObject$outboundSchema: z.ZodType<
+    PlayerTokenObject$Outbound,
+    z.ZodTypeDef,
+    PlayerTokenObject
+> = z.object({
+    token: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PlayerTokenObject$ {
-    export const inboundSchema: z.ZodType<PlayerTokenObject, z.ZodTypeDef, unknown> = z.object({
-        token: z.string(),
-    });
-
-    export type Outbound = {
-        token: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PlayerTokenObject> = z.object({
-        token: z.string(),
-    });
+    /** @deprecated use `PlayerTokenObject$inboundSchema` instead. */
+    export const inboundSchema = PlayerTokenObject$inboundSchema;
+    /** @deprecated use `PlayerTokenObject$outboundSchema` instead. */
+    export const outboundSchema = PlayerTokenObject$outboundSchema;
+    /** @deprecated use `PlayerTokenObject$Outbound` instead. */
+    export type Outbound = PlayerTokenObject$Outbound;
 }

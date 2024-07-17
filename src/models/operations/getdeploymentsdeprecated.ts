@@ -13,41 +13,73 @@ export type GetDeploymentsDeprecatedRequest = {
 };
 
 /** @internal */
+export const GetDeploymentsDeprecatedGlobals$inboundSchema: z.ZodType<
+    GetDeploymentsDeprecatedGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type GetDeploymentsDeprecatedGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const GetDeploymentsDeprecatedGlobals$outboundSchema: z.ZodType<
+    GetDeploymentsDeprecatedGlobals$Outbound,
+    z.ZodTypeDef,
+    GetDeploymentsDeprecatedGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetDeploymentsDeprecatedGlobals$ {
-    export const inboundSchema: z.ZodType<GetDeploymentsDeprecatedGlobals, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetDeploymentsDeprecatedGlobals
-    > = z.object({
-        appId: z.string().optional(),
-    });
+    /** @deprecated use `GetDeploymentsDeprecatedGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetDeploymentsDeprecatedGlobals$inboundSchema;
+    /** @deprecated use `GetDeploymentsDeprecatedGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetDeploymentsDeprecatedGlobals$outboundSchema;
+    /** @deprecated use `GetDeploymentsDeprecatedGlobals$Outbound` instead. */
+    export type Outbound = GetDeploymentsDeprecatedGlobals$Outbound;
 }
 
 /** @internal */
+export const GetDeploymentsDeprecatedRequest$inboundSchema: z.ZodType<
+    GetDeploymentsDeprecatedRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type GetDeploymentsDeprecatedRequest$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const GetDeploymentsDeprecatedRequest$outboundSchema: z.ZodType<
+    GetDeploymentsDeprecatedRequest$Outbound,
+    z.ZodTypeDef,
+    GetDeploymentsDeprecatedRequest
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetDeploymentsDeprecatedRequest$ {
-    export const inboundSchema: z.ZodType<GetDeploymentsDeprecatedRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetDeploymentsDeprecatedRequest
-    > = z.object({
-        appId: z.string().optional(),
-    });
+    /** @deprecated use `GetDeploymentsDeprecatedRequest$inboundSchema` instead. */
+    export const inboundSchema = GetDeploymentsDeprecatedRequest$inboundSchema;
+    /** @deprecated use `GetDeploymentsDeprecatedRequest$outboundSchema` instead. */
+    export const outboundSchema = GetDeploymentsDeprecatedRequest$outboundSchema;
+    /** @deprecated use `GetDeploymentsDeprecatedRequest$Outbound` instead. */
+    export type Outbound = GetDeploymentsDeprecatedRequest$Outbound;
 }

@@ -13,31 +13,67 @@ export type GetAppInfoRequest = {
 };
 
 /** @internal */
+export const GetAppInfoGlobals$inboundSchema: z.ZodType<GetAppInfoGlobals, z.ZodTypeDef, unknown> =
+    z.object({
+        appId: z.string().optional(),
+    });
+
+/** @internal */
+export type GetAppInfoGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const GetAppInfoGlobals$outboundSchema: z.ZodType<
+    GetAppInfoGlobals$Outbound,
+    z.ZodTypeDef,
+    GetAppInfoGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAppInfoGlobals$ {
-    export const inboundSchema: z.ZodType<GetAppInfoGlobals, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAppInfoGlobals> = z.object({
-        appId: z.string().optional(),
-    });
+    /** @deprecated use `GetAppInfoGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetAppInfoGlobals$inboundSchema;
+    /** @deprecated use `GetAppInfoGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetAppInfoGlobals$outboundSchema;
+    /** @deprecated use `GetAppInfoGlobals$Outbound` instead. */
+    export type Outbound = GetAppInfoGlobals$Outbound;
 }
 
 /** @internal */
+export const GetAppInfoRequest$inboundSchema: z.ZodType<GetAppInfoRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        appId: z.string().optional(),
+    });
+
+/** @internal */
+export type GetAppInfoRequest$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const GetAppInfoRequest$outboundSchema: z.ZodType<
+    GetAppInfoRequest$Outbound,
+    z.ZodTypeDef,
+    GetAppInfoRequest
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetAppInfoRequest$ {
-    export const inboundSchema: z.ZodType<GetAppInfoRequest, z.ZodTypeDef, unknown> = z.object({
-        appId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetAppInfoRequest> = z.object({
-        appId: z.string().optional(),
-    });
+    /** @deprecated use `GetAppInfoRequest$inboundSchema` instead. */
+    export const inboundSchema = GetAppInfoRequest$inboundSchema;
+    /** @deprecated use `GetAppInfoRequest$outboundSchema` instead. */
+    export const outboundSchema = GetAppInfoRequest$outboundSchema;
+    /** @deprecated use `GetAppInfoRequest$Outbound` instead. */
+    export type Outbound = GetAppInfoRequest$Outbound;
 }

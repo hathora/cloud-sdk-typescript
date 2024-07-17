@@ -16,41 +16,79 @@ export type GetLatestProcessesRequest = {
 };
 
 /** @internal */
+export const GetLatestProcessesGlobals$inboundSchema: z.ZodType<
+    GetLatestProcessesGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/** @internal */
+export type GetLatestProcessesGlobals$Outbound = {
+    appId?: string | undefined;
+};
+
+/** @internal */
+export const GetLatestProcessesGlobals$outboundSchema: z.ZodType<
+    GetLatestProcessesGlobals$Outbound,
+    z.ZodTypeDef,
+    GetLatestProcessesGlobals
+> = z.object({
+    appId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetLatestProcessesGlobals$ {
-    export const inboundSchema: z.ZodType<GetLatestProcessesGlobals, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLatestProcessesGlobals> =
-        z.object({
-            appId: z.string().optional(),
-        });
+    /** @deprecated use `GetLatestProcessesGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetLatestProcessesGlobals$inboundSchema;
+    /** @deprecated use `GetLatestProcessesGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetLatestProcessesGlobals$outboundSchema;
+    /** @deprecated use `GetLatestProcessesGlobals$Outbound` instead. */
+    export type Outbound = GetLatestProcessesGlobals$Outbound;
 }
 
 /** @internal */
+export const GetLatestProcessesRequest$inboundSchema: z.ZodType<
+    GetLatestProcessesRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    appId: z.string().optional(),
+    status: z.array(components.ProcessStatus$inboundSchema).optional(),
+    region: z.array(components.Region$inboundSchema).optional(),
+});
+
+/** @internal */
+export type GetLatestProcessesRequest$Outbound = {
+    appId?: string | undefined;
+    status?: Array<string> | undefined;
+    region?: Array<string> | undefined;
+};
+
+/** @internal */
+export const GetLatestProcessesRequest$outboundSchema: z.ZodType<
+    GetLatestProcessesRequest$Outbound,
+    z.ZodTypeDef,
+    GetLatestProcessesRequest
+> = z.object({
+    appId: z.string().optional(),
+    status: z.array(components.ProcessStatus$outboundSchema).optional(),
+    region: z.array(components.Region$outboundSchema).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetLatestProcessesRequest$ {
-    export const inboundSchema: z.ZodType<GetLatestProcessesRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            appId: z.string().optional(),
-            status: z.array(components.ProcessStatus$.inboundSchema).optional(),
-            region: z.array(components.Region$.inboundSchema).optional(),
-        });
-
-    export type Outbound = {
-        appId?: string | undefined;
-        status?: Array<string> | undefined;
-        region?: Array<string> | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLatestProcessesRequest> =
-        z.object({
-            appId: z.string().optional(),
-            status: z.array(components.ProcessStatus$.outboundSchema).optional(),
-            region: z.array(components.Region$.outboundSchema).optional(),
-        });
+    /** @deprecated use `GetLatestProcessesRequest$inboundSchema` instead. */
+    export const inboundSchema = GetLatestProcessesRequest$inboundSchema;
+    /** @deprecated use `GetLatestProcessesRequest$outboundSchema` instead. */
+    export const outboundSchema = GetLatestProcessesRequest$outboundSchema;
+    /** @deprecated use `GetLatestProcessesRequest$Outbound` instead. */
+    export type Outbound = GetLatestProcessesRequest$Outbound;
 }

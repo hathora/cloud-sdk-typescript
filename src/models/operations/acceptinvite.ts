@@ -9,16 +9,37 @@ export type AcceptInviteRequest = {
 };
 
 /** @internal */
+export const AcceptInviteRequest$inboundSchema: z.ZodType<
+    AcceptInviteRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    orgId: z.string(),
+});
+
+/** @internal */
+export type AcceptInviteRequest$Outbound = {
+    orgId: string;
+};
+
+/** @internal */
+export const AcceptInviteRequest$outboundSchema: z.ZodType<
+    AcceptInviteRequest$Outbound,
+    z.ZodTypeDef,
+    AcceptInviteRequest
+> = z.object({
+    orgId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AcceptInviteRequest$ {
-    export const inboundSchema: z.ZodType<AcceptInviteRequest, z.ZodTypeDef, unknown> = z.object({
-        orgId: z.string(),
-    });
-
-    export type Outbound = {
-        orgId: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AcceptInviteRequest> = z.object({
-        orgId: z.string(),
-    });
+    /** @deprecated use `AcceptInviteRequest$inboundSchema` instead. */
+    export const inboundSchema = AcceptInviteRequest$inboundSchema;
+    /** @deprecated use `AcceptInviteRequest$outboundSchema` instead. */
+    export const outboundSchema = AcceptInviteRequest$outboundSchema;
+    /** @deprecated use `AcceptInviteRequest$Outbound` instead. */
+    export type Outbound = AcceptInviteRequest$Outbound;
 }

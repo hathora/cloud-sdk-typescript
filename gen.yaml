@@ -18,7 +18,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.4.3
+  version: 2.5.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -40,6 +40,7 @@ typescript:
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   maxMethodParams: 4
   methodArguments: require-security-and-request
+  moduleFormat: commonjs
   outputModelSuffix: output
   packageName: '@hathora/cloud-sdk-typescript'
   responseFormat: flat
