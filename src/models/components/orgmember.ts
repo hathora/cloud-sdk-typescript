@@ -6,7 +6,7 @@ import * as z from "zod";
 
 export type OrgMember = {
     lastLogin?: Date | undefined;
-    updatedAt: Date;
+    joinedAt: Date;
     createdAt: Date;
     invitedBy: string;
     /**
@@ -26,7 +26,7 @@ export const OrgMember$inboundSchema: z.ZodType<OrgMember, z.ZodTypeDef, unknown
         .datetime({ offset: true })
         .transform((v) => new Date(v))
         .optional(),
-    updatedAt: z
+    joinedAt: z
         .string()
         .datetime({ offset: true })
         .transform((v) => new Date(v)),
@@ -42,7 +42,7 @@ export const OrgMember$inboundSchema: z.ZodType<OrgMember, z.ZodTypeDef, unknown
 /** @internal */
 export type OrgMember$Outbound = {
     lastLogin?: string | undefined;
-    updatedAt: string;
+    joinedAt: string;
     createdAt: string;
     invitedBy: string;
     userEmail: string;
@@ -56,7 +56,7 @@ export const OrgMember$outboundSchema: z.ZodType<OrgMember$Outbound, z.ZodTypeDe
             .date()
             .transform((v) => v.toISOString())
             .optional(),
-        updatedAt: z.date().transform((v) => v.toISOString()),
+        joinedAt: z.date().transform((v) => v.toISOString()),
         createdAt: z.date().transform((v) => v.toISOString()),
         invitedBy: z.string(),
         userEmail: z.string(),

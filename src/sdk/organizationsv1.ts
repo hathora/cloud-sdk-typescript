@@ -381,7 +381,7 @@ export class OrganizationsV1 extends ClientSDK {
 
         const response = await this.do$(request$, {
             context,
-            errorCodes: ["401", "404", "429", "4XX", "500", "5XX"],
+            errorCodes: ["401", "404", "422", "429", "4XX", "500", "5XX"],
             retryConfig: options?.retries || this.options$.retryConfig,
             retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
@@ -392,7 +392,7 @@ export class OrganizationsV1 extends ClientSDK {
 
         const [result$] = await this.matcher<void>()
             .void(204, z.void())
-            .json([401, 404, 429, 500], errors.ApiError$inboundSchema, { err: true })
+            .json([401, 404, 422, 429, 500], errors.ApiError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

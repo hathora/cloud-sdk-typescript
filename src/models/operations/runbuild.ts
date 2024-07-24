@@ -17,7 +17,7 @@ export type RunBuildFile = {
 };
 
 export type RunBuildRequestBody = {
-    file: RunBuildFile | Blob;
+    file?: RunBuildFile | Blob | undefined;
 };
 
 export type RunBuildRequest = {
@@ -100,12 +100,12 @@ export const RunBuildRequestBody$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    file: z.lazy(() => RunBuildFile$inboundSchema),
+    file: z.lazy(() => RunBuildFile$inboundSchema).optional(),
 });
 
 /** @internal */
 export type RunBuildRequestBody$Outbound = {
-    file: RunBuildFile$Outbound | Blob;
+    file?: RunBuildFile$Outbound | Blob | undefined;
 };
 
 /** @internal */
@@ -114,7 +114,10 @@ export const RunBuildRequestBody$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     RunBuildRequestBody
 > = z.object({
-    file: z.lazy(() => RunBuildFile$outboundSchema).or(blobLikeSchema),
+    file: z
+        .lazy(() => RunBuildFile$outboundSchema)
+        .or(blobLikeSchema)
+        .optional(),
 });
 
 /**

@@ -201,7 +201,6 @@ Builds a game server artifact from a tarball you provide. Pass in the `buildId` 
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
-import { openAsBlob } from "node:fs";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
@@ -209,9 +208,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.buildsV2.runBuild(1, {
-    file: await openAsBlob("./sample-file"),
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.buildsV2.runBuild(1, {}, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   // Handle the result
   console.log(result)
