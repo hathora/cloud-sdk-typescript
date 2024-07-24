@@ -401,14 +401,18 @@ export class BuildsV2 extends ClientSDK {
         );
         const body$ = new FormData();
 
-        if (isBlobLike(payload$.RequestBody.file)) {
-            body$.append("file", payload$.RequestBody.file);
-        } else {
-            body$.append(
-                "file",
-                new Blob([payload$.RequestBody.file.content], { type: "application/octet-stream" }),
-                payload$.RequestBody.file.fileName
-            );
+        if (payload$.RequestBody.file !== undefined) {
+            if (isBlobLike(payload$.RequestBody.file)) {
+                body$.append("file", payload$.RequestBody.file);
+            } else {
+                body$.append(
+                    "file",
+                    new Blob([payload$.RequestBody.file.content], {
+                        type: "application/octet-stream",
+                    }),
+                    payload$.RequestBody.file.fileName
+                );
+            }
         }
 
         const pathParams$ = {
