@@ -15,3 +15,5 @@ targets:
                 token: $NPM_TOKEN
         codeSamples:
             output: .speakeasy/codeSamples.yaml
+            registry:
+                location: registry.speakeasyapi.dev/hathora/hathora/code-samples-typescript-hathora-typescript
