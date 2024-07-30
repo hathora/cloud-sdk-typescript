@@ -20,7 +20,7 @@ Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-enti
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -66,7 +66,7 @@ Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#d
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -112,7 +112,7 @@ Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entitie
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -159,7 +159,7 @@ Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#dep
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 

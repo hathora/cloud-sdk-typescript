@@ -22,7 +22,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV3.createLobby("<YOUR_BEARER_TOKEN_HERE>", {
+  const result = await hathoraCloud.lobbiesV3.createLobby({
+    playerAuth: process.env.PLAYER_AUTH,
+  }, {
     visibility: "private",
     roomConfig: "{\"name\":\"my-room\"}",
     region: "Seattle",

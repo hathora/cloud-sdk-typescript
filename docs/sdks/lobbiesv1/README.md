@@ -21,7 +21,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV1.createPrivateLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", "app-af469a92-5b45-4565-b3c4-b79878de67d2", "London", false);
+  const result = await hathoraCloud.lobbiesV1.createPrivateLobbyDeprecated({
+    playerAuth: process.env.PLAYER_AUTH,
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "London", false);
 
   // Handle the result
   console.log(result)
@@ -67,7 +69,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV1.createPublicLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", "app-af469a92-5b45-4565-b3c4-b79878de67d2", "Frankfurt", false);
+  const result = await hathoraCloud.lobbiesV1.createPublicLobbyDeprecated({
+    playerAuth: process.env.PLAYER_AUTH,
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "Frankfurt", false);
 
   // Handle the result
   console.log(result)

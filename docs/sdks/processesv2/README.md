@@ -22,7 +22,7 @@ Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#p
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -67,7 +67,7 @@ Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathor
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -117,7 +117,7 @@ Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) im
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -161,7 +161,7 @@ Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) 
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 

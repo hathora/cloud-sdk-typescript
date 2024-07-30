@@ -25,7 +25,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV2.createPrivateLobby("<YOUR_BEARER_TOKEN_HERE>", {
+  const result = await hathoraCloud.lobbiesV2.createPrivateLobby({
+    playerAuth: process.env.PLAYER_AUTH,
+  }, {
     initialConfig: "<value>",
     region: "Chicago",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
@@ -74,7 +76,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV2.createPublicLobby("<YOUR_BEARER_TOKEN_HERE>", {
+  const result = await hathoraCloud.lobbiesV2.createPublicLobby({
+    playerAuth: process.env.PLAYER_AUTH,
+  }, {
     initialConfig: "<value>",
     region: "Sao_Paulo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
@@ -123,7 +127,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV2.createLocalLobby("<YOUR_BEARER_TOKEN_HERE>", {
+  const result = await hathoraCloud.lobbiesV2.createLocalLobby({
+    playerAuth: process.env.PLAYER_AUTH,
+  }, {
     initialConfig: "<value>",
     region: "Sao_Paulo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
@@ -174,7 +180,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV2.createLobbyDeprecated("<YOUR_BEARER_TOKEN_HERE>", {
+  const result = await hathoraCloud.lobbiesV2.createLobbyDeprecated({
+    playerAuth: process.env.PLAYER_AUTH,
+  }, {
     visibility: "private",
     initialConfig: "<value>",
     region: "Tokyo",
@@ -314,7 +322,7 @@ Set the state of a lobby. State is intended to be set by the server and must be 
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
