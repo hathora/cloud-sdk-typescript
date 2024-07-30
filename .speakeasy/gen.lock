@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 9a202a3dffb804a6396c0137bce9b822
+  docChecksum: 9693400bd2402c6676bcfe1e754f6fd4
   docVersion: 0.0.1
-  speakeasyVersion: 1.345.4
-  generationVersion: 2.378.3
-  releaseVersion: 2.5.1
-  configChecksum: 93ad0df54fed52ace24d75b9cca3da90
+  speakeasyVersion: 1.348.1
+  generationVersion: 2.380.1
+  releaseVersion: 2.6.0
+  configChecksum: 92a97213cf01507ef39218d9e1ba565a
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,10 +14,11 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.11.9
+    core: 3.11.11
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
+    envVarSecurityUsage: 0.1.0
     flattening: 2.81.1
     globalSecurity: 2.82.9
     globalSecurityCallbacks: 0.1.0
@@ -33,27 +34,27 @@ features:
     sdkHooks: 0.1.0
     unions: 2.85.6
 generatedFiles:
-  - src/sdk/appsv1.ts
-  - src/sdk/authv1.ts
-  - src/sdk/billingv1.ts
-  - src/sdk/buildsv1.ts
-  - src/sdk/buildsv2.ts
-  - src/sdk/deploymentsv1.ts
-  - src/sdk/deploymentsv2.ts
-  - src/sdk/discoveryv1.ts
-  - src/sdk/discoveryv2.ts
+  - src/sdk/tokensv1.ts
+  - src/sdk/roomsv1.ts
+  - src/sdk/roomsv2.ts
+  - src/sdk/processesv1.ts
+  - src/sdk/processesv2.ts
+  - src/sdk/organizationsv1.ts
+  - src/sdk/metricsv1.ts
+  - src/sdk/managementv1.ts
+  - src/sdk/logsv1.ts
   - src/sdk/lobbiesv1.ts
   - src/sdk/lobbiesv2.ts
   - src/sdk/lobbiesv3.ts
-  - src/sdk/logsv1.ts
-  - src/sdk/managementv1.ts
-  - src/sdk/metricsv1.ts
-  - src/sdk/organizationsv1.ts
-  - src/sdk/processesv1.ts
-  - src/sdk/processesv2.ts
-  - src/sdk/roomsv1.ts
-  - src/sdk/roomsv2.ts
-  - src/sdk/tokensv1.ts
+  - src/sdk/discoveryv1.ts
+  - src/sdk/discoveryv2.ts
+  - src/sdk/deploymentsv1.ts
+  - src/sdk/deploymentsv2.ts
+  - src/sdk/buildsv1.ts
+  - src/sdk/buildsv2.ts
+  - src/sdk/billingv1.ts
+  - src/sdk/authv1.ts
+  - src/sdk/appsv1.ts
   - src/sdk/sdk.ts
   - .eslintrc.cjs
   - .npmignore
@@ -63,6 +64,7 @@ generatedFiles:
   - src/index.ts
   - src/lib/base64.ts
   - src/lib/config.ts
+  - src/lib/dlv.ts
   - src/lib/encodings.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
@@ -81,46 +83,30 @@ generatedFiles:
   - src/types/operations.ts
   - src/types/rfcdate.ts
   - tsconfig.json
-  - src/models/components/applicationwithlatestdeploymentandbuild.ts
-  - src/models/components/build.ts
-  - src/models/components/buildstatus.ts
+  - src/models/components/listorgtokens.ts
+  - src/models/components/orgtoken.ts
+  - src/models/components/orgtokenstatus.ts
+  - src/models/components/createdorgtoken.ts
+  - src/models/components/createorgtoken.ts
+  - src/models/components/createroomparams.ts
   - src/models/components/region.ts
-  - src/models/components/containerport.ts
+  - src/models/components/room.ts
+  - src/models/components/roomallocation.ts
+  - src/models/components/roomstatus.ts
+  - src/models/components/roomwithoutallocations.ts
+  - src/models/components/connectioninfo.ts
+  - src/models/components/startingconnectioninfo.ts
+  - src/models/components/activeconnectioninfo.ts
   - src/models/components/transporttype.ts
-  - src/models/components/authconfiguration.ts
-  - src/models/components/recordstringnever.ts
-  - src/models/components/application.ts
-  - src/models/components/appconfig.ts
-  - src/models/components/playertokenobject.ts
-  - src/models/components/nicknameobject.ts
-  - src/models/components/googleidtokenobject.ts
-  - src/models/components/paymentmethod.ts
-  - src/models/components/linkpaymentmethod.ts
-  - src/models/components/achpaymentmethod.ts
-  - src/models/components/cardpaymentmethod.ts
-  - src/models/components/cardbrand.ts
-  - src/models/components/customerportalurl.ts
-  - src/models/components/invoice.ts
-  - src/models/components/invoicestatus.ts
-  - src/models/components/createbuildparams.ts
-  - src/models/components/buildwithuploadurl.ts
-  - src/models/components/deployment.ts
-  - src/models/components/planname.ts
-  - src/models/components/deploymentconfig.ts
-  - src/models/components/deploymentv2.ts
-  - src/models/components/deploymentconfigv2.ts
-  - src/models/components/pingendpoints.ts
-  - src/models/components/lobby.ts
-  - src/models/components/lobbyvisibility.ts
-  - src/models/components/createlobbyparams.ts
-  - src/models/components/setlobbystateparams.ts
-  - src/models/components/lobbyv3.ts
-  - src/models/components/createlobbyv3params.ts
-  - src/models/components/verificationemailsuccess.ts
-  - src/models/components/verificationemailrequest.ts
-  - src/models/components/metricsdata.ts
-  - src/models/components/metricvalue.ts
-  - src/models/components/metricname.ts
+  - src/models/components/roomconnectiondata.ts
+  - src/models/components/roomreadystatus.ts
+  - src/models/components/exposedport.ts
+  - src/models/components/connectioninfov2.ts
+  - src/models/components/updateroomconfigparams.ts
+  - src/models/components/processwithrooms.ts
+  - src/models/components/process.ts
+  - src/models/components/processv2.ts
+  - src/models/components/processstatus.ts
   - src/models/components/orgspage.ts
   - src/models/components/organization.ts
   - src/models/components/pendingorginvitespage.ts
@@ -129,87 +115,49 @@ generatedFiles:
   - src/models/components/orgmember.ts
   - src/models/components/createuserinvite.ts
   - src/models/components/rescinduserinvite.ts
-  - src/models/components/processwithrooms.ts
-  - src/models/components/roomwithoutallocations.ts
-  - src/models/components/roomstatus.ts
-  - src/models/components/exposedport.ts
-  - src/models/components/process.ts
-  - src/models/components/processv2.ts
-  - src/models/components/processstatus.ts
-  - src/models/components/createroomparams.ts
-  - src/models/components/room.ts
-  - src/models/components/roomallocation.ts
-  - src/models/components/connectioninfo.ts
-  - src/models/components/startingconnectioninfo.ts
-  - src/models/components/activeconnectioninfo.ts
-  - src/models/components/roomconnectiondata.ts
-  - src/models/components/roomreadystatus.ts
-  - src/models/components/connectioninfov2.ts
-  - src/models/components/updateroomconfigparams.ts
-  - src/models/components/listorgtokens.ts
-  - src/models/components/orgtoken.ts
-  - src/models/components/orgtokenstatus.ts
-  - src/models/components/createdorgtoken.ts
-  - src/models/components/createorgtoken.ts
+  - src/models/components/metricsdata.ts
+  - src/models/components/metricvalue.ts
+  - src/models/components/metricname.ts
+  - src/models/components/verificationemailsuccess.ts
+  - src/models/components/verificationemailrequest.ts
+  - src/models/components/lobby.ts
+  - src/models/components/lobbyvisibility.ts
+  - src/models/components/createlobbyparams.ts
+  - src/models/components/setlobbystateparams.ts
+  - src/models/components/lobbyv3.ts
+  - src/models/components/createlobbyv3params.ts
+  - src/models/components/pingendpoints.ts
+  - src/models/components/deployment.ts
+  - src/models/components/containerport.ts
+  - src/models/components/planname.ts
+  - src/models/components/deploymentconfig.ts
+  - src/models/components/deploymentv2.ts
+  - src/models/components/deploymentconfigv2.ts
+  - src/models/components/build.ts
+  - src/models/components/buildstatus.ts
+  - src/models/components/createbuildparams.ts
+  - src/models/components/buildwithuploadurl.ts
+  - src/models/components/paymentmethod.ts
+  - src/models/components/linkpaymentmethod.ts
+  - src/models/components/achpaymentmethod.ts
+  - src/models/components/cardpaymentmethod.ts
+  - src/models/components/cardbrand.ts
+  - src/models/components/customerportalurl.ts
+  - src/models/components/invoice.ts
+  - src/models/components/invoicestatus.ts
+  - src/models/components/playertokenobject.ts
+  - src/models/components/nicknameobject.ts
+  - src/models/components/googleidtokenobject.ts
+  - src/models/components/applicationwithlatestdeploymentandbuild.ts
+  - src/models/components/authconfiguration.ts
+  - src/models/components/recordstringnever.ts
+  - src/models/components/application.ts
+  - src/models/components/appconfig.ts
   - src/models/components/security.ts
   - src/models/errors/apierror.ts
-  - src/models/operations/updateapp.ts
-  - src/models/operations/getappinfo.ts
-  - src/models/operations/deleteapp.ts
-  - src/models/operations/loginanonymous.ts
-  - src/models/operations/loginnickname.ts
-  - src/models/operations/logingoogle.ts
-  - src/models/operations/getbuildsdeprecated.ts
-  - src/models/operations/getbuildinfodeprecated.ts
-  - src/models/operations/createbuilddeprecated.ts
-  - src/models/operations/runbuilddeprecated.ts
-  - src/models/operations/deletebuilddeprecated.ts
-  - src/models/operations/getbuilds.ts
-  - src/models/operations/getbuildinfo.ts
-  - src/models/operations/createbuild.ts
-  - src/models/operations/createbuildwithuploadurl.ts
-  - src/models/operations/runbuild.ts
-  - src/models/operations/deletebuild.ts
-  - src/models/operations/getdeploymentsdeprecated.ts
-  - src/models/operations/getlatestdeploymentdeprecated.ts
-  - src/models/operations/getdeploymentinfodeprecated.ts
-  - src/models/operations/createdeploymentdeprecated.ts
-  - src/models/operations/getdeployments.ts
-  - src/models/operations/getlatestdeployment.ts
-  - src/models/operations/getdeploymentinfo.ts
-  - src/models/operations/createdeployment.ts
-  - src/models/operations/createprivatelobbydeprecated.ts
-  - src/models/operations/createpubliclobbydeprecated.ts
-  - src/models/operations/listactivepubliclobbiesdeprecatedv1.ts
-  - src/models/operations/createprivatelobby.ts
-  - src/models/operations/createpubliclobby.ts
-  - src/models/operations/createlocallobby.ts
-  - src/models/operations/createlobbydeprecated.ts
-  - src/models/operations/listactivepubliclobbiesdeprecatedv2.ts
-  - src/models/operations/getlobbyinfo.ts
-  - src/models/operations/setlobbystate.ts
-  - src/models/operations/createlobby.ts
-  - src/models/operations/listactivepubliclobbies.ts
-  - src/models/operations/getlobbyinfobyroomid.ts
-  - src/models/operations/getlobbyinfobyshortcode.ts
-  - src/models/operations/getlogsforapp.ts
-  - src/models/operations/getlogsforprocess.ts
-  - src/models/operations/downloadlogforprocess.ts
-  - src/models/operations/getlogsfordeployment.ts
-  - src/models/operations/getmetrics.ts
-  - src/models/operations/getorgmembers.ts
-  - src/models/operations/inviteuser.ts
-  - src/models/operations/rescindinvite.ts
-  - src/models/operations/getorgpendinginvites.ts
-  - src/models/operations/acceptinvite.ts
-  - src/models/operations/rejectinvite.ts
-  - src/models/operations/getrunningprocesses.ts
-  - src/models/operations/getstoppedprocesses.ts
-  - src/models/operations/getprocessinfodeprecated.ts
-  - src/models/operations/getprocessinfo.ts
-  - src/models/operations/getlatestprocesses.ts
-  - src/models/operations/stopprocess.ts
-  - src/models/operations/createprocess.ts
+  - src/models/operations/getorgtokens.ts
+  - src/models/operations/createorgtoken.ts
+  - src/models/operations/revokeorgtoken.ts
   - src/models/operations/createroomdeprecated.ts
   - src/models/operations/getroominfodeprecated.ts
   - src/models/operations/getactiveroomsforprocessdeprecated.ts
@@ -225,65 +173,96 @@ generatedFiles:
   - src/models/operations/suspendroomv2deprecated.ts
   - src/models/operations/getconnectioninfo.ts
   - src/models/operations/updateroomconfig.ts
-  - src/models/operations/getorgtokens.ts
-  - src/models/operations/createorgtoken.ts
-  - src/models/operations/revokeorgtoken.ts
+  - src/models/operations/getrunningprocesses.ts
+  - src/models/operations/getstoppedprocesses.ts
+  - src/models/operations/getprocessinfodeprecated.ts
+  - src/models/operations/getprocessinfo.ts
+  - src/models/operations/getlatestprocesses.ts
+  - src/models/operations/stopprocess.ts
+  - src/models/operations/createprocess.ts
+  - src/models/operations/getorgmembers.ts
+  - src/models/operations/inviteuser.ts
+  - src/models/operations/rescindinvite.ts
+  - src/models/operations/getorgpendinginvites.ts
+  - src/models/operations/acceptinvite.ts
+  - src/models/operations/rejectinvite.ts
+  - src/models/operations/getmetrics.ts
+  - src/models/operations/getlogsforapp.ts
+  - src/models/operations/getlogsforprocess.ts
+  - src/models/operations/downloadlogforprocess.ts
+  - src/models/operations/getlogsfordeployment.ts
+  - src/models/operations/createprivatelobbydeprecated.ts
+  - src/models/operations/createpubliclobbydeprecated.ts
+  - src/models/operations/listactivepubliclobbiesdeprecatedv1.ts
+  - src/models/operations/createprivatelobby.ts
+  - src/models/operations/createpubliclobby.ts
+  - src/models/operations/createlocallobby.ts
+  - src/models/operations/createlobbydeprecated.ts
+  - src/models/operations/listactivepubliclobbiesdeprecatedv2.ts
+  - src/models/operations/getlobbyinfo.ts
+  - src/models/operations/setlobbystate.ts
+  - src/models/operations/createlobby.ts
+  - src/models/operations/listactivepubliclobbies.ts
+  - src/models/operations/getlobbyinfobyroomid.ts
+  - src/models/operations/getlobbyinfobyshortcode.ts
+  - src/models/operations/getdeploymentsdeprecated.ts
+  - src/models/operations/getlatestdeploymentdeprecated.ts
+  - src/models/operations/getdeploymentinfodeprecated.ts
+  - src/models/operations/createdeploymentdeprecated.ts
+  - src/models/operations/getdeployments.ts
+  - src/models/operations/getlatestdeployment.ts
+  - src/models/operations/getdeploymentinfo.ts
+  - src/models/operations/createdeployment.ts
+  - src/models/operations/getbuildsdeprecated.ts
+  - src/models/operations/getbuildinfodeprecated.ts
+  - src/models/operations/createbuilddeprecated.ts
+  - src/models/operations/deletebuilddeprecated.ts
+  - src/models/operations/runbuilddeprecated.ts
+  - src/models/operations/getbuilds.ts
+  - src/models/operations/getbuildinfo.ts
+  - src/models/operations/createbuild.ts
+  - src/models/operations/createbuildwithuploadurl.ts
+  - src/models/operations/deletebuild.ts
+  - src/models/operations/runbuild.ts
+  - src/models/operations/loginanonymous.ts
+  - src/models/operations/loginnickname.ts
+  - src/models/operations/logingoogle.ts
+  - src/models/operations/updateapp.ts
+  - src/models/operations/getappinfo.ts
+  - src/models/operations/deleteapp.ts
   - src/models/errors/index.ts
   - src/models/components/index.ts
   - src/models/operations/index.ts
-  - docs/models/components/applicationwithlatestdeploymentandbuildenv.md
-  - docs/models/components/applicationwithlatestdeploymentandbuilddeployment.md
-  - docs/models/components/applicationwithlatestdeploymentandbuild.md
-  - docs/models/components/regionalcontainertags.md
-  - docs/models/components/build.md
-  - docs/models/components/buildstatus.md
+  - docs/models/components/listorgtokens.md
+  - docs/models/components/orgtoken.md
+  - docs/models/components/orgtokenstatus.md
+  - docs/models/components/createdorgtoken.md
+  - docs/models/components/createorgtoken.md
+  - docs/models/components/createroomparams.md
   - docs/models/components/region.md
-  - docs/models/components/containerport.md
+  - docs/models/components/currentallocation.md
+  - docs/models/components/room.md
+  - docs/models/components/roomallocation.md
+  - docs/models/components/roomstatus.md
+  - docs/models/components/roomwithoutallocations.md
+  - docs/models/components/connectioninfo.md
+  - docs/models/components/status.md
+  - docs/models/components/startingconnectioninfo.md
+  - docs/models/components/activeconnectioninfostatus.md
+  - docs/models/components/activeconnectioninfo.md
   - docs/models/components/transporttype.md
-  - docs/models/components/google.md
-  - docs/models/components/authconfiguration.md
-  - docs/models/components/recordstringnever.md
-  - docs/models/components/application.md
-  - docs/models/components/appconfig.md
-  - docs/models/components/playertokenobject.md
-  - docs/models/components/nicknameobject.md
-  - docs/models/components/googleidtokenobject.md
-  - docs/models/components/paymentmethod.md
-  - docs/models/components/linkpaymentmethod.md
-  - docs/models/components/achpaymentmethod.md
-  - docs/models/components/cardpaymentmethod.md
-  - docs/models/components/cardbrand.md
-  - docs/models/components/customerportalurl.md
-  - docs/models/components/invoice.md
-  - docs/models/components/invoicestatus.md
-  - docs/models/components/createbuildparams.md
-  - docs/models/components/buildwithuploadurlregionalcontainertags.md
-  - docs/models/components/uploadbodyparams.md
-  - docs/models/components/buildwithuploadurl.md
-  - docs/models/components/env.md
-  - docs/models/components/deploymenttransporttype.md
-  - docs/models/components/deployment.md
-  - docs/models/components/planname.md
-  - docs/models/components/deploymentconfigenv.md
-  - docs/models/components/deploymentconfig.md
-  - docs/models/components/deploymentv2env.md
-  - docs/models/components/deploymentv2.md
-  - docs/models/components/deploymentconfigv2env.md
-  - docs/models/components/deploymentconfigv2.md
-  - docs/models/components/pingendpoints.md
-  - docs/models/components/createdby.md
-  - docs/models/components/lobby.md
-  - docs/models/components/lobbyvisibility.md
-  - docs/models/components/createlobbyparams.md
-  - docs/models/components/setlobbystateparams.md
-  - docs/models/components/lobbyv3createdby.md
-  - docs/models/components/lobbyv3.md
-  - docs/models/components/createlobbyv3params.md
-  - docs/models/components/verificationemailsuccess.md
-  - docs/models/components/verificationemailrequest.md
-  - docs/models/components/metricsdata.md
-  - docs/models/components/metricvalue.md
-  - docs/models/components/metricname.md
+  - docs/models/components/roomconnectiondata.md
+  - docs/models/components/roomreadystatus.md
+  - docs/models/components/exposedport.md
+  - docs/models/components/connectioninfov2.md
+  - docs/models/components/updateroomconfigparams.md
+  - docs/models/components/processwithroomsexposedport.md
+  - docs/models/components/processwithrooms.md
+  - docs/models/components/processexposedport.md
+  - docs/models/components/process.md
+  - docs/models/components/processv2exposedport.md
+  - docs/models/components/processv2.md
+  - docs/models/components/processstatus.md
   - docs/models/components/orgspage.md
   - docs/models/components/organization.md
   - docs/models/components/pendingorginvitespage.md
@@ -292,91 +271,122 @@ generatedFiles:
   - docs/models/components/orgmember.md
   - docs/models/components/createuserinvite.md
   - docs/models/components/rescinduserinvite.md
-  - docs/models/components/processwithroomsexposedport.md
-  - docs/models/components/processwithrooms.md
-  - docs/models/components/currentallocation.md
-  - docs/models/components/roomwithoutallocations.md
-  - docs/models/components/roomstatus.md
-  - docs/models/components/exposedport.md
-  - docs/models/components/processexposedport.md
-  - docs/models/components/process.md
-  - docs/models/components/processv2exposedport.md
-  - docs/models/components/processv2.md
-  - docs/models/components/processstatus.md
-  - docs/models/components/createroomparams.md
-  - docs/models/components/roomcurrentallocation.md
-  - docs/models/components/room.md
-  - docs/models/components/roomallocation.md
-  - docs/models/components/connectioninfo.md
-  - docs/models/components/status.md
-  - docs/models/components/startingconnectioninfo.md
-  - docs/models/components/activeconnectioninfostatus.md
-  - docs/models/components/activeconnectioninfo.md
-  - docs/models/components/roomconnectiondata.md
-  - docs/models/components/roomreadystatus.md
-  - docs/models/components/connectioninfov2.md
-  - docs/models/components/updateroomconfigparams.md
-  - docs/models/components/listorgtokens.md
-  - docs/models/components/orgtoken.md
-  - docs/models/components/orgtokenstatus.md
-  - docs/models/components/createdorgtoken.md
-  - docs/models/components/createorgtoken.md
+  - docs/models/components/metricsdata.md
+  - docs/models/components/metricvalue.md
+  - docs/models/components/metricname.md
+  - docs/models/components/verificationemailsuccess.md
+  - docs/models/components/verificationemailrequest.md
+  - docs/models/components/createdby.md
+  - docs/models/components/lobby.md
+  - docs/models/components/lobbyvisibility.md
+  - docs/models/components/createlobbyparams.md
+  - docs/models/components/setlobbystateparams.md
+  - docs/models/components/lobbyv3createdby.md
+  - docs/models/components/lobbyv3.md
+  - docs/models/components/createlobbyv3params.md
+  - docs/models/components/pingendpoints.md
+  - docs/models/components/env.md
+  - docs/models/components/deploymenttransporttype.md
+  - docs/models/components/deployment.md
+  - docs/models/components/containerport.md
+  - docs/models/components/planname.md
+  - docs/models/components/deploymentconfigenv.md
+  - docs/models/components/deploymentconfig.md
+  - docs/models/components/deploymentv2env.md
+  - docs/models/components/deploymentv2.md
+  - docs/models/components/deploymentconfigv2env.md
+  - docs/models/components/deploymentconfigv2.md
+  - docs/models/components/regionalcontainertags.md
+  - docs/models/components/build.md
+  - docs/models/components/buildstatus.md
+  - docs/models/components/createbuildparams.md
+  - docs/models/components/buildwithuploadurlregionalcontainertags.md
+  - docs/models/components/uploadbodyparams.md
+  - docs/models/components/buildwithuploadurl.md
+  - docs/models/components/paymentmethod.md
+  - docs/models/components/linkpaymentmethod.md
+  - docs/models/components/achpaymentmethod.md
+  - docs/models/components/cardpaymentmethod.md
+  - docs/models/components/cardbrand.md
+  - docs/models/components/customerportalurl.md
+  - docs/models/components/invoice.md
+  - docs/models/components/invoicestatus.md
+  - docs/models/components/playertokenobject.md
+  - docs/models/components/nicknameobject.md
+  - docs/models/components/googleidtokenobject.md
+  - docs/models/components/applicationwithlatestdeploymentandbuildenv.md
+  - docs/models/components/applicationwithlatestdeploymentandbuilddeployment.md
+  - docs/models/components/applicationwithlatestdeploymentandbuild.md
+  - docs/models/components/google.md
+  - docs/models/components/authconfiguration.md
+  - docs/models/components/recordstringnever.md
+  - docs/models/components/application.md
+  - docs/models/components/appconfig.md
   - docs/models/components/security.md
   - docs/models/errors/apierror.md
-  - docs/models/operations/updateappglobals.md
-  - docs/models/operations/updateapprequest.md
-  - docs/models/operations/getappinfoglobals.md
-  - docs/models/operations/getappinforequest.md
-  - docs/models/operations/deleteappglobals.md
-  - docs/models/operations/deleteapprequest.md
-  - docs/models/operations/loginanonymousglobals.md
-  - docs/models/operations/loginanonymousrequest.md
-  - docs/models/operations/loginnicknameglobals.md
-  - docs/models/operations/loginnicknamerequest.md
-  - docs/models/operations/logingoogleglobals.md
-  - docs/models/operations/logingooglerequest.md
-  - docs/models/operations/getbuildsdeprecatedglobals.md
-  - docs/models/operations/getbuildsdeprecatedrequest.md
-  - docs/models/operations/getbuildinfodeprecatedglobals.md
-  - docs/models/operations/getbuildinfodeprecatedrequest.md
-  - docs/models/operations/createbuilddeprecatedglobals.md
-  - docs/models/operations/createbuilddeprecatedrequest.md
-  - docs/models/operations/runbuilddeprecatedglobals.md
-  - docs/models/operations/filet.md
-  - docs/models/operations/runbuilddeprecatedrequestbody.md
-  - docs/models/operations/runbuilddeprecatedrequest.md
-  - docs/models/operations/deletebuilddeprecatedglobals.md
-  - docs/models/operations/deletebuilddeprecatedrequest.md
-  - docs/models/operations/getbuildsglobals.md
-  - docs/models/operations/getbuildsrequest.md
-  - docs/models/operations/getbuildinfoglobals.md
-  - docs/models/operations/getbuildinforequest.md
-  - docs/models/operations/createbuildglobals.md
-  - docs/models/operations/createbuildrequest.md
-  - docs/models/operations/createbuildwithuploadurlglobals.md
-  - docs/models/operations/createbuildwithuploadurlrequest.md
-  - docs/models/operations/runbuildglobals.md
-  - docs/models/operations/runbuildfile.md
-  - docs/models/operations/runbuildrequestbody.md
-  - docs/models/operations/runbuildrequest.md
-  - docs/models/operations/deletebuildglobals.md
-  - docs/models/operations/deletebuildrequest.md
-  - docs/models/operations/getdeploymentsdeprecatedglobals.md
-  - docs/models/operations/getdeploymentsdeprecatedrequest.md
-  - docs/models/operations/getlatestdeploymentdeprecatedglobals.md
-  - docs/models/operations/getlatestdeploymentdeprecatedrequest.md
-  - docs/models/operations/getdeploymentinfodeprecatedglobals.md
-  - docs/models/operations/getdeploymentinfodeprecatedrequest.md
-  - docs/models/operations/createdeploymentdeprecatedglobals.md
-  - docs/models/operations/createdeploymentdeprecatedrequest.md
-  - docs/models/operations/getdeploymentsglobals.md
-  - docs/models/operations/getdeploymentsrequest.md
-  - docs/models/operations/getlatestdeploymentglobals.md
-  - docs/models/operations/getlatestdeploymentrequest.md
-  - docs/models/operations/getdeploymentinfoglobals.md
-  - docs/models/operations/getdeploymentinforequest.md
-  - docs/models/operations/createdeploymentglobals.md
-  - docs/models/operations/createdeploymentrequest.md
+  - docs/models/operations/getorgtokensrequest.md
+  - docs/models/operations/createorgtokenrequest.md
+  - docs/models/operations/revokeorgtokenrequest.md
+  - docs/models/operations/createroomdeprecatedglobals.md
+  - docs/models/operations/createroomdeprecatedrequest.md
+  - docs/models/operations/getroominfodeprecatedglobals.md
+  - docs/models/operations/getroominfodeprecatedrequest.md
+  - docs/models/operations/getactiveroomsforprocessdeprecatedglobals.md
+  - docs/models/operations/getactiveroomsforprocessdeprecatedrequest.md
+  - docs/models/operations/getinactiveroomsforprocessdeprecatedglobals.md
+  - docs/models/operations/getinactiveroomsforprocessdeprecatedrequest.md
+  - docs/models/operations/destroyroomdeprecatedglobals.md
+  - docs/models/operations/destroyroomdeprecatedrequest.md
+  - docs/models/operations/suspendroomdeprecatedglobals.md
+  - docs/models/operations/suspendroomdeprecatedrequest.md
+  - docs/models/operations/getconnectioninfodeprecatedglobals.md
+  - docs/models/operations/getconnectioninfodeprecatedrequest.md
+  - docs/models/operations/createroomglobals.md
+  - docs/models/operations/createroomrequest.md
+  - docs/models/operations/getroominfoglobals.md
+  - docs/models/operations/getroominforequest.md
+  - docs/models/operations/getactiveroomsforprocessglobals.md
+  - docs/models/operations/getactiveroomsforprocessrequest.md
+  - docs/models/operations/getinactiveroomsforprocessglobals.md
+  - docs/models/operations/getinactiveroomsforprocessrequest.md
+  - docs/models/operations/destroyroomglobals.md
+  - docs/models/operations/destroyroomrequest.md
+  - docs/models/operations/suspendroomv2deprecatedglobals.md
+  - docs/models/operations/suspendroomv2deprecatedrequest.md
+  - docs/models/operations/getconnectioninfoglobals.md
+  - docs/models/operations/getconnectioninforequest.md
+  - docs/models/operations/updateroomconfigglobals.md
+  - docs/models/operations/updateroomconfigrequest.md
+  - docs/models/operations/getrunningprocessesglobals.md
+  - docs/models/operations/getrunningprocessesrequest.md
+  - docs/models/operations/getstoppedprocessesglobals.md
+  - docs/models/operations/getstoppedprocessesrequest.md
+  - docs/models/operations/getprocessinfodeprecatedglobals.md
+  - docs/models/operations/getprocessinfodeprecatedrequest.md
+  - docs/models/operations/getprocessinfoglobals.md
+  - docs/models/operations/getprocessinforequest.md
+  - docs/models/operations/getlatestprocessesglobals.md
+  - docs/models/operations/getlatestprocessesrequest.md
+  - docs/models/operations/stopprocessglobals.md
+  - docs/models/operations/stopprocessrequest.md
+  - docs/models/operations/createprocessglobals.md
+  - docs/models/operations/createprocessrequest.md
+  - docs/models/operations/getorgmembersrequest.md
+  - docs/models/operations/inviteuserrequest.md
+  - docs/models/operations/rescindinviterequest.md
+  - docs/models/operations/getorgpendinginvitesrequest.md
+  - docs/models/operations/acceptinviterequest.md
+  - docs/models/operations/rejectinviterequest.md
+  - docs/models/operations/getmetricsglobals.md
+  - docs/models/operations/getmetricsrequest.md
+  - docs/models/operations/getlogsforappglobals.md
+  - docs/models/operations/getlogsforapprequest.md
+  - docs/models/operations/getlogsforprocessglobals.md
+  - docs/models/operations/getlogsforprocessrequest.md
+  - docs/models/operations/downloadlogforprocessglobals.md
+  - docs/models/operations/downloadlogforprocessrequest.md
+  - docs/models/operations/getlogsfordeploymentglobals.md
+  - docs/models/operations/getlogsfordeploymentrequest.md
   - docs/models/operations/createprivatelobbydeprecatedglobals.md
   - docs/models/operations/createprivatelobbydeprecatedsecurity.md
   - docs/models/operations/createprivatelobbydeprecatedrequest.md
@@ -415,92 +425,83 @@ generatedFiles:
   - docs/models/operations/getlobbyinfobyroomidrequest.md
   - docs/models/operations/getlobbyinfobyshortcodeglobals.md
   - docs/models/operations/getlobbyinfobyshortcoderequest.md
-  - docs/models/operations/getlogsforappglobals.md
-  - docs/models/operations/getlogsforapprequest.md
-  - docs/models/operations/getlogsforprocessglobals.md
-  - docs/models/operations/getlogsforprocessrequest.md
-  - docs/models/operations/downloadlogforprocessglobals.md
-  - docs/models/operations/downloadlogforprocessrequest.md
-  - docs/models/operations/getlogsfordeploymentglobals.md
-  - docs/models/operations/getlogsfordeploymentrequest.md
-  - docs/models/operations/getmetricsglobals.md
-  - docs/models/operations/getmetricsrequest.md
-  - docs/models/operations/getorgmembersrequest.md
-  - docs/models/operations/inviteuserrequest.md
-  - docs/models/operations/rescindinviterequest.md
-  - docs/models/operations/getorgpendinginvitesrequest.md
-  - docs/models/operations/acceptinviterequest.md
-  - docs/models/operations/rejectinviterequest.md
-  - docs/models/operations/getrunningprocessesglobals.md
-  - docs/models/operations/getrunningprocessesrequest.md
-  - docs/models/operations/getstoppedprocessesglobals.md
-  - docs/models/operations/getstoppedprocessesrequest.md
-  - docs/models/operations/getprocessinfodeprecatedglobals.md
-  - docs/models/operations/getprocessinfodeprecatedrequest.md
-  - docs/models/operations/getprocessinfoglobals.md
-  - docs/models/operations/getprocessinforequest.md
-  - docs/models/operations/getlatestprocessesglobals.md
-  - docs/models/operations/getlatestprocessesrequest.md
-  - docs/models/operations/stopprocessglobals.md
-  - docs/models/operations/stopprocessrequest.md
-  - docs/models/operations/createprocessglobals.md
-  - docs/models/operations/createprocessrequest.md
-  - docs/models/operations/createroomdeprecatedglobals.md
-  - docs/models/operations/createroomdeprecatedrequest.md
-  - docs/models/operations/getroominfodeprecatedglobals.md
-  - docs/models/operations/getroominfodeprecatedrequest.md
-  - docs/models/operations/getactiveroomsforprocessdeprecatedglobals.md
-  - docs/models/operations/getactiveroomsforprocessdeprecatedrequest.md
-  - docs/models/operations/getinactiveroomsforprocessdeprecatedglobals.md
-  - docs/models/operations/getinactiveroomsforprocessdeprecatedrequest.md
-  - docs/models/operations/destroyroomdeprecatedglobals.md
-  - docs/models/operations/destroyroomdeprecatedrequest.md
-  - docs/models/operations/suspendroomdeprecatedglobals.md
-  - docs/models/operations/suspendroomdeprecatedrequest.md
-  - docs/models/operations/getconnectioninfodeprecatedglobals.md
-  - docs/models/operations/getconnectioninfodeprecatedrequest.md
-  - docs/models/operations/createroomglobals.md
-  - docs/models/operations/createroomrequest.md
-  - docs/models/operations/getroominfoglobals.md
-  - docs/models/operations/getroominforequest.md
-  - docs/models/operations/getactiveroomsforprocessglobals.md
-  - docs/models/operations/getactiveroomsforprocessrequest.md
-  - docs/models/operations/getinactiveroomsforprocessglobals.md
-  - docs/models/operations/getinactiveroomsforprocessrequest.md
-  - docs/models/operations/destroyroomglobals.md
-  - docs/models/operations/destroyroomrequest.md
-  - docs/models/operations/suspendroomv2deprecatedglobals.md
-  - docs/models/operations/suspendroomv2deprecatedrequest.md
-  - docs/models/operations/getconnectioninfoglobals.md
-  - docs/models/operations/getconnectioninforequest.md
-  - docs/models/operations/updateroomconfigglobals.md
-  - docs/models/operations/updateroomconfigrequest.md
-  - docs/models/operations/getorgtokensrequest.md
-  - docs/models/operations/createorgtokenrequest.md
-  - docs/models/operations/revokeorgtokenrequest.md
+  - docs/models/operations/getdeploymentsdeprecatedglobals.md
+  - docs/models/operations/getdeploymentsdeprecatedrequest.md
+  - docs/models/operations/getlatestdeploymentdeprecatedglobals.md
+  - docs/models/operations/getlatestdeploymentdeprecatedrequest.md
+  - docs/models/operations/getdeploymentinfodeprecatedglobals.md
+  - docs/models/operations/getdeploymentinfodeprecatedrequest.md
+  - docs/models/operations/createdeploymentdeprecatedglobals.md
+  - docs/models/operations/createdeploymentdeprecatedrequest.md
+  - docs/models/operations/getdeploymentsglobals.md
+  - docs/models/operations/getdeploymentsrequest.md
+  - docs/models/operations/getlatestdeploymentglobals.md
+  - docs/models/operations/getlatestdeploymentrequest.md
+  - docs/models/operations/getdeploymentinfoglobals.md
+  - docs/models/operations/getdeploymentinforequest.md
+  - docs/models/operations/createdeploymentglobals.md
+  - docs/models/operations/createdeploymentrequest.md
+  - docs/models/operations/getbuildsdeprecatedglobals.md
+  - docs/models/operations/getbuildsdeprecatedrequest.md
+  - docs/models/operations/getbuildinfodeprecatedglobals.md
+  - docs/models/operations/getbuildinfodeprecatedrequest.md
+  - docs/models/operations/createbuilddeprecatedglobals.md
+  - docs/models/operations/createbuilddeprecatedrequest.md
+  - docs/models/operations/deletebuilddeprecatedglobals.md
+  - docs/models/operations/deletebuilddeprecatedrequest.md
+  - docs/models/operations/runbuilddeprecatedglobals.md
+  - docs/models/operations/filet.md
+  - docs/models/operations/runbuilddeprecatedrequestbody.md
+  - docs/models/operations/runbuilddeprecatedrequest.md
+  - docs/models/operations/getbuildsglobals.md
+  - docs/models/operations/getbuildsrequest.md
+  - docs/models/operations/getbuildinfoglobals.md
+  - docs/models/operations/getbuildinforequest.md
+  - docs/models/operations/createbuildglobals.md
+  - docs/models/operations/createbuildrequest.md
+  - docs/models/operations/createbuildwithuploadurlglobals.md
+  - docs/models/operations/createbuildwithuploadurlrequest.md
+  - docs/models/operations/deletebuildglobals.md
+  - docs/models/operations/deletebuildrequest.md
+  - docs/models/operations/runbuildglobals.md
+  - docs/models/operations/runbuildfile.md
+  - docs/models/operations/runbuildrequestbody.md
+  - docs/models/operations/runbuildrequest.md
+  - docs/models/operations/loginanonymousglobals.md
+  - docs/models/operations/loginanonymousrequest.md
+  - docs/models/operations/loginnicknameglobals.md
+  - docs/models/operations/loginnicknamerequest.md
+  - docs/models/operations/logingoogleglobals.md
+  - docs/models/operations/logingooglerequest.md
+  - docs/models/operations/updateappglobals.md
+  - docs/models/operations/updateapprequest.md
+  - docs/models/operations/getappinfoglobals.md
+  - docs/models/operations/getappinforequest.md
+  - docs/models/operations/deleteappglobals.md
+  - docs/models/operations/deleteapprequest.md
   - docs/sdks/hathoracloud/README.md
   - docs/lib/utils/retryconfig.md
-  - docs/sdks/appsv1/README.md
-  - docs/sdks/authv1/README.md
-  - docs/sdks/billingv1/README.md
-  - docs/sdks/buildsv1/README.md
-  - docs/sdks/buildsv2/README.md
-  - docs/sdks/deploymentsv1/README.md
-  - docs/sdks/deploymentsv2/README.md
-  - docs/sdks/discoveryv1/README.md
-  - docs/sdks/discoveryv2/README.md
+  - docs/sdks/tokensv1/README.md
+  - docs/sdks/roomsv1/README.md
+  - docs/sdks/roomsv2/README.md
+  - docs/sdks/processesv1/README.md
+  - docs/sdks/processesv2/README.md
+  - docs/sdks/organizationsv1/README.md
+  - docs/sdks/metricsv1/README.md
+  - docs/sdks/managementv1/README.md
+  - docs/sdks/logsv1/README.md
   - docs/sdks/lobbiesv1/README.md
   - docs/sdks/lobbiesv2/README.md
   - docs/sdks/lobbiesv3/README.md
-  - docs/sdks/logsv1/README.md
-  - docs/sdks/managementv1/README.md
-  - docs/sdks/metricsv1/README.md
-  - docs/sdks/organizationsv1/README.md
-  - docs/sdks/processesv1/README.md
-  - docs/sdks/processesv2/README.md
-  - docs/sdks/roomsv1/README.md
-  - docs/sdks/roomsv2/README.md
-  - docs/sdks/tokensv1/README.md
+  - docs/sdks/discoveryv1/README.md
+  - docs/sdks/discoveryv2/README.md
+  - docs/sdks/deploymentsv1/README.md
+  - docs/sdks/deploymentsv2/README.md
+  - docs/sdks/buildsv1/README.md
+  - docs/sdks/buildsv2/README.md
+  - docs/sdks/billingv1/README.md
+  - docs/sdks/authv1/README.md
+  - docs/sdks/appsv1/README.md
   - USAGE.md
   - .gitattributes
   - src/hooks/hooks.ts
