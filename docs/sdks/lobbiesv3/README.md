@@ -23,7 +23,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.lobbiesV3.createLobby({
-    playerAuth: process.env.PLAYER_AUTH,
+    playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   }, {
     visibility: "private",
     roomConfig: "{\"name\":\"my-room\"}",
@@ -75,7 +75,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV3.listActivePublicLobbies("app-af469a92-5b45-4565-b3c4-b79878de67d2", "Seattle");
+  const result = await hathoraCloud.lobbiesV3.listActivePublicLobbies("app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   // Handle the result
   console.log(result)

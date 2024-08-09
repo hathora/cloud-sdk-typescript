@@ -11,41 +11,38 @@ import {
 } from "./metricvalue.js";
 import * as z from "zod";
 
-/**
- * Construct a type with a set of properties K of type T
- */
 export type MetricsData = {
-    cpu: Array<MetricValue>;
-    memory: Array<MetricValue>;
-    rateEgress: Array<MetricValue>;
-    totalEgress: Array<MetricValue>;
-    activeConnections: Array<MetricValue>;
+    activeConnections?: Array<MetricValue> | undefined;
+    totalEgress?: Array<MetricValue> | undefined;
+    rateEgress?: Array<MetricValue> | undefined;
+    memory?: Array<MetricValue> | undefined;
+    cpu?: Array<MetricValue> | undefined;
 };
 
 /** @internal */
 export const MetricsData$inboundSchema: z.ZodType<MetricsData, z.ZodTypeDef, unknown> = z
     .object({
-        cpu: z.array(MetricValue$inboundSchema),
-        memory: z.array(MetricValue$inboundSchema),
-        rate_egress: z.array(MetricValue$inboundSchema),
-        total_egress: z.array(MetricValue$inboundSchema),
-        active_connections: z.array(MetricValue$inboundSchema),
+        active_connections: z.array(MetricValue$inboundSchema).optional(),
+        total_egress: z.array(MetricValue$inboundSchema).optional(),
+        rate_egress: z.array(MetricValue$inboundSchema).optional(),
+        memory: z.array(MetricValue$inboundSchema).optional(),
+        cpu: z.array(MetricValue$inboundSchema).optional(),
     })
     .transform((v) => {
         return remap$(v, {
-            rate_egress: "rateEgress",
-            total_egress: "totalEgress",
             active_connections: "activeConnections",
+            total_egress: "totalEgress",
+            rate_egress: "rateEgress",
         });
     });
 
 /** @internal */
 export type MetricsData$Outbound = {
-    cpu: Array<MetricValue$Outbound>;
-    memory: Array<MetricValue$Outbound>;
-    rate_egress: Array<MetricValue$Outbound>;
-    total_egress: Array<MetricValue$Outbound>;
-    active_connections: Array<MetricValue$Outbound>;
+    active_connections?: Array<MetricValue$Outbound> | undefined;
+    total_egress?: Array<MetricValue$Outbound> | undefined;
+    rate_egress?: Array<MetricValue$Outbound> | undefined;
+    memory?: Array<MetricValue$Outbound> | undefined;
+    cpu?: Array<MetricValue$Outbound> | undefined;
 };
 
 /** @internal */
@@ -55,17 +52,17 @@ export const MetricsData$outboundSchema: z.ZodType<
     MetricsData
 > = z
     .object({
-        cpu: z.array(MetricValue$outboundSchema),
-        memory: z.array(MetricValue$outboundSchema),
-        rateEgress: z.array(MetricValue$outboundSchema),
-        totalEgress: z.array(MetricValue$outboundSchema),
-        activeConnections: z.array(MetricValue$outboundSchema),
+        activeConnections: z.array(MetricValue$outboundSchema).optional(),
+        totalEgress: z.array(MetricValue$outboundSchema).optional(),
+        rateEgress: z.array(MetricValue$outboundSchema).optional(),
+        memory: z.array(MetricValue$outboundSchema).optional(),
+        cpu: z.array(MetricValue$outboundSchema).optional(),
     })
     .transform((v) => {
         return remap$(v, {
-            rateEgress: "rate_egress",
-            totalEgress: "total_egress",
             activeConnections: "active_connections",
+            totalEgress: "total_egress",
+            rateEgress: "rate_egress",
         });
     });
 

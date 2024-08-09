@@ -47,7 +47,7 @@ yarn add @hathora/cloud-sdk-typescript zod
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-    hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+    hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -242,7 +242,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { SDKValidationError } from "@hathora/cloud-sdk-typescript/models/errors";
 
 const hathoraCloud = new HathoraCloud({
-    hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+    hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -299,7 +299,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
     serverIdx: 1,
-    hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+    hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -326,7 +326,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
     serverURL: "https://api.hathora.dev",
-    hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+    hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -413,7 +413,7 @@ To authenticate with the API the `hathoraDevToken` parameter must be set when in
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-    hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+    hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -443,11 +443,9 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
     const result = await hathoraCloud.lobbiesV1.createPrivateLobbyDeprecated(
         {
-            playerAuth: process.env.PLAYER_AUTH,
+            playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
         },
-        "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-        "London",
-        false
+        "app-af469a92-5b45-4565-b3c4-b79878de67d2"
     );
 
     // Handle the result
@@ -484,7 +482,7 @@ The following global parameter is available.
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-    hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+    hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -532,7 +530,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { openAsBlob } from "node:fs";
 
 const hathoraCloud = new HathoraCloud({
-    hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+    hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -564,7 +562,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-    hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+    hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -608,7 +606,7 @@ const hathoraCloud = new HathoraCloud({
         },
         retryConnectionErrors: false,
     },
-    hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+    hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
