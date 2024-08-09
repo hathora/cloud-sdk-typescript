@@ -21,7 +21,7 @@ List all organization tokens for a given org.
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -65,7 +65,7 @@ Create a new organization token.
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -112,7 +112,7 @@ Revoke an organization token.
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 

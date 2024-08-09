@@ -20,12 +20,12 @@ Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const result = await hathoraCloud.logsV1.getLogsForApp("app-af469a92-5b45-4565-b3c4-b79878de67d2", false, 100, "Tokyo");
+  const result = await hathoraCloud.logsV1.getLogsForApp("app-af469a92-5b45-4565-b3c4-b79878de67d2", 100);
 
   // Handle the result
   console.log(result)
@@ -67,12 +67,12 @@ Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hatho
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const result = await hathoraCloud.logsV1.getLogsForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2", false, 100);
+  const result = await hathoraCloud.logsV1.getLogsForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2", 100);
 
   // Handle the result
   console.log(result)
@@ -114,7 +114,7 @@ Download entire log file for a stopped process.
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -161,12 +161,12 @@ Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/ha
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: process.env.HATHORA_DEV_TOKEN,
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const result = await hathoraCloud.logsV1.getLogsForDeployment(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2", false, 100);
+  const result = await hathoraCloud.logsV1.getLogsForDeployment(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2", 100);
 
   // Handle the result
   console.log(result)

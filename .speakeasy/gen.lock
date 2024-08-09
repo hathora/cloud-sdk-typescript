@@ -1,26 +1,26 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 9693400bd2402c6676bcfe1e754f6fd4
+  docChecksum: 639bc4c022948c3e348effb9c6feaabc
   docVersion: 0.0.1
-  speakeasyVersion: 1.348.1
-  generationVersion: 2.380.1
-  releaseVersion: 2.6.0
-  configChecksum: 92a97213cf01507ef39218d9e1ba565a
+  speakeasyVersion: 1.358.0
+  generationVersion: 2.390.6
+  releaseVersion: 2.7.0
+  configChecksum: 6d7d9ce2663d1c979364469a80a2f1c3
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.5
-    core: 3.11.11
+    constsAndDefaults: 0.1.6
+    core: 3.12.3
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
-    envVarSecurityUsage: 0.1.0
+    envVarSecurityUsage: 0.1.1
     flattening: 2.81.1
-    globalSecurity: 2.82.9
+    globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
@@ -34,6 +34,92 @@ features:
     sdkHooks: 0.1.0
     unions: 2.85.6
 generatedFiles:
+  - src/funcs/tokensV1GetOrgTokens.ts
+  - src/funcs/tokensV1CreateOrgToken.ts
+  - src/funcs/tokensV1RevokeOrgToken.ts
+  - src/funcs/roomsV1CreateRoomDeprecated.ts
+  - src/funcs/roomsV1GetRoomInfoDeprecated.ts
+  - src/funcs/roomsV1GetActiveRoomsForProcessDeprecated.ts
+  - src/funcs/roomsV1GetInactiveRoomsForProcessDeprecated.ts
+  - src/funcs/roomsV1DestroyRoomDeprecated.ts
+  - src/funcs/roomsV1SuspendRoomDeprecated.ts
+  - src/funcs/roomsV1GetConnectionInfoDeprecated.ts
+  - src/funcs/roomsV2CreateRoom.ts
+  - src/funcs/roomsV2GetRoomInfo.ts
+  - src/funcs/roomsV2GetActiveRoomsForProcess.ts
+  - src/funcs/roomsV2GetInactiveRoomsForProcess.ts
+  - src/funcs/roomsV2DestroyRoom.ts
+  - src/funcs/roomsV2SuspendRoomV2Deprecated.ts
+  - src/funcs/roomsV2GetConnectionInfo.ts
+  - src/funcs/roomsV2UpdateRoomConfig.ts
+  - src/funcs/processesV1GetRunningProcesses.ts
+  - src/funcs/processesV1GetStoppedProcesses.ts
+  - src/funcs/processesV1GetProcessInfoDeprecated.ts
+  - src/funcs/processesV2GetProcessInfo.ts
+  - src/funcs/processesV2GetLatestProcesses.ts
+  - src/funcs/processesV2StopProcess.ts
+  - src/funcs/processesV2CreateProcess.ts
+  - src/funcs/organizationsV1GetOrgs.ts
+  - src/funcs/organizationsV1GetUserPendingInvites.ts
+  - src/funcs/organizationsV1GetOrgMembers.ts
+  - src/funcs/organizationsV1InviteUser.ts
+  - src/funcs/organizationsV1RescindInvite.ts
+  - src/funcs/organizationsV1GetOrgPendingInvites.ts
+  - src/funcs/organizationsV1AcceptInvite.ts
+  - src/funcs/organizationsV1RejectInvite.ts
+  - src/funcs/metricsV1GetMetrics.ts
+  - src/funcs/managementV1SendVerificationEmail.ts
+  - src/funcs/logsV1GetLogsForApp.ts
+  - src/funcs/logsV1GetLogsForProcess.ts
+  - src/funcs/logsV1DownloadLogForProcess.ts
+  - src/funcs/logsV1GetLogsForDeployment.ts
+  - src/funcs/lobbiesV1CreatePrivateLobbyDeprecated.ts
+  - src/funcs/lobbiesV1CreatePublicLobbyDeprecated.ts
+  - src/funcs/lobbiesV1ListActivePublicLobbiesDeprecatedV1.ts
+  - src/funcs/lobbiesV2CreatePrivateLobby.ts
+  - src/funcs/lobbiesV2CreatePublicLobby.ts
+  - src/funcs/lobbiesV2CreateLocalLobby.ts
+  - src/funcs/lobbiesV2CreateLobbyDeprecated.ts
+  - src/funcs/lobbiesV2ListActivePublicLobbiesDeprecatedV2.ts
+  - src/funcs/lobbiesV2GetLobbyInfo.ts
+  - src/funcs/lobbiesV2SetLobbyState.ts
+  - src/funcs/lobbiesV3CreateLobby.ts
+  - src/funcs/lobbiesV3ListActivePublicLobbies.ts
+  - src/funcs/lobbiesV3GetLobbyInfoByRoomId.ts
+  - src/funcs/lobbiesV3GetLobbyInfoByShortCode.ts
+  - src/funcs/discoveryV1GetPingServiceEndpointsDeprecated.ts
+  - src/funcs/discoveryV2GetPingServiceEndpoints.ts
+  - src/funcs/deploymentsV1GetDeploymentsDeprecated.ts
+  - src/funcs/deploymentsV1GetLatestDeploymentDeprecated.ts
+  - src/funcs/deploymentsV1GetDeploymentInfoDeprecated.ts
+  - src/funcs/deploymentsV1CreateDeploymentDeprecated.ts
+  - src/funcs/deploymentsV2GetDeployments.ts
+  - src/funcs/deploymentsV2GetLatestDeployment.ts
+  - src/funcs/deploymentsV2GetDeploymentInfo.ts
+  - src/funcs/deploymentsV2CreateDeployment.ts
+  - src/funcs/buildsV1GetBuildsDeprecated.ts
+  - src/funcs/buildsV1GetBuildInfoDeprecated.ts
+  - src/funcs/buildsV1CreateBuildDeprecated.ts
+  - src/funcs/buildsV1DeleteBuildDeprecated.ts
+  - src/funcs/buildsV1RunBuildDeprecated.ts
+  - src/funcs/buildsV2GetBuilds.ts
+  - src/funcs/buildsV2GetBuildInfo.ts
+  - src/funcs/buildsV2CreateBuild.ts
+  - src/funcs/buildsV2CreateBuildWithUploadUrl.ts
+  - src/funcs/buildsV2DeleteBuild.ts
+  - src/funcs/buildsV2RunBuild.ts
+  - src/funcs/billingV1GetBalance.ts
+  - src/funcs/billingV1GetPaymentMethod.ts
+  - src/funcs/billingV1InitStripeCustomerPortalUrl.ts
+  - src/funcs/billingV1GetInvoices.ts
+  - src/funcs/authV1LoginAnonymous.ts
+  - src/funcs/authV1LoginNickname.ts
+  - src/funcs/authV1LoginGoogle.ts
+  - src/funcs/appsV1GetApps.ts
+  - src/funcs/appsV1CreateApp.ts
+  - src/funcs/appsV1UpdateApp.ts
+  - src/funcs/appsV1GetAppInfo.ts
+  - src/funcs/appsV1DeleteApp.ts
   - src/sdk/tokensv1.ts
   - src/sdk/roomsv1.ts
   - src/sdk/roomsv2.ts
@@ -61,6 +147,7 @@ generatedFiles:
   - RUNTIMES.md
   - jsr.json
   - package.json
+  - src/core.ts
   - src/index.ts
   - src/lib/base64.ts
   - src/lib/config.ts
@@ -68,6 +155,7 @@ generatedFiles:
   - src/lib/encodings.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
+  - src/lib/matchers.ts
   - src/lib/primitives.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
@@ -75,10 +163,12 @@ generatedFiles:
   - src/lib/security.ts
   - src/lib/url.ts
   - src/sdk/index.ts
+  - src/models/errors/httpclienterrors.ts
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
   - src/types/blobs.ts
   - src/types/enums.ts
+  - src/types/fp.ts
   - src/types/index.ts
   - src/types/operations.ts
   - src/types/rfcdate.ts
@@ -244,6 +334,7 @@ generatedFiles:
   - docs/models/components/room.md
   - docs/models/components/roomallocation.md
   - docs/models/components/roomstatus.md
+  - docs/models/components/roomwithoutallocationscurrentallocation.md
   - docs/models/components/roomwithoutallocations.md
   - docs/models/components/connectioninfo.md
   - docs/models/components/status.md
