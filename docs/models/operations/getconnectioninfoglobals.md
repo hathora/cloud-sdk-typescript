@@ -1,5 +1,12 @@
 # GetConnectionInfoGlobals
 
+## Example Usage
+
+```typescript
+import { GetConnectionInfoGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetConnectionInfoGlobals = {};
+```
 
 ## Fields
 

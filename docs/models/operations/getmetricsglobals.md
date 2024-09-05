@@ -1,5 +1,12 @@
 # GetMetricsGlobals
 
+## Example Usage
+
+```typescript
+import { GetMetricsGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetMetricsGlobals = {};
+```
 
 ## Fields
 

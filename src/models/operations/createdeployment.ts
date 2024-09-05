@@ -12,8 +12,7 @@ export type CreateDeploymentGlobals = {
 
 export type CreateDeploymentRequest = {
     appId?: string | undefined;
-    buildId: number;
-    deploymentConfigV2: components.DeploymentConfigV2;
+    deploymentConfigV3: components.DeploymentConfigV3;
 };
 
 /** @internal */
@@ -60,20 +59,18 @@ export const CreateDeploymentRequest$inboundSchema: z.ZodType<
 > = z
     .object({
         appId: z.string().optional(),
-        buildId: z.number().int(),
-        DeploymentConfigV2: components.DeploymentConfigV2$inboundSchema,
+        DeploymentConfigV3: components.DeploymentConfigV3$inboundSchema,
     })
     .transform((v) => {
         return remap$(v, {
-            DeploymentConfigV2: "deploymentConfigV2",
+            DeploymentConfigV3: "deploymentConfigV3",
         });
     });
 
 /** @internal */
 export type CreateDeploymentRequest$Outbound = {
     appId?: string | undefined;
-    buildId: number;
-    DeploymentConfigV2: components.DeploymentConfigV2$Outbound;
+    DeploymentConfigV3: components.DeploymentConfigV3$Outbound;
 };
 
 /** @internal */
@@ -84,12 +81,11 @@ export const CreateDeploymentRequest$outboundSchema: z.ZodType<
 > = z
     .object({
         appId: z.string().optional(),
-        buildId: z.number().int(),
-        deploymentConfigV2: components.DeploymentConfigV2$outboundSchema,
+        deploymentConfigV3: components.DeploymentConfigV3$outboundSchema,
     })
     .transform((v) => {
         return remap$(v, {
-            deploymentConfigV2: "DeploymentConfigV2",
+            deploymentConfigV3: "DeploymentConfigV3",
         });
     });
 

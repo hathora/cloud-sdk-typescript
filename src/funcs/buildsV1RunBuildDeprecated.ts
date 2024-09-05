@@ -4,6 +4,7 @@
 
 import { HathoraCloudCore } from "../core.js";
 import { encodeSimple as encodeSimple$ } from "../lib/encodings.js";
+import { readableStreamToArrayBuffer } from "../lib/files.js";
 import * as m$ from "../lib/matchers.js";
 import * as schemas$ from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
@@ -22,6 +23,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { isBlobLike } from "../types/blobs.js";
 import { Result } from "../types/fp.js";
+import { isReadableStream } from "../types/streams.js";
 import * as z from "zod";
 
 /**
@@ -67,6 +69,10 @@ export async function buildsV1RunBuildDeprecated(
 
     if (isBlobLike(payload$.RequestBody.file)) {
         body$.append("file", payload$.RequestBody.file);
+    } else if (isReadableStream(payload$.RequestBody.file.content)) {
+        const buffer = await readableStreamToArrayBuffer(payload$.RequestBody.file.content);
+        const blob = new Blob([buffer], { type: "application/octet-stream" });
+        body$.append("file", blob);
     } else {
         body$.append(
             "file",

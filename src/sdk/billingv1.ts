@@ -5,14 +5,27 @@
 import { billingV1GetBalance } from "../funcs/billingV1GetBalance.js";
 import { billingV1GetInvoices } from "../funcs/billingV1GetInvoices.js";
 import { billingV1GetPaymentMethod } from "../funcs/billingV1GetPaymentMethod.js";
+import { billingV1GetUpcomingInvoiceItems } from "../funcs/billingV1GetUpcomingInvoiceItems.js";
+import { billingV1GetUpcomingInvoiceTotal } from "../funcs/billingV1GetUpcomingInvoiceTotal.js";
 import { billingV1InitStripeCustomerPortalUrl } from "../funcs/billingV1InitStripeCustomerPortalUrl.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class BillingV1 extends ClientSDK {
     async getBalance(options?: RequestOptions): Promise<number> {
         return unwrapAsync(billingV1GetBalance(this, options));
+    }
+
+    async getUpcomingInvoiceItems(options?: RequestOptions): Promise<components.InvoiceItemPage> {
+        return unwrapAsync(billingV1GetUpcomingInvoiceItems(this, options));
+    }
+
+    async getUpcomingInvoiceTotal(
+        options?: RequestOptions
+    ): Promise<operations.GetUpcomingInvoiceTotalResponseBody> {
+        return unwrapAsync(billingV1GetUpcomingInvoiceTotal(this, options));
     }
 
     async getPaymentMethod(options?: RequestOptions): Promise<components.PaymentMethod> {

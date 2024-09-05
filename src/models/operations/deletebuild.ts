@@ -4,50 +4,10 @@
 
 import * as z from "zod";
 
-export type DeleteBuildGlobals = {
-    appId?: string | undefined;
-};
-
 export type DeleteBuildRequest = {
-    appId?: string | undefined;
-    buildId: number;
+    buildId: string;
+    orgId?: string | undefined;
 };
-
-/** @internal */
-export const DeleteBuildGlobals$inboundSchema: z.ZodType<
-    DeleteBuildGlobals,
-    z.ZodTypeDef,
-    unknown
-> = z.object({
-    appId: z.string().optional(),
-});
-
-/** @internal */
-export type DeleteBuildGlobals$Outbound = {
-    appId?: string | undefined;
-};
-
-/** @internal */
-export const DeleteBuildGlobals$outboundSchema: z.ZodType<
-    DeleteBuildGlobals$Outbound,
-    z.ZodTypeDef,
-    DeleteBuildGlobals
-> = z.object({
-    appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteBuildGlobals$ {
-    /** @deprecated use `DeleteBuildGlobals$inboundSchema` instead. */
-    export const inboundSchema = DeleteBuildGlobals$inboundSchema;
-    /** @deprecated use `DeleteBuildGlobals$outboundSchema` instead. */
-    export const outboundSchema = DeleteBuildGlobals$outboundSchema;
-    /** @deprecated use `DeleteBuildGlobals$Outbound` instead. */
-    export type Outbound = DeleteBuildGlobals$Outbound;
-}
 
 /** @internal */
 export const DeleteBuildRequest$inboundSchema: z.ZodType<
@@ -55,14 +15,14 @@ export const DeleteBuildRequest$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    appId: z.string().optional(),
-    buildId: z.number().int(),
+    buildId: z.string(),
+    orgId: z.string().optional(),
 });
 
 /** @internal */
 export type DeleteBuildRequest$Outbound = {
-    appId?: string | undefined;
-    buildId: number;
+    buildId: string;
+    orgId?: string | undefined;
 };
 
 /** @internal */
@@ -71,8 +31,8 @@ export const DeleteBuildRequest$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     DeleteBuildRequest
 > = z.object({
-    appId: z.string().optional(),
-    buildId: z.number().int(),
+    buildId: z.string(),
+    orgId: z.string().optional(),
 });
 
 /**

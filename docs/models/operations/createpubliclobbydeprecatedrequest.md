@@ -1,5 +1,12 @@
 # CreatePublicLobbyDeprecatedRequest
 
+## Example Usage
+
+```typescript
+import { CreatePublicLobbyDeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: CreatePublicLobbyDeprecatedRequest = {};
+```
 
 ## Fields
 

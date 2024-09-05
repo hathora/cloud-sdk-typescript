@@ -1,5 +1,14 @@
 # NicknameObject
 
+## Example Usage
+
+```typescript
+import { NicknameObject } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: NicknameObject = {
+    nickname: "squiddytwoshoes",
+};
+```
 
 ## Fields
 

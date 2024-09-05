@@ -1,5 +1,17 @@
 # CreateOrgTokenRequest
 
+## Example Usage
+
+```typescript
+import { CreateOrgTokenRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: CreateOrgTokenRequest = {
+    orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
+    createOrgToken: {
+        name: "ci-token",
+    },
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # ListActivePublicLobbiesDeprecatedV2Globals
 
+## Example Usage
+
+```typescript
+import { ListActivePublicLobbiesDeprecatedV2Globals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: ListActivePublicLobbiesDeprecatedV2Globals = {};
+```
 
 ## Fields
 

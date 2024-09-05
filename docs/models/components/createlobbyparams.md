@@ -1,5 +1,16 @@
 # CreateLobbyParams
 
+## Example Usage
+
+```typescript
+import { CreateLobbyParams } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: CreateLobbyParams = {
+    visibility: "private",
+    initialConfig: "<value>",
+    region: "London",
+};
+```
 
 ## Fields
 

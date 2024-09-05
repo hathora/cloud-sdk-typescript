@@ -1,5 +1,12 @@
 # GetProcessInfoDeprecatedGlobals
 
+## Example Usage
+
+```typescript
+import { GetProcessInfoDeprecatedGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetProcessInfoDeprecatedGlobals = {};
+```
 
 ## Fields
 

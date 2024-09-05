@@ -1,5 +1,14 @@
 # CreateLobbyDeprecatedSecurity
 
+## Example Usage
+
+```typescript
+import { CreateLobbyDeprecatedSecurity } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: CreateLobbyDeprecatedSecurity = {
+    playerAuth: "<value>",
+};
+```
 
 ## Fields
 

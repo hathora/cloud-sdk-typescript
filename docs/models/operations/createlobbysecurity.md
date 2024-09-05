@@ -1,5 +1,14 @@
 # CreateLobbySecurity
 
+## Example Usage
+
+```typescript
+import { CreateLobbySecurity } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: CreateLobbySecurity = {
+    playerAuth: "<value>",
+};
+```
 
 ## Fields
 

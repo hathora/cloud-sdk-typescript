@@ -2,6 +2,37 @@
 
 A build represents a game server artifact and its associated metadata.
 
+## Example Usage
+
+```typescript
+import { BuildWithUploadUrl } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: BuildWithUploadUrl = {
+    buildTag: "0.1.14-14c793",
+    regionalContainerTags: [
+        {
+            containerTag: "<value>",
+            region: "Dallas",
+        },
+    ],
+    imageSize: 368725,
+    status: "succeeded",
+    deletedAt: new Date("2024-06-18T19:24:21.405Z"),
+    finishedAt: new Date("2022-01-15T20:59:18.484Z"),
+    startedAt: new Date("2022-04-17T10:09:06.611Z"),
+    createdAt: new Date("2023-11-14T15:20:37.094Z"),
+    createdBy: "noreply@hathora.dev",
+    buildId: 1,
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+    uploadBodyParams: [
+        {
+            value: "<value>",
+            key: "<key>",
+        },
+    ],
+    uploadUrl: "<value>",
+};
+```
 
 ## Fields
 

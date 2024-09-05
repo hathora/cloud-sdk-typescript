@@ -1,5 +1,14 @@
 # CustomerPortalUrl
 
+## Example Usage
+
+```typescript
+import { CustomerPortalUrl } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: CustomerPortalUrl = {
+    returnUrl: "<value>",
+};
+```
 
 ## Fields
 

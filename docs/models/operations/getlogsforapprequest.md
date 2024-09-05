@@ -1,5 +1,14 @@
 # GetLogsForAppRequest
 
+## Example Usage
+
+```typescript
+import { GetLogsForAppRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetLogsForAppRequest = {
+    tailLines: 100,
+};
+```
 
 ## Fields
 

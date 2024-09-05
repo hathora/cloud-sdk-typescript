@@ -1,5 +1,15 @@
 # UploadBodyParams
 
+## Example Usage
+
+```typescript
+import { UploadBodyParams } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: UploadBodyParams = {
+    value: "<value>",
+    key: "<key>",
+};
+```
 
 ## Fields
 

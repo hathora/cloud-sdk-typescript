@@ -1,5 +1,12 @@
 # LoginAnonymousRequest
 
+## Example Usage
+
+```typescript
+import { LoginAnonymousRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: LoginAnonymousRequest = {};
+```
 
 ## Fields
 

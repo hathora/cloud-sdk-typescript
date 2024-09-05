@@ -1,5 +1,12 @@
 # GetRunningProcessesGlobals
 
+## Example Usage
+
+```typescript
+import { GetRunningProcessesGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetRunningProcessesGlobals = {};
+```
 
 ## Fields
 

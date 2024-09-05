@@ -1,5 +1,12 @@
 # GetConnectionInfoDeprecatedGlobals
 
+## Example Usage
+
+```typescript
+import { GetConnectionInfoDeprecatedGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetConnectionInfoDeprecatedGlobals = {};
+```
 
 ## Fields
 

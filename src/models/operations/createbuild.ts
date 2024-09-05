@@ -6,50 +6,10 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
-export type CreateBuildGlobals = {
-    appId?: string | undefined;
-};
-
 export type CreateBuildRequest = {
-    appId?: string | undefined;
-    createBuildParams: components.CreateBuildParams;
+    orgId?: string | undefined;
+    createMultipartBuildParams: components.CreateMultipartBuildParams;
 };
-
-/** @internal */
-export const CreateBuildGlobals$inboundSchema: z.ZodType<
-    CreateBuildGlobals,
-    z.ZodTypeDef,
-    unknown
-> = z.object({
-    appId: z.string().optional(),
-});
-
-/** @internal */
-export type CreateBuildGlobals$Outbound = {
-    appId?: string | undefined;
-};
-
-/** @internal */
-export const CreateBuildGlobals$outboundSchema: z.ZodType<
-    CreateBuildGlobals$Outbound,
-    z.ZodTypeDef,
-    CreateBuildGlobals
-> = z.object({
-    appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBuildGlobals$ {
-    /** @deprecated use `CreateBuildGlobals$inboundSchema` instead. */
-    export const inboundSchema = CreateBuildGlobals$inboundSchema;
-    /** @deprecated use `CreateBuildGlobals$outboundSchema` instead. */
-    export const outboundSchema = CreateBuildGlobals$outboundSchema;
-    /** @deprecated use `CreateBuildGlobals$Outbound` instead. */
-    export type Outbound = CreateBuildGlobals$Outbound;
-}
 
 /** @internal */
 export const CreateBuildRequest$inboundSchema: z.ZodType<
@@ -58,19 +18,19 @@ export const CreateBuildRequest$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        appId: z.string().optional(),
-        CreateBuildParams: components.CreateBuildParams$inboundSchema,
+        orgId: z.string().optional(),
+        CreateMultipartBuildParams: components.CreateMultipartBuildParams$inboundSchema,
     })
     .transform((v) => {
         return remap$(v, {
-            CreateBuildParams: "createBuildParams",
+            CreateMultipartBuildParams: "createMultipartBuildParams",
         });
     });
 
 /** @internal */
 export type CreateBuildRequest$Outbound = {
-    appId?: string | undefined;
-    CreateBuildParams: components.CreateBuildParams$Outbound;
+    orgId?: string | undefined;
+    CreateMultipartBuildParams: components.CreateMultipartBuildParams$Outbound;
 };
 
 /** @internal */
@@ -80,12 +40,12 @@ export const CreateBuildRequest$outboundSchema: z.ZodType<
     CreateBuildRequest
 > = z
     .object({
-        appId: z.string().optional(),
-        createBuildParams: components.CreateBuildParams$outboundSchema,
+        orgId: z.string().optional(),
+        createMultipartBuildParams: components.CreateMultipartBuildParams$outboundSchema,
     })
     .transform((v) => {
         return remap$(v, {
-            createBuildParams: "CreateBuildParams",
+            createMultipartBuildParams: "CreateMultipartBuildParams",
         });
     });
 

@@ -1,19 +1,17 @@
 # Region
 
+## Example Usage
+
+```typescript
+import { Region } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: Region = "Frankfurt";
+```
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `Seattle`      | Seattle        |
-| `LosAngeles`   | Los_Angeles    |
-| `WashingtonDC` | Washington_DC  |
-| `Chicago`      | Chicago        |
-| `London`       | London         |
-| `Frankfurt`    | Frankfurt      |
-| `Mumbai`       | Mumbai         |
-| `Singapore`    | Singapore      |
-| `Tokyo`        | Tokyo          |
-| `Sydney`       | Sydney         |
-| `SaoPaulo`     | Sao_Paulo      |
-| `Dallas`       | Dallas         |
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
+```typescript
+"Seattle" | "Los_Angeles" | "Washington_DC" | "Chicago" | "London" | "Frankfurt" | "Mumbai" | "Singapore" | "Tokyo" | "Sydney" | "Sao_Paulo" | "Dallas" | Unrecognized<string>
+```

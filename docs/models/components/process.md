@@ -2,6 +2,48 @@
 
 A process object represents a runtime instance of your game server and its metadata.
 
+## Example Usage
+
+```typescript
+import { Process } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: Process = {
+    egressedBytes: 435,
+    idleSince: new Date("2023-08-12T23:03:55.423Z"),
+    activeConnectionsUpdatedAt: new Date("2024-11-01T08:34:16.447Z"),
+    activeConnections: 10,
+    roomsAllocatedUpdatedAt: new Date("2024-04-11T10:37:31.008Z"),
+    roomsAllocated: 1,
+    roomSlotsAvailableUpdatedAt: new Date("2023-07-26T22:41:54.328Z"),
+    roomSlotsAvailable: 1059.07,
+    draining: false,
+    terminatedAt: new Date("2023-03-31T11:16:03.717Z"),
+    stoppingAt: new Date("2023-06-04T01:35:07.870Z"),
+    startedAt: new Date("2022-10-17T22:52:14.889Z"),
+    startingAt: new Date("2022-07-24T05:17:09.567Z"),
+    roomsPerProcess: 3,
+    additionalExposedPorts: [
+        {
+            transportType: "tcp",
+            port: 72941,
+            host: "1.proxy.hathora.dev",
+            name: "debug",
+        },
+    ],
+    exposedPort: {
+        transportType: "tcp",
+        port: 34567,
+        host: "1.proxy.hathora.dev",
+        name: "default",
+    },
+    port: 7742.34,
+    host: "several-increase.biz",
+    region: "Mumbai",
+    processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+    deploymentId: 1,
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+};
+```
 
 ## Fields
 

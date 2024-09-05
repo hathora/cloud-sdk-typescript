@@ -1,5 +1,12 @@
 # GetRoomInfoGlobals
 
+## Example Usage
+
+```typescript
+import { GetRoomInfoGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetRoomInfoGlobals = {};
+```
 
 ## Fields
 

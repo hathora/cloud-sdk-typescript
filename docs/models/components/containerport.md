@@ -2,6 +2,17 @@
 
 A container port object represents the transport configruations for how your server will listen.
 
+## Example Usage
+
+```typescript
+import { ContainerPort } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: ContainerPort = {
+    transportType: "tcp",
+    port: 8000,
+    name: "default",
+};
+```
 
 ## Fields
 

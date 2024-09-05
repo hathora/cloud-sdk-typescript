@@ -1,5 +1,12 @@
 # UpdateAppGlobals
 
+## Example Usage
+
+```typescript
+import { UpdateAppGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: UpdateAppGlobals = {};
+```
 
 ## Fields
 

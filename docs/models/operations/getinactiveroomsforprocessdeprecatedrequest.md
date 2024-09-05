@@ -1,5 +1,14 @@
 # GetInactiveRoomsForProcessDeprecatedRequest
 
+## Example Usage
+
+```typescript
+import { GetInactiveRoomsForProcessDeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetInactiveRoomsForProcessDeprecatedRequest = {
+    processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+};
+```
 
 ## Fields
 

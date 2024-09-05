@@ -1,5 +1,14 @@
 # CreateUserInvite
 
+## Example Usage
+
+```typescript
+import { CreateUserInvite } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: CreateUserInvite = {
+    userEmail: "noreply@hathora.dev",
+};
+```
 
 ## Fields
 

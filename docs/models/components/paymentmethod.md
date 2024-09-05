@@ -2,6 +2,13 @@
 
 Make all properties in T optional
 
+## Example Usage
+
+```typescript
+import { PaymentMethod } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: PaymentMethod = {};
+```
 
 ## Fields
 

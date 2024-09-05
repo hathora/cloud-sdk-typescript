@@ -1,5 +1,17 @@
 # UpdateAppRequest
 
+## Example Usage
+
+```typescript
+import { UpdateAppRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: UpdateAppRequest = {
+    appConfig: {
+        authConfiguration: {},
+        appName: "minecraft",
+    },
+};
+```
 
 ## Fields
 

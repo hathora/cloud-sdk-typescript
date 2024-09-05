@@ -10,12 +10,18 @@ A plan defines how much CPU and memory is required to run an instance of your ga
 
 `large`: 4 core, 8gb memory
 
+## Example Usage
+
+```typescript
+import { PlanName } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: PlanName = "tiny";
+```
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `Tiny`   | tiny     |
-| `Small`  | small    |
-| `Medium` | medium   |
-| `Large`  | large    |
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
+```typescript
+"tiny" | "small" | "medium" | "large" | Unrecognized<string>
+```

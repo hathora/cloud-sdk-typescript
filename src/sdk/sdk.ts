@@ -4,12 +4,15 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { AppsV1 } from "./appsv1.js";
+import { AppsV2 } from "./appsv2.js";
 import { AuthV1 } from "./authv1.js";
 import { BillingV1 } from "./billingv1.js";
 import { BuildsV1 } from "./buildsv1.js";
 import { BuildsV2 } from "./buildsv2.js";
+import { BuildsV3 } from "./buildsv3.js";
 import { DeploymentsV1 } from "./deploymentsv1.js";
 import { DeploymentsV2 } from "./deploymentsv2.js";
+import { DeploymentsV3 } from "./deploymentsv3.js";
 import { DiscoveryV1 } from "./discoveryv1.js";
 import { DiscoveryV2 } from "./discoveryv2.js";
 import { LobbiesV1 } from "./lobbiesv1.js";
@@ -21,6 +24,7 @@ import { MetricsV1 } from "./metricsv1.js";
 import { OrganizationsV1 } from "./organizationsv1.js";
 import { ProcessesV1 } from "./processesv1.js";
 import { ProcessesV2 } from "./processesv2.js";
+import { ProcessesV3 } from "./processesv3.js";
 import { RoomsV1 } from "./roomsv1.js";
 import { RoomsV2 } from "./roomsv2.js";
 import { TokensV1 } from "./tokensv1.js";
@@ -49,6 +53,11 @@ export class HathoraCloud extends ClientSDK {
     private _processesV2?: ProcessesV2;
     get processesV2(): ProcessesV2 {
         return (this._processesV2 ??= new ProcessesV2(this.options$));
+    }
+
+    private _processesV3?: ProcessesV3;
+    get processesV3(): ProcessesV3 {
+        return (this._processesV3 ??= new ProcessesV3(this.options$));
     }
 
     private _organizationsV1?: OrganizationsV1;
@@ -106,6 +115,11 @@ export class HathoraCloud extends ClientSDK {
         return (this._deploymentsV2 ??= new DeploymentsV2(this.options$));
     }
 
+    private _deploymentsV3?: DeploymentsV3;
+    get deploymentsV3(): DeploymentsV3 {
+        return (this._deploymentsV3 ??= new DeploymentsV3(this.options$));
+    }
+
     private _buildsV1?: BuildsV1;
     get buildsV1(): BuildsV1 {
         return (this._buildsV1 ??= new BuildsV1(this.options$));
@@ -114,6 +128,11 @@ export class HathoraCloud extends ClientSDK {
     private _buildsV2?: BuildsV2;
     get buildsV2(): BuildsV2 {
         return (this._buildsV2 ??= new BuildsV2(this.options$));
+    }
+
+    private _buildsV3?: BuildsV3;
+    get buildsV3(): BuildsV3 {
+        return (this._buildsV3 ??= new BuildsV3(this.options$));
     }
 
     private _billingV1?: BillingV1;
@@ -129,5 +148,10 @@ export class HathoraCloud extends ClientSDK {
     private _appsV1?: AppsV1;
     get appsV1(): AppsV1 {
         return (this._appsV1 ??= new AppsV1(this.options$));
+    }
+
+    private _appsV2?: AppsV2;
+    get appsV2(): AppsV2 {
+        return (this._appsV2 ??= new AppsV2(this.options$));
     }
 }

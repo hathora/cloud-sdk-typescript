@@ -1,5 +1,12 @@
 # GetBuildInfoDeprecatedGlobals
 
+## Example Usage
+
+```typescript
+import { GetBuildInfoDeprecatedGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetBuildInfoDeprecatedGlobals = {};
+```
 
 ## Fields
 

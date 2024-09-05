@@ -1,5 +1,14 @@
 # GetLobbyInfoRequest
 
+## Example Usage
+
+```typescript
+import { GetLobbyInfoRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetLobbyInfoRequest = {
+    roomId: "2swovpy1fnunu",
+};
+```
 
 ## Fields
 

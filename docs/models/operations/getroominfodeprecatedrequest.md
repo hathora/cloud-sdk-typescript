@@ -1,5 +1,14 @@
 # GetRoomInfoDeprecatedRequest
 
+## Example Usage
+
+```typescript
+import { GetRoomInfoDeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetRoomInfoDeprecatedRequest = {
+    roomId: "2swovpy1fnunu",
+};
+```
 
 ## Fields
 

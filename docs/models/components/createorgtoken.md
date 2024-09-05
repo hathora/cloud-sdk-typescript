@@ -1,5 +1,14 @@
 # CreateOrgToken
 
+## Example Usage
+
+```typescript
+import { CreateOrgToken } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: CreateOrgToken = {
+    name: "ci-token",
+};
+```
 
 ## Fields
 

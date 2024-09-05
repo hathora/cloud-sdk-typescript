@@ -1,5 +1,12 @@
 # DestroyRoomDeprecatedGlobals
 
+## Example Usage
+
+```typescript
+import { DestroyRoomDeprecatedGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: DestroyRoomDeprecatedGlobals = {};
+```
 
 ## Fields
 

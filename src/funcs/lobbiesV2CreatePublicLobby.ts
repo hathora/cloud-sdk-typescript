@@ -98,7 +98,7 @@ export async function lobbiesV2CreatePublicLobby(
     const context = {
         operationID: "CreatePublicLobby",
         oAuth2Scopes: [],
-        securitySource: security$,
+        securitySource: security,
     };
 
     const requestRes = client$.createRequest$(

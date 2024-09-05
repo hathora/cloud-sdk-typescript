@@ -1,5 +1,18 @@
 # CreatePrivateLobbyRequest
 
+## Example Usage
+
+```typescript
+import { CreatePrivateLobbyRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: CreatePrivateLobbyRequest = {
+    roomId: "2swovpy1fnunu",
+    requestBody: {
+        initialConfig: "<value>",
+        region: "Tokyo",
+    },
+};
+```
 
 ## Fields
 

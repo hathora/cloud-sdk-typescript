@@ -1,5 +1,12 @@
 # GetInactiveRoomsForProcessGlobals
 
+## Example Usage
+
+```typescript
+import { GetInactiveRoomsForProcessGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetInactiveRoomsForProcessGlobals = {};
+```
 
 ## Fields
 

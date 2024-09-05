@@ -1,5 +1,15 @@
 # StartingConnectionInfo
 
+## Example Usage
+
+```typescript
+import { StartingConnectionInfo } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: StartingConnectionInfo = {
+    status: "starting",
+    roomId: "2swovpy1fnunu",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # ListActivePublicLobbiesRequest
 
+## Example Usage
+
+```typescript
+import { ListActivePublicLobbiesRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: ListActivePublicLobbiesRequest = {};
+```
 
 ## Fields
 

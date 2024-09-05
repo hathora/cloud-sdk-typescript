@@ -1,5 +1,12 @@
 # LoginNicknameGlobals
 
+## Example Usage
+
+```typescript
+import { LoginNicknameGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: LoginNicknameGlobals = {};
+```
 
 ## Fields
 

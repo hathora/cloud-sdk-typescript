@@ -1,5 +1,12 @@
 # GetLogsForDeploymentGlobals
 
+## Example Usage
+
+```typescript
+import { GetLogsForDeploymentGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetLogsForDeploymentGlobals = {};
+```
 
 ## Fields
 

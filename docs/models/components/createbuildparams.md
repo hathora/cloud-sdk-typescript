@@ -1,5 +1,14 @@
 # CreateBuildParams
 
+## Example Usage
+
+```typescript
+import { CreateBuildParams } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: CreateBuildParams = {
+    buildTag: "0.1.14-14c793",
+};
+```
 
 ## Fields
 

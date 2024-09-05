@@ -1,5 +1,12 @@
 # DownloadLogForProcessGlobals
 
+## Example Usage
+
+```typescript
+import { DownloadLogForProcessGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: DownloadLogForProcessGlobals = {};
+```
 
 ## Fields
 

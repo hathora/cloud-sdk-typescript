@@ -1,5 +1,12 @@
 # SuspendRoomDeprecatedGlobals
 
+## Example Usage
+
+```typescript
+import { SuspendRoomDeprecatedGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: SuspendRoomDeprecatedGlobals = {};
+```
 
 ## Fields
 

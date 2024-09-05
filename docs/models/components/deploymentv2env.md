@@ -1,5 +1,15 @@
 # DeploymentV2Env
 
+## Example Usage
+
+```typescript
+import { DeploymentV2Env } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: DeploymentV2Env = {
+    value: "TRUE",
+    name: "EULA",
+};
+```
 
 ## Fields
 

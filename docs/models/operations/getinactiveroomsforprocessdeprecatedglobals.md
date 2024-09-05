@@ -1,5 +1,12 @@
 # GetInactiveRoomsForProcessDeprecatedGlobals
 
+## Example Usage
+
+```typescript
+import { GetInactiveRoomsForProcessDeprecatedGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetInactiveRoomsForProcessDeprecatedGlobals = {};
+```
 
 ## Fields
 

@@ -1,5 +1,32 @@
 # DeploymentConfigV2
 
+## Example Usage
+
+```typescript
+import { DeploymentConfigV2 } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: DeploymentConfigV2 = {
+    idleTimeoutEnabled: false,
+    env: [
+        {
+            value: "TRUE",
+            name: "EULA",
+        },
+    ],
+    roomsPerProcess: 3,
+    additionalContainerPorts: [
+        {
+            transportType: "udp",
+            port: 8000,
+            name: "default",
+        },
+    ],
+    transportType: "tcp",
+    containerPort: 4000,
+    requestedMemoryMB: 1024,
+    requestedCPU: 0.5,
+};
+```
 
 ## Fields
 

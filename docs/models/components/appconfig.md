@@ -1,5 +1,15 @@
 # AppConfig
 
+## Example Usage
+
+```typescript
+import { AppConfig } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: AppConfig = {
+    authConfiguration: {},
+    appName: "minecraft",
+};
+```
 
 ## Fields
 

@@ -6,6 +6,7 @@ import { Region, Region$inboundSchema, Region$outboundSchema } from "./region.js
 import * as z from "zod";
 
 export type CreateRoomParams = {
+    clientIPs?: Array<string> | undefined;
     /**
      * Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).
      */
@@ -16,12 +17,14 @@ export type CreateRoomParams = {
 /** @internal */
 export const CreateRoomParams$inboundSchema: z.ZodType<CreateRoomParams, z.ZodTypeDef, unknown> =
     z.object({
+        clientIPs: z.array(z.string()).optional(),
         roomConfig: z.string().optional(),
         region: Region$inboundSchema,
     });
 
 /** @internal */
 export type CreateRoomParams$Outbound = {
+    clientIPs?: Array<string> | undefined;
     roomConfig?: string | undefined;
     region: string;
 };
@@ -32,6 +35,7 @@ export const CreateRoomParams$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     CreateRoomParams
 > = z.object({
+    clientIPs: z.array(z.string()).optional(),
     roomConfig: z.string().optional(),
     region: Region$outboundSchema,
 });

@@ -1,5 +1,12 @@
 # GetLobbyInfoByShortCodeGlobals
 
+## Example Usage
+
+```typescript
+import { GetLobbyInfoByShortCodeGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetLobbyInfoByShortCodeGlobals = {};
+```
 
 ## Fields
 

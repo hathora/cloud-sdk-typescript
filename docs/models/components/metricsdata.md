@@ -1,5 +1,12 @@
 # MetricsData
 
+## Example Usage
+
+```typescript
+import { MetricsData } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: MetricsData = {};
+```
 
 ## Fields
 

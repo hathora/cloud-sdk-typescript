@@ -1,5 +1,15 @@
 # CreatePublicLobbyRequestBody
 
+## Example Usage
+
+```typescript
+import { CreatePublicLobbyRequestBody } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: CreatePublicLobbyRequestBody = {
+    initialConfig: "<value>",
+    region: "Sao_Paulo",
+};
+```
 
 ## Fields
 

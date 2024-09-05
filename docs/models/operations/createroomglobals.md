@@ -1,5 +1,12 @@
 # CreateRoomGlobals
 
+## Example Usage
+
+```typescript
+import { CreateRoomGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: CreateRoomGlobals = {};
+```
 
 ## Fields
 

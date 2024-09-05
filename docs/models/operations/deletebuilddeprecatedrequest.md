@@ -1,5 +1,14 @@
 # DeleteBuildDeprecatedRequest
 
+## Example Usage
+
+```typescript
+import { DeleteBuildDeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: DeleteBuildDeprecatedRequest = {
+    buildId: 1,
+};
+```
 
 ## Fields
 

@@ -1,5 +1,14 @@
 # SetLobbyStateParams
 
+## Example Usage
+
+```typescript
+import { SetLobbyStateParams } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: SetLobbyStateParams = {
+    state: "<value>",
+};
+```
 
 ## Fields
 
