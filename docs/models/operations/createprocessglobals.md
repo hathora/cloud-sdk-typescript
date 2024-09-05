@@ -1,5 +1,12 @@
 # CreateProcessGlobals
 
+## Example Usage
+
+```typescript
+import { CreateProcessGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: CreateProcessGlobals = {};
+```
 
 ## Fields
 

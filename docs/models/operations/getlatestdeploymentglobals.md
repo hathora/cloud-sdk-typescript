@@ -1,5 +1,12 @@
 # GetLatestDeploymentGlobals
 
+## Example Usage
+
+```typescript
+import { GetLatestDeploymentGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetLatestDeploymentGlobals = {};
+```
 
 ## Fields
 

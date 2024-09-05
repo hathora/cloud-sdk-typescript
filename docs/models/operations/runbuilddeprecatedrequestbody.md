@@ -1,5 +1,12 @@
 # RunBuildDeprecatedRequestBody
 
+## Example Usage
+
+```typescript
+import { RunBuildDeprecatedRequestBody } from "@hathora/cloud-sdk-typescript/models/operations";
+
+// No examples available for this model
+```
 
 ## Fields
 

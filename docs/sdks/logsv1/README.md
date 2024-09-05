@@ -1,6 +1,8 @@
 # LogsV1
 (*logsV1*)
 
+## Overview
+
 ### Available Operations
 
 * [~~getLogsForApp~~](#getlogsforapp) - Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. :warning: **Deprecated**
@@ -26,6 +28,37 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.logsV1.getLogsForApp("app-af469a92-5b45-4565-b3c4-b79878de67d2", 100);
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { logsV1GetLogsForApp } from "@hathora/cloud-sdk-typescript/funcs/logsV1GetLogsForApp.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const res = await logsV1GetLogsForApp(hathoraCloud, "app-af469a92-5b45-4565-b3c4-b79878de67d2", 100);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -46,16 +79,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[ReadableStream<Uint8Array>](../../models/.md)\>**
+
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.ApiError  | 401,404,429      | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
+
 
 ## getLogsForProcess
 
@@ -73,6 +107,37 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.logsV1.getLogsForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2", 100);
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { logsV1GetLogsForProcess } from "@hathora/cloud-sdk-typescript/funcs/logsV1GetLogsForProcess.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const res = await logsV1GetLogsForProcess(hathoraCloud, "cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2", 100);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -93,16 +158,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[ReadableStream<Uint8Array>](../../models/.md)\>**
+
 ### Errors
 
 | Error Object            | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
 | errors.ApiError         | 400,401,404,410,429,500 | application/json        |
 | errors.SDKError         | 4xx-5xx                 | */*                     |
+
 
 ## downloadLogForProcess
 
@@ -120,6 +186,37 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.logsV1.downloadLogForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { logsV1DownloadLogForProcess } from "@hathora/cloud-sdk-typescript/funcs/logsV1DownloadLogForProcess.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const res = await logsV1DownloadLogForProcess(hathoraCloud, "cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -138,16 +235,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[ReadableStream<Uint8Array>](../../models/.md)\>**
+
 ### Errors
 
 | Error Object        | Status Code         | Content Type        |
 | ------------------- | ------------------- | ------------------- |
 | errors.ApiError     | 400,401,404,410,429 | application/json    |
 | errors.SDKError     | 4xx-5xx             | */*                 |
+
 
 ## ~~getLogsForDeployment~~
 
@@ -167,6 +265,37 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.logsV1.getLogsForDeployment(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2", 100);
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { logsV1GetLogsForDeployment } from "@hathora/cloud-sdk-typescript/funcs/logsV1GetLogsForDeployment.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const res = await logsV1GetLogsForDeployment(hathoraCloud, 1, "app-af469a92-5b45-4565-b3c4-b79878de67d2", 100);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -187,10 +316,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[ReadableStream<Uint8Array>](../../models/.md)\>**
+
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

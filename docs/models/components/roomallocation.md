@@ -2,6 +2,18 @@
 
 Metadata on an allocated instance of a room.
 
+## Example Usage
+
+```typescript
+import { RoomAllocation } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: RoomAllocation = {
+    unscheduledAt: new Date("2022-03-04T03:46:41.208Z"),
+    scheduledAt: new Date("2024-11-22T04:11:07.245Z"),
+    processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+    roomAllocationId: "e3a0aa32-1711-4036-acfa-008b96061a78",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # CreateBuildDeprecatedGlobals
 
+## Example Usage
+
+```typescript
+import { CreateBuildDeprecatedGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: CreateBuildDeprecatedGlobals = {};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # GetStoppedProcessesRequest
 
+## Example Usage
+
+```typescript
+import { GetStoppedProcessesRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetStoppedProcessesRequest = {};
+```
 
 ## Fields
 

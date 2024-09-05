@@ -1,5 +1,12 @@
 # GetLatestDeploymentRequest
 
+## Example Usage
+
+```typescript
+import { GetLatestDeploymentRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetLatestDeploymentRequest = {};
+```
 
 ## Fields
 

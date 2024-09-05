@@ -1,5 +1,15 @@
 # CreateLocalLobbyRequestBody
 
+## Example Usage
+
+```typescript
+import { CreateLocalLobbyRequestBody } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: CreateLocalLobbyRequestBody = {
+    initialConfig: "<value>",
+    region: "Mumbai",
+};
+```
 
 ## Fields
 

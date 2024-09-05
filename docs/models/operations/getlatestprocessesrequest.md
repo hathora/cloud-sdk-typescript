@@ -1,5 +1,12 @@
 # GetLatestProcessesRequest
 
+## Example Usage
+
+```typescript
+import { GetLatestProcessesRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetLatestProcessesRequest = {};
+```
 
 ## Fields
 

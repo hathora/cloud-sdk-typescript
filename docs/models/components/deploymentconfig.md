@@ -2,6 +2,31 @@
 
 User specified deployment configuration for your application at runtime.
 
+## Example Usage
+
+```typescript
+import { DeploymentConfig } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: DeploymentConfig = {
+    env: [
+        {
+            value: "TRUE",
+            name: "EULA",
+        },
+    ],
+    roomsPerProcess: 3,
+    planName: "tiny",
+    additionalContainerPorts: [
+        {
+            transportType: "udp",
+            port: 8000,
+            name: "default",
+        },
+    ],
+    transportType: "tcp",
+    containerPort: 4000,
+};
+```
 
 ## Fields
 

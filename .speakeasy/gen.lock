@@ -1,20 +1,20 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 639bc4c022948c3e348effb9c6feaabc
+  docChecksum: 0a87a5d71a740a1c41abdb9879544197
   docVersion: 0.0.1
-  speakeasyVersion: 1.358.0
-  generationVersion: 2.390.6
-  releaseVersion: 2.7.0
-  configChecksum: 6d7d9ce2663d1c979364469a80a2f1c3
+  speakeasyVersion: 1.390.5
+  generationVersion: 2.409.3
+  releaseVersion: 2.8.0
+  configChecksum: cd93d019824028fe78878b0e24573e4c
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.6
-    core: 3.12.3
+    constsAndDefaults: 0.1.11
+    core: 3.16.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -32,7 +32,8 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
-    unions: 2.85.6
+    unions: 2.85.7
+    uploadStreams: 0.1.0
 generatedFiles:
   - src/funcs/tokensV1GetOrgTokens.ts
   - src/funcs/tokensV1CreateOrgToken.ts
@@ -55,10 +56,16 @@ generatedFiles:
   - src/funcs/processesV1GetRunningProcesses.ts
   - src/funcs/processesV1GetStoppedProcesses.ts
   - src/funcs/processesV1GetProcessInfoDeprecated.ts
-  - src/funcs/processesV2GetProcessInfo.ts
-  - src/funcs/processesV2GetLatestProcesses.ts
-  - src/funcs/processesV2StopProcess.ts
-  - src/funcs/processesV2CreateProcess.ts
+  - src/funcs/processesV2GetProcessInfoV2Deprecated.ts
+  - src/funcs/processesV2GetLatestProcessesV2Deprecated.ts
+  - src/funcs/processesV2GetProcessesCountExperimentalV2Deprecated.ts
+  - src/funcs/processesV2StopProcessV2Deprecated.ts
+  - src/funcs/processesV2CreateProcessV2Deprecated.ts
+  - src/funcs/processesV3GetLatestProcesses.ts
+  - src/funcs/processesV3GetProcessesCountExperimental.ts
+  - src/funcs/processesV3CreateProcess.ts
+  - src/funcs/processesV3GetProcess.ts
+  - src/funcs/processesV3StopProcess.ts
   - src/funcs/organizationsV1GetOrgs.ts
   - src/funcs/organizationsV1GetUserPendingInvites.ts
   - src/funcs/organizationsV1GetOrgMembers.ts
@@ -89,42 +96,60 @@ generatedFiles:
   - src/funcs/lobbiesV3GetLobbyInfoByShortCode.ts
   - src/funcs/discoveryV1GetPingServiceEndpointsDeprecated.ts
   - src/funcs/discoveryV2GetPingServiceEndpoints.ts
-  - src/funcs/deploymentsV1GetDeploymentsDeprecated.ts
-  - src/funcs/deploymentsV1GetLatestDeploymentDeprecated.ts
-  - src/funcs/deploymentsV1GetDeploymentInfoDeprecated.ts
-  - src/funcs/deploymentsV1CreateDeploymentDeprecated.ts
-  - src/funcs/deploymentsV2GetDeployments.ts
-  - src/funcs/deploymentsV2GetLatestDeployment.ts
-  - src/funcs/deploymentsV2GetDeploymentInfo.ts
-  - src/funcs/deploymentsV2CreateDeployment.ts
+  - src/funcs/deploymentsV1GetDeploymentsV1Deprecated.ts
+  - src/funcs/deploymentsV1GetLatestDeploymentV1Deprecated.ts
+  - src/funcs/deploymentsV1GetDeploymentInfoV1Deprecated.ts
+  - src/funcs/deploymentsV1CreateDeploymentV1Deprecated.ts
+  - src/funcs/deploymentsV2GetDeploymentsV2Deprecated.ts
+  - src/funcs/deploymentsV2GetLatestDeploymentV2Deprecated.ts
+  - src/funcs/deploymentsV2GetDeploymentInfoV2Deprecated.ts
+  - src/funcs/deploymentsV2CreateDeploymentV2Deprecated.ts
+  - src/funcs/deploymentsV3GetDeployments.ts
+  - src/funcs/deploymentsV3CreateDeployment.ts
+  - src/funcs/deploymentsV3GetLatestDeployment.ts
+  - src/funcs/deploymentsV3GetDeployment.ts
   - src/funcs/buildsV1GetBuildsDeprecated.ts
   - src/funcs/buildsV1GetBuildInfoDeprecated.ts
   - src/funcs/buildsV1CreateBuildDeprecated.ts
   - src/funcs/buildsV1DeleteBuildDeprecated.ts
   - src/funcs/buildsV1RunBuildDeprecated.ts
-  - src/funcs/buildsV2GetBuilds.ts
-  - src/funcs/buildsV2GetBuildInfo.ts
-  - src/funcs/buildsV2CreateBuild.ts
-  - src/funcs/buildsV2CreateBuildWithUploadUrl.ts
-  - src/funcs/buildsV2DeleteBuild.ts
-  - src/funcs/buildsV2RunBuild.ts
+  - src/funcs/buildsV2GetBuildsV2Deprecated.ts
+  - src/funcs/buildsV2GetBuildInfoV2Deprecated.ts
+  - src/funcs/buildsV2CreateBuildV2Deprecated.ts
+  - src/funcs/buildsV2CreateBuildWithUploadUrlV2Deprecated.ts
+  - src/funcs/buildsV2CreateWithMultipartUploadsV2Deprecated.ts
+  - src/funcs/buildsV2DeleteBuildV2Deprecated.ts
+  - src/funcs/buildsV2RunBuildV2Deprecated.ts
+  - src/funcs/buildsV3GetBuilds.ts
+  - src/funcs/buildsV3CreateBuild.ts
+  - src/funcs/buildsV3GetBuild.ts
+  - src/funcs/buildsV3DeleteBuild.ts
+  - src/funcs/buildsV3RunBuild.ts
   - src/funcs/billingV1GetBalance.ts
+  - src/funcs/billingV1GetUpcomingInvoiceItems.ts
+  - src/funcs/billingV1GetUpcomingInvoiceTotal.ts
   - src/funcs/billingV1GetPaymentMethod.ts
   - src/funcs/billingV1InitStripeCustomerPortalUrl.ts
   - src/funcs/billingV1GetInvoices.ts
   - src/funcs/authV1LoginAnonymous.ts
   - src/funcs/authV1LoginNickname.ts
   - src/funcs/authV1LoginGoogle.ts
-  - src/funcs/appsV1GetApps.ts
-  - src/funcs/appsV1CreateApp.ts
-  - src/funcs/appsV1UpdateApp.ts
-  - src/funcs/appsV1GetAppInfo.ts
-  - src/funcs/appsV1DeleteApp.ts
+  - src/funcs/appsV1GetAppsV1Deprecated.ts
+  - src/funcs/appsV1CreateAppV1Deprecated.ts
+  - src/funcs/appsV1UpdateAppV1Deprecated.ts
+  - src/funcs/appsV1GetAppInfoV1Deprecated.ts
+  - src/funcs/appsV1DeleteAppV1Deprecated.ts
+  - src/funcs/appsV2GetApps.ts
+  - src/funcs/appsV2CreateApp.ts
+  - src/funcs/appsV2UpdateApp.ts
+  - src/funcs/appsV2GetApp.ts
+  - src/funcs/appsV2DeleteApp.ts
   - src/sdk/tokensv1.ts
   - src/sdk/roomsv1.ts
   - src/sdk/roomsv2.ts
   - src/sdk/processesv1.ts
   - src/sdk/processesv2.ts
+  - src/sdk/processesv3.ts
   - src/sdk/organizationsv1.ts
   - src/sdk/metricsv1.ts
   - src/sdk/managementv1.ts
@@ -136,14 +161,18 @@ generatedFiles:
   - src/sdk/discoveryv2.ts
   - src/sdk/deploymentsv1.ts
   - src/sdk/deploymentsv2.ts
+  - src/sdk/deploymentsv3.ts
   - src/sdk/buildsv1.ts
   - src/sdk/buildsv2.ts
+  - src/sdk/buildsv3.ts
   - src/sdk/billingv1.ts
   - src/sdk/authv1.ts
   - src/sdk/appsv1.ts
+  - src/sdk/appsv2.ts
   - src/sdk/sdk.ts
   - .eslintrc.cjs
   - .npmignore
+  - FUNCTIONS.md
   - RUNTIMES.md
   - jsr.json
   - package.json
@@ -153,8 +182,10 @@ generatedFiles:
   - src/lib/config.ts
   - src/lib/dlv.ts
   - src/lib/encodings.ts
+  - src/lib/files.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
+  - src/lib/logger.ts
   - src/lib/matchers.ts
   - src/lib/primitives.ts
   - src/lib/retries.ts
@@ -167,11 +198,13 @@ generatedFiles:
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
   - src/types/blobs.ts
+  - src/types/constdatetime.ts
   - src/types/enums.ts
   - src/types/fp.ts
   - src/types/index.ts
   - src/types/operations.ts
   - src/types/rfcdate.ts
+  - src/types/streams.ts
   - tsconfig.json
   - src/models/components/listorgtokens.ts
   - src/models/components/orgtoken.ts
@@ -197,6 +230,7 @@ generatedFiles:
   - src/models/components/process.ts
   - src/models/components/processv2.ts
   - src/models/components/processstatus.ts
+  - src/models/components/processv3.ts
   - src/models/components/orgspage.ts
   - src/models/components/organization.ts
   - src/models/components/pendingorginvitespage.ts
@@ -217,16 +251,28 @@ generatedFiles:
   - src/models/components/lobbyv3.ts
   - src/models/components/createlobbyv3params.ts
   - src/models/components/pingendpoints.ts
-  - src/models/components/deployment.ts
+  - src/models/components/deploymentv1.ts
   - src/models/components/containerport.ts
   - src/models/components/planname.ts
   - src/models/components/deploymentconfig.ts
   - src/models/components/deploymentv2.ts
   - src/models/components/deploymentconfigv2.ts
+  - src/models/components/deploymentsv3page.ts
+  - src/models/components/deploymentv3.ts
+  - src/models/components/deploymentconfigv3.ts
   - src/models/components/build.ts
   - src/models/components/buildstatus.ts
   - src/models/components/createbuildparams.ts
   - src/models/components/buildwithuploadurl.ts
+  - src/models/components/buildwithmultiparturls.ts
+  - src/models/components/buildpart.ts
+  - src/models/components/createmultipartbuildparams.ts
+  - src/models/components/buildsv3page.ts
+  - src/models/components/buildv3.ts
+  - src/models/components/createdbuildv3withmultiparturls.ts
+  - src/models/components/deletedbuild.ts
+  - src/models/components/invoiceitempage.ts
+  - src/models/components/invoiceitem.ts
   - src/models/components/paymentmethod.ts
   - src/models/components/linkpaymentmethod.ts
   - src/models/components/achpaymentmethod.ts
@@ -238,11 +284,13 @@ generatedFiles:
   - src/models/components/playertokenobject.ts
   - src/models/components/nicknameobject.ts
   - src/models/components/googleidtokenobject.ts
-  - src/models/components/applicationwithlatestdeploymentandbuild.ts
+  - src/models/components/applicationwithlatestdeploymentandbuilddeprecated.ts
   - src/models/components/authconfiguration.ts
   - src/models/components/recordstringnever.ts
   - src/models/components/application.ts
   - src/models/components/appconfig.ts
+  - src/models/components/applicationspage.ts
+  - src/models/components/applicationwithlatestdeploymentandbuild.ts
   - src/models/components/security.ts
   - src/models/errors/apierror.ts
   - src/models/operations/getorgtokens.ts
@@ -266,10 +314,16 @@ generatedFiles:
   - src/models/operations/getrunningprocesses.ts
   - src/models/operations/getstoppedprocesses.ts
   - src/models/operations/getprocessinfodeprecated.ts
-  - src/models/operations/getprocessinfo.ts
+  - src/models/operations/getprocessinfov2deprecated.ts
+  - src/models/operations/getlatestprocessesv2deprecated.ts
+  - src/models/operations/getprocessescountexperimentalv2deprecated.ts
+  - src/models/operations/stopprocessv2deprecated.ts
+  - src/models/operations/createprocessv2deprecated.ts
   - src/models/operations/getlatestprocesses.ts
-  - src/models/operations/stopprocess.ts
+  - src/models/operations/getprocessescountexperimental.ts
   - src/models/operations/createprocess.ts
+  - src/models/operations/getprocess.ts
+  - src/models/operations/stopprocess.ts
   - src/models/operations/getorgmembers.ts
   - src/models/operations/inviteuser.ts
   - src/models/operations/rescindinvite.ts
@@ -295,30 +349,46 @@ generatedFiles:
   - src/models/operations/listactivepubliclobbies.ts
   - src/models/operations/getlobbyinfobyroomid.ts
   - src/models/operations/getlobbyinfobyshortcode.ts
-  - src/models/operations/getdeploymentsdeprecated.ts
-  - src/models/operations/getlatestdeploymentdeprecated.ts
-  - src/models/operations/getdeploymentinfodeprecated.ts
-  - src/models/operations/createdeploymentdeprecated.ts
+  - src/models/operations/getdeploymentsv1deprecated.ts
+  - src/models/operations/getlatestdeploymentv1deprecated.ts
+  - src/models/operations/getdeploymentinfov1deprecated.ts
+  - src/models/operations/createdeploymentv1deprecated.ts
+  - src/models/operations/getdeploymentsv2deprecated.ts
+  - src/models/operations/getlatestdeploymentv2deprecated.ts
+  - src/models/operations/getdeploymentinfov2deprecated.ts
+  - src/models/operations/createdeploymentv2deprecated.ts
   - src/models/operations/getdeployments.ts
-  - src/models/operations/getlatestdeployment.ts
-  - src/models/operations/getdeploymentinfo.ts
   - src/models/operations/createdeployment.ts
+  - src/models/operations/getlatestdeployment.ts
+  - src/models/operations/getdeployment.ts
   - src/models/operations/getbuildsdeprecated.ts
   - src/models/operations/getbuildinfodeprecated.ts
   - src/models/operations/createbuilddeprecated.ts
   - src/models/operations/deletebuilddeprecated.ts
   - src/models/operations/runbuilddeprecated.ts
+  - src/models/operations/getbuildsv2deprecated.ts
+  - src/models/operations/getbuildinfov2deprecated.ts
+  - src/models/operations/createbuildv2deprecated.ts
+  - src/models/operations/createbuildwithuploadurlv2deprecated.ts
+  - src/models/operations/createwithmultipartuploadsv2deprecated.ts
+  - src/models/operations/deletebuildv2deprecated.ts
+  - src/models/operations/runbuildv2deprecated.ts
   - src/models/operations/getbuilds.ts
-  - src/models/operations/getbuildinfo.ts
   - src/models/operations/createbuild.ts
-  - src/models/operations/createbuildwithuploadurl.ts
+  - src/models/operations/getbuild.ts
   - src/models/operations/deletebuild.ts
   - src/models/operations/runbuild.ts
+  - src/models/operations/getupcominginvoicetotal.ts
   - src/models/operations/loginanonymous.ts
   - src/models/operations/loginnickname.ts
   - src/models/operations/logingoogle.ts
+  - src/models/operations/updateappv1deprecated.ts
+  - src/models/operations/getappinfov1deprecated.ts
+  - src/models/operations/deleteappv1deprecated.ts
+  - src/models/operations/getapps.ts
+  - src/models/operations/createapp.ts
   - src/models/operations/updateapp.ts
-  - src/models/operations/getappinfo.ts
+  - src/models/operations/getapp.ts
   - src/models/operations/deleteapp.ts
   - src/models/errors/index.ts
   - src/models/components/index.ts
@@ -354,6 +424,8 @@ generatedFiles:
   - docs/models/components/processv2exposedport.md
   - docs/models/components/processv2.md
   - docs/models/components/processstatus.md
+  - docs/models/components/processv3exposedport.md
+  - docs/models/components/processv3.md
   - docs/models/components/orgspage.md
   - docs/models/components/organization.md
   - docs/models/components/pendingorginvitespage.md
@@ -377,8 +449,8 @@ generatedFiles:
   - docs/models/components/createlobbyv3params.md
   - docs/models/components/pingendpoints.md
   - docs/models/components/env.md
-  - docs/models/components/deploymenttransporttype.md
-  - docs/models/components/deployment.md
+  - docs/models/components/deploymentv1transporttype.md
+  - docs/models/components/deploymentv1.md
   - docs/models/components/containerport.md
   - docs/models/components/planname.md
   - docs/models/components/deploymentconfigenv.md
@@ -387,6 +459,11 @@ generatedFiles:
   - docs/models/components/deploymentv2.md
   - docs/models/components/deploymentconfigv2env.md
   - docs/models/components/deploymentconfigv2.md
+  - docs/models/components/deploymentsv3page.md
+  - docs/models/components/deploymentv3env.md
+  - docs/models/components/deploymentv3.md
+  - docs/models/components/deploymentconfigv3env.md
+  - docs/models/components/deploymentconfigv3.md
   - docs/models/components/regionalcontainertags.md
   - docs/models/components/build.md
   - docs/models/components/buildstatus.md
@@ -394,6 +471,16 @@ generatedFiles:
   - docs/models/components/buildwithuploadurlregionalcontainertags.md
   - docs/models/components/uploadbodyparams.md
   - docs/models/components/buildwithuploadurl.md
+  - docs/models/components/buildwithmultiparturlsregionalcontainertags.md
+  - docs/models/components/buildwithmultiparturls.md
+  - docs/models/components/buildpart.md
+  - docs/models/components/createmultipartbuildparams.md
+  - docs/models/components/buildsv3page.md
+  - docs/models/components/buildv3.md
+  - docs/models/components/createdbuildv3withmultiparturls.md
+  - docs/models/components/deletedbuild.md
+  - docs/models/components/invoiceitempage.md
+  - docs/models/components/invoiceitem.md
   - docs/models/components/paymentmethod.md
   - docs/models/components/linkpaymentmethod.md
   - docs/models/components/achpaymentmethod.md
@@ -405,14 +492,18 @@ generatedFiles:
   - docs/models/components/playertokenobject.md
   - docs/models/components/nicknameobject.md
   - docs/models/components/googleidtokenobject.md
-  - docs/models/components/applicationwithlatestdeploymentandbuildenv.md
-  - docs/models/components/applicationwithlatestdeploymentandbuilddeployment.md
-  - docs/models/components/applicationwithlatestdeploymentandbuild.md
+  - docs/models/components/applicationwithlatestdeploymentandbuilddeprecatedenv.md
+  - docs/models/components/deployment.md
+  - docs/models/components/applicationwithlatestdeploymentandbuilddeprecated.md
   - docs/models/components/google.md
   - docs/models/components/authconfiguration.md
   - docs/models/components/recordstringnever.md
   - docs/models/components/application.md
   - docs/models/components/appconfig.md
+  - docs/models/components/applicationspage.md
+  - docs/models/components/applicationwithlatestdeploymentandbuildenv.md
+  - docs/models/components/applicationwithlatestdeploymentandbuilddeployment.md
+  - docs/models/components/applicationwithlatestdeploymentandbuild.md
   - docs/models/components/security.md
   - docs/models/errors/apierror.md
   - docs/models/operations/getorgtokensrequest.md
@@ -454,14 +545,28 @@ generatedFiles:
   - docs/models/operations/getstoppedprocessesrequest.md
   - docs/models/operations/getprocessinfodeprecatedglobals.md
   - docs/models/operations/getprocessinfodeprecatedrequest.md
-  - docs/models/operations/getprocessinfoglobals.md
-  - docs/models/operations/getprocessinforequest.md
+  - docs/models/operations/getprocessinfov2deprecatedglobals.md
+  - docs/models/operations/getprocessinfov2deprecatedrequest.md
+  - docs/models/operations/getlatestprocessesv2deprecatedglobals.md
+  - docs/models/operations/getlatestprocessesv2deprecatedrequest.md
+  - docs/models/operations/getprocessescountexperimentalv2deprecatedglobals.md
+  - docs/models/operations/getprocessescountexperimentalv2deprecatedrequest.md
+  - docs/models/operations/getprocessescountexperimentalv2deprecatedresponsebody.md
+  - docs/models/operations/stopprocessv2deprecatedglobals.md
+  - docs/models/operations/stopprocessv2deprecatedrequest.md
+  - docs/models/operations/createprocessv2deprecatedglobals.md
+  - docs/models/operations/createprocessv2deprecatedrequest.md
   - docs/models/operations/getlatestprocessesglobals.md
   - docs/models/operations/getlatestprocessesrequest.md
-  - docs/models/operations/stopprocessglobals.md
-  - docs/models/operations/stopprocessrequest.md
+  - docs/models/operations/getprocessescountexperimentalglobals.md
+  - docs/models/operations/getprocessescountexperimentalrequest.md
+  - docs/models/operations/getprocessescountexperimentalresponsebody.md
   - docs/models/operations/createprocessglobals.md
   - docs/models/operations/createprocessrequest.md
+  - docs/models/operations/getprocessglobals.md
+  - docs/models/operations/getprocessrequest.md
+  - docs/models/operations/stopprocessglobals.md
+  - docs/models/operations/stopprocessrequest.md
   - docs/models/operations/getorgmembersrequest.md
   - docs/models/operations/inviteuserrequest.md
   - docs/models/operations/rescindinviterequest.md
@@ -516,22 +621,30 @@ generatedFiles:
   - docs/models/operations/getlobbyinfobyroomidrequest.md
   - docs/models/operations/getlobbyinfobyshortcodeglobals.md
   - docs/models/operations/getlobbyinfobyshortcoderequest.md
-  - docs/models/operations/getdeploymentsdeprecatedglobals.md
-  - docs/models/operations/getdeploymentsdeprecatedrequest.md
-  - docs/models/operations/getlatestdeploymentdeprecatedglobals.md
-  - docs/models/operations/getlatestdeploymentdeprecatedrequest.md
-  - docs/models/operations/getdeploymentinfodeprecatedglobals.md
-  - docs/models/operations/getdeploymentinfodeprecatedrequest.md
-  - docs/models/operations/createdeploymentdeprecatedglobals.md
-  - docs/models/operations/createdeploymentdeprecatedrequest.md
+  - docs/models/operations/getdeploymentsv1deprecatedglobals.md
+  - docs/models/operations/getdeploymentsv1deprecatedrequest.md
+  - docs/models/operations/getlatestdeploymentv1deprecatedglobals.md
+  - docs/models/operations/getlatestdeploymentv1deprecatedrequest.md
+  - docs/models/operations/getdeploymentinfov1deprecatedglobals.md
+  - docs/models/operations/getdeploymentinfov1deprecatedrequest.md
+  - docs/models/operations/createdeploymentv1deprecatedglobals.md
+  - docs/models/operations/createdeploymentv1deprecatedrequest.md
+  - docs/models/operations/getdeploymentsv2deprecatedglobals.md
+  - docs/models/operations/getdeploymentsv2deprecatedrequest.md
+  - docs/models/operations/getlatestdeploymentv2deprecatedglobals.md
+  - docs/models/operations/getlatestdeploymentv2deprecatedrequest.md
+  - docs/models/operations/getdeploymentinfov2deprecatedglobals.md
+  - docs/models/operations/getdeploymentinfov2deprecatedrequest.md
+  - docs/models/operations/createdeploymentv2deprecatedglobals.md
+  - docs/models/operations/createdeploymentv2deprecatedrequest.md
   - docs/models/operations/getdeploymentsglobals.md
   - docs/models/operations/getdeploymentsrequest.md
-  - docs/models/operations/getlatestdeploymentglobals.md
-  - docs/models/operations/getlatestdeploymentrequest.md
-  - docs/models/operations/getdeploymentinfoglobals.md
-  - docs/models/operations/getdeploymentinforequest.md
   - docs/models/operations/createdeploymentglobals.md
   - docs/models/operations/createdeploymentrequest.md
+  - docs/models/operations/getlatestdeploymentglobals.md
+  - docs/models/operations/getlatestdeploymentrequest.md
+  - docs/models/operations/getdeploymentglobals.md
+  - docs/models/operations/getdeploymentrequest.md
   - docs/models/operations/getbuildsdeprecatedglobals.md
   - docs/models/operations/getbuildsdeprecatedrequest.md
   - docs/models/operations/getbuildinfodeprecatedglobals.md
@@ -544,30 +657,46 @@ generatedFiles:
   - docs/models/operations/filet.md
   - docs/models/operations/runbuilddeprecatedrequestbody.md
   - docs/models/operations/runbuilddeprecatedrequest.md
-  - docs/models/operations/getbuildsglobals.md
+  - docs/models/operations/getbuildsv2deprecatedglobals.md
+  - docs/models/operations/getbuildsv2deprecatedrequest.md
+  - docs/models/operations/getbuildinfov2deprecatedglobals.md
+  - docs/models/operations/getbuildinfov2deprecatedrequest.md
+  - docs/models/operations/createbuildv2deprecatedglobals.md
+  - docs/models/operations/createbuildv2deprecatedrequest.md
+  - docs/models/operations/createbuildwithuploadurlv2deprecatedglobals.md
+  - docs/models/operations/createbuildwithuploadurlv2deprecatedrequest.md
+  - docs/models/operations/createwithmultipartuploadsv2deprecatedglobals.md
+  - docs/models/operations/createwithmultipartuploadsv2deprecatedrequest.md
+  - docs/models/operations/deletebuildv2deprecatedglobals.md
+  - docs/models/operations/deletebuildv2deprecatedrequest.md
+  - docs/models/operations/runbuildv2deprecatedglobals.md
+  - docs/models/operations/runbuildv2deprecatedfile.md
+  - docs/models/operations/runbuildv2deprecatedrequestbody.md
+  - docs/models/operations/runbuildv2deprecatedrequest.md
   - docs/models/operations/getbuildsrequest.md
-  - docs/models/operations/getbuildinfoglobals.md
-  - docs/models/operations/getbuildinforequest.md
-  - docs/models/operations/createbuildglobals.md
   - docs/models/operations/createbuildrequest.md
-  - docs/models/operations/createbuildwithuploadurlglobals.md
-  - docs/models/operations/createbuildwithuploadurlrequest.md
-  - docs/models/operations/deletebuildglobals.md
+  - docs/models/operations/getbuildrequest.md
   - docs/models/operations/deletebuildrequest.md
-  - docs/models/operations/runbuildglobals.md
-  - docs/models/operations/runbuildfile.md
-  - docs/models/operations/runbuildrequestbody.md
   - docs/models/operations/runbuildrequest.md
+  - docs/models/operations/getupcominginvoicetotalresponsebody.md
   - docs/models/operations/loginanonymousglobals.md
   - docs/models/operations/loginanonymousrequest.md
   - docs/models/operations/loginnicknameglobals.md
   - docs/models/operations/loginnicknamerequest.md
   - docs/models/operations/logingoogleglobals.md
   - docs/models/operations/logingooglerequest.md
+  - docs/models/operations/updateappv1deprecatedglobals.md
+  - docs/models/operations/updateappv1deprecatedrequest.md
+  - docs/models/operations/getappinfov1deprecatedglobals.md
+  - docs/models/operations/getappinfov1deprecatedrequest.md
+  - docs/models/operations/deleteappv1deprecatedglobals.md
+  - docs/models/operations/deleteappv1deprecatedrequest.md
+  - docs/models/operations/getappsrequest.md
+  - docs/models/operations/createapprequest.md
   - docs/models/operations/updateappglobals.md
   - docs/models/operations/updateapprequest.md
-  - docs/models/operations/getappinfoglobals.md
-  - docs/models/operations/getappinforequest.md
+  - docs/models/operations/getappglobals.md
+  - docs/models/operations/getapprequest.md
   - docs/models/operations/deleteappglobals.md
   - docs/models/operations/deleteapprequest.md
   - docs/sdks/hathoracloud/README.md
@@ -577,6 +706,7 @@ generatedFiles:
   - docs/sdks/roomsv2/README.md
   - docs/sdks/processesv1/README.md
   - docs/sdks/processesv2/README.md
+  - docs/sdks/processesv3/README.md
   - docs/sdks/organizationsv1/README.md
   - docs/sdks/metricsv1/README.md
   - docs/sdks/managementv1/README.md
@@ -588,11 +718,14 @@ generatedFiles:
   - docs/sdks/discoveryv2/README.md
   - docs/sdks/deploymentsv1/README.md
   - docs/sdks/deploymentsv2/README.md
+  - docs/sdks/deploymentsv3/README.md
   - docs/sdks/buildsv1/README.md
   - docs/sdks/buildsv2/README.md
+  - docs/sdks/buildsv3/README.md
   - docs/sdks/billingv1/README.md
   - docs/sdks/authv1/README.md
   - docs/sdks/appsv1/README.md
+  - docs/sdks/appsv2/README.md
   - USAGE.md
   - .gitattributes
   - src/hooks/hooks.ts

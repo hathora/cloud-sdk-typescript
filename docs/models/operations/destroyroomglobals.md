@@ -1,5 +1,12 @@
 # DestroyRoomGlobals
 
+## Example Usage
+
+```typescript
+import { DestroyRoomGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: DestroyRoomGlobals = {};
+```
 
 ## Fields
 

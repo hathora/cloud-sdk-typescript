@@ -2,6 +2,65 @@
 
 An application object is the top level namespace for the game server.
 
+## Example Usage
+
+```typescript
+import { ApplicationWithLatestDeploymentAndBuild } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: ApplicationWithLatestDeploymentAndBuild = {
+    deletedBy: "noreply@hathora.dev",
+    deletedAt: new Date("2023-09-20T04:30:50.461Z"),
+    createdAt: new Date("2023-12-02T06:10:48.333Z"),
+    createdBy: "noreply@hathora.dev",
+    orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
+    authConfiguration: {},
+    appSecret: "secret-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+    appName: "minecraft",
+    deployment: {
+        idleTimeoutEnabled: false,
+        env: [
+            {
+                value: "TRUE",
+                name: "EULA",
+            },
+        ],
+        roomsPerProcess: 3,
+        additionalContainerPorts: [
+            {
+                transportType: "tcp",
+                port: 4000,
+                name: "debug",
+            },
+        ],
+        defaultContainerPort: {
+            transportType: "tcp",
+            port: 8000,
+            name: "default",
+        },
+        createdAt: new Date("2024-09-04T03:26:51.895Z"),
+        createdBy: "noreply@hathora.dev",
+        requestedMemoryMB: 1024,
+        requestedCPU: 0.5,
+        deploymentId: "<value>",
+        buildTag: "0.1.14-14c793",
+        buildId: "<value>",
+        appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+        build: {
+            buildTag: "0.1.14-14c793",
+            imageSize: 952749,
+            status: "succeeded",
+            deletedAt: new Date("2023-05-06T01:11:09.445Z"),
+            finishedAt: new Date("2023-05-08T07:41:49.705Z"),
+            startedAt: new Date("2024-07-16T15:56:00.793Z"),
+            createdAt: new Date("2024-12-08T12:19:46.497Z"),
+            createdBy: "noreply@hathora.dev",
+            buildId: "<value>",
+            orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
+        },
+    },
+};
+```
 
 ## Fields
 

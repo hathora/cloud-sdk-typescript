@@ -24,6 +24,36 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.discoveryV2.getPingServiceEndpoints();
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { discoveryV2GetPingServiceEndpoints } from "@hathora/cloud-sdk-typescript/funcs/discoveryV2GetPingServiceEndpoints.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const res = await discoveryV2GetPingServiceEndpoints(hathoraCloud);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -40,10 +70,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[components.PingEndpoints[]](../../models/.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

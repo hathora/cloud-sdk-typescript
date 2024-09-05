@@ -1,5 +1,12 @@
 # GetRunningProcessesRequest
 
+## Example Usage
+
+```typescript
+import { GetRunningProcessesRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetRunningProcessesRequest = {};
+```
 
 ## Fields
 

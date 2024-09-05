@@ -1,5 +1,14 @@
 # GetActiveRoomsForProcessRequest
 
+## Example Usage
+
+```typescript
+import { GetActiveRoomsForProcessRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetActiveRoomsForProcessRequest = {
+    processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+};
+```
 
 ## Fields
 

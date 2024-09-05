@@ -1,5 +1,12 @@
 # SetLobbyStateGlobals
 
+## Example Usage
+
+```typescript
+import { SetLobbyStateGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: SetLobbyStateGlobals = {};
+```
 
 ## Fields
 

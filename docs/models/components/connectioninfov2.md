@@ -2,6 +2,30 @@
 
 Connection information for the default and additional ports.
 
+## Example Usage
+
+```typescript
+import { ConnectionInfoV2 } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: ConnectionInfoV2 = {
+    additionalExposedPorts: [
+        {
+            transportType: "tcp",
+            port: 72941,
+            host: "1.proxy.hathora.dev",
+            name: "debug",
+        },
+    ],
+    exposedPort: {
+        transportType: "tcp",
+        port: 34567,
+        host: "1.proxy.hathora.dev",
+        name: "default",
+    },
+    status: "starting",
+    roomId: "2swovpy1fnunu",
+};
+```
 
 ## Fields
 

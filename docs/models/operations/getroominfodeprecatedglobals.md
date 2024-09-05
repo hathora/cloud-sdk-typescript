@@ -1,5 +1,12 @@
 # GetRoomInfoDeprecatedGlobals
 
+## Example Usage
+
+```typescript
+import { GetRoomInfoDeprecatedGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetRoomInfoDeprecatedGlobals = {};
+```
 
 ## Fields
 

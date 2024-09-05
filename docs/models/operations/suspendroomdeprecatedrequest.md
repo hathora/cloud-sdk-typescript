@@ -1,5 +1,14 @@
 # SuspendRoomDeprecatedRequest
 
+## Example Usage
+
+```typescript
+import { SuspendRoomDeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: SuspendRoomDeprecatedRequest = {
+    roomId: "2swovpy1fnunu",
+};
+```
 
 ## Fields
 

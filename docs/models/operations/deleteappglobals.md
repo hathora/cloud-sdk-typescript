@@ -1,5 +1,12 @@
 # DeleteAppGlobals
 
+## Example Usage
+
+```typescript
+import { DeleteAppGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: DeleteAppGlobals = {};
+```
 
 ## Fields
 

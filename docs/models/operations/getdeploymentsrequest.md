@@ -1,5 +1,12 @@
 # GetDeploymentsRequest
 
+## Example Usage
+
+```typescript
+import { GetDeploymentsRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetDeploymentsRequest = {};
+```
 
 ## Fields
 

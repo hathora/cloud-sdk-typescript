@@ -114,7 +114,7 @@ export async function roomsV1CreateRoomDeprecated(
 
     const doResult = await client$.do$(request$, {
         context,
-        errorCodes: ["400", "401", "402", "403", "404", "429", "4XX", "500", "5XX"],
+        errorCodes: ["400", "401", "402", "404", "422", "429", "4XX", "500", "5XX"],
         retryConfig: options?.retries || client$.options$.retryConfig,
         retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
     });
@@ -139,7 +139,7 @@ export async function roomsV1CreateRoomDeprecated(
         | ConnectionError
     >(
         m$.json(201, z.string()),
-        m$.jsonErr([400, 401, 402, 403, 404, 429, 500], errors.ApiError$inboundSchema),
+        m$.jsonErr([400, 401, 402, 404, 422, 429, 500], errors.ApiError$inboundSchema),
         m$.fail(["4XX", "5XX"])
     )(response, { extraFields: responseFields$ });
     if (!result$.ok) {

@@ -1,5 +1,12 @@
 # LinkPaymentMethod
 
+## Example Usage
+
+```typescript
+import { LinkPaymentMethod } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: LinkPaymentMethod = {};
+```
 
 ## Fields
 

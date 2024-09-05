@@ -1,5 +1,14 @@
 # GetLobbyInfoByShortCodeRequest
 
+## Example Usage
+
+```typescript
+import { GetLobbyInfoByShortCodeRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetLobbyInfoByShortCodeRequest = {
+    shortCode: "LFG4",
+};
+```
 
 ## Fields
 

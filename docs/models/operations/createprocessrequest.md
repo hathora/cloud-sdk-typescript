@@ -1,5 +1,14 @@
 # CreateProcessRequest
 
+## Example Usage
+
+```typescript
+import { CreateProcessRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: CreateProcessRequest = {
+    region: "London",
+};
+```
 
 ## Fields
 

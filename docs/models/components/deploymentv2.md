@@ -1,5 +1,40 @@
 # DeploymentV2
 
+## Example Usage
+
+```typescript
+import { DeploymentV2 } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: DeploymentV2 = {
+    idleTimeoutEnabled: false,
+    env: [
+        {
+            value: "TRUE",
+            name: "EULA",
+        },
+    ],
+    roomsPerProcess: 3,
+    additionalContainerPorts: [
+        {
+            transportType: "tcp",
+            port: 4000,
+            name: "debug",
+        },
+    ],
+    defaultContainerPort: {
+        transportType: "tls",
+        port: 8000,
+        name: "default",
+    },
+    createdAt: new Date("2023-12-17T19:21:40.693Z"),
+    createdBy: "noreply@hathora.dev",
+    requestedMemoryMB: 1024,
+    requestedCPU: 0.5,
+    deploymentId: 1,
+    buildId: 1,
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+};
+```
 
 ## Fields
 

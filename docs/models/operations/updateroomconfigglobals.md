@@ -1,5 +1,12 @@
 # UpdateRoomConfigGlobals
 
+## Example Usage
+
+```typescript
+import { UpdateRoomConfigGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: UpdateRoomConfigGlobals = {};
+```
 
 ## Fields
 

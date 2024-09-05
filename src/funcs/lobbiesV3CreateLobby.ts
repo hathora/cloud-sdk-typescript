@@ -98,7 +98,7 @@ export async function lobbiesV3CreateLobby(
         ],
     ];
     const securitySettings$ = resolveSecurity(...security$);
-    const context = { operationID: "CreateLobby", oAuth2Scopes: [], securitySource: security$ };
+    const context = { operationID: "CreateLobby", oAuth2Scopes: [], securitySource: security };
 
     const requestRes = client$.createRequest$(
         context,

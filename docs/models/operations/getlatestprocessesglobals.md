@@ -1,5 +1,12 @@
 # GetLatestProcessesGlobals
 
+## Example Usage
+
+```typescript
+import { GetLatestProcessesGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetLatestProcessesGlobals = {};
+```
 
 ## Fields
 

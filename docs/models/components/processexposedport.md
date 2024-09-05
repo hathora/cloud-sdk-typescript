@@ -2,6 +2,18 @@
 
 Connection details for an active process.
 
+## Example Usage
+
+```typescript
+import { ProcessExposedPort } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: ProcessExposedPort = {
+    transportType: "tcp",
+    port: 34567,
+    host: "1.proxy.hathora.dev",
+    name: "default",
+};
+```
 
 ## Fields
 

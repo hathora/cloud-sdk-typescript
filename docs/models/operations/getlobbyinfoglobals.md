@@ -1,5 +1,12 @@
 # GetLobbyInfoGlobals
 
+## Example Usage
+
+```typescript
+import { GetLobbyInfoGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetLobbyInfoGlobals = {};
+```
 
 ## Fields
 

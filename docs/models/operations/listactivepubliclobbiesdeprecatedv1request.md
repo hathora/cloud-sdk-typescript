@@ -1,5 +1,12 @@
 # ListActivePublicLobbiesDeprecatedV1Request
 
+## Example Usage
+
+```typescript
+import { ListActivePublicLobbiesDeprecatedV1Request } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: ListActivePublicLobbiesDeprecatedV1Request = {};
+```
 
 ## Fields
 

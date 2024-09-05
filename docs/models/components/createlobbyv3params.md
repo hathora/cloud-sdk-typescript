@@ -1,5 +1,16 @@
 # CreateLobbyV3Params
 
+## Example Usage
+
+```typescript
+import { CreateLobbyV3Params } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: CreateLobbyV3Params = {
+    visibility: "private",
+    roomConfig: '{"name":"my-room"}',
+    region: "London",
+};
+```
 
 ## Fields
 

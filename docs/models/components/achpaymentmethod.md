@@ -1,5 +1,12 @@
 # AchPaymentMethod
 
+## Example Usage
+
+```typescript
+import { AchPaymentMethod } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: AchPaymentMethod = {};
+```
 
 ## Fields
 

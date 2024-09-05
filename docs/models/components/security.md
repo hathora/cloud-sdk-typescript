@@ -1,5 +1,12 @@
 # Security
 
+## Example Usage
+
+```typescript
+import { Security } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: Security = {};
+```
 
 ## Fields
 

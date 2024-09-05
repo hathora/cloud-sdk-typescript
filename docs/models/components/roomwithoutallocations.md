@@ -1,5 +1,23 @@
 # RoomWithoutAllocations
 
+## Example Usage
+
+```typescript
+import { RoomWithoutAllocations } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: RoomWithoutAllocations = {
+    currentAllocation: {
+        unscheduledAt: new Date("2023-06-08T12:30:11.149Z"),
+        scheduledAt: new Date("2024-05-17T17:32:07.006Z"),
+        processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+        roomAllocationId: "e3a0aa32-1711-4036-acfa-008b96061a78",
+    },
+    status: "active",
+    roomConfig: '{"name":"my-room"}',
+    roomId: "2swovpy1fnunu",
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+};
+```
 
 ## Fields
 

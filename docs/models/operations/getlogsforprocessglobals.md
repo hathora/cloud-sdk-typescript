@@ -1,5 +1,12 @@
 # GetLogsForProcessGlobals
 
+## Example Usage
+
+```typescript
+import { GetLogsForProcessGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetLogsForProcessGlobals = {};
+```
 
 ## Fields
 

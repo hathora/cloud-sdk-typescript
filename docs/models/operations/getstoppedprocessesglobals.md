@@ -1,5 +1,12 @@
 # GetStoppedProcessesGlobals
 
+## Example Usage
+
+```typescript
+import { GetStoppedProcessesGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetStoppedProcessesGlobals = {};
+```
 
 ## Fields
 

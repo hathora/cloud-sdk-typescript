@@ -1,10 +1,19 @@
 # RunBuildRequest
 
+## Example Usage
+
+```typescript
+import { RunBuildRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: RunBuildRequest = {
+    buildId: "<value>",
+    orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
+};
+```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `appId`                                                                          | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              | app-af469a92-5b45-4565-b3c4-b79878de67d2                                         |
-| `buildId`                                                                        | *number*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              | 1                                                                                |
-| `requestBody`                                                                    | [operations.RunBuildRequestBody](../../models/operations/runbuildrequestbody.md) | :heavy_check_mark:                                                               | N/A                                                                              |                                                                                  |
+| Field                                    | Type                                     | Required                                 | Description                              | Example                                  |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `buildId`                                | *string*                                 | :heavy_check_mark:                       | N/A                                      |                                          |
+| `orgId`                                  | *string*                                 | :heavy_minus_sign:                       | N/A                                      | org-6f706e83-0ec1-437a-9a46-7d4281eb2f39 |

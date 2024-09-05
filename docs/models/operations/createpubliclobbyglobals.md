@@ -1,5 +1,12 @@
 # CreatePublicLobbyGlobals
 
+## Example Usage
+
+```typescript
+import { CreatePublicLobbyGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: CreatePublicLobbyGlobals = {};
+```
 
 ## Fields
 

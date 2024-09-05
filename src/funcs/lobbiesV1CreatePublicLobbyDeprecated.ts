@@ -98,7 +98,7 @@ export async function lobbiesV1CreatePublicLobbyDeprecated(
     const context = {
         operationID: "CreatePublicLobbyDeprecated",
         oAuth2Scopes: [],
-        securitySource: security$,
+        securitySource: security,
     };
 
     const requestRes = client$.createRequest$(

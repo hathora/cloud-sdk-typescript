@@ -2,6 +2,22 @@
 
 A lobby object allows you to store and manage metadata for your rooms.
 
+## Example Usage
+
+```typescript
+import { LobbyV3 } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: LobbyV3 = {
+    shortCode: "LFG4",
+    createdAt: new Date("2024-04-02T18:02:53.509Z"),
+    createdBy: "google-oauth2|107030234048588177467",
+    roomConfig: '{"name":"my-room"}',
+    visibility: "private",
+    region: "Singapore",
+    roomId: "2swovpy1fnunu",
+    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+};
+```
 
 ## Fields
 

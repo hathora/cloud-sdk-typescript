@@ -1,5 +1,12 @@
 # ListActivePublicLobbiesGlobals
 
+## Example Usage
+
+```typescript
+import { ListActivePublicLobbiesGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: ListActivePublicLobbiesGlobals = {};
+```
 
 ## Fields
 

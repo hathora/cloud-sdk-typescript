@@ -1,13 +1,17 @@
 # ProcessStatus
 
+## Example Usage
+
+```typescript
+import { ProcessStatus } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: ProcessStatus = "running";
+```
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `Starting` | starting   |
-| `Running`  | running    |
-| `Draining` | draining   |
-| `Stopping` | stopping   |
-| `Stopped`  | stopped    |
-| `Failed`   | failed     |
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
+```typescript
+"starting" | "running" | "draining" | "stopping" | "stopped" | "failed" | Unrecognized<string>
+```

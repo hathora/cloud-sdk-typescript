@@ -1,0 +1,20 @@
+# CreateMultipartBuildParams
+
+## Example Usage
+
+```typescript
+import { CreateMultipartBuildParams } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: CreateMultipartBuildParams = {
+    buildTag: "0.1.14-14c793",
+    buildSizeInBytes: 4511.59,
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                   | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             | Example                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `buildId`                                                                                                                                               | *string*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                      | System generated id for a build. Can also be user defined when creating a build.                                                                        |                                                                                                                                                         |
+| `buildTag`                                                                                                                                              | *string*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                      | Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo). | 0.1.14-14c793                                                                                                                                           |
+| `buildSizeInBytes`                                                                                                                                      | *number*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |                                                                                                                                                         |

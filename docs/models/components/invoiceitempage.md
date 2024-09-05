@@ -1,0 +1,25 @@
+# InvoiceItemPage
+
+## Example Usage
+
+```typescript
+import { InvoiceItemPage } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: InvoiceItemPage = {
+    invoiceItems: [
+        {
+            amount: 5666.02,
+            unitPrice: 8651.03,
+            quantity: 2653.89,
+            unit: "volt",
+            productName: "<value>",
+        },
+    ],
+};
+```
+
+## Fields
+
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `invoiceItems`                                                     | [components.InvoiceItem](../../models/components/invoiceitem.md)[] | :heavy_check_mark:                                                 | N/A                                                                |

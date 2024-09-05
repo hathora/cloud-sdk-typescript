@@ -1,6 +1,8 @@
 # LobbiesV2
 (*lobbiesV2*)
 
+## Overview
+
 ### Available Operations
 
 * [~~createPrivateLobby~~](#createprivatelobby) - :warning: **Deprecated**
@@ -31,6 +33,41 @@ async function run() {
     initialConfig: "<value>",
     region: "Chicago",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { lobbiesV2CreatePrivateLobby } from "@hathora/cloud-sdk-typescript/funcs/lobbiesV2CreatePrivateLobby.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const res = await lobbiesV2CreatePrivateLobby(hathoraCloud, {
+    playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  }, {
+    initialConfig: "<value>",
+    region: "Mumbai",
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -51,16 +88,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[components.Lobby](../../models/components/lobby.md)\>**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ApiError             | 400,401,402,404,422,429,500 | application/json            |
 | errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## ~~createPublicLobby~~
 
@@ -82,6 +120,41 @@ async function run() {
     initialConfig: "<value>",
     region: "Sao_Paulo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { lobbiesV2CreatePublicLobby } from "@hathora/cloud-sdk-typescript/funcs/lobbiesV2CreatePublicLobby.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const res = await lobbiesV2CreatePublicLobby(hathoraCloud, {
+    playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  }, {
+    initialConfig: "<value>",
+    region: "Singapore",
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -102,16 +175,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[components.Lobby](../../models/components/lobby.md)\>**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ApiError             | 400,401,402,404,422,429,500 | application/json            |
 | errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## ~~createLocalLobby~~
 
@@ -133,6 +207,41 @@ async function run() {
     initialConfig: "<value>",
     region: "Sao_Paulo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { lobbiesV2CreateLocalLobby } from "@hathora/cloud-sdk-typescript/funcs/lobbiesV2CreateLocalLobby.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const res = await lobbiesV2CreateLocalLobby(hathoraCloud, {
+    playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  }, {
+    initialConfig: "<value>",
+    region: "Mumbai",
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -153,16 +262,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[components.Lobby](../../models/components/lobby.md)\>**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ApiError             | 400,401,402,404,422,429,500 | application/json            |
 | errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## ~~createLobbyDeprecated~~
 
@@ -187,6 +297,42 @@ async function run() {
     initialConfig: "<value>",
     region: "Tokyo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { lobbiesV2CreateLobbyDeprecated } from "@hathora/cloud-sdk-typescript/funcs/lobbiesV2CreateLobbyDeprecated.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const res = await lobbiesV2CreateLobbyDeprecated(hathoraCloud, {
+    playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  }, {
+    visibility: "private",
+    initialConfig: "<value>",
+    region: "Sydney",
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -207,16 +353,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[components.Lobby](../../models/components/lobby.md)\>**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ApiError             | 400,401,402,404,422,429,500 | application/json            |
 | errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## ~~listActivePublicLobbiesDeprecatedV2~~
 
@@ -235,6 +382,36 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.lobbiesV2.listActivePublicLobbiesDeprecatedV2("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { lobbiesV2ListActivePublicLobbiesDeprecatedV2 } from "@hathora/cloud-sdk-typescript/funcs/lobbiesV2ListActivePublicLobbiesDeprecatedV2.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const res = await lobbiesV2ListActivePublicLobbiesDeprecatedV2(hathoraCloud, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -253,16 +430,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[components.Lobby[]](../../models/.md)\>**
+
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.ApiError  | 401,429          | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
+
 
 ## ~~getLobbyInfo~~
 
@@ -281,6 +459,36 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.lobbiesV2.getLobbyInfo("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { lobbiesV2GetLobbyInfo } from "@hathora/cloud-sdk-typescript/funcs/lobbiesV2GetLobbyInfo.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const res = await lobbiesV2GetLobbyInfo(hathoraCloud, "2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -299,16 +507,17 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[components.Lobby](../../models/components/lobby.md)\>**
+
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.ApiError  | 404,429          | application/json |
 | errors.SDKError  | 4xx-5xx          | */*              |
+
 
 ## ~~setLobbyState~~
 
@@ -330,6 +539,39 @@ async function run() {
   const result = await hathoraCloud.lobbiesV2.setLobbyState("2swovpy1fnunu", {
     state: "<value>",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { lobbiesV2SetLobbyState } from "@hathora/cloud-sdk-typescript/funcs/lobbiesV2SetLobbyState.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const res = await lobbiesV2SetLobbyState(hathoraCloud, "2swovpy1fnunu", {
+    state: "<value>",
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -349,10 +591,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
-
 ### Response
 
 **Promise\<[components.Lobby](../../models/components/lobby.md)\>**
+
 ### Errors
 
 | Error Object     | Status Code      | Content Type     |

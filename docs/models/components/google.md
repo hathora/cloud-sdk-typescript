@@ -2,6 +2,15 @@
 
 Enable google auth for your application.
 
+## Example Usage
+
+```typescript
+import { Google } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: Google = {
+    clientId: "<value>",
+};
+```
 
 ## Fields
 

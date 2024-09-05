@@ -1,5 +1,14 @@
 # GetRoomInfoRequest
 
+## Example Usage
+
+```typescript
+import { GetRoomInfoRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetRoomInfoRequest = {
+    roomId: "2swovpy1fnunu",
+};
+```
 
 ## Fields
 

@@ -8,7 +8,12 @@ import {
     AuthConfiguration$Outbound,
     AuthConfiguration$outboundSchema,
 } from "./authconfiguration.js";
-import { Build, Build$inboundSchema, Build$Outbound, Build$outboundSchema } from "./build.js";
+import {
+    BuildV3,
+    BuildV3$inboundSchema,
+    BuildV3$Outbound,
+    BuildV3$outboundSchema,
+} from "./buildv3.js";
 import {
     ContainerPort,
     ContainerPort$inboundSchema,
@@ -60,13 +65,17 @@ export type ApplicationWithLatestDeploymentAndBuildDeployment = {
      */
     requestedCPU: number;
     /**
-     * System generated id for a deployment. Increments by 1.
+     * System generated id for a deployment.
      */
-    deploymentId: number;
+    deploymentId: string;
     /**
-     * System generated id for a build. Increments by 1.
+     * Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
      */
-    buildId: number;
+    buildTag?: string | undefined;
+    /**
+     * System generated id for a build. Can also be user defined when creating a build.
+     */
+    buildId: string;
     /**
      * System generated unique identifier for an application.
      */
@@ -74,7 +83,7 @@ export type ApplicationWithLatestDeploymentAndBuildDeployment = {
     /**
      * A build represents a game server artifact and its associated metadata.
      */
-    build: Build;
+    build: BuildV3;
 };
 
 /**
@@ -174,10 +183,11 @@ export const ApplicationWithLatestDeploymentAndBuildDeployment$inboundSchema: z.
     createdBy: z.string(),
     requestedMemoryMB: z.number(),
     requestedCPU: z.number(),
-    deploymentId: z.number().int(),
-    buildId: z.number().int(),
+    deploymentId: z.string(),
+    buildTag: z.string().optional(),
+    buildId: z.string(),
     appId: z.string(),
-    build: Build$inboundSchema,
+    build: BuildV3$inboundSchema,
 });
 
 /** @internal */
@@ -191,10 +201,11 @@ export type ApplicationWithLatestDeploymentAndBuildDeployment$Outbound = {
     createdBy: string;
     requestedMemoryMB: number;
     requestedCPU: number;
-    deploymentId: number;
-    buildId: number;
+    deploymentId: string;
+    buildTag?: string | undefined;
+    buildId: string;
     appId: string;
-    build: Build$Outbound;
+    build: BuildV3$Outbound;
 };
 
 /** @internal */
@@ -212,10 +223,11 @@ export const ApplicationWithLatestDeploymentAndBuildDeployment$outboundSchema: z
     createdBy: z.string(),
     requestedMemoryMB: z.number(),
     requestedCPU: z.number(),
-    deploymentId: z.number().int(),
-    buildId: z.number().int(),
+    deploymentId: z.string(),
+    buildTag: z.string().optional(),
+    buildId: z.string(),
     appId: z.string(),
-    build: Build$outboundSchema,
+    build: BuildV3$outboundSchema,
 });
 
 /**

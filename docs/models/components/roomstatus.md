@@ -8,11 +8,18 @@ The allocation status of a room.
 
 `destroyed`: all associated metadata is deleted
 
+## Example Usage
+
+```typescript
+import { RoomStatus } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: RoomStatus = "active";
+```
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `Scheduling` | scheduling   |
-| `Active`     | active       |
-| `Destroyed`  | destroyed    |
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
+```typescript
+"scheduling" | "active" | "destroyed" | Unrecognized<string>
+```

@@ -1,5 +1,12 @@
 # LoginAnonymousGlobals
 
+## Example Usage
+
+```typescript
+import { LoginAnonymousGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: LoginAnonymousGlobals = {};
+```
 
 ## Fields
 

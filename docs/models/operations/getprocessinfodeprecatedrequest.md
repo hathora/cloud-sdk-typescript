@@ -1,5 +1,14 @@
 # GetProcessInfoDeprecatedRequest
 
+## Example Usage
+
+```typescript
+import { GetProcessInfoDeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: GetProcessInfoDeprecatedRequest = {
+    processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+};
+```
 
 ## Fields
 

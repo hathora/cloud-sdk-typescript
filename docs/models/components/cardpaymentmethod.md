@@ -1,5 +1,15 @@
 # CardPaymentMethod
 
+## Example Usage
+
+```typescript
+import { CardPaymentMethod } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: CardPaymentMethod = {
+    last4: "<value>",
+    brand: "mastercard",
+};
+```
 
 ## Fields
 

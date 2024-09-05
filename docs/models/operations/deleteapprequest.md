@@ -1,5 +1,12 @@
 # DeleteAppRequest
 
+## Example Usage
+
+```typescript
+import { DeleteAppRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: DeleteAppRequest = {};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # CreatePublicLobbyDeprecatedGlobals
 
+## Example Usage
+
+```typescript
+import { CreatePublicLobbyDeprecatedGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+
+let value: CreatePublicLobbyDeprecatedGlobals = {};
+```
 
 ## Fields
 

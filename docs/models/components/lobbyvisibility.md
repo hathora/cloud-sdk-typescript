@@ -8,11 +8,18 @@ Types of lobbies a player can create.
 
 `local`: for testing with a server running locally
 
+## Example Usage
+
+```typescript
+import { LobbyVisibility } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: LobbyVisibility = "private";
+```
 
 ## Values
 
-| Name      | Value     |
-| --------- | --------- |
-| `Private` | private   |
-| `Public`  | public    |
-| `Local`   | local     |
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
+```typescript
+"private" | "public" | "local" | Unrecognized<string>
+```
