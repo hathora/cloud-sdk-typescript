@@ -6,28 +6,28 @@
 import { CreateDeploymentV2DeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: CreateDeploymentV2DeprecatedRequest = {
-    buildId: 1,
-    deploymentConfigV2: {
-        idleTimeoutEnabled: false,
-        env: [
-            {
-                value: "TRUE",
-                name: "EULA",
-            },
-        ],
-        roomsPerProcess: 3,
-        additionalContainerPorts: [
-            {
-                transportType: "tls",
-                port: 8000,
-                name: "default",
-            },
-        ],
+  buildId: 1,
+  deploymentConfigV2: {
+    idleTimeoutEnabled: false,
+    env: [
+      {
+        value: "TRUE",
+        name: "EULA",
+      },
+    ],
+    roomsPerProcess: 3,
+    additionalContainerPorts: [
+      {
         transportType: "udp",
-        containerPort: 4000,
-        requestedMemoryMB: 1024,
-        requestedCPU: 0.5,
-    },
+        port: 8000,
+        name: "default",
+      },
+    ],
+    transportType: "udp",
+    containerPort: 4000,
+    requestedMemoryMB: 1024,
+    requestedCPU: 0.5,
+  },
 };
 ```
 

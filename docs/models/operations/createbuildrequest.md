@@ -6,11 +6,11 @@
 import { CreateBuildRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: CreateBuildRequest = {
-    orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-    createMultipartBuildParams: {
-        buildTag: "0.1.14-14c793",
-        buildSizeInBytes: 2305.33,
-    },
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
+  createMultipartBuildParams: {
+    buildTag: "0.1.14-14c793",
+    buildSizeInBytes: 6439.9,
+  },
 };
 ```
 

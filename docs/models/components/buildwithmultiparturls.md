@@ -8,30 +8,30 @@ A build represents a game server artifact and its associated metadata.
 import { BuildWithMultipartUrls } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: BuildWithMultipartUrls = {
-    buildTag: "0.1.14-14c793",
-    regionalContainerTags: [
-        {
-            containerTag: "<value>",
-            region: "Tokyo",
-        },
-    ],
-    imageSize: 96098,
-    status: "failed",
-    deletedAt: new Date("2024-12-06T04:47:23.184Z"),
-    finishedAt: new Date("2024-08-20T12:00:03.589Z"),
-    startedAt: new Date("2023-05-29T15:24:04.034Z"),
-    createdAt: new Date("2023-07-13T13:09:34.110Z"),
-    createdBy: "noreply@hathora.dev",
-    buildId: 1,
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-    completeUploadPostRequestUrl: "<value>",
-    maxChunkSize: 9767.62,
-    uploadParts: [
-        {
-            putRequestUrl: "<value>",
-            partNumber: 557.14,
-        },
-    ],
+  buildTag: "0.1.14-14c793",
+  regionalContainerTags: [
+    {
+      containerTag: "<value>",
+      region: "Los_Angeles",
+    },
+  ],
+  imageSize: 971945,
+  status: "failed",
+  deletedAt: new Date("2024-08-20T12:00:03.589Z"),
+  finishedAt: new Date("2023-05-29T15:24:04.034Z"),
+  startedAt: new Date("2023-07-13T13:09:34.110Z"),
+  createdAt: new Date("2024-12-06T12:43:25.437Z"),
+  createdBy: "noreply@hathora.dev",
+  buildId: 1,
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  completeUploadPostRequestUrl: "<value>",
+  maxChunkSize: 557.14,
+  uploadParts: [
+    {
+      putRequestUrl: "<value>",
+      partNumber: 6048.46,
+    },
+  ],
 };
 ```
 

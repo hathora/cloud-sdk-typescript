@@ -373,7 +373,7 @@ const hathoraCloud = new HathoraCloudCore({
 async function run() {
   const res = await buildsV2CreateWithMultipartUploadsV2Deprecated(hathoraCloud, {
     buildTag: "0.1.14-14c793",
-    buildSizeInBytes: 3798.82,
+    buildSizeInBytes: 3146.66,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   if (!res.ok) {

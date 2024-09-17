@@ -6,9 +6,9 @@
 import { LoginNicknameRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: LoginNicknameRequest = {
-    nicknameObject: {
-        nickname: "squiddytwoshoes",
-    },
+  nicknameObject: {
+    nickname: "squiddytwoshoes",
+  },
 };
 ```
 

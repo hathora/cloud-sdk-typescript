@@ -15,94 +15,134 @@ import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class RoomsV2 extends ClientSDK {
-    /**
-     * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
-     */
-    async createRoom(
-        createRoomParams: components.CreateRoomParams,
-        appId?: string | undefined,
-        roomId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.RoomConnectionData> {
-        return unwrapAsync(roomsV2CreateRoom(this, createRoomParams, appId, roomId, options));
-    }
+  /**
+   * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
+   */
+  async createRoom(
+    createRoomParams: components.CreateRoomParams,
+    appId?: string | undefined,
+    roomId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.RoomConnectionData> {
+    return unwrapAsync(roomsV2CreateRoom(
+      this,
+      createRoomParams,
+      appId,
+      roomId,
+      options,
+    ));
+  }
 
-    /**
-     * Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
-     */
-    async getRoomInfo(
-        roomId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.Room> {
-        return unwrapAsync(roomsV2GetRoomInfo(this, roomId, appId, options));
-    }
+  /**
+   * Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
+   */
+  async getRoomInfo(
+    roomId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.Room> {
+    return unwrapAsync(roomsV2GetRoomInfo(
+      this,
+      roomId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
-     */
-    async getActiveRoomsForProcess(
-        processId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<Array<components.RoomWithoutAllocations>> {
-        return unwrapAsync(roomsV2GetActiveRoomsForProcess(this, processId, appId, options));
-    }
+  /**
+   * Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
+   */
+  async getActiveRoomsForProcess(
+    processId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<Array<components.RoomWithoutAllocations>> {
+    return unwrapAsync(roomsV2GetActiveRoomsForProcess(
+      this,
+      processId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
-     */
-    async getInactiveRoomsForProcess(
-        processId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<Array<components.RoomWithoutAllocations>> {
-        return unwrapAsync(roomsV2GetInactiveRoomsForProcess(this, processId, appId, options));
-    }
+  /**
+   * Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
+   */
+  async getInactiveRoomsForProcess(
+    processId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<Array<components.RoomWithoutAllocations>> {
+    return unwrapAsync(roomsV2GetInactiveRoomsForProcess(
+      this,
+      processId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
-     */
-    async destroyRoom(
-        roomId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<void> {
-        return unwrapAsync(roomsV2DestroyRoom(this, roomId, appId, options));
-    }
+  /**
+   * Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
+   */
+  async destroyRoom(
+    roomId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(roomsV2DestroyRoom(
+      this,
+      roomId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same `roomId`.
-     *
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async suspendRoomV2Deprecated(
-        roomId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<void> {
-        return unwrapAsync(roomsV2SuspendRoomV2Deprecated(this, roomId, appId, options));
-    }
+  /**
+   * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same `roomId`.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async suspendRoomV2Deprecated(
+    roomId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(roomsV2SuspendRoomV2Deprecated(
+      this,
+      roomId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
-     */
-    async getConnectionInfo(
-        roomId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.ConnectionInfoV2> {
-        return unwrapAsync(roomsV2GetConnectionInfo(this, roomId, appId, options));
-    }
+  /**
+   * Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
+   */
+  async getConnectionInfo(
+    roomId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.ConnectionInfoV2> {
+    return unwrapAsync(roomsV2GetConnectionInfo(
+      this,
+      roomId,
+      appId,
+      options,
+    ));
+  }
 
-    async updateRoomConfig(
-        roomId: string,
-        updateRoomConfigParams: components.UpdateRoomConfigParams,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<void> {
-        return unwrapAsync(
-            roomsV2UpdateRoomConfig(this, roomId, updateRoomConfigParams, appId, options)
-        );
-    }
+  async updateRoomConfig(
+    roomId: string,
+    updateRoomConfigParams: components.UpdateRoomConfigParams,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(roomsV2UpdateRoomConfig(
+      this,
+      roomId,
+      updateRoomConfigParams,
+      appId,
+      options,
+    ));
+  }
 }

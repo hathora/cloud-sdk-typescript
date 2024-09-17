@@ -5,30 +5,30 @@
 import * as z from "zod";
 
 export type VerificationEmailRequest = {
-    userId: string;
+  userId: string;
 };
 
 /** @internal */
 export const VerificationEmailRequest$inboundSchema: z.ZodType<
-    VerificationEmailRequest,
-    z.ZodTypeDef,
-    unknown
+  VerificationEmailRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    userId: z.string(),
+  userId: z.string(),
 });
 
 /** @internal */
 export type VerificationEmailRequest$Outbound = {
-    userId: string;
+  userId: string;
 };
 
 /** @internal */
 export const VerificationEmailRequest$outboundSchema: z.ZodType<
-    VerificationEmailRequest$Outbound,
-    z.ZodTypeDef,
-    VerificationEmailRequest
+  VerificationEmailRequest$Outbound,
+  z.ZodTypeDef,
+  VerificationEmailRequest
 > = z.object({
-    userId: z.string(),
+  userId: z.string(),
 });
 
 /**
@@ -36,10 +36,10 @@ export const VerificationEmailRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace VerificationEmailRequest$ {
-    /** @deprecated use `VerificationEmailRequest$inboundSchema` instead. */
-    export const inboundSchema = VerificationEmailRequest$inboundSchema;
-    /** @deprecated use `VerificationEmailRequest$outboundSchema` instead. */
-    export const outboundSchema = VerificationEmailRequest$outboundSchema;
-    /** @deprecated use `VerificationEmailRequest$Outbound` instead. */
-    export type Outbound = VerificationEmailRequest$Outbound;
+  /** @deprecated use `VerificationEmailRequest$inboundSchema` instead. */
+  export const inboundSchema = VerificationEmailRequest$inboundSchema;
+  /** @deprecated use `VerificationEmailRequest$outboundSchema` instead. */
+  export const outboundSchema = VerificationEmailRequest$outboundSchema;
+  /** @deprecated use `VerificationEmailRequest$Outbound` instead. */
+  export type Outbound = VerificationEmailRequest$Outbound;
 }

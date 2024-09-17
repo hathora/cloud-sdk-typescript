@@ -6,7 +6,7 @@
 import { CreatePublicLobbyDeprecatedSecurity } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: CreatePublicLobbyDeprecatedSecurity = {
-    playerAuth: "<value>",
+  playerAuth: "<value>",
 };
 ```
 

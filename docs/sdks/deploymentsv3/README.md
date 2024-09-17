@@ -3,6 +3,8 @@
 
 ## Overview
 
+Operations that allow you configure and manage an application's [build](https://hathora.dev/docs/concepts/hathora-entities#build) at runtime.
+
 ### Available Operations
 
 * [getDeployments](#getdeployments) - Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
@@ -102,7 +104,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.deploymentsV3.createDeployment({
-    idleTimeoutEnabled: false,
+    idleTimeoutEnabled: true,
     env: [
       {
         value: "TRUE",
@@ -148,7 +150,7 @@ const hathoraCloud = new HathoraCloudCore({
 
 async function run() {
   const res = await deploymentsV3CreateDeployment(hathoraCloud, {
-    idleTimeoutEnabled: false,
+    idleTimeoutEnabled: true,
     env: [
       {
         value: "TRUE",
@@ -163,7 +165,7 @@ async function run() {
         name: "default",
       },
     ],
-    transportType: "tls",
+    transportType: "tcp",
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,

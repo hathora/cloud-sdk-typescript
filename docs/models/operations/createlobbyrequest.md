@@ -6,13 +6,13 @@
 import { CreateLobbyRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: CreateLobbyRequest = {
-    shortCode: "LFG4",
-    roomId: "2swovpy1fnunu",
-    createLobbyV3Params: {
-        visibility: "private",
-        roomConfig: '{"name":"my-room"}',
-        region: "Dallas",
-    },
+  shortCode: "LFG4",
+  roomId: "2swovpy1fnunu",
+  createLobbyV3Params: {
+    visibility: "private",
+    roomConfig: "{\"name\":\"my-room\"}",
+    region: "Tokyo",
+  },
 };
 ```
 

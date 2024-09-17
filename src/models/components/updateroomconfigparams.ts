@@ -5,33 +5,33 @@
 import * as z from "zod";
 
 export type UpdateRoomConfigParams = {
-    /**
-     * Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).
-     */
-    roomConfig: string;
+  /**
+   * Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).
+   */
+  roomConfig: string;
 };
 
 /** @internal */
 export const UpdateRoomConfigParams$inboundSchema: z.ZodType<
-    UpdateRoomConfigParams,
-    z.ZodTypeDef,
-    unknown
+  UpdateRoomConfigParams,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    roomConfig: z.string(),
+  roomConfig: z.string(),
 });
 
 /** @internal */
 export type UpdateRoomConfigParams$Outbound = {
-    roomConfig: string;
+  roomConfig: string;
 };
 
 /** @internal */
 export const UpdateRoomConfigParams$outboundSchema: z.ZodType<
-    UpdateRoomConfigParams$Outbound,
-    z.ZodTypeDef,
-    UpdateRoomConfigParams
+  UpdateRoomConfigParams$Outbound,
+  z.ZodTypeDef,
+  UpdateRoomConfigParams
 > = z.object({
-    roomConfig: z.string(),
+  roomConfig: z.string(),
 });
 
 /**
@@ -39,10 +39,10 @@ export const UpdateRoomConfigParams$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace UpdateRoomConfigParams$ {
-    /** @deprecated use `UpdateRoomConfigParams$inboundSchema` instead. */
-    export const inboundSchema = UpdateRoomConfigParams$inboundSchema;
-    /** @deprecated use `UpdateRoomConfigParams$outboundSchema` instead. */
-    export const outboundSchema = UpdateRoomConfigParams$outboundSchema;
-    /** @deprecated use `UpdateRoomConfigParams$Outbound` instead. */
-    export type Outbound = UpdateRoomConfigParams$Outbound;
+  /** @deprecated use `UpdateRoomConfigParams$inboundSchema` instead. */
+  export const inboundSchema = UpdateRoomConfigParams$inboundSchema;
+  /** @deprecated use `UpdateRoomConfigParams$outboundSchema` instead. */
+  export const outboundSchema = UpdateRoomConfigParams$outboundSchema;
+  /** @deprecated use `UpdateRoomConfigParams$Outbound` instead. */
+  export type Outbound = UpdateRoomConfigParams$Outbound;
 }

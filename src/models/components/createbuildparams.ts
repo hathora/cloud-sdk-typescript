@@ -5,30 +5,33 @@
 import * as z from "zod";
 
 export type CreateBuildParams = {
-    /**
-     * Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
-     */
-    buildTag?: string | undefined;
+  /**
+   * Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
+   */
+  buildTag?: string | undefined;
 };
 
 /** @internal */
-export const CreateBuildParams$inboundSchema: z.ZodType<CreateBuildParams, z.ZodTypeDef, unknown> =
-    z.object({
-        buildTag: z.string().optional(),
-    });
+export const CreateBuildParams$inboundSchema: z.ZodType<
+  CreateBuildParams,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  buildTag: z.string().optional(),
+});
 
 /** @internal */
 export type CreateBuildParams$Outbound = {
-    buildTag?: string | undefined;
+  buildTag?: string | undefined;
 };
 
 /** @internal */
 export const CreateBuildParams$outboundSchema: z.ZodType<
-    CreateBuildParams$Outbound,
-    z.ZodTypeDef,
-    CreateBuildParams
+  CreateBuildParams$Outbound,
+  z.ZodTypeDef,
+  CreateBuildParams
 > = z.object({
-    buildTag: z.string().optional(),
+  buildTag: z.string().optional(),
 });
 
 /**
@@ -36,10 +39,10 @@ export const CreateBuildParams$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace CreateBuildParams$ {
-    /** @deprecated use `CreateBuildParams$inboundSchema` instead. */
-    export const inboundSchema = CreateBuildParams$inboundSchema;
-    /** @deprecated use `CreateBuildParams$outboundSchema` instead. */
-    export const outboundSchema = CreateBuildParams$outboundSchema;
-    /** @deprecated use `CreateBuildParams$Outbound` instead. */
-    export type Outbound = CreateBuildParams$Outbound;
+  /** @deprecated use `CreateBuildParams$inboundSchema` instead. */
+  export const inboundSchema = CreateBuildParams$inboundSchema;
+  /** @deprecated use `CreateBuildParams$outboundSchema` instead. */
+  export const outboundSchema = CreateBuildParams$outboundSchema;
+  /** @deprecated use `CreateBuildParams$Outbound` instead. */
+  export type Outbound = CreateBuildParams$Outbound;
 }

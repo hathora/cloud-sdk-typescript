@@ -5,34 +5,34 @@
 import * as z from "zod";
 
 export type DeleteBuildRequest = {
-    buildId: string;
-    orgId?: string | undefined;
+  buildId: string;
+  orgId?: string | undefined;
 };
 
 /** @internal */
 export const DeleteBuildRequest$inboundSchema: z.ZodType<
-    DeleteBuildRequest,
-    z.ZodTypeDef,
-    unknown
+  DeleteBuildRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    buildId: z.string(),
-    orgId: z.string().optional(),
+  buildId: z.string(),
+  orgId: z.string().optional(),
 });
 
 /** @internal */
 export type DeleteBuildRequest$Outbound = {
-    buildId: string;
-    orgId?: string | undefined;
+  buildId: string;
+  orgId?: string | undefined;
 };
 
 /** @internal */
 export const DeleteBuildRequest$outboundSchema: z.ZodType<
-    DeleteBuildRequest$Outbound,
-    z.ZodTypeDef,
-    DeleteBuildRequest
+  DeleteBuildRequest$Outbound,
+  z.ZodTypeDef,
+  DeleteBuildRequest
 > = z.object({
-    buildId: z.string(),
-    orgId: z.string().optional(),
+  buildId: z.string(),
+  orgId: z.string().optional(),
 });
 
 /**
@@ -40,10 +40,10 @@ export const DeleteBuildRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace DeleteBuildRequest$ {
-    /** @deprecated use `DeleteBuildRequest$inboundSchema` instead. */
-    export const inboundSchema = DeleteBuildRequest$inboundSchema;
-    /** @deprecated use `DeleteBuildRequest$outboundSchema` instead. */
-    export const outboundSchema = DeleteBuildRequest$outboundSchema;
-    /** @deprecated use `DeleteBuildRequest$Outbound` instead. */
-    export type Outbound = DeleteBuildRequest$Outbound;
+  /** @deprecated use `DeleteBuildRequest$inboundSchema` instead. */
+  export const inboundSchema = DeleteBuildRequest$inboundSchema;
+  /** @deprecated use `DeleteBuildRequest$outboundSchema` instead. */
+  export const outboundSchema = DeleteBuildRequest$outboundSchema;
+  /** @deprecated use `DeleteBuildRequest$Outbound` instead. */
+  export type Outbound = DeleteBuildRequest$Outbound;
 }

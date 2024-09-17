@@ -5,30 +5,30 @@
 import * as z from "zod";
 
 export type GetOrgPendingInvitesRequest = {
-    orgId: string;
+  orgId: string;
 };
 
 /** @internal */
 export const GetOrgPendingInvitesRequest$inboundSchema: z.ZodType<
-    GetOrgPendingInvitesRequest,
-    z.ZodTypeDef,
-    unknown
+  GetOrgPendingInvitesRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    orgId: z.string(),
+  orgId: z.string(),
 });
 
 /** @internal */
 export type GetOrgPendingInvitesRequest$Outbound = {
-    orgId: string;
+  orgId: string;
 };
 
 /** @internal */
 export const GetOrgPendingInvitesRequest$outboundSchema: z.ZodType<
-    GetOrgPendingInvitesRequest$Outbound,
-    z.ZodTypeDef,
-    GetOrgPendingInvitesRequest
+  GetOrgPendingInvitesRequest$Outbound,
+  z.ZodTypeDef,
+  GetOrgPendingInvitesRequest
 > = z.object({
-    orgId: z.string(),
+  orgId: z.string(),
 });
 
 /**
@@ -36,10 +36,10 @@ export const GetOrgPendingInvitesRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetOrgPendingInvitesRequest$ {
-    /** @deprecated use `GetOrgPendingInvitesRequest$inboundSchema` instead. */
-    export const inboundSchema = GetOrgPendingInvitesRequest$inboundSchema;
-    /** @deprecated use `GetOrgPendingInvitesRequest$outboundSchema` instead. */
-    export const outboundSchema = GetOrgPendingInvitesRequest$outboundSchema;
-    /** @deprecated use `GetOrgPendingInvitesRequest$Outbound` instead. */
-    export type Outbound = GetOrgPendingInvitesRequest$Outbound;
+  /** @deprecated use `GetOrgPendingInvitesRequest$inboundSchema` instead. */
+  export const inboundSchema = GetOrgPendingInvitesRequest$inboundSchema;
+  /** @deprecated use `GetOrgPendingInvitesRequest$outboundSchema` instead. */
+  export const outboundSchema = GetOrgPendingInvitesRequest$outboundSchema;
+  /** @deprecated use `GetOrgPendingInvitesRequest$Outbound` instead. */
+  export type Outbound = GetOrgPendingInvitesRequest$Outbound;
 }

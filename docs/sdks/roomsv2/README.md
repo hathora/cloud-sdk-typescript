@@ -59,7 +59,7 @@ const hathoraCloud = new HathoraCloudCore({
 async function run() {
   const res = await roomsV2CreateRoom(hathoraCloud, {
     roomConfig: "{\"name\":\"my-room\"}",
-    region: "Frankfurt",
+    region: "Sao_Paulo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   if (!res.ok) {

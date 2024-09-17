@@ -6,8 +6,8 @@
 import { ApplicationWithLatestDeploymentAndBuildDeprecatedEnv } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: ApplicationWithLatestDeploymentAndBuildDeprecatedEnv = {
-    value: "TRUE",
-    name: "EULA",
+  value: "TRUE",
+  name: "EULA",
 };
 ```
 

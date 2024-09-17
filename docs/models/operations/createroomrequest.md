@@ -6,11 +6,11 @@
 import { CreateRoomRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: CreateRoomRequest = {
-    roomId: "2swovpy1fnunu",
-    createRoomParams: {
-        roomConfig: '{"name":"my-room"}',
-        region: "Los_Angeles",
-    },
+  roomId: "2swovpy1fnunu",
+  createRoomParams: {
+    roomConfig: "{\"name\":\"my-room\"}",
+    region: "Chicago",
+  },
 };
 ```
 

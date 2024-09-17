@@ -6,11 +6,11 @@
 import { CreatePrivateLobbyRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: CreatePrivateLobbyRequest = {
-    roomId: "2swovpy1fnunu",
-    requestBody: {
-        initialConfig: "<value>",
-        region: "Tokyo",
-    },
+  roomId: "2swovpy1fnunu",
+  requestBody: {
+    initialConfig: "<value>",
+    region: "Sao_Paulo",
+  },
 };
 ```
 

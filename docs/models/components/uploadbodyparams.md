@@ -6,8 +6,8 @@
 import { UploadBodyParams } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: UploadBodyParams = {
-    value: "<value>",
-    key: "<key>",
+  value: "<value>",
+  key: "<key>",
 };
 ```
 

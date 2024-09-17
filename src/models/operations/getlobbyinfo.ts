@@ -5,35 +5,35 @@
 import * as z from "zod";
 
 export type GetLobbyInfoGlobals = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 export type GetLobbyInfoRequest = {
-    appId?: string | undefined;
-    roomId: string;
+  appId?: string | undefined;
+  roomId: string;
 };
 
 /** @internal */
 export const GetLobbyInfoGlobals$inboundSchema: z.ZodType<
-    GetLobbyInfoGlobals,
-    z.ZodTypeDef,
-    unknown
+  GetLobbyInfoGlobals,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /** @internal */
 export type GetLobbyInfoGlobals$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const GetLobbyInfoGlobals$outboundSchema: z.ZodType<
-    GetLobbyInfoGlobals$Outbound,
-    z.ZodTypeDef,
-    GetLobbyInfoGlobals
+  GetLobbyInfoGlobals$Outbound,
+  z.ZodTypeDef,
+  GetLobbyInfoGlobals
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -41,38 +41,38 @@ export const GetLobbyInfoGlobals$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetLobbyInfoGlobals$ {
-    /** @deprecated use `GetLobbyInfoGlobals$inboundSchema` instead. */
-    export const inboundSchema = GetLobbyInfoGlobals$inboundSchema;
-    /** @deprecated use `GetLobbyInfoGlobals$outboundSchema` instead. */
-    export const outboundSchema = GetLobbyInfoGlobals$outboundSchema;
-    /** @deprecated use `GetLobbyInfoGlobals$Outbound` instead. */
-    export type Outbound = GetLobbyInfoGlobals$Outbound;
+  /** @deprecated use `GetLobbyInfoGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetLobbyInfoGlobals$inboundSchema;
+  /** @deprecated use `GetLobbyInfoGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetLobbyInfoGlobals$outboundSchema;
+  /** @deprecated use `GetLobbyInfoGlobals$Outbound` instead. */
+  export type Outbound = GetLobbyInfoGlobals$Outbound;
 }
 
 /** @internal */
 export const GetLobbyInfoRequest$inboundSchema: z.ZodType<
-    GetLobbyInfoRequest,
-    z.ZodTypeDef,
-    unknown
+  GetLobbyInfoRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
-    roomId: z.string(),
+  appId: z.string().optional(),
+  roomId: z.string(),
 });
 
 /** @internal */
 export type GetLobbyInfoRequest$Outbound = {
-    appId?: string | undefined;
-    roomId: string;
+  appId?: string | undefined;
+  roomId: string;
 };
 
 /** @internal */
 export const GetLobbyInfoRequest$outboundSchema: z.ZodType<
-    GetLobbyInfoRequest$Outbound,
-    z.ZodTypeDef,
-    GetLobbyInfoRequest
+  GetLobbyInfoRequest$Outbound,
+  z.ZodTypeDef,
+  GetLobbyInfoRequest
 > = z.object({
-    appId: z.string().optional(),
-    roomId: z.string(),
+  appId: z.string().optional(),
+  roomId: z.string(),
 });
 
 /**
@@ -80,10 +80,10 @@ export const GetLobbyInfoRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetLobbyInfoRequest$ {
-    /** @deprecated use `GetLobbyInfoRequest$inboundSchema` instead. */
-    export const inboundSchema = GetLobbyInfoRequest$inboundSchema;
-    /** @deprecated use `GetLobbyInfoRequest$outboundSchema` instead. */
-    export const outboundSchema = GetLobbyInfoRequest$outboundSchema;
-    /** @deprecated use `GetLobbyInfoRequest$Outbound` instead. */
-    export type Outbound = GetLobbyInfoRequest$Outbound;
+  /** @deprecated use `GetLobbyInfoRequest$inboundSchema` instead. */
+  export const inboundSchema = GetLobbyInfoRequest$inboundSchema;
+  /** @deprecated use `GetLobbyInfoRequest$outboundSchema` instead. */
+  export const outboundSchema = GetLobbyInfoRequest$outboundSchema;
+  /** @deprecated use `GetLobbyInfoRequest$Outbound` instead. */
+  export type Outbound = GetLobbyInfoRequest$Outbound;
 }

@@ -6,7 +6,7 @@
 import { GetBuildInfoDeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: GetBuildInfoDeprecatedRequest = {
-    buildId: 1,
+  buildId: 1,
 };
 ```
 

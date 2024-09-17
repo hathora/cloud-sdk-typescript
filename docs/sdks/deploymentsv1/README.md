@@ -316,12 +316,12 @@ async function run() {
     planName: "tiny",
     additionalContainerPorts: [
       {
-        transportType: "tls",
+        transportType: "tcp",
         port: 8000,
         name: "default",
       },
     ],
-    transportType: "udp",
+    transportType: "tcp",
     containerPort: 4000,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 

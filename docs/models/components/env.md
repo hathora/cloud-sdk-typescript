@@ -6,8 +6,8 @@
 import { Env } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: Env = {
-    value: "TRUE",
-    name: "EULA",
+  value: "TRUE",
+  name: "EULA",
 };
 ```
 

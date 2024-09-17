@@ -5,35 +5,35 @@
 import * as z from "zod";
 
 export type SuspendRoomV2DeprecatedGlobals = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 export type SuspendRoomV2DeprecatedRequest = {
-    appId?: string | undefined;
-    roomId: string;
+  appId?: string | undefined;
+  roomId: string;
 };
 
 /** @internal */
 export const SuspendRoomV2DeprecatedGlobals$inboundSchema: z.ZodType<
-    SuspendRoomV2DeprecatedGlobals,
-    z.ZodTypeDef,
-    unknown
+  SuspendRoomV2DeprecatedGlobals,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /** @internal */
 export type SuspendRoomV2DeprecatedGlobals$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const SuspendRoomV2DeprecatedGlobals$outboundSchema: z.ZodType<
-    SuspendRoomV2DeprecatedGlobals$Outbound,
-    z.ZodTypeDef,
-    SuspendRoomV2DeprecatedGlobals
+  SuspendRoomV2DeprecatedGlobals$Outbound,
+  z.ZodTypeDef,
+  SuspendRoomV2DeprecatedGlobals
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -41,38 +41,38 @@ export const SuspendRoomV2DeprecatedGlobals$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace SuspendRoomV2DeprecatedGlobals$ {
-    /** @deprecated use `SuspendRoomV2DeprecatedGlobals$inboundSchema` instead. */
-    export const inboundSchema = SuspendRoomV2DeprecatedGlobals$inboundSchema;
-    /** @deprecated use `SuspendRoomV2DeprecatedGlobals$outboundSchema` instead. */
-    export const outboundSchema = SuspendRoomV2DeprecatedGlobals$outboundSchema;
-    /** @deprecated use `SuspendRoomV2DeprecatedGlobals$Outbound` instead. */
-    export type Outbound = SuspendRoomV2DeprecatedGlobals$Outbound;
+  /** @deprecated use `SuspendRoomV2DeprecatedGlobals$inboundSchema` instead. */
+  export const inboundSchema = SuspendRoomV2DeprecatedGlobals$inboundSchema;
+  /** @deprecated use `SuspendRoomV2DeprecatedGlobals$outboundSchema` instead. */
+  export const outboundSchema = SuspendRoomV2DeprecatedGlobals$outboundSchema;
+  /** @deprecated use `SuspendRoomV2DeprecatedGlobals$Outbound` instead. */
+  export type Outbound = SuspendRoomV2DeprecatedGlobals$Outbound;
 }
 
 /** @internal */
 export const SuspendRoomV2DeprecatedRequest$inboundSchema: z.ZodType<
-    SuspendRoomV2DeprecatedRequest,
-    z.ZodTypeDef,
-    unknown
+  SuspendRoomV2DeprecatedRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
-    roomId: z.string(),
+  appId: z.string().optional(),
+  roomId: z.string(),
 });
 
 /** @internal */
 export type SuspendRoomV2DeprecatedRequest$Outbound = {
-    appId?: string | undefined;
-    roomId: string;
+  appId?: string | undefined;
+  roomId: string;
 };
 
 /** @internal */
 export const SuspendRoomV2DeprecatedRequest$outboundSchema: z.ZodType<
-    SuspendRoomV2DeprecatedRequest$Outbound,
-    z.ZodTypeDef,
-    SuspendRoomV2DeprecatedRequest
+  SuspendRoomV2DeprecatedRequest$Outbound,
+  z.ZodTypeDef,
+  SuspendRoomV2DeprecatedRequest
 > = z.object({
-    appId: z.string().optional(),
-    roomId: z.string(),
+  appId: z.string().optional(),
+  roomId: z.string(),
 });
 
 /**
@@ -80,10 +80,10 @@ export const SuspendRoomV2DeprecatedRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace SuspendRoomV2DeprecatedRequest$ {
-    /** @deprecated use `SuspendRoomV2DeprecatedRequest$inboundSchema` instead. */
-    export const inboundSchema = SuspendRoomV2DeprecatedRequest$inboundSchema;
-    /** @deprecated use `SuspendRoomV2DeprecatedRequest$outboundSchema` instead. */
-    export const outboundSchema = SuspendRoomV2DeprecatedRequest$outboundSchema;
-    /** @deprecated use `SuspendRoomV2DeprecatedRequest$Outbound` instead. */
-    export type Outbound = SuspendRoomV2DeprecatedRequest$Outbound;
+  /** @deprecated use `SuspendRoomV2DeprecatedRequest$inboundSchema` instead. */
+  export const inboundSchema = SuspendRoomV2DeprecatedRequest$inboundSchema;
+  /** @deprecated use `SuspendRoomV2DeprecatedRequest$outboundSchema` instead. */
+  export const outboundSchema = SuspendRoomV2DeprecatedRequest$outboundSchema;
+  /** @deprecated use `SuspendRoomV2DeprecatedRequest$Outbound` instead. */
+  export type Outbound = SuspendRoomV2DeprecatedRequest$Outbound;
 }

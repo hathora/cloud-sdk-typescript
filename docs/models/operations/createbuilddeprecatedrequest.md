@@ -6,9 +6,9 @@
 import { CreateBuildDeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: CreateBuildDeprecatedRequest = {
-    createBuildParams: {
-        buildTag: "0.1.14-14c793",
-    },
+  createBuildParams: {
+    buildTag: "0.1.14-14c793",
+  },
 };
 ```
 

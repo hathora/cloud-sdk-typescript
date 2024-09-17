@@ -9,13 +9,17 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class MetricsV1 extends ClientSDK {
-    /**
-     * Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
-     */
-    async getMetrics(
-        request: operations.GetMetricsRequest,
-        options?: RequestOptions
-    ): Promise<components.MetricsData> {
-        return unwrapAsync(metricsV1GetMetrics(this, request, options));
-    }
+  /**
+   * Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+   */
+  async getMetrics(
+    request: operations.GetMetricsRequest,
+    options?: RequestOptions,
+  ): Promise<components.MetricsData> {
+    return unwrapAsync(metricsV1GetMetrics(
+      this,
+      request,
+      options,
+    ));
+  }
 }

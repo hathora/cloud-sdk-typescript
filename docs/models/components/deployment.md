@@ -6,51 +6,51 @@
 import { Deployment } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: Deployment = {
-    idleTimeoutEnabled: false,
-    env: [
-        {
-            value: "TRUE",
-            name: "EULA",
-        },
-    ],
-    roomsPerProcess: 3,
-    additionalContainerPorts: [
-        {
-            transportType: "tcp",
-            port: 4000,
-            name: "debug",
-        },
-    ],
-    defaultContainerPort: {
-        transportType: "tcp",
-        port: 8000,
-        name: "default",
+  idleTimeoutEnabled: false,
+  env: [
+    {
+      value: "TRUE",
+      name: "EULA",
     },
-    createdAt: new Date("2023-12-11T07:16:06.748Z"),
+  ],
+  roomsPerProcess: 3,
+  additionalContainerPorts: [
+    {
+      transportType: "tcp",
+      port: 4000,
+      name: "debug",
+    },
+  ],
+  defaultContainerPort: {
+    transportType: "udp",
+    port: 8000,
+    name: "default",
+  },
+  createdAt: new Date("2024-02-25T02:16:14.204Z"),
+  createdBy: "noreply@hathora.dev",
+  requestedMemoryMB: 1024,
+  requestedCPU: 0.5,
+  deploymentId: 1,
+  buildId: 1,
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  build: {
+    buildTag: "0.1.14-14c793",
+    regionalContainerTags: [
+      {
+        containerTag: "<value>",
+        region: "Sao_Paulo",
+      },
+    ],
+    imageSize: 289406,
+    status: "running",
+    deletedAt: new Date("2022-07-20T18:39:56.248Z"),
+    finishedAt: new Date("2023-03-13T00:16:37.385Z"),
+    startedAt: new Date("2023-10-05T19:38:10.285Z"),
+    createdAt: new Date("2023-08-29T21:24:58.750Z"),
     createdBy: "noreply@hathora.dev",
-    requestedMemoryMB: 1024,
-    requestedCPU: 0.5,
-    deploymentId: 1,
     buildId: 1,
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-    build: {
-        buildTag: "0.1.14-14c793",
-        regionalContainerTags: [
-            {
-                containerTag: "<value>",
-                region: "Tokyo",
-            },
-        ],
-        imageSize: 841386,
-        status: "running",
-        deletedAt: new Date("2022-10-18T03:27:44.072Z"),
-        finishedAt: new Date("2022-07-20T18:39:56.248Z"),
-        startedAt: new Date("2023-03-13T00:16:37.385Z"),
-        createdAt: new Date("2023-10-05T19:38:10.285Z"),
-        createdBy: "noreply@hathora.dev",
-        buildId: 1,
-        appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-    },
+  },
 };
 ```
 

@@ -8,11 +8,11 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-    ConnectionError,
-    InvalidRequestError,
-    RequestAbortedError,
-    RequestTimeoutError,
-    UnexpectedClientError,
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
@@ -21,85 +21,86 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 export async function billingV1GetUpcomingInvoiceTotal(
-    client$: HathoraCloudCore,
-    options?: RequestOptions
+  client$: HathoraCloudCore,
+  options?: RequestOptions,
 ): Promise<
-    Result<
-        operations.GetUpcomingInvoiceTotalResponseBody,
-        | errors.ApiError
-        | SDKError
-        | SDKValidationError
-        | UnexpectedClientError
-        | InvalidRequestError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | ConnectionError
-    >
+  Result<
+    operations.GetUpcomingInvoiceTotalResponseBody,
+    | errors.ApiError
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
+  >
 > {
-    const path$ = pathToFunc("/billing/v1/upcoming/total")();
+  const path$ = pathToFunc("/billing/v1/upcoming/total")();
 
-    const headers$ = new Headers({
-        Accept: "application/json",
-    });
+  const headers$ = new Headers({
+    Accept: "application/json",
+  });
 
-    const hathoraDevToken$ = await extractSecurity(client$.options$.hathoraDevToken);
-    const security$ = hathoraDevToken$ == null ? {} : { hathoraDevToken: hathoraDevToken$ };
-    const context = {
-        operationID: "GetUpcomingInvoiceTotal",
-        oAuth2Scopes: [],
-        securitySource: client$.options$.hathoraDevToken,
-    };
-    const securitySettings$ = resolveGlobalSecurity(security$);
+  const hathoraDevToken$ = await extractSecurity(
+    client$.options$.hathoraDevToken,
+  );
+  const security$ = hathoraDevToken$ == null
+    ? {}
+    : { hathoraDevToken: hathoraDevToken$ };
+  const context = {
+    operationID: "GetUpcomingInvoiceTotal",
+    oAuth2Scopes: [],
+    securitySource: client$.options$.hathoraDevToken,
+  };
+  const securitySettings$ = resolveGlobalSecurity(security$);
 
-    const requestRes = client$.createRequest$(
-        context,
-        {
-            security: securitySettings$,
-            method: "GET",
-            path: path$,
-            headers: headers$,
-            timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
-        },
-        options
-    );
-    if (!requestRes.ok) {
-        return requestRes;
-    }
-    const request$ = requestRes.value;
+  const requestRes = client$.createRequest$(context, {
+    security: securitySettings$,
+    method: "GET",
+    path: path$,
+    headers: headers$,
+    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+  }, options);
+  if (!requestRes.ok) {
+    return requestRes;
+  }
+  const request$ = requestRes.value;
 
-    const doResult = await client$.do$(request$, {
-        context,
-        errorCodes: ["401", "404", "429", "4XX", "5XX"],
-        retryConfig: options?.retries || client$.options$.retryConfig,
-        retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
-    });
-    if (!doResult.ok) {
-        return doResult;
-    }
-    const response = doResult.value;
+  const doResult = await client$.do$(request$, {
+    context,
+    errorCodes: ["401", "404", "429", "4XX", "5XX"],
+    retryConfig: options?.retries
+      || client$.options$.retryConfig,
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+  });
+  if (!doResult.ok) {
+    return doResult;
+  }
+  const response = doResult.value;
 
-    const responseFields$ = {
-        HttpMeta: { Response: response, Request: request$ },
-    };
+  const responseFields$ = {
+    HttpMeta: { Response: response, Request: request$ },
+  };
 
-    const [result$] = await m$.match<
-        operations.GetUpcomingInvoiceTotalResponseBody,
-        | errors.ApiError
-        | SDKError
-        | SDKValidationError
-        | UnexpectedClientError
-        | InvalidRequestError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | ConnectionError
-    >(
-        m$.json(200, operations.GetUpcomingInvoiceTotalResponseBody$inboundSchema),
-        m$.jsonErr([401, 404, 429], errors.ApiError$inboundSchema),
-        m$.fail(["4XX", "5XX"])
-    )(response, { extraFields: responseFields$ });
-    if (!result$.ok) {
-        return result$;
-    }
-
+  const [result$] = await m$.match<
+    operations.GetUpcomingInvoiceTotalResponseBody,
+    | errors.ApiError
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
+  >(
+    m$.json(200, operations.GetUpcomingInvoiceTotalResponseBody$inboundSchema),
+    m$.jsonErr([401, 404, 429], errors.ApiError$inboundSchema),
+    m$.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields$ });
+  if (!result$.ok) {
     return result$;
+  }
+
+  return result$;
 }

@@ -6,10 +6,10 @@
 import { SetLobbyStateRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: SetLobbyStateRequest = {
-    roomId: "2swovpy1fnunu",
-    setLobbyStateParams: {
-        state: "<value>",
-    },
+  roomId: "2swovpy1fnunu",
+  setLobbyStateParams: {
+    state: "<value>",
+  },
 };
 ```
 

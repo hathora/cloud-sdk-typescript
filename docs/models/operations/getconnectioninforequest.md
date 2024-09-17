@@ -6,7 +6,7 @@
 import { GetConnectionInfoRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: GetConnectionInfoRequest = {
-    roomId: "2swovpy1fnunu",
+  roomId: "2swovpy1fnunu",
 };
 ```
 

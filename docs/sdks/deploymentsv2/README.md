@@ -310,12 +310,12 @@ async function run() {
     roomsPerProcess: 3,
     additionalContainerPorts: [
       {
-        transportType: "tcp",
+        transportType: "tls",
         port: 8000,
         name: "default",
       },
     ],
-    transportType: "tls",
+    transportType: "tcp",
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,

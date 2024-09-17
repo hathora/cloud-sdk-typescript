@@ -6,8 +6,8 @@
 import { CardPaymentMethod } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: CardPaymentMethod = {
-    last4: "<value>",
-    brand: "mastercard",
+  last4: "<value>",
+  brand: "amex",
 };
 ```
 

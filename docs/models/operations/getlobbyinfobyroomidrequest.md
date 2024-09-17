@@ -6,7 +6,7 @@
 import { GetLobbyInfoByRoomIdRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: GetLobbyInfoByRoomIdRequest = {
-    roomId: "2swovpy1fnunu",
+  roomId: "2swovpy1fnunu",
 };
 ```
 

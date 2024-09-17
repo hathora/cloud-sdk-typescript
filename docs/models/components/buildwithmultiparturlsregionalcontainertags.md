@@ -6,8 +6,8 @@
 import { BuildWithMultipartUrlsRegionalContainerTags } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: BuildWithMultipartUrlsRegionalContainerTags = {
-    containerTag: "<value>",
-    region: "Sao_Paulo",
+  containerTag: "<value>",
+  region: "Tokyo",
 };
 ```
 

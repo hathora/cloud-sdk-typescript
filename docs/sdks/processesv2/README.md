@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations to get data on active and stopped [processes](https://hathora.dev/docs/concepts/hathora-entities#process).
+Deprecated. Use [ProcessesV3](https://hathora.dev/api#tag/ProcessesV3).
 
 ### Available Operations
 
@@ -359,7 +359,7 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await processesV2CreateProcessV2Deprecated(hathoraCloud, "Chicago", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const res = await processesV2CreateProcessV2Deprecated(hathoraCloud, "Mumbai", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   if (!res.ok) {
     throw res.error;

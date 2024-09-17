@@ -6,12 +6,12 @@
 import { CreateLobbyDeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: CreateLobbyDeprecatedRequest = {
-    roomId: "2swovpy1fnunu",
-    createLobbyParams: {
-        visibility: "private",
-        initialConfig: "<value>",
-        region: "Sao_Paulo",
-    },
+  roomId: "2swovpy1fnunu",
+  createLobbyParams: {
+    visibility: "private",
+    initialConfig: "<value>",
+    region: "Dallas",
+  },
 };
 ```
 

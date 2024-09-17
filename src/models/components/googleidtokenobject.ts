@@ -5,33 +5,33 @@
 import * as z from "zod";
 
 export type GoogleIdTokenObject = {
-    /**
-     * A Google-signed OIDC ID token representing a player's authenticated identity. Learn how to get an `idToken` [here](https://cloud.google.com/docs/authentication/get-id-token).
-     */
-    idToken: string;
+  /**
+   * A Google-signed OIDC ID token representing a player's authenticated identity. Learn how to get an `idToken` [here](https://cloud.google.com/docs/authentication/get-id-token).
+   */
+  idToken: string;
 };
 
 /** @internal */
 export const GoogleIdTokenObject$inboundSchema: z.ZodType<
-    GoogleIdTokenObject,
-    z.ZodTypeDef,
-    unknown
+  GoogleIdTokenObject,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    idToken: z.string(),
+  idToken: z.string(),
 });
 
 /** @internal */
 export type GoogleIdTokenObject$Outbound = {
-    idToken: string;
+  idToken: string;
 };
 
 /** @internal */
 export const GoogleIdTokenObject$outboundSchema: z.ZodType<
-    GoogleIdTokenObject$Outbound,
-    z.ZodTypeDef,
-    GoogleIdTokenObject
+  GoogleIdTokenObject$Outbound,
+  z.ZodTypeDef,
+  GoogleIdTokenObject
 > = z.object({
-    idToken: z.string(),
+  idToken: z.string(),
 });
 
 /**
@@ -39,10 +39,10 @@ export const GoogleIdTokenObject$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GoogleIdTokenObject$ {
-    /** @deprecated use `GoogleIdTokenObject$inboundSchema` instead. */
-    export const inboundSchema = GoogleIdTokenObject$inboundSchema;
-    /** @deprecated use `GoogleIdTokenObject$outboundSchema` instead. */
-    export const outboundSchema = GoogleIdTokenObject$outboundSchema;
-    /** @deprecated use `GoogleIdTokenObject$Outbound` instead. */
-    export type Outbound = GoogleIdTokenObject$Outbound;
+  /** @deprecated use `GoogleIdTokenObject$inboundSchema` instead. */
+  export const inboundSchema = GoogleIdTokenObject$inboundSchema;
+  /** @deprecated use `GoogleIdTokenObject$outboundSchema` instead. */
+  export const outboundSchema = GoogleIdTokenObject$outboundSchema;
+  /** @deprecated use `GoogleIdTokenObject$Outbound` instead. */
+  export type Outbound = GoogleIdTokenObject$Outbound;
 }

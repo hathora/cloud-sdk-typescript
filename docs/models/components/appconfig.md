@@ -6,8 +6,8 @@
 import { AppConfig } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: AppConfig = {
-    authConfiguration: {},
-    appName: "minecraft",
+  authConfiguration: {},
+  appName: "minecraft",
 };
 ```
 

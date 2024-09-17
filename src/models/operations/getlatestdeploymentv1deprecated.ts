@@ -5,34 +5,34 @@
 import * as z from "zod";
 
 export type GetLatestDeploymentV1DeprecatedGlobals = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 export type GetLatestDeploymentV1DeprecatedRequest = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const GetLatestDeploymentV1DeprecatedGlobals$inboundSchema: z.ZodType<
-    GetLatestDeploymentV1DeprecatedGlobals,
-    z.ZodTypeDef,
-    unknown
+  GetLatestDeploymentV1DeprecatedGlobals,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /** @internal */
 export type GetLatestDeploymentV1DeprecatedGlobals$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const GetLatestDeploymentV1DeprecatedGlobals$outboundSchema: z.ZodType<
-    GetLatestDeploymentV1DeprecatedGlobals$Outbound,
-    z.ZodTypeDef,
-    GetLatestDeploymentV1DeprecatedGlobals
+  GetLatestDeploymentV1DeprecatedGlobals$Outbound,
+  z.ZodTypeDef,
+  GetLatestDeploymentV1DeprecatedGlobals
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -40,35 +40,37 @@ export const GetLatestDeploymentV1DeprecatedGlobals$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetLatestDeploymentV1DeprecatedGlobals$ {
-    /** @deprecated use `GetLatestDeploymentV1DeprecatedGlobals$inboundSchema` instead. */
-    export const inboundSchema = GetLatestDeploymentV1DeprecatedGlobals$inboundSchema;
-    /** @deprecated use `GetLatestDeploymentV1DeprecatedGlobals$outboundSchema` instead. */
-    export const outboundSchema = GetLatestDeploymentV1DeprecatedGlobals$outboundSchema;
-    /** @deprecated use `GetLatestDeploymentV1DeprecatedGlobals$Outbound` instead. */
-    export type Outbound = GetLatestDeploymentV1DeprecatedGlobals$Outbound;
+  /** @deprecated use `GetLatestDeploymentV1DeprecatedGlobals$inboundSchema` instead. */
+  export const inboundSchema =
+    GetLatestDeploymentV1DeprecatedGlobals$inboundSchema;
+  /** @deprecated use `GetLatestDeploymentV1DeprecatedGlobals$outboundSchema` instead. */
+  export const outboundSchema =
+    GetLatestDeploymentV1DeprecatedGlobals$outboundSchema;
+  /** @deprecated use `GetLatestDeploymentV1DeprecatedGlobals$Outbound` instead. */
+  export type Outbound = GetLatestDeploymentV1DeprecatedGlobals$Outbound;
 }
 
 /** @internal */
 export const GetLatestDeploymentV1DeprecatedRequest$inboundSchema: z.ZodType<
-    GetLatestDeploymentV1DeprecatedRequest,
-    z.ZodTypeDef,
-    unknown
+  GetLatestDeploymentV1DeprecatedRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /** @internal */
 export type GetLatestDeploymentV1DeprecatedRequest$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const GetLatestDeploymentV1DeprecatedRequest$outboundSchema: z.ZodType<
-    GetLatestDeploymentV1DeprecatedRequest$Outbound,
-    z.ZodTypeDef,
-    GetLatestDeploymentV1DeprecatedRequest
+  GetLatestDeploymentV1DeprecatedRequest$Outbound,
+  z.ZodTypeDef,
+  GetLatestDeploymentV1DeprecatedRequest
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -76,10 +78,12 @@ export const GetLatestDeploymentV1DeprecatedRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetLatestDeploymentV1DeprecatedRequest$ {
-    /** @deprecated use `GetLatestDeploymentV1DeprecatedRequest$inboundSchema` instead. */
-    export const inboundSchema = GetLatestDeploymentV1DeprecatedRequest$inboundSchema;
-    /** @deprecated use `GetLatestDeploymentV1DeprecatedRequest$outboundSchema` instead. */
-    export const outboundSchema = GetLatestDeploymentV1DeprecatedRequest$outboundSchema;
-    /** @deprecated use `GetLatestDeploymentV1DeprecatedRequest$Outbound` instead. */
-    export type Outbound = GetLatestDeploymentV1DeprecatedRequest$Outbound;
+  /** @deprecated use `GetLatestDeploymentV1DeprecatedRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    GetLatestDeploymentV1DeprecatedRequest$inboundSchema;
+  /** @deprecated use `GetLatestDeploymentV1DeprecatedRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    GetLatestDeploymentV1DeprecatedRequest$outboundSchema;
+  /** @deprecated use `GetLatestDeploymentV1DeprecatedRequest$Outbound` instead. */
+  export type Outbound = GetLatestDeploymentV1DeprecatedRequest$Outbound;
 }

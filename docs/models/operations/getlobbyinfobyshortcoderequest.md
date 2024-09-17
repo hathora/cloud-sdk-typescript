@@ -6,7 +6,7 @@
 import { GetLobbyInfoByShortCodeRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: GetLobbyInfoByShortCodeRequest = {
-    shortCode: "LFG4",
+  shortCode: "LFG4",
 };
 ```
 

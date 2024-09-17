@@ -5,44 +5,44 @@
 import * as z from "zod";
 
 export type CreateMultipartBuildParams = {
-    /**
-     * System generated id for a build. Can also be user defined when creating a build.
-     */
-    buildId?: string | undefined;
-    /**
-     * Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
-     */
-    buildTag?: string | undefined;
-    buildSizeInBytes: number;
+  /**
+   * System generated id for a build. Can also be user defined when creating a build.
+   */
+  buildId?: string | undefined;
+  /**
+   * Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
+   */
+  buildTag?: string | undefined;
+  buildSizeInBytes: number;
 };
 
 /** @internal */
 export const CreateMultipartBuildParams$inboundSchema: z.ZodType<
-    CreateMultipartBuildParams,
-    z.ZodTypeDef,
-    unknown
+  CreateMultipartBuildParams,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    buildId: z.string().optional(),
-    buildTag: z.string().optional(),
-    buildSizeInBytes: z.number(),
+  buildId: z.string().optional(),
+  buildTag: z.string().optional(),
+  buildSizeInBytes: z.number(),
 });
 
 /** @internal */
 export type CreateMultipartBuildParams$Outbound = {
-    buildId?: string | undefined;
-    buildTag?: string | undefined;
-    buildSizeInBytes: number;
+  buildId?: string | undefined;
+  buildTag?: string | undefined;
+  buildSizeInBytes: number;
 };
 
 /** @internal */
 export const CreateMultipartBuildParams$outboundSchema: z.ZodType<
-    CreateMultipartBuildParams$Outbound,
-    z.ZodTypeDef,
-    CreateMultipartBuildParams
+  CreateMultipartBuildParams$Outbound,
+  z.ZodTypeDef,
+  CreateMultipartBuildParams
 > = z.object({
-    buildId: z.string().optional(),
-    buildTag: z.string().optional(),
-    buildSizeInBytes: z.number(),
+  buildId: z.string().optional(),
+  buildTag: z.string().optional(),
+  buildSizeInBytes: z.number(),
 });
 
 /**
@@ -50,10 +50,10 @@ export const CreateMultipartBuildParams$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace CreateMultipartBuildParams$ {
-    /** @deprecated use `CreateMultipartBuildParams$inboundSchema` instead. */
-    export const inboundSchema = CreateMultipartBuildParams$inboundSchema;
-    /** @deprecated use `CreateMultipartBuildParams$outboundSchema` instead. */
-    export const outboundSchema = CreateMultipartBuildParams$outboundSchema;
-    /** @deprecated use `CreateMultipartBuildParams$Outbound` instead. */
-    export type Outbound = CreateMultipartBuildParams$Outbound;
+  /** @deprecated use `CreateMultipartBuildParams$inboundSchema` instead. */
+  export const inboundSchema = CreateMultipartBuildParams$inboundSchema;
+  /** @deprecated use `CreateMultipartBuildParams$outboundSchema` instead. */
+  export const outboundSchema = CreateMultipartBuildParams$outboundSchema;
+  /** @deprecated use `CreateMultipartBuildParams$Outbound` instead. */
+  export type Outbound = CreateMultipartBuildParams$Outbound;
 }

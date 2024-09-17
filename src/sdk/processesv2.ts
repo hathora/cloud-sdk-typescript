@@ -4,8 +4,8 @@
 
 import { processesV2CreateProcessV2Deprecated } from "../funcs/processesV2CreateProcessV2Deprecated.js";
 import { processesV2GetLatestProcessesV2Deprecated } from "../funcs/processesV2GetLatestProcessesV2Deprecated.js";
-import { processesV2GetProcessInfoV2Deprecated } from "../funcs/processesV2GetProcessInfoV2Deprecated.js";
 import { processesV2GetProcessesCountExperimentalV2Deprecated } from "../funcs/processesV2GetProcessesCountExperimentalV2Deprecated.js";
+import { processesV2GetProcessInfoV2Deprecated } from "../funcs/processesV2GetProcessInfoV2Deprecated.js";
 import { processesV2StopProcessV2Deprecated } from "../funcs/processesV2StopProcessV2Deprecated.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -13,70 +13,87 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class ProcessesV2 extends ClientSDK {
-    /**
-     * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
-     */
-    async getProcessInfoV2Deprecated(
-        processId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.ProcessV2> {
-        return unwrapAsync(processesV2GetProcessInfoV2Deprecated(this, processId, appId, options));
-    }
+  /**
+   * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
+   */
+  async getProcessInfoV2Deprecated(
+    processId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.ProcessV2> {
+    return unwrapAsync(processesV2GetProcessInfoV2Deprecated(
+      this,
+      processId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `status` or `region`.
-     */
-    async getLatestProcessesV2Deprecated(
-        appId?: string | undefined,
-        status?: Array<components.ProcessStatus> | undefined,
-        region?: Array<components.Region> | undefined,
-        options?: RequestOptions
-    ): Promise<Array<components.ProcessV2>> {
-        return unwrapAsync(
-            processesV2GetLatestProcessesV2Deprecated(this, appId, status, region, options)
-        );
-    }
+  /**
+   * Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `status` or `region`.
+   */
+  async getLatestProcessesV2Deprecated(
+    appId?: string | undefined,
+    status?: Array<components.ProcessStatus> | undefined,
+    region?: Array<components.Region> | undefined,
+    options?: RequestOptions,
+  ): Promise<Array<components.ProcessV2>> {
+    return unwrapAsync(processesV2GetLatestProcessesV2Deprecated(
+      this,
+      appId,
+      status,
+      region,
+      options,
+    ));
+  }
 
-    /**
-     * Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `status` or `region`.
-     */
-    async getProcessesCountExperimentalV2Deprecated(
-        appId?: string | undefined,
-        status?: Array<components.ProcessStatus> | undefined,
-        region?: Array<components.Region> | undefined,
-        options?: RequestOptions
-    ): Promise<operations.GetProcessesCountExperimentalV2DeprecatedResponseBody> {
-        return unwrapAsync(
-            processesV2GetProcessesCountExperimentalV2Deprecated(
-                this,
-                appId,
-                status,
-                region,
-                options
-            )
-        );
-    }
+  /**
+   * Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `status` or `region`.
+   */
+  async getProcessesCountExperimentalV2Deprecated(
+    appId?: string | undefined,
+    status?: Array<components.ProcessStatus> | undefined,
+    region?: Array<components.Region> | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.GetProcessesCountExperimentalV2DeprecatedResponseBody> {
+    return unwrapAsync(processesV2GetProcessesCountExperimentalV2Deprecated(
+      this,
+      appId,
+      status,
+      region,
+      options,
+    ));
+  }
 
-    /**
-     * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
-     */
-    async stopProcessV2Deprecated(
-        processId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<void> {
-        return unwrapAsync(processesV2StopProcessV2Deprecated(this, processId, appId, options));
-    }
+  /**
+   * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+   */
+  async stopProcessV2Deprecated(
+    processId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(processesV2StopProcessV2Deprecated(
+      this,
+      processId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
-     */
-    async createProcessV2Deprecated(
-        region: components.Region,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.ProcessV2> {
-        return unwrapAsync(processesV2CreateProcessV2Deprecated(this, region, appId, options));
-    }
+  /**
+   * Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+   */
+  async createProcessV2Deprecated(
+    region: components.Region,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.ProcessV2> {
+    return unwrapAsync(processesV2CreateProcessV2Deprecated(
+      this,
+      region,
+      appId,
+      options,
+    ));
+  }
 }

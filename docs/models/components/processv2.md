@@ -6,31 +6,31 @@
 import { ProcessV2 } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: ProcessV2 = {
-    status: "starting",
-    roomsAllocated: 1,
-    terminatedAt: new Date("2022-01-21T14:14:48.649Z"),
-    stoppingAt: new Date("2022-12-22T06:12:17.901Z"),
-    startedAt: new Date("2023-11-08T22:17:03.172Z"),
-    createdAt: new Date("2022-06-14T01:02:51.421Z"),
-    roomsPerProcess: 3,
-    additionalExposedPorts: [
-        {
-            transportType: "tcp",
-            port: 72941,
-            host: "1.proxy.hathora.dev",
-            name: "debug",
-        },
-    ],
-    exposedPort: {
-        transportType: "tcp",
-        port: 34567,
-        host: "1.proxy.hathora.dev",
-        name: "default",
+  status: "starting",
+  roomsAllocated: 1,
+  terminatedAt: new Date("2022-01-21T14:14:48.649Z"),
+  stoppingAt: new Date("2022-12-22T06:12:17.901Z"),
+  startedAt: new Date("2023-11-08T22:17:03.172Z"),
+  createdAt: new Date("2022-06-14T01:02:51.421Z"),
+  roomsPerProcess: 3,
+  additionalExposedPorts: [
+    {
+      transportType: "tcp",
+      port: 72941,
+      host: "1.proxy.hathora.dev",
+      name: "debug",
     },
-    region: "Singapore",
-    processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
-    deploymentId: 1,
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  ],
+  exposedPort: {
+    transportType: "tcp",
+    port: 34567,
+    host: "1.proxy.hathora.dev",
+    name: "default",
+  },
+  region: "Singapore",
+  processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+  deploymentId: 1,
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 };
 ```
 

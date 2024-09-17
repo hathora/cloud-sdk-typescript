@@ -5,34 +5,34 @@
 import * as z from "zod";
 
 export type RevokeOrgTokenRequest = {
-    orgId: string;
-    orgTokenId: string;
+  orgId: string;
+  orgTokenId: string;
 };
 
 /** @internal */
 export const RevokeOrgTokenRequest$inboundSchema: z.ZodType<
-    RevokeOrgTokenRequest,
-    z.ZodTypeDef,
-    unknown
+  RevokeOrgTokenRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    orgId: z.string(),
-    orgTokenId: z.string(),
+  orgId: z.string(),
+  orgTokenId: z.string(),
 });
 
 /** @internal */
 export type RevokeOrgTokenRequest$Outbound = {
-    orgId: string;
-    orgTokenId: string;
+  orgId: string;
+  orgTokenId: string;
 };
 
 /** @internal */
 export const RevokeOrgTokenRequest$outboundSchema: z.ZodType<
-    RevokeOrgTokenRequest$Outbound,
-    z.ZodTypeDef,
-    RevokeOrgTokenRequest
+  RevokeOrgTokenRequest$Outbound,
+  z.ZodTypeDef,
+  RevokeOrgTokenRequest
 > = z.object({
-    orgId: z.string(),
-    orgTokenId: z.string(),
+  orgId: z.string(),
+  orgTokenId: z.string(),
 });
 
 /**
@@ -40,10 +40,10 @@ export const RevokeOrgTokenRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace RevokeOrgTokenRequest$ {
-    /** @deprecated use `RevokeOrgTokenRequest$inboundSchema` instead. */
-    export const inboundSchema = RevokeOrgTokenRequest$inboundSchema;
-    /** @deprecated use `RevokeOrgTokenRequest$outboundSchema` instead. */
-    export const outboundSchema = RevokeOrgTokenRequest$outboundSchema;
-    /** @deprecated use `RevokeOrgTokenRequest$Outbound` instead. */
-    export type Outbound = RevokeOrgTokenRequest$Outbound;
+  /** @deprecated use `RevokeOrgTokenRequest$inboundSchema` instead. */
+  export const inboundSchema = RevokeOrgTokenRequest$inboundSchema;
+  /** @deprecated use `RevokeOrgTokenRequest$outboundSchema` instead. */
+  export const outboundSchema = RevokeOrgTokenRequest$outboundSchema;
+  /** @deprecated use `RevokeOrgTokenRequest$Outbound` instead. */
+  export type Outbound = RevokeOrgTokenRequest$Outbound;
 }

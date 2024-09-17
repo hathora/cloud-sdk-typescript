@@ -5,30 +5,33 @@
 import * as z from "zod";
 
 export type RescindUserInvite = {
-    /**
-     * A user's email.
-     */
-    userEmail: string;
+  /**
+   * A user's email.
+   */
+  userEmail: string;
 };
 
 /** @internal */
-export const RescindUserInvite$inboundSchema: z.ZodType<RescindUserInvite, z.ZodTypeDef, unknown> =
-    z.object({
-        userEmail: z.string(),
-    });
+export const RescindUserInvite$inboundSchema: z.ZodType<
+  RescindUserInvite,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  userEmail: z.string(),
+});
 
 /** @internal */
 export type RescindUserInvite$Outbound = {
-    userEmail: string;
+  userEmail: string;
 };
 
 /** @internal */
 export const RescindUserInvite$outboundSchema: z.ZodType<
-    RescindUserInvite$Outbound,
-    z.ZodTypeDef,
-    RescindUserInvite
+  RescindUserInvite$Outbound,
+  z.ZodTypeDef,
+  RescindUserInvite
 > = z.object({
-    userEmail: z.string(),
+  userEmail: z.string(),
 });
 
 /**
@@ -36,10 +39,10 @@ export const RescindUserInvite$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace RescindUserInvite$ {
-    /** @deprecated use `RescindUserInvite$inboundSchema` instead. */
-    export const inboundSchema = RescindUserInvite$inboundSchema;
-    /** @deprecated use `RescindUserInvite$outboundSchema` instead. */
-    export const outboundSchema = RescindUserInvite$outboundSchema;
-    /** @deprecated use `RescindUserInvite$Outbound` instead. */
-    export type Outbound = RescindUserInvite$Outbound;
+  /** @deprecated use `RescindUserInvite$inboundSchema` instead. */
+  export const inboundSchema = RescindUserInvite$inboundSchema;
+  /** @deprecated use `RescindUserInvite$outboundSchema` instead. */
+  export const outboundSchema = RescindUserInvite$outboundSchema;
+  /** @deprecated use `RescindUserInvite$Outbound` instead. */
+  export type Outbound = RescindUserInvite$Outbound;
 }

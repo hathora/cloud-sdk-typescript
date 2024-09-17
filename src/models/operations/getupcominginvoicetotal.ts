@@ -8,30 +8,30 @@ import * as z from "zod";
  * Ok
  */
 export type GetUpcomingInvoiceTotalResponseBody = {
-    value: number;
+  value: number;
 };
 
 /** @internal */
 export const GetUpcomingInvoiceTotalResponseBody$inboundSchema: z.ZodType<
-    GetUpcomingInvoiceTotalResponseBody,
-    z.ZodTypeDef,
-    unknown
+  GetUpcomingInvoiceTotalResponseBody,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    value: z.number(),
+  value: z.number(),
 });
 
 /** @internal */
 export type GetUpcomingInvoiceTotalResponseBody$Outbound = {
-    value: number;
+  value: number;
 };
 
 /** @internal */
 export const GetUpcomingInvoiceTotalResponseBody$outboundSchema: z.ZodType<
-    GetUpcomingInvoiceTotalResponseBody$Outbound,
-    z.ZodTypeDef,
-    GetUpcomingInvoiceTotalResponseBody
+  GetUpcomingInvoiceTotalResponseBody$Outbound,
+  z.ZodTypeDef,
+  GetUpcomingInvoiceTotalResponseBody
 > = z.object({
-    value: z.number(),
+  value: z.number(),
 });
 
 /**
@@ -39,10 +39,12 @@ export const GetUpcomingInvoiceTotalResponseBody$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetUpcomingInvoiceTotalResponseBody$ {
-    /** @deprecated use `GetUpcomingInvoiceTotalResponseBody$inboundSchema` instead. */
-    export const inboundSchema = GetUpcomingInvoiceTotalResponseBody$inboundSchema;
-    /** @deprecated use `GetUpcomingInvoiceTotalResponseBody$outboundSchema` instead. */
-    export const outboundSchema = GetUpcomingInvoiceTotalResponseBody$outboundSchema;
-    /** @deprecated use `GetUpcomingInvoiceTotalResponseBody$Outbound` instead. */
-    export type Outbound = GetUpcomingInvoiceTotalResponseBody$Outbound;
+  /** @deprecated use `GetUpcomingInvoiceTotalResponseBody$inboundSchema` instead. */
+  export const inboundSchema =
+    GetUpcomingInvoiceTotalResponseBody$inboundSchema;
+  /** @deprecated use `GetUpcomingInvoiceTotalResponseBody$outboundSchema` instead. */
+  export const outboundSchema =
+    GetUpcomingInvoiceTotalResponseBody$outboundSchema;
+  /** @deprecated use `GetUpcomingInvoiceTotalResponseBody$Outbound` instead. */
+  export type Outbound = GetUpcomingInvoiceTotalResponseBody$Outbound;
 }

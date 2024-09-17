@@ -6,9 +6,9 @@
 import { Organization } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: Organization = {
-    isSingleTenant: false,
-    stripeCustomerId: "<value>",
-    orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
+  isSingleTenant: false,
+  stripeCustomerId: "<value>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
 };
 ```
 

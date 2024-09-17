@@ -10,18 +10,20 @@ import * as z from "zod";
 export type DeletedBuild = {};
 
 /** @internal */
-export const DeletedBuild$inboundSchema: z.ZodType<DeletedBuild, z.ZodTypeDef, unknown> = z.object(
-    {}
-);
+export const DeletedBuild$inboundSchema: z.ZodType<
+  DeletedBuild,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
 
 /** @internal */
 export type DeletedBuild$Outbound = {};
 
 /** @internal */
 export const DeletedBuild$outboundSchema: z.ZodType<
-    DeletedBuild$Outbound,
-    z.ZodTypeDef,
-    DeletedBuild
+  DeletedBuild$Outbound,
+  z.ZodTypeDef,
+  DeletedBuild
 > = z.object({});
 
 /**
@@ -29,10 +31,10 @@ export const DeletedBuild$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace DeletedBuild$ {
-    /** @deprecated use `DeletedBuild$inboundSchema` instead. */
-    export const inboundSchema = DeletedBuild$inboundSchema;
-    /** @deprecated use `DeletedBuild$outboundSchema` instead. */
-    export const outboundSchema = DeletedBuild$outboundSchema;
-    /** @deprecated use `DeletedBuild$Outbound` instead. */
-    export type Outbound = DeletedBuild$Outbound;
+  /** @deprecated use `DeletedBuild$inboundSchema` instead. */
+  export const inboundSchema = DeletedBuild$inboundSchema;
+  /** @deprecated use `DeletedBuild$outboundSchema` instead. */
+  export const outboundSchema = DeletedBuild$outboundSchema;
+  /** @deprecated use `DeletedBuild$Outbound` instead. */
+  export type Outbound = DeletedBuild$Outbound;
 }

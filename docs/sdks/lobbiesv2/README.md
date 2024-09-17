@@ -60,7 +60,7 @@ async function run() {
     playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   }, {
     initialConfig: "<value>",
-    region: "Mumbai",
+    region: "Chicago",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   if (!res.ok) {
@@ -147,7 +147,7 @@ async function run() {
     playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   }, {
     initialConfig: "<value>",
-    region: "Singapore",
+    region: "Sao_Paulo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   if (!res.ok) {
@@ -234,7 +234,7 @@ async function run() {
     playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   }, {
     initialConfig: "<value>",
-    region: "Mumbai",
+    region: "Sao_Paulo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   if (!res.ok) {
@@ -325,7 +325,7 @@ async function run() {
   }, {
     visibility: "private",
     initialConfig: "<value>",
-    region: "Sydney",
+    region: "Tokyo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   if (!res.ok) {
@@ -537,7 +537,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.lobbiesV2.setLobbyState("2swovpy1fnunu", {
-    state: "<value>",
+    state: "South Dakota",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
   
   // Handle the result
@@ -564,7 +564,7 @@ const hathoraCloud = new HathoraCloudCore({
 
 async function run() {
   const res = await lobbiesV2SetLobbyState(hathoraCloud, "2swovpy1fnunu", {
-    state: "<value>",
+    state: "South Dakota",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   if (!res.ok) {

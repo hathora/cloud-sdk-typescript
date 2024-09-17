@@ -8,16 +8,16 @@ A build represents a game server artifact and its associated metadata.
 import { BuildV3 } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: BuildV3 = {
-    buildTag: "0.1.14-14c793",
-    imageSize: 120196,
-    status: "running",
-    deletedAt: new Date("2022-11-21T13:40:18.488Z"),
-    finishedAt: new Date("2023-06-12T01:25:24.878Z"),
-    startedAt: new Date("2022-05-11T03:00:49.668Z"),
-    createdAt: new Date("2024-01-25T18:32:37.836Z"),
-    createdBy: "noreply@hathora.dev",
-    buildId: "<value>",
-    orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
+  buildTag: "0.1.14-14c793",
+  imageSize: 359444,
+  status: "running",
+  deletedAt: new Date("2023-06-12T01:25:24.878Z"),
+  finishedAt: new Date("2022-05-11T03:00:49.668Z"),
+  startedAt: new Date("2024-01-25T18:32:37.836Z"),
+  createdAt: new Date("2022-12-15T12:13:45.806Z"),
+  createdBy: "noreply@hathora.dev",
+  buildId: "<value>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
 };
 ```
 

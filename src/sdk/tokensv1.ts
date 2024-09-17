@@ -10,32 +10,49 @@ import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class TokensV1 extends ClientSDK {
-    /**
-     * List all organization tokens for a given org.
-     */
-    async getOrgTokens(orgId: string, options?: RequestOptions): Promise<components.ListOrgTokens> {
-        return unwrapAsync(tokensV1GetOrgTokens(this, orgId, options));
-    }
+  /**
+   * List all organization tokens for a given org.
+   */
+  async getOrgTokens(
+    orgId: string,
+    options?: RequestOptions,
+  ): Promise<components.ListOrgTokens> {
+    return unwrapAsync(tokensV1GetOrgTokens(
+      this,
+      orgId,
+      options,
+    ));
+  }
 
-    /**
-     * Create a new organization token.
-     */
-    async createOrgToken(
-        orgId: string,
-        createOrgToken: components.CreateOrgToken,
-        options?: RequestOptions
-    ): Promise<components.CreatedOrgToken> {
-        return unwrapAsync(tokensV1CreateOrgToken(this, orgId, createOrgToken, options));
-    }
+  /**
+   * Create a new organization token.
+   */
+  async createOrgToken(
+    orgId: string,
+    createOrgToken: components.CreateOrgToken,
+    options?: RequestOptions,
+  ): Promise<components.CreatedOrgToken> {
+    return unwrapAsync(tokensV1CreateOrgToken(
+      this,
+      orgId,
+      createOrgToken,
+      options,
+    ));
+  }
 
-    /**
-     * Revoke an organization token.
-     */
-    async revokeOrgToken(
-        orgId: string,
-        orgTokenId: string,
-        options?: RequestOptions
-    ): Promise<boolean> {
-        return unwrapAsync(tokensV1RevokeOrgToken(this, orgId, orgTokenId, options));
-    }
+  /**
+   * Revoke an organization token.
+   */
+  async revokeOrgToken(
+    orgId: string,
+    orgTokenId: string,
+    options?: RequestOptions,
+  ): Promise<boolean> {
+    return unwrapAsync(tokensV1RevokeOrgToken(
+      this,
+      orgId,
+      orgTokenId,
+      options,
+    ));
+  }
 }

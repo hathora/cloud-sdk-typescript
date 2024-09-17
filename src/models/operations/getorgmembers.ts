@@ -5,30 +5,30 @@
 import * as z from "zod";
 
 export type GetOrgMembersRequest = {
-    orgId: string;
+  orgId: string;
 };
 
 /** @internal */
 export const GetOrgMembersRequest$inboundSchema: z.ZodType<
-    GetOrgMembersRequest,
-    z.ZodTypeDef,
-    unknown
+  GetOrgMembersRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    orgId: z.string(),
+  orgId: z.string(),
 });
 
 /** @internal */
 export type GetOrgMembersRequest$Outbound = {
-    orgId: string;
+  orgId: string;
 };
 
 /** @internal */
 export const GetOrgMembersRequest$outboundSchema: z.ZodType<
-    GetOrgMembersRequest$Outbound,
-    z.ZodTypeDef,
-    GetOrgMembersRequest
+  GetOrgMembersRequest$Outbound,
+  z.ZodTypeDef,
+  GetOrgMembersRequest
 > = z.object({
-    orgId: z.string(),
+  orgId: z.string(),
 });
 
 /**
@@ -36,10 +36,10 @@ export const GetOrgMembersRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetOrgMembersRequest$ {
-    /** @deprecated use `GetOrgMembersRequest$inboundSchema` instead. */
-    export const inboundSchema = GetOrgMembersRequest$inboundSchema;
-    /** @deprecated use `GetOrgMembersRequest$outboundSchema` instead. */
-    export const outboundSchema = GetOrgMembersRequest$outboundSchema;
-    /** @deprecated use `GetOrgMembersRequest$Outbound` instead. */
-    export type Outbound = GetOrgMembersRequest$Outbound;
+  /** @deprecated use `GetOrgMembersRequest$inboundSchema` instead. */
+  export const inboundSchema = GetOrgMembersRequest$inboundSchema;
+  /** @deprecated use `GetOrgMembersRequest$outboundSchema` instead. */
+  export const outboundSchema = GetOrgMembersRequest$outboundSchema;
+  /** @deprecated use `GetOrgMembersRequest$Outbound` instead. */
+  export type Outbound = GetOrgMembersRequest$Outbound;
 }

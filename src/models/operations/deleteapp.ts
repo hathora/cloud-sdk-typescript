@@ -5,31 +5,34 @@
 import * as z from "zod";
 
 export type DeleteAppGlobals = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 export type DeleteAppRequest = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
-export const DeleteAppGlobals$inboundSchema: z.ZodType<DeleteAppGlobals, z.ZodTypeDef, unknown> =
-    z.object({
-        appId: z.string().optional(),
-    });
+export const DeleteAppGlobals$inboundSchema: z.ZodType<
+  DeleteAppGlobals,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  appId: z.string().optional(),
+});
 
 /** @internal */
 export type DeleteAppGlobals$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const DeleteAppGlobals$outboundSchema: z.ZodType<
-    DeleteAppGlobals$Outbound,
-    z.ZodTypeDef,
-    DeleteAppGlobals
+  DeleteAppGlobals$Outbound,
+  z.ZodTypeDef,
+  DeleteAppGlobals
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -37,32 +40,35 @@ export const DeleteAppGlobals$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace DeleteAppGlobals$ {
-    /** @deprecated use `DeleteAppGlobals$inboundSchema` instead. */
-    export const inboundSchema = DeleteAppGlobals$inboundSchema;
-    /** @deprecated use `DeleteAppGlobals$outboundSchema` instead. */
-    export const outboundSchema = DeleteAppGlobals$outboundSchema;
-    /** @deprecated use `DeleteAppGlobals$Outbound` instead. */
-    export type Outbound = DeleteAppGlobals$Outbound;
+  /** @deprecated use `DeleteAppGlobals$inboundSchema` instead. */
+  export const inboundSchema = DeleteAppGlobals$inboundSchema;
+  /** @deprecated use `DeleteAppGlobals$outboundSchema` instead. */
+  export const outboundSchema = DeleteAppGlobals$outboundSchema;
+  /** @deprecated use `DeleteAppGlobals$Outbound` instead. */
+  export type Outbound = DeleteAppGlobals$Outbound;
 }
 
 /** @internal */
-export const DeleteAppRequest$inboundSchema: z.ZodType<DeleteAppRequest, z.ZodTypeDef, unknown> =
-    z.object({
-        appId: z.string().optional(),
-    });
+export const DeleteAppRequest$inboundSchema: z.ZodType<
+  DeleteAppRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  appId: z.string().optional(),
+});
 
 /** @internal */
 export type DeleteAppRequest$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const DeleteAppRequest$outboundSchema: z.ZodType<
-    DeleteAppRequest$Outbound,
-    z.ZodTypeDef,
-    DeleteAppRequest
+  DeleteAppRequest$Outbound,
+  z.ZodTypeDef,
+  DeleteAppRequest
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -70,10 +76,10 @@ export const DeleteAppRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace DeleteAppRequest$ {
-    /** @deprecated use `DeleteAppRequest$inboundSchema` instead. */
-    export const inboundSchema = DeleteAppRequest$inboundSchema;
-    /** @deprecated use `DeleteAppRequest$outboundSchema` instead. */
-    export const outboundSchema = DeleteAppRequest$outboundSchema;
-    /** @deprecated use `DeleteAppRequest$Outbound` instead. */
-    export type Outbound = DeleteAppRequest$Outbound;
+  /** @deprecated use `DeleteAppRequest$inboundSchema` instead. */
+  export const inboundSchema = DeleteAppRequest$inboundSchema;
+  /** @deprecated use `DeleteAppRequest$outboundSchema` instead. */
+  export const outboundSchema = DeleteAppRequest$outboundSchema;
+  /** @deprecated use `DeleteAppRequest$Outbound` instead. */
+  export type Outbound = DeleteAppRequest$Outbound;
 }

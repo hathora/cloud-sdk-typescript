@@ -5,35 +5,35 @@
 import * as z from "zod";
 
 export type StopProcessGlobals = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 export type StopProcessRequest = {
-    appId?: string | undefined;
-    processId: string;
+  appId?: string | undefined;
+  processId: string;
 };
 
 /** @internal */
 export const StopProcessGlobals$inboundSchema: z.ZodType<
-    StopProcessGlobals,
-    z.ZodTypeDef,
-    unknown
+  StopProcessGlobals,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /** @internal */
 export type StopProcessGlobals$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const StopProcessGlobals$outboundSchema: z.ZodType<
-    StopProcessGlobals$Outbound,
-    z.ZodTypeDef,
-    StopProcessGlobals
+  StopProcessGlobals$Outbound,
+  z.ZodTypeDef,
+  StopProcessGlobals
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -41,38 +41,38 @@ export const StopProcessGlobals$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace StopProcessGlobals$ {
-    /** @deprecated use `StopProcessGlobals$inboundSchema` instead. */
-    export const inboundSchema = StopProcessGlobals$inboundSchema;
-    /** @deprecated use `StopProcessGlobals$outboundSchema` instead. */
-    export const outboundSchema = StopProcessGlobals$outboundSchema;
-    /** @deprecated use `StopProcessGlobals$Outbound` instead. */
-    export type Outbound = StopProcessGlobals$Outbound;
+  /** @deprecated use `StopProcessGlobals$inboundSchema` instead. */
+  export const inboundSchema = StopProcessGlobals$inboundSchema;
+  /** @deprecated use `StopProcessGlobals$outboundSchema` instead. */
+  export const outboundSchema = StopProcessGlobals$outboundSchema;
+  /** @deprecated use `StopProcessGlobals$Outbound` instead. */
+  export type Outbound = StopProcessGlobals$Outbound;
 }
 
 /** @internal */
 export const StopProcessRequest$inboundSchema: z.ZodType<
-    StopProcessRequest,
-    z.ZodTypeDef,
-    unknown
+  StopProcessRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
-    processId: z.string(),
+  appId: z.string().optional(),
+  processId: z.string(),
 });
 
 /** @internal */
 export type StopProcessRequest$Outbound = {
-    appId?: string | undefined;
-    processId: string;
+  appId?: string | undefined;
+  processId: string;
 };
 
 /** @internal */
 export const StopProcessRequest$outboundSchema: z.ZodType<
-    StopProcessRequest$Outbound,
-    z.ZodTypeDef,
-    StopProcessRequest
+  StopProcessRequest$Outbound,
+  z.ZodTypeDef,
+  StopProcessRequest
 > = z.object({
-    appId: z.string().optional(),
-    processId: z.string(),
+  appId: z.string().optional(),
+  processId: z.string(),
 });
 
 /**
@@ -80,10 +80,10 @@ export const StopProcessRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace StopProcessRequest$ {
-    /** @deprecated use `StopProcessRequest$inboundSchema` instead. */
-    export const inboundSchema = StopProcessRequest$inboundSchema;
-    /** @deprecated use `StopProcessRequest$outboundSchema` instead. */
-    export const outboundSchema = StopProcessRequest$outboundSchema;
-    /** @deprecated use `StopProcessRequest$Outbound` instead. */
-    export type Outbound = StopProcessRequest$Outbound;
+  /** @deprecated use `StopProcessRequest$inboundSchema` instead. */
+  export const inboundSchema = StopProcessRequest$inboundSchema;
+  /** @deprecated use `StopProcessRequest$outboundSchema` instead. */
+  export const outboundSchema = StopProcessRequest$outboundSchema;
+  /** @deprecated use `StopProcessRequest$Outbound` instead. */
+  export type Outbound = StopProcessRequest$Outbound;
 }
