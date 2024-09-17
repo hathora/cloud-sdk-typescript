@@ -7,15 +7,17 @@ Deprecated. Use [ProcessesV3](https://hathora.dev/api#tag/ProcessesV3).
 
 ### Available Operations
 
-* [getProcessInfoV2Deprecated](#getprocessinfov2deprecated) - Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
-* [getLatestProcessesV2Deprecated](#getlatestprocessesv2deprecated) - Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `status` or `region`.
-* [getProcessesCountExperimentalV2Deprecated](#getprocessescountexperimentalv2deprecated) - Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `status` or `region`.
-* [stopProcessV2Deprecated](#stopprocessv2deprecated) - Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
-* [createProcessV2Deprecated](#createprocessv2deprecated) - Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+* [~~getProcessInfoV2Deprecated~~](#getprocessinfov2deprecated) - Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process). :warning: **Deprecated**
+* [~~getLatestProcessesV2Deprecated~~](#getlatestprocessesv2deprecated) - Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `status` or `region`. :warning: **Deprecated**
+* [~~getProcessesCountExperimentalV2Deprecated~~](#getprocessescountexperimentalv2deprecated) - Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `status` or `region`. :warning: **Deprecated**
+* [~~stopProcessV2Deprecated~~](#stopprocessv2deprecated) - Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately. :warning: **Deprecated**
+* [~~createProcessV2Deprecated~~](#createprocessv2deprecated) - Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant. :warning: **Deprecated**
 
-## getProcessInfoV2Deprecated
+## ~~getProcessInfoV2Deprecated~~
 
 Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -90,9 +92,11 @@ run();
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 
-## getLatestProcessesV2Deprecated
+## ~~getLatestProcessesV2Deprecated~~
 
 Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `status` or `region`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -168,9 +172,11 @@ run();
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 
-## getProcessesCountExperimentalV2Deprecated
+## ~~getProcessesCountExperimentalV2Deprecated~~
 
 Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `status` or `region`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -246,9 +252,11 @@ run();
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 
-## stopProcessV2Deprecated
+## ~~stopProcessV2Deprecated~~
 
 Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -319,9 +327,11 @@ run();
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 
-## createProcessV2Deprecated
+## ~~createProcessV2Deprecated~~
 
 Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

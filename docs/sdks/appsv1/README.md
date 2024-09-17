@@ -5,15 +5,17 @@
 
 ### Available Operations
 
-* [getAppsV1Deprecated](#getappsv1deprecated) - Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
-* [createAppV1Deprecated](#createappv1deprecated) - Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application).
-* [updateAppV1Deprecated](#updateappv1deprecated) - Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
-* [getAppInfoV1Deprecated](#getappinfov1deprecated) - Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
-* [deleteAppV1Deprecated](#deleteappv1deprecated) - Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Your organization will lose access to this application.
+* [~~getAppsV1Deprecated~~](#getappsv1deprecated) - Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`. :warning: **Deprecated**
+* [~~createAppV1Deprecated~~](#createappv1deprecated) - Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application). :warning: **Deprecated**
+* [~~updateAppV1Deprecated~~](#updateappv1deprecated) - Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. :warning: **Deprecated**
+* [~~getAppInfoV1Deprecated~~](#getappinfov1deprecated) - Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. :warning: **Deprecated**
+* [~~deleteAppV1Deprecated~~](#deleteappv1deprecated) - Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Your organization will lose access to this application. :warning: **Deprecated**
 
-## getAppsV1Deprecated
+## ~~getAppsV1Deprecated~~
 
 Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -86,9 +88,11 @@ run();
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 
-## createAppV1Deprecated
+## ~~createAppV1Deprecated~~
 
 Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -168,9 +172,11 @@ run();
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 
-## updateAppV1Deprecated
+## ~~updateAppV1Deprecated~~
 
 Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -251,9 +257,11 @@ run();
 | errors.SDKError     | 4xx-5xx             | */*                 |
 
 
-## getAppInfoV1Deprecated
+## ~~getAppInfoV1Deprecated~~
 
 Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -327,9 +335,11 @@ run();
 | errors.SDKError  | 4xx-5xx          | */*              |
 
 
-## deleteAppV1Deprecated
+## ~~deleteAppV1Deprecated~~
 
 Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Your organization will lose access to this application.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

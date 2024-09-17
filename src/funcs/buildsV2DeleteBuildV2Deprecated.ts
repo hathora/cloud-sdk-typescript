@@ -25,6 +25,8 @@ import { Result } from "../types/fp.js";
 
 /**
  * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function buildsV2DeleteBuildV2Deprecated(
   client$: HathoraCloudCore,

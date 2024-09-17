@@ -23,6 +23,8 @@ import { Result } from "../types/fp.js";
 
 /**
  * Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function appsV1GetAppsV1Deprecated(
   client$: HathoraCloudCore,

@@ -25,6 +25,8 @@ import { Result } from "../types/fp.js";
 
 /**
  * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function processesV2StopProcessV2Deprecated(
   client$: HathoraCloudCore,
