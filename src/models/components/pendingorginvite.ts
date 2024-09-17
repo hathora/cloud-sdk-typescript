@@ -5,48 +5,48 @@
 import * as z from "zod";
 
 export type PendingOrgInvite = {
-    createdAt: Date;
-    invitedBy: string;
-    /**
-     * A user's email.
-     */
-    userEmail: string;
-    /**
-     * System generated unique identifier for an organization. Not guaranteed to have a specific format.
-     */
-    orgId: string;
+  createdAt: Date;
+  invitedBy: string;
+  /**
+   * A user's email.
+   */
+  userEmail: string;
+  /**
+   * System generated unique identifier for an organization. Not guaranteed to have a specific format.
+   */
+  orgId: string;
 };
 
 /** @internal */
-export const PendingOrgInvite$inboundSchema: z.ZodType<PendingOrgInvite, z.ZodTypeDef, unknown> =
-    z.object({
-        createdAt: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v)),
-        invitedBy: z.string(),
-        userEmail: z.string(),
-        orgId: z.string(),
-    });
+export const PendingOrgInvite$inboundSchema: z.ZodType<
+  PendingOrgInvite,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  invitedBy: z.string(),
+  userEmail: z.string(),
+  orgId: z.string(),
+});
 
 /** @internal */
 export type PendingOrgInvite$Outbound = {
-    createdAt: string;
-    invitedBy: string;
-    userEmail: string;
-    orgId: string;
+  createdAt: string;
+  invitedBy: string;
+  userEmail: string;
+  orgId: string;
 };
 
 /** @internal */
 export const PendingOrgInvite$outboundSchema: z.ZodType<
-    PendingOrgInvite$Outbound,
-    z.ZodTypeDef,
-    PendingOrgInvite
+  PendingOrgInvite$Outbound,
+  z.ZodTypeDef,
+  PendingOrgInvite
 > = z.object({
-    createdAt: z.date().transform((v) => v.toISOString()),
-    invitedBy: z.string(),
-    userEmail: z.string(),
-    orgId: z.string(),
+  createdAt: z.date().transform(v => v.toISOString()),
+  invitedBy: z.string(),
+  userEmail: z.string(),
+  orgId: z.string(),
 });
 
 /**
@@ -54,10 +54,10 @@ export const PendingOrgInvite$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace PendingOrgInvite$ {
-    /** @deprecated use `PendingOrgInvite$inboundSchema` instead. */
-    export const inboundSchema = PendingOrgInvite$inboundSchema;
-    /** @deprecated use `PendingOrgInvite$outboundSchema` instead. */
-    export const outboundSchema = PendingOrgInvite$outboundSchema;
-    /** @deprecated use `PendingOrgInvite$Outbound` instead. */
-    export type Outbound = PendingOrgInvite$Outbound;
+  /** @deprecated use `PendingOrgInvite$inboundSchema` instead. */
+  export const inboundSchema = PendingOrgInvite$inboundSchema;
+  /** @deprecated use `PendingOrgInvite$outboundSchema` instead. */
+  export const outboundSchema = PendingOrgInvite$outboundSchema;
+  /** @deprecated use `PendingOrgInvite$Outbound` instead. */
+  export type Outbound = PendingOrgInvite$Outbound;
 }

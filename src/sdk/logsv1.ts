@@ -11,61 +11,83 @@ import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class LogsV1 extends ClientSDK {
-    /**
-     * Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
-     *
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async getLogsForApp(
-        appId?: string | undefined,
-        follow?: boolean | undefined,
-        tailLines?: number | undefined,
-        region?: components.Region | undefined,
-        options?: RequestOptions
-    ): Promise<ReadableStream<Uint8Array>> {
-        return unwrapAsync(logsV1GetLogsForApp(this, appId, follow, tailLines, region, options));
-    }
+  /**
+   * Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async getLogsForApp(
+    appId?: string | undefined,
+    follow?: boolean | undefined,
+    tailLines?: number | undefined,
+    region?: components.Region | undefined,
+    options?: RequestOptions,
+  ): Promise<ReadableStream<Uint8Array>> {
+    return unwrapAsync(logsV1GetLogsForApp(
+      this,
+      appId,
+      follow,
+      tailLines,
+      region,
+      options,
+    ));
+  }
 
-    /**
-     * Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
-     */
-    async getLogsForProcess(
-        processId: string,
-        appId?: string | undefined,
-        follow?: boolean | undefined,
-        tailLines?: number | undefined,
-        options?: RequestOptions
-    ): Promise<ReadableStream<Uint8Array>> {
-        return unwrapAsync(
-            logsV1GetLogsForProcess(this, processId, appId, follow, tailLines, options)
-        );
-    }
+  /**
+   * Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+   */
+  async getLogsForProcess(
+    processId: string,
+    appId?: string | undefined,
+    follow?: boolean | undefined,
+    tailLines?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<ReadableStream<Uint8Array>> {
+    return unwrapAsync(logsV1GetLogsForProcess(
+      this,
+      processId,
+      appId,
+      follow,
+      tailLines,
+      options,
+    ));
+  }
 
-    /**
-     * Download entire log file for a stopped process.
-     */
-    async downloadLogForProcess(
-        processId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<ReadableStream<Uint8Array>> {
-        return unwrapAsync(logsV1DownloadLogForProcess(this, processId, appId, options));
-    }
+  /**
+   * Download entire log file for a stopped process.
+   */
+  async downloadLogForProcess(
+    processId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<ReadableStream<Uint8Array>> {
+    return unwrapAsync(logsV1DownloadLogForProcess(
+      this,
+      processId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`.
-     *
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async getLogsForDeployment(
-        deploymentId: number,
-        appId?: string | undefined,
-        follow?: boolean | undefined,
-        tailLines?: number | undefined,
-        options?: RequestOptions
-    ): Promise<ReadableStream<Uint8Array>> {
-        return unwrapAsync(
-            logsV1GetLogsForDeployment(this, deploymentId, appId, follow, tailLines, options)
-        );
-    }
+  /**
+   * Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async getLogsForDeployment(
+    deploymentId: number,
+    appId?: string | undefined,
+    follow?: boolean | undefined,
+    tailLines?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<ReadableStream<Uint8Array>> {
+    return unwrapAsync(logsV1GetLogsForDeployment(
+      this,
+      deploymentId,
+      appId,
+      follow,
+      tailLines,
+      options,
+    ));
+  }
 }

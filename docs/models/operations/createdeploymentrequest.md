@@ -6,28 +6,28 @@
 import { CreateDeploymentRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: CreateDeploymentRequest = {
-    deploymentConfigV3: {
-        idleTimeoutEnabled: false,
-        env: [
-            {
-                value: "TRUE",
-                name: "EULA",
-            },
-        ],
-        roomsPerProcess: 3,
-        additionalContainerPorts: [
-            {
-                transportType: "udp",
-                port: 8000,
-                name: "default",
-            },
-        ],
+  deploymentConfigV3: {
+    idleTimeoutEnabled: false,
+    env: [
+      {
+        value: "TRUE",
+        name: "EULA",
+      },
+    ],
+    roomsPerProcess: 3,
+    additionalContainerPorts: [
+      {
         transportType: "udp",
-        containerPort: 4000,
-        requestedMemoryMB: 1024,
-        requestedCPU: 0.5,
-        buildId: "<value>",
-    },
+        port: 8000,
+        name: "default",
+      },
+    ],
+    transportType: "tls",
+    containerPort: 4000,
+    requestedMemoryMB: 1024,
+    requestedCPU: 0.5,
+    buildId: "<value>",
+  },
 };
 ```
 

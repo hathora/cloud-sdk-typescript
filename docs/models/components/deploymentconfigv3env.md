@@ -6,8 +6,8 @@
 import { DeploymentConfigV3Env } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: DeploymentConfigV3Env = {
-    value: "TRUE",
-    name: "EULA",
+  value: "TRUE",
+  name: "EULA",
 };
 ```
 

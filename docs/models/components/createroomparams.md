@@ -6,8 +6,8 @@
 import { CreateRoomParams } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: CreateRoomParams = {
-    roomConfig: '{"name":"my-room"}',
-    region: "Sao_Paulo",
+  roomConfig: "{\"name\":\"my-room\"}",
+  region: "Sao_Paulo",
 };
 ```
 

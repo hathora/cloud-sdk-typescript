@@ -5,35 +5,35 @@
 import * as z from "zod";
 
 export type GetInactiveRoomsForProcessGlobals = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 export type GetInactiveRoomsForProcessRequest = {
-    appId?: string | undefined;
-    processId: string;
+  appId?: string | undefined;
+  processId: string;
 };
 
 /** @internal */
 export const GetInactiveRoomsForProcessGlobals$inboundSchema: z.ZodType<
-    GetInactiveRoomsForProcessGlobals,
-    z.ZodTypeDef,
-    unknown
+  GetInactiveRoomsForProcessGlobals,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /** @internal */
 export type GetInactiveRoomsForProcessGlobals$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const GetInactiveRoomsForProcessGlobals$outboundSchema: z.ZodType<
-    GetInactiveRoomsForProcessGlobals$Outbound,
-    z.ZodTypeDef,
-    GetInactiveRoomsForProcessGlobals
+  GetInactiveRoomsForProcessGlobals$Outbound,
+  z.ZodTypeDef,
+  GetInactiveRoomsForProcessGlobals
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -41,38 +41,39 @@ export const GetInactiveRoomsForProcessGlobals$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetInactiveRoomsForProcessGlobals$ {
-    /** @deprecated use `GetInactiveRoomsForProcessGlobals$inboundSchema` instead. */
-    export const inboundSchema = GetInactiveRoomsForProcessGlobals$inboundSchema;
-    /** @deprecated use `GetInactiveRoomsForProcessGlobals$outboundSchema` instead. */
-    export const outboundSchema = GetInactiveRoomsForProcessGlobals$outboundSchema;
-    /** @deprecated use `GetInactiveRoomsForProcessGlobals$Outbound` instead. */
-    export type Outbound = GetInactiveRoomsForProcessGlobals$Outbound;
+  /** @deprecated use `GetInactiveRoomsForProcessGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetInactiveRoomsForProcessGlobals$inboundSchema;
+  /** @deprecated use `GetInactiveRoomsForProcessGlobals$outboundSchema` instead. */
+  export const outboundSchema =
+    GetInactiveRoomsForProcessGlobals$outboundSchema;
+  /** @deprecated use `GetInactiveRoomsForProcessGlobals$Outbound` instead. */
+  export type Outbound = GetInactiveRoomsForProcessGlobals$Outbound;
 }
 
 /** @internal */
 export const GetInactiveRoomsForProcessRequest$inboundSchema: z.ZodType<
-    GetInactiveRoomsForProcessRequest,
-    z.ZodTypeDef,
-    unknown
+  GetInactiveRoomsForProcessRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
-    processId: z.string(),
+  appId: z.string().optional(),
+  processId: z.string(),
 });
 
 /** @internal */
 export type GetInactiveRoomsForProcessRequest$Outbound = {
-    appId?: string | undefined;
-    processId: string;
+  appId?: string | undefined;
+  processId: string;
 };
 
 /** @internal */
 export const GetInactiveRoomsForProcessRequest$outboundSchema: z.ZodType<
-    GetInactiveRoomsForProcessRequest$Outbound,
-    z.ZodTypeDef,
-    GetInactiveRoomsForProcessRequest
+  GetInactiveRoomsForProcessRequest$Outbound,
+  z.ZodTypeDef,
+  GetInactiveRoomsForProcessRequest
 > = z.object({
-    appId: z.string().optional(),
-    processId: z.string(),
+  appId: z.string().optional(),
+  processId: z.string(),
 });
 
 /**
@@ -80,10 +81,11 @@ export const GetInactiveRoomsForProcessRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetInactiveRoomsForProcessRequest$ {
-    /** @deprecated use `GetInactiveRoomsForProcessRequest$inboundSchema` instead. */
-    export const inboundSchema = GetInactiveRoomsForProcessRequest$inboundSchema;
-    /** @deprecated use `GetInactiveRoomsForProcessRequest$outboundSchema` instead. */
-    export const outboundSchema = GetInactiveRoomsForProcessRequest$outboundSchema;
-    /** @deprecated use `GetInactiveRoomsForProcessRequest$Outbound` instead. */
-    export type Outbound = GetInactiveRoomsForProcessRequest$Outbound;
+  /** @deprecated use `GetInactiveRoomsForProcessRequest$inboundSchema` instead. */
+  export const inboundSchema = GetInactiveRoomsForProcessRequest$inboundSchema;
+  /** @deprecated use `GetInactiveRoomsForProcessRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    GetInactiveRoomsForProcessRequest$outboundSchema;
+  /** @deprecated use `GetInactiveRoomsForProcessRequest$Outbound` instead. */
+  export type Outbound = GetInactiveRoomsForProcessRequest$Outbound;
 }

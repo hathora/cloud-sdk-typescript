@@ -3,6 +3,8 @@
 
 ## Overview
 
+Operations that allow you manage your [applications](https://hathora.dev/docs/concepts/hathora-entities#application).
+
 ### Available Operations
 
 * [getApps](#getapps) - Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.

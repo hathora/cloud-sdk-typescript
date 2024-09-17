@@ -8,23 +8,23 @@ User specified deployment configuration for your application at runtime.
 import { DeploymentConfig } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: DeploymentConfig = {
-    env: [
-        {
-            value: "TRUE",
-            name: "EULA",
-        },
-    ],
-    roomsPerProcess: 3,
-    planName: "tiny",
-    additionalContainerPorts: [
-        {
-            transportType: "udp",
-            port: 8000,
-            name: "default",
-        },
-    ],
-    transportType: "tcp",
-    containerPort: 4000,
+  env: [
+    {
+      value: "TRUE",
+      name: "EULA",
+    },
+  ],
+  roomsPerProcess: 3,
+  planName: "tiny",
+  additionalContainerPorts: [
+    {
+      transportType: "tcp",
+      port: 8000,
+      name: "default",
+    },
+  ],
+  transportType: "tls",
+  containerPort: 4000,
 };
 ```
 

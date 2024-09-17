@@ -5,34 +5,34 @@
 import * as z from "zod";
 
 export type GetLatestDeploymentGlobals = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 export type GetLatestDeploymentRequest = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const GetLatestDeploymentGlobals$inboundSchema: z.ZodType<
-    GetLatestDeploymentGlobals,
-    z.ZodTypeDef,
-    unknown
+  GetLatestDeploymentGlobals,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /** @internal */
 export type GetLatestDeploymentGlobals$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const GetLatestDeploymentGlobals$outboundSchema: z.ZodType<
-    GetLatestDeploymentGlobals$Outbound,
-    z.ZodTypeDef,
-    GetLatestDeploymentGlobals
+  GetLatestDeploymentGlobals$Outbound,
+  z.ZodTypeDef,
+  GetLatestDeploymentGlobals
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -40,35 +40,35 @@ export const GetLatestDeploymentGlobals$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetLatestDeploymentGlobals$ {
-    /** @deprecated use `GetLatestDeploymentGlobals$inboundSchema` instead. */
-    export const inboundSchema = GetLatestDeploymentGlobals$inboundSchema;
-    /** @deprecated use `GetLatestDeploymentGlobals$outboundSchema` instead. */
-    export const outboundSchema = GetLatestDeploymentGlobals$outboundSchema;
-    /** @deprecated use `GetLatestDeploymentGlobals$Outbound` instead. */
-    export type Outbound = GetLatestDeploymentGlobals$Outbound;
+  /** @deprecated use `GetLatestDeploymentGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetLatestDeploymentGlobals$inboundSchema;
+  /** @deprecated use `GetLatestDeploymentGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetLatestDeploymentGlobals$outboundSchema;
+  /** @deprecated use `GetLatestDeploymentGlobals$Outbound` instead. */
+  export type Outbound = GetLatestDeploymentGlobals$Outbound;
 }
 
 /** @internal */
 export const GetLatestDeploymentRequest$inboundSchema: z.ZodType<
-    GetLatestDeploymentRequest,
-    z.ZodTypeDef,
-    unknown
+  GetLatestDeploymentRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /** @internal */
 export type GetLatestDeploymentRequest$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const GetLatestDeploymentRequest$outboundSchema: z.ZodType<
-    GetLatestDeploymentRequest$Outbound,
-    z.ZodTypeDef,
-    GetLatestDeploymentRequest
+  GetLatestDeploymentRequest$Outbound,
+  z.ZodTypeDef,
+  GetLatestDeploymentRequest
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -76,10 +76,10 @@ export const GetLatestDeploymentRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetLatestDeploymentRequest$ {
-    /** @deprecated use `GetLatestDeploymentRequest$inboundSchema` instead. */
-    export const inboundSchema = GetLatestDeploymentRequest$inboundSchema;
-    /** @deprecated use `GetLatestDeploymentRequest$outboundSchema` instead. */
-    export const outboundSchema = GetLatestDeploymentRequest$outboundSchema;
-    /** @deprecated use `GetLatestDeploymentRequest$Outbound` instead. */
-    export type Outbound = GetLatestDeploymentRequest$Outbound;
+  /** @deprecated use `GetLatestDeploymentRequest$inboundSchema` instead. */
+  export const inboundSchema = GetLatestDeploymentRequest$inboundSchema;
+  /** @deprecated use `GetLatestDeploymentRequest$outboundSchema` instead. */
+  export const outboundSchema = GetLatestDeploymentRequest$outboundSchema;
+  /** @deprecated use `GetLatestDeploymentRequest$Outbound` instead. */
+  export type Outbound = GetLatestDeploymentRequest$Outbound;
 }

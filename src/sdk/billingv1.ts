@@ -14,32 +14,59 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class BillingV1 extends ClientSDK {
-    async getBalance(options?: RequestOptions): Promise<number> {
-        return unwrapAsync(billingV1GetBalance(this, options));
-    }
+  async getBalance(
+    options?: RequestOptions,
+  ): Promise<number> {
+    return unwrapAsync(billingV1GetBalance(
+      this,
+      options,
+    ));
+  }
 
-    async getUpcomingInvoiceItems(options?: RequestOptions): Promise<components.InvoiceItemPage> {
-        return unwrapAsync(billingV1GetUpcomingInvoiceItems(this, options));
-    }
+  async getUpcomingInvoiceItems(
+    options?: RequestOptions,
+  ): Promise<components.InvoiceItemPage> {
+    return unwrapAsync(billingV1GetUpcomingInvoiceItems(
+      this,
+      options,
+    ));
+  }
 
-    async getUpcomingInvoiceTotal(
-        options?: RequestOptions
-    ): Promise<operations.GetUpcomingInvoiceTotalResponseBody> {
-        return unwrapAsync(billingV1GetUpcomingInvoiceTotal(this, options));
-    }
+  async getUpcomingInvoiceTotal(
+    options?: RequestOptions,
+  ): Promise<operations.GetUpcomingInvoiceTotalResponseBody> {
+    return unwrapAsync(billingV1GetUpcomingInvoiceTotal(
+      this,
+      options,
+    ));
+  }
 
-    async getPaymentMethod(options?: RequestOptions): Promise<components.PaymentMethod> {
-        return unwrapAsync(billingV1GetPaymentMethod(this, options));
-    }
+  async getPaymentMethod(
+    options?: RequestOptions,
+  ): Promise<components.PaymentMethod> {
+    return unwrapAsync(billingV1GetPaymentMethod(
+      this,
+      options,
+    ));
+  }
 
-    async initStripeCustomerPortalUrl(
-        request: components.CustomerPortalUrl,
-        options?: RequestOptions
-    ): Promise<string> {
-        return unwrapAsync(billingV1InitStripeCustomerPortalUrl(this, request, options));
-    }
+  async initStripeCustomerPortalUrl(
+    request: components.CustomerPortalUrl,
+    options?: RequestOptions,
+  ): Promise<string> {
+    return unwrapAsync(billingV1InitStripeCustomerPortalUrl(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    async getInvoices(options?: RequestOptions): Promise<Array<components.Invoice>> {
-        return unwrapAsync(billingV1GetInvoices(this, options));
-    }
+  async getInvoices(
+    options?: RequestOptions,
+  ): Promise<Array<components.Invoice>> {
+    return unwrapAsync(billingV1GetInvoices(
+      this,
+      options,
+    ));
+  }
 }

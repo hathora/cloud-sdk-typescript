@@ -8,24 +8,24 @@ A build represents a game server artifact and its associated metadata.
 import { CreatedBuildV3WithMultipartUrls } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: CreatedBuildV3WithMultipartUrls = {
-    buildTag: "0.1.14-14c793",
-    imageSize: 317983,
-    status: "failed",
-    deletedAt: new Date("2023-03-31T00:46:25.126Z"),
-    finishedAt: new Date("2024-10-03T09:15:57.162Z"),
-    startedAt: new Date("2022-03-12T07:20:09.120Z"),
-    createdAt: new Date("2022-08-26T15:17:21.807Z"),
-    createdBy: "noreply@hathora.dev",
-    buildId: "<value>",
-    orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-    completeUploadPostRequestUrl: "<value>",
-    maxChunkSize: 6924.72,
-    uploadParts: [
-        {
-            putRequestUrl: "<value>",
-            partNumber: 5651.89,
-        },
-    ],
+  buildTag: "0.1.14-14c793",
+  imageSize: 880476,
+  status: "running",
+  deletedAt: new Date("2024-10-03T09:15:57.162Z"),
+  finishedAt: new Date("2022-03-12T07:20:09.120Z"),
+  startedAt: new Date("2022-08-26T15:17:21.807Z"),
+  createdAt: new Date("2024-01-29T22:47:11.859Z"),
+  createdBy: "noreply@hathora.dev",
+  buildId: "<value>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
+  completeUploadPostRequestUrl: "<value>",
+  maxChunkSize: 5651.89,
+  uploadParts: [
+    {
+      putRequestUrl: "<value>",
+      partNumber: 5666.02,
+    },
+  ],
 };
 ```
 

@@ -58,7 +58,7 @@ const hathoraCloud = new HathoraCloudCore({
 async function run() {
   const res = await roomsV1CreateRoomDeprecated(hathoraCloud, {
     roomConfig: "{\"name\":\"my-room\"}",
-    region: "Tokyo",
+    region: "Chicago",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   if (!res.ok) {

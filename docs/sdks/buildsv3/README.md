@@ -3,6 +3,8 @@
 
 ## Overview
 
+Operations that allow you create and manage your [builds](https://hathora.dev/docs/concepts/hathora-entities#build).
+
 ### Available Operations
 
 * [getBuilds](#getbuilds) - Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
@@ -134,7 +136,7 @@ const hathoraCloud = new HathoraCloudCore({
 async function run() {
   const res = await buildsV3CreateBuild(hathoraCloud, {
     buildTag: "0.1.14-14c793",
-    buildSizeInBytes: 1114.1,
+    buildSizeInBytes: 5387.85,
   }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   if (!res.ok) {

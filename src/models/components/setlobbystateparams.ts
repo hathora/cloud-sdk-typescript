@@ -5,33 +5,33 @@
 import * as z from "zod";
 
 export type SetLobbyStateParams = {
-    /**
-     * JSON blob to store metadata for a room. Must be smaller than 1MB.
-     */
-    state?: any | undefined;
+  /**
+   * JSON blob to store metadata for a room. Must be smaller than 1MB.
+   */
+  state?: any | undefined;
 };
 
 /** @internal */
 export const SetLobbyStateParams$inboundSchema: z.ZodType<
-    SetLobbyStateParams,
-    z.ZodTypeDef,
-    unknown
+  SetLobbyStateParams,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    state: z.any().optional(),
+  state: z.any().optional(),
 });
 
 /** @internal */
 export type SetLobbyStateParams$Outbound = {
-    state?: any | undefined;
+  state?: any | undefined;
 };
 
 /** @internal */
 export const SetLobbyStateParams$outboundSchema: z.ZodType<
-    SetLobbyStateParams$Outbound,
-    z.ZodTypeDef,
-    SetLobbyStateParams
+  SetLobbyStateParams$Outbound,
+  z.ZodTypeDef,
+  SetLobbyStateParams
 > = z.object({
-    state: z.any().optional(),
+  state: z.any().optional(),
 });
 
 /**
@@ -39,10 +39,10 @@ export const SetLobbyStateParams$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace SetLobbyStateParams$ {
-    /** @deprecated use `SetLobbyStateParams$inboundSchema` instead. */
-    export const inboundSchema = SetLobbyStateParams$inboundSchema;
-    /** @deprecated use `SetLobbyStateParams$outboundSchema` instead. */
-    export const outboundSchema = SetLobbyStateParams$outboundSchema;
-    /** @deprecated use `SetLobbyStateParams$Outbound` instead. */
-    export type Outbound = SetLobbyStateParams$Outbound;
+  /** @deprecated use `SetLobbyStateParams$inboundSchema` instead. */
+  export const inboundSchema = SetLobbyStateParams$inboundSchema;
+  /** @deprecated use `SetLobbyStateParams$outboundSchema` instead. */
+  export const outboundSchema = SetLobbyStateParams$outboundSchema;
+  /** @deprecated use `SetLobbyStateParams$Outbound` instead. */
+  export type Outbound = SetLobbyStateParams$Outbound;
 }

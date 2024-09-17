@@ -30,128 +30,128 @@ import { RoomsV2 } from "./roomsv2.js";
 import { TokensV1 } from "./tokensv1.js";
 
 export class HathoraCloud extends ClientSDK {
-    private _tokensV1?: TokensV1;
-    get tokensV1(): TokensV1 {
-        return (this._tokensV1 ??= new TokensV1(this.options$));
-    }
+  private _tokensV1?: TokensV1;
+  get tokensV1(): TokensV1 {
+    return (this._tokensV1 ??= new TokensV1(this.options$));
+  }
 
-    private _roomsV1?: RoomsV1;
-    get roomsV1(): RoomsV1 {
-        return (this._roomsV1 ??= new RoomsV1(this.options$));
-    }
+  private _roomsV1?: RoomsV1;
+  get roomsV1(): RoomsV1 {
+    return (this._roomsV1 ??= new RoomsV1(this.options$));
+  }
 
-    private _roomsV2?: RoomsV2;
-    get roomsV2(): RoomsV2 {
-        return (this._roomsV2 ??= new RoomsV2(this.options$));
-    }
+  private _roomsV2?: RoomsV2;
+  get roomsV2(): RoomsV2 {
+    return (this._roomsV2 ??= new RoomsV2(this.options$));
+  }
 
-    private _processesV1?: ProcessesV1;
-    get processesV1(): ProcessesV1 {
-        return (this._processesV1 ??= new ProcessesV1(this.options$));
-    }
+  private _processesV1?: ProcessesV1;
+  get processesV1(): ProcessesV1 {
+    return (this._processesV1 ??= new ProcessesV1(this.options$));
+  }
 
-    private _processesV2?: ProcessesV2;
-    get processesV2(): ProcessesV2 {
-        return (this._processesV2 ??= new ProcessesV2(this.options$));
-    }
+  private _processesV2?: ProcessesV2;
+  get processesV2(): ProcessesV2 {
+    return (this._processesV2 ??= new ProcessesV2(this.options$));
+  }
 
-    private _processesV3?: ProcessesV3;
-    get processesV3(): ProcessesV3 {
-        return (this._processesV3 ??= new ProcessesV3(this.options$));
-    }
+  private _processesV3?: ProcessesV3;
+  get processesV3(): ProcessesV3 {
+    return (this._processesV3 ??= new ProcessesV3(this.options$));
+  }
 
-    private _organizationsV1?: OrganizationsV1;
-    get organizationsV1(): OrganizationsV1 {
-        return (this._organizationsV1 ??= new OrganizationsV1(this.options$));
-    }
+  private _organizationsV1?: OrganizationsV1;
+  get organizationsV1(): OrganizationsV1 {
+    return (this._organizationsV1 ??= new OrganizationsV1(this.options$));
+  }
 
-    private _metricsV1?: MetricsV1;
-    get metricsV1(): MetricsV1 {
-        return (this._metricsV1 ??= new MetricsV1(this.options$));
-    }
+  private _metricsV1?: MetricsV1;
+  get metricsV1(): MetricsV1 {
+    return (this._metricsV1 ??= new MetricsV1(this.options$));
+  }
 
-    private _managementV1?: ManagementV1;
-    get managementV1(): ManagementV1 {
-        return (this._managementV1 ??= new ManagementV1(this.options$));
-    }
+  private _managementV1?: ManagementV1;
+  get managementV1(): ManagementV1 {
+    return (this._managementV1 ??= new ManagementV1(this.options$));
+  }
 
-    private _logsV1?: LogsV1;
-    get logsV1(): LogsV1 {
-        return (this._logsV1 ??= new LogsV1(this.options$));
-    }
+  private _logsV1?: LogsV1;
+  get logsV1(): LogsV1 {
+    return (this._logsV1 ??= new LogsV1(this.options$));
+  }
 
-    private _lobbiesV1?: LobbiesV1;
-    get lobbiesV1(): LobbiesV1 {
-        return (this._lobbiesV1 ??= new LobbiesV1(this.options$));
-    }
+  private _lobbiesV1?: LobbiesV1;
+  get lobbiesV1(): LobbiesV1 {
+    return (this._lobbiesV1 ??= new LobbiesV1(this.options$));
+  }
 
-    private _lobbiesV2?: LobbiesV2;
-    get lobbiesV2(): LobbiesV2 {
-        return (this._lobbiesV2 ??= new LobbiesV2(this.options$));
-    }
+  private _lobbiesV2?: LobbiesV2;
+  get lobbiesV2(): LobbiesV2 {
+    return (this._lobbiesV2 ??= new LobbiesV2(this.options$));
+  }
 
-    private _lobbiesV3?: LobbiesV3;
-    get lobbiesV3(): LobbiesV3 {
-        return (this._lobbiesV3 ??= new LobbiesV3(this.options$));
-    }
+  private _lobbiesV3?: LobbiesV3;
+  get lobbiesV3(): LobbiesV3 {
+    return (this._lobbiesV3 ??= new LobbiesV3(this.options$));
+  }
 
-    private _discoveryV1?: DiscoveryV1;
-    get discoveryV1(): DiscoveryV1 {
-        return (this._discoveryV1 ??= new DiscoveryV1(this.options$));
-    }
+  private _discoveryV1?: DiscoveryV1;
+  get discoveryV1(): DiscoveryV1 {
+    return (this._discoveryV1 ??= new DiscoveryV1(this.options$));
+  }
 
-    private _discoveryV2?: DiscoveryV2;
-    get discoveryV2(): DiscoveryV2 {
-        return (this._discoveryV2 ??= new DiscoveryV2(this.options$));
-    }
+  private _discoveryV2?: DiscoveryV2;
+  get discoveryV2(): DiscoveryV2 {
+    return (this._discoveryV2 ??= new DiscoveryV2(this.options$));
+  }
 
-    private _deploymentsV1?: DeploymentsV1;
-    get deploymentsV1(): DeploymentsV1 {
-        return (this._deploymentsV1 ??= new DeploymentsV1(this.options$));
-    }
+  private _deploymentsV1?: DeploymentsV1;
+  get deploymentsV1(): DeploymentsV1 {
+    return (this._deploymentsV1 ??= new DeploymentsV1(this.options$));
+  }
 
-    private _deploymentsV2?: DeploymentsV2;
-    get deploymentsV2(): DeploymentsV2 {
-        return (this._deploymentsV2 ??= new DeploymentsV2(this.options$));
-    }
+  private _deploymentsV2?: DeploymentsV2;
+  get deploymentsV2(): DeploymentsV2 {
+    return (this._deploymentsV2 ??= new DeploymentsV2(this.options$));
+  }
 
-    private _deploymentsV3?: DeploymentsV3;
-    get deploymentsV3(): DeploymentsV3 {
-        return (this._deploymentsV3 ??= new DeploymentsV3(this.options$));
-    }
+  private _deploymentsV3?: DeploymentsV3;
+  get deploymentsV3(): DeploymentsV3 {
+    return (this._deploymentsV3 ??= new DeploymentsV3(this.options$));
+  }
 
-    private _buildsV1?: BuildsV1;
-    get buildsV1(): BuildsV1 {
-        return (this._buildsV1 ??= new BuildsV1(this.options$));
-    }
+  private _buildsV1?: BuildsV1;
+  get buildsV1(): BuildsV1 {
+    return (this._buildsV1 ??= new BuildsV1(this.options$));
+  }
 
-    private _buildsV2?: BuildsV2;
-    get buildsV2(): BuildsV2 {
-        return (this._buildsV2 ??= new BuildsV2(this.options$));
-    }
+  private _buildsV2?: BuildsV2;
+  get buildsV2(): BuildsV2 {
+    return (this._buildsV2 ??= new BuildsV2(this.options$));
+  }
 
-    private _buildsV3?: BuildsV3;
-    get buildsV3(): BuildsV3 {
-        return (this._buildsV3 ??= new BuildsV3(this.options$));
-    }
+  private _buildsV3?: BuildsV3;
+  get buildsV3(): BuildsV3 {
+    return (this._buildsV3 ??= new BuildsV3(this.options$));
+  }
 
-    private _billingV1?: BillingV1;
-    get billingV1(): BillingV1 {
-        return (this._billingV1 ??= new BillingV1(this.options$));
-    }
+  private _billingV1?: BillingV1;
+  get billingV1(): BillingV1 {
+    return (this._billingV1 ??= new BillingV1(this.options$));
+  }
 
-    private _authV1?: AuthV1;
-    get authV1(): AuthV1 {
-        return (this._authV1 ??= new AuthV1(this.options$));
-    }
+  private _authV1?: AuthV1;
+  get authV1(): AuthV1 {
+    return (this._authV1 ??= new AuthV1(this.options$));
+  }
 
-    private _appsV1?: AppsV1;
-    get appsV1(): AppsV1 {
-        return (this._appsV1 ??= new AppsV1(this.options$));
-    }
+  private _appsV1?: AppsV1;
+  get appsV1(): AppsV1 {
+    return (this._appsV1 ??= new AppsV1(this.options$));
+  }
 
-    private _appsV2?: AppsV2;
-    get appsV2(): AppsV2 {
-        return (this._appsV2 ??= new AppsV2(this.options$));
-    }
+  private _appsV2?: AppsV2;
+  get appsV2(): AppsV2 {
+    return (this._appsV2 ??= new AppsV2(this.options$));
+  }
 }

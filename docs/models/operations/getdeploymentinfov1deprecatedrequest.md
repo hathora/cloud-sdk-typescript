@@ -6,7 +6,7 @@
 import { GetDeploymentInfoV1DeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: GetDeploymentInfoV1DeprecatedRequest = {
-    deploymentId: 1,
+  deploymentId: 1,
 };
 ```
 

@@ -5,31 +5,34 @@
 import * as z from "zod";
 
 export type RunBuildRequest = {
-    buildId: string;
-    orgId?: string | undefined;
+  buildId: string;
+  orgId?: string | undefined;
 };
 
 /** @internal */
-export const RunBuildRequest$inboundSchema: z.ZodType<RunBuildRequest, z.ZodTypeDef, unknown> =
-    z.object({
-        buildId: z.string(),
-        orgId: z.string().optional(),
-    });
+export const RunBuildRequest$inboundSchema: z.ZodType<
+  RunBuildRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  buildId: z.string(),
+  orgId: z.string().optional(),
+});
 
 /** @internal */
 export type RunBuildRequest$Outbound = {
-    buildId: string;
-    orgId?: string | undefined;
+  buildId: string;
+  orgId?: string | undefined;
 };
 
 /** @internal */
 export const RunBuildRequest$outboundSchema: z.ZodType<
-    RunBuildRequest$Outbound,
-    z.ZodTypeDef,
-    RunBuildRequest
+  RunBuildRequest$Outbound,
+  z.ZodTypeDef,
+  RunBuildRequest
 > = z.object({
-    buildId: z.string(),
-    orgId: z.string().optional(),
+  buildId: z.string(),
+  orgId: z.string().optional(),
 });
 
 /**
@@ -37,10 +40,10 @@ export const RunBuildRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace RunBuildRequest$ {
-    /** @deprecated use `RunBuildRequest$inboundSchema` instead. */
-    export const inboundSchema = RunBuildRequest$inboundSchema;
-    /** @deprecated use `RunBuildRequest$outboundSchema` instead. */
-    export const outboundSchema = RunBuildRequest$outboundSchema;
-    /** @deprecated use `RunBuildRequest$Outbound` instead. */
-    export type Outbound = RunBuildRequest$Outbound;
+  /** @deprecated use `RunBuildRequest$inboundSchema` instead. */
+  export const inboundSchema = RunBuildRequest$inboundSchema;
+  /** @deprecated use `RunBuildRequest$outboundSchema` instead. */
+  export const outboundSchema = RunBuildRequest$outboundSchema;
+  /** @deprecated use `RunBuildRequest$Outbound` instead. */
+  export type Outbound = RunBuildRequest$Outbound;
 }

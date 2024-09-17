@@ -6,8 +6,8 @@
 import { RunBuildRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: RunBuildRequest = {
-    buildId: "<value>",
-    orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
+  buildId: "<value>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
 };
 ```
 

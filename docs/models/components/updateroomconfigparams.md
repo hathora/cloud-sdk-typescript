@@ -6,7 +6,7 @@
 import { UpdateRoomConfigParams } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: UpdateRoomConfigParams = {
-    roomConfig: '{"name":"my-room"}',
+  roomConfig: "{\"name\":\"my-room\"}",
 };
 ```
 

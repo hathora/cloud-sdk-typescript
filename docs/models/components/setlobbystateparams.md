@@ -6,7 +6,7 @@
 import { SetLobbyStateParams } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: SetLobbyStateParams = {
-    state: "<value>",
+  state: "<value>",
 };
 ```
 

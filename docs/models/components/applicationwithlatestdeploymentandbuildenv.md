@@ -6,8 +6,8 @@
 import { ApplicationWithLatestDeploymentAndBuildEnv } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: ApplicationWithLatestDeploymentAndBuildEnv = {
-    value: "TRUE",
-    name: "EULA",
+  value: "TRUE",
+  name: "EULA",
 };
 ```
 

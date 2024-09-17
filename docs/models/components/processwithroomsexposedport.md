@@ -8,10 +8,10 @@ Connection details for an active process.
 import { ProcessWithRoomsExposedPort } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: ProcessWithRoomsExposedPort = {
-    transportType: "tcp",
-    port: 34567,
-    host: "1.proxy.hathora.dev",
-    name: "default",
+  transportType: "tcp",
+  port: 34567,
+  host: "1.proxy.hathora.dev",
+  name: "default",
 };
 ```
 

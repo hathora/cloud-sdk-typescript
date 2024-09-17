@@ -5,30 +5,33 @@
 import * as z from "zod";
 
 export type PlayerTokenObject = {
-    /**
-     * A unique Hathora-signed JWT player token.
-     */
-    token: string;
+  /**
+   * A unique Hathora-signed JWT player token.
+   */
+  token: string;
 };
 
 /** @internal */
-export const PlayerTokenObject$inboundSchema: z.ZodType<PlayerTokenObject, z.ZodTypeDef, unknown> =
-    z.object({
-        token: z.string(),
-    });
+export const PlayerTokenObject$inboundSchema: z.ZodType<
+  PlayerTokenObject,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  token: z.string(),
+});
 
 /** @internal */
 export type PlayerTokenObject$Outbound = {
-    token: string;
+  token: string;
 };
 
 /** @internal */
 export const PlayerTokenObject$outboundSchema: z.ZodType<
-    PlayerTokenObject$Outbound,
-    z.ZodTypeDef,
-    PlayerTokenObject
+  PlayerTokenObject$Outbound,
+  z.ZodTypeDef,
+  PlayerTokenObject
 > = z.object({
-    token: z.string(),
+  token: z.string(),
 });
 
 /**
@@ -36,10 +39,10 @@ export const PlayerTokenObject$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace PlayerTokenObject$ {
-    /** @deprecated use `PlayerTokenObject$inboundSchema` instead. */
-    export const inboundSchema = PlayerTokenObject$inboundSchema;
-    /** @deprecated use `PlayerTokenObject$outboundSchema` instead. */
-    export const outboundSchema = PlayerTokenObject$outboundSchema;
-    /** @deprecated use `PlayerTokenObject$Outbound` instead. */
-    export type Outbound = PlayerTokenObject$Outbound;
+  /** @deprecated use `PlayerTokenObject$inboundSchema` instead. */
+  export const inboundSchema = PlayerTokenObject$inboundSchema;
+  /** @deprecated use `PlayerTokenObject$outboundSchema` instead. */
+  export const outboundSchema = PlayerTokenObject$outboundSchema;
+  /** @deprecated use `PlayerTokenObject$Outbound` instead. */
+  export type Outbound = PlayerTokenObject$Outbound;
 }

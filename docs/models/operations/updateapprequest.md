@@ -6,10 +6,10 @@
 import { UpdateAppRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: UpdateAppRequest = {
-    appConfig: {
-        authConfiguration: {},
-        appName: "minecraft",
-    },
+  appConfig: {
+    authConfiguration: {},
+    appName: "minecraft",
+  },
 };
 ```
 

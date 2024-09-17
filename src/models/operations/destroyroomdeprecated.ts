@@ -5,35 +5,35 @@
 import * as z from "zod";
 
 export type DestroyRoomDeprecatedGlobals = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 export type DestroyRoomDeprecatedRequest = {
-    appId?: string | undefined;
-    roomId: string;
+  appId?: string | undefined;
+  roomId: string;
 };
 
 /** @internal */
 export const DestroyRoomDeprecatedGlobals$inboundSchema: z.ZodType<
-    DestroyRoomDeprecatedGlobals,
-    z.ZodTypeDef,
-    unknown
+  DestroyRoomDeprecatedGlobals,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /** @internal */
 export type DestroyRoomDeprecatedGlobals$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const DestroyRoomDeprecatedGlobals$outboundSchema: z.ZodType<
-    DestroyRoomDeprecatedGlobals$Outbound,
-    z.ZodTypeDef,
-    DestroyRoomDeprecatedGlobals
+  DestroyRoomDeprecatedGlobals$Outbound,
+  z.ZodTypeDef,
+  DestroyRoomDeprecatedGlobals
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -41,38 +41,38 @@ export const DestroyRoomDeprecatedGlobals$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace DestroyRoomDeprecatedGlobals$ {
-    /** @deprecated use `DestroyRoomDeprecatedGlobals$inboundSchema` instead. */
-    export const inboundSchema = DestroyRoomDeprecatedGlobals$inboundSchema;
-    /** @deprecated use `DestroyRoomDeprecatedGlobals$outboundSchema` instead. */
-    export const outboundSchema = DestroyRoomDeprecatedGlobals$outboundSchema;
-    /** @deprecated use `DestroyRoomDeprecatedGlobals$Outbound` instead. */
-    export type Outbound = DestroyRoomDeprecatedGlobals$Outbound;
+  /** @deprecated use `DestroyRoomDeprecatedGlobals$inboundSchema` instead. */
+  export const inboundSchema = DestroyRoomDeprecatedGlobals$inboundSchema;
+  /** @deprecated use `DestroyRoomDeprecatedGlobals$outboundSchema` instead. */
+  export const outboundSchema = DestroyRoomDeprecatedGlobals$outboundSchema;
+  /** @deprecated use `DestroyRoomDeprecatedGlobals$Outbound` instead. */
+  export type Outbound = DestroyRoomDeprecatedGlobals$Outbound;
 }
 
 /** @internal */
 export const DestroyRoomDeprecatedRequest$inboundSchema: z.ZodType<
-    DestroyRoomDeprecatedRequest,
-    z.ZodTypeDef,
-    unknown
+  DestroyRoomDeprecatedRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
-    roomId: z.string(),
+  appId: z.string().optional(),
+  roomId: z.string(),
 });
 
 /** @internal */
 export type DestroyRoomDeprecatedRequest$Outbound = {
-    appId?: string | undefined;
-    roomId: string;
+  appId?: string | undefined;
+  roomId: string;
 };
 
 /** @internal */
 export const DestroyRoomDeprecatedRequest$outboundSchema: z.ZodType<
-    DestroyRoomDeprecatedRequest$Outbound,
-    z.ZodTypeDef,
-    DestroyRoomDeprecatedRequest
+  DestroyRoomDeprecatedRequest$Outbound,
+  z.ZodTypeDef,
+  DestroyRoomDeprecatedRequest
 > = z.object({
-    appId: z.string().optional(),
-    roomId: z.string(),
+  appId: z.string().optional(),
+  roomId: z.string(),
 });
 
 /**
@@ -80,10 +80,10 @@ export const DestroyRoomDeprecatedRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace DestroyRoomDeprecatedRequest$ {
-    /** @deprecated use `DestroyRoomDeprecatedRequest$inboundSchema` instead. */
-    export const inboundSchema = DestroyRoomDeprecatedRequest$inboundSchema;
-    /** @deprecated use `DestroyRoomDeprecatedRequest$outboundSchema` instead. */
-    export const outboundSchema = DestroyRoomDeprecatedRequest$outboundSchema;
-    /** @deprecated use `DestroyRoomDeprecatedRequest$Outbound` instead. */
-    export type Outbound = DestroyRoomDeprecatedRequest$Outbound;
+  /** @deprecated use `DestroyRoomDeprecatedRequest$inboundSchema` instead. */
+  export const inboundSchema = DestroyRoomDeprecatedRequest$inboundSchema;
+  /** @deprecated use `DestroyRoomDeprecatedRequest$outboundSchema` instead. */
+  export const outboundSchema = DestroyRoomDeprecatedRequest$outboundSchema;
+  /** @deprecated use `DestroyRoomDeprecatedRequest$Outbound` instead. */
+  export type Outbound = DestroyRoomDeprecatedRequest$Outbound;
 }

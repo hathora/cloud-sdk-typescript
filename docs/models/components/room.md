@@ -8,24 +8,24 @@ A room object represents a game session or match.
 import { Room } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: Room = {
-    currentAllocation: {
-        unscheduledAt: new Date("2023-02-26T06:46:35.231Z"),
-        scheduledAt: new Date("2023-04-25T14:17:38.296Z"),
-        processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
-        roomAllocationId: "e3a0aa32-1711-4036-acfa-008b96061a78",
+  currentAllocation: {
+    unscheduledAt: new Date("2023-02-26T06:46:35.231Z"),
+    scheduledAt: new Date("2023-04-25T14:17:38.296Z"),
+    processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+    roomAllocationId: "e3a0aa32-1711-4036-acfa-008b96061a78",
+  },
+  status: "active",
+  allocations: [
+    {
+      unscheduledAt: new Date("2022-11-23T02:21:00.924Z"),
+      scheduledAt: new Date("2024-09-04T09:11:49.338Z"),
+      processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+      roomAllocationId: "e3a0aa32-1711-4036-acfa-008b96061a78",
     },
-    status: "active",
-    allocations: [
-        {
-            unscheduledAt: new Date("2022-11-23T02:21:00.924Z"),
-            scheduledAt: new Date("2024-09-04T09:11:49.338Z"),
-            processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
-            roomAllocationId: "e3a0aa32-1711-4036-acfa-008b96061a78",
-        },
-    ],
-    roomConfig: '{"name":"my-room"}',
-    roomId: "2swovpy1fnunu",
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  ],
+  roomConfig: "{\"name\":\"my-room\"}",
+  roomId: "2swovpy1fnunu",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 };
 ```
 

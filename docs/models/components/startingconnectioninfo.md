@@ -6,8 +6,8 @@
 import { StartingConnectionInfo } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: StartingConnectionInfo = {
-    status: "starting",
-    roomId: "2swovpy1fnunu",
+  status: "starting",
+  roomId: "2swovpy1fnunu",
 };
 ```
 

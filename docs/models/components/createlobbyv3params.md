@@ -6,9 +6,9 @@
 import { CreateLobbyV3Params } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: CreateLobbyV3Params = {
-    visibility: "private",
-    roomConfig: '{"name":"my-room"}',
-    region: "London",
+  visibility: "private",
+  roomConfig: "{\"name\":\"my-room\"}",
+  region: "London",
 };
 ```
 

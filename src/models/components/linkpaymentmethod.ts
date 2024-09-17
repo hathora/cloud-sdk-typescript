@@ -5,27 +5,30 @@
 import * as z from "zod";
 
 export type LinkPaymentMethod = {
-    email?: string | undefined;
+  email?: string | undefined;
 };
 
 /** @internal */
-export const LinkPaymentMethod$inboundSchema: z.ZodType<LinkPaymentMethod, z.ZodTypeDef, unknown> =
-    z.object({
-        email: z.string().optional(),
-    });
+export const LinkPaymentMethod$inboundSchema: z.ZodType<
+  LinkPaymentMethod,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: z.string().optional(),
+});
 
 /** @internal */
 export type LinkPaymentMethod$Outbound = {
-    email?: string | undefined;
+  email?: string | undefined;
 };
 
 /** @internal */
 export const LinkPaymentMethod$outboundSchema: z.ZodType<
-    LinkPaymentMethod$Outbound,
-    z.ZodTypeDef,
-    LinkPaymentMethod
+  LinkPaymentMethod$Outbound,
+  z.ZodTypeDef,
+  LinkPaymentMethod
 > = z.object({
-    email: z.string().optional(),
+  email: z.string().optional(),
 });
 
 /**
@@ -33,10 +36,10 @@ export const LinkPaymentMethod$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace LinkPaymentMethod$ {
-    /** @deprecated use `LinkPaymentMethod$inboundSchema` instead. */
-    export const inboundSchema = LinkPaymentMethod$inboundSchema;
-    /** @deprecated use `LinkPaymentMethod$outboundSchema` instead. */
-    export const outboundSchema = LinkPaymentMethod$outboundSchema;
-    /** @deprecated use `LinkPaymentMethod$Outbound` instead. */
-    export type Outbound = LinkPaymentMethod$Outbound;
+  /** @deprecated use `LinkPaymentMethod$inboundSchema` instead. */
+  export const inboundSchema = LinkPaymentMethod$inboundSchema;
+  /** @deprecated use `LinkPaymentMethod$outboundSchema` instead. */
+  export const outboundSchema = LinkPaymentMethod$outboundSchema;
+  /** @deprecated use `LinkPaymentMethod$Outbound` instead. */
+  export type Outbound = LinkPaymentMethod$Outbound;
 }

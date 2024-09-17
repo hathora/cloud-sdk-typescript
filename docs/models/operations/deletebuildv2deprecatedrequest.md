@@ -6,7 +6,7 @@
 import { DeleteBuildV2DeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: DeleteBuildV2DeprecatedRequest = {
-    buildId: 1,
+  buildId: 1,
 };
 ```
 

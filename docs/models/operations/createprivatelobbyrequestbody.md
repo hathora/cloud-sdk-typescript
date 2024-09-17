@@ -6,8 +6,8 @@
 import { CreatePrivateLobbyRequestBody } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: CreatePrivateLobbyRequestBody = {
-    initialConfig: "<value>",
-    region: "London",
+  initialConfig: "<value>",
+  region: "Tokyo",
 };
 ```
 

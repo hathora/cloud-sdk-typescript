@@ -6,7 +6,7 @@
 import { CreateOrgToken } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: CreateOrgToken = {
-    name: "ci-token",
+  name: "ci-token",
 };
 ```
 

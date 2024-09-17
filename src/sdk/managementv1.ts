@@ -8,10 +8,14 @@ import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class ManagementV1 extends ClientSDK {
-    async sendVerificationEmail(
-        request: components.VerificationEmailRequest,
-        options?: RequestOptions
-    ): Promise<components.VerificationEmailSuccess> {
-        return unwrapAsync(managementV1SendVerificationEmail(this, request, options));
-    }
+  async sendVerificationEmail(
+    request: components.VerificationEmailRequest,
+    options?: RequestOptions,
+  ): Promise<components.VerificationEmailSuccess> {
+    return unwrapAsync(managementV1SendVerificationEmail(
+      this,
+      request,
+      options,
+    ));
+  }
 }

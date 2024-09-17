@@ -5,27 +5,30 @@
 import * as z from "zod";
 
 export type CustomerPortalUrl = {
-    returnUrl: string;
+  returnUrl: string;
 };
 
 /** @internal */
-export const CustomerPortalUrl$inboundSchema: z.ZodType<CustomerPortalUrl, z.ZodTypeDef, unknown> =
-    z.object({
-        returnUrl: z.string(),
-    });
+export const CustomerPortalUrl$inboundSchema: z.ZodType<
+  CustomerPortalUrl,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  returnUrl: z.string(),
+});
 
 /** @internal */
 export type CustomerPortalUrl$Outbound = {
-    returnUrl: string;
+  returnUrl: string;
 };
 
 /** @internal */
 export const CustomerPortalUrl$outboundSchema: z.ZodType<
-    CustomerPortalUrl$Outbound,
-    z.ZodTypeDef,
-    CustomerPortalUrl
+  CustomerPortalUrl$Outbound,
+  z.ZodTypeDef,
+  CustomerPortalUrl
 > = z.object({
-    returnUrl: z.string(),
+  returnUrl: z.string(),
 });
 
 /**
@@ -33,10 +36,10 @@ export const CustomerPortalUrl$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace CustomerPortalUrl$ {
-    /** @deprecated use `CustomerPortalUrl$inboundSchema` instead. */
-    export const inboundSchema = CustomerPortalUrl$inboundSchema;
-    /** @deprecated use `CustomerPortalUrl$outboundSchema` instead. */
-    export const outboundSchema = CustomerPortalUrl$outboundSchema;
-    /** @deprecated use `CustomerPortalUrl$Outbound` instead. */
-    export type Outbound = CustomerPortalUrl$Outbound;
+  /** @deprecated use `CustomerPortalUrl$inboundSchema` instead. */
+  export const inboundSchema = CustomerPortalUrl$inboundSchema;
+  /** @deprecated use `CustomerPortalUrl$outboundSchema` instead. */
+  export const outboundSchema = CustomerPortalUrl$outboundSchema;
+  /** @deprecated use `CustomerPortalUrl$Outbound` instead. */
+  export type Outbound = CustomerPortalUrl$Outbound;
 }

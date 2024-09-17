@@ -14,87 +14,117 @@ import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class RoomsV1 extends ClientSDK {
-    /**
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async createRoomDeprecated(
-        createRoomParams: components.CreateRoomParams,
-        appId?: string | undefined,
-        roomId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<string> {
-        return unwrapAsync(
-            roomsV1CreateRoomDeprecated(this, createRoomParams, appId, roomId, options)
-        );
-    }
+  /**
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async createRoomDeprecated(
+    createRoomParams: components.CreateRoomParams,
+    appId?: string | undefined,
+    roomId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<string> {
+    return unwrapAsync(roomsV1CreateRoomDeprecated(
+      this,
+      createRoomParams,
+      appId,
+      roomId,
+      options,
+    ));
+  }
 
-    /**
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async getRoomInfoDeprecated(
-        roomId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.Room> {
-        return unwrapAsync(roomsV1GetRoomInfoDeprecated(this, roomId, appId, options));
-    }
+  /**
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async getRoomInfoDeprecated(
+    roomId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.Room> {
+    return unwrapAsync(roomsV1GetRoomInfoDeprecated(
+      this,
+      roomId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async getActiveRoomsForProcessDeprecated(
-        processId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<Array<components.RoomWithoutAllocations>> {
-        return unwrapAsync(
-            roomsV1GetActiveRoomsForProcessDeprecated(this, processId, appId, options)
-        );
-    }
+  /**
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async getActiveRoomsForProcessDeprecated(
+    processId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<Array<components.RoomWithoutAllocations>> {
+    return unwrapAsync(roomsV1GetActiveRoomsForProcessDeprecated(
+      this,
+      processId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async getInactiveRoomsForProcessDeprecated(
-        processId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<Array<components.RoomWithoutAllocations>> {
-        return unwrapAsync(
-            roomsV1GetInactiveRoomsForProcessDeprecated(this, processId, appId, options)
-        );
-    }
+  /**
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async getInactiveRoomsForProcessDeprecated(
+    processId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<Array<components.RoomWithoutAllocations>> {
+    return unwrapAsync(roomsV1GetInactiveRoomsForProcessDeprecated(
+      this,
+      processId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async destroyRoomDeprecated(
-        roomId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<void> {
-        return unwrapAsync(roomsV1DestroyRoomDeprecated(this, roomId, appId, options));
-    }
+  /**
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async destroyRoomDeprecated(
+    roomId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(roomsV1DestroyRoomDeprecated(
+      this,
+      roomId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async suspendRoomDeprecated(
-        roomId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<void> {
-        return unwrapAsync(roomsV1SuspendRoomDeprecated(this, roomId, appId, options));
-    }
+  /**
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async suspendRoomDeprecated(
+    roomId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(roomsV1SuspendRoomDeprecated(
+      this,
+      roomId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async getConnectionInfoDeprecated(
-        roomId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.ConnectionInfo> {
-        return unwrapAsync(roomsV1GetConnectionInfoDeprecated(this, roomId, appId, options));
-    }
+  /**
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async getConnectionInfoDeprecated(
+    roomId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.ConnectionInfo> {
+    return unwrapAsync(roomsV1GetConnectionInfoDeprecated(
+      this,
+      roomId,
+      appId,
+      options,
+    ));
+  }
 }

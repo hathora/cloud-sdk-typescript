@@ -5,37 +5,41 @@
 import * as z from "zod";
 
 export type Organization = {
-    isSingleTenant: boolean;
-    stripeCustomerId: string;
-    /**
-     * System generated unique identifier for an organization. Not guaranteed to have a specific format.
-     */
-    orgId: string;
+  isSingleTenant: boolean;
+  stripeCustomerId: string;
+  /**
+   * System generated unique identifier for an organization. Not guaranteed to have a specific format.
+   */
+  orgId: string;
 };
 
 /** @internal */
-export const Organization$inboundSchema: z.ZodType<Organization, z.ZodTypeDef, unknown> = z.object({
-    isSingleTenant: z.boolean(),
-    stripeCustomerId: z.string(),
-    orgId: z.string(),
+export const Organization$inboundSchema: z.ZodType<
+  Organization,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  isSingleTenant: z.boolean(),
+  stripeCustomerId: z.string(),
+  orgId: z.string(),
 });
 
 /** @internal */
 export type Organization$Outbound = {
-    isSingleTenant: boolean;
-    stripeCustomerId: string;
-    orgId: string;
+  isSingleTenant: boolean;
+  stripeCustomerId: string;
+  orgId: string;
 };
 
 /** @internal */
 export const Organization$outboundSchema: z.ZodType<
-    Organization$Outbound,
-    z.ZodTypeDef,
-    Organization
+  Organization$Outbound,
+  z.ZodTypeDef,
+  Organization
 > = z.object({
-    isSingleTenant: z.boolean(),
-    stripeCustomerId: z.string(),
-    orgId: z.string(),
+  isSingleTenant: z.boolean(),
+  stripeCustomerId: z.string(),
+  orgId: z.string(),
 });
 
 /**
@@ -43,10 +47,10 @@ export const Organization$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Organization$ {
-    /** @deprecated use `Organization$inboundSchema` instead. */
-    export const inboundSchema = Organization$inboundSchema;
-    /** @deprecated use `Organization$outboundSchema` instead. */
-    export const outboundSchema = Organization$outboundSchema;
-    /** @deprecated use `Organization$Outbound` instead. */
-    export type Outbound = Organization$Outbound;
+  /** @deprecated use `Organization$inboundSchema` instead. */
+  export const inboundSchema = Organization$inboundSchema;
+  /** @deprecated use `Organization$outboundSchema` instead. */
+  export const outboundSchema = Organization$outboundSchema;
+  /** @deprecated use `Organization$Outbound` instead. */
+  export type Outbound = Organization$Outbound;
 }

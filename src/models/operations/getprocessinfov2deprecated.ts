@@ -5,35 +5,35 @@
 import * as z from "zod";
 
 export type GetProcessInfoV2DeprecatedGlobals = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 export type GetProcessInfoV2DeprecatedRequest = {
-    appId?: string | undefined;
-    processId: string;
+  appId?: string | undefined;
+  processId: string;
 };
 
 /** @internal */
 export const GetProcessInfoV2DeprecatedGlobals$inboundSchema: z.ZodType<
-    GetProcessInfoV2DeprecatedGlobals,
-    z.ZodTypeDef,
-    unknown
+  GetProcessInfoV2DeprecatedGlobals,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /** @internal */
 export type GetProcessInfoV2DeprecatedGlobals$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const GetProcessInfoV2DeprecatedGlobals$outboundSchema: z.ZodType<
-    GetProcessInfoV2DeprecatedGlobals$Outbound,
-    z.ZodTypeDef,
-    GetProcessInfoV2DeprecatedGlobals
+  GetProcessInfoV2DeprecatedGlobals$Outbound,
+  z.ZodTypeDef,
+  GetProcessInfoV2DeprecatedGlobals
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -41,38 +41,39 @@ export const GetProcessInfoV2DeprecatedGlobals$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetProcessInfoV2DeprecatedGlobals$ {
-    /** @deprecated use `GetProcessInfoV2DeprecatedGlobals$inboundSchema` instead. */
-    export const inboundSchema = GetProcessInfoV2DeprecatedGlobals$inboundSchema;
-    /** @deprecated use `GetProcessInfoV2DeprecatedGlobals$outboundSchema` instead. */
-    export const outboundSchema = GetProcessInfoV2DeprecatedGlobals$outboundSchema;
-    /** @deprecated use `GetProcessInfoV2DeprecatedGlobals$Outbound` instead. */
-    export type Outbound = GetProcessInfoV2DeprecatedGlobals$Outbound;
+  /** @deprecated use `GetProcessInfoV2DeprecatedGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetProcessInfoV2DeprecatedGlobals$inboundSchema;
+  /** @deprecated use `GetProcessInfoV2DeprecatedGlobals$outboundSchema` instead. */
+  export const outboundSchema =
+    GetProcessInfoV2DeprecatedGlobals$outboundSchema;
+  /** @deprecated use `GetProcessInfoV2DeprecatedGlobals$Outbound` instead. */
+  export type Outbound = GetProcessInfoV2DeprecatedGlobals$Outbound;
 }
 
 /** @internal */
 export const GetProcessInfoV2DeprecatedRequest$inboundSchema: z.ZodType<
-    GetProcessInfoV2DeprecatedRequest,
-    z.ZodTypeDef,
-    unknown
+  GetProcessInfoV2DeprecatedRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
-    processId: z.string(),
+  appId: z.string().optional(),
+  processId: z.string(),
 });
 
 /** @internal */
 export type GetProcessInfoV2DeprecatedRequest$Outbound = {
-    appId?: string | undefined;
-    processId: string;
+  appId?: string | undefined;
+  processId: string;
 };
 
 /** @internal */
 export const GetProcessInfoV2DeprecatedRequest$outboundSchema: z.ZodType<
-    GetProcessInfoV2DeprecatedRequest$Outbound,
-    z.ZodTypeDef,
-    GetProcessInfoV2DeprecatedRequest
+  GetProcessInfoV2DeprecatedRequest$Outbound,
+  z.ZodTypeDef,
+  GetProcessInfoV2DeprecatedRequest
 > = z.object({
-    appId: z.string().optional(),
-    processId: z.string(),
+  appId: z.string().optional(),
+  processId: z.string(),
 });
 
 /**
@@ -80,10 +81,11 @@ export const GetProcessInfoV2DeprecatedRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetProcessInfoV2DeprecatedRequest$ {
-    /** @deprecated use `GetProcessInfoV2DeprecatedRequest$inboundSchema` instead. */
-    export const inboundSchema = GetProcessInfoV2DeprecatedRequest$inboundSchema;
-    /** @deprecated use `GetProcessInfoV2DeprecatedRequest$outboundSchema` instead. */
-    export const outboundSchema = GetProcessInfoV2DeprecatedRequest$outboundSchema;
-    /** @deprecated use `GetProcessInfoV2DeprecatedRequest$Outbound` instead. */
-    export type Outbound = GetProcessInfoV2DeprecatedRequest$Outbound;
+  /** @deprecated use `GetProcessInfoV2DeprecatedRequest$inboundSchema` instead. */
+  export const inboundSchema = GetProcessInfoV2DeprecatedRequest$inboundSchema;
+  /** @deprecated use `GetProcessInfoV2DeprecatedRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    GetProcessInfoV2DeprecatedRequest$outboundSchema;
+  /** @deprecated use `GetProcessInfoV2DeprecatedRequest$Outbound` instead. */
+  export type Outbound = GetProcessInfoV2DeprecatedRequest$Outbound;
 }

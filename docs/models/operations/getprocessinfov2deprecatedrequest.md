@@ -6,7 +6,7 @@
 import { GetProcessInfoV2DeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: GetProcessInfoV2DeprecatedRequest = {
-    processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+  processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
 };
 ```
 

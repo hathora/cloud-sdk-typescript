@@ -12,53 +12,75 @@ import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class AppsV1 extends ClientSDK {
-    /**
-     * Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
-     */
-    async getAppsV1Deprecated(
-        options?: RequestOptions
-    ): Promise<Array<components.ApplicationWithLatestDeploymentAndBuildDeprecated>> {
-        return unwrapAsync(appsV1GetAppsV1Deprecated(this, options));
-    }
+  /**
+   * Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
+   */
+  async getAppsV1Deprecated(
+    options?: RequestOptions,
+  ): Promise<
+    Array<components.ApplicationWithLatestDeploymentAndBuildDeprecated>
+  > {
+    return unwrapAsync(appsV1GetAppsV1Deprecated(
+      this,
+      options,
+    ));
+  }
 
-    /**
-     * Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application).
-     */
-    async createAppV1Deprecated(
-        request: components.AppConfig,
-        options?: RequestOptions
-    ): Promise<components.Application> {
-        return unwrapAsync(appsV1CreateAppV1Deprecated(this, request, options));
-    }
+  /**
+   * Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+   */
+  async createAppV1Deprecated(
+    request: components.AppConfig,
+    options?: RequestOptions,
+  ): Promise<components.Application> {
+    return unwrapAsync(appsV1CreateAppV1Deprecated(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
-     */
-    async updateAppV1Deprecated(
-        appConfig: components.AppConfig,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.Application> {
-        return unwrapAsync(appsV1UpdateAppV1Deprecated(this, appConfig, appId, options));
-    }
+  /**
+   * Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+   */
+  async updateAppV1Deprecated(
+    appConfig: components.AppConfig,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.Application> {
+    return unwrapAsync(appsV1UpdateAppV1Deprecated(
+      this,
+      appConfig,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
-     */
-    async getAppInfoV1Deprecated(
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.Application> {
-        return unwrapAsync(appsV1GetAppInfoV1Deprecated(this, appId, options));
-    }
+  /**
+   * Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+   */
+  async getAppInfoV1Deprecated(
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.Application> {
+    return unwrapAsync(appsV1GetAppInfoV1Deprecated(
+      this,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Your organization will lose access to this application.
-     */
-    async deleteAppV1Deprecated(
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<void> {
-        return unwrapAsync(appsV1DeleteAppV1Deprecated(this, appId, options));
-    }
+  /**
+   * Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Your organization will lose access to this application.
+   */
+  async deleteAppV1Deprecated(
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(appsV1DeleteAppV1Deprecated(
+      this,
+      appId,
+      options,
+    ));
+  }
 }

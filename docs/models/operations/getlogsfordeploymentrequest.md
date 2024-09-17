@@ -6,8 +6,8 @@
 import { GetLogsForDeploymentRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: GetLogsForDeploymentRequest = {
-    deploymentId: 1,
-    tailLines: 100,
+  deploymentId: 1,
+  tailLines: 100,
 };
 ```
 

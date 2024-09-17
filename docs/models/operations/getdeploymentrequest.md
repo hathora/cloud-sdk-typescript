@@ -6,7 +6,7 @@
 import { GetDeploymentRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: GetDeploymentRequest = {
-    deploymentId: "<value>",
+  deploymentId: "<value>",
 };
 ```
 

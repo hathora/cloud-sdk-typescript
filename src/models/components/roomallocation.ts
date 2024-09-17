@@ -8,53 +8,52 @@ import * as z from "zod";
  * Metadata on an allocated instance of a room.
  */
 export type RoomAllocation = {
-    unscheduledAt: Date | null;
-    scheduledAt: Date;
-    /**
-     * System generated unique identifier to a runtime instance of your game server.
-     */
-    processId: string;
-    /**
-     * System generated unique identifier to an allocated instance of a room.
-     */
-    roomAllocationId: string;
+  unscheduledAt: Date | null;
+  scheduledAt: Date;
+  /**
+   * System generated unique identifier to a runtime instance of your game server.
+   */
+  processId: string;
+  /**
+   * System generated unique identifier to an allocated instance of a room.
+   */
+  roomAllocationId: string;
 };
 
 /** @internal */
-export const RoomAllocation$inboundSchema: z.ZodType<RoomAllocation, z.ZodTypeDef, unknown> =
-    z.object({
-        unscheduledAt: z.nullable(
-            z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-        ),
-        scheduledAt: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v)),
-        processId: z.string(),
-        roomAllocationId: z.string(),
-    });
+export const RoomAllocation$inboundSchema: z.ZodType<
+  RoomAllocation,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  unscheduledAt: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ),
+  scheduledAt: z.string().datetime({ offset: true }).transform(v =>
+    new Date(v)
+  ),
+  processId: z.string(),
+  roomAllocationId: z.string(),
+});
 
 /** @internal */
 export type RoomAllocation$Outbound = {
-    unscheduledAt: string | null;
-    scheduledAt: string;
-    processId: string;
-    roomAllocationId: string;
+  unscheduledAt: string | null;
+  scheduledAt: string;
+  processId: string;
+  roomAllocationId: string;
 };
 
 /** @internal */
 export const RoomAllocation$outboundSchema: z.ZodType<
-    RoomAllocation$Outbound,
-    z.ZodTypeDef,
-    RoomAllocation
+  RoomAllocation$Outbound,
+  z.ZodTypeDef,
+  RoomAllocation
 > = z.object({
-    unscheduledAt: z.nullable(z.date().transform((v) => v.toISOString())),
-    scheduledAt: z.date().transform((v) => v.toISOString()),
-    processId: z.string(),
-    roomAllocationId: z.string(),
+  unscheduledAt: z.nullable(z.date().transform(v => v.toISOString())),
+  scheduledAt: z.date().transform(v => v.toISOString()),
+  processId: z.string(),
+  roomAllocationId: z.string(),
 });
 
 /**
@@ -62,10 +61,10 @@ export const RoomAllocation$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace RoomAllocation$ {
-    /** @deprecated use `RoomAllocation$inboundSchema` instead. */
-    export const inboundSchema = RoomAllocation$inboundSchema;
-    /** @deprecated use `RoomAllocation$outboundSchema` instead. */
-    export const outboundSchema = RoomAllocation$outboundSchema;
-    /** @deprecated use `RoomAllocation$Outbound` instead. */
-    export type Outbound = RoomAllocation$Outbound;
+  /** @deprecated use `RoomAllocation$inboundSchema` instead. */
+  export const inboundSchema = RoomAllocation$inboundSchema;
+  /** @deprecated use `RoomAllocation$outboundSchema` instead. */
+  export const outboundSchema = RoomAllocation$outboundSchema;
+  /** @deprecated use `RoomAllocation$Outbound` instead. */
+  export type Outbound = RoomAllocation$Outbound;
 }

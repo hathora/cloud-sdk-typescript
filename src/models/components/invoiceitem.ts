@@ -5,42 +5,46 @@
 import * as z from "zod";
 
 export type InvoiceItem = {
-    amount: number;
-    unitPrice: number;
-    quantity: number;
-    unit: string;
-    productName: string;
+  amount: number;
+  unitPrice: number;
+  quantity: number;
+  unit: string;
+  productName: string;
 };
 
 /** @internal */
-export const InvoiceItem$inboundSchema: z.ZodType<InvoiceItem, z.ZodTypeDef, unknown> = z.object({
-    amount: z.number(),
-    unitPrice: z.number(),
-    quantity: z.number(),
-    unit: z.string(),
-    productName: z.string(),
+export const InvoiceItem$inboundSchema: z.ZodType<
+  InvoiceItem,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  amount: z.number(),
+  unitPrice: z.number(),
+  quantity: z.number(),
+  unit: z.string(),
+  productName: z.string(),
 });
 
 /** @internal */
 export type InvoiceItem$Outbound = {
-    amount: number;
-    unitPrice: number;
-    quantity: number;
-    unit: string;
-    productName: string;
+  amount: number;
+  unitPrice: number;
+  quantity: number;
+  unit: string;
+  productName: string;
 };
 
 /** @internal */
 export const InvoiceItem$outboundSchema: z.ZodType<
-    InvoiceItem$Outbound,
-    z.ZodTypeDef,
-    InvoiceItem
+  InvoiceItem$Outbound,
+  z.ZodTypeDef,
+  InvoiceItem
 > = z.object({
-    amount: z.number(),
-    unitPrice: z.number(),
-    quantity: z.number(),
-    unit: z.string(),
-    productName: z.string(),
+  amount: z.number(),
+  unitPrice: z.number(),
+  quantity: z.number(),
+  unit: z.string(),
+  productName: z.string(),
 });
 
 /**
@@ -48,10 +52,10 @@ export const InvoiceItem$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace InvoiceItem$ {
-    /** @deprecated use `InvoiceItem$inboundSchema` instead. */
-    export const inboundSchema = InvoiceItem$inboundSchema;
-    /** @deprecated use `InvoiceItem$outboundSchema` instead. */
-    export const outboundSchema = InvoiceItem$outboundSchema;
-    /** @deprecated use `InvoiceItem$Outbound` instead. */
-    export type Outbound = InvoiceItem$Outbound;
+  /** @deprecated use `InvoiceItem$inboundSchema` instead. */
+  export const inboundSchema = InvoiceItem$inboundSchema;
+  /** @deprecated use `InvoiceItem$outboundSchema` instead. */
+  export const outboundSchema = InvoiceItem$outboundSchema;
+  /** @deprecated use `InvoiceItem$Outbound` instead. */
+  export type Outbound = InvoiceItem$Outbound;
 }

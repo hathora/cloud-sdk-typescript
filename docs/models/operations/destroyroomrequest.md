@@ -6,7 +6,7 @@
 import { DestroyRoomRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: DestroyRoomRequest = {
-    roomId: "2swovpy1fnunu",
+  roomId: "2swovpy1fnunu",
 };
 ```
 

@@ -6,34 +6,34 @@
 import { DeploymentV3 } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: DeploymentV3 = {
-    idleTimeoutEnabled: false,
-    env: [
-        {
-            value: "TRUE",
-            name: "EULA",
-        },
-    ],
-    roomsPerProcess: 3,
-    additionalContainerPorts: [
-        {
-            transportType: "tcp",
-            port: 4000,
-            name: "debug",
-        },
-    ],
-    defaultContainerPort: {
-        transportType: "udp",
-        port: 8000,
-        name: "default",
+  idleTimeoutEnabled: false,
+  env: [
+    {
+      value: "TRUE",
+      name: "EULA",
     },
-    createdAt: new Date("2023-05-27T01:50:18.845Z"),
-    createdBy: "noreply@hathora.dev",
-    requestedMemoryMB: 1024,
-    requestedCPU: 0.5,
-    deploymentId: "<value>",
-    buildTag: "0.1.14-14c793",
-    buildId: "<value>",
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  ],
+  roomsPerProcess: 3,
+  additionalContainerPorts: [
+    {
+      transportType: "tcp",
+      port: 4000,
+      name: "debug",
+    },
+  ],
+  defaultContainerPort: {
+    transportType: "udp",
+    port: 8000,
+    name: "default",
+  },
+  createdAt: new Date("2023-06-05T06:26:35.429Z"),
+  createdBy: "noreply@hathora.dev",
+  requestedMemoryMB: 1024,
+  requestedCPU: 0.5,
+  deploymentId: "<value>",
+  buildTag: "0.1.14-14c793",
+  buildId: "<value>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 };
 ```
 

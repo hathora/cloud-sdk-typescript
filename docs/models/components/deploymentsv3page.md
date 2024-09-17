@@ -6,7 +6,7 @@
 import { DeploymentsV3Page } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: DeploymentsV3Page = {
-    deployments: [],
+  deployments: [],
 };
 ```
 

@@ -15,93 +15,115 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class BuildsV2 extends ClientSDK {
-    /**
-     * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
-     */
-    async getBuildsV2Deprecated(
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<Array<components.Build>> {
-        return unwrapAsync(buildsV2GetBuildsV2Deprecated(this, appId, options));
-    }
+  /**
+   * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+   */
+  async getBuildsV2Deprecated(
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<Array<components.Build>> {
+    return unwrapAsync(buildsV2GetBuildsV2Deprecated(
+      this,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
-     */
-    async getBuildInfoV2Deprecated(
-        buildId: number,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.Build> {
-        return unwrapAsync(buildsV2GetBuildInfoV2Deprecated(this, buildId, appId, options));
-    }
+  /**
+   * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+   */
+  async getBuildInfoV2Deprecated(
+    buildId: number,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.Build> {
+    return unwrapAsync(buildsV2GetBuildInfoV2Deprecated(
+      this,
+      buildId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
-     */
-    async createBuildV2Deprecated(
-        createBuildParams: components.CreateBuildParams,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.Build> {
-        return unwrapAsync(
-            buildsV2CreateBuildV2Deprecated(this, createBuildParams, appId, options)
-        );
-    }
+  /**
+   * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
+   */
+  async createBuildV2Deprecated(
+    createBuildParams: components.CreateBuildParams,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.Build> {
+    return unwrapAsync(buildsV2CreateBuildV2Deprecated(
+      this,
+      createBuildParams,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build) with `uploadUrl` that can be used to upload the build to before calling `runBuild`. Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
-     */
-    async createBuildWithUploadUrlV2Deprecated(
-        createBuildParams: components.CreateBuildParams,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.BuildWithUploadUrl> {
-        return unwrapAsync(
-            buildsV2CreateBuildWithUploadUrlV2Deprecated(this, createBuildParams, appId, options)
-        );
-    }
+  /**
+   * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build) with `uploadUrl` that can be used to upload the build to before calling `runBuild`. Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
+   */
+  async createBuildWithUploadUrlV2Deprecated(
+    createBuildParams: components.CreateBuildParams,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.BuildWithUploadUrl> {
+    return unwrapAsync(buildsV2CreateBuildWithUploadUrlV2Deprecated(
+      this,
+      createBuildParams,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build) with optional `multipartUploadUrls` that can be used to upload larger builds in parts before calling `runBuild`. Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
-     */
-    async createWithMultipartUploadsV2Deprecated(
-        createMultipartBuildParams: components.CreateMultipartBuildParams,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.BuildWithMultipartUrls> {
-        return unwrapAsync(
-            buildsV2CreateWithMultipartUploadsV2Deprecated(
-                this,
-                createMultipartBuildParams,
-                appId,
-                options
-            )
-        );
-    }
+  /**
+   * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build) with optional `multipartUploadUrls` that can be used to upload larger builds in parts before calling `runBuild`. Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
+   */
+  async createWithMultipartUploadsV2Deprecated(
+    createMultipartBuildParams: components.CreateMultipartBuildParams,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.BuildWithMultipartUrls> {
+    return unwrapAsync(buildsV2CreateWithMultipartUploadsV2Deprecated(
+      this,
+      createMultipartBuildParams,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
-     */
-    async deleteBuildV2Deprecated(
-        buildId: number,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<void> {
-        return unwrapAsync(buildsV2DeleteBuildV2Deprecated(this, buildId, appId, options));
-    }
+  /**
+   * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
+   */
+  async deleteBuildV2Deprecated(
+    buildId: number,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(buildsV2DeleteBuildV2Deprecated(
+      this,
+      buildId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
-     */
-    async runBuildV2Deprecated(
-        buildId: number,
-        requestBody: operations.RunBuildV2DeprecatedRequestBody,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<ReadableStream<Uint8Array>> {
-        return unwrapAsync(
-            buildsV2RunBuildV2Deprecated(this, buildId, requestBody, appId, options)
-        );
-    }
+  /**
+   * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
+   */
+  async runBuildV2Deprecated(
+    buildId: number,
+    requestBody: operations.RunBuildV2DeprecatedRequestBody,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<ReadableStream<Uint8Array>> {
+    return unwrapAsync(buildsV2RunBuildV2Deprecated(
+      this,
+      buildId,
+      requestBody,
+      appId,
+      options,
+    ));
+  }
 }

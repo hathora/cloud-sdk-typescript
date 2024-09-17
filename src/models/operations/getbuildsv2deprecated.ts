@@ -5,34 +5,34 @@
 import * as z from "zod";
 
 export type GetBuildsV2DeprecatedGlobals = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 export type GetBuildsV2DeprecatedRequest = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const GetBuildsV2DeprecatedGlobals$inboundSchema: z.ZodType<
-    GetBuildsV2DeprecatedGlobals,
-    z.ZodTypeDef,
-    unknown
+  GetBuildsV2DeprecatedGlobals,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /** @internal */
 export type GetBuildsV2DeprecatedGlobals$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const GetBuildsV2DeprecatedGlobals$outboundSchema: z.ZodType<
-    GetBuildsV2DeprecatedGlobals$Outbound,
-    z.ZodTypeDef,
-    GetBuildsV2DeprecatedGlobals
+  GetBuildsV2DeprecatedGlobals$Outbound,
+  z.ZodTypeDef,
+  GetBuildsV2DeprecatedGlobals
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -40,35 +40,35 @@ export const GetBuildsV2DeprecatedGlobals$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetBuildsV2DeprecatedGlobals$ {
-    /** @deprecated use `GetBuildsV2DeprecatedGlobals$inboundSchema` instead. */
-    export const inboundSchema = GetBuildsV2DeprecatedGlobals$inboundSchema;
-    /** @deprecated use `GetBuildsV2DeprecatedGlobals$outboundSchema` instead. */
-    export const outboundSchema = GetBuildsV2DeprecatedGlobals$outboundSchema;
-    /** @deprecated use `GetBuildsV2DeprecatedGlobals$Outbound` instead. */
-    export type Outbound = GetBuildsV2DeprecatedGlobals$Outbound;
+  /** @deprecated use `GetBuildsV2DeprecatedGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetBuildsV2DeprecatedGlobals$inboundSchema;
+  /** @deprecated use `GetBuildsV2DeprecatedGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetBuildsV2DeprecatedGlobals$outboundSchema;
+  /** @deprecated use `GetBuildsV2DeprecatedGlobals$Outbound` instead. */
+  export type Outbound = GetBuildsV2DeprecatedGlobals$Outbound;
 }
 
 /** @internal */
 export const GetBuildsV2DeprecatedRequest$inboundSchema: z.ZodType<
-    GetBuildsV2DeprecatedRequest,
-    z.ZodTypeDef,
-    unknown
+  GetBuildsV2DeprecatedRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /** @internal */
 export type GetBuildsV2DeprecatedRequest$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const GetBuildsV2DeprecatedRequest$outboundSchema: z.ZodType<
-    GetBuildsV2DeprecatedRequest$Outbound,
-    z.ZodTypeDef,
-    GetBuildsV2DeprecatedRequest
+  GetBuildsV2DeprecatedRequest$Outbound,
+  z.ZodTypeDef,
+  GetBuildsV2DeprecatedRequest
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -76,10 +76,10 @@ export const GetBuildsV2DeprecatedRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetBuildsV2DeprecatedRequest$ {
-    /** @deprecated use `GetBuildsV2DeprecatedRequest$inboundSchema` instead. */
-    export const inboundSchema = GetBuildsV2DeprecatedRequest$inboundSchema;
-    /** @deprecated use `GetBuildsV2DeprecatedRequest$outboundSchema` instead. */
-    export const outboundSchema = GetBuildsV2DeprecatedRequest$outboundSchema;
-    /** @deprecated use `GetBuildsV2DeprecatedRequest$Outbound` instead. */
-    export type Outbound = GetBuildsV2DeprecatedRequest$Outbound;
+  /** @deprecated use `GetBuildsV2DeprecatedRequest$inboundSchema` instead. */
+  export const inboundSchema = GetBuildsV2DeprecatedRequest$inboundSchema;
+  /** @deprecated use `GetBuildsV2DeprecatedRequest$outboundSchema` instead. */
+  export const outboundSchema = GetBuildsV2DeprecatedRequest$outboundSchema;
+  /** @deprecated use `GetBuildsV2DeprecatedRequest$Outbound` instead. */
+  export type Outbound = GetBuildsV2DeprecatedRequest$Outbound;
 }

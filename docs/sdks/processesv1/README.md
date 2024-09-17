@@ -3,7 +3,7 @@
 
 ## Overview
 
-Deprecated. Use [ProcessesV2](https://hathora.dev/api#tag/ProcessesV2).
+Deprecated. Use [ProcessesV3](https://hathora.dev/api#tag/ProcessesV3).
 
 ### Available Operations
 

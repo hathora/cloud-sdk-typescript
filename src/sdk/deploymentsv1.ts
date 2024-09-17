@@ -11,64 +11,73 @@ import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class DeploymentsV1 extends ClientSDK {
-    /**
-     * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
-     *
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async getDeploymentsV1Deprecated(
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<Array<components.DeploymentV1>> {
-        return unwrapAsync(deploymentsV1GetDeploymentsV1Deprecated(this, appId, options));
-    }
+  /**
+   * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async getDeploymentsV1Deprecated(
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<Array<components.DeploymentV1>> {
+    return unwrapAsync(deploymentsV1GetDeploymentsV1Deprecated(
+      this,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
-     *
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async getLatestDeploymentV1Deprecated(
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.DeploymentV1> {
-        return unwrapAsync(deploymentsV1GetLatestDeploymentV1Deprecated(this, appId, options));
-    }
+  /**
+   * Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async getLatestDeploymentV1Deprecated(
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.DeploymentV1> {
+    return unwrapAsync(deploymentsV1GetLatestDeploymentV1Deprecated(
+      this,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
-     *
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async getDeploymentInfoV1Deprecated(
-        deploymentId: number,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.DeploymentV1> {
-        return unwrapAsync(
-            deploymentsV1GetDeploymentInfoV1Deprecated(this, deploymentId, appId, options)
-        );
-    }
+  /**
+   * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async getDeploymentInfoV1Deprecated(
+    deploymentId: number,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.DeploymentV1> {
+    return unwrapAsync(deploymentsV1GetDeploymentInfoV1Deprecated(
+      this,
+      deploymentId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
-     *
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async createDeploymentV1Deprecated(
-        buildId: number,
-        deploymentConfig: components.DeploymentConfig,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.DeploymentV1> {
-        return unwrapAsync(
-            deploymentsV1CreateDeploymentV1Deprecated(
-                this,
-                buildId,
-                deploymentConfig,
-                appId,
-                options
-            )
-        );
-    }
+  /**
+   * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async createDeploymentV1Deprecated(
+    buildId: number,
+    deploymentConfig: components.DeploymentConfig,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.DeploymentV1> {
+    return unwrapAsync(deploymentsV1CreateDeploymentV1Deprecated(
+      this,
+      buildId,
+      deploymentConfig,
+      appId,
+      options,
+    ));
+  }
 }

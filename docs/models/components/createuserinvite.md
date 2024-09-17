@@ -6,7 +6,7 @@
 import { CreateUserInvite } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: CreateUserInvite = {
-    userEmail: "noreply@hathora.dev",
+  userEmail: "noreply@hathora.dev",
 };
 ```
 

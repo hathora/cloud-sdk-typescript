@@ -5,35 +5,35 @@
 import * as z from "zod";
 
 export type DownloadLogForProcessGlobals = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 export type DownloadLogForProcessRequest = {
-    appId?: string | undefined;
-    processId: string;
+  appId?: string | undefined;
+  processId: string;
 };
 
 /** @internal */
 export const DownloadLogForProcessGlobals$inboundSchema: z.ZodType<
-    DownloadLogForProcessGlobals,
-    z.ZodTypeDef,
-    unknown
+  DownloadLogForProcessGlobals,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /** @internal */
 export type DownloadLogForProcessGlobals$Outbound = {
-    appId?: string | undefined;
+  appId?: string | undefined;
 };
 
 /** @internal */
 export const DownloadLogForProcessGlobals$outboundSchema: z.ZodType<
-    DownloadLogForProcessGlobals$Outbound,
-    z.ZodTypeDef,
-    DownloadLogForProcessGlobals
+  DownloadLogForProcessGlobals$Outbound,
+  z.ZodTypeDef,
+  DownloadLogForProcessGlobals
 > = z.object({
-    appId: z.string().optional(),
+  appId: z.string().optional(),
 });
 
 /**
@@ -41,38 +41,38 @@ export const DownloadLogForProcessGlobals$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace DownloadLogForProcessGlobals$ {
-    /** @deprecated use `DownloadLogForProcessGlobals$inboundSchema` instead. */
-    export const inboundSchema = DownloadLogForProcessGlobals$inboundSchema;
-    /** @deprecated use `DownloadLogForProcessGlobals$outboundSchema` instead. */
-    export const outboundSchema = DownloadLogForProcessGlobals$outboundSchema;
-    /** @deprecated use `DownloadLogForProcessGlobals$Outbound` instead. */
-    export type Outbound = DownloadLogForProcessGlobals$Outbound;
+  /** @deprecated use `DownloadLogForProcessGlobals$inboundSchema` instead. */
+  export const inboundSchema = DownloadLogForProcessGlobals$inboundSchema;
+  /** @deprecated use `DownloadLogForProcessGlobals$outboundSchema` instead. */
+  export const outboundSchema = DownloadLogForProcessGlobals$outboundSchema;
+  /** @deprecated use `DownloadLogForProcessGlobals$Outbound` instead. */
+  export type Outbound = DownloadLogForProcessGlobals$Outbound;
 }
 
 /** @internal */
 export const DownloadLogForProcessRequest$inboundSchema: z.ZodType<
-    DownloadLogForProcessRequest,
-    z.ZodTypeDef,
-    unknown
+  DownloadLogForProcessRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    appId: z.string().optional(),
-    processId: z.string(),
+  appId: z.string().optional(),
+  processId: z.string(),
 });
 
 /** @internal */
 export type DownloadLogForProcessRequest$Outbound = {
-    appId?: string | undefined;
-    processId: string;
+  appId?: string | undefined;
+  processId: string;
 };
 
 /** @internal */
 export const DownloadLogForProcessRequest$outboundSchema: z.ZodType<
-    DownloadLogForProcessRequest$Outbound,
-    z.ZodTypeDef,
-    DownloadLogForProcessRequest
+  DownloadLogForProcessRequest$Outbound,
+  z.ZodTypeDef,
+  DownloadLogForProcessRequest
 > = z.object({
-    appId: z.string().optional(),
-    processId: z.string(),
+  appId: z.string().optional(),
+  processId: z.string(),
 });
 
 /**
@@ -80,10 +80,10 @@ export const DownloadLogForProcessRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace DownloadLogForProcessRequest$ {
-    /** @deprecated use `DownloadLogForProcessRequest$inboundSchema` instead. */
-    export const inboundSchema = DownloadLogForProcessRequest$inboundSchema;
-    /** @deprecated use `DownloadLogForProcessRequest$outboundSchema` instead. */
-    export const outboundSchema = DownloadLogForProcessRequest$outboundSchema;
-    /** @deprecated use `DownloadLogForProcessRequest$Outbound` instead. */
-    export type Outbound = DownloadLogForProcessRequest$Outbound;
+  /** @deprecated use `DownloadLogForProcessRequest$inboundSchema` instead. */
+  export const inboundSchema = DownloadLogForProcessRequest$inboundSchema;
+  /** @deprecated use `DownloadLogForProcessRequest$outboundSchema` instead. */
+  export const outboundSchema = DownloadLogForProcessRequest$outboundSchema;
+  /** @deprecated use `DownloadLogForProcessRequest$Outbound` instead. */
+  export type Outbound = DownloadLogForProcessRequest$Outbound;
 }

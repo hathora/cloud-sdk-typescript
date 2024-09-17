@@ -8,34 +8,35 @@ Deployment is a versioned configuration for a build that describes runtime behav
 import { DeploymentV1 } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: DeploymentV1 = {
-    env: [
-        {
-            value: "TRUE",
-            name: "EULA",
-        },
-    ],
-    roomsPerProcess: 3,
-    planName: "tiny",
-    additionalContainerPorts: [
-        {
-            transportType: "tcp",
-            port: 4000,
-            name: "debug",
-        },
-    ],
-    defaultContainerPort: {
-        transportType: "tls",
-        port: 8000,
-        name: "default",
+  env: [
+    {
+      value: "TRUE",
+      name: "EULA",
     },
-    containerPort: 1020.44,
-    createdAt: new Date("2023-12-17T10:59:47.578Z"),
-    createdBy: "noreply@hathora.dev",
-    requestedMemoryMB: 1024,
-    requestedCPU: 0.5,
-    deploymentId: 1,
-    buildId: 1,
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  ],
+  roomsPerProcess: 3,
+  planName: "tiny",
+  additionalContainerPorts: [
+    {
+      transportType: "tcp",
+      port: 4000,
+      name: "debug",
+    },
+  ],
+  defaultContainerPort: {
+    transportType: "tls",
+    port: 8000,
+    name: "default",
+  },
+  transportType: "tcp",
+  containerPort: 6527.9,
+  createdAt: new Date("2022-08-17T22:17:39.327Z"),
+  createdBy: "noreply@hathora.dev",
+  requestedMemoryMB: 1024,
+  requestedCPU: 0.5,
+  deploymentId: 1,
+  buildId: 1,
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 };
 ```
 

@@ -6,7 +6,7 @@
 import { ApplicationsPage } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: ApplicationsPage = {
-    applications: [],
+  applications: [],
 };
 ```
 

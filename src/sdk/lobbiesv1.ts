@@ -11,47 +11,61 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class LobbiesV1 extends ClientSDK {
-    /**
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async createPrivateLobbyDeprecated(
-        security: operations.CreatePrivateLobbyDeprecatedSecurity,
-        appId?: string | undefined,
-        region?: components.Region | undefined,
-        local?: boolean | undefined,
-        options?: RequestOptions
-    ): Promise<string> {
-        return unwrapAsync(
-            lobbiesV1CreatePrivateLobbyDeprecated(this, security, appId, region, local, options)
-        );
-    }
+  /**
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async createPrivateLobbyDeprecated(
+    security: operations.CreatePrivateLobbyDeprecatedSecurity,
+    appId?: string | undefined,
+    region?: components.Region | undefined,
+    local?: boolean | undefined,
+    options?: RequestOptions,
+  ): Promise<string> {
+    return unwrapAsync(lobbiesV1CreatePrivateLobbyDeprecated(
+      this,
+      security,
+      appId,
+      region,
+      local,
+      options,
+    ));
+  }
 
-    /**
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async createPublicLobbyDeprecated(
-        security: operations.CreatePublicLobbyDeprecatedSecurity,
-        appId?: string | undefined,
-        region?: components.Region | undefined,
-        local?: boolean | undefined,
-        options?: RequestOptions
-    ): Promise<string> {
-        return unwrapAsync(
-            lobbiesV1CreatePublicLobbyDeprecated(this, security, appId, region, local, options)
-        );
-    }
+  /**
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async createPublicLobbyDeprecated(
+    security: operations.CreatePublicLobbyDeprecatedSecurity,
+    appId?: string | undefined,
+    region?: components.Region | undefined,
+    local?: boolean | undefined,
+    options?: RequestOptions,
+  ): Promise<string> {
+    return unwrapAsync(lobbiesV1CreatePublicLobbyDeprecated(
+      this,
+      security,
+      appId,
+      region,
+      local,
+      options,
+    ));
+  }
 
-    /**
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async listActivePublicLobbiesDeprecatedV1(
-        appId?: string | undefined,
-        local?: boolean | undefined,
-        region?: components.Region | undefined,
-        options?: RequestOptions
-    ): Promise<Array<components.Lobby>> {
-        return unwrapAsync(
-            lobbiesV1ListActivePublicLobbiesDeprecatedV1(this, appId, local, region, options)
-        );
-    }
+  /**
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async listActivePublicLobbiesDeprecatedV1(
+    appId?: string | undefined,
+    local?: boolean | undefined,
+    region?: components.Region | undefined,
+    options?: RequestOptions,
+  ): Promise<Array<components.Lobby>> {
+    return unwrapAsync(lobbiesV1ListActivePublicLobbiesDeprecatedV1(
+      this,
+      appId,
+      local,
+      region,
+      options,
+    ));
+  }
 }

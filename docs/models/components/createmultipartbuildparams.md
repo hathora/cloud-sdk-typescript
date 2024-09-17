@@ -6,8 +6,8 @@
 import { CreateMultipartBuildParams } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: CreateMultipartBuildParams = {
-    buildTag: "0.1.14-14c793",
-    buildSizeInBytes: 4511.59,
+  buildTag: "0.1.14-14c793",
+  buildSizeInBytes: 7392.64,
 };
 ```
 

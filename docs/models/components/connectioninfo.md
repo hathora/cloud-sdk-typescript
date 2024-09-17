@@ -8,11 +8,11 @@ Connection information to the default port.
 import { ConnectionInfo } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: ConnectionInfo = {
-    status: "active",
-    transportType: "udp",
-    port: 4799.77,
-    host: "nice-gorilla.org",
-    roomId: "2swovpy1fnunu",
+  status: "active",
+  transportType: "udp",
+  port: 4799.77,
+  host: "nice-gorilla.org",
+  roomId: "2swovpy1fnunu",
 };
 ```
 

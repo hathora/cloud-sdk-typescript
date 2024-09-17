@@ -5,30 +5,33 @@
 import * as z from "zod";
 
 export type NicknameObject = {
-    /**
-     * An alias to represent a player.
-     */
-    nickname: string;
+  /**
+   * An alias to represent a player.
+   */
+  nickname: string;
 };
 
 /** @internal */
-export const NicknameObject$inboundSchema: z.ZodType<NicknameObject, z.ZodTypeDef, unknown> =
-    z.object({
-        nickname: z.string(),
-    });
+export const NicknameObject$inboundSchema: z.ZodType<
+  NicknameObject,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  nickname: z.string(),
+});
 
 /** @internal */
 export type NicknameObject$Outbound = {
-    nickname: string;
+  nickname: string;
 };
 
 /** @internal */
 export const NicknameObject$outboundSchema: z.ZodType<
-    NicknameObject$Outbound,
-    z.ZodTypeDef,
-    NicknameObject
+  NicknameObject$Outbound,
+  z.ZodTypeDef,
+  NicknameObject
 > = z.object({
-    nickname: z.string(),
+  nickname: z.string(),
 });
 
 /**
@@ -36,10 +39,10 @@ export const NicknameObject$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace NicknameObject$ {
-    /** @deprecated use `NicknameObject$inboundSchema` instead. */
-    export const inboundSchema = NicknameObject$inboundSchema;
-    /** @deprecated use `NicknameObject$outboundSchema` instead. */
-    export const outboundSchema = NicknameObject$outboundSchema;
-    /** @deprecated use `NicknameObject$Outbound` instead. */
-    export type Outbound = NicknameObject$Outbound;
+  /** @deprecated use `NicknameObject$inboundSchema` instead. */
+  export const inboundSchema = NicknameObject$inboundSchema;
+  /** @deprecated use `NicknameObject$outboundSchema` instead. */
+  export const outboundSchema = NicknameObject$outboundSchema;
+  /** @deprecated use `NicknameObject$Outbound` instead. */
+  export type Outbound = NicknameObject$Outbound;
 }

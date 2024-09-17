@@ -5,27 +5,30 @@
 import * as z from "zod";
 
 export type GetBuildsRequest = {
-    orgId?: string | undefined;
+  orgId?: string | undefined;
 };
 
 /** @internal */
-export const GetBuildsRequest$inboundSchema: z.ZodType<GetBuildsRequest, z.ZodTypeDef, unknown> =
-    z.object({
-        orgId: z.string().optional(),
-    });
+export const GetBuildsRequest$inboundSchema: z.ZodType<
+  GetBuildsRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  orgId: z.string().optional(),
+});
 
 /** @internal */
 export type GetBuildsRequest$Outbound = {
-    orgId?: string | undefined;
+  orgId?: string | undefined;
 };
 
 /** @internal */
 export const GetBuildsRequest$outboundSchema: z.ZodType<
-    GetBuildsRequest$Outbound,
-    z.ZodTypeDef,
-    GetBuildsRequest
+  GetBuildsRequest$Outbound,
+  z.ZodTypeDef,
+  GetBuildsRequest
 > = z.object({
-    orgId: z.string().optional(),
+  orgId: z.string().optional(),
 });
 
 /**
@@ -33,10 +36,10 @@ export const GetBuildsRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetBuildsRequest$ {
-    /** @deprecated use `GetBuildsRequest$inboundSchema` instead. */
-    export const inboundSchema = GetBuildsRequest$inboundSchema;
-    /** @deprecated use `GetBuildsRequest$outboundSchema` instead. */
-    export const outboundSchema = GetBuildsRequest$outboundSchema;
-    /** @deprecated use `GetBuildsRequest$Outbound` instead. */
-    export type Outbound = GetBuildsRequest$Outbound;
+  /** @deprecated use `GetBuildsRequest$inboundSchema` instead. */
+  export const inboundSchema = GetBuildsRequest$inboundSchema;
+  /** @deprecated use `GetBuildsRequest$outboundSchema` instead. */
+  export const outboundSchema = GetBuildsRequest$outboundSchema;
+  /** @deprecated use `GetBuildsRequest$Outbound` instead. */
+  export type Outbound = GetBuildsRequest$Outbound;
 }

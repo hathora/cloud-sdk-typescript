@@ -6,7 +6,7 @@
 import { GetConnectionInfoDeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: GetConnectionInfoDeprecatedRequest = {
-    roomId: "2swovpy1fnunu",
+  roomId: "2swovpy1fnunu",
 };
 ```
 

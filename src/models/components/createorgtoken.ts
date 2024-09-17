@@ -5,30 +5,33 @@
 import * as z from "zod";
 
 export type CreateOrgToken = {
-    /**
-     * Readable name for a token. Must be unique within an organization.
-     */
-    name: string;
+  /**
+   * Readable name for a token. Must be unique within an organization.
+   */
+  name: string;
 };
 
 /** @internal */
-export const CreateOrgToken$inboundSchema: z.ZodType<CreateOrgToken, z.ZodTypeDef, unknown> =
-    z.object({
-        name: z.string(),
-    });
+export const CreateOrgToken$inboundSchema: z.ZodType<
+  CreateOrgToken,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string(),
+});
 
 /** @internal */
 export type CreateOrgToken$Outbound = {
-    name: string;
+  name: string;
 };
 
 /** @internal */
 export const CreateOrgToken$outboundSchema: z.ZodType<
-    CreateOrgToken$Outbound,
-    z.ZodTypeDef,
-    CreateOrgToken
+  CreateOrgToken$Outbound,
+  z.ZodTypeDef,
+  CreateOrgToken
 > = z.object({
-    name: z.string(),
+  name: z.string(),
 });
 
 /**
@@ -36,10 +39,10 @@ export const CreateOrgToken$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace CreateOrgToken$ {
-    /** @deprecated use `CreateOrgToken$inboundSchema` instead. */
-    export const inboundSchema = CreateOrgToken$inboundSchema;
-    /** @deprecated use `CreateOrgToken$outboundSchema` instead. */
-    export const outboundSchema = CreateOrgToken$outboundSchema;
-    /** @deprecated use `CreateOrgToken$Outbound` instead. */
-    export type Outbound = CreateOrgToken$Outbound;
+  /** @deprecated use `CreateOrgToken$inboundSchema` instead. */
+  export const inboundSchema = CreateOrgToken$inboundSchema;
+  /** @deprecated use `CreateOrgToken$outboundSchema` instead. */
+  export const outboundSchema = CreateOrgToken$outboundSchema;
+  /** @deprecated use `CreateOrgToken$Outbound` instead. */
+  export type Outbound = CreateOrgToken$Outbound;
 }

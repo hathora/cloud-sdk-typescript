@@ -7,7 +7,7 @@ UserId or email address for the user that created the lobby.
 ```typescript
 import { CreatedBy } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: CreatedBy = (google - oauth2) | 107030234048588177467;
+let value: CreatedBy = google - oauth2 | 107030234048588177467;
 ```
 
 ## Supported Types

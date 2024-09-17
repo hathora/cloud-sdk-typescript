@@ -6,7 +6,7 @@
 import { RescindUserInvite } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: RescindUserInvite = {
-    userEmail: "noreply@hathora.dev",
+  userEmail: "noreply@hathora.dev",
 };
 ```
 

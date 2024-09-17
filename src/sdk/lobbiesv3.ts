@@ -12,60 +12,73 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class LobbiesV3 extends ClientSDK {
-    /**
-     * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
-     */
-    async createLobby(
-        security: operations.CreateLobbySecurity,
-        createLobbyV3Params: components.CreateLobbyV3Params,
-        appId?: string | undefined,
-        shortCode?: string | undefined,
-        roomId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.LobbyV3> {
-        return unwrapAsync(
-            lobbiesV3CreateLobby(
-                this,
-                security,
-                createLobbyV3Params,
-                appId,
-                shortCode,
-                roomId,
-                options
-            )
-        );
-    }
+  /**
+   * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
+   */
+  async createLobby(
+    security: operations.CreateLobbySecurity,
+    createLobbyV3Params: components.CreateLobbyV3Params,
+    appId?: string | undefined,
+    shortCode?: string | undefined,
+    roomId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.LobbyV3> {
+    return unwrapAsync(lobbiesV3CreateLobby(
+      this,
+      security,
+      createLobbyV3Params,
+      appId,
+      shortCode,
+      roomId,
+      options,
+    ));
+  }
 
-    /**
-     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
-     */
-    async listActivePublicLobbies(
-        appId?: string | undefined,
-        region?: components.Region | undefined,
-        options?: RequestOptions
-    ): Promise<Array<components.LobbyV3>> {
-        return unwrapAsync(lobbiesV3ListActivePublicLobbies(this, appId, region, options));
-    }
+  /**
+   * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
+   */
+  async listActivePublicLobbies(
+    appId?: string | undefined,
+    region?: components.Region | undefined,
+    options?: RequestOptions,
+  ): Promise<Array<components.LobbyV3>> {
+    return unwrapAsync(lobbiesV3ListActivePublicLobbies(
+      this,
+      appId,
+      region,
+      options,
+    ));
+  }
 
-    /**
-     * Get details for a lobby.
-     */
-    async getLobbyInfoByRoomId(
-        roomId: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.LobbyV3> {
-        return unwrapAsync(lobbiesV3GetLobbyInfoByRoomId(this, roomId, appId, options));
-    }
+  /**
+   * Get details for a lobby.
+   */
+  async getLobbyInfoByRoomId(
+    roomId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.LobbyV3> {
+    return unwrapAsync(lobbiesV3GetLobbyInfoByRoomId(
+      this,
+      roomId,
+      appId,
+      options,
+    ));
+  }
 
-    /**
-     * Get details for a lobby. If 2 or more lobbies have the same `shortCode`, then the most recently created lobby will be returned.
-     */
-    async getLobbyInfoByShortCode(
-        shortCode: string,
-        appId?: string | undefined,
-        options?: RequestOptions
-    ): Promise<components.LobbyV3> {
-        return unwrapAsync(lobbiesV3GetLobbyInfoByShortCode(this, shortCode, appId, options));
-    }
+  /**
+   * Get details for a lobby. If 2 or more lobbies have the same `shortCode`, then the most recently created lobby will be returned.
+   */
+  async getLobbyInfoByShortCode(
+    shortCode: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.LobbyV3> {
+    return unwrapAsync(lobbiesV3GetLobbyInfoByShortCode(
+      this,
+      shortCode,
+      appId,
+      options,
+    ));
+  }
 }

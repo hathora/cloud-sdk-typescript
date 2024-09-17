@@ -3,6 +3,8 @@
 
 ## Overview
 
+Operations to get data on active and stopped [processes](https://hathora.dev/docs/concepts/hathora-entities#process).
+
 ### Available Operations
 
 * [getLatestProcesses](#getlatestprocesses) - Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `status` or `region`.

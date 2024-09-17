@@ -6,7 +6,7 @@
 import { NicknameObject } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: NicknameObject = {
-    nickname: "squiddytwoshoes",
+  nickname: "squiddytwoshoes",
 };
 ```
 
