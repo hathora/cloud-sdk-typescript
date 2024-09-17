@@ -14,6 +14,8 @@ import { unwrapAsync } from "../types/fp.js";
 export class AppsV1 extends ClientSDK {
   /**
    * Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getAppsV1Deprecated(
     options?: RequestOptions,
@@ -28,6 +30,8 @@ export class AppsV1 extends ClientSDK {
 
   /**
    * Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async createAppV1Deprecated(
     request: components.AppConfig,
@@ -42,6 +46,8 @@ export class AppsV1 extends ClientSDK {
 
   /**
    * Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async updateAppV1Deprecated(
     appConfig: components.AppConfig,
@@ -58,6 +64,8 @@ export class AppsV1 extends ClientSDK {
 
   /**
    * Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getAppInfoV1Deprecated(
     appId?: string | undefined,
@@ -72,6 +80,8 @@ export class AppsV1 extends ClientSDK {
 
   /**
    * Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Your organization will lose access to this application.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async deleteAppV1Deprecated(
     appId?: string | undefined,

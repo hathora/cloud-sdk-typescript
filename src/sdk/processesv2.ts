@@ -15,6 +15,8 @@ import { unwrapAsync } from "../types/fp.js";
 export class ProcessesV2 extends ClientSDK {
   /**
    * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getProcessInfoV2Deprecated(
     processId: string,
@@ -31,6 +33,8 @@ export class ProcessesV2 extends ClientSDK {
 
   /**
    * Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `status` or `region`.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getLatestProcessesV2Deprecated(
     appId?: string | undefined,
@@ -49,6 +53,8 @@ export class ProcessesV2 extends ClientSDK {
 
   /**
    * Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `status` or `region`.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getProcessesCountExperimentalV2Deprecated(
     appId?: string | undefined,
@@ -67,6 +73,8 @@ export class ProcessesV2 extends ClientSDK {
 
   /**
    * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async stopProcessV2Deprecated(
     processId: string,
@@ -83,6 +91,8 @@ export class ProcessesV2 extends ClientSDK {
 
   /**
    * Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async createProcessV2Deprecated(
     region: components.Region,

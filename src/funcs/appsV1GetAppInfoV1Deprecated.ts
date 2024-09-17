@@ -25,6 +25,8 @@ import { Result } from "../types/fp.js";
 
 /**
  * Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function appsV1GetAppInfoV1Deprecated(
   client$: HathoraCloudCore,

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: cafcb08339247dab7f0c61f8475bc62f
+  docChecksum: a8a8ad005ebe4a75896c48e45b6b91a1
   docVersion: 0.0.1
-  speakeasyVersion: 1.398.0
+  speakeasyVersion: 1.399.0
   generationVersion: 2.415.8
-  releaseVersion: 2.9.0
-  configChecksum: 2a5572d32ac511e6e367a12c23ba5b47
+  releaseVersion: 2.9.1
+  configChecksum: f4aeb85633e5f8a97cccde2cd9d6e98e
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -770,6 +770,7 @@ examples:
   CreateRoomDeprecated:
     speakeasy-default-create-room-deprecated:
       parameters:
+        path: {}
         query:
           roomId: "2swovpy1fnunu"
       requestBody:
@@ -838,6 +839,7 @@ examples:
   CreateRoom:
     speakeasy-default-create-room:
       parameters:
+        path: {}
         query:
           roomId: "2swovpy1fnunu"
       requestBody:
@@ -1102,6 +1104,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>"}
+        "200": {}
   SendVerificationEmail:
     speakeasy-default-send-verification-email:
       requestBody:
@@ -1114,11 +1117,13 @@ examples:
   GetLogsForApp:
     speakeasy-default-get-logs-for-app:
       parameters:
+        path: {}
         query:
           tailLines: 100
       responses:
         "401":
           application/json: {"message": "<value>"}
+        "200": {}
   GetLogsForProcess:
     speakeasy-default-get-logs-for-process:
       parameters:
@@ -1129,6 +1134,7 @@ examples:
       responses:
         "400":
           application/json: {"message": "<value>"}
+        "200": {}
   DownloadLogForProcess:
     speakeasy-default-download-log-for-process:
       parameters:
@@ -1137,6 +1143,7 @@ examples:
       responses:
         "400":
           application/json: {"message": "<value>"}
+        "200": {}
   GetLogsForDeployment:
     speakeasy-default-get-logs-for-deployment:
       parameters:
@@ -1147,6 +1154,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>"}
+        "200": {}
   CreatePrivateLobbyDeprecated:
     speakeasy-default-create-private-lobby-deprecated:
       responses:
@@ -1171,6 +1179,7 @@ examples:
   CreatePrivateLobby:
     speakeasy-default-create-private-lobby:
       parameters:
+        path: {}
         query:
           roomId: "2swovpy1fnunu"
       requestBody:
@@ -1183,6 +1192,7 @@ examples:
   CreatePublicLobby:
     speakeasy-default-create-public-lobby:
       parameters:
+        path: {}
         query:
           roomId: "2swovpy1fnunu"
       requestBody:
@@ -1195,6 +1205,7 @@ examples:
   CreateLocalLobby:
     speakeasy-default-create-local-lobby:
       parameters:
+        path: {}
         query:
           roomId: "2swovpy1fnunu"
       requestBody:
@@ -1207,6 +1218,7 @@ examples:
   CreateLobbyDeprecated:
     speakeasy-default-create-lobby-deprecated:
       parameters:
+        path: {}
         query:
           roomId: "2swovpy1fnunu"
       requestBody:
@@ -1248,6 +1260,7 @@ examples:
   CreateLobby:
     speakeasy-default-create-lobby:
       parameters:
+        path: {}
         query:
           shortCode: "LFG4"
           roomId: "2swovpy1fnunu"
@@ -1506,6 +1519,7 @@ examples:
       responses:
         "400":
           application/json: {"message": "<value>"}
+        "200": {}
   GetBuilds:
     speakeasy-default-get-builds:
       parameters:
@@ -1550,6 +1564,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>"}
+        "200": {}
   RunBuild:
     speakeasy-default-run-build:
       parameters:
@@ -1560,6 +1575,7 @@ examples:
       responses:
         "400":
           application/json: {"message": "<value>"}
+        "200": {}
   GetBalance:
     speakeasy-default-get-balance:
       responses:
@@ -1586,6 +1602,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>"}
+        "200": {}
   InitStripeCustomerPortalUrl:
     speakeasy-default-init-stripe-customer-portal-url:
       requestBody:

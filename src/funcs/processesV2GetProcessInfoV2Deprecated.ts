@@ -25,6 +25,8 @@ import { Result } from "../types/fp.js";
 
 /**
  * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function processesV2GetProcessInfoV2Deprecated(
   client$: HathoraCloudCore,
