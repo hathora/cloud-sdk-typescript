@@ -8,7 +8,7 @@ Ok
 import { GetProcessesCountExperimentalResponseBody } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: GetProcessesCountExperimentalResponseBody = {
-  count: 4118.2,
+  count: 1175.32,
 };
 ```
 

@@ -4,14 +4,11 @@
 
 import * as z from "zod";
 import { HathoraCloudCore } from "../core.js";
-import {
-  encodeFormQuery as encodeFormQuery$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
-import { resolveSecurity, SecurityInput } from "../lib/security.js";
+import { resolveSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import * as components from "../models/components/index.js";
 import {
@@ -31,7 +28,7 @@ import { Result } from "../types/fp.js";
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function lobbiesV1CreatePublicLobbyDeprecated(
-  client$: HathoraCloudCore,
+  client: HathoraCloudCore,
   security: operations.CreatePublicLobbyDeprecatedSecurity,
   appId?: string | undefined,
   region?: components.Region | undefined,
@@ -50,45 +47,43 @@ export async function lobbiesV1CreatePublicLobbyDeprecated(
     | ConnectionError
   >
 > {
-  const input$: operations.CreatePublicLobbyDeprecatedRequest = {
+  const input: operations.CreatePublicLobbyDeprecatedRequest = {
     appId: appId,
     region: region,
     local: local,
   };
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
-      operations.CreatePublicLobbyDeprecatedRequest$outboundSchema.parse(
-        value$,
-      ),
+  const parsed = safeParse(
+    input,
+    (value) =>
+      operations.CreatePublicLobbyDeprecatedRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const pathParams$ = {
-    appId: encodeSimple$("appId", payload$.appId ?? client$.options$.appId, {
+  const pathParams = {
+    appId: encodeSimple("appId", payload.appId ?? client._options.appId, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/lobby/v1/{appId}/create/public")(pathParams$);
+  const path = pathToFunc("/lobby/v1/{appId}/create/public")(pathParams);
 
-  const query$ = encodeFormQuery$({
-    "local": payload$.local,
-    "region": payload$.region,
+  const query = encodeFormQuery({
+    "local": payload.local,
+    "region": payload.region,
   });
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
   });
 
-  const security$: SecurityInput[][] = [
+  const requestSecurity = resolveSecurity(
     [
       {
         fieldName: "Authorization",
@@ -96,33 +91,32 @@ export async function lobbiesV1CreatePublicLobbyDeprecated(
         value: security?.playerAuth,
       },
     ],
-  ];
-  const securitySettings$ = resolveSecurity(...security$);
+  );
   const context = {
     operationID: "CreatePublicLobbyDeprecated",
     oAuth2Scopes: [],
     securitySource: security,
   };
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "POST",
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "401", "402", "404", "422", "429", "4XX", "500", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -130,11 +124,11 @@ export async function lobbiesV1CreatePublicLobbyDeprecated(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     string,
     | errors.ApiError
     | SDKError
@@ -145,16 +139,16 @@ export async function lobbiesV1CreatePublicLobbyDeprecated(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, z.string()),
-    m$.jsonErr(
+    M.json(200, z.string()),
+    M.jsonErr(
       [400, 401, 402, 404, 422, 429, 500],
       errors.ApiError$inboundSchema,
     ),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

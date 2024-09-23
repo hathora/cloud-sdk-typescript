@@ -3,15 +3,11 @@
  */
 
 import { HathoraCloudCore } from "../core.js";
-import {
-  encodeFormQuery as encodeFormQuery$,
-  encodeJSON as encodeJSON$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
-import { resolveSecurity, SecurityInput } from "../lib/security.js";
+import { resolveSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import * as components from "../models/components/index.js";
 import {
@@ -31,7 +27,7 @@ import { Result } from "../types/fp.js";
  * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
  */
 export async function lobbiesV3CreateLobby(
-  client$: HathoraCloudCore,
+  client: HathoraCloudCore,
   security: operations.CreateLobbySecurity,
   createLobbyV3Params: components.CreateLobbyV3Params,
   appId?: string | undefined,
@@ -51,46 +47,46 @@ export async function lobbiesV3CreateLobby(
     | ConnectionError
   >
 > {
-  const input$: operations.CreateLobbyRequest = {
+  const input: operations.CreateLobbyRequest = {
     appId: appId,
     shortCode: shortCode,
     roomId: roomId,
     createLobbyV3Params: createLobbyV3Params,
   };
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) => operations.CreateLobbyRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) => operations.CreateLobbyRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = encodeJSON$("body", payload$.CreateLobbyV3Params, {
+  const payload = parsed.value;
+  const body = encodeJSON("body", payload.CreateLobbyV3Params, {
     explode: true,
   });
 
-  const pathParams$ = {
-    appId: encodeSimple$("appId", payload$.appId ?? client$.options$.appId, {
+  const pathParams = {
+    appId: encodeSimple("appId", payload.appId ?? client._options.appId, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/lobby/v3/{appId}/create")(pathParams$);
+  const path = pathToFunc("/lobby/v3/{appId}/create")(pathParams);
 
-  const query$ = encodeFormQuery$({
-    "roomId": payload$.roomId,
-    "shortCode": payload$.shortCode,
+  const query = encodeFormQuery({
+    "roomId": payload.roomId,
+    "shortCode": payload.shortCode,
   });
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     "Content-Type": "application/json",
     Accept: "application/json",
   });
 
-  const security$: SecurityInput[][] = [
+  const requestSecurity = resolveSecurity(
     [
       {
         fieldName: "Authorization",
@@ -98,33 +94,32 @@ export async function lobbiesV3CreateLobby(
         value: security?.playerAuth,
       },
     ],
-  ];
-  const securitySettings$ = resolveSecurity(...security$);
+  );
   const context = {
     operationID: "CreateLobby",
     oAuth2Scopes: [],
     securitySource: security,
   };
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "POST",
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "401", "402", "404", "422", "429", "4XX", "500", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -132,11 +127,11 @@ export async function lobbiesV3CreateLobby(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     components.LobbyV3,
     | errors.ApiError
     | SDKError
@@ -147,16 +142,16 @@ export async function lobbiesV3CreateLobby(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(201, components.LobbyV3$inboundSchema),
-    m$.jsonErr(
+    M.json(201, components.LobbyV3$inboundSchema),
+    M.jsonErr(
       [400, 401, 402, 404, 422, 429, 500],
       errors.ApiError$inboundSchema,
     ),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

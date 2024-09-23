@@ -4,9 +4,9 @@
 
 import * as z from "zod";
 import { HathoraCloudCore } from "../core.js";
-import { encodeJSON as encodeJSON$ } from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeJSON } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -24,7 +24,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { Result } from "../types/fp.js";
 
 export async function billingV1InitStripeCustomerPortalUrl(
-  client$: HathoraCloudCore,
+  client: HathoraCloudCore,
   request: components.CustomerPortalUrl,
   options?: RequestOptions,
 ): Promise<
@@ -40,57 +40,53 @@ export async function billingV1InitStripeCustomerPortalUrl(
     | ConnectionError
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) => components.CustomerPortalUrl$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) => components.CustomerPortalUrl$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = encodeJSON$("body", payload$, { explode: true });
+  const payload = parsed.value;
+  const body = encodeJSON("body", payload, { explode: true });
 
-  const path$ = pathToFunc("/billing/v1/customerportalurl")();
+  const path = pathToFunc("/billing/v1/customerportalurl")();
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     "Content-Type": "application/json",
     Accept: "application/json",
   });
 
-  const hathoraDevToken$ = await extractSecurity(
-    client$.options$.hathoraDevToken,
-  );
-  const security$ = hathoraDevToken$ == null
-    ? {}
-    : { hathoraDevToken: hathoraDevToken$ };
+  const secConfig = await extractSecurity(client._options.hathoraDevToken);
+  const securityInput = secConfig == null ? {} : { hathoraDevToken: secConfig };
   const context = {
     operationID: "InitStripeCustomerPortalUrl",
     oAuth2Scopes: [],
-    securitySource: client$.options$.hathoraDevToken,
+    securitySource: client._options.hathoraDevToken,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "POST",
-    path: path$,
-    headers: headers$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["401", "404", "429", "4XX", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -98,11 +94,11 @@ export async function billingV1InitStripeCustomerPortalUrl(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     string,
     | errors.ApiError
     | SDKError
@@ -113,13 +109,13 @@ export async function billingV1InitStripeCustomerPortalUrl(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, z.string()),
-    m$.jsonErr([401, 404, 429], errors.ApiError$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.json(200, z.string()),
+    M.jsonErr([401, 404, 429], errors.ApiError$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

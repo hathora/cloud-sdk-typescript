@@ -16,7 +16,7 @@ let value: DeploymentConfigV3 = {
   roomsPerProcess: 3,
   additionalContainerPorts: [
     {
-      transportType: "tcp",
+      transportType: "tls",
       port: 8000,
       name: "default",
     },
@@ -25,7 +25,7 @@ let value: DeploymentConfigV3 = {
   containerPort: 4000,
   requestedMemoryMB: 1024,
   requestedCPU: 0.5,
-  buildId: "<value>",
+  buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
 };
 ```
 
@@ -41,4 +41,4 @@ let value: DeploymentConfigV3 = {
 | `containerPort`                                                                                                  | *number*                                                                                                         | :heavy_check_mark:                                                                                               | Default port the server listens on.                                                                              | 4000                                                                                                             |
 | `requestedMemoryMB`                                                                                              | *number*                                                                                                         | :heavy_check_mark:                                                                                               | The amount of memory allocated to your process.                                                                  | 1024                                                                                                             |
 | `requestedCPU`                                                                                                   | *number*                                                                                                         | :heavy_check_mark:                                                                                               | The number of cores allocated to your process.                                                                   | 0.5                                                                                                              |
-| `buildId`                                                                                                        | *string*                                                                                                         | :heavy_check_mark:                                                                                               | System generated id for a build. Can also be user defined when creating a build.                                 |                                                                                                                  |
+| `buildId`                                                                                                        | *string*                                                                                                         | :heavy_check_mark:                                                                                               | System generated id for a build. Can also be user defined when creating a build.                                 | bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5                                                                         |

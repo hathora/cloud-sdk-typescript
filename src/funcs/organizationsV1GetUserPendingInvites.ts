@@ -3,7 +3,7 @@
  */
 
 import { HathoraCloudCore } from "../core.js";
-import * as m$ from "../lib/matchers.js";
+import * as M from "../lib/matchers.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -21,7 +21,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { Result } from "../types/fp.js";
 
 export async function organizationsV1GetUserPendingInvites(
-  client$: HathoraCloudCore,
+  client: HathoraCloudCore,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -36,42 +36,38 @@ export async function organizationsV1GetUserPendingInvites(
     | ConnectionError
   >
 > {
-  const path$ = pathToFunc("/orgs/v1/user/invites/pending")();
+  const path = pathToFunc("/orgs/v1/user/invites/pending")();
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
   });
 
-  const hathoraDevToken$ = await extractSecurity(
-    client$.options$.hathoraDevToken,
-  );
-  const security$ = hathoraDevToken$ == null
-    ? {}
-    : { hathoraDevToken: hathoraDevToken$ };
+  const secConfig = await extractSecurity(client._options.hathoraDevToken);
+  const securityInput = secConfig == null ? {} : { hathoraDevToken: secConfig };
   const context = {
     operationID: "GetUserPendingInvites",
     oAuth2Scopes: [],
-    securitySource: client$.options$.hathoraDevToken,
+    securitySource: client._options.hathoraDevToken,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    path: path$,
-    headers: headers$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["401", "429", "4XX", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -79,11 +75,11 @@ export async function organizationsV1GetUserPendingInvites(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     components.PendingOrgInvitesPage,
     | errors.ApiError
     | SDKError
@@ -94,13 +90,13 @@ export async function organizationsV1GetUserPendingInvites(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, components.PendingOrgInvitesPage$inboundSchema),
-    m$.jsonErr([401, 429], errors.ApiError$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.json(200, components.PendingOrgInvitesPage$inboundSchema),
+    M.jsonErr([401, 429], errors.ApiError$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

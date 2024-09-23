@@ -6,12 +6,12 @@
 import { ProcessV3 } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: ProcessV3 = {
-  status: "stopping",
+  status: "stopped",
   roomsAllocated: 1,
-  terminatedAt: new Date("2023-02-28T14:12:21.883Z"),
-  stoppingAt: new Date("2024-10-31T08:20:57.740Z"),
-  startedAt: new Date("2024-09-16T05:57:00.689Z"),
-  createdAt: new Date("2024-01-18T06:36:04.013Z"),
+  terminatedAt: new Date("2022-02-12T22:47:44.474Z"),
+  stoppingAt: new Date("2022-11-06T22:57:15.637Z"),
+  startedAt: new Date("2022-05-12T17:39:01.246Z"),
+  createdAt: new Date("2022-11-21T13:40:18.320Z"),
   roomsPerProcess: 3,
   additionalExposedPorts: [
     {
@@ -27,9 +27,9 @@ let value: ProcessV3 = {
     host: "1.proxy.hathora.dev",
     name: "default",
   },
-  region: "Frankfurt",
+  region: "Los_Angeles",
   processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
-  deploymentId: "<value>",
+  deploymentId: "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 };
 ```
@@ -49,5 +49,5 @@ let value: ProcessV3 = {
 | `exposedPort`                                                                                                    | [components.ProcessV3ExposedPort](../../models/components/processv3exposedport.md)                               | :heavy_check_mark:                                                                                               | N/A                                                                                                              | {<br/>"host": "1.proxy.hathora.dev",<br/>"name": "default",<br/>"port": 34567,<br/>"transportType": "tcp"<br/>}  |
 | `region`                                                                                                         | [components.Region](../../models/components/region.md)                                                           | :heavy_check_mark:                                                                                               | N/A                                                                                                              |                                                                                                                  |
 | `processId`                                                                                                      | *string*                                                                                                         | :heavy_check_mark:                                                                                               | System generated unique identifier to a runtime instance of your game server.                                    | cbfcddd2-0006-43ae-996c-995fff7bed2e                                                                             |
-| `deploymentId`                                                                                                   | *string*                                                                                                         | :heavy_check_mark:                                                                                               | System generated id for a deployment.                                                                            |                                                                                                                  |
+| `deploymentId`                                                                                                   | *string*                                                                                                         | :heavy_check_mark:                                                                                               | System generated id for a deployment.                                                                            | dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5                                                                         |
 | `appId`                                                                                                          | *string*                                                                                                         | :heavy_check_mark:                                                                                               | System generated unique identifier for an application.                                                           | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                                         |

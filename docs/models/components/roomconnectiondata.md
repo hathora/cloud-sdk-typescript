@@ -22,7 +22,7 @@ let value: RoomConnectionData = {
     host: "1.proxy.hathora.dev",
     name: "default",
   },
-  status: "active",
+  status: "starting",
   roomId: "2swovpy1fnunu",
   processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
 };

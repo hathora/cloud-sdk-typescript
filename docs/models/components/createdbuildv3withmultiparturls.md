@@ -9,21 +9,21 @@ import { CreatedBuildV3WithMultipartUrls } from "@hathora/cloud-sdk-typescript/m
 
 let value: CreatedBuildV3WithMultipartUrls = {
   buildTag: "0.1.14-14c793",
-  imageSize: 880476,
-  status: "running",
-  deletedAt: new Date("2024-10-03T09:15:57.162Z"),
-  finishedAt: new Date("2022-03-12T07:20:09.120Z"),
-  startedAt: new Date("2022-08-26T15:17:21.807Z"),
-  createdAt: new Date("2024-01-29T22:47:11.859Z"),
+  imageSize: 866383,
+  status: "failed",
+  deletedAt: new Date("2024-07-26T23:03:04.026Z"),
+  finishedAt: new Date("2022-01-13T20:07:38.173Z"),
+  startedAt: new Date("2023-01-30T12:51:46.829Z"),
+  createdAt: new Date("2024-03-11T01:40:18.315Z"),
   createdBy: "noreply@hathora.dev",
-  buildId: "<value>",
+  buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   completeUploadPostRequestUrl: "<value>",
-  maxChunkSize: 5651.89,
+  maxChunkSize: 1716.30,
   uploadParts: [
     {
       putRequestUrl: "<value>",
-      partNumber: 5666.02,
+      partNumber: 5210.37,
     },
   ],
 };
@@ -42,7 +42,7 @@ let value: CreatedBuildV3WithMultipartUrls = {
 | `startedAt`                                                                                                                                             | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                           | :heavy_check_mark:                                                                                                                                      | When [`RunBuild()`](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) is called.                                                                  |                                                                                                                                                         |
 | `createdAt`                                                                                                                                             | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                           | :heavy_check_mark:                                                                                                                                      | When [`CreateBuild()`](https://hathora.dev/api#tag/BuildV2/operation/CreateBuild) is called.                                                            |                                                                                                                                                         |
 | `createdBy`                                                                                                                                             | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     | noreply@hathora.dev                                                                                                                                     |
-| `buildId`                                                                                                                                               | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | System generated id for a build. Can also be user defined when creating a build.                                                                        |                                                                                                                                                         |
+| `buildId`                                                                                                                                               | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | System generated id for a build. Can also be user defined when creating a build.                                                                        | bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5                                                                                                                |
 | `orgId`                                                                                                                                                 | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | System generated unique identifier for an organization. Not guaranteed to have a specific format.                                                       | org-6f706e83-0ec1-437a-9a46-7d4281eb2f39                                                                                                                |
 | `completeUploadPostRequestUrl`                                                                                                                          | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |                                                                                                                                                         |
 | `maxChunkSize`                                                                                                                                          | *number*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |                                                                                                                                                         |

@@ -688,6 +688,9 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.roomsV1.createRoomDeprecated(
     {
+      clientIPs: [
+        "123.123.123.123",
+      ],
       roomConfig: "{\"name\":\"my-room\"}",
       region: "Chicago",
     },

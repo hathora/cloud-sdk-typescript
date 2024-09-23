@@ -8,7 +8,7 @@ Ok
 import { GetProcessesCountExperimentalV2DeprecatedResponseBody } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: GetProcessesCountExperimentalV2DeprecatedResponseBody = {
-  count: 7670.24,
+  count: 5867.84,
 };
 ```
 

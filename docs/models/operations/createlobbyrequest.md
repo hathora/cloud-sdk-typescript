@@ -11,7 +11,7 @@ let value: CreateLobbyRequest = {
   createLobbyV3Params: {
     visibility: "private",
     roomConfig: "{\"name\":\"my-room\"}",
-    region: "Tokyo",
+    region: "London",
   },
 };
 ```

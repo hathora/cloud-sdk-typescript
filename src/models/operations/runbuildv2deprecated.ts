@@ -12,7 +12,7 @@ export type RunBuildV2DeprecatedGlobals = {
 
 export type RunBuildV2DeprecatedFile = {
   fileName: string;
-  content: ReadableStream<Uint8Array> | Blob | ArrayBuffer;
+  content: ReadableStream<Uint8Array> | Blob | ArrayBuffer | Uint8Array;
 };
 
 export type RunBuildV2DeprecatedRequestBody = {
@@ -72,13 +72,14 @@ export const RunBuildV2DeprecatedFile$inboundSchema: z.ZodType<
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(Blob),
     z.instanceof(ArrayBuffer),
+    z.instanceof(Uint8Array),
   ]),
 });
 
 /** @internal */
 export type RunBuildV2DeprecatedFile$Outbound = {
   fileName: string;
-  content: ReadableStream<Uint8Array> | Blob | ArrayBuffer;
+  content: ReadableStream<Uint8Array> | Blob | ArrayBuffer | Uint8Array;
 };
 
 /** @internal */
@@ -92,6 +93,7 @@ export const RunBuildV2DeprecatedFile$outboundSchema: z.ZodType<
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(Blob),
     z.instanceof(ArrayBuffer),
+    z.instanceof(Uint8Array),
   ]),
 });
 

@@ -22,28 +22,28 @@ let value: ApplicationWithLatestDeploymentAndBuildDeployment = {
     },
   ],
   defaultContainerPort: {
-    transportType: "udp",
+    transportType: "tls",
     port: 8000,
     name: "default",
   },
-  createdAt: new Date("2022-09-30T15:12:09.316Z"),
+  createdAt: new Date("2023-11-21T08:44:18.290Z"),
   createdBy: "noreply@hathora.dev",
   requestedMemoryMB: 1024,
   requestedCPU: 0.5,
-  deploymentId: "<value>",
+  deploymentId: "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
   buildTag: "0.1.14-14c793",
-  buildId: "<value>",
+  buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   build: {
     buildTag: "0.1.14-14c793",
-    imageSize: 756107,
-    status: "succeeded",
-    deletedAt: new Date("2023-03-11T02:58:08.798Z"),
-    finishedAt: new Date("2023-10-11T21:04:15.001Z"),
-    startedAt: new Date("2024-09-09T01:23:37.652Z"),
-    createdAt: new Date("2023-09-20T04:30:50.461Z"),
+    imageSize: 872651,
+    status: "running",
+    deletedAt: new Date("2024-05-24T15:49:26.110Z"),
+    finishedAt: new Date("2022-07-23T10:58:04.364Z"),
+    startedAt: new Date("2024-11-10T06:13:54.282Z"),
+    createdAt: new Date("2024-01-24T11:41:29.840Z"),
     createdBy: "noreply@hathora.dev",
-    buildId: "<value>",
+    buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
     orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   },
 };
@@ -62,8 +62,8 @@ let value: ApplicationWithLatestDeploymentAndBuildDeployment = {
 | `createdBy`                                                                                                                                             | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     | noreply@hathora.dev                                                                                                                                     |
 | `requestedMemoryMB`                                                                                                                                     | *number*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | The amount of memory allocated to your process.                                                                                                         | 1024                                                                                                                                                    |
 | `requestedCPU`                                                                                                                                          | *number*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | The number of cores allocated to your process.                                                                                                          | 0.5                                                                                                                                                     |
-| `deploymentId`                                                                                                                                          | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | System generated id for a deployment.                                                                                                                   |                                                                                                                                                         |
+| `deploymentId`                                                                                                                                          | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | System generated id for a deployment.                                                                                                                   | dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5                                                                                                                |
 | `buildTag`                                                                                                                                              | *string*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                      | Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo). | 0.1.14-14c793                                                                                                                                           |
-| `buildId`                                                                                                                                               | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | System generated id for a build. Can also be user defined when creating a build.                                                                        |                                                                                                                                                         |
+| `buildId`                                                                                                                                               | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | System generated id for a build. Can also be user defined when creating a build.                                                                        | bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5                                                                                                                |
 | `appId`                                                                                                                                                 | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | System generated unique identifier for an application.                                                                                                  | app-af469a92-5b45-4565-b3c4-b79878de67d2                                                                                                                |
 | `build`                                                                                                                                                 | [components.BuildV3](../../models/components/buildv3.md)                                                                                                | :heavy_check_mark:                                                                                                                                      | A build represents a game server artifact and its associated metadata.                                                                                  |                                                                                                                                                         |
