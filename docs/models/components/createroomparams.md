@@ -6,6 +6,9 @@
 import { CreateRoomParams } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: CreateRoomParams = {
+  clientIPs: [
+    "123.123.123.123",
+  ],
   roomConfig: "{\"name\":\"my-room\"}",
   region: "Sao_Paulo",
 };

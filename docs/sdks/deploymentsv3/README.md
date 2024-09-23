@@ -123,7 +123,7 @@ async function run() {
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
-    buildId: "<value>",
+    buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
   
   // Handle the result
@@ -169,7 +169,7 @@ async function run() {
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
-    buildId: "<value>",
+    buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   if (!res.ok) {
@@ -298,7 +298,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.deploymentsV3.getDeployment("<value>", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.deploymentsV3.getDeployment("dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
   
   // Handle the result
   console.log(result)
@@ -323,7 +323,7 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await deploymentsV3GetDeployment(hathoraCloud, "<value>", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const res = await deploymentsV3GetDeployment(hathoraCloud, "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   if (!res.ok) {
     throw res.error;
@@ -342,7 +342,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `deploymentId`                                                                                                                                                                 | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `deploymentId`                                                                                                                                                                 | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
 | `appId`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |

@@ -9,16 +9,16 @@ import { Room } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: Room = {
   currentAllocation: {
-    unscheduledAt: new Date("2023-02-26T06:46:35.231Z"),
-    scheduledAt: new Date("2023-04-25T14:17:38.296Z"),
+    unscheduledAt: new Date("2023-08-03T16:03:07.089Z"),
+    scheduledAt: new Date("2023-09-15T13:50:38.886Z"),
     processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
     roomAllocationId: "e3a0aa32-1711-4036-acfa-008b96061a78",
   },
   status: "active",
   allocations: [
     {
-      unscheduledAt: new Date("2022-11-23T02:21:00.924Z"),
-      scheduledAt: new Date("2024-09-04T09:11:49.338Z"),
+      unscheduledAt: new Date("2024-10-11T10:53:38.306Z"),
+      scheduledAt: new Date("2022-03-19T20:31:56.909Z"),
       processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
       roomAllocationId: "e3a0aa32-1711-4036-acfa-008b96061a78",
     },

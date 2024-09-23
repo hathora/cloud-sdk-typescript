@@ -12,24 +12,24 @@ let value: BuildWithMultipartUrls = {
   regionalContainerTags: [
     {
       containerTag: "<value>",
-      region: "Los_Angeles",
+      region: "Sao_Paulo",
     },
   ],
-  imageSize: 971945,
-  status: "failed",
-  deletedAt: new Date("2024-08-20T12:00:03.589Z"),
-  finishedAt: new Date("2023-05-29T15:24:04.034Z"),
-  startedAt: new Date("2023-07-13T13:09:34.110Z"),
-  createdAt: new Date("2024-12-06T12:43:25.437Z"),
+  imageSize: 367562,
+  status: "running",
+  deletedAt: new Date("2024-09-04T13:09:06.950Z"),
+  finishedAt: new Date("2024-06-02T14:07:36.077Z"),
+  startedAt: new Date("2024-02-11T11:05:07.085Z"),
+  createdAt: new Date("2022-04-20T20:22:04.958Z"),
   createdBy: "noreply@hathora.dev",
   buildId: 1,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   completeUploadPostRequestUrl: "<value>",
-  maxChunkSize: 557.14,
+  maxChunkSize: 9194.83,
   uploadParts: [
     {
       putRequestUrl: "<value>",
-      partNumber: 6048.46,
+      partNumber: 7142.41,
     },
   ],
 };

@@ -3,12 +3,9 @@
  */
 
 import { HathoraCloudCore } from "../core.js";
-import {
-  encodeJSON as encodeJSON$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -30,7 +27,7 @@ import { Result } from "../types/fp.js";
  * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
  */
 export async function deploymentsV3CreateDeployment(
-  client$: HathoraCloudCore,
+  client: HathoraCloudCore,
   deploymentConfigV3: components.DeploymentConfigV3,
   appId?: string | undefined,
   options?: RequestOptions,
@@ -47,71 +44,67 @@ export async function deploymentsV3CreateDeployment(
     | ConnectionError
   >
 > {
-  const input$: operations.CreateDeploymentRequest = {
+  const input: operations.CreateDeploymentRequest = {
     appId: appId,
     deploymentConfigV3: deploymentConfigV3,
   };
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) => operations.CreateDeploymentRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) => operations.CreateDeploymentRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = encodeJSON$("body", payload$.DeploymentConfigV3, {
+  const payload = parsed.value;
+  const body = encodeJSON("body", payload.DeploymentConfigV3, {
     explode: true,
   });
 
-  const pathParams$ = {
-    appId: encodeSimple$("appId", payload$.appId ?? client$.options$.appId, {
+  const pathParams = {
+    appId: encodeSimple("appId", payload.appId ?? client._options.appId, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/deployments/v3/apps/{appId}/deployments")(
-    pathParams$,
+  const path = pathToFunc("/deployments/v3/apps/{appId}/deployments")(
+    pathParams,
   );
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     "Content-Type": "application/json",
     Accept: "application/json",
   });
 
-  const hathoraDevToken$ = await extractSecurity(
-    client$.options$.hathoraDevToken,
-  );
-  const security$ = hathoraDevToken$ == null
-    ? {}
-    : { hathoraDevToken: hathoraDevToken$ };
+  const secConfig = await extractSecurity(client._options.hathoraDevToken);
+  const securityInput = secConfig == null ? {} : { hathoraDevToken: secConfig };
   const context = {
     operationID: "CreateDeployment",
     oAuth2Scopes: [],
-    securitySource: client$.options$.hathoraDevToken,
+    securitySource: client._options.hathoraDevToken,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "POST",
-    path: path$,
-    headers: headers$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "401", "404", "422", "429", "4XX", "500", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -119,11 +112,11 @@ export async function deploymentsV3CreateDeployment(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     components.DeploymentV3,
     | errors.ApiError
     | SDKError
@@ -134,13 +127,13 @@ export async function deploymentsV3CreateDeployment(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(201, components.DeploymentV3$inboundSchema),
-    m$.jsonErr([400, 401, 404, 422, 429, 500], errors.ApiError$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.json(201, components.DeploymentV3$inboundSchema),
+    M.jsonErr([400, 401, 404, 422, 429, 500], errors.ApiError$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

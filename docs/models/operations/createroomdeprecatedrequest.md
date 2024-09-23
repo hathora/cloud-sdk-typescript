@@ -8,8 +8,11 @@ import { CreateRoomDeprecatedRequest } from "@hathora/cloud-sdk-typescript/model
 let value: CreateRoomDeprecatedRequest = {
   roomId: "2swovpy1fnunu",
   createRoomParams: {
+    clientIPs: [
+      "123.123.123.123",
+    ],
     roomConfig: "{\"name\":\"my-room\"}",
-    region: "Los_Angeles",
+    region: "Frankfurt",
   },
 };
 ```

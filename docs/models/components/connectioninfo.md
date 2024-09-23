@@ -10,8 +10,8 @@ import { ConnectionInfo } from "@hathora/cloud-sdk-typescript/models/components"
 let value: ConnectionInfo = {
   status: "active",
   transportType: "udp",
-  port: 4799.77,
-  host: "nice-gorilla.org",
+  port: 7805.29,
+  host: "close-paintwork.com",
   roomId: "2swovpy1fnunu",
 };
 ```

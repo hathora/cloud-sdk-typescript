@@ -30,6 +30,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.roomsV2.createRoom({
+    clientIPs: [
+      "123.123.123.123",
+    ],
     roomConfig: "{\"name\":\"my-room\"}",
     region: "Sao_Paulo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
@@ -58,6 +61,9 @@ const hathoraCloud = new HathoraCloudCore({
 
 async function run() {
   const res = await roomsV2CreateRoom(hathoraCloud, {
+    clientIPs: [
+      "123.123.123.123",
+    ],
     roomConfig: "{\"name\":\"my-room\"}",
     region: "Sao_Paulo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");

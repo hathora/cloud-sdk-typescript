@@ -9,14 +9,14 @@ import { BuildV3 } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: BuildV3 = {
   buildTag: "0.1.14-14c793",
-  imageSize: 359444,
+  imageSize: 569101,
   status: "running",
-  deletedAt: new Date("2023-06-12T01:25:24.878Z"),
-  finishedAt: new Date("2022-05-11T03:00:49.668Z"),
-  startedAt: new Date("2024-01-25T18:32:37.836Z"),
-  createdAt: new Date("2022-12-15T12:13:45.806Z"),
+  deletedAt: new Date("2022-03-17T19:22:07.134Z"),
+  finishedAt: new Date("2024-02-04T09:09:59.216Z"),
+  startedAt: new Date("2023-05-13T01:59:12.211Z"),
+  createdAt: new Date("2024-03-02T08:57:01.759Z"),
   createdBy: "noreply@hathora.dev",
-  buildId: "<value>",
+  buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
 };
 ```
@@ -34,5 +34,5 @@ let value: BuildV3 = {
 | `startedAt`                                                                                                                                             | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                           | :heavy_check_mark:                                                                                                                                      | When [`RunBuild()`](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) is called.                                                                  |                                                                                                                                                         |
 | `createdAt`                                                                                                                                             | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                           | :heavy_check_mark:                                                                                                                                      | When [`CreateBuild()`](https://hathora.dev/api#tag/BuildV2/operation/CreateBuild) is called.                                                            |                                                                                                                                                         |
 | `createdBy`                                                                                                                                             | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     | noreply@hathora.dev                                                                                                                                     |
-| `buildId`                                                                                                                                               | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | System generated id for a build. Can also be user defined when creating a build.                                                                        |                                                                                                                                                         |
+| `buildId`                                                                                                                                               | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | System generated id for a build. Can also be user defined when creating a build.                                                                        | bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5                                                                                                                |
 | `orgId`                                                                                                                                                 | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | System generated unique identifier for an organization. Not guaranteed to have a specific format.                                                       | org-6f706e83-0ec1-437a-9a46-7d4281eb2f39                                                                                                                |

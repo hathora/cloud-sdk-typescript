@@ -6,7 +6,38 @@
 import { DeploymentsV3Page } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: DeploymentsV3Page = {
-  deployments: [],
+  deployments: [
+    {
+      idleTimeoutEnabled: false,
+      env: [
+        {
+          value: "TRUE",
+          name: "EULA",
+        },
+      ],
+      roomsPerProcess: 3,
+      additionalContainerPorts: [
+        {
+          transportType: "tcp",
+          port: 4000,
+          name: "debug",
+        },
+      ],
+      defaultContainerPort: {
+        transportType: "tls",
+        port: 8000,
+        name: "default",
+      },
+      createdAt: new Date("2023-09-30T01:48:05.911Z"),
+      createdBy: "noreply@hathora.dev",
+      requestedMemoryMB: 1024,
+      requestedCPU: 0.5,
+      deploymentId: "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
+      buildTag: "0.1.14-14c793",
+      buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
+      appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+    },
+  ],
 };
 ```
 

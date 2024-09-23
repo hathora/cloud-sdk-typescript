@@ -4,9 +4,9 @@
 
 import * as z from "zod";
 import { HathoraCloudCore } from "../core.js";
-import { encodeSimple as encodeSimple$ } from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -27,7 +27,7 @@ import { Result } from "../types/fp.js";
  * Revoke an organization token.
  */
 export async function tokensV1RevokeOrgToken(
-  client$: HathoraCloudCore,
+  client: HathoraCloudCore,
   orgId: string,
   orgTokenId: string,
   options?: RequestOptions,
@@ -44,72 +44,68 @@ export async function tokensV1RevokeOrgToken(
     | ConnectionError
   >
 > {
-  const input$: operations.RevokeOrgTokenRequest = {
+  const input: operations.RevokeOrgTokenRequest = {
     orgId: orgId,
     orgTokenId: orgTokenId,
   };
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) => operations.RevokeOrgTokenRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) => operations.RevokeOrgTokenRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const pathParams$ = {
-    orgId: encodeSimple$("orgId", payload$.orgId, {
+  const pathParams = {
+    orgId: encodeSimple("orgId", payload.orgId, {
       explode: false,
       charEncoding: "percent",
     }),
-    orgTokenId: encodeSimple$("orgTokenId", payload$.orgTokenId, {
+    orgTokenId: encodeSimple("orgTokenId", payload.orgTokenId, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc(
-    "/tokens/v1/orgs/{orgId}/tokens/{orgTokenId}/revoke",
-  )(pathParams$);
+  const path = pathToFunc("/tokens/v1/orgs/{orgId}/tokens/{orgTokenId}/revoke")(
+    pathParams,
+  );
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
   });
 
-  const hathoraDevToken$ = await extractSecurity(
-    client$.options$.hathoraDevToken,
-  );
-  const security$ = hathoraDevToken$ == null
-    ? {}
-    : { hathoraDevToken: hathoraDevToken$ };
+  const secConfig = await extractSecurity(client._options.hathoraDevToken);
+  const securityInput = secConfig == null ? {} : { hathoraDevToken: secConfig };
   const context = {
     operationID: "RevokeOrgToken",
     oAuth2Scopes: [],
-    securitySource: client$.options$.hathoraDevToken,
+    securitySource: client._options.hathoraDevToken,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "POST",
-    path: path$,
-    headers: headers$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["401", "404", "429", "4XX", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -117,11 +113,11 @@ export async function tokensV1RevokeOrgToken(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     boolean,
     | errors.ApiError
     | SDKError
@@ -132,13 +128,13 @@ export async function tokensV1RevokeOrgToken(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, z.boolean()),
-    m$.jsonErr([401, 404, 429], errors.ApiError$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.json(200, z.boolean()),
+    M.jsonErr([401, 404, 429], errors.ApiError$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

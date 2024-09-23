@@ -17,16 +17,16 @@ let value: CreateDeploymentRequest = {
     roomsPerProcess: 3,
     additionalContainerPorts: [
       {
-        transportType: "udp",
+        transportType: "tcp",
         port: 8000,
         name: "default",
       },
     ],
-    transportType: "tls",
+    transportType: "udp",
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
-    buildId: "<value>",
+    buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
   },
 };
 ```

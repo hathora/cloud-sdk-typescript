@@ -4,10 +4,10 @@
 
 import * as z from "zod";
 import { HathoraCloudCore } from "../core.js";
-import { encodeSimple as encodeSimple$ } from "../lib/encodings.js";
+import { encodeSimple } from "../lib/encodings.js";
 import { readableStreamToArrayBuffer } from "../lib/files.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -32,7 +32,7 @@ import { isReadableStream } from "../types/streams.js";
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function buildsV1RunBuildDeprecated(
-  client$: HathoraCloudCore,
+  client: HathoraCloudCore,
   buildId: number,
   requestBody: operations.RunBuildDeprecatedRequestBody,
   appId?: string | undefined,
@@ -50,90 +50,85 @@ export async function buildsV1RunBuildDeprecated(
     | ConnectionError
   >
 > {
-  const input$: operations.RunBuildDeprecatedRequest = {
+  const input: operations.RunBuildDeprecatedRequest = {
     appId: appId,
     buildId: buildId,
     requestBody: requestBody,
   };
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
-      operations.RunBuildDeprecatedRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) => operations.RunBuildDeprecatedRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = new FormData();
+  const payload = parsed.value;
+  const body = new FormData();
 
-  if (isBlobLike(payload$.RequestBody.file)) {
-    body$.append("file", payload$.RequestBody.file);
-  } else if (isReadableStream(payload$.RequestBody.file.content)) {
+  if (isBlobLike(payload.RequestBody.file)) {
+    body.append("file", payload.RequestBody.file);
+  } else if (isReadableStream(payload.RequestBody.file.content)) {
     const buffer = await readableStreamToArrayBuffer(
-      payload$.RequestBody.file.content,
+      payload.RequestBody.file.content,
     );
     const blob = new Blob([buffer], { type: "application/octet-stream" });
-    body$.append("file", blob);
+    body.append("file", blob);
   } else {
-    body$.append(
+    body.append(
       "file",
-      new Blob([payload$.RequestBody.file.content], {
+      new Blob([payload.RequestBody.file.content], {
         type: "application/octet-stream",
       }),
-      payload$.RequestBody.file.fileName,
+      payload.RequestBody.file.fileName,
     );
   }
 
-  const pathParams$ = {
-    appId: encodeSimple$("appId", payload$.appId ?? client$.options$.appId, {
+  const pathParams = {
+    appId: encodeSimple("appId", payload.appId ?? client._options.appId, {
       explode: false,
       charEncoding: "percent",
     }),
-    buildId: encodeSimple$("buildId", payload$.buildId, {
+    buildId: encodeSimple("buildId", payload.buildId, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/builds/v1/{appId}/run/{buildId}")(pathParams$);
+  const path = pathToFunc("/builds/v1/{appId}/run/{buildId}")(pathParams);
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "text/plain",
   });
 
-  const hathoraDevToken$ = await extractSecurity(
-    client$.options$.hathoraDevToken,
-  );
-  const security$ = hathoraDevToken$ == null
-    ? {}
-    : { hathoraDevToken: hathoraDevToken$ };
+  const secConfig = await extractSecurity(client._options.hathoraDevToken);
+  const securityInput = secConfig == null ? {} : { hathoraDevToken: secConfig };
   const context = {
     operationID: "RunBuildDeprecated",
     oAuth2Scopes: [],
-    securitySource: client$.options$.hathoraDevToken,
+    securitySource: client._options.hathoraDevToken,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "POST",
-    path: path$,
-    headers: headers$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "401", "404", "429", "4XX", "500", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -141,11 +136,11 @@ export async function buildsV1RunBuildDeprecated(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     string,
     | errors.ApiError
     | SDKError
@@ -156,13 +151,13 @@ export async function buildsV1RunBuildDeprecated(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.text(200, z.string()),
-    m$.jsonErr([400, 401, 404, 429, 500], errors.ApiError$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.text(200, z.string()),
+    M.jsonErr([400, 401, 404, 429, 500], errors.ApiError$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

@@ -354,6 +354,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.buildsV2.createWithMultipartUploadsV2Deprecated({
+    buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
     buildTag: "0.1.14-14c793",
     buildSizeInBytes: 3146.66,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
@@ -382,6 +383,7 @@ const hathoraCloud = new HathoraCloudCore({
 
 async function run() {
   const res = await buildsV2CreateWithMultipartUploadsV2Deprecated(hathoraCloud, {
+    buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
     buildTag: "0.1.14-14c793",
     buildSizeInBytes: 3146.66,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");

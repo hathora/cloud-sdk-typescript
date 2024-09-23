@@ -29,6 +29,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.roomsV1.createRoomDeprecated({
+    clientIPs: [
+      "123.123.123.123",
+    ],
     roomConfig: "{\"name\":\"my-room\"}",
     region: "Chicago",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
@@ -57,6 +60,9 @@ const hathoraCloud = new HathoraCloudCore({
 
 async function run() {
   const res = await roomsV1CreateRoomDeprecated(hathoraCloud, {
+    clientIPs: [
+      "123.123.123.123",
+    ],
     roomConfig: "{\"name\":\"my-room\"}",
     region: "Chicago",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");

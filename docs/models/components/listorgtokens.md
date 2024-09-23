@@ -8,7 +8,7 @@ import { ListOrgTokens } from "@hathora/cloud-sdk-typescript/models/components";
 let value: ListOrgTokens = {
   tokens: [
     {
-      createdAt: new Date("2023-08-25T11:59:25.313Z"),
+      createdAt: new Date("2023-08-25T11:59:25.466Z"),
       createdBy: "noreply@hathora.dev",
       lastFourCharsOfKey: "<value>",
       status: "revoked",

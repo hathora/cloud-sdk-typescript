@@ -4,12 +4,9 @@
 
 import * as z from "zod";
 import { HathoraCloudCore } from "../core.js";
-import {
-  encodeFormQuery as encodeFormQuery$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -33,7 +30,7 @@ import { Result } from "../types/fp.js";
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function processesV2GetLatestProcessesV2Deprecated(
-  client$: HathoraCloudCore,
+  client: HathoraCloudCore,
   appId?: string | undefined,
   status?: Array<components.ProcessStatus> | undefined,
   region?: Array<components.Region> | undefined,
@@ -51,76 +48,72 @@ export async function processesV2GetLatestProcessesV2Deprecated(
     | ConnectionError
   >
 > {
-  const input$: operations.GetLatestProcessesV2DeprecatedRequest = {
+  const input: operations.GetLatestProcessesV2DeprecatedRequest = {
     appId: appId,
     status: status,
     region: region,
   };
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
+  const parsed = safeParse(
+    input,
+    (value) =>
       operations.GetLatestProcessesV2DeprecatedRequest$outboundSchema.parse(
-        value$,
+        value,
       ),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const pathParams$ = {
-    appId: encodeSimple$("appId", payload$.appId ?? client$.options$.appId, {
+  const pathParams = {
+    appId: encodeSimple("appId", payload.appId ?? client._options.appId, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/processes/v2/{appId}/list/latest")(pathParams$);
+  const path = pathToFunc("/processes/v2/{appId}/list/latest")(pathParams);
 
-  const query$ = encodeFormQuery$({
-    "region": payload$.region,
-    "status": payload$.status,
+  const query = encodeFormQuery({
+    "region": payload.region,
+    "status": payload.status,
   });
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
   });
 
-  const hathoraDevToken$ = await extractSecurity(
-    client$.options$.hathoraDevToken,
-  );
-  const security$ = hathoraDevToken$ == null
-    ? {}
-    : { hathoraDevToken: hathoraDevToken$ };
+  const secConfig = await extractSecurity(client._options.hathoraDevToken);
+  const securityInput = secConfig == null ? {} : { hathoraDevToken: secConfig };
   const context = {
     operationID: "GetLatestProcessesV2Deprecated",
     oAuth2Scopes: [],
-    securitySource: client$.options$.hathoraDevToken,
+    securitySource: client._options.hathoraDevToken,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["401", "404", "429", "4XX", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -128,11 +121,11 @@ export async function processesV2GetLatestProcessesV2Deprecated(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     Array<components.ProcessV2>,
     | errors.ApiError
     | SDKError
@@ -143,13 +136,13 @@ export async function processesV2GetLatestProcessesV2Deprecated(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, z.array(components.ProcessV2$inboundSchema)),
-    m$.jsonErr([401, 404, 429], errors.ApiError$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.json(200, z.array(components.ProcessV2$inboundSchema)),
+    M.jsonErr([401, 404, 429], errors.ApiError$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

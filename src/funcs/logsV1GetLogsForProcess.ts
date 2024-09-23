@@ -4,12 +4,9 @@
 
 import * as z from "zod";
 import { HathoraCloudCore } from "../core.js";
-import {
-  encodeFormQuery as encodeFormQuery$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -30,7 +27,7 @@ import { Result } from "../types/fp.js";
  * Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
  */
 export async function logsV1GetLogsForProcess(
-  client$: HathoraCloudCore,
+  client: HathoraCloudCore,
   processId: string,
   appId?: string | undefined,
   follow?: boolean | undefined,
@@ -49,79 +46,74 @@ export async function logsV1GetLogsForProcess(
     | ConnectionError
   >
 > {
-  const input$: operations.GetLogsForProcessRequest = {
+  const input: operations.GetLogsForProcessRequest = {
     appId: appId,
     processId: processId,
     follow: follow,
     tailLines: tailLines,
   };
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
-      operations.GetLogsForProcessRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) => operations.GetLogsForProcessRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const pathParams$ = {
-    appId: encodeSimple$("appId", payload$.appId ?? client$.options$.appId, {
+  const pathParams = {
+    appId: encodeSimple("appId", payload.appId ?? client._options.appId, {
       explode: false,
       charEncoding: "percent",
     }),
-    processId: encodeSimple$("processId", payload$.processId, {
+    processId: encodeSimple("processId", payload.processId, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/logs/v1/{appId}/process/{processId}")(pathParams$);
+  const path = pathToFunc("/logs/v1/{appId}/process/{processId}")(pathParams);
 
-  const query$ = encodeFormQuery$({
-    "follow": payload$.follow,
-    "tailLines": payload$.tailLines,
+  const query = encodeFormQuery({
+    "follow": payload.follow,
+    "tailLines": payload.tailLines,
   });
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/octet-stream",
   });
 
-  const hathoraDevToken$ = await extractSecurity(
-    client$.options$.hathoraDevToken,
-  );
-  const security$ = hathoraDevToken$ == null
-    ? {}
-    : { hathoraDevToken: hathoraDevToken$ };
+  const secConfig = await extractSecurity(client._options.hathoraDevToken);
+  const securityInput = secConfig == null ? {} : { hathoraDevToken: secConfig };
   const context = {
     operationID: "GetLogsForProcess",
     oAuth2Scopes: [],
-    securitySource: client$.options$.hathoraDevToken,
+    securitySource: client._options.hathoraDevToken,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "401", "404", "410", "429", "4XX", "500", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -129,11 +121,11 @@ export async function logsV1GetLogsForProcess(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     ReadableStream<Uint8Array>,
     | errors.ApiError
     | SDKError
@@ -144,13 +136,13 @@ export async function logsV1GetLogsForProcess(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.stream(200, z.instanceof(ReadableStream<Uint8Array>)),
-    m$.jsonErr([400, 401, 404, 410, 429, 500], errors.ApiError$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.stream(200, z.instanceof(ReadableStream<Uint8Array>)),
+    M.jsonErr([400, 401, 404, 410, 429, 500], errors.ApiError$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

@@ -8,6 +8,9 @@ import { CreateRoomRequest } from "@hathora/cloud-sdk-typescript/models/operatio
 let value: CreateRoomRequest = {
   roomId: "2swovpy1fnunu",
   createRoomParams: {
+    clientIPs: [
+      "123.123.123.123",
+    ],
     roomConfig: "{\"name\":\"my-room\"}",
     region: "Chicago",
   },
