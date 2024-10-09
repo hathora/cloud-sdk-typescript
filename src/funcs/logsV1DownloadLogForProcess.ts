@@ -45,8 +45,8 @@ export async function logsV1DownloadLogForProcess(
   >
 > {
   const input: operations.DownloadLogForProcessRequest = {
-    appId: appId,
     processId: processId,
+    appId: appId,
   };
 
   const parsed = safeParse(

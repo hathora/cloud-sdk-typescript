@@ -47,8 +47,8 @@ export async function buildsV2CreateBuildWithUploadUrlV2Deprecated(
   >
 > {
   const input: operations.CreateBuildWithUploadUrlV2DeprecatedRequest = {
-    appId: appId,
     createBuildParams: createBuildParams,
+    appId: appId,
   };
 
   const parsed = safeParse(

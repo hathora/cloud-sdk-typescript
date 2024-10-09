@@ -47,8 +47,8 @@ export async function processesV2CreateProcessV2Deprecated(
   >
 > {
   const input: operations.CreateProcessV2DeprecatedRequest = {
-    appId: appId,
     region: region,
+    appId: appId,
   };
 
   const parsed = safeParse(

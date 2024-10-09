@@ -30,8 +30,8 @@ import { Result } from "../types/fp.js";
  */
 export async function deploymentsV1CreateDeploymentV1Deprecated(
   client: HathoraCloudCore,
-  buildId: number,
   deploymentConfig: components.DeploymentConfig,
+  buildId: number,
   appId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -48,9 +48,9 @@ export async function deploymentsV1CreateDeploymentV1Deprecated(
   >
 > {
   const input: operations.CreateDeploymentV1DeprecatedRequest = {
-    appId: appId,
-    buildId: buildId,
     deploymentConfig: deploymentConfig,
+    buildId: buildId,
+    appId: appId,
   };
 
   const parsed = safeParse(

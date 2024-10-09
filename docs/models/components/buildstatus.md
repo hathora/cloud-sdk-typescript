@@ -5,7 +5,7 @@
 ```typescript
 import { BuildStatus } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: BuildStatus = "succeeded";
+let value: BuildStatus = "running";
 ```
 
 ## Values

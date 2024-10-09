@@ -21,7 +21,7 @@ let value: DeploymentConfigV3 = {
       name: "default",
     },
   ],
-  transportType: "udp",
+  transportType: "tls",
   containerPort: 4000,
   requestedMemoryMB: 1024,
   requestedCPU: 0.5,

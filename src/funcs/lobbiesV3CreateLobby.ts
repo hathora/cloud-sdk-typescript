@@ -48,10 +48,10 @@ export async function lobbiesV3CreateLobby(
   >
 > {
   const input: operations.CreateLobbyRequest = {
+    createLobbyV3Params: createLobbyV3Params,
     appId: appId,
     shortCode: shortCode,
     roomId: roomId,
-    createLobbyV3Params: createLobbyV3Params,
   };
 
   const parsed = safeParse(

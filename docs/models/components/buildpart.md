@@ -6,8 +6,8 @@
 import { BuildPart } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: BuildPart = {
-  putRequestUrl: "<value>",
-  partNumber: 9988.47,
+  putRequestUrl: "https://kosher-puppet.org",
+  partNumber: 9755.22,
 };
 ```
 

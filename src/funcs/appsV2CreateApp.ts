@@ -45,8 +45,8 @@ export async function appsV2CreateApp(
   >
 > {
   const input: operations.CreateAppRequest = {
-    orgId: orgId,
     appConfig: appConfig,
+    orgId: orgId,
   };
 
   const parsed = safeParse(

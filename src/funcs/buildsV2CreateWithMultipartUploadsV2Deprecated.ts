@@ -47,8 +47,8 @@ export async function buildsV2CreateWithMultipartUploadsV2Deprecated(
   >
 > {
   const input: operations.CreateWithMultipartUploadsV2DeprecatedRequest = {
-    appId: appId,
     createMultipartBuildParams: createMultipartBuildParams,
+    appId: appId,
   };
 
   const parsed = safeParse(

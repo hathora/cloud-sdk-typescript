@@ -22,6 +22,8 @@ export const Region = {
   Sydney: "Sydney",
   SaoPaulo: "Sao_Paulo",
   Dallas: "Dallas",
+  Johannesburg: "Johannesburg",
+  Dubai: "Dubai",
 } as const;
 export type Region = OpenEnum<typeof Region>;
 

@@ -44,10 +44,8 @@ export async function appsV1CreateAppV1Deprecated(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => components.AppConfig$outboundSchema.parse(value),
     "Input validation failed",
   );

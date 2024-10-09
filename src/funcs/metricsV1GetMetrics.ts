@@ -43,10 +43,8 @@ export async function metricsV1GetMetrics(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetMetricsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

@@ -25,8 +25,8 @@ import { Result } from "../types/fp.js";
 
 export async function organizationsV1InviteUser(
   client: HathoraCloudCore,
-  orgId: string,
   createUserInvite: components.CreateUserInvite,
+  orgId: string,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -42,8 +42,8 @@ export async function organizationsV1InviteUser(
   >
 > {
   const input: operations.InviteUserRequest = {
-    orgId: orgId,
     createUserInvite: createUserInvite,
+    orgId: orgId,
   };
 
   const parsed = safeParse(

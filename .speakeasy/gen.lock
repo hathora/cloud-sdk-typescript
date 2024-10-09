@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: c5bc301af128cf1271a3a61216f28d08
+  docChecksum: a93e675197cebac1a119ced9d9c6b356
   docVersion: 0.0.1
-  speakeasyVersion: 1.401.2
-  generationVersion: 2.421.3
-  releaseVersion: 2.9.2
-  configChecksum: 2d23625d5e05d732386cb7d95e084512
+  speakeasyVersion: 1.413.0
+  generationVersion: 2.436.3
+  releaseVersion: 2.10.0
+  configChecksum: 96763b2d4e37b10f189bba38934d9402
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,13 +14,13 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.17.6
+    core: 3.18.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.1
-    flattening: 2.81.1
+    flattening: 2.82.0
     globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
@@ -99,6 +99,10 @@ generatedFiles:
   - docs/models/components/deploymentv3env.md
   - docs/models/components/env.md
   - docs/models/components/exposedport.md
+  - docs/models/components/fleet.md
+  - docs/models/components/fleetregion.md
+  - docs/models/components/fleetregionconfig.md
+  - docs/models/components/fleetspage.md
   - docs/models/components/google.md
   - docs/models/components/googleidtokenobject.md
   - docs/models/components/invoice.md
@@ -258,6 +262,8 @@ generatedFiles:
   - docs/models/operations/getdeploymentsv1deprecatedrequest.md
   - docs/models/operations/getdeploymentsv2deprecatedglobals.md
   - docs/models/operations/getdeploymentsv2deprecatedrequest.md
+  - docs/models/operations/getfleetregionrequest.md
+  - docs/models/operations/getfleetsrequest.md
   - docs/models/operations/getinactiveroomsforprocessdeprecatedglobals.md
   - docs/models/operations/getinactiveroomsforprocessdeprecatedrequest.md
   - docs/models/operations/getinactiveroomsforprocessglobals.md
@@ -348,6 +354,7 @@ generatedFiles:
   - docs/models/operations/updateapprequest.md
   - docs/models/operations/updateappv1deprecatedglobals.md
   - docs/models/operations/updateappv1deprecatedrequest.md
+  - docs/models/operations/updatefleetregionrequest.md
   - docs/models/operations/updateroomconfigglobals.md
   - docs/models/operations/updateroomconfigrequest.md
   - docs/sdks/appsv1/README.md
@@ -362,6 +369,7 @@ generatedFiles:
   - docs/sdks/deploymentsv3/README.md
   - docs/sdks/discoveryv1/README.md
   - docs/sdks/discoveryv2/README.md
+  - docs/sdks/fleetsv1/README.md
   - docs/sdks/hathoracloud/README.md
   - docs/sdks/lobbiesv1/README.md
   - docs/sdks/lobbiesv2/README.md
@@ -429,6 +437,9 @@ generatedFiles:
   - src/funcs/deploymentsV3GetLatestDeployment.ts
   - src/funcs/discoveryV1GetPingServiceEndpointsDeprecated.ts
   - src/funcs/discoveryV2GetPingServiceEndpoints.ts
+  - src/funcs/fleetsV1GetFleetRegion.ts
+  - src/funcs/fleetsV1GetFleets.ts
+  - src/funcs/fleetsV1UpdateFleetRegion.ts
   - src/funcs/lobbiesV1CreatePrivateLobbyDeprecated.ts
   - src/funcs/lobbiesV1CreatePublicLobbyDeprecated.ts
   - src/funcs/lobbiesV1ListActivePublicLobbiesDeprecatedV1.ts
@@ -546,6 +557,10 @@ generatedFiles:
   - src/models/components/deploymentv2.ts
   - src/models/components/deploymentv3.ts
   - src/models/components/exposedport.ts
+  - src/models/components/fleet.ts
+  - src/models/components/fleetregion.ts
+  - src/models/components/fleetregionconfig.ts
+  - src/models/components/fleetspage.ts
   - src/models/components/googleidtokenobject.ts
   - src/models/components/index.ts
   - src/models/components/invoice.ts
@@ -648,6 +663,8 @@ generatedFiles:
   - src/models/operations/getdeployments.ts
   - src/models/operations/getdeploymentsv1deprecated.ts
   - src/models/operations/getdeploymentsv2deprecated.ts
+  - src/models/operations/getfleetregion.ts
+  - src/models/operations/getfleets.ts
   - src/models/operations/getinactiveroomsforprocess.ts
   - src/models/operations/getinactiveroomsforprocessdeprecated.ts
   - src/models/operations/getlatestdeployment.ts
@@ -696,6 +713,7 @@ generatedFiles:
   - src/models/operations/suspendroomv2deprecated.ts
   - src/models/operations/updateapp.ts
   - src/models/operations/updateappv1deprecated.ts
+  - src/models/operations/updatefleetregion.ts
   - src/models/operations/updateroomconfig.ts
   - src/sdk/appsv1.ts
   - src/sdk/appsv2.ts
@@ -709,6 +727,7 @@ generatedFiles:
   - src/sdk/deploymentsv3.ts
   - src/sdk/discoveryv1.ts
   - src/sdk/discoveryv2.ts
+  - src/sdk/fleetsv1.ts
   - src/sdk/index.ts
   - src/sdk/lobbiesv1.ts
   - src/sdk/lobbiesv2.ts
@@ -1878,6 +1897,42 @@ examples:
       parameters:
         path:
           appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2"
+      responses:
+        "401":
+          application/json: {"message": "<value>"}
+  GetFleets:
+    speakeasy-default-get-fleets:
+      parameters:
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      responses:
+        "200":
+          application/json: {"fleets": [{"orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}]}
+        "401":
+          application/json: {"message": "<value>"}
+  GetFleetRegion:
+    speakeasy-default-get-fleet-region:
+      parameters:
+        path:
+          fleetId: "<id>"
+          region: "Sao_Paulo"
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      responses:
+        "200":
+          application/json: {"cloudMinVcpusUpdatedAt": "2023-10-10T11:34:21.782Z", "cloudMinVcpus": 225958, "scaleIncrementVcpus": 996706}
+        "401":
+          application/json: {"message": "<value>"}
+  UpdateFleetRegion:
+    speakeasy-default-update-fleet-region:
+      parameters:
+        path:
+          fleetId: "<id>"
+          region: "Singapore"
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      requestBody:
+        application/json: {"cloudMinVcpus": 511402}
       responses:
         "401":
           application/json: {"message": "<value>"}

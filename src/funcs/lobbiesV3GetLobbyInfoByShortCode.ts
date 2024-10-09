@@ -44,8 +44,8 @@ export async function lobbiesV3GetLobbyInfoByShortCode(
   >
 > {
   const input: operations.GetLobbyInfoByShortCodeRequest = {
-    appId: appId,
     shortCode: shortCode,
+    appId: appId,
   };
 
   const parsed = safeParse(

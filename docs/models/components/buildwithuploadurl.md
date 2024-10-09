@@ -12,15 +12,15 @@ let value: BuildWithUploadUrl = {
   regionalContainerTags: [
     {
       containerTag: "<value>",
-      region: "Los_Angeles",
+      region: "Mumbai",
     },
   ],
-  imageSize: 298282,
-  status: "succeeded",
-  deletedAt: new Date("2023-10-10T14:19:01.603Z"),
-  finishedAt: new Date("2023-09-22T11:03:04.845Z"),
-  startedAt: new Date("2023-12-17T21:47:39.716Z"),
-  createdAt: new Date("2023-12-16T16:55:27.891Z"),
+  imageSize: 135474,
+  status: "running",
+  deletedAt: new Date("2023-09-17T16:21:25.240Z"),
+  finishedAt: new Date("2023-10-10T14:19:01.603Z"),
+  startedAt: new Date("2023-09-22T11:03:04.845Z"),
+  createdAt: new Date("2023-12-17T21:47:39.716Z"),
   createdBy: "noreply@hathora.dev",
   buildId: 1,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -30,7 +30,7 @@ let value: BuildWithUploadUrl = {
       key: "<key>",
     },
   ],
-  uploadUrl: "<value>",
+  uploadUrl: "https://intrepid-technician.info",
 };
 ```
 

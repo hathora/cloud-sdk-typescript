@@ -46,8 +46,8 @@ export async function roomsV1GetActiveRoomsForProcessDeprecated(
   >
 > {
   const input: operations.GetActiveRoomsForProcessDeprecatedRequest = {
-    appId: appId,
     processId: processId,
+    appId: appId,
   };
 
   const parsed = safeParse(

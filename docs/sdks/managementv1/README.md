@@ -24,9 +24,9 @@ async function run() {
   const result = await hathoraCloud.managementV1.sendVerificationEmail({
     userId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -58,7 +58,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -79,7 +79,7 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,429,500      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
+| errors.ApiError  | 401, 429, 500    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

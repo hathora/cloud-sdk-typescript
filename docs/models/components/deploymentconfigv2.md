@@ -16,12 +16,12 @@ let value: DeploymentConfigV2 = {
   roomsPerProcess: 3,
   additionalContainerPorts: [
     {
-      transportType: "tls",
+      transportType: "tcp",
       port: 8000,
       name: "default",
     },
   ],
-  transportType: "udp",
+  transportType: "tls",
   containerPort: 4000,
   requestedMemoryMB: 1024,
   requestedCPU: 0.5,

@@ -44,8 +44,8 @@ export async function roomsV1GetConnectionInfoDeprecated(
   >
 > {
   const input: operations.GetConnectionInfoDeprecatedRequest = {
-    appId: appId,
     roomId: roomId,
+    appId: appId,
   };
 
   const parsed = safeParse(

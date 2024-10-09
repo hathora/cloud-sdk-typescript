@@ -48,27 +48,27 @@ export class OrganizationsV1 extends ClientSDK {
   }
 
   async inviteUser(
-    orgId: string,
     createUserInvite: components.CreateUserInvite,
+    orgId: string,
     options?: RequestOptions,
   ): Promise<components.PendingOrgInvite> {
     return unwrapAsync(organizationsV1InviteUser(
       this,
-      orgId,
       createUserInvite,
+      orgId,
       options,
     ));
   }
 
   async rescindInvite(
-    orgId: string,
     rescindUserInvite: components.RescindUserInvite,
+    orgId: string,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(organizationsV1RescindInvite(
       this,
-      orgId,
       rescindUserInvite,
+      orgId,
       options,
     ));
   }

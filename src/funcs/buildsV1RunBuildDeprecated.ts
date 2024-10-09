@@ -33,8 +33,8 @@ import { isReadableStream } from "../types/streams.js";
  */
 export async function buildsV1RunBuildDeprecated(
   client: HathoraCloudCore,
-  buildId: number,
   requestBody: operations.RunBuildDeprecatedRequestBody,
+  buildId: number,
   appId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -51,9 +51,9 @@ export async function buildsV1RunBuildDeprecated(
   >
 > {
   const input: operations.RunBuildDeprecatedRequest = {
-    appId: appId,
-    buildId: buildId,
     requestBody: requestBody,
+    buildId: buildId,
+    appId: appId,
   };
 
   const parsed = safeParse(

@@ -7,7 +7,7 @@ Available metrics to query over time.
 ```typescript
 import { MetricName } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: MetricName = "rate_egress";
+let value: MetricName = "cpu";
 ```
 
 ## Values

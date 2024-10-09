@@ -47,8 +47,8 @@ export async function buildsV1CreateBuildDeprecated(
   >
 > {
   const input: operations.CreateBuildDeprecatedRequest = {
-    appId: appId,
     createBuildParams: createBuildParams,
+    appId: appId,
   };
 
   const parsed = safeParse(

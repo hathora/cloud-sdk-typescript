@@ -29,9 +29,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.buildsV1.getBuildsDeprecated("app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -62,7 +62,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -83,11 +83,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## ~~getBuildInfoDeprecated~~
 
@@ -107,9 +106,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.buildsV1.getBuildInfoDeprecated(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -140,7 +139,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -162,11 +161,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## ~~createBuildDeprecated~~
 
@@ -188,9 +186,9 @@ async function run() {
   const result = await hathoraCloud.buildsV1.createBuildDeprecated({
     buildTag: "0.1.14-14c793",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -223,7 +221,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -245,11 +243,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429,500  | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 401, 404, 429, 500 | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## ~~deleteBuildDeprecated~~
 
@@ -269,6 +266,8 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   await hathoraCloud.buildsV1.deleteBuildDeprecated(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+
 }
 
 run();
@@ -320,11 +319,10 @@ run();
 
 ### Errors
 
-| Error Object        | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.ApiError     | 401,404,422,429,500 | application/json    |
-| errors.SDKError     | 4xx-5xx             | */*                 |
-
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 401, 404, 422, 429, 500 | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## ~~runBuildDeprecated~~
 
@@ -344,12 +342,12 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.buildsV1.runBuildDeprecated(1, {
+  const result = await hathoraCloud.buildsV1.runBuildDeprecated({
     file: await openAsBlob("example.file"),
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+  }, 1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -372,9 +370,9 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await buildsV1RunBuildDeprecated(hathoraCloud, 1, {
+  const res = await buildsV1RunBuildDeprecated(hathoraCloud, {
     file: await openAsBlob("example.file"),
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  }, 1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   if (!res.ok) {
     throw res.error;
@@ -383,7 +381,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -406,7 +404,7 @@ run();
 
 ### Errors
 
-| Error Object        | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.ApiError     | 400,401,404,429,500 | application/json    |
-| errors.SDKError     | 4xx-5xx             | */*                 |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400, 401, 404, 429, 500 | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

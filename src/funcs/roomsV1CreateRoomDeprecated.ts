@@ -47,9 +47,9 @@ export async function roomsV1CreateRoomDeprecated(
   >
 > {
   const input: operations.CreateRoomDeprecatedRequest = {
+    createRoomParams: createRoomParams,
     appId: appId,
     roomId: roomId,
-    createRoomParams: createRoomParams,
   };
 
   const parsed = safeParse(

@@ -46,8 +46,8 @@ export async function roomsV2GetInactiveRoomsForProcess(
   >
 > {
   const input: operations.GetInactiveRoomsForProcessRequest = {
-    appId: appId,
     processId: processId,
+    appId: appId,
   };
 
   const parsed = safeParse(

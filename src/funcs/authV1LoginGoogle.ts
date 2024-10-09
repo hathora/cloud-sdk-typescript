@@ -44,8 +44,8 @@ export async function authV1LoginGoogle(
   >
 > {
   const input: operations.LoginGoogleRequest = {
-    appId: appId,
     googleIdTokenObject: googleIdTokenObject,
+    appId: appId,
   };
 
   const parsed = safeParse(

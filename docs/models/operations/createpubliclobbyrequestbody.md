@@ -7,7 +7,7 @@ import { CreatePublicLobbyRequestBody } from "@hathora/cloud-sdk-typescript/mode
 
 let value: CreatePublicLobbyRequestBody = {
   initialConfig: "<value>",
-  region: "London",
+  region: "Dubai",
 };
 ```
 

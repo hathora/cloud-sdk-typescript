@@ -8,7 +8,7 @@ Enable google auth for your application.
 import { Google } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: Google = {
-  clientId: "<value>",
+  clientId: "<id>",
 };
 ```
 

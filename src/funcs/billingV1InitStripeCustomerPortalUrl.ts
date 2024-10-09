@@ -40,10 +40,8 @@ export async function billingV1InitStripeCustomerPortalUrl(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => components.CustomerPortalUrl$outboundSchema.parse(value),
     "Input validation failed",
   );

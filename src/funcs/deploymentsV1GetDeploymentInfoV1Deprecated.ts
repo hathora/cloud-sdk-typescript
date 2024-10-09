@@ -47,8 +47,8 @@ export async function deploymentsV1GetDeploymentInfoV1Deprecated(
   >
 > {
   const input: operations.GetDeploymentInfoV1DeprecatedRequest = {
-    appId: appId,
     deploymentId: deploymentId,
+    appId: appId,
   };
 
   const parsed = safeParse(

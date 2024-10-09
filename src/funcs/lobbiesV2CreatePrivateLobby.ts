@@ -47,9 +47,9 @@ export async function lobbiesV2CreatePrivateLobby(
   >
 > {
   const input: operations.CreatePrivateLobbyRequest = {
+    requestBody: requestBody,
     appId: appId,
     roomId: roomId,
-    requestBody: requestBody,
   };
 
   const parsed = safeParse(

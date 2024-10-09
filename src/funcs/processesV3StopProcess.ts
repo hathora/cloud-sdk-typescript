@@ -45,8 +45,8 @@ export async function processesV3StopProcess(
   >
 > {
   const input: operations.StopProcessRequest = {
-    appId: appId,
     processId: processId,
+    appId: appId,
   };
 
   const parsed = safeParse(

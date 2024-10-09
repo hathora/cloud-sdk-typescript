@@ -47,8 +47,8 @@ export async function processesV1GetProcessInfoDeprecated(
   >
 > {
   const input: operations.GetProcessInfoDeprecatedRequest = {
-    appId: appId,
     processId: processId,
+    appId: appId,
   };
 
   const parsed = safeParse(

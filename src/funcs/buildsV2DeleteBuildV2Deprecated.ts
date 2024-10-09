@@ -47,8 +47,8 @@ export async function buildsV2DeleteBuildV2Deprecated(
   >
 > {
   const input: operations.DeleteBuildV2DeprecatedRequest = {
-    appId: appId,
     buildId: buildId,
+    appId: appId,
   };
 
   const parsed = safeParse(

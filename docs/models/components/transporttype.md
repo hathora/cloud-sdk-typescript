@@ -7,7 +7,7 @@ Transport type specifies the underlying communication protocol to the exposed po
 ```typescript
 import { TransportType } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: TransportType = "udp";
+let value: TransportType = "tls";
 ```
 
 ## Values

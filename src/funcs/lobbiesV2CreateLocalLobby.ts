@@ -47,9 +47,9 @@ export async function lobbiesV2CreateLocalLobby(
   >
 > {
   const input: operations.CreateLocalLobbyRequest = {
+    requestBody: requestBody,
     appId: appId,
     roomId: roomId,
-    requestBody: requestBody,
   };
 
   const parsed = safeParse(

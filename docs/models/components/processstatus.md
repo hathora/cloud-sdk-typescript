@@ -5,7 +5,7 @@
 ```typescript
 import { ProcessStatus } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: ProcessStatus = "stopping";
+let value: ProcessStatus = "failed";
 ```
 
 ## Values

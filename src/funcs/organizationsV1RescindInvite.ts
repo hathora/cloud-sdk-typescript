@@ -26,8 +26,8 @@ import { Result } from "../types/fp.js";
 
 export async function organizationsV1RescindInvite(
   client: HathoraCloudCore,
-  orgId: string,
   rescindUserInvite: components.RescindUserInvite,
+  orgId: string,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -43,8 +43,8 @@ export async function organizationsV1RescindInvite(
   >
 > {
   const input: operations.RescindInviteRequest = {
-    orgId: orgId,
     rescindUserInvite: rescindUserInvite,
+    orgId: orgId,
   };
 
   const parsed = safeParse(

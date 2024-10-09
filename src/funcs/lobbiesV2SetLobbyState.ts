@@ -30,8 +30,8 @@ import { Result } from "../types/fp.js";
  */
 export async function lobbiesV2SetLobbyState(
   client: HathoraCloudCore,
-  roomId: string,
   setLobbyStateParams: components.SetLobbyStateParams,
+  roomId: string,
   appId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -48,9 +48,9 @@ export async function lobbiesV2SetLobbyState(
   >
 > {
   const input: operations.SetLobbyStateRequest = {
-    appId: appId,
-    roomId: roomId,
     setLobbyStateParams: setLobbyStateParams,
+    roomId: roomId,
+    appId: appId,
   };
 
   const parsed = safeParse(

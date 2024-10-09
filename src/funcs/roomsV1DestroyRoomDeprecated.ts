@@ -45,8 +45,8 @@ export async function roomsV1DestroyRoomDeprecated(
   >
 > {
   const input: operations.DestroyRoomDeprecatedRequest = {
-    appId: appId,
     roomId: roomId,
+    appId: appId,
   };
 
   const parsed = safeParse(

@@ -11,7 +11,7 @@ let value: OrgToken = {
   lastFourCharsOfKey: "<value>",
   status: "revoked",
   name: "ci-token",
-  orgId: "<value>",
+  orgId: "<id>",
   orgTokenId: "org-token-af469a92-5b45-4565-b3c4-b79878de67d2",
 };
 ```
