@@ -45,8 +45,8 @@ export async function processesV3CreateProcess(
   >
 > {
   const input: operations.CreateProcessRequest = {
-    appId: appId,
     region: region,
+    appId: appId,
   };
 
   const parsed = safeParse(

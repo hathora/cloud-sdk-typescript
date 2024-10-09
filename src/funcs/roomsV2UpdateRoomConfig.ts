@@ -26,8 +26,8 @@ import { Result } from "../types/fp.js";
 
 export async function roomsV2UpdateRoomConfig(
   client: HathoraCloudCore,
-  roomId: string,
   updateRoomConfigParams: components.UpdateRoomConfigParams,
+  roomId: string,
   appId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -44,9 +44,9 @@ export async function roomsV2UpdateRoomConfig(
   >
 > {
   const input: operations.UpdateRoomConfigRequest = {
-    appId: appId,
-    roomId: roomId,
     updateRoomConfigParams: updateRoomConfigParams,
+    roomId: roomId,
+    appId: appId,
   };
 
   const parsed = safeParse(

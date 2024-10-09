@@ -45,8 +45,8 @@ export async function roomsV2GetRoomInfo(
   >
 > {
   const input: operations.GetRoomInfoRequest = {
-    appId: appId,
     roomId: roomId,
+    appId: appId,
   };
 
   const parsed = safeParse(

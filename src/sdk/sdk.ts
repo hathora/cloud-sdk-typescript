@@ -15,6 +15,7 @@ import { DeploymentsV2 } from "./deploymentsv2.js";
 import { DeploymentsV3 } from "./deploymentsv3.js";
 import { DiscoveryV1 } from "./discoveryv1.js";
 import { DiscoveryV2 } from "./discoveryv2.js";
+import { FleetsV1 } from "./fleetsv1.js";
 import { LobbiesV1 } from "./lobbiesv1.js";
 import { LobbiesV2 } from "./lobbiesv2.js";
 import { LobbiesV3 } from "./lobbiesv3.js";
@@ -93,6 +94,11 @@ export class HathoraCloud extends ClientSDK {
   private _lobbiesV3?: LobbiesV3;
   get lobbiesV3(): LobbiesV3 {
     return (this._lobbiesV3 ??= new LobbiesV3(this._options));
+  }
+
+  private _fleetsV1?: FleetsV1;
+  get fleetsV1(): FleetsV1 {
+    return (this._fleetsV1 ??= new FleetsV1(this._options));
   }
 
   private _discoveryV1?: DiscoveryV1;

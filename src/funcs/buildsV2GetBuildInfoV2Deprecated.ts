@@ -47,8 +47,8 @@ export async function buildsV2GetBuildInfoV2Deprecated(
   >
 > {
   const input: operations.GetBuildInfoV2DeprecatedRequest = {
-    appId: appId,
     buildId: buildId,
+    appId: appId,
   };
 
   const parsed = safeParse(

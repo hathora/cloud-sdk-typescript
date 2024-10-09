@@ -26,9 +26,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.authV1.loginAnonymous("app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -58,7 +58,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -79,11 +79,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404,429          | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 404, 429         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## loginNickname
 
@@ -102,9 +101,9 @@ async function run() {
   const result = await hathoraCloud.authV1.loginNickname({
     nickname: "squiddytwoshoes",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -136,7 +135,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -158,11 +157,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404,429          | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 404, 429         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## loginGoogle
 
@@ -181,9 +179,9 @@ async function run() {
   const result = await hathoraCloud.authV1.loginGoogle({
     idToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6ImZkNDhhNzUxMzhkOWQ0OGYwYWE2MzVlZjU2OWM0ZTE5NmY3YWU4ZDYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiODQ4NDEyODI2Nzg4LW00bXNyYjZxNDRkbTJ1ZTNrZ3Z1aTBmcTdrZGE1NWxzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiODQ4NDEyODI2Nzg4LW00bXNyYjZxNDRkbTJ1ZTNrZ3Z1aTBmcTdrZGE1NWxzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTE0NTQyMzMwNzI3MTU2MTMzNzc2IiwiZW1haWwiOiJocGFdkeivmeuzQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoidno1NGhhdTNxbnVR",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -215,7 +213,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -237,7 +235,7 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

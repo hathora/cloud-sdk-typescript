@@ -47,8 +47,8 @@ export async function appsV1UpdateAppV1Deprecated(
   >
 > {
   const input: operations.UpdateAppV1DeprecatedRequest = {
-    appId: appId,
     appConfig: appConfig,
+    appId: appId,
   };
 
   const parsed = safeParse(

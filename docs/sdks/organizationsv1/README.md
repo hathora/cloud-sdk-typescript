@@ -30,9 +30,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.organizationsV1.getOrgs();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -63,7 +63,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -83,11 +83,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getUserPendingInvites
 
@@ -103,9 +102,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.organizationsV1.getUserPendingInvites();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -136,7 +135,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -156,11 +155,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,429          | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 429         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getOrgMembers
 
@@ -176,9 +174,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.organizationsV1.getOrgMembers("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -209,7 +207,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -230,11 +228,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,429          | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 429         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## inviteUser
 
@@ -249,12 +246,12 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.organizationsV1.inviteUser("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
+  const result = await hathoraCloud.organizationsV1.inviteUser({
     userEmail: "noreply@hathora.dev",
-  });
-  
+  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -276,9 +273,9 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await organizationsV1InviteUser(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
+  const res = await organizationsV1InviteUser(hathoraCloud, {
     userEmail: "noreply@hathora.dev",
-  });
+  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   if (!res.ok) {
     throw res.error;
@@ -287,7 +284,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -309,11 +306,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,422,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 422, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## rescindInvite
 
@@ -328,9 +324,11 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  await hathoraCloud.organizationsV1.rescindInvite("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
+  await hathoraCloud.organizationsV1.rescindInvite({
     userEmail: "noreply@hathora.dev",
-  });
+  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+
+
 }
 
 run();
@@ -352,9 +350,9 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await organizationsV1RescindInvite(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
+  const res = await organizationsV1RescindInvite(hathoraCloud, {
     userEmail: "noreply@hathora.dev",
-  });
+  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   if (!res.ok) {
     throw res.error;
@@ -384,11 +382,10 @@ run();
 
 ### Errors
 
-| Error Object        | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.ApiError     | 401,404,422,429,500 | application/json    |
-| errors.SDKError     | 4xx-5xx             | */*                 |
-
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 401, 404, 422, 429, 500 | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## getOrgPendingInvites
 
@@ -404,9 +401,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.organizationsV1.getOrgPendingInvites("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -437,7 +434,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -458,11 +455,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,429          | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 429         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## acceptInvite
 
@@ -478,6 +474,8 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   await hathoraCloud.organizationsV1.acceptInvite("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+
+
 }
 
 run();
@@ -528,11 +526,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## rejectInvite
 
@@ -548,6 +545,8 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   await hathoraCloud.organizationsV1.rejectInvite("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+
+
 }
 
 run();
@@ -598,7 +597,7 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

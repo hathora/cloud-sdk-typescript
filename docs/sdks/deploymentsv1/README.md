@@ -28,9 +28,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.deploymentsV1.getDeploymentsV1Deprecated("app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -61,7 +61,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -82,11 +82,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## ~~getLatestDeploymentV1Deprecated~~
 
@@ -106,9 +105,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.deploymentsV1.getLatestDeploymentV1Deprecated("app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -139,7 +138,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -160,11 +159,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,422,429  | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 401, 404, 422, 429 | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## ~~getDeploymentInfoV1Deprecated~~
 
@@ -184,9 +182,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.deploymentsV1.getDeploymentInfoV1Deprecated(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -217,7 +215,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -239,11 +237,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## ~~createDeploymentV1Deprecated~~
 
@@ -262,7 +259,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.deploymentsV1.createDeploymentV1Deprecated(1, {
+  const result = await hathoraCloud.deploymentsV1.createDeploymentV1Deprecated({
     env: [
       {
         value: "TRUE",
@@ -280,10 +277,10 @@ async function run() {
     ],
     transportType: "tcp",
     containerPort: 4000,
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+  }, 1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -305,7 +302,7 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await deploymentsV1CreateDeploymentV1Deprecated(hathoraCloud, 1, {
+  const res = await deploymentsV1CreateDeploymentV1Deprecated(hathoraCloud, {
     env: [
       {
         value: "TRUE",
@@ -323,7 +320,7 @@ async function run() {
     ],
     transportType: "tcp",
     containerPort: 4000,
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  }, 1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   if (!res.ok) {
     throw res.error;
@@ -332,7 +329,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -355,7 +352,7 @@ run();
 
 ### Errors
 
-| Error Object            | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
-| errors.SDKError         | 4xx-5xx                 | */*                     |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ApiError              | 400, 401, 404, 422, 429, 500 | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

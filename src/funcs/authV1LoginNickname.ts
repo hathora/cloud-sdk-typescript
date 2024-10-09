@@ -44,8 +44,8 @@ export async function authV1LoginNickname(
   >
 > {
   const input: operations.LoginNicknameRequest = {
-    appId: appId,
     nicknameObject: nicknameObject,
+    appId: appId,
   };
 
   const parsed = safeParse(

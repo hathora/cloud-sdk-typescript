@@ -49,8 +49,8 @@ export async function logsV1GetLogsForDeployment(
   >
 > {
   const input: operations.GetLogsForDeploymentRequest = {
-    appId: appId,
     deploymentId: deploymentId,
+    appId: appId,
     follow: follow,
     tailLines: tailLines,
   };

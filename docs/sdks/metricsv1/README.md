@@ -27,9 +27,9 @@ async function run() {
   const result = await hathoraCloud.metricsV1.getMetrics({
     processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -62,7 +62,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -83,7 +83,7 @@ run();
 
 ### Errors
 
-| Error Object        | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.ApiError     | 401,404,422,429,500 | application/json    |
-| errors.SDKError     | 4xx-5xx             | */*                 |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 401, 404, 422, 429, 500 | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

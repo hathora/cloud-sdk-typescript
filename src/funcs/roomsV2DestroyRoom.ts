@@ -45,8 +45,8 @@ export async function roomsV2DestroyRoom(
   >
 > {
   const input: operations.DestroyRoomRequest = {
-    appId: appId,
     roomId: roomId,
+    appId: appId,
   };
 
   const parsed = safeParse(

@@ -38,10 +38,8 @@ export async function managementV1SendVerificationEmail(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => components.VerificationEmailRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

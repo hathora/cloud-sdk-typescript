@@ -28,9 +28,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.deploymentsV2.getDeploymentsV2Deprecated("app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -61,7 +61,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -82,11 +82,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## ~~getLatestDeploymentV2Deprecated~~
 
@@ -106,9 +105,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.deploymentsV2.getLatestDeploymentV2Deprecated("app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -139,7 +138,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -160,11 +159,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,422,429  | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 401, 404, 422, 429 | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## ~~getDeploymentInfoV2Deprecated~~
 
@@ -184,9 +182,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.deploymentsV2.getDeploymentInfoV2Deprecated(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -217,7 +215,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -239,11 +237,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## ~~createDeploymentV2Deprecated~~
 
@@ -262,7 +259,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.deploymentsV2.createDeploymentV2Deprecated(1, {
+  const result = await hathoraCloud.deploymentsV2.createDeploymentV2Deprecated({
     idleTimeoutEnabled: false,
     env: [
       {
@@ -282,10 +279,10 @@ async function run() {
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+  }, 1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -307,7 +304,7 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await deploymentsV2CreateDeploymentV2Deprecated(hathoraCloud, 1, {
+  const res = await deploymentsV2CreateDeploymentV2Deprecated(hathoraCloud, {
     idleTimeoutEnabled: false,
     env: [
       {
@@ -327,7 +324,7 @@ async function run() {
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  }, 1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   if (!res.ok) {
     throw res.error;
@@ -336,7 +333,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -359,7 +356,7 @@ run();
 
 ### Errors
 
-| Error Object            | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
-| errors.SDKError         | 4xx-5xx                 | */*                     |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ApiError              | 400, 401, 404, 422, 429, 500 | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

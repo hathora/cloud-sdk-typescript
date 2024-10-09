@@ -45,8 +45,8 @@ export async function roomsV1GetRoomInfoDeprecated(
   >
 > {
   const input: operations.GetRoomInfoDeprecatedRequest = {
-    appId: appId,
     roomId: roomId,
+    appId: appId,
   };
 
   const parsed = safeParse(

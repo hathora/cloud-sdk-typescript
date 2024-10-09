@@ -89,15 +89,15 @@ export class BuildsV1 extends ClientSDK {
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async runBuildDeprecated(
-    buildId: number,
     requestBody: operations.RunBuildDeprecatedRequestBody,
+    buildId: number,
     appId?: string | undefined,
     options?: RequestOptions,
   ): Promise<string> {
     return unwrapAsync(buildsV1RunBuildDeprecated(
       this,
-      buildId,
       requestBody,
+      buildId,
       appId,
       options,
     ));

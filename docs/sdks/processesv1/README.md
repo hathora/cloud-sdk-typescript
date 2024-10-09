@@ -29,9 +29,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.processesV1.getRunningProcesses("app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -62,7 +62,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -84,11 +84,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## ~~getStoppedProcesses~~
 
@@ -108,9 +107,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.processesV1.getStoppedProcesses("app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -141,7 +140,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -163,11 +162,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## ~~getProcessInfoDeprecated~~
 
@@ -187,9 +185,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.processesV1.getProcessInfoDeprecated("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -220,7 +218,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -242,7 +240,7 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429,500  | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 401, 404, 429, 500 | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |

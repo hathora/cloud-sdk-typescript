@@ -28,8 +28,8 @@ import { Result } from "../types/fp.js";
  */
 export async function tokensV1CreateOrgToken(
   client: HathoraCloudCore,
-  orgId: string,
   createOrgToken: components.CreateOrgToken,
+  orgId: string,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -45,8 +45,8 @@ export async function tokensV1CreateOrgToken(
   >
 > {
   const input: operations.CreateOrgTokenRequest = {
-    orgId: orgId,
     createOrgToken: createOrgToken,
+    orgId: orgId,
   };
 
   const parsed = safeParse(

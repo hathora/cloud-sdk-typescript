@@ -18,7 +18,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.9.2
+  version: 2.10.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -28,6 +28,7 @@ typescript:
   clientServerStatusCodesAsErrors: true
   enumFormat: union
   flattenGlobalSecurity: true
+  flatteningOrder: body-first
   imports:
     option: openapi
     paths:

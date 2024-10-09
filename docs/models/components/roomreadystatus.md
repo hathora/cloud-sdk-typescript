@@ -5,7 +5,7 @@
 ```typescript
 import { RoomReadyStatus } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: RoomReadyStatus = "active";
+let value: RoomReadyStatus = "starting";
 ```
 
 ## Values

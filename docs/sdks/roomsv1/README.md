@@ -35,9 +35,9 @@ async function run() {
     roomConfig: "{\"name\":\"my-room\"}",
     region: "Chicago",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -74,7 +74,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -97,11 +97,10 @@ run();
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ApiError             | 400,401,402,404,422,429,500 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ApiError                   | 400, 401, 402, 404, 422, 429, 500 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## ~~getRoomInfoDeprecated~~
 
@@ -119,9 +118,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.roomsV1.getRoomInfoDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -152,7 +151,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -174,11 +173,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,422,429  | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 401, 404, 422, 429 | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## ~~getActiveRoomsForProcessDeprecated~~
 
@@ -196,9 +194,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.roomsV1.getActiveRoomsForProcessDeprecated("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -229,7 +227,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -251,11 +249,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## ~~getInactiveRoomsForProcessDeprecated~~
 
@@ -273,9 +270,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.roomsV1.getInactiveRoomsForProcessDeprecated("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -306,7 +303,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -328,11 +325,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## ~~destroyRoomDeprecated~~
 
@@ -350,6 +346,8 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   await hathoraCloud.roomsV1.destroyRoomDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+
 }
 
 run();
@@ -401,11 +399,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429,500  | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 401, 404, 429, 500 | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## ~~suspendRoomDeprecated~~
 
@@ -423,6 +420,8 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   await hathoraCloud.roomsV1.suspendRoomDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+
 }
 
 run();
@@ -474,11 +473,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429,500  | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 401, 404, 429, 500 | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## ~~getConnectionInfoDeprecated~~
 
@@ -495,9 +493,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.roomsV1.getConnectionInfoDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -527,7 +525,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -549,7 +547,7 @@ run();
 
 ### Errors
 
-| Error Object        | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.ApiError     | 400,402,404,429,500 | application/json    |
-| errors.SDKError     | 4xx-5xx             | */*                 |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400, 402, 404, 429, 500 | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

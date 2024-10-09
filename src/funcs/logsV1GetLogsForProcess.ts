@@ -47,8 +47,8 @@ export async function logsV1GetLogsForProcess(
   >
 > {
   const input: operations.GetLogsForProcessRequest = {
-    appId: appId,
     processId: processId,
+    appId: appId,
     follow: follow,
     tailLines: tailLines,
   };

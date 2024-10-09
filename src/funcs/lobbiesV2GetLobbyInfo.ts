@@ -46,8 +46,8 @@ export async function lobbiesV2GetLobbyInfo(
   >
 > {
   const input: operations.GetLobbyInfoRequest = {
-    appId: appId,
     roomId: roomId,
+    appId: appId,
   };
 
   const parsed = safeParse(

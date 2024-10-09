@@ -31,9 +31,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.buildsV3.getBuilds("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -64,7 +64,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -85,11 +85,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 401, 404, 422, 429 | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## createBuild
 
@@ -111,9 +110,9 @@ async function run() {
     buildTag: "0.1.14-14c793",
     buildSizeInBytes: 5387.85,
   }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -148,7 +147,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -170,11 +169,10 @@ run();
 
 ### Errors
 
-| Error Object            | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.ApiError         | 400,401,404,422,429,500 | application/json        |
-| errors.SDKError         | 4xx-5xx                 | */*                     |
-
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ApiError              | 400, 401, 404, 422, 429, 500 | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## getBuild
 
@@ -192,9 +190,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.buildsV3.getBuild("bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -225,7 +223,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -247,11 +245,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## deleteBuild
 
@@ -271,9 +268,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.buildsV3.deleteBuild("bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -304,7 +301,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -326,11 +323,10 @@ run();
 
 ### Errors
 
-| Error Object        | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.ApiError     | 401,404,422,429,500 | application/json    |
-| errors.SDKError     | 4xx-5xx             | */*                 |
-
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 401, 404, 422, 429, 500 | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## runBuild
 
@@ -348,9 +344,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.buildsV3.runBuild("bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -381,7 +377,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -403,7 +399,7 @@ run();
 
 ### Errors
 
-| Error Object        | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.ApiError     | 400,401,404,429,500 | application/json    |
-| errors.SDKError     | 4xx-5xx             | */*                 |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400, 401, 404, 429, 500 | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

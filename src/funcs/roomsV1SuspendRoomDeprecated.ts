@@ -45,8 +45,8 @@ export async function roomsV1SuspendRoomDeprecated(
   >
 > {
   const input: operations.SuspendRoomDeprecatedRequest = {
-    appId: appId,
     roomId: roomId,
+    appId: appId,
   };
 
   const parsed = safeParse(

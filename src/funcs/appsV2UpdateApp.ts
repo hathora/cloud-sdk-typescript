@@ -45,8 +45,8 @@ export async function appsV2UpdateApp(
   >
 > {
   const input: operations.UpdateAppRequest = {
-    appId: appId,
     appConfig: appConfig,
+    appId: appId,
   };
 
   const parsed = safeParse(

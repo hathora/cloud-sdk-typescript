@@ -46,9 +46,9 @@ export async function roomsV2CreateRoom(
   >
 > {
   const input: operations.CreateRoomRequest = {
+    createRoomParams: createRoomParams,
     appId: appId,
     roomId: roomId,
-    createRoomParams: createRoomParams,
   };
 
   const parsed = safeParse(

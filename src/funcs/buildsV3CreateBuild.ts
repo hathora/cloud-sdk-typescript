@@ -45,8 +45,8 @@ export async function buildsV3CreateBuild(
   >
 > {
   const input: operations.CreateBuildRequest = {
-    orgId: orgId,
     createMultipartBuildParams: createMultipartBuildParams,
+    orgId: orgId,
   };
 
   const parsed = safeParse(

@@ -44,8 +44,8 @@ export async function roomsV2GetConnectionInfo(
   >
 > {
   const input: operations.GetConnectionInfoRequest = {
-    appId: appId,
     roomId: roomId,
+    appId: appId,
   };
 
   const parsed = safeParse(

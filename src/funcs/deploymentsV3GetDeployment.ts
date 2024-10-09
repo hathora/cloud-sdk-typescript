@@ -45,8 +45,8 @@ export async function deploymentsV3GetDeployment(
   >
 > {
   const input: operations.GetDeploymentRequest = {
-    appId: appId,
     deploymentId: deploymentId,
+    appId: appId,
   };
 
   const parsed = safeParse(

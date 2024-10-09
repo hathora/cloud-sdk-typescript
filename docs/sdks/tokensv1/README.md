@@ -27,9 +27,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.tokensV1.getOrgTokens("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -60,7 +60,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -81,11 +81,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## createOrgToken
 
@@ -102,12 +101,12 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.tokensV1.createOrgToken("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
+  const result = await hathoraCloud.tokensV1.createOrgToken({
     name: "ci-token",
-  });
-  
+  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -129,9 +128,9 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await tokensV1CreateOrgToken(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
+  const res = await tokensV1CreateOrgToken(hathoraCloud, {
     name: "ci-token",
-  });
+  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   if (!res.ok) {
     throw res.error;
@@ -140,7 +139,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -162,11 +161,10 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,422,429  | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
-
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 401, 404, 422, 429 | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## revokeOrgToken
 
@@ -184,9 +182,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.tokensV1.revokeOrgToken("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "org-token-af469a92-5b45-4565-b3c4-b79878de67d2");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -217,7 +215,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -239,7 +237,7 @@ run();
 
 ### Errors
 
-| Error Object     | Status Code      | Content Type     |
+| Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401,404,429      | application/json |
-| errors.SDKError  | 4xx-5xx          | */*              |
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

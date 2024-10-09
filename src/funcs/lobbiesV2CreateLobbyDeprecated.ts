@@ -49,9 +49,9 @@ export async function lobbiesV2CreateLobbyDeprecated(
   >
 > {
   const input: operations.CreateLobbyDeprecatedRequest = {
+    createLobbyParams: createLobbyParams,
     appId: appId,
     roomId: roomId,
-    createLobbyParams: createLobbyParams,
   };
 
   const parsed = safeParse(
