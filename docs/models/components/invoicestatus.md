@@ -5,7 +5,7 @@
 ```typescript
 import { InvoiceStatus } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: InvoiceStatus = "paid";
+let value: InvoiceStatus = "overdue";
 ```
 
 ## Values

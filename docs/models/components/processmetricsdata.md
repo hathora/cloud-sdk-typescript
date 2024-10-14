@@ -1,11 +1,11 @@
-# MetricsData
+# ProcessMetricsData
 
 ## Example Usage
 
 ```typescript
-import { MetricsData } from "@hathora/cloud-sdk-typescript/models/components";
+import { ProcessMetricsData } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: MetricsData = {};
+let value: ProcessMetricsData = {};
 ```
 
 ## Fields
