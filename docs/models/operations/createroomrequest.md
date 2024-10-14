@@ -12,7 +12,7 @@ let value: CreateRoomRequest = {
       "123.123.123.123",
     ],
     roomConfig: "{\"name\":\"my-room\"}",
-    region: "Mumbai",
+    region: "Johannesburg",
   },
 };
 ```

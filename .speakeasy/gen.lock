@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: a93e675197cebac1a119ced9d9c6b356
+  docChecksum: fa904454ed510a65df81ad72c427e3c0
   docVersion: 0.0.1
-  speakeasyVersion: 1.413.0
-  generationVersion: 2.436.3
-  releaseVersion: 2.10.0
-  configChecksum: 96763b2d4e37b10f189bba38934d9402
+  speakeasyVersion: 1.418.2
+  generationVersion: 2.438.3
+  releaseVersion: 2.10.1
+  configChecksum: ccacef80d0460a397395355923862fd2
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -97,9 +97,13 @@ generatedFiles:
   - docs/models/components/deploymentv2env.md
   - docs/models/components/deploymentv3.md
   - docs/models/components/deploymentv3env.md
+  - docs/models/components/deprecatedprocessmetricname.md
+  - docs/models/components/deprecatedprocessmetricsdata.md
   - docs/models/components/env.md
   - docs/models/components/exposedport.md
   - docs/models/components/fleet.md
+  - docs/models/components/fleetmetricname.md
+  - docs/models/components/fleetmetricsdata.md
   - docs/models/components/fleetregion.md
   - docs/models/components/fleetregionconfig.md
   - docs/models/components/fleetspage.md
@@ -115,8 +119,6 @@ generatedFiles:
   - docs/models/components/lobbyv3.md
   - docs/models/components/lobbyv3createdby.md
   - docs/models/components/lobbyvisibility.md
-  - docs/models/components/metricname.md
-  - docs/models/components/metricsdata.md
   - docs/models/components/metricvalue.md
   - docs/models/components/nicknameobject.md
   - docs/models/components/organization.md
@@ -133,6 +135,8 @@ generatedFiles:
   - docs/models/components/playertokenobject.md
   - docs/models/components/process.md
   - docs/models/components/processexposedport.md
+  - docs/models/components/processmetricname.md
+  - docs/models/components/processmetricsdata.md
   - docs/models/components/processstatus.md
   - docs/models/components/processv2.md
   - docs/models/components/processv2exposedport.md
@@ -262,6 +266,7 @@ generatedFiles:
   - docs/models/operations/getdeploymentsv1deprecatedrequest.md
   - docs/models/operations/getdeploymentsv2deprecatedglobals.md
   - docs/models/operations/getdeploymentsv2deprecatedrequest.md
+  - docs/models/operations/getfleetmetricsrequest.md
   - docs/models/operations/getfleetregionrequest.md
   - docs/models/operations/getfleetsrequest.md
   - docs/models/operations/getinactiveroomsforprocessdeprecatedglobals.md
@@ -290,8 +295,8 @@ generatedFiles:
   - docs/models/operations/getlogsfordeploymentrequest.md
   - docs/models/operations/getlogsforprocessglobals.md
   - docs/models/operations/getlogsforprocessrequest.md
-  - docs/models/operations/getmetricsglobals.md
-  - docs/models/operations/getmetricsrequest.md
+  - docs/models/operations/getmetricsdeprecatedglobals.md
+  - docs/models/operations/getmetricsdeprecatedrequest.md
   - docs/models/operations/getorgmembersrequest.md
   - docs/models/operations/getorgpendinginvitesrequest.md
   - docs/models/operations/getorgtokensrequest.md
@@ -306,6 +311,8 @@ generatedFiles:
   - docs/models/operations/getprocessinfodeprecatedrequest.md
   - docs/models/operations/getprocessinfov2deprecatedglobals.md
   - docs/models/operations/getprocessinfov2deprecatedrequest.md
+  - docs/models/operations/getprocessmetricsglobals.md
+  - docs/models/operations/getprocessmetricsrequest.md
   - docs/models/operations/getprocessrequest.md
   - docs/models/operations/getroominfodeprecatedglobals.md
   - docs/models/operations/getroominfodeprecatedrequest.md
@@ -437,6 +444,7 @@ generatedFiles:
   - src/funcs/deploymentsV3GetLatestDeployment.ts
   - src/funcs/discoveryV1GetPingServiceEndpointsDeprecated.ts
   - src/funcs/discoveryV2GetPingServiceEndpoints.ts
+  - src/funcs/fleetsV1GetFleetMetrics.ts
   - src/funcs/fleetsV1GetFleetRegion.ts
   - src/funcs/fleetsV1GetFleets.ts
   - src/funcs/fleetsV1UpdateFleetRegion.ts
@@ -459,7 +467,7 @@ generatedFiles:
   - src/funcs/logsV1GetLogsForDeployment.ts
   - src/funcs/logsV1GetLogsForProcess.ts
   - src/funcs/managementV1SendVerificationEmail.ts
-  - src/funcs/metricsV1GetMetrics.ts
+  - src/funcs/metricsV1GetMetricsDeprecated.ts
   - src/funcs/organizationsV1AcceptInvite.ts
   - src/funcs/organizationsV1GetOrgMembers.ts
   - src/funcs/organizationsV1GetOrgPendingInvites.ts
@@ -479,6 +487,7 @@ generatedFiles:
   - src/funcs/processesV3CreateProcess.ts
   - src/funcs/processesV3GetLatestProcesses.ts
   - src/funcs/processesV3GetProcess.ts
+  - src/funcs/processesV3GetProcessMetrics.ts
   - src/funcs/processesV3GetProcessesCountExperimental.ts
   - src/funcs/processesV3StopProcess.ts
   - src/funcs/roomsV1CreateRoomDeprecated.ts
@@ -556,8 +565,12 @@ generatedFiles:
   - src/models/components/deploymentv1.ts
   - src/models/components/deploymentv2.ts
   - src/models/components/deploymentv3.ts
+  - src/models/components/deprecatedprocessmetricname.ts
+  - src/models/components/deprecatedprocessmetricsdata.ts
   - src/models/components/exposedport.ts
   - src/models/components/fleet.ts
+  - src/models/components/fleetmetricname.ts
+  - src/models/components/fleetmetricsdata.ts
   - src/models/components/fleetregion.ts
   - src/models/components/fleetregionconfig.ts
   - src/models/components/fleetspage.ts
@@ -572,8 +585,6 @@ generatedFiles:
   - src/models/components/lobby.ts
   - src/models/components/lobbyv3.ts
   - src/models/components/lobbyvisibility.ts
-  - src/models/components/metricname.ts
-  - src/models/components/metricsdata.ts
   - src/models/components/metricvalue.ts
   - src/models/components/nicknameobject.ts
   - src/models/components/organization.ts
@@ -589,6 +600,8 @@ generatedFiles:
   - src/models/components/planname.ts
   - src/models/components/playertokenobject.ts
   - src/models/components/process.ts
+  - src/models/components/processmetricname.ts
+  - src/models/components/processmetricsdata.ts
   - src/models/components/processstatus.ts
   - src/models/components/processv2.ts
   - src/models/components/processv3.ts
@@ -663,6 +676,7 @@ generatedFiles:
   - src/models/operations/getdeployments.ts
   - src/models/operations/getdeploymentsv1deprecated.ts
   - src/models/operations/getdeploymentsv2deprecated.ts
+  - src/models/operations/getfleetmetrics.ts
   - src/models/operations/getfleetregion.ts
   - src/models/operations/getfleets.ts
   - src/models/operations/getinactiveroomsforprocess.ts
@@ -678,7 +692,7 @@ generatedFiles:
   - src/models/operations/getlogsforapp.ts
   - src/models/operations/getlogsfordeployment.ts
   - src/models/operations/getlogsforprocess.ts
-  - src/models/operations/getmetrics.ts
+  - src/models/operations/getmetricsdeprecated.ts
   - src/models/operations/getorgmembers.ts
   - src/models/operations/getorgpendinginvites.ts
   - src/models/operations/getorgtokens.ts
@@ -687,6 +701,7 @@ generatedFiles:
   - src/models/operations/getprocessescountexperimentalv2deprecated.ts
   - src/models/operations/getprocessinfodeprecated.ts
   - src/models/operations/getprocessinfov2deprecated.ts
+  - src/models/operations/getprocessmetrics.ts
   - src/models/operations/getroominfo.ts
   - src/models/operations/getroominfodeprecated.ts
   - src/models/operations/getrunningprocesses.ts
@@ -1935,4 +1950,35 @@ examples:
         application/json: {"cloudMinVcpus": 511402}
       responses:
         "401":
+          application/json: {"message": "<value>"}
+  GetProcessMetrics:
+    speakeasy-default-get-process-metrics:
+      parameters:
+        path:
+          appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2"
+          processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e"
+        query: {}
+      responses:
+        "401":
+          application/json: {"message": "<value>"}
+  GetMetricsDeprecated:
+    speakeasy-default-get-metrics-deprecated:
+      parameters:
+        path:
+          appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2"
+          processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e"
+        query: {}
+      responses:
+        "401":
+          application/json: {"message": "<value>"}
+  GetFleetMetrics:
+    speakeasy-default-get-fleet-metrics:
+      parameters:
+        path:
+          fleetId: "<id>"
+          region: "London"
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      responses:
+        "404":
           application/json: {"message": "<value>"}

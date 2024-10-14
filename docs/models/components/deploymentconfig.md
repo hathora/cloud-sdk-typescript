@@ -23,7 +23,7 @@ let value: DeploymentConfig = {
       name: "default",
     },
   ],
-  transportType: "udp",
+  transportType: "tls",
   containerPort: 4000,
 };
 ```

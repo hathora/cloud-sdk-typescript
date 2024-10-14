@@ -8,7 +8,7 @@ Ok
 import { GetUpcomingInvoiceTotalResponseBody } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: GetUpcomingInvoiceTotalResponseBody = {
-  value: 1898.48,
+  value: 978.44,
 };
 ```
 

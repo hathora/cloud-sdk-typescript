@@ -12,6 +12,7 @@ Operations to get data on active and stopped [processes](https://hathora.dev/doc
 * [createProcess](#createprocess) - Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
 * [getProcess](#getprocess) - Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
 * [stopProcess](#stopprocess) - Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+* [getProcessMetrics](#getprocessmetrics)
 
 ## getLatestProcesses
 
@@ -392,3 +393,80 @@ run();
 | ------------------ | ------------------ | ------------------ |
 | errors.ApiError    | 401, 404, 429, 500 | application/json   |
 | errors.SDKError    | 4XX, 5XX           | \*/\*              |
+
+## getProcessMetrics
+
+### Example Usage
+
+```typescript
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+const hathoraCloud = new HathoraCloud({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const result = await hathoraCloud.processesV3.getProcessMetrics({
+    processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { processesV3GetProcessMetrics } from "@hathora/cloud-sdk-typescript/funcs/processesV3GetProcessMetrics.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const res = await processesV3GetProcessMetrics(hathoraCloud, {
+    processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetProcessMetricsRequest](../../models/operations/getprocessmetricsrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.ProcessMetricsData](../../models/components/processmetricsdata.md)\>**
+
+### Errors
+
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 401, 404, 422, 429, 500 | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

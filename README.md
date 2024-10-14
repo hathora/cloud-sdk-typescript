@@ -186,9 +186,10 @@ Deleting a build that is actively build used by an app's deployment will cause f
 
 ### [fleetsV1](docs/sdks/fleetsv1/README.md)
 
-* [getFleets](docs/sdks/fleetsv1/README.md#getfleets)
-* [getFleetRegion](docs/sdks/fleetsv1/README.md#getfleetregion)
-* [updateFleetRegion](docs/sdks/fleetsv1/README.md#updatefleetregion)
+* [getFleets](docs/sdks/fleetsv1/README.md#getfleets) - Returns an array of [fleets](https://hathora.dev/docs/concepts/hathora-entities#fleet).
+* [getFleetRegion](docs/sdks/fleetsv1/README.md#getfleetregion) - Gets the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
+* [updateFleetRegion](docs/sdks/fleetsv1/README.md#updatefleetregion) - Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
+* [getFleetMetrics](docs/sdks/fleetsv1/README.md#getfleetmetrics) - Gets metrics for a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
 
 
 ### [~~lobbiesV1~~](docs/sdks/lobbiesv1/README.md)
@@ -225,9 +226,9 @@ Deleting a build that is actively build used by an app's deployment will cause f
 
 * [sendVerificationEmail](docs/sdks/managementv1/README.md#sendverificationemail)
 
-### [metricsV1](docs/sdks/metricsv1/README.md)
+### [~~metricsV1~~](docs/sdks/metricsv1/README.md)
 
-* [getMetrics](docs/sdks/metricsv1/README.md#getmetrics) - Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+* [~~getMetricsDeprecated~~](docs/sdks/metricsv1/README.md#getmetricsdeprecated) - Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`. :warning: **Deprecated**
 
 ### [organizationsV1](docs/sdks/organizationsv1/README.md)
 
@@ -261,6 +262,7 @@ Deleting a build that is actively build used by an app's deployment will cause f
 * [createProcess](docs/sdks/processesv3/README.md#createprocess) - Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
 * [getProcess](docs/sdks/processesv3/README.md#getprocess) - Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
 * [stopProcess](docs/sdks/processesv3/README.md#stopprocess) - Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+* [getProcessMetrics](docs/sdks/processesv3/README.md#getprocessmetrics)
 
 ### [~~roomsV1~~](docs/sdks/roomsv1/README.md)
 
@@ -596,9 +598,10 @@ Deleting a build that is actively build used by an app's deployment will cause f
 - [`deploymentsV3GetDeployments`](docs/sdks/deploymentsv3/README.md#getdeployments) - Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
 - [`deploymentsV3GetLatestDeployment`](docs/sdks/deploymentsv3/README.md#getlatestdeployment) - Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
 - [`discoveryV2GetPingServiceEndpoints`](docs/sdks/discoveryv2/README.md#getpingserviceendpoints) - Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
-- [`fleetsV1GetFleetRegion`](docs/sdks/fleetsv1/README.md#getfleetregion)
-- [`fleetsV1GetFleets`](docs/sdks/fleetsv1/README.md#getfleets)
-- [`fleetsV1UpdateFleetRegion`](docs/sdks/fleetsv1/README.md#updatefleetregion)
+- [`fleetsV1GetFleetMetrics`](docs/sdks/fleetsv1/README.md#getfleetmetrics) - Gets metrics for a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
+- [`fleetsV1GetFleetRegion`](docs/sdks/fleetsv1/README.md#getfleetregion) - Gets the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
+- [`fleetsV1GetFleets`](docs/sdks/fleetsv1/README.md#getfleets) - Returns an array of [fleets](https://hathora.dev/docs/concepts/hathora-entities#fleet).
+- [`fleetsV1UpdateFleetRegion`](docs/sdks/fleetsv1/README.md#updatefleetregion) - Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
 - [`lobbiesV3CreateLobby`](docs/sdks/lobbiesv3/README.md#createlobby) - Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
 - [`lobbiesV3GetLobbyInfoByRoomId`](docs/sdks/lobbiesv3/README.md#getlobbyinfobyroomid) - Get details for a lobby.
 - [`lobbiesV3GetLobbyInfoByShortCode`](docs/sdks/lobbiesv3/README.md#getlobbyinfobyshortcode) - Get details for a lobby. If 2 or more lobbies have the same `shortCode`, then the most recently created lobby will be returned.
@@ -606,7 +609,6 @@ Deleting a build that is actively build used by an app's deployment will cause f
 - [`logsV1DownloadLogForProcess`](docs/sdks/logsv1/README.md#downloadlogforprocess) - Download entire log file for a stopped process.
 - [`logsV1GetLogsForProcess`](docs/sdks/logsv1/README.md#getlogsforprocess) - Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
 - [`managementV1SendVerificationEmail`](docs/sdks/managementv1/README.md#sendverificationemail)
-- [`metricsV1GetMetrics`](docs/sdks/metricsv1/README.md#getmetrics) - Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
 - [`organizationsV1AcceptInvite`](docs/sdks/organizationsv1/README.md#acceptinvite)
 - [`organizationsV1GetOrgMembers`](docs/sdks/organizationsv1/README.md#getorgmembers)
 - [`organizationsV1GetOrgPendingInvites`](docs/sdks/organizationsv1/README.md#getorgpendinginvites)
@@ -619,6 +621,7 @@ Deleting a build that is actively build used by an app's deployment will cause f
 - [`processesV3GetLatestProcesses`](docs/sdks/processesv3/README.md#getlatestprocesses) - Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `status` or `region`.
 - [`processesV3GetProcess`](docs/sdks/processesv3/README.md#getprocess) - Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
 - [`processesV3GetProcessesCountExperimental`](docs/sdks/processesv3/README.md#getprocessescountexperimental) - Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `status` or `region`.
+- [`processesV3GetProcessMetrics`](docs/sdks/processesv3/README.md#getprocessmetrics)
 - [`processesV3StopProcess`](docs/sdks/processesv3/README.md#stopprocess) - Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
 - [`roomsV2CreateRoom`](docs/sdks/roomsv2/README.md#createroom) - Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
 - [`roomsV2DestroyRoom`](docs/sdks/roomsv2/README.md#destroyroom) - Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
@@ -668,6 +671,7 @@ Deleting a build that is actively build used by an app's deployment will cause f
 - ~~[`lobbiesV2SetLobbyState`](docs/sdks/lobbiesv2/README.md#setlobbystate)~~ - Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores). :warning: **Deprecated**
 - ~~[`logsV1GetLogsForApp`](docs/sdks/logsv1/README.md#getlogsforapp)~~ - Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. :warning: **Deprecated**
 - ~~[`logsV1GetLogsForDeployment`](docs/sdks/logsv1/README.md#getlogsfordeployment)~~ - Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`. :warning: **Deprecated**
+- ~~[`metricsV1GetMetricsDeprecated`](docs/sdks/metricsv1/README.md#getmetricsdeprecated)~~ - Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`. :warning: **Deprecated**
 - ~~[`processesV1GetProcessInfoDeprecated`](docs/sdks/processesv1/README.md#getprocessinfodeprecated)~~ - Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process). :warning: **Deprecated**
 - ~~[`processesV1GetRunningProcesses`](docs/sdks/processesv1/README.md#getrunningprocesses)~~ - Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`. :warning: **Deprecated**
 - ~~[`processesV1GetStoppedProcesses`](docs/sdks/processesv1/README.md#getstoppedprocesses)~~ - Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`. :warning: **Deprecated**

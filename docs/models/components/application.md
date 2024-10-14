@@ -9,8 +9,8 @@ import { Application } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: Application = {
   deletedBy: "noreply@hathora.dev",
-  deletedAt: new Date("2022-11-01T06:44:43.765Z"),
-  createdAt: new Date("2023-10-06T02:46:31.617Z"),
+  deletedAt: new Date("2024-08-04T18:51:28.290Z"),
+  createdAt: new Date("2022-05-09T19:33:28.581Z"),
   createdBy: "noreply@hathora.dev",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   authConfiguration: {},

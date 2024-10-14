@@ -6,6 +6,7 @@ import { processesV3CreateProcess } from "../funcs/processesV3CreateProcess.js";
 import { processesV3GetLatestProcesses } from "../funcs/processesV3GetLatestProcesses.js";
 import { processesV3GetProcess } from "../funcs/processesV3GetProcess.js";
 import { processesV3GetProcessesCountExperimental } from "../funcs/processesV3GetProcessesCountExperimental.js";
+import { processesV3GetProcessMetrics } from "../funcs/processesV3GetProcessMetrics.js";
 import { processesV3StopProcess } from "../funcs/processesV3StopProcess.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -93,6 +94,17 @@ export class ProcessesV3 extends ClientSDK {
       this,
       processId,
       appId,
+      options,
+    ));
+  }
+
+  async getProcessMetrics(
+    request: operations.GetProcessMetricsRequest,
+    options?: RequestOptions,
+  ): Promise<components.ProcessMetricsData> {
+    return unwrapAsync(processesV3GetProcessMetrics(
+      this,
+      request,
       options,
     ));
   }
