@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.1
   speakeasyVersion: 1.418.4
   generationVersion: 2.438.3
-  releaseVersion: 2.10.3
-  configChecksum: f8f9a1e9a3644b1a72cd90f991136c93
+  releaseVersion: 2.10.4
+  configChecksum: 543cc5e5c788bab96a0a8632ab816738
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
