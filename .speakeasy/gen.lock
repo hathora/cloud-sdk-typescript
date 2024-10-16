@@ -3,10 +3,10 @@ id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
   docChecksum: fa904454ed510a65df81ad72c427e3c0
   docVersion: 0.0.1
-  speakeasyVersion: 1.418.2
+  speakeasyVersion: 1.418.4
   generationVersion: 2.438.3
-  releaseVersion: 2.10.1
-  configChecksum: ccacef80d0460a397395355923862fd2
+  releaseVersion: 2.10.2
+  configChecksum: b8551f3b07c36326a01eb9a1519d2f8c
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -1961,6 +1961,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>"}
+        "200": {}
   GetMetricsDeprecated:
     speakeasy-default-get-metrics-deprecated:
       parameters:
@@ -1971,6 +1972,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>"}
+        "200": {}
   GetFleetMetrics:
     speakeasy-default-get-fleet-metrics:
       parameters:
@@ -1982,3 +1984,4 @@ examples:
       responses:
         "404":
           application/json: {"message": "<value>"}
+        "200": {}
