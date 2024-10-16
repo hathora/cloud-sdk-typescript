@@ -2,7 +2,7 @@ speakeasyVersion: 1.418.4
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:34a86c118debb560c05d0102488a95ffd9e87bbf2eeaa09d5ca3734927653c03
+        sourceRevisionDigest: sha256:fe04534fb099a8e5a270be55a1f7554cb6976e19619a13607b818b52a1c944c6
         sourceBlobDigest: sha256:6cfbc7a083687d34b73b414094de5fdfbbc82c68369795dc78804246b7eeff08
         tags:
             - latest
@@ -11,10 +11,10 @@ targets:
     hathora-typescript:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:34a86c118debb560c05d0102488a95ffd9e87bbf2eeaa09d5ca3734927653c03
+        sourceRevisionDigest: sha256:fe04534fb099a8e5a270be55a1f7554cb6976e19619a13607b818b52a1c944c6
         sourceBlobDigest: sha256:6cfbc7a083687d34b73b414094de5fdfbbc82c68369795dc78804246b7eeff08
         codeSamplesNamespace: code-samples-typescript-hathora-typescript
-        codeSamplesRevisionDigest: sha256:d92d30a220fc6ee84b26ef38c7bff5813867bdb4d944727038348b3afecbd08f
+        codeSamplesRevisionDigest: sha256:10fdb0cf37b7804d9c1361934aaab54b0db0c82c602c9538317cf53e7de8fd29
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
