@@ -10,11 +10,11 @@ import { Lobby } from "@hathora/cloud-sdk-typescript/models/components";
 let value: Lobby = {
   shortCode: "LFG4",
   initialConfig: "<value>",
-  createdAt: new Date("2024-10-15T12:12:25.852Z"),
+  createdAt: new Date("2023-09-24T05:41:47.829Z"),
   createdBy: "google-oauth2|107030234048588177467",
   local: false,
   visibility: "private",
-  region: "London",
+  region: "Dubai",
   roomId: "2swovpy1fnunu",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 };

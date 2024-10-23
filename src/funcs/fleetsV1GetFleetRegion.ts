@@ -23,9 +23,6 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
-/**
- * Gets the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
- */
 export async function fleetsV1GetFleetRegion(
   client: HathoraCloudCore,
   fleetId: string,

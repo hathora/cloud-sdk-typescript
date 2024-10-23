@@ -1,11 +1,11 @@
-# GetMetricsDeprecatedGlobals
+# GetMetricsGlobals
 
 ## Example Usage
 
 ```typescript
-import { GetMetricsDeprecatedGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
+import { GetMetricsGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
 
-let value: GetMetricsDeprecatedGlobals = {};
+let value: GetMetricsGlobals = {};
 ```
 
 ## Fields

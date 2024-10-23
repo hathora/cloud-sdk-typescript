@@ -6,7 +6,7 @@
 import { CreateProcessV2DeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: CreateProcessV2DeprecatedRequest = {
-  region: "Dubai",
+  region: "Johannesburg",
 };
 ```
 

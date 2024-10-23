@@ -24,15 +24,15 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Gets metrics for a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
+ * Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
  */
-export async function fleetsV1GetFleetMetrics(
+export async function metricsV1GetMetrics(
   client: HathoraCloudCore,
-  request: operations.GetFleetMetricsRequest,
+  request: operations.GetMetricsRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.FleetMetricsData,
+    components.MetricsData,
     | errors.ApiError
     | SDKError
     | SDKValidationError
@@ -45,7 +45,7 @@ export async function fleetsV1GetFleetMetrics(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.GetFleetMetricsRequest$outboundSchema.parse(value),
+    (value) => operations.GetMetricsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -55,24 +55,23 @@ export async function fleetsV1GetFleetMetrics(
   const body = null;
 
   const pathParams = {
-    fleetId: encodeSimple("fleetId", payload.fleetId, {
+    appId: encodeSimple("appId", payload.appId ?? client._options.appId, {
       explode: false,
       charEncoding: "percent",
     }),
-    region: encodeSimple("region", payload.region, {
+    processId: encodeSimple("processId", payload.processId, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path = pathToFunc(
-    "/fleets/v1/fleets/{fleetId}/regions/{region}/metrics",
-  )(pathParams);
+  const path = pathToFunc("/metrics/v1/{appId}/process/{processId}")(
+    pathParams,
+  );
 
   const query = encodeFormQuery({
     "end": payload.end,
     "metrics": payload.metrics,
-    "orgId": payload.orgId,
     "start": payload.start,
     "step": payload.step,
   });
@@ -84,7 +83,7 @@ export async function fleetsV1GetFleetMetrics(
   const secConfig = await extractSecurity(client._options.hathoraDevToken);
   const securityInput = secConfig == null ? {} : { hathoraDevToken: secConfig };
   const context = {
-    operationID: "GetFleetMetrics",
+    operationID: "GetMetrics",
     oAuth2Scopes: [],
     securitySource: client._options.hathoraDevToken,
   };
@@ -106,7 +105,7 @@ export async function fleetsV1GetFleetMetrics(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["404", "422", "429", "4XX", "500", "5XX"],
+    errorCodes: ["401", "404", "422", "429", "4XX", "500", "5XX"],
     retryConfig: options?.retries
       || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
@@ -121,7 +120,7 @@ export async function fleetsV1GetFleetMetrics(
   };
 
   const [result] = await M.match<
-    components.FleetMetricsData,
+    components.MetricsData,
     | errors.ApiError
     | SDKError
     | SDKValidationError
@@ -131,8 +130,8 @@ export async function fleetsV1GetFleetMetrics(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.FleetMetricsData$inboundSchema),
-    M.jsonErr([404, 422, 429, 500], errors.ApiError$inboundSchema),
+    M.json(200, components.MetricsData$inboundSchema),
+    M.jsonErr([401, 404, 422, 429, 500], errors.ApiError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {

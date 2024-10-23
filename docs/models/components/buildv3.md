@@ -9,12 +9,12 @@ import { BuildV3 } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: BuildV3 = {
   buildTag: "0.1.14-14c793",
-  imageSize: 793698,
+  imageSize: 199996,
   status: "created",
-  deletedAt: new Date("2023-01-14T12:07:50.192Z"),
-  finishedAt: new Date("2024-10-14T04:15:01.236Z"),
-  startedAt: new Date("2024-02-12T00:54:59.142Z"),
-  createdAt: new Date("2022-02-04T21:29:28.328Z"),
+  deletedAt: new Date("2024-05-19T21:25:27.801Z"),
+  finishedAt: new Date("2022-09-03T10:06:53.981Z"),
+  startedAt: new Date("2023-01-14T12:07:50.192Z"),
+  createdAt: new Date("2024-10-14T04:15:01.236Z"),
   createdBy: "noreply@hathora.dev",
   buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",

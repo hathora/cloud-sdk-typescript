@@ -10,6 +10,10 @@ import {
 } from "./region.js";
 
 export type CreateRoomParams = {
+  /**
+   * System generated id for a deployment.
+   */
+  deploymentId?: string | undefined;
   clientIPs?: Array<string> | undefined;
   /**
    * Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).
@@ -24,6 +28,7 @@ export const CreateRoomParams$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  deploymentId: z.string().optional(),
   clientIPs: z.array(z.string()).optional(),
   roomConfig: z.string().optional(),
   region: Region$inboundSchema,
@@ -31,6 +36,7 @@ export const CreateRoomParams$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreateRoomParams$Outbound = {
+  deploymentId?: string | undefined;
   clientIPs?: Array<string> | undefined;
   roomConfig?: string | undefined;
   region: string;
@@ -42,6 +48,7 @@ export const CreateRoomParams$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateRoomParams
 > = z.object({
+  deploymentId: z.string().optional(),
   clientIPs: z.array(z.string()).optional(),
   roomConfig: z.string().optional(),
   region: Region$outboundSchema,

@@ -1,11 +1,13 @@
-# DeprecatedProcessMetricName
+# MetricName
+
+Available metrics to query over time.
 
 ## Example Usage
 
 ```typescript
-import { DeprecatedProcessMetricName } from "@hathora/cloud-sdk-typescript/models/components";
+import { MetricName } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: DeprecatedProcessMetricName = "rate_egress";
+let value: MetricName = "cpu";
 ```
 
 ## Values

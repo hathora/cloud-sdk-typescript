@@ -8,7 +8,7 @@ A container port object represents the transport configruations for how your ser
 import { ContainerPort } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: ContainerPort = {
-  transportType: "udp",
+  transportType: "tcp",
   port: 8000,
   name: "default",
 };
