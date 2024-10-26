@@ -9,7 +9,7 @@ let value: CreatePublicLobbyRequest = {
   roomId: "2swovpy1fnunu",
   requestBody: {
     initialConfig: "<value>",
-    region: "Dallas",
+    region: "Johannesburg",
   },
 };
 ```

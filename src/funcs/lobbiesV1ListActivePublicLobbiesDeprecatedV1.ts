@@ -103,7 +103,7 @@ export async function lobbiesV1ListActivePublicLobbiesDeprecatedV1(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["404", "429", "4XX", "5XX"],
+    errorCodes: ["404", "422", "429", "4XX", "5XX"],
     retryConfig: options?.retries
       || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
@@ -129,7 +129,7 @@ export async function lobbiesV1ListActivePublicLobbiesDeprecatedV1(
     | ConnectionError
   >(
     M.json(200, z.array(components.Lobby$inboundSchema)),
-    M.jsonErr([404, 429], errors.ApiError$inboundSchema),
+    M.jsonErr([404, 422, 429], errors.ApiError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {

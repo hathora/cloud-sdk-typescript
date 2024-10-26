@@ -23,6 +23,9 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
+/**
+ * Returns an array of [fleets](https://hathora.dev/docs/concepts/hathora-entities#fleet).
+ */
 export async function fleetsV1GetFleets(
   client: HathoraCloudCore,
   orgId?: string | undefined,

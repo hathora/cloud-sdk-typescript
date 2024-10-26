@@ -104,7 +104,7 @@ export async function roomsV2UpdateRoomConfig(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["401", "404", "429", "4XX", "500", "5XX"],
+    errorCodes: ["401", "404", "422", "429", "4XX", "500", "5XX"],
     retryConfig: options?.retries
       || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
@@ -130,7 +130,7 @@ export async function roomsV2UpdateRoomConfig(
     | ConnectionError
   >(
     M.nil(204, z.void()),
-    M.jsonErr([401, 404, 429, 500], errors.ApiError$inboundSchema),
+    M.jsonErr([401, 404, 422, 429, 500], errors.ApiError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {

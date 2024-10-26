@@ -95,7 +95,7 @@ export async function authV1LoginGoogle(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["401", "404", "429", "4XX", "5XX"],
+    errorCodes: ["401", "404", "422", "429", "4XX", "5XX"],
     retryConfig: options?.retries
       || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
@@ -121,7 +121,7 @@ export async function authV1LoginGoogle(
     | ConnectionError
   >(
     M.json(200, components.PlayerTokenObject$inboundSchema),
-    M.jsonErr([401, 404, 429], errors.ApiError$inboundSchema),
+    M.jsonErr([401, 404, 422, 429], errors.ApiError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {

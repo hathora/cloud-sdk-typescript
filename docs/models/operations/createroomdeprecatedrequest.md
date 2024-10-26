@@ -13,7 +13,7 @@ let value: CreateRoomDeprecatedRequest = {
       "123.123.123.123",
     ],
     roomConfig: "{\"name\":\"my-room\"}",
-    region: "Seattle",
+    region: "Dubai",
   },
 };
 ```

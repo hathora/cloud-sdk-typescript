@@ -7,7 +7,7 @@
 ```typescript
 import { DeploymentV1TransportType } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: DeploymentV1TransportType = "tls";
+let value: DeploymentV1TransportType = "udp";
 ```
 
 ## Values
