@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 21a416a1b30cc2a28c7e1d4dfa79202b
+  docChecksum: f979120c4d53a579602f5709907e5abe
   docVersion: 0.0.1
-  speakeasyVersion: 1.422.1
-  generationVersion: 2.438.15
-  releaseVersion: 2.10.7
-  configChecksum: 252a21b076ce9cbf91dffcac099402aa
+  speakeasyVersion: 1.423.2
+  generationVersion: 2.442.11
+  releaseVersion: 2.10.8
+  configChecksum: 314d84c6ef245de518a91c53b2f4fce5
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -1515,6 +1515,8 @@ examples:
       parameters:
         path:
           appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2"
+        query:
+          deploymentTag: "alpha"
       responses:
         "200":
           application/json: {"deployments": []}
@@ -1526,7 +1528,7 @@ examples:
         path:
           appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2"
       requestBody:
-        application/json: {"idleTimeoutEnabled": true, "env": [], "roomsPerProcess": 3, "additionalContainerPorts": [], "transportType": "tcp", "containerPort": 4000, "requestedMemoryMB": 1024, "requestedCPU": 0.5, "buildId": "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5"}
+        application/json: {"deploymentTag": "alpha", "idleTimeoutEnabled": true, "env": [], "roomsPerProcess": 3, "additionalContainerPorts": [], "transportType": "tcp", "containerPort": 4000, "requestedMemoryMB": 1024, "requestedCPU": 0.5, "buildId": "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5"}
       responses:
         "201":
           application/json: {"idleTimeoutEnabled": false, "env": [], "roomsPerProcess": 3, "additionalContainerPorts": [{"transportType": "tcp", "port": 8000, "name": "default"}], "defaultContainerPort": {"transportType": "tcp", "port": 8000, "name": "default"}, "createdAt": "2022-09-07T00:32:02.113Z", "createdBy": "noreply@hathora.dev", "requestedMemoryMB": 1024, "requestedCPU": 0.5, "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "buildTag": "0.1.14-14c793", "buildId": "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}

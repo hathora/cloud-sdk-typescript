@@ -22,6 +22,10 @@ export type DeploymentConfigV3Env = {
 
 export type DeploymentConfigV3 = {
   /**
+   * Arbitrary metadata associated with a deployment.
+   */
+  deploymentTag?: string | undefined;
+  /**
    * Option to shut down processes that have had no new connections or rooms
    *
    * @remarks
@@ -107,6 +111,7 @@ export const DeploymentConfigV3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  deploymentTag: z.string().optional(),
   idleTimeoutEnabled: z.boolean(),
   env: z.array(z.lazy(() => DeploymentConfigV3Env$inboundSchema)),
   roomsPerProcess: z.number().int(),
@@ -120,6 +125,7 @@ export const DeploymentConfigV3$inboundSchema: z.ZodType<
 
 /** @internal */
 export type DeploymentConfigV3$Outbound = {
+  deploymentTag?: string | undefined;
   idleTimeoutEnabled: boolean;
   env: Array<DeploymentConfigV3Env$Outbound>;
   roomsPerProcess: number;
@@ -137,6 +143,7 @@ export const DeploymentConfigV3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DeploymentConfigV3
 > = z.object({
+  deploymentTag: z.string().optional(),
   idleTimeoutEnabled: z.boolean(),
   env: z.array(z.lazy(() => DeploymentConfigV3Env$outboundSchema)),
   roomsPerProcess: z.number().int(),

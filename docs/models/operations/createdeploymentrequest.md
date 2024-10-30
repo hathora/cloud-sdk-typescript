@@ -7,6 +7,7 @@ import { CreateDeploymentRequest } from "@hathora/cloud-sdk-typescript/models/op
 
 let value: CreateDeploymentRequest = {
   deploymentConfigV3: {
+    deploymentTag: "alpha",
     idleTimeoutEnabled: false,
     env: [
       {

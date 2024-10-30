@@ -12,15 +12,17 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class DeploymentsV3 extends ClientSDK {
   /**
-   * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+   * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application), optionally filtered by deploymentTag.
    */
   async getDeployments(
     appId?: string | undefined,
+    deploymentTag?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.DeploymentsV3Page> {
     return unwrapAsync(deploymentsV3GetDeployments(
       this,
       appId,
+      deploymentTag,
       options,
     ));
   }

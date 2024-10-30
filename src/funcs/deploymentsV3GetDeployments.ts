@@ -3,7 +3,7 @@
  */
 
 import { HathoraCloudCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
@@ -24,11 +24,12 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+ * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application), optionally filtered by deploymentTag.
  */
 export async function deploymentsV3GetDeployments(
   client: HathoraCloudCore,
   appId?: string | undefined,
+  deploymentTag?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -45,6 +46,7 @@ export async function deploymentsV3GetDeployments(
 > {
   const input: operations.GetDeploymentsRequest = {
     appId: appId,
+    deploymentTag: deploymentTag,
   };
 
   const parsed = safeParse(
@@ -69,6 +71,10 @@ export async function deploymentsV3GetDeployments(
     pathParams,
   );
 
+  const query = encodeFormQuery({
+    "deploymentTag": payload.deploymentTag,
+  });
+
   const headers = new Headers({
     Accept: "application/json",
   });
@@ -87,6 +93,7 @@ export async function deploymentsV3GetDeployments(
     method: "GET",
     path: path,
     headers: headers,
+    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);

@@ -122,13 +122,13 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "GetDeployments"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.deploymentsV3.getDeployments(\"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.deploymentsV3.getDeployments(\"app-af469a92-5b45-4565-b3c4-b79878de67d2\", \"alpha\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/deployments/v3/apps/{appId}/deployments"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "CreateDeployment"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.deploymentsV3.createDeployment({\n    idleTimeoutEnabled: false,\n    env: [\n      {\n        value: \"TRUE\",\n        name: \"EULA\",\n      },\n    ],\n    roomsPerProcess: 3,\n    additionalContainerPorts: [\n      {\n        transportType: \"udp\",\n        port: 8000,\n        name: \"default\",\n      },\n    ],\n    transportType: \"tcp\",\n    containerPort: 4000,\n    requestedMemoryMB: 1024,\n    requestedCPU: 0.5,\n    buildId: \"bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5\",\n  }, \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.deploymentsV3.createDeployment({\n    deploymentTag: \"alpha\",\n    idleTimeoutEnabled: false,\n    env: [\n      {\n        value: \"TRUE\",\n        name: \"EULA\",\n      },\n    ],\n    roomsPerProcess: 3,\n    additionalContainerPorts: [\n      {\n        transportType: \"udp\",\n        port: 8000,\n        name: \"default\",\n      },\n    ],\n    transportType: \"tcp\",\n    containerPort: 4000,\n    requestedMemoryMB: 1024,\n    requestedCPU: 0.5,\n    buildId: \"bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5\",\n  }, \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/deployments/v3/apps/{appId}/deployments/latest"]["get"]
     update:
       "x-codeSamples":
