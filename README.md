@@ -217,10 +217,8 @@ Deleting a build that is actively build used by an app's deployment will cause f
 
 ### [logsV1](docs/sdks/logsv1/README.md)
 
-* [~~getLogsForApp~~](docs/sdks/logsv1/README.md#getlogsforapp) - Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. :warning: **Deprecated**
 * [getLogsForProcess](docs/sdks/logsv1/README.md#getlogsforprocess) - Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
 * [downloadLogForProcess](docs/sdks/logsv1/README.md#downloadlogforprocess) - Download entire log file for a stopped process.
-* [~~getLogsForDeployment~~](docs/sdks/logsv1/README.md#getlogsfordeployment) - Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`. :warning: **Deprecated**
 
 ### [managementV1](docs/sdks/managementv1/README.md)
 
@@ -669,8 +667,6 @@ Deleting a build that is actively build used by an app's deployment will cause f
 - ~~[`lobbiesV2GetLobbyInfo`](docs/sdks/lobbiesv2/README.md#getlobbyinfo)~~ - Get details for a lobby. :warning: **Deprecated**
 - ~~[`lobbiesV2ListActivePublicLobbiesDeprecatedV2`](docs/sdks/lobbiesv2/README.md#listactivepubliclobbiesdeprecatedv2)~~ - Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client. :warning: **Deprecated**
 - ~~[`lobbiesV2SetLobbyState`](docs/sdks/lobbiesv2/README.md#setlobbystate)~~ - Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores). :warning: **Deprecated**
-- ~~[`logsV1GetLogsForApp`](docs/sdks/logsv1/README.md#getlogsforapp)~~ - Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. :warning: **Deprecated**
-- ~~[`logsV1GetLogsForDeployment`](docs/sdks/logsv1/README.md#getlogsfordeployment)~~ - Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`. :warning: **Deprecated**
 - ~~[`metricsV1GetMetricsDeprecated`](docs/sdks/metricsv1/README.md#getmetricsdeprecated)~~ - Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`. :warning: **Deprecated**
 - ~~[`processesV1GetProcessInfoDeprecated`](docs/sdks/processesv1/README.md#getprocessinfodeprecated)~~ - Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process). :warning: **Deprecated**
 - ~~[`processesV1GetRunningProcesses`](docs/sdks/processesv1/README.md#getrunningprocesses)~~ - Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`. :warning: **Deprecated**

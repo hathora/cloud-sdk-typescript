@@ -3,36 +3,11 @@
  */
 
 import { logsV1DownloadLogForProcess } from "../funcs/logsV1DownloadLogForProcess.js";
-import { logsV1GetLogsForApp } from "../funcs/logsV1GetLogsForApp.js";
-import { logsV1GetLogsForDeployment } from "../funcs/logsV1GetLogsForDeployment.js";
 import { logsV1GetLogsForProcess } from "../funcs/logsV1GetLogsForProcess.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class LogsV1 extends ClientSDK {
-  /**
-   * Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
-   *
-   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  async getLogsForApp(
-    appId?: string | undefined,
-    follow?: boolean | undefined,
-    tailLines?: number | undefined,
-    region?: components.Region | undefined,
-    options?: RequestOptions,
-  ): Promise<ReadableStream<Uint8Array>> {
-    return unwrapAsync(logsV1GetLogsForApp(
-      this,
-      appId,
-      follow,
-      tailLines,
-      region,
-      options,
-    ));
-  }
-
   /**
    * Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
    */
@@ -65,28 +40,6 @@ export class LogsV1 extends ClientSDK {
       this,
       processId,
       appId,
-      options,
-    ));
-  }
-
-  /**
-   * Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`.
-   *
-   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  async getLogsForDeployment(
-    deploymentId: number,
-    appId?: string | undefined,
-    follow?: boolean | undefined,
-    tailLines?: number | undefined,
-    options?: RequestOptions,
-  ): Promise<ReadableStream<Uint8Array>> {
-    return unwrapAsync(logsV1GetLogsForDeployment(
-      this,
-      deploymentId,
-      appId,
-      follow,
-      tailLines,
       options,
     ));
   }

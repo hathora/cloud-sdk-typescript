@@ -64,8 +64,6 @@ export * from "./getlatestprocessesv2deprecated.js";
 export * from "./getlobbyinfo.js";
 export * from "./getlobbyinfobyroomid.js";
 export * from "./getlobbyinfobyshortcode.js";
-export * from "./getlogsforapp.js";
-export * from "./getlogsfordeployment.js";
 export * from "./getlogsforprocess.js";
 export * from "./getmetricsdeprecated.js";
 export * from "./getorgmembers.js";

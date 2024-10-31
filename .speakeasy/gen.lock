@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: f979120c4d53a579602f5709907e5abe
+  docChecksum: 83ae53941fd703d9ce4034ec1d57c1e8
   docVersion: 0.0.1
-  speakeasyVersion: 1.423.2
-  generationVersion: 2.442.11
-  releaseVersion: 2.10.8
-  configChecksum: 314d84c6ef245de518a91c53b2f4fce5
+  speakeasyVersion: 1.423.5
+  generationVersion: 2.445.1
+  releaseVersion: 2.10.9
+  configChecksum: 0c1446ea5603afbd91bb798ecce16dbb
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -289,10 +289,6 @@ generatedFiles:
   - docs/models/operations/getlobbyinfobyshortcoderequest.md
   - docs/models/operations/getlobbyinfoglobals.md
   - docs/models/operations/getlobbyinforequest.md
-  - docs/models/operations/getlogsforappglobals.md
-  - docs/models/operations/getlogsforapprequest.md
-  - docs/models/operations/getlogsfordeploymentglobals.md
-  - docs/models/operations/getlogsfordeploymentrequest.md
   - docs/models/operations/getlogsforprocessglobals.md
   - docs/models/operations/getlogsforprocessrequest.md
   - docs/models/operations/getmetricsdeprecatedglobals.md
@@ -463,8 +459,6 @@ generatedFiles:
   - src/funcs/lobbiesV3GetLobbyInfoByShortCode.ts
   - src/funcs/lobbiesV3ListActivePublicLobbies.ts
   - src/funcs/logsV1DownloadLogForProcess.ts
-  - src/funcs/logsV1GetLogsForApp.ts
-  - src/funcs/logsV1GetLogsForDeployment.ts
   - src/funcs/logsV1GetLogsForProcess.ts
   - src/funcs/managementV1SendVerificationEmail.ts
   - src/funcs/metricsV1GetMetricsDeprecated.ts
@@ -689,8 +683,6 @@ generatedFiles:
   - src/models/operations/getlobbyinfo.ts
   - src/models/operations/getlobbyinfobyroomid.ts
   - src/models/operations/getlobbyinfobyshortcode.ts
-  - src/models/operations/getlogsforapp.ts
-  - src/models/operations/getlogsfordeployment.ts
   - src/models/operations/getlogsforprocess.ts
   - src/models/operations/getmetricsdeprecated.ts
   - src/models/operations/getorgmembers.ts
