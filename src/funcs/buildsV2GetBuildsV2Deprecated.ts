@@ -25,6 +25,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetBuildsV2Deprecated
+ *
+ * @remarks
  * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

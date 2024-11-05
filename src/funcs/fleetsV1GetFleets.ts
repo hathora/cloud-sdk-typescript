@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetFleets
+ *
+ * @remarks
  * Returns an array of [fleets](https://hathora.dev/docs/concepts/hathora-entities#fleet).
  */
 export async function fleetsV1GetFleets(

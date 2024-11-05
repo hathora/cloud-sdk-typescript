@@ -21,6 +21,9 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetOrgs
+ *
+ * @remarks
  * Returns an unsorted list of all organizations that you are a member of (an accepted membership invite). An organization is uniquely identified by an `orgId`.
  */
 export async function organizationsV1GetOrgs(

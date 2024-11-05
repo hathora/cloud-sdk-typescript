@@ -5,13 +5,13 @@
 
 ### Available Operations
 
-* [~~getBuildsV2Deprecated~~](#getbuildsv2deprecated) - Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). :warning: **Deprecated**
-* [~~getBuildInfoV2Deprecated~~](#getbuildinfov2deprecated) - Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build). :warning: **Deprecated**
-* [~~createBuildV2Deprecated~~](#createbuildv2deprecated) - Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build. :warning: **Deprecated**
-* [~~createBuildWithUploadUrlV2Deprecated~~](#createbuildwithuploadurlv2deprecated) - Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build) with `uploadUrl` that can be used to upload the build to before calling `runBuild`. Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build. :warning: **Deprecated**
-* [~~createWithMultipartUploadsV2Deprecated~~](#createwithmultipartuploadsv2deprecated) - Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build) with optional `multipartUploadUrls` that can be used to upload larger builds in parts before calling `runBuild`. Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build. :warning: **Deprecated**
-* [~~deleteBuildV2Deprecated~~](#deletebuildv2deprecated) - Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted. :warning: **Deprecated**
-* [~~runBuildV2Deprecated~~](#runbuildv2deprecated) - Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild). :warning: **Deprecated**
+* [~~getBuildsV2Deprecated~~](#getbuildsv2deprecated) - GetBuildsV2Deprecated :warning: **Deprecated**
+* [~~getBuildInfoV2Deprecated~~](#getbuildinfov2deprecated) - GetBuildInfoV2Deprecated :warning: **Deprecated**
+* [~~createBuildV2Deprecated~~](#createbuildv2deprecated) - CreateBuildV2Deprecated :warning: **Deprecated**
+* [~~createBuildWithUploadUrlV2Deprecated~~](#createbuildwithuploadurlv2deprecated) - CreateBuildWithUploadUrlV2Deprecated :warning: **Deprecated**
+* [~~createWithMultipartUploadsV2Deprecated~~](#createwithmultipartuploadsv2deprecated) - CreateWithMultipartUploadsV2Deprecated :warning: **Deprecated**
+* [~~deleteBuildV2Deprecated~~](#deletebuildv2deprecated) - DeleteBuildV2Deprecated :warning: **Deprecated**
+* [~~runBuildV2Deprecated~~](#runbuildv2deprecated) - RunBuildV2Deprecated :warning: **Deprecated**
 
 ## ~~getBuildsV2Deprecated~~
 

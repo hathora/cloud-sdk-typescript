@@ -25,6 +25,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetLatestProcessesV2Deprecated
+ *
+ * @remarks
  * Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `status` or `region`.
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

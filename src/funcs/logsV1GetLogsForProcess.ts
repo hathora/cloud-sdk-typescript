@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetLogsForProcess
+ *
+ * @remarks
  * Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
  */
 export async function logsV1GetLogsForProcess(

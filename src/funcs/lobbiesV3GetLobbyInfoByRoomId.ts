@@ -23,6 +23,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetLobbyInfoByRoomId
+ *
+ * @remarks
  * Get details for a lobby.
  */
 export async function lobbiesV3GetLobbyInfoByRoomId(

@@ -23,6 +23,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * LoginNickname
+ *
+ * @remarks
  * Returns a unique player token with a specified nickname for a user.
  */
 export async function authV1LoginNickname(

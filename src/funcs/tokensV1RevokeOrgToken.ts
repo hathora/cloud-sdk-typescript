@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * RevokeOrgToken
+ *
+ * @remarks
  * Revoke an organization token.
  */
 export async function tokensV1RevokeOrgToken(

@@ -7,11 +7,11 @@ Deprecated. Use [ProcessesV3](https://hathora.dev/api#tag/ProcessesV3).
 
 ### Available Operations
 
-* [~~getProcessInfoV2Deprecated~~](#getprocessinfov2deprecated) - Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process). :warning: **Deprecated**
-* [~~getLatestProcessesV2Deprecated~~](#getlatestprocessesv2deprecated) - Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `status` or `region`. :warning: **Deprecated**
-* [~~getProcessesCountExperimentalV2Deprecated~~](#getprocessescountexperimentalv2deprecated) - Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `status` or `region`. :warning: **Deprecated**
-* [~~stopProcessV2Deprecated~~](#stopprocessv2deprecated) - Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately. :warning: **Deprecated**
-* [~~createProcessV2Deprecated~~](#createprocessv2deprecated) - Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant. :warning: **Deprecated**
+* [~~getProcessInfoV2Deprecated~~](#getprocessinfov2deprecated) - GetProcessInfoV2Deprecated :warning: **Deprecated**
+* [~~getLatestProcessesV2Deprecated~~](#getlatestprocessesv2deprecated) - GetLatestProcessesV2Deprecated :warning: **Deprecated**
+* [~~getProcessesCountExperimentalV2Deprecated~~](#getprocessescountexperimentalv2deprecated) - GetProcessesCountExperimentalV2Deprecated :warning: **Deprecated**
+* [~~stopProcessV2Deprecated~~](#stopprocessv2deprecated) - StopProcessV2Deprecated :warning: **Deprecated**
+* [~~createProcessV2Deprecated~~](#createprocessv2deprecated) - CreateProcessV2Deprecated :warning: **Deprecated**
 
 ## ~~getProcessInfoV2Deprecated~~
 

@@ -22,6 +22,9 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetAppsV1Deprecated
+ *
+ * @remarks
  * Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

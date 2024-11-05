@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * DeleteApp
+ *
+ * @remarks
  * Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Your organization will lose access to this application.
  */
 export async function appsV2DeleteApp(

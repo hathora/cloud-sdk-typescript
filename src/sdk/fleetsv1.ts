@@ -13,6 +13,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class FleetsV1 extends ClientSDK {
   /**
+   * GetFleets
+   *
+   * @remarks
    * Returns an array of [fleets](https://hathora.dev/docs/concepts/hathora-entities#fleet).
    */
   async getFleets(
@@ -27,6 +30,9 @@ export class FleetsV1 extends ClientSDK {
   }
 
   /**
+   * GetFleetRegion
+   *
+   * @remarks
    * Gets the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
    */
   async getFleetRegion(
@@ -45,6 +51,9 @@ export class FleetsV1 extends ClientSDK {
   }
 
   /**
+   * UpdateFleetRegion
+   *
+   * @remarks
    * Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
    */
   async updateFleetRegion(
@@ -65,6 +74,9 @@ export class FleetsV1 extends ClientSDK {
   }
 
   /**
+   * GetFleetMetrics
+   *
+   * @remarks
    * Gets metrics for a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
    */
   async getFleetMetrics(

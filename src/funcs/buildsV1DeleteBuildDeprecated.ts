@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * DeleteBuildDeprecated
+ *
+ * @remarks
  * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

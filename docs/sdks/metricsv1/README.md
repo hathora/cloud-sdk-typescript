@@ -7,7 +7,7 @@ Operations to get metrics by [process](https://hathora.dev/docs/concepts/hathora
 
 ### Available Operations
 
-* [~~getMetricsDeprecated~~](#getmetricsdeprecated) - Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`. :warning: **Deprecated**
+* [~~getMetricsDeprecated~~](#getmetricsdeprecated) - GetMetricsDeprecated :warning: **Deprecated**
 
 ## ~~getMetricsDeprecated~~
 

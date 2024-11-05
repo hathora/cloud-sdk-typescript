@@ -10,6 +10,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class MetricsV1 extends ClientSDK {
   /**
+   * GetMetricsDeprecated
+   *
+   * @remarks
    * Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

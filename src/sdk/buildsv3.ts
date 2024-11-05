@@ -13,6 +13,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class BuildsV3 extends ClientSDK {
   /**
+   * GetBuilds
+   *
+   * @remarks
    * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
    */
   async getBuilds(
@@ -27,6 +30,9 @@ export class BuildsV3 extends ClientSDK {
   }
 
   /**
+   * CreateBuild
+   *
+   * @remarks
    * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build) with optional `multipartUploadUrls` that can be used to upload larger builds in parts before calling `runBuild`. Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
    */
   async createBuild(
@@ -43,6 +49,9 @@ export class BuildsV3 extends ClientSDK {
   }
 
   /**
+   * GetBuild
+   *
+   * @remarks
    * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
    */
   async getBuild(
@@ -59,6 +68,9 @@ export class BuildsV3 extends ClientSDK {
   }
 
   /**
+   * DeleteBuild
+   *
+   * @remarks
    * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
    * Be careful which builds you delete. This endpoint does not prevent you from deleting actively used builds.
    * Deleting a build that is actively build used by an app's deployment will cause failures when creating rooms.
@@ -77,6 +89,9 @@ export class BuildsV3 extends ClientSDK {
   }
 
   /**
+   * RunBuild
+   *
+   * @remarks
    * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
    */
   async runBuild(

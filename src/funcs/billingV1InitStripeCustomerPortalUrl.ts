@@ -23,6 +23,9 @@ import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { Result } from "../types/fp.js";
 
+/**
+ * InitStripeCustomerPortalUrl
+ */
 export async function billingV1InitStripeCustomerPortalUrl(
   client: HathoraCloudCore,
   request: components.CustomerPortalUrl,

@@ -21,6 +21,9 @@ import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { Result } from "../types/fp.js";
 
+/**
+ * GetInvoices
+ */
 export async function billingV1GetInvoices(
   client: HathoraCloudCore,
   options?: RequestOptions,

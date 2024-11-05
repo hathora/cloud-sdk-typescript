@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * CreateDeploymentV1Deprecated
+ *
+ * @remarks
  * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

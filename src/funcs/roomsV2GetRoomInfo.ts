@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetRoomInfo
+ *
+ * @remarks
  * Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
  */
 export async function roomsV2GetRoomInfo(

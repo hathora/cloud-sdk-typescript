@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [~~getDeploymentsV2Deprecated~~](#getdeploymentsv2deprecated) - Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). :warning: **Deprecated**
-* [~~getLatestDeploymentV2Deprecated~~](#getlatestdeploymentv2deprecated) - Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). :warning: **Deprecated**
-* [~~getDeploymentInfoV2Deprecated~~](#getdeploymentinfov2deprecated) - Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). :warning: **Deprecated**
-* [~~createDeploymentV2Deprecated~~](#createdeploymentv2deprecated) - Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected. :warning: **Deprecated**
+* [~~getDeploymentsV2Deprecated~~](#getdeploymentsv2deprecated) - GetDeploymentsV2Deprecated :warning: **Deprecated**
+* [~~getLatestDeploymentV2Deprecated~~](#getlatestdeploymentv2deprecated) - GetLatestDeploymentV2Deprecated :warning: **Deprecated**
+* [~~getDeploymentInfoV2Deprecated~~](#getdeploymentinfov2deprecated) - GetDeploymentInfoV2Deprecated :warning: **Deprecated**
+* [~~createDeploymentV2Deprecated~~](#createdeploymentv2deprecated) - CreateDeploymentV2Deprecated :warning: **Deprecated**
 
 ## ~~getDeploymentsV2Deprecated~~
 

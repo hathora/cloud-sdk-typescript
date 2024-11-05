@@ -16,6 +16,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class OrganizationsV1 extends ClientSDK {
   /**
+   * GetOrgs
+   *
+   * @remarks
    * Returns an unsorted list of all organizations that you are a member of (an accepted membership invite). An organization is uniquely identified by an `orgId`.
    */
   async getOrgs(
@@ -27,6 +30,9 @@ export class OrganizationsV1 extends ClientSDK {
     ));
   }
 
+  /**
+   * GetUserPendingInvites
+   */
   async getUserPendingInvites(
     options?: RequestOptions,
   ): Promise<components.PendingOrgInvitesPage> {
@@ -36,6 +42,9 @@ export class OrganizationsV1 extends ClientSDK {
     ));
   }
 
+  /**
+   * GetOrgMembers
+   */
   async getOrgMembers(
     orgId: string,
     options?: RequestOptions,
@@ -47,6 +56,9 @@ export class OrganizationsV1 extends ClientSDK {
     ));
   }
 
+  /**
+   * InviteUser
+   */
   async inviteUser(
     createUserInvite: components.CreateUserInvite,
     orgId: string,
@@ -60,6 +72,9 @@ export class OrganizationsV1 extends ClientSDK {
     ));
   }
 
+  /**
+   * RescindInvite
+   */
   async rescindInvite(
     rescindUserInvite: components.RescindUserInvite,
     orgId: string,
@@ -73,6 +88,9 @@ export class OrganizationsV1 extends ClientSDK {
     ));
   }
 
+  /**
+   * GetOrgPendingInvites
+   */
   async getOrgPendingInvites(
     orgId: string,
     options?: RequestOptions,
@@ -84,6 +102,9 @@ export class OrganizationsV1 extends ClientSDK {
     ));
   }
 
+  /**
+   * AcceptInvite
+   */
   async acceptInvite(
     orgId: string,
     options?: RequestOptions,
@@ -95,6 +116,9 @@ export class OrganizationsV1 extends ClientSDK {
     ));
   }
 
+  /**
+   * RejectInvite
+   */
   async rejectInvite(
     orgId: string,
     options?: RequestOptions,

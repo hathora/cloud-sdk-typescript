@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * SuspendRoomV2Deprecated
+ *
+ * @remarks
  * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same `roomId`.
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

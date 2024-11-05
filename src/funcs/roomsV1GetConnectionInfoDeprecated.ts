@@ -23,6 +23,8 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetConnectionInfoDeprecated
+ *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function roomsV1GetConnectionInfoDeprecated(

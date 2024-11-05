@@ -9,6 +9,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class LogsV1 extends ClientSDK {
   /**
+   * GetLogsForProcess
+   *
+   * @remarks
    * Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
    */
   async getLogsForProcess(
@@ -29,6 +32,9 @@ export class LogsV1 extends ClientSDK {
   }
 
   /**
+   * DownloadLogForProcess
+   *
+   * @remarks
    * Download entire log file for a stopped process.
    */
   async downloadLogForProcess(

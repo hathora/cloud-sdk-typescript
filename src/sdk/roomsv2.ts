@@ -16,6 +16,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class RoomsV2 extends ClientSDK {
   /**
+   * CreateRoom
+   *
+   * @remarks
    * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
    */
   async createRoom(
@@ -34,6 +37,9 @@ export class RoomsV2 extends ClientSDK {
   }
 
   /**
+   * GetRoomInfo
+   *
+   * @remarks
    * Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
    */
   async getRoomInfo(
@@ -50,6 +56,9 @@ export class RoomsV2 extends ClientSDK {
   }
 
   /**
+   * GetActiveRoomsForProcess
+   *
+   * @remarks
    * Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
    */
   async getActiveRoomsForProcess(
@@ -66,6 +75,9 @@ export class RoomsV2 extends ClientSDK {
   }
 
   /**
+   * GetInactiveRoomsForProcess
+   *
+   * @remarks
    * Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
    */
   async getInactiveRoomsForProcess(
@@ -82,6 +94,9 @@ export class RoomsV2 extends ClientSDK {
   }
 
   /**
+   * DestroyRoom
+   *
+   * @remarks
    * Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
    */
   async destroyRoom(
@@ -98,6 +113,9 @@ export class RoomsV2 extends ClientSDK {
   }
 
   /**
+   * SuspendRoomV2Deprecated
+   *
+   * @remarks
    * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same `roomId`.
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -116,6 +134,9 @@ export class RoomsV2 extends ClientSDK {
   }
 
   /**
+   * GetConnectionInfo
+   *
+   * @remarks
    * Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
    */
   async getConnectionInfo(
@@ -131,6 +152,9 @@ export class RoomsV2 extends ClientSDK {
     ));
   }
 
+  /**
+   * UpdateRoomConfig
+   */
   async updateRoomConfig(
     updateRoomConfigParams: components.UpdateRoomConfigParams,
     roomId: string,

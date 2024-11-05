@@ -25,6 +25,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetActiveRoomsForProcess
+ *
+ * @remarks
  * Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
  */
 export async function roomsV2GetActiveRoomsForProcess(

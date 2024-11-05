@@ -8,6 +8,9 @@ import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class ManagementV1 extends ClientSDK {
+  /**
+   * SendVerificationEmail
+   */
   async sendVerificationEmail(
     request: components.VerificationEmailRequest,
     options?: RequestOptions,

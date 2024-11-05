@@ -7,9 +7,9 @@ Deprecated. Use [ProcessesV3](https://hathora.dev/api#tag/ProcessesV3).
 
 ### Available Operations
 
-* [~~getRunningProcesses~~](#getrunningprocesses) - Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`. :warning: **Deprecated**
-* [~~getStoppedProcesses~~](#getstoppedprocesses) - Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`. :warning: **Deprecated**
-* [~~getProcessInfoDeprecated~~](#getprocessinfodeprecated) - Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process). :warning: **Deprecated**
+* [~~getRunningProcesses~~](#getrunningprocesses) - GetRunningProcesses :warning: **Deprecated**
+* [~~getStoppedProcesses~~](#getstoppedprocesses) - GetStoppedProcesses :warning: **Deprecated**
+* [~~getProcessInfoDeprecated~~](#getprocessinfodeprecated) - GetProcessInfoDeprecated :warning: **Deprecated**
 
 ## ~~getRunningProcesses~~
 

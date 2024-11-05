@@ -5,8 +5,8 @@
 
 ### Available Operations
 
-* [getLogsForProcess](#getlogsforprocess) - Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
-* [downloadLogForProcess](#downloadlogforprocess) - Download entire log file for a stopped process.
+* [getLogsForProcess](#getlogsforprocess) - GetLogsForProcess
+* [downloadLogForProcess](#downloadlogforprocess) - DownloadLogForProcess
 
 ## getLogsForProcess
 

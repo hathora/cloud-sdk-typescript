@@ -13,6 +13,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class AppsV2 extends ClientSDK {
   /**
+   * GetApps
+   *
+   * @remarks
    * Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
    */
   async getApps(
@@ -27,6 +30,9 @@ export class AppsV2 extends ClientSDK {
   }
 
   /**
+   * CreateApp
+   *
+   * @remarks
    * Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application).
    */
   async createApp(
@@ -43,6 +49,9 @@ export class AppsV2 extends ClientSDK {
   }
 
   /**
+   * UpdateApp
+   *
+   * @remarks
    * Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
    */
   async updateApp(
@@ -59,6 +68,9 @@ export class AppsV2 extends ClientSDK {
   }
 
   /**
+   * GetApp
+   *
+   * @remarks
    * Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
    */
   async getApp(
@@ -73,6 +85,9 @@ export class AppsV2 extends ClientSDK {
   }
 
   /**
+   * DeleteApp
+   *
+   * @remarks
    * Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Your organization will lose access to this application.
    */
   async deleteApp(

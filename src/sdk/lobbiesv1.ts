@@ -12,6 +12,8 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class LobbiesV1 extends ClientSDK {
   /**
+   * CreatePrivateLobbyDeprecated
+   *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async createPrivateLobbyDeprecated(
@@ -32,6 +34,8 @@ export class LobbiesV1 extends ClientSDK {
   }
 
   /**
+   * CreatePublicLobbyDeprecated
+   *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async createPublicLobbyDeprecated(
@@ -52,6 +56,8 @@ export class LobbiesV1 extends ClientSDK {
   }
 
   /**
+   * ListActivePublicLobbiesDeprecatedV1
+   *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async listActivePublicLobbiesDeprecatedV1(

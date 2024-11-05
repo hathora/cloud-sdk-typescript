@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [~~getBuildsDeprecated~~](#getbuildsdeprecated) - Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). :warning: **Deprecated**
-* [~~getBuildInfoDeprecated~~](#getbuildinfodeprecated) - Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build). :warning: **Deprecated**
-* [~~createBuildDeprecated~~](#createbuilddeprecated) - Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build. :warning: **Deprecated**
-* [~~deleteBuildDeprecated~~](#deletebuilddeprecated) - Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted. :warning: **Deprecated**
-* [~~runBuildDeprecated~~](#runbuilddeprecated) - Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild). :warning: **Deprecated**
+* [~~getBuildsDeprecated~~](#getbuildsdeprecated) - GetBuildsDeprecated :warning: **Deprecated**
+* [~~getBuildInfoDeprecated~~](#getbuildinfodeprecated) - GetBuildInfoDeprecated :warning: **Deprecated**
+* [~~createBuildDeprecated~~](#createbuilddeprecated) - CreateBuildDeprecated :warning: **Deprecated**
+* [~~deleteBuildDeprecated~~](#deletebuilddeprecated) - DeleteBuildDeprecated :warning: **Deprecated**
+* [~~runBuildDeprecated~~](#runbuilddeprecated) - RunBuildDeprecated :warning: **Deprecated**
 
 ## ~~getBuildsDeprecated~~
 

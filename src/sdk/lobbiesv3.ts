@@ -13,6 +13,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class LobbiesV3 extends ClientSDK {
   /**
+   * CreateLobby
+   *
+   * @remarks
    * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
    */
   async createLobby(
@@ -35,6 +38,9 @@ export class LobbiesV3 extends ClientSDK {
   }
 
   /**
+   * ListActivePublicLobbies
+   *
+   * @remarks
    * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
    */
   async listActivePublicLobbies(
@@ -51,6 +57,9 @@ export class LobbiesV3 extends ClientSDK {
   }
 
   /**
+   * GetLobbyInfoByRoomId
+   *
+   * @remarks
    * Get details for a lobby.
    */
   async getLobbyInfoByRoomId(
@@ -67,6 +76,9 @@ export class LobbiesV3 extends ClientSDK {
   }
 
   /**
+   * GetLobbyInfoByShortCode
+   *
+   * @remarks
    * Get details for a lobby. If 2 or more lobbies have the same `shortCode`, then the most recently created lobby will be returned.
    */
   async getLobbyInfoByShortCode(

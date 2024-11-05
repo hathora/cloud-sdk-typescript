@@ -7,9 +7,9 @@ Operations that allow you to generate a Hathora-signed [JSON web token (JWT)](ht
 
 ### Available Operations
 
-* [loginAnonymous](#loginanonymous) - Returns a unique player token for an anonymous user.
-* [loginNickname](#loginnickname) - Returns a unique player token with a specified nickname for a user.
-* [loginGoogle](#logingoogle) - Returns a unique player token using a Google-signed OIDC `idToken`.
+* [loginAnonymous](#loginanonymous) - LoginAnonymous
+* [loginNickname](#loginnickname) - LoginNickname
+* [loginGoogle](#logingoogle) - LoginGoogle
 
 ## loginAnonymous
 

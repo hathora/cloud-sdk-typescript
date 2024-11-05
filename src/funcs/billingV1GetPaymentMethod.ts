@@ -20,6 +20,9 @@ import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { Result } from "../types/fp.js";
 
+/**
+ * GetPaymentMethod
+ */
 export async function billingV1GetPaymentMethod(
   client: HathoraCloudCore,
   options?: RequestOptions,

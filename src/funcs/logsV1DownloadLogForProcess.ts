@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * DownloadLogForProcess
+ *
+ * @remarks
  * Download entire log file for a stopped process.
  */
 export async function logsV1DownloadLogForProcess(

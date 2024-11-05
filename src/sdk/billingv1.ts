@@ -14,6 +14,9 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class BillingV1 extends ClientSDK {
+  /**
+   * GetBalance
+   */
   async getBalance(
     options?: RequestOptions,
   ): Promise<number> {
@@ -23,6 +26,9 @@ export class BillingV1 extends ClientSDK {
     ));
   }
 
+  /**
+   * GetUpcomingInvoiceItems
+   */
   async getUpcomingInvoiceItems(
     options?: RequestOptions,
   ): Promise<components.InvoiceItemPage> {
@@ -32,6 +38,9 @@ export class BillingV1 extends ClientSDK {
     ));
   }
 
+  /**
+   * GetUpcomingInvoiceTotal
+   */
   async getUpcomingInvoiceTotal(
     options?: RequestOptions,
   ): Promise<operations.GetUpcomingInvoiceTotalResponseBody> {
@@ -41,6 +50,9 @@ export class BillingV1 extends ClientSDK {
     ));
   }
 
+  /**
+   * GetPaymentMethod
+   */
   async getPaymentMethod(
     options?: RequestOptions,
   ): Promise<components.PaymentMethod> {
@@ -50,6 +62,9 @@ export class BillingV1 extends ClientSDK {
     ));
   }
 
+  /**
+   * InitStripeCustomerPortalUrl
+   */
   async initStripeCustomerPortalUrl(
     request: components.CustomerPortalUrl,
     options?: RequestOptions,
@@ -61,6 +76,9 @@ export class BillingV1 extends ClientSDK {
     ));
   }
 
+  /**
+   * GetInvoices
+   */
   async getInvoices(
     options?: RequestOptions,
   ): Promise<Array<components.Invoice>> {

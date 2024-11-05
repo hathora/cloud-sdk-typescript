@@ -11,6 +11,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class AuthV1 extends ClientSDK {
   /**
+   * LoginAnonymous
+   *
+   * @remarks
    * Returns a unique player token for an anonymous user.
    */
   async loginAnonymous(
@@ -25,6 +28,9 @@ export class AuthV1 extends ClientSDK {
   }
 
   /**
+   * LoginNickname
+   *
+   * @remarks
    * Returns a unique player token with a specified nickname for a user.
    */
   async loginNickname(
@@ -41,6 +47,9 @@ export class AuthV1 extends ClientSDK {
   }
 
   /**
+   * LoginGoogle
+   *
+   * @remarks
    * Returns a unique player token using a Google-signed OIDC `idToken`.
    */
   async loginGoogle(

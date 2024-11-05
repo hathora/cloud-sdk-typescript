@@ -23,6 +23,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetLobbyInfoByShortCode
+ *
+ * @remarks
  * Get details for a lobby. If 2 or more lobbies have the same `shortCode`, then the most recently created lobby will be returned.
  */
 export async function lobbiesV3GetLobbyInfoByShortCode(

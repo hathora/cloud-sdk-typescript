@@ -5,15 +5,17 @@
 
 ### Available Operations
 
-* [~~createRoomDeprecated~~](#createroomdeprecated) - :warning: **Deprecated**
-* [~~getRoomInfoDeprecated~~](#getroominfodeprecated) - :warning: **Deprecated**
-* [~~getActiveRoomsForProcessDeprecated~~](#getactiveroomsforprocessdeprecated) - :warning: **Deprecated**
-* [~~getInactiveRoomsForProcessDeprecated~~](#getinactiveroomsforprocessdeprecated) - :warning: **Deprecated**
-* [~~destroyRoomDeprecated~~](#destroyroomdeprecated) - :warning: **Deprecated**
-* [~~suspendRoomDeprecated~~](#suspendroomdeprecated) - :warning: **Deprecated**
-* [~~getConnectionInfoDeprecated~~](#getconnectioninfodeprecated) - :warning: **Deprecated**
+* [~~createRoomDeprecated~~](#createroomdeprecated) - CreateRoomDeprecated :warning: **Deprecated**
+* [~~getRoomInfoDeprecated~~](#getroominfodeprecated) - GetRoomInfoDeprecated :warning: **Deprecated**
+* [~~getActiveRoomsForProcessDeprecated~~](#getactiveroomsforprocessdeprecated) - GetActiveRoomsForProcessDeprecated :warning: **Deprecated**
+* [~~getInactiveRoomsForProcessDeprecated~~](#getinactiveroomsforprocessdeprecated) - GetInactiveRoomsForProcessDeprecated :warning: **Deprecated**
+* [~~destroyRoomDeprecated~~](#destroyroomdeprecated) - DestroyRoomDeprecated :warning: **Deprecated**
+* [~~suspendRoomDeprecated~~](#suspendroomdeprecated) - SuspendRoomDeprecated :warning: **Deprecated**
+* [~~getConnectionInfoDeprecated~~](#getconnectioninfodeprecated) - GetConnectionInfoDeprecated :warning: **Deprecated**
 
 ## ~~createRoomDeprecated~~
+
+CreateRoomDeprecated
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
@@ -106,6 +108,8 @@ run();
 
 ## ~~getRoomInfoDeprecated~~
 
+GetRoomInfoDeprecated
+
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
@@ -181,6 +185,8 @@ run();
 | errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## ~~getActiveRoomsForProcessDeprecated~~
+
+GetActiveRoomsForProcessDeprecated
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
@@ -258,6 +264,8 @@ run();
 
 ## ~~getInactiveRoomsForProcessDeprecated~~
 
+GetInactiveRoomsForProcessDeprecated
+
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
@@ -334,6 +342,8 @@ run();
 
 ## ~~destroyRoomDeprecated~~
 
+DestroyRoomDeprecated
+
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
@@ -408,6 +418,8 @@ run();
 
 ## ~~suspendRoomDeprecated~~
 
+SuspendRoomDeprecated
+
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
@@ -481,6 +493,8 @@ run();
 | errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## ~~getConnectionInfoDeprecated~~
+
+GetConnectionInfoDeprecated
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 

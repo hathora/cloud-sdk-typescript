@@ -24,6 +24,9 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
+/**
+ * UpdateRoomConfig
+ */
 export async function roomsV2UpdateRoomConfig(
   client: HathoraCloudCore,
   updateRoomConfigParams: components.UpdateRoomConfigParams,

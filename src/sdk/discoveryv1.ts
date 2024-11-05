@@ -9,6 +9,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class DiscoveryV1 extends ClientSDK {
   /**
+   * GetPingServiceEndpointsDeprecated
+   *
+   * @remarks
    * Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

@@ -7,9 +7,9 @@
 
 ### Available Operations
 
-* [getOrgTokens](#getorgtokens) - List all organization tokens for a given org.
-* [createOrgToken](#createorgtoken) - Create a new organization token.
-* [revokeOrgToken](#revokeorgtoken) - Revoke an organization token.
+* [getOrgTokens](#getorgtokens) - GetOrgTokens
+* [createOrgToken](#createorgtoken) - CreateOrgToken
+* [revokeOrgToken](#revokeorgtoken) - RevokeOrgToken
 
 ## getOrgTokens
 

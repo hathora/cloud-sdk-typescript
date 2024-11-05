@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * DeleteBuild
+ *
+ * @remarks
  * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
  * Be careful which builds you delete. This endpoint does not prevent you from deleting actively used builds.
  * Deleting a build that is actively build used by an app's deployment will cause failures when creating rooms.

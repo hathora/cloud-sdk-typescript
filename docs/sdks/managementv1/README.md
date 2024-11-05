@@ -7,9 +7,11 @@
 
 ### Available Operations
 
-* [sendVerificationEmail](#sendverificationemail)
+* [sendVerificationEmail](#sendverificationemail) - SendVerificationEmail
 
 ## sendVerificationEmail
+
+SendVerificationEmail
 
 ### Example Usage
 

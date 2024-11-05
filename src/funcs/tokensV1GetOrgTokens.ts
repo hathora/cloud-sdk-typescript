@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetOrgTokens
+ *
+ * @remarks
  * List all organization tokens for a given org.
  */
 export async function tokensV1GetOrgTokens(

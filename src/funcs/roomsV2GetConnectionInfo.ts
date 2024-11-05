@@ -23,6 +23,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetConnectionInfo
+ *
+ * @remarks
  * Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
  */
 export async function roomsV2GetConnectionInfo(

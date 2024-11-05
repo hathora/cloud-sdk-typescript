@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * SetLobbyState
+ *
+ * @remarks
  * Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

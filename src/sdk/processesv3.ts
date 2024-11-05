@@ -15,6 +15,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class ProcessesV3 extends ClientSDK {
   /**
+   * GetLatestProcesses
+   *
+   * @remarks
    * Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `status` or `region`.
    */
   async getLatestProcesses(
@@ -33,6 +36,9 @@ export class ProcessesV3 extends ClientSDK {
   }
 
   /**
+   * GetProcessesCountExperimental
+   *
+   * @remarks
    * Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `status` or `region`.
    */
   async getProcessesCountExperimental(
@@ -51,6 +57,9 @@ export class ProcessesV3 extends ClientSDK {
   }
 
   /**
+   * CreateProcess
+   *
+   * @remarks
    * Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
    */
   async createProcess(
@@ -67,6 +76,9 @@ export class ProcessesV3 extends ClientSDK {
   }
 
   /**
+   * GetProcess
+   *
+   * @remarks
    * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
    */
   async getProcess(
@@ -83,6 +95,9 @@ export class ProcessesV3 extends ClientSDK {
   }
 
   /**
+   * StopProcess
+   *
+   * @remarks
    * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
    */
   async stopProcess(
@@ -98,6 +113,9 @@ export class ProcessesV3 extends ClientSDK {
     ));
   }
 
+  /**
+   * GetProcessMetrics
+   */
   async getProcessMetrics(
     request: operations.GetProcessMetricsRequest,
     options?: RequestOptions,

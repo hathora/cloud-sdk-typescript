@@ -12,6 +12,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class DeploymentsV3 extends ClientSDK {
   /**
+   * GetDeployments
+   *
+   * @remarks
    * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application), optionally filtered by deploymentTag.
    */
   async getDeployments(
@@ -28,6 +31,9 @@ export class DeploymentsV3 extends ClientSDK {
   }
 
   /**
+   * CreateDeployment
+   *
+   * @remarks
    * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
    */
   async createDeployment(
@@ -44,6 +50,9 @@ export class DeploymentsV3 extends ClientSDK {
   }
 
   /**
+   * GetLatestDeployment
+   *
+   * @remarks
    * Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
    */
   async getLatestDeployment(
@@ -58,6 +67,9 @@ export class DeploymentsV3 extends ClientSDK {
   }
 
   /**
+   * GetDeployment
+   *
+   * @remarks
    * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
    */
   async getDeployment(

@@ -27,6 +27,9 @@ import { Result } from "../types/fp.js";
 import { isReadableStream } from "../types/streams.js";
 
 /**
+ * RunBuildV2Deprecated
+ *
+ * @remarks
  * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

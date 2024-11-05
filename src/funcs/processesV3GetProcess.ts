@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetProcess
+ *
+ * @remarks
  * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
  */
 export async function processesV3GetProcess(

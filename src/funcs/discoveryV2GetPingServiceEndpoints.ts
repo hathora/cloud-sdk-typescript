@@ -20,6 +20,9 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetPingServiceEndpoints
+ *
+ * @remarks
  * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
  */
 export async function discoveryV2GetPingServiceEndpoints(

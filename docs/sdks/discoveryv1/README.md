@@ -7,7 +7,7 @@ Deprecated. Does not include latest Regions (missing Dallas region). Use [Discov
 
 ### Available Operations
 
-* [~~getPingServiceEndpointsDeprecated~~](#getpingserviceendpointsdeprecated) - Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back. :warning: **Deprecated**
+* [~~getPingServiceEndpointsDeprecated~~](#getpingserviceendpointsdeprecated) - GetPingServiceEndpointsDeprecated :warning: **Deprecated**
 
 ## ~~getPingServiceEndpointsDeprecated~~
 

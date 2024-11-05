@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * StopProcess
+ *
+ * @remarks
  * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
  */
 export async function processesV3StopProcess(

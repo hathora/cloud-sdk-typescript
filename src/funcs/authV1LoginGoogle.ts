@@ -23,6 +23,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * LoginGoogle
+ *
+ * @remarks
  * Returns a unique player token using a Google-signed OIDC `idToken`.
  */
 export async function authV1LoginGoogle(

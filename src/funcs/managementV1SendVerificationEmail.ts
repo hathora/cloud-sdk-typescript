@@ -21,6 +21,9 @@ import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { Result } from "../types/fp.js";
 
+/**
+ * SendVerificationEmail
+ */
 export async function managementV1SendVerificationEmail(
   client: HathoraCloudCore,
   request: components.VerificationEmailRequest,

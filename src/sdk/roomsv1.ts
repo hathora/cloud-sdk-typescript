@@ -15,6 +15,8 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class RoomsV1 extends ClientSDK {
   /**
+   * CreateRoomDeprecated
+   *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async createRoomDeprecated(
@@ -33,6 +35,8 @@ export class RoomsV1 extends ClientSDK {
   }
 
   /**
+   * GetRoomInfoDeprecated
+   *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getRoomInfoDeprecated(
@@ -49,6 +53,8 @@ export class RoomsV1 extends ClientSDK {
   }
 
   /**
+   * GetActiveRoomsForProcessDeprecated
+   *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getActiveRoomsForProcessDeprecated(
@@ -65,6 +71,8 @@ export class RoomsV1 extends ClientSDK {
   }
 
   /**
+   * GetInactiveRoomsForProcessDeprecated
+   *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getInactiveRoomsForProcessDeprecated(
@@ -81,6 +89,8 @@ export class RoomsV1 extends ClientSDK {
   }
 
   /**
+   * DestroyRoomDeprecated
+   *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async destroyRoomDeprecated(
@@ -97,6 +107,8 @@ export class RoomsV1 extends ClientSDK {
   }
 
   /**
+   * SuspendRoomDeprecated
+   *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async suspendRoomDeprecated(
@@ -113,6 +125,8 @@ export class RoomsV1 extends ClientSDK {
   }
 
   /**
+   * GetConnectionInfoDeprecated
+   *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getConnectionInfoDeprecated(

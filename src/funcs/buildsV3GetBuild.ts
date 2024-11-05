@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetBuild
+ *
+ * @remarks
  * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
  */
 export async function buildsV3GetBuild(

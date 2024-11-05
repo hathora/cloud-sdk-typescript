@@ -11,6 +11,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class TokensV1 extends ClientSDK {
   /**
+   * GetOrgTokens
+   *
+   * @remarks
    * List all organization tokens for a given org.
    */
   async getOrgTokens(
@@ -25,6 +28,9 @@ export class TokensV1 extends ClientSDK {
   }
 
   /**
+   * CreateOrgToken
+   *
+   * @remarks
    * Create a new organization token.
    */
   async createOrgToken(
@@ -41,6 +47,9 @@ export class TokensV1 extends ClientSDK {
   }
 
   /**
+   * RevokeOrgToken
+   *
+   * @remarks
    * Revoke an organization token.
    */
   async revokeOrgToken(

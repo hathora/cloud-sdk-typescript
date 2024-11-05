@@ -13,6 +13,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class AppsV1 extends ClientSDK {
   /**
+   * GetAppsV1Deprecated
+   *
+   * @remarks
    * Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -29,6 +32,9 @@ export class AppsV1 extends ClientSDK {
   }
 
   /**
+   * CreateAppV1Deprecated
+   *
+   * @remarks
    * Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application).
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -45,6 +51,9 @@ export class AppsV1 extends ClientSDK {
   }
 
   /**
+   * UpdateAppV1Deprecated
+   *
+   * @remarks
    * Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -63,6 +72,9 @@ export class AppsV1 extends ClientSDK {
   }
 
   /**
+   * GetAppInfoV1Deprecated
+   *
+   * @remarks
    * Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -79,6 +91,9 @@ export class AppsV1 extends ClientSDK {
   }
 
   /**
+   * DeleteAppV1Deprecated
+   *
+   * @remarks
    * Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Your organization will lose access to this application.
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

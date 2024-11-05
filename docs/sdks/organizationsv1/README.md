@@ -5,14 +5,14 @@
 
 ### Available Operations
 
-* [getOrgs](#getorgs) - Returns an unsorted list of all organizations that you are a member of (an accepted membership invite). An organization is uniquely identified by an `orgId`.
-* [getUserPendingInvites](#getuserpendinginvites)
-* [getOrgMembers](#getorgmembers)
-* [inviteUser](#inviteuser)
-* [rescindInvite](#rescindinvite)
-* [getOrgPendingInvites](#getorgpendinginvites)
-* [acceptInvite](#acceptinvite)
-* [rejectInvite](#rejectinvite)
+* [getOrgs](#getorgs) - GetOrgs
+* [getUserPendingInvites](#getuserpendinginvites) - GetUserPendingInvites
+* [getOrgMembers](#getorgmembers) - GetOrgMembers
+* [inviteUser](#inviteuser) - InviteUser
+* [rescindInvite](#rescindinvite) - RescindInvite
+* [getOrgPendingInvites](#getorgpendinginvites) - GetOrgPendingInvites
+* [acceptInvite](#acceptinvite) - AcceptInvite
+* [rejectInvite](#rejectinvite) - RejectInvite
 
 ## getOrgs
 
@@ -90,6 +90,8 @@ run();
 
 ## getUserPendingInvites
 
+GetUserPendingInvites
+
 ### Example Usage
 
 ```typescript
@@ -161,6 +163,8 @@ run();
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getOrgMembers
+
+GetOrgMembers
 
 ### Example Usage
 
@@ -234,6 +238,8 @@ run();
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## inviteUser
+
+InviteUser
 
 ### Example Usage
 
@@ -313,6 +319,8 @@ run();
 
 ## rescindInvite
 
+RescindInvite
+
 ### Example Usage
 
 ```typescript
@@ -389,6 +397,8 @@ run();
 
 ## getOrgPendingInvites
 
+GetOrgPendingInvites
+
 ### Example Usage
 
 ```typescript
@@ -462,6 +472,8 @@ run();
 
 ## acceptInvite
 
+AcceptInvite
+
 ### Example Usage
 
 ```typescript
@@ -532,6 +544,8 @@ run();
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## rejectInvite
+
+RejectInvite
 
 ### Example Usage
 

@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * ListActivePublicLobbiesDeprecatedV2
+ *
+ * @remarks
  * Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

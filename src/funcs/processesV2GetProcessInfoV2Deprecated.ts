@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetProcessInfoV2Deprecated
+ *
+ * @remarks
  * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

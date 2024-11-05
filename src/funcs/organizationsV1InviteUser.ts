@@ -23,6 +23,9 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
+/**
+ * InviteUser
+ */
 export async function organizationsV1InviteUser(
   client: HathoraCloudCore,
   createUserInvite: components.CreateUserInvite,

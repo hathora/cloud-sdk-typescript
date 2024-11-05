@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetProcessesCountExperimentalV2Deprecated
+ *
+ * @remarks
  * Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `status` or `region`.
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

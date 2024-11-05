@@ -14,6 +14,9 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class BuildsV1 extends ClientSDK {
   /**
+   * GetBuildsDeprecated
+   *
+   * @remarks
    * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -30,6 +33,9 @@ export class BuildsV1 extends ClientSDK {
   }
 
   /**
+   * GetBuildInfoDeprecated
+   *
+   * @remarks
    * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -48,6 +54,9 @@ export class BuildsV1 extends ClientSDK {
   }
 
   /**
+   * CreateBuildDeprecated
+   *
+   * @remarks
    * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -66,6 +75,9 @@ export class BuildsV1 extends ClientSDK {
   }
 
   /**
+   * DeleteBuildDeprecated
+   *
+   * @remarks
    * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -84,6 +96,9 @@ export class BuildsV1 extends ClientSDK {
   }
 
   /**
+   * RunBuildDeprecated
+   *
+   * @remarks
    * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.

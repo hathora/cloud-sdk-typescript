@@ -7,14 +7,16 @@
 
 ### Available Operations
 
-* [getBalance](#getbalance)
-* [getUpcomingInvoiceItems](#getupcominginvoiceitems)
-* [getUpcomingInvoiceTotal](#getupcominginvoicetotal)
-* [getPaymentMethod](#getpaymentmethod)
-* [initStripeCustomerPortalUrl](#initstripecustomerportalurl)
-* [getInvoices](#getinvoices)
+* [getBalance](#getbalance) - GetBalance
+* [getUpcomingInvoiceItems](#getupcominginvoiceitems) - GetUpcomingInvoiceItems
+* [getUpcomingInvoiceTotal](#getupcominginvoicetotal) - GetUpcomingInvoiceTotal
+* [getPaymentMethod](#getpaymentmethod) - GetPaymentMethod
+* [initStripeCustomerPortalUrl](#initstripecustomerportalurl) - InitStripeCustomerPortalUrl
+* [getInvoices](#getinvoices) - GetInvoices
 
 ## getBalance
+
+GetBalance
 
 ### Example Usage
 
@@ -88,6 +90,8 @@ run();
 
 ## getUpcomingInvoiceItems
 
+GetUpcomingInvoiceItems
+
 ### Example Usage
 
 ```typescript
@@ -159,6 +163,8 @@ run();
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getUpcomingInvoiceTotal
+
+GetUpcomingInvoiceTotal
 
 ### Example Usage
 
@@ -232,6 +238,8 @@ run();
 
 ## getPaymentMethod
 
+GetPaymentMethod
+
 ### Example Usage
 
 ```typescript
@@ -303,6 +311,8 @@ run();
 | errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## initStripeCustomerPortalUrl
+
+InitStripeCustomerPortalUrl
 
 ### Example Usage
 
@@ -380,6 +390,8 @@ run();
 | errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## getInvoices
+
+GetInvoices
 
 ### Example Usage
 

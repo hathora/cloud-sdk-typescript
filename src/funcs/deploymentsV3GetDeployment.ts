@@ -24,6 +24,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
+ * GetDeployment
+ *
+ * @remarks
  * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
  */
 export async function deploymentsV3GetDeployment(
