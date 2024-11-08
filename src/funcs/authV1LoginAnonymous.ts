@@ -77,6 +77,10 @@ export async function authV1LoginAnonymous(
     operationID: "LoginAnonymous",
     oAuth2Scopes: [],
     securitySource: null,
+    retryConfig: options?.retries
+      || client._options.retryConfig
+      || { strategy: "none" },
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   };
 
   const requestRes = client._createRequest(context, {
@@ -94,9 +98,8 @@ export async function authV1LoginAnonymous(
   const doResult = await client._do(req, {
     context,
     errorCodes: ["404", "429", "4XX", "5XX"],
-    retryConfig: options?.retries
-      || client._options.retryConfig,
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
     return doResult;

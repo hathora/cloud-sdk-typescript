@@ -11,6 +11,7 @@ generation:
     requestResponseComponentNamesFeb2024: true
   auth:
     oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
 management:
   version: ""
   docChecksum: 8c7636bc24c0d5e96568913317b394b9
@@ -18,7 +19,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.10.10
+  version: 2.11.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}

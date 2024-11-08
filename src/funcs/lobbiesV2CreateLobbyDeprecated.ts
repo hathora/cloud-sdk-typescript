@@ -96,10 +96,15 @@ export async function lobbiesV2CreateLobbyDeprecated(
       },
     ],
   );
+
   const context = {
     operationID: "CreateLobbyDeprecated",
     oAuth2Scopes: [],
     securitySource: security,
+    retryConfig: options?.retries
+      || client._options.retryConfig
+      || { strategy: "none" },
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   };
 
   const requestRes = client._createRequest(context, {
@@ -119,9 +124,8 @@ export async function lobbiesV2CreateLobbyDeprecated(
   const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "401", "402", "404", "422", "429", "4XX", "500", "5XX"],
-    retryConfig: options?.retries
-      || client._options.retryConfig,
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
     return doResult;

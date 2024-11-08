@@ -85,6 +85,10 @@ export async function lobbiesV3ListActivePublicLobbies(
     operationID: "ListActivePublicLobbies",
     oAuth2Scopes: [],
     securitySource: null,
+    retryConfig: options?.retries
+      || client._options.retryConfig
+      || { strategy: "none" },
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   };
 
   const requestRes = client._createRequest(context, {
@@ -103,9 +107,8 @@ export async function lobbiesV3ListActivePublicLobbies(
   const doResult = await client._do(req, {
     context,
     errorCodes: ["401", "429", "4XX", "5XX"],
-    retryConfig: options?.retries
-      || client._options.retryConfig,
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
     return doResult;
