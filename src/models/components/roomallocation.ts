@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Metadata on an allocated instance of a room.
@@ -67,4 +70,18 @@ export namespace RoomAllocation$ {
   export const outboundSchema = RoomAllocation$outboundSchema;
   /** @deprecated use `RoomAllocation$Outbound` instead. */
   export type Outbound = RoomAllocation$Outbound;
+}
+
+export function roomAllocationToJSON(roomAllocation: RoomAllocation): string {
+  return JSON.stringify(RoomAllocation$outboundSchema.parse(roomAllocation));
+}
+
+export function roomAllocationFromJSON(
+  jsonString: string,
+): SafeParseResult<RoomAllocation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RoomAllocation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RoomAllocation' from JSON`,
+  );
 }

@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetProcessesCountExperimentalV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -63,6 +66,33 @@ export namespace GetProcessesCountExperimentalV2DeprecatedGlobals$ {
     GetProcessesCountExperimentalV2DeprecatedGlobals$Outbound;
 }
 
+export function getProcessesCountExperimentalV2DeprecatedGlobalsToJSON(
+  getProcessesCountExperimentalV2DeprecatedGlobals:
+    GetProcessesCountExperimentalV2DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    GetProcessesCountExperimentalV2DeprecatedGlobals$outboundSchema.parse(
+      getProcessesCountExperimentalV2DeprecatedGlobals,
+    ),
+  );
+}
+
+export function getProcessesCountExperimentalV2DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProcessesCountExperimentalV2DeprecatedGlobals,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProcessesCountExperimentalV2DeprecatedGlobals$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProcessesCountExperimentalV2DeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetProcessesCountExperimentalV2DeprecatedRequest$inboundSchema:
   z.ZodType<
@@ -110,6 +140,33 @@ export namespace GetProcessesCountExperimentalV2DeprecatedRequest$ {
     GetProcessesCountExperimentalV2DeprecatedRequest$Outbound;
 }
 
+export function getProcessesCountExperimentalV2DeprecatedRequestToJSON(
+  getProcessesCountExperimentalV2DeprecatedRequest:
+    GetProcessesCountExperimentalV2DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    GetProcessesCountExperimentalV2DeprecatedRequest$outboundSchema.parse(
+      getProcessesCountExperimentalV2DeprecatedRequest,
+    ),
+  );
+}
+
+export function getProcessesCountExperimentalV2DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProcessesCountExperimentalV2DeprecatedRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProcessesCountExperimentalV2DeprecatedRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProcessesCountExperimentalV2DeprecatedRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetProcessesCountExperimentalV2DeprecatedResponseBody$inboundSchema:
   z.ZodType<
@@ -149,4 +206,31 @@ export namespace GetProcessesCountExperimentalV2DeprecatedResponseBody$ {
   /** @deprecated use `GetProcessesCountExperimentalV2DeprecatedResponseBody$Outbound` instead. */
   export type Outbound =
     GetProcessesCountExperimentalV2DeprecatedResponseBody$Outbound;
+}
+
+export function getProcessesCountExperimentalV2DeprecatedResponseBodyToJSON(
+  getProcessesCountExperimentalV2DeprecatedResponseBody:
+    GetProcessesCountExperimentalV2DeprecatedResponseBody,
+): string {
+  return JSON.stringify(
+    GetProcessesCountExperimentalV2DeprecatedResponseBody$outboundSchema.parse(
+      getProcessesCountExperimentalV2DeprecatedResponseBody,
+    ),
+  );
+}
+
+export function getProcessesCountExperimentalV2DeprecatedResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProcessesCountExperimentalV2DeprecatedResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProcessesCountExperimentalV2DeprecatedResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProcessesCountExperimentalV2DeprecatedResponseBody' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetLatestDeploymentGlobals = {
   appId?: string | undefined;
@@ -48,6 +51,24 @@ export namespace GetLatestDeploymentGlobals$ {
   export type Outbound = GetLatestDeploymentGlobals$Outbound;
 }
 
+export function getLatestDeploymentGlobalsToJSON(
+  getLatestDeploymentGlobals: GetLatestDeploymentGlobals,
+): string {
+  return JSON.stringify(
+    GetLatestDeploymentGlobals$outboundSchema.parse(getLatestDeploymentGlobals),
+  );
+}
+
+export function getLatestDeploymentGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLatestDeploymentGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLatestDeploymentGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLatestDeploymentGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetLatestDeploymentRequest$inboundSchema: z.ZodType<
   GetLatestDeploymentRequest,
@@ -82,4 +103,22 @@ export namespace GetLatestDeploymentRequest$ {
   export const outboundSchema = GetLatestDeploymentRequest$outboundSchema;
   /** @deprecated use `GetLatestDeploymentRequest$Outbound` instead. */
   export type Outbound = GetLatestDeploymentRequest$Outbound;
+}
+
+export function getLatestDeploymentRequestToJSON(
+  getLatestDeploymentRequest: GetLatestDeploymentRequest,
+): string {
+  return JSON.stringify(
+    GetLatestDeploymentRequest$outboundSchema.parse(getLatestDeploymentRequest),
+  );
+}
+
+export function getLatestDeploymentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLatestDeploymentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLatestDeploymentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLatestDeploymentRequest' from JSON`,
+  );
 }

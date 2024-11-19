@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetConnectionInfoGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,24 @@ export namespace GetConnectionInfoGlobals$ {
   export type Outbound = GetConnectionInfoGlobals$Outbound;
 }
 
+export function getConnectionInfoGlobalsToJSON(
+  getConnectionInfoGlobals: GetConnectionInfoGlobals,
+): string {
+  return JSON.stringify(
+    GetConnectionInfoGlobals$outboundSchema.parse(getConnectionInfoGlobals),
+  );
+}
+
+export function getConnectionInfoGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetConnectionInfoGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetConnectionInfoGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetConnectionInfoGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetConnectionInfoRequest$inboundSchema: z.ZodType<
   GetConnectionInfoRequest,
@@ -86,4 +107,22 @@ export namespace GetConnectionInfoRequest$ {
   export const outboundSchema = GetConnectionInfoRequest$outboundSchema;
   /** @deprecated use `GetConnectionInfoRequest$Outbound` instead. */
   export type Outbound = GetConnectionInfoRequest$Outbound;
+}
+
+export function getConnectionInfoRequestToJSON(
+  getConnectionInfoRequest: GetConnectionInfoRequest,
+): string {
+  return JSON.stringify(
+    GetConnectionInfoRequest$outboundSchema.parse(getConnectionInfoRequest),
+  );
+}
+
+export function getConnectionInfoRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetConnectionInfoRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetConnectionInfoRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetConnectionInfoRequest' from JSON`,
+  );
 }

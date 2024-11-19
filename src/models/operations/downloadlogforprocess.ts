@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DownloadLogForProcessGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace DownloadLogForProcessGlobals$ {
   export type Outbound = DownloadLogForProcessGlobals$Outbound;
 }
 
+export function downloadLogForProcessGlobalsToJSON(
+  downloadLogForProcessGlobals: DownloadLogForProcessGlobals,
+): string {
+  return JSON.stringify(
+    DownloadLogForProcessGlobals$outboundSchema.parse(
+      downloadLogForProcessGlobals,
+    ),
+  );
+}
+
+export function downloadLogForProcessGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<DownloadLogForProcessGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DownloadLogForProcessGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DownloadLogForProcessGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const DownloadLogForProcessRequest$inboundSchema: z.ZodType<
   DownloadLogForProcessRequest,
@@ -86,4 +109,24 @@ export namespace DownloadLogForProcessRequest$ {
   export const outboundSchema = DownloadLogForProcessRequest$outboundSchema;
   /** @deprecated use `DownloadLogForProcessRequest$Outbound` instead. */
   export type Outbound = DownloadLogForProcessRequest$Outbound;
+}
+
+export function downloadLogForProcessRequestToJSON(
+  downloadLogForProcessRequest: DownloadLogForProcessRequest,
+): string {
+  return JSON.stringify(
+    DownloadLogForProcessRequest$outboundSchema.parse(
+      downloadLogForProcessRequest,
+    ),
+  );
+}
+
+export function downloadLogForProcessRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DownloadLogForProcessRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DownloadLogForProcessRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DownloadLogForProcessRequest' from JSON`,
+  );
 }

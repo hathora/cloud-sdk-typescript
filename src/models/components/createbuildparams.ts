@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateBuildParams = {
   /**
@@ -45,4 +48,22 @@ export namespace CreateBuildParams$ {
   export const outboundSchema = CreateBuildParams$outboundSchema;
   /** @deprecated use `CreateBuildParams$Outbound` instead. */
   export type Outbound = CreateBuildParams$Outbound;
+}
+
+export function createBuildParamsToJSON(
+  createBuildParams: CreateBuildParams,
+): string {
+  return JSON.stringify(
+    CreateBuildParams$outboundSchema.parse(createBuildParams),
+  );
+}
+
+export function createBuildParamsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateBuildParams, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateBuildParams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateBuildParams' from JSON`,
+  );
 }

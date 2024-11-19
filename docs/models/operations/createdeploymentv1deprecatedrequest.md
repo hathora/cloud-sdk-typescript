@@ -23,7 +23,7 @@ let value: CreateDeploymentV1DeprecatedRequest = {
         name: "default",
       },
     ],
-    transportType: "udp",
+    transportType: "tcp",
     containerPort: 4000,
   },
 };

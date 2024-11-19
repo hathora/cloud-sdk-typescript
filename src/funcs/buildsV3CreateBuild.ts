@@ -83,6 +83,9 @@ export async function buildsV3CreateBuild(
   const context = {
     operationID: "CreateBuild",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

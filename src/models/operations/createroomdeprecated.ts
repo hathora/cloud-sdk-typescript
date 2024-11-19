@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateRoomDeprecatedGlobals = {
   appId?: string | undefined;
@@ -50,6 +53,26 @@ export namespace CreateRoomDeprecatedGlobals$ {
   export const outboundSchema = CreateRoomDeprecatedGlobals$outboundSchema;
   /** @deprecated use `CreateRoomDeprecatedGlobals$Outbound` instead. */
   export type Outbound = CreateRoomDeprecatedGlobals$Outbound;
+}
+
+export function createRoomDeprecatedGlobalsToJSON(
+  createRoomDeprecatedGlobals: CreateRoomDeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    CreateRoomDeprecatedGlobals$outboundSchema.parse(
+      createRoomDeprecatedGlobals,
+    ),
+  );
+}
+
+export function createRoomDeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateRoomDeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateRoomDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateRoomDeprecatedGlobals' from JSON`,
+  );
 }
 
 /** @internal */
@@ -100,4 +123,24 @@ export namespace CreateRoomDeprecatedRequest$ {
   export const outboundSchema = CreateRoomDeprecatedRequest$outboundSchema;
   /** @deprecated use `CreateRoomDeprecatedRequest$Outbound` instead. */
   export type Outbound = CreateRoomDeprecatedRequest$Outbound;
+}
+
+export function createRoomDeprecatedRequestToJSON(
+  createRoomDeprecatedRequest: CreateRoomDeprecatedRequest,
+): string {
+  return JSON.stringify(
+    CreateRoomDeprecatedRequest$outboundSchema.parse(
+      createRoomDeprecatedRequest,
+    ),
+  );
+}
+
+export function createRoomDeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateRoomDeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateRoomDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateRoomDeprecatedRequest' from JSON`,
+  );
 }

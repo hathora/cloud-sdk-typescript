@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RescindUserInvite = {
   /**
@@ -45,4 +48,22 @@ export namespace RescindUserInvite$ {
   export const outboundSchema = RescindUserInvite$outboundSchema;
   /** @deprecated use `RescindUserInvite$Outbound` instead. */
   export type Outbound = RescindUserInvite$Outbound;
+}
+
+export function rescindUserInviteToJSON(
+  rescindUserInvite: RescindUserInvite,
+): string {
+  return JSON.stringify(
+    RescindUserInvite$outboundSchema.parse(rescindUserInvite),
+  );
+}
+
+export function rescindUserInviteFromJSON(
+  jsonString: string,
+): SafeParseResult<RescindUserInvite, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RescindUserInvite$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RescindUserInvite' from JSON`,
+  );
 }

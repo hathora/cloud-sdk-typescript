@@ -18,7 +18,7 @@ let value: CreateDeploymentV2DeprecatedRequest = {
     roomsPerProcess: 3,
     additionalContainerPorts: [
       {
-        transportType: "udp",
+        transportType: "tls",
         port: 8000,
         name: "default",
       },

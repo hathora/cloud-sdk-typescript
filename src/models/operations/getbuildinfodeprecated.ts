@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetBuildInfoDeprecatedGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace GetBuildInfoDeprecatedGlobals$ {
   export type Outbound = GetBuildInfoDeprecatedGlobals$Outbound;
 }
 
+export function getBuildInfoDeprecatedGlobalsToJSON(
+  getBuildInfoDeprecatedGlobals: GetBuildInfoDeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    GetBuildInfoDeprecatedGlobals$outboundSchema.parse(
+      getBuildInfoDeprecatedGlobals,
+    ),
+  );
+}
+
+export function getBuildInfoDeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBuildInfoDeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBuildInfoDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBuildInfoDeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetBuildInfoDeprecatedRequest$inboundSchema: z.ZodType<
   GetBuildInfoDeprecatedRequest,
@@ -86,4 +109,24 @@ export namespace GetBuildInfoDeprecatedRequest$ {
   export const outboundSchema = GetBuildInfoDeprecatedRequest$outboundSchema;
   /** @deprecated use `GetBuildInfoDeprecatedRequest$Outbound` instead. */
   export type Outbound = GetBuildInfoDeprecatedRequest$Outbound;
+}
+
+export function getBuildInfoDeprecatedRequestToJSON(
+  getBuildInfoDeprecatedRequest: GetBuildInfoDeprecatedRequest,
+): string {
+  return JSON.stringify(
+    GetBuildInfoDeprecatedRequest$outboundSchema.parse(
+      getBuildInfoDeprecatedRequest,
+    ),
+  );
+}
+
+export function getBuildInfoDeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBuildInfoDeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBuildInfoDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBuildInfoDeprecatedRequest' from JSON`,
+  );
 }

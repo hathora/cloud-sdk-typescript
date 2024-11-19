@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetStoppedProcessesGlobals = {
   appId?: string | undefined;
@@ -50,6 +53,24 @@ export namespace GetStoppedProcessesGlobals$ {
   export type Outbound = GetStoppedProcessesGlobals$Outbound;
 }
 
+export function getStoppedProcessesGlobalsToJSON(
+  getStoppedProcessesGlobals: GetStoppedProcessesGlobals,
+): string {
+  return JSON.stringify(
+    GetStoppedProcessesGlobals$outboundSchema.parse(getStoppedProcessesGlobals),
+  );
+}
+
+export function getStoppedProcessesGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetStoppedProcessesGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetStoppedProcessesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetStoppedProcessesGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetStoppedProcessesRequest$inboundSchema: z.ZodType<
   GetStoppedProcessesRequest,
@@ -87,4 +108,22 @@ export namespace GetStoppedProcessesRequest$ {
   export const outboundSchema = GetStoppedProcessesRequest$outboundSchema;
   /** @deprecated use `GetStoppedProcessesRequest$Outbound` instead. */
   export type Outbound = GetStoppedProcessesRequest$Outbound;
+}
+
+export function getStoppedProcessesRequestToJSON(
+  getStoppedProcessesRequest: GetStoppedProcessesRequest,
+): string {
+  return JSON.stringify(
+    GetStoppedProcessesRequest$outboundSchema.parse(getStoppedProcessesRequest),
+  );
+}
+
+export function getStoppedProcessesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetStoppedProcessesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetStoppedProcessesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetStoppedProcessesRequest' from JSON`,
+  );
 }

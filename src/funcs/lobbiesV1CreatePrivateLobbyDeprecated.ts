@@ -100,6 +100,9 @@ export async function lobbiesV1CreatePrivateLobbyDeprecated(
   const context = {
     operationID: "CreatePrivateLobbyDeprecated",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: security,
     retryConfig: options?.retries
       || client._options.retryConfig

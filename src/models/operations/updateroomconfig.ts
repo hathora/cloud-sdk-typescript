@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateRoomConfigGlobals = {
   appId?: string | undefined;
@@ -50,6 +53,24 @@ export namespace UpdateRoomConfigGlobals$ {
   export const outboundSchema = UpdateRoomConfigGlobals$outboundSchema;
   /** @deprecated use `UpdateRoomConfigGlobals$Outbound` instead. */
   export type Outbound = UpdateRoomConfigGlobals$Outbound;
+}
+
+export function updateRoomConfigGlobalsToJSON(
+  updateRoomConfigGlobals: UpdateRoomConfigGlobals,
+): string {
+  return JSON.stringify(
+    UpdateRoomConfigGlobals$outboundSchema.parse(updateRoomConfigGlobals),
+  );
+}
+
+export function updateRoomConfigGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateRoomConfigGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateRoomConfigGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateRoomConfigGlobals' from JSON`,
+  );
 }
 
 /** @internal */
@@ -100,4 +121,22 @@ export namespace UpdateRoomConfigRequest$ {
   export const outboundSchema = UpdateRoomConfigRequest$outboundSchema;
   /** @deprecated use `UpdateRoomConfigRequest$Outbound` instead. */
   export type Outbound = UpdateRoomConfigRequest$Outbound;
+}
+
+export function updateRoomConfigRequestToJSON(
+  updateRoomConfigRequest: UpdateRoomConfigRequest,
+): string {
+  return JSON.stringify(
+    UpdateRoomConfigRequest$outboundSchema.parse(updateRoomConfigRequest),
+  );
+}
+
+export function updateRoomConfigRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateRoomConfigRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateRoomConfigRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateRoomConfigRequest' from JSON`,
+  );
 }

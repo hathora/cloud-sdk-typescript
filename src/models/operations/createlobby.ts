@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateLobbyGlobals = {
   appId?: string | undefined;
@@ -57,6 +60,24 @@ export namespace CreateLobbyGlobals$ {
   export type Outbound = CreateLobbyGlobals$Outbound;
 }
 
+export function createLobbyGlobalsToJSON(
+  createLobbyGlobals: CreateLobbyGlobals,
+): string {
+  return JSON.stringify(
+    CreateLobbyGlobals$outboundSchema.parse(createLobbyGlobals),
+  );
+}
+
+export function createLobbyGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLobbyGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLobbyGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLobbyGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateLobbySecurity$inboundSchema: z.ZodType<
   CreateLobbySecurity,
@@ -91,6 +112,24 @@ export namespace CreateLobbySecurity$ {
   export const outboundSchema = CreateLobbySecurity$outboundSchema;
   /** @deprecated use `CreateLobbySecurity$Outbound` instead. */
   export type Outbound = CreateLobbySecurity$Outbound;
+}
+
+export function createLobbySecurityToJSON(
+  createLobbySecurity: CreateLobbySecurity,
+): string {
+  return JSON.stringify(
+    CreateLobbySecurity$outboundSchema.parse(createLobbySecurity),
+  );
+}
+
+export function createLobbySecurityFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLobbySecurity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLobbySecurity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLobbySecurity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -144,4 +183,22 @@ export namespace CreateLobbyRequest$ {
   export const outboundSchema = CreateLobbyRequest$outboundSchema;
   /** @deprecated use `CreateLobbyRequest$Outbound` instead. */
   export type Outbound = CreateLobbyRequest$Outbound;
+}
+
+export function createLobbyRequestToJSON(
+  createLobbyRequest: CreateLobbyRequest,
+): string {
+  return JSON.stringify(
+    CreateLobbyRequest$outboundSchema.parse(createLobbyRequest),
+  );
+}
+
+export function createLobbyRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLobbyRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLobbyRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLobbyRequest' from JSON`,
+  );
 }

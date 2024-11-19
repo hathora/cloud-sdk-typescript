@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AuthConfiguration,
   AuthConfiguration$inboundSchema,
@@ -58,4 +61,18 @@ export namespace AppConfig$ {
   export const outboundSchema = AppConfig$outboundSchema;
   /** @deprecated use `AppConfig$Outbound` instead. */
   export type Outbound = AppConfig$Outbound;
+}
+
+export function appConfigToJSON(appConfig: AppConfig): string {
+  return JSON.stringify(AppConfig$outboundSchema.parse(appConfig));
+}
+
+export function appConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<AppConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AppConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AppConfig' from JSON`,
+  );
 }

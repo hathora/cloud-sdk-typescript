@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RecordStringNever,
   RecordStringNever$inboundSchema,
@@ -71,6 +74,20 @@ export namespace Google$ {
   export type Outbound = Google$Outbound;
 }
 
+export function googleToJSON(google: Google): string {
+  return JSON.stringify(Google$outboundSchema.parse(google));
+}
+
+export function googleFromJSON(
+  jsonString: string,
+): SafeParseResult<Google, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Google$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Google' from JSON`,
+  );
+}
+
 /** @internal */
 export const AuthConfiguration$inboundSchema: z.ZodType<
   AuthConfiguration,
@@ -111,4 +128,22 @@ export namespace AuthConfiguration$ {
   export const outboundSchema = AuthConfiguration$outboundSchema;
   /** @deprecated use `AuthConfiguration$Outbound` instead. */
   export type Outbound = AuthConfiguration$Outbound;
+}
+
+export function authConfigurationToJSON(
+  authConfiguration: AuthConfiguration,
+): string {
+  return JSON.stringify(
+    AuthConfiguration$outboundSchema.parse(authConfiguration),
+  );
+}
+
+export function authConfigurationFromJSON(
+  jsonString: string,
+): SafeParseResult<AuthConfiguration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AuthConfiguration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthConfiguration' from JSON`,
+  );
 }

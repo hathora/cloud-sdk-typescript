@@ -89,6 +89,9 @@ export async function tokensV1RevokeOrgToken(
   const context = {
     operationID: "RevokeOrgToken",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BuildStatus,
   BuildStatus$inboundSchema,
@@ -108,6 +111,33 @@ export namespace BuildWithUploadUrlRegionalContainerTags$ {
   export type Outbound = BuildWithUploadUrlRegionalContainerTags$Outbound;
 }
 
+export function buildWithUploadUrlRegionalContainerTagsToJSON(
+  buildWithUploadUrlRegionalContainerTags:
+    BuildWithUploadUrlRegionalContainerTags,
+): string {
+  return JSON.stringify(
+    BuildWithUploadUrlRegionalContainerTags$outboundSchema.parse(
+      buildWithUploadUrlRegionalContainerTags,
+    ),
+  );
+}
+
+export function buildWithUploadUrlRegionalContainerTagsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuildWithUploadUrlRegionalContainerTags,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuildWithUploadUrlRegionalContainerTags$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BuildWithUploadUrlRegionalContainerTags' from JSON`,
+  );
+}
+
 /** @internal */
 export const UploadBodyParams$inboundSchema: z.ZodType<
   UploadBodyParams,
@@ -145,6 +175,24 @@ export namespace UploadBodyParams$ {
   export const outboundSchema = UploadBodyParams$outboundSchema;
   /** @deprecated use `UploadBodyParams$Outbound` instead. */
   export type Outbound = UploadBodyParams$Outbound;
+}
+
+export function uploadBodyParamsToJSON(
+  uploadBodyParams: UploadBodyParams,
+): string {
+  return JSON.stringify(
+    UploadBodyParams$outboundSchema.parse(uploadBodyParams),
+  );
+}
+
+export function uploadBodyParamsFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadBodyParams, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadBodyParams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadBodyParams' from JSON`,
+  );
 }
 
 /** @internal */
@@ -229,4 +277,22 @@ export namespace BuildWithUploadUrl$ {
   export const outboundSchema = BuildWithUploadUrl$outboundSchema;
   /** @deprecated use `BuildWithUploadUrl$Outbound` instead. */
   export type Outbound = BuildWithUploadUrl$Outbound;
+}
+
+export function buildWithUploadUrlToJSON(
+  buildWithUploadUrl: BuildWithUploadUrl,
+): string {
+  return JSON.stringify(
+    BuildWithUploadUrl$outboundSchema.parse(buildWithUploadUrl),
+  );
+}
+
+export function buildWithUploadUrlFromJSON(
+  jsonString: string,
+): SafeParseResult<BuildWithUploadUrl, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuildWithUploadUrl$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuildWithUploadUrl' from JSON`,
+  );
 }

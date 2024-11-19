@@ -76,6 +76,9 @@ export async function authV1LoginAnonymous(
   const context = {
     operationID: "LoginAnonymous",
     oAuth2Scopes: [],
+
+    resolvedSecurity: null,
+
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig

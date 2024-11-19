@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RunBuildRequest = {
   buildId: string;
@@ -46,4 +49,20 @@ export namespace RunBuildRequest$ {
   export const outboundSchema = RunBuildRequest$outboundSchema;
   /** @deprecated use `RunBuildRequest$Outbound` instead. */
   export type Outbound = RunBuildRequest$Outbound;
+}
+
+export function runBuildRequestToJSON(
+  runBuildRequest: RunBuildRequest,
+): string {
+  return JSON.stringify(RunBuildRequest$outboundSchema.parse(runBuildRequest));
+}
+
+export function runBuildRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RunBuildRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RunBuildRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RunBuildRequest' from JSON`,
+  );
 }

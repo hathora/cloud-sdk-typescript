@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type StopProcessGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,24 @@ export namespace StopProcessGlobals$ {
   export type Outbound = StopProcessGlobals$Outbound;
 }
 
+export function stopProcessGlobalsToJSON(
+  stopProcessGlobals: StopProcessGlobals,
+): string {
+  return JSON.stringify(
+    StopProcessGlobals$outboundSchema.parse(stopProcessGlobals),
+  );
+}
+
+export function stopProcessGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<StopProcessGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StopProcessGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StopProcessGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const StopProcessRequest$inboundSchema: z.ZodType<
   StopProcessRequest,
@@ -86,4 +107,22 @@ export namespace StopProcessRequest$ {
   export const outboundSchema = StopProcessRequest$outboundSchema;
   /** @deprecated use `StopProcessRequest$Outbound` instead. */
   export type Outbound = StopProcessRequest$Outbound;
+}
+
+export function stopProcessRequestToJSON(
+  stopProcessRequest: StopProcessRequest,
+): string {
+  return JSON.stringify(
+    StopProcessRequest$outboundSchema.parse(stopProcessRequest),
+  );
+}
+
+export function stopProcessRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<StopProcessRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StopProcessRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StopProcessRequest' from JSON`,
+  );
 }

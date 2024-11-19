@@ -78,6 +78,9 @@ export async function buildsV3GetBuilds(
   const context = {
     operationID: "GetBuilds",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

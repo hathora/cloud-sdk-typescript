@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateBuildV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace CreateBuildV2DeprecatedGlobals$ {
   export const outboundSchema = CreateBuildV2DeprecatedGlobals$outboundSchema;
   /** @deprecated use `CreateBuildV2DeprecatedGlobals$Outbound` instead. */
   export type Outbound = CreateBuildV2DeprecatedGlobals$Outbound;
+}
+
+export function createBuildV2DeprecatedGlobalsToJSON(
+  createBuildV2DeprecatedGlobals: CreateBuildV2DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    CreateBuildV2DeprecatedGlobals$outboundSchema.parse(
+      createBuildV2DeprecatedGlobals,
+    ),
+  );
+}
+
+export function createBuildV2DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateBuildV2DeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateBuildV2DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateBuildV2DeprecatedGlobals' from JSON`,
+  );
 }
 
 /** @internal */
@@ -96,4 +119,24 @@ export namespace CreateBuildV2DeprecatedRequest$ {
   export const outboundSchema = CreateBuildV2DeprecatedRequest$outboundSchema;
   /** @deprecated use `CreateBuildV2DeprecatedRequest$Outbound` instead. */
   export type Outbound = CreateBuildV2DeprecatedRequest$Outbound;
+}
+
+export function createBuildV2DeprecatedRequestToJSON(
+  createBuildV2DeprecatedRequest: CreateBuildV2DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    CreateBuildV2DeprecatedRequest$outboundSchema.parse(
+      createBuildV2DeprecatedRequest,
+    ),
+  );
+}
+
+export function createBuildV2DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateBuildV2DeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateBuildV2DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateBuildV2DeprecatedRequest' from JSON`,
+  );
 }

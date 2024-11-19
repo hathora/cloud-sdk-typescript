@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BuildPart,
   BuildPart$inboundSchema,
@@ -112,6 +115,33 @@ export namespace BuildWithMultipartUrlsRegionalContainerTags$ {
   export type Outbound = BuildWithMultipartUrlsRegionalContainerTags$Outbound;
 }
 
+export function buildWithMultipartUrlsRegionalContainerTagsToJSON(
+  buildWithMultipartUrlsRegionalContainerTags:
+    BuildWithMultipartUrlsRegionalContainerTags,
+): string {
+  return JSON.stringify(
+    BuildWithMultipartUrlsRegionalContainerTags$outboundSchema.parse(
+      buildWithMultipartUrlsRegionalContainerTags,
+    ),
+  );
+}
+
+export function buildWithMultipartUrlsRegionalContainerTagsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuildWithMultipartUrlsRegionalContainerTags,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuildWithMultipartUrlsRegionalContainerTags$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BuildWithMultipartUrlsRegionalContainerTags' from JSON`,
+  );
+}
+
 /** @internal */
 export const BuildWithMultipartUrls$inboundSchema: z.ZodType<
   BuildWithMultipartUrls,
@@ -197,4 +227,22 @@ export namespace BuildWithMultipartUrls$ {
   export const outboundSchema = BuildWithMultipartUrls$outboundSchema;
   /** @deprecated use `BuildWithMultipartUrls$Outbound` instead. */
   export type Outbound = BuildWithMultipartUrls$Outbound;
+}
+
+export function buildWithMultipartUrlsToJSON(
+  buildWithMultipartUrls: BuildWithMultipartUrls,
+): string {
+  return JSON.stringify(
+    BuildWithMultipartUrls$outboundSchema.parse(buildWithMultipartUrls),
+  );
+}
+
+export function buildWithMultipartUrlsFromJSON(
+  jsonString: string,
+): SafeParseResult<BuildWithMultipartUrls, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuildWithMultipartUrls$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuildWithMultipartUrls' from JSON`,
+  );
 }

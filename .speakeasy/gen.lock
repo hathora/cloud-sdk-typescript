@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: bfa4946b490fdca2f1007eca2c488a3f
+  docChecksum: f8d9519632cef4bd7e7a797fde2f0772
   docVersion: 0.0.1
-  speakeasyVersion: 1.434.6
-  generationVersion: 2.452.0
-  releaseVersion: 2.11.0
-  configChecksum: 35c364b9d933bd9475cef03009d2db8a
+  speakeasyVersion: 1.441.0
+  generationVersion: 2.460.1
+  releaseVersion: 2.11.1
+  configChecksum: b22fb9f79712931485f15162c5c49345
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.3
+    core: 3.18.5
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -162,6 +162,7 @@ generatedFiles:
   - docs/models/components/transporttype.md
   - docs/models/components/updateroomconfigparams.md
   - docs/models/components/uploadbodyparams.md
+  - docs/models/components/usagelimits.md
   - docs/models/components/verificationemailrequest.md
   - docs/models/components/verificationemailsuccess.md
   - docs/models/errors/apierror.md
@@ -319,6 +320,7 @@ generatedFiles:
   - docs/models/operations/getstoppedprocessesglobals.md
   - docs/models/operations/getstoppedprocessesrequest.md
   - docs/models/operations/getupcominginvoicetotalresponsebody.md
+  - docs/models/operations/getusagelimitsrequest.md
   - docs/models/operations/inviteuserrequest.md
   - docs/models/operations/listactivepubliclobbiesdeprecatedv1globals.md
   - docs/models/operations/listactivepubliclobbiesdeprecatedv1request.md
@@ -466,6 +468,7 @@ generatedFiles:
   - src/funcs/organizationsV1GetOrgMembers.ts
   - src/funcs/organizationsV1GetOrgPendingInvites.ts
   - src/funcs/organizationsV1GetOrgs.ts
+  - src/funcs/organizationsV1GetUsageLimits.ts
   - src/funcs/organizationsV1GetUserPendingInvites.ts
   - src/funcs/organizationsV1InviteUser.ts
   - src/funcs/organizationsV1RejectInvite.ts
@@ -614,6 +617,7 @@ generatedFiles:
   - src/models/components/startingconnectioninfo.ts
   - src/models/components/transporttype.ts
   - src/models/components/updateroomconfigparams.ts
+  - src/models/components/usagelimits.ts
   - src/models/components/verificationemailrequest.ts
   - src/models/components/verificationemailsuccess.ts
   - src/models/errors/apierror.ts
@@ -699,6 +703,7 @@ generatedFiles:
   - src/models/operations/getrunningprocesses.ts
   - src/models/operations/getstoppedprocesses.ts
   - src/models/operations/getupcominginvoicetotal.ts
+  - src/models/operations/getusagelimits.ts
   - src/models/operations/index.ts
   - src/models/operations/inviteuser.ts
   - src/models/operations/listactivepubliclobbies.ts
@@ -1979,3 +1984,13 @@ examples:
         "404":
           application/json: {"message": "<value>"}
         "200": {}
+  GetUsageLimits:
+    speakeasy-default-get-usage-limits:
+      parameters:
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      responses:
+        "200":
+          application/json: {"monthlyProcessVcpuHoursConsumed": "5579.88", "concurrentProcessVcpus7DayMax": "7121.65"}
+        "401":
+          application/json: {"message": "<value>"}

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetLobbyInfoGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,24 @@ export namespace GetLobbyInfoGlobals$ {
   export type Outbound = GetLobbyInfoGlobals$Outbound;
 }
 
+export function getLobbyInfoGlobalsToJSON(
+  getLobbyInfoGlobals: GetLobbyInfoGlobals,
+): string {
+  return JSON.stringify(
+    GetLobbyInfoGlobals$outboundSchema.parse(getLobbyInfoGlobals),
+  );
+}
+
+export function getLobbyInfoGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLobbyInfoGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLobbyInfoGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLobbyInfoGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetLobbyInfoRequest$inboundSchema: z.ZodType<
   GetLobbyInfoRequest,
@@ -86,4 +107,22 @@ export namespace GetLobbyInfoRequest$ {
   export const outboundSchema = GetLobbyInfoRequest$outboundSchema;
   /** @deprecated use `GetLobbyInfoRequest$Outbound` instead. */
   export type Outbound = GetLobbyInfoRequest$Outbound;
+}
+
+export function getLobbyInfoRequestToJSON(
+  getLobbyInfoRequest: GetLobbyInfoRequest,
+): string {
+  return JSON.stringify(
+    GetLobbyInfoRequest$outboundSchema.parse(getLobbyInfoRequest),
+  );
+}
+
+export function getLobbyInfoRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLobbyInfoRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLobbyInfoRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLobbyInfoRequest' from JSON`,
+  );
 }

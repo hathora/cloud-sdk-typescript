@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PlayerTokenObject = {
   /**
@@ -45,4 +48,22 @@ export namespace PlayerTokenObject$ {
   export const outboundSchema = PlayerTokenObject$outboundSchema;
   /** @deprecated use `PlayerTokenObject$Outbound` instead. */
   export type Outbound = PlayerTokenObject$Outbound;
+}
+
+export function playerTokenObjectToJSON(
+  playerTokenObject: PlayerTokenObject,
+): string {
+  return JSON.stringify(
+    PlayerTokenObject$outboundSchema.parse(playerTokenObject),
+  );
+}
+
+export function playerTokenObjectFromJSON(
+  jsonString: string,
+): SafeParseResult<PlayerTokenObject, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PlayerTokenObject$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PlayerTokenObject' from JSON`,
+  );
 }

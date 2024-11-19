@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RoomStatus,
   RoomStatus$inboundSchema,
@@ -104,6 +107,33 @@ export namespace RoomWithoutAllocationsCurrentAllocation$ {
   export type Outbound = RoomWithoutAllocationsCurrentAllocation$Outbound;
 }
 
+export function roomWithoutAllocationsCurrentAllocationToJSON(
+  roomWithoutAllocationsCurrentAllocation:
+    RoomWithoutAllocationsCurrentAllocation,
+): string {
+  return JSON.stringify(
+    RoomWithoutAllocationsCurrentAllocation$outboundSchema.parse(
+      roomWithoutAllocationsCurrentAllocation,
+    ),
+  );
+}
+
+export function roomWithoutAllocationsCurrentAllocationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RoomWithoutAllocationsCurrentAllocation,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RoomWithoutAllocationsCurrentAllocation$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RoomWithoutAllocationsCurrentAllocation' from JSON`,
+  );
+}
+
 /** @internal */
 export const RoomWithoutAllocations$inboundSchema: z.ZodType<
   RoomWithoutAllocations,
@@ -154,4 +184,22 @@ export namespace RoomWithoutAllocations$ {
   export const outboundSchema = RoomWithoutAllocations$outboundSchema;
   /** @deprecated use `RoomWithoutAllocations$Outbound` instead. */
   export type Outbound = RoomWithoutAllocations$Outbound;
+}
+
+export function roomWithoutAllocationsToJSON(
+  roomWithoutAllocations: RoomWithoutAllocations,
+): string {
+  return JSON.stringify(
+    RoomWithoutAllocations$outboundSchema.parse(roomWithoutAllocations),
+  );
+}
+
+export function roomWithoutAllocationsFromJSON(
+  jsonString: string,
+): SafeParseResult<RoomWithoutAllocations, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RoomWithoutAllocations$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RoomWithoutAllocations' from JSON`,
+  );
 }

@@ -84,6 +84,9 @@ export async function roomsV2GetConnectionInfo(
   const context = {
     operationID: "GetConnectionInfo",
     oAuth2Scopes: [],
+
+    resolvedSecurity: null,
+
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig

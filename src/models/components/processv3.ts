@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ExposedPort,
   ExposedPort$inboundSchema,
@@ -126,6 +129,24 @@ export namespace ProcessV3ExposedPort$ {
   export type Outbound = ProcessV3ExposedPort$Outbound;
 }
 
+export function processV3ExposedPortToJSON(
+  processV3ExposedPort: ProcessV3ExposedPort,
+): string {
+  return JSON.stringify(
+    ProcessV3ExposedPort$outboundSchema.parse(processV3ExposedPort),
+  );
+}
+
+export function processV3ExposedPortFromJSON(
+  jsonString: string,
+): SafeParseResult<ProcessV3ExposedPort, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProcessV3ExposedPort$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProcessV3ExposedPort' from JSON`,
+  );
+}
+
 /** @internal */
 export const ProcessV3$inboundSchema: z.ZodType<
   ProcessV3,
@@ -202,4 +223,18 @@ export namespace ProcessV3$ {
   export const outboundSchema = ProcessV3$outboundSchema;
   /** @deprecated use `ProcessV3$Outbound` instead. */
   export type Outbound = ProcessV3$Outbound;
+}
+
+export function processV3ToJSON(processV3: ProcessV3): string {
+  return JSON.stringify(ProcessV3$outboundSchema.parse(processV3));
+}
+
+export function processV3FromJSON(
+  jsonString: string,
+): SafeParseResult<ProcessV3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProcessV3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProcessV3' from JSON`,
+  );
 }

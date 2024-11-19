@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AuthConfiguration,
   AuthConfiguration$inboundSchema,
@@ -166,6 +169,33 @@ export namespace ApplicationWithLatestDeploymentAndBuildDeprecatedEnv$ {
     ApplicationWithLatestDeploymentAndBuildDeprecatedEnv$Outbound;
 }
 
+export function applicationWithLatestDeploymentAndBuildDeprecatedEnvToJSON(
+  applicationWithLatestDeploymentAndBuildDeprecatedEnv:
+    ApplicationWithLatestDeploymentAndBuildDeprecatedEnv,
+): string {
+  return JSON.stringify(
+    ApplicationWithLatestDeploymentAndBuildDeprecatedEnv$outboundSchema.parse(
+      applicationWithLatestDeploymentAndBuildDeprecatedEnv,
+    ),
+  );
+}
+
+export function applicationWithLatestDeploymentAndBuildDeprecatedEnvFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ApplicationWithLatestDeploymentAndBuildDeprecatedEnv,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ApplicationWithLatestDeploymentAndBuildDeprecatedEnv$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ApplicationWithLatestDeploymentAndBuildDeprecatedEnv' from JSON`,
+  );
+}
+
 /** @internal */
 export const Deployment$inboundSchema: z.ZodType<
   Deployment,
@@ -246,6 +276,20 @@ export namespace Deployment$ {
   export type Outbound = Deployment$Outbound;
 }
 
+export function deploymentToJSON(deployment: Deployment): string {
+  return JSON.stringify(Deployment$outboundSchema.parse(deployment));
+}
+
+export function deploymentFromJSON(
+  jsonString: string,
+): SafeParseResult<Deployment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Deployment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Deployment' from JSON`,
+  );
+}
+
 /** @internal */
 export const ApplicationWithLatestDeploymentAndBuildDeprecated$inboundSchema:
   z.ZodType<
@@ -316,4 +360,31 @@ export namespace ApplicationWithLatestDeploymentAndBuildDeprecated$ {
   /** @deprecated use `ApplicationWithLatestDeploymentAndBuildDeprecated$Outbound` instead. */
   export type Outbound =
     ApplicationWithLatestDeploymentAndBuildDeprecated$Outbound;
+}
+
+export function applicationWithLatestDeploymentAndBuildDeprecatedToJSON(
+  applicationWithLatestDeploymentAndBuildDeprecated:
+    ApplicationWithLatestDeploymentAndBuildDeprecated,
+): string {
+  return JSON.stringify(
+    ApplicationWithLatestDeploymentAndBuildDeprecated$outboundSchema.parse(
+      applicationWithLatestDeploymentAndBuildDeprecated,
+    ),
+  );
+}
+
+export function applicationWithLatestDeploymentAndBuildDeprecatedFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ApplicationWithLatestDeploymentAndBuildDeprecated,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ApplicationWithLatestDeploymentAndBuildDeprecated$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ApplicationWithLatestDeploymentAndBuildDeprecated' from JSON`,
+  );
 }

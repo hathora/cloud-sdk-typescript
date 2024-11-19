@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ApplicationWithLatestDeploymentAndBuild,
   ApplicationWithLatestDeploymentAndBuild$inboundSchema,
@@ -48,4 +51,22 @@ export namespace ApplicationsPage$ {
   export const outboundSchema = ApplicationsPage$outboundSchema;
   /** @deprecated use `ApplicationsPage$Outbound` instead. */
   export type Outbound = ApplicationsPage$Outbound;
+}
+
+export function applicationsPageToJSON(
+  applicationsPage: ApplicationsPage,
+): string {
+  return JSON.stringify(
+    ApplicationsPage$outboundSchema.parse(applicationsPage),
+  );
+}
+
+export function applicationsPageFromJSON(
+  jsonString: string,
+): SafeParseResult<ApplicationsPage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ApplicationsPage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApplicationsPage' from JSON`,
+  );
 }

@@ -90,6 +90,9 @@ export async function buildsV1DeleteBuildDeprecated(
   const context = {
     operationID: "DeleteBuildDeprecated",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

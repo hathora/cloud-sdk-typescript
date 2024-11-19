@@ -6,6 +6,7 @@ import { organizationsV1AcceptInvite } from "../funcs/organizationsV1AcceptInvit
 import { organizationsV1GetOrgMembers } from "../funcs/organizationsV1GetOrgMembers.js";
 import { organizationsV1GetOrgPendingInvites } from "../funcs/organizationsV1GetOrgPendingInvites.js";
 import { organizationsV1GetOrgs } from "../funcs/organizationsV1GetOrgs.js";
+import { organizationsV1GetUsageLimits } from "../funcs/organizationsV1GetUsageLimits.js";
 import { organizationsV1GetUserPendingInvites } from "../funcs/organizationsV1GetUserPendingInvites.js";
 import { organizationsV1InviteUser } from "../funcs/organizationsV1InviteUser.js";
 import { organizationsV1RejectInvite } from "../funcs/organizationsV1RejectInvite.js";
@@ -124,6 +125,20 @@ export class OrganizationsV1 extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(organizationsV1RejectInvite(
+      this,
+      orgId,
+      options,
+    ));
+  }
+
+  /**
+   * GetUsageLimits
+   */
+  async getUsageLimits(
+    orgId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.UsageLimits> {
+    return unwrapAsync(organizationsV1GetUsageLimits(
       this,
       orgId,
       options,

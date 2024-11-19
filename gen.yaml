@@ -19,7 +19,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.11.0
+  version: 2.11.1
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -27,6 +27,7 @@ typescript:
   additionalPackageJSON: {}
   author: Hathora
   clientServerStatusCodesAsErrors: true
+  defaultErrorName: SDKError
   enumFormat: union
   flattenGlobalSecurity: true
   flatteningOrder: body-first

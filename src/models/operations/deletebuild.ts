@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteBuildRequest = {
   buildId: string;
@@ -46,4 +49,22 @@ export namespace DeleteBuildRequest$ {
   export const outboundSchema = DeleteBuildRequest$outboundSchema;
   /** @deprecated use `DeleteBuildRequest$Outbound` instead. */
   export type Outbound = DeleteBuildRequest$Outbound;
+}
+
+export function deleteBuildRequestToJSON(
+  deleteBuildRequest: DeleteBuildRequest,
+): string {
+  return JSON.stringify(
+    DeleteBuildRequest$outboundSchema.parse(deleteBuildRequest),
+  );
+}
+
+export function deleteBuildRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteBuildRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteBuildRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteBuildRequest' from JSON`,
+  );
 }

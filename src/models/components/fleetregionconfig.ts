@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type FleetRegionConfig = {
   cloudMinVcpus: number;
@@ -42,4 +45,22 @@ export namespace FleetRegionConfig$ {
   export const outboundSchema = FleetRegionConfig$outboundSchema;
   /** @deprecated use `FleetRegionConfig$Outbound` instead. */
   export type Outbound = FleetRegionConfig$Outbound;
+}
+
+export function fleetRegionConfigToJSON(
+  fleetRegionConfig: FleetRegionConfig,
+): string {
+  return JSON.stringify(
+    FleetRegionConfig$outboundSchema.parse(fleetRegionConfig),
+  );
+}
+
+export function fleetRegionConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<FleetRegionConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FleetRegionConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FleetRegionConfig' from JSON`,
+  );
 }

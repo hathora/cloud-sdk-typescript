@@ -9,21 +9,21 @@ import { CreatedBuildV3WithMultipartUrls } from "@hathora/cloud-sdk-typescript/m
 
 let value: CreatedBuildV3WithMultipartUrls = {
   buildTag: "0.1.14-14c793",
-  imageSize: 164694,
-  status: "succeeded",
-  deletedAt: new Date("2023-09-25T15:25:14.861Z"),
-  finishedAt: new Date("2022-09-18T17:31:57.984Z"),
-  startedAt: new Date("2024-10-20T21:33:54.006Z"),
-  createdAt: new Date("2023-11-04T21:45:37.821Z"),
+  imageSize: 577229,
+  status: "created",
+  deletedAt: new Date("2024-10-20T21:33:54.006Z"),
+  finishedAt: new Date("2023-11-04T21:45:37.821Z"),
+  startedAt: new Date("2023-08-11T01:17:06.903Z"),
+  createdAt: new Date("2023-10-09T12:59:31.265Z"),
   createdBy: "noreply@hathora.dev",
   buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  completeUploadPostRequestUrl: "https://overcooked-ravioli.biz",
-  maxChunkSize: 3982.21,
+  completeUploadPostRequestUrl: "https://general-guacamole.biz",
+  maxChunkSize: 1861.93,
   uploadParts: [
     {
-      putRequestUrl: "https://descriptive-unblinking.net/",
-      partNumber: 4904.59,
+      putRequestUrl: "https://showy-jungle.biz",
+      partNumber: 2543.56,
     },
   ],
 };

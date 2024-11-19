@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RevokeOrgTokenRequest = {
   orgId: string;
@@ -46,4 +49,22 @@ export namespace RevokeOrgTokenRequest$ {
   export const outboundSchema = RevokeOrgTokenRequest$outboundSchema;
   /** @deprecated use `RevokeOrgTokenRequest$Outbound` instead. */
   export type Outbound = RevokeOrgTokenRequest$Outbound;
+}
+
+export function revokeOrgTokenRequestToJSON(
+  revokeOrgTokenRequest: RevokeOrgTokenRequest,
+): string {
+  return JSON.stringify(
+    RevokeOrgTokenRequest$outboundSchema.parse(revokeOrgTokenRequest),
+  );
+}
+
+export function revokeOrgTokenRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RevokeOrgTokenRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RevokeOrgTokenRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RevokeOrgTokenRequest' from JSON`,
+  );
 }

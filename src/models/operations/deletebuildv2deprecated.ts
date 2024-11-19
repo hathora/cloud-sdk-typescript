@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteBuildV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace DeleteBuildV2DeprecatedGlobals$ {
   export type Outbound = DeleteBuildV2DeprecatedGlobals$Outbound;
 }
 
+export function deleteBuildV2DeprecatedGlobalsToJSON(
+  deleteBuildV2DeprecatedGlobals: DeleteBuildV2DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    DeleteBuildV2DeprecatedGlobals$outboundSchema.parse(
+      deleteBuildV2DeprecatedGlobals,
+    ),
+  );
+}
+
+export function deleteBuildV2DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteBuildV2DeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteBuildV2DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteBuildV2DeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteBuildV2DeprecatedRequest$inboundSchema: z.ZodType<
   DeleteBuildV2DeprecatedRequest,
@@ -86,4 +109,24 @@ export namespace DeleteBuildV2DeprecatedRequest$ {
   export const outboundSchema = DeleteBuildV2DeprecatedRequest$outboundSchema;
   /** @deprecated use `DeleteBuildV2DeprecatedRequest$Outbound` instead. */
   export type Outbound = DeleteBuildV2DeprecatedRequest$Outbound;
+}
+
+export function deleteBuildV2DeprecatedRequestToJSON(
+  deleteBuildV2DeprecatedRequest: DeleteBuildV2DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    DeleteBuildV2DeprecatedRequest$outboundSchema.parse(
+      deleteBuildV2DeprecatedRequest,
+    ),
+  );
+}
+
+export function deleteBuildV2DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteBuildV2DeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteBuildV2DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteBuildV2DeprecatedRequest' from JSON`,
+  );
 }

@@ -89,6 +89,9 @@ export async function deploymentsV3GetDeployment(
   const context = {
     operationID: "GetDeployment",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

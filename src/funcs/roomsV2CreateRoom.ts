@@ -90,6 +90,9 @@ export async function roomsV2CreateRoom(
   const context = {
     operationID: "CreateRoom",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

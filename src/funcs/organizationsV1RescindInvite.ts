@@ -82,6 +82,9 @@ export async function organizationsV1RescindInvite(
   const context = {
     operationID: "RescindInvite",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

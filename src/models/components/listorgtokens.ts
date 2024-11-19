@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   OrgToken,
   OrgToken$inboundSchema,
@@ -48,4 +51,18 @@ export namespace ListOrgTokens$ {
   export const outboundSchema = ListOrgTokens$outboundSchema;
   /** @deprecated use `ListOrgTokens$Outbound` instead. */
   export type Outbound = ListOrgTokens$Outbound;
+}
+
+export function listOrgTokensToJSON(listOrgTokens: ListOrgTokens): string {
+  return JSON.stringify(ListOrgTokens$outboundSchema.parse(listOrgTokens));
+}
+
+export function listOrgTokensFromJSON(
+  jsonString: string,
+): SafeParseResult<ListOrgTokens, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListOrgTokens$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListOrgTokens' from JSON`,
+  );
 }

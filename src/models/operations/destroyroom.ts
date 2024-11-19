@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DestroyRoomGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,24 @@ export namespace DestroyRoomGlobals$ {
   export type Outbound = DestroyRoomGlobals$Outbound;
 }
 
+export function destroyRoomGlobalsToJSON(
+  destroyRoomGlobals: DestroyRoomGlobals,
+): string {
+  return JSON.stringify(
+    DestroyRoomGlobals$outboundSchema.parse(destroyRoomGlobals),
+  );
+}
+
+export function destroyRoomGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<DestroyRoomGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DestroyRoomGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DestroyRoomGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const DestroyRoomRequest$inboundSchema: z.ZodType<
   DestroyRoomRequest,
@@ -86,4 +107,22 @@ export namespace DestroyRoomRequest$ {
   export const outboundSchema = DestroyRoomRequest$outboundSchema;
   /** @deprecated use `DestroyRoomRequest$Outbound` instead. */
   export type Outbound = DestroyRoomRequest$Outbound;
+}
+
+export function destroyRoomRequestToJSON(
+  destroyRoomRequest: DestroyRoomRequest,
+): string {
+  return JSON.stringify(
+    DestroyRoomRequest$outboundSchema.parse(destroyRoomRequest),
+  );
+}
+
+export function destroyRoomRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DestroyRoomRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DestroyRoomRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DestroyRoomRequest' from JSON`,
+  );
 }

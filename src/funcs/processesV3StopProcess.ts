@@ -89,6 +89,9 @@ export async function processesV3StopProcess(
   const context = {
     operationID: "StopProcess",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

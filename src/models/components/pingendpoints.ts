@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Region,
   Region$inboundSchema,
@@ -55,4 +58,18 @@ export namespace PingEndpoints$ {
   export const outboundSchema = PingEndpoints$outboundSchema;
   /** @deprecated use `PingEndpoints$Outbound` instead. */
   export type Outbound = PingEndpoints$Outbound;
+}
+
+export function pingEndpointsToJSON(pingEndpoints: PingEndpoints): string {
+  return JSON.stringify(PingEndpoints$outboundSchema.parse(pingEndpoints));
+}
+
+export function pingEndpointsFromJSON(
+  jsonString: string,
+): SafeParseResult<PingEndpoints, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PingEndpoints$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PingEndpoints' from JSON`,
+  );
 }

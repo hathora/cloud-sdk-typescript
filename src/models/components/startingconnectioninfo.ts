@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const Status = {
   Starting: "starting",
@@ -87,4 +90,22 @@ export namespace StartingConnectionInfo$ {
   export const outboundSchema = StartingConnectionInfo$outboundSchema;
   /** @deprecated use `StartingConnectionInfo$Outbound` instead. */
   export type Outbound = StartingConnectionInfo$Outbound;
+}
+
+export function startingConnectionInfoToJSON(
+  startingConnectionInfo: StartingConnectionInfo,
+): string {
+  return JSON.stringify(
+    StartingConnectionInfo$outboundSchema.parse(startingConnectionInfo),
+  );
+}
+
+export function startingConnectionInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<StartingConnectionInfo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StartingConnectionInfo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StartingConnectionInfo' from JSON`,
+  );
 }

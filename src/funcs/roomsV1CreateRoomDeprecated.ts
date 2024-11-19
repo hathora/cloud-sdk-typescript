@@ -91,6 +91,9 @@ export async function roomsV1CreateRoomDeprecated(
   const context = {
     operationID: "CreateRoomDeprecated",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

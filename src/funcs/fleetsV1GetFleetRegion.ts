@@ -95,6 +95,9 @@ export async function fleetsV1GetFleetRegion(
   const context = {
     operationID: "GetFleetRegion",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

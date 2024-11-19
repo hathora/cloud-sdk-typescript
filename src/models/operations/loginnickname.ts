@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LoginNicknameGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,24 @@ export namespace LoginNicknameGlobals$ {
   export const outboundSchema = LoginNicknameGlobals$outboundSchema;
   /** @deprecated use `LoginNicknameGlobals$Outbound` instead. */
   export type Outbound = LoginNicknameGlobals$Outbound;
+}
+
+export function loginNicknameGlobalsToJSON(
+  loginNicknameGlobals: LoginNicknameGlobals,
+): string {
+  return JSON.stringify(
+    LoginNicknameGlobals$outboundSchema.parse(loginNicknameGlobals),
+  );
+}
+
+export function loginNicknameGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<LoginNicknameGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LoginNicknameGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LoginNicknameGlobals' from JSON`,
+  );
 }
 
 /** @internal */
@@ -96,4 +117,22 @@ export namespace LoginNicknameRequest$ {
   export const outboundSchema = LoginNicknameRequest$outboundSchema;
   /** @deprecated use `LoginNicknameRequest$Outbound` instead. */
   export type Outbound = LoginNicknameRequest$Outbound;
+}
+
+export function loginNicknameRequestToJSON(
+  loginNicknameRequest: LoginNicknameRequest,
+): string {
+  return JSON.stringify(
+    LoginNicknameRequest$outboundSchema.parse(loginNicknameRequest),
+  );
+}
+
+export function loginNicknameRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LoginNicknameRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LoginNicknameRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LoginNicknameRequest' from JSON`,
+  );
 }

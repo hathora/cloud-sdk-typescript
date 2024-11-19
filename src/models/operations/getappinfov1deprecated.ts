@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetAppInfoV1DeprecatedGlobals = {
   appId?: string | undefined;
@@ -48,6 +51,26 @@ export namespace GetAppInfoV1DeprecatedGlobals$ {
   export type Outbound = GetAppInfoV1DeprecatedGlobals$Outbound;
 }
 
+export function getAppInfoV1DeprecatedGlobalsToJSON(
+  getAppInfoV1DeprecatedGlobals: GetAppInfoV1DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    GetAppInfoV1DeprecatedGlobals$outboundSchema.parse(
+      getAppInfoV1DeprecatedGlobals,
+    ),
+  );
+}
+
+export function getAppInfoV1DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAppInfoV1DeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAppInfoV1DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAppInfoV1DeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAppInfoV1DeprecatedRequest$inboundSchema: z.ZodType<
   GetAppInfoV1DeprecatedRequest,
@@ -82,4 +105,24 @@ export namespace GetAppInfoV1DeprecatedRequest$ {
   export const outboundSchema = GetAppInfoV1DeprecatedRequest$outboundSchema;
   /** @deprecated use `GetAppInfoV1DeprecatedRequest$Outbound` instead. */
   export type Outbound = GetAppInfoV1DeprecatedRequest$Outbound;
+}
+
+export function getAppInfoV1DeprecatedRequestToJSON(
+  getAppInfoV1DeprecatedRequest: GetAppInfoV1DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    GetAppInfoV1DeprecatedRequest$outboundSchema.parse(
+      getAppInfoV1DeprecatedRequest,
+    ),
+  );
+}
+
+export function getAppInfoV1DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAppInfoV1DeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAppInfoV1DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAppInfoV1DeprecatedRequest' from JSON`,
+  );
 }

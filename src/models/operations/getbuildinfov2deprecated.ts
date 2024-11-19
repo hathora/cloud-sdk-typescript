@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetBuildInfoV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace GetBuildInfoV2DeprecatedGlobals$ {
   export type Outbound = GetBuildInfoV2DeprecatedGlobals$Outbound;
 }
 
+export function getBuildInfoV2DeprecatedGlobalsToJSON(
+  getBuildInfoV2DeprecatedGlobals: GetBuildInfoV2DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    GetBuildInfoV2DeprecatedGlobals$outboundSchema.parse(
+      getBuildInfoV2DeprecatedGlobals,
+    ),
+  );
+}
+
+export function getBuildInfoV2DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBuildInfoV2DeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBuildInfoV2DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBuildInfoV2DeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetBuildInfoV2DeprecatedRequest$inboundSchema: z.ZodType<
   GetBuildInfoV2DeprecatedRequest,
@@ -86,4 +109,24 @@ export namespace GetBuildInfoV2DeprecatedRequest$ {
   export const outboundSchema = GetBuildInfoV2DeprecatedRequest$outboundSchema;
   /** @deprecated use `GetBuildInfoV2DeprecatedRequest$Outbound` instead. */
   export type Outbound = GetBuildInfoV2DeprecatedRequest$Outbound;
+}
+
+export function getBuildInfoV2DeprecatedRequestToJSON(
+  getBuildInfoV2DeprecatedRequest: GetBuildInfoV2DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    GetBuildInfoV2DeprecatedRequest$outboundSchema.parse(
+      getBuildInfoV2DeprecatedRequest,
+    ),
+  );
+}
+
+export function getBuildInfoV2DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBuildInfoV2DeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBuildInfoV2DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBuildInfoV2DeprecatedRequest' from JSON`,
+  );
 }

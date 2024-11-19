@@ -96,6 +96,9 @@ export async function logsV1GetLogsForProcess(
   const context = {
     operationID: "GetLogsForProcess",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

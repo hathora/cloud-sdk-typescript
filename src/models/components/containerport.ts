@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TransportType,
   TransportType$inboundSchema,
@@ -64,4 +67,18 @@ export namespace ContainerPort$ {
   export const outboundSchema = ContainerPort$outboundSchema;
   /** @deprecated use `ContainerPort$Outbound` instead. */
   export type Outbound = ContainerPort$Outbound;
+}
+
+export function containerPortToJSON(containerPort: ContainerPort): string {
+  return JSON.stringify(ContainerPort$outboundSchema.parse(containerPort));
+}
+
+export function containerPortFromJSON(
+  jsonString: string,
+): SafeParseResult<ContainerPort, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContainerPort$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContainerPort' from JSON`,
+  );
 }

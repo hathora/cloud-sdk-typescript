@@ -78,6 +78,9 @@ export async function organizationsV1RejectInvite(
   const context = {
     operationID: "RejectInvite",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

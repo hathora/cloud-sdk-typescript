@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetBuildRequest = {
   buildId: string;
@@ -46,4 +49,20 @@ export namespace GetBuildRequest$ {
   export const outboundSchema = GetBuildRequest$outboundSchema;
   /** @deprecated use `GetBuildRequest$Outbound` instead. */
   export type Outbound = GetBuildRequest$Outbound;
+}
+
+export function getBuildRequestToJSON(
+  getBuildRequest: GetBuildRequest,
+): string {
+  return JSON.stringify(GetBuildRequest$outboundSchema.parse(getBuildRequest));
+}
+
+export function getBuildRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBuildRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBuildRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBuildRequest' from JSON`,
+  );
 }

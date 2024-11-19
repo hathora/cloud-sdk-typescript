@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ContainerPort,
   ContainerPort$inboundSchema,
@@ -149,6 +152,20 @@ export namespace Env$ {
   export type Outbound = Env$Outbound;
 }
 
+export function envToJSON(env: Env): string {
+  return JSON.stringify(Env$outboundSchema.parse(env));
+}
+
+export function envFromJSON(
+  jsonString: string,
+): SafeParseResult<Env, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Env$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Env' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeploymentV1TransportType$inboundSchema: z.ZodType<
   DeploymentV1TransportType,
@@ -257,4 +274,18 @@ export namespace DeploymentV1$ {
   export const outboundSchema = DeploymentV1$outboundSchema;
   /** @deprecated use `DeploymentV1$Outbound` instead. */
   export type Outbound = DeploymentV1$Outbound;
+}
+
+export function deploymentV1ToJSON(deploymentV1: DeploymentV1): string {
+  return JSON.stringify(DeploymentV1$outboundSchema.parse(deploymentV1));
+}
+
+export function deploymentV1FromJSON(
+  jsonString: string,
+): SafeParseResult<DeploymentV1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeploymentV1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeploymentV1' from JSON`,
+  );
 }

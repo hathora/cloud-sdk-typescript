@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PendingOrgInvite = {
   createdAt: Date;
@@ -60,4 +63,22 @@ export namespace PendingOrgInvite$ {
   export const outboundSchema = PendingOrgInvite$outboundSchema;
   /** @deprecated use `PendingOrgInvite$Outbound` instead. */
   export type Outbound = PendingOrgInvite$Outbound;
+}
+
+export function pendingOrgInviteToJSON(
+  pendingOrgInvite: PendingOrgInvite,
+): string {
+  return JSON.stringify(
+    PendingOrgInvite$outboundSchema.parse(pendingOrgInvite),
+  );
+}
+
+export function pendingOrgInviteFromJSON(
+  jsonString: string,
+): SafeParseResult<PendingOrgInvite, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PendingOrgInvite$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PendingOrgInvite' from JSON`,
+  );
 }

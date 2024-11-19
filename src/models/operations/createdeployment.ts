@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateDeploymentGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,24 @@ export namespace CreateDeploymentGlobals$ {
   export const outboundSchema = CreateDeploymentGlobals$outboundSchema;
   /** @deprecated use `CreateDeploymentGlobals$Outbound` instead. */
   export type Outbound = CreateDeploymentGlobals$Outbound;
+}
+
+export function createDeploymentGlobalsToJSON(
+  createDeploymentGlobals: CreateDeploymentGlobals,
+): string {
+  return JSON.stringify(
+    CreateDeploymentGlobals$outboundSchema.parse(createDeploymentGlobals),
+  );
+}
+
+export function createDeploymentGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentGlobals' from JSON`,
+  );
 }
 
 /** @internal */
@@ -96,4 +117,22 @@ export namespace CreateDeploymentRequest$ {
   export const outboundSchema = CreateDeploymentRequest$outboundSchema;
   /** @deprecated use `CreateDeploymentRequest$Outbound` instead. */
   export type Outbound = CreateDeploymentRequest$Outbound;
+}
+
+export function createDeploymentRequestToJSON(
+  createDeploymentRequest: CreateDeploymentRequest,
+): string {
+  return JSON.stringify(
+    CreateDeploymentRequest$outboundSchema.parse(createDeploymentRequest),
+  );
+}
+
+export function createDeploymentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentRequest' from JSON`,
+  );
 }

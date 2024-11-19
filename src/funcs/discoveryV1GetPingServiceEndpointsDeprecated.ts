@@ -51,6 +51,9 @@ export async function discoveryV1GetPingServiceEndpointsDeprecated(
   const context = {
     operationID: "GetPingServiceEndpointsDeprecated",
     oAuth2Scopes: [],
+
+    resolvedSecurity: null,
+
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig

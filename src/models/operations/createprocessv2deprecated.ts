@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateProcessV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -50,6 +53,26 @@ export namespace CreateProcessV2DeprecatedGlobals$ {
   export type Outbound = CreateProcessV2DeprecatedGlobals$Outbound;
 }
 
+export function createProcessV2DeprecatedGlobalsToJSON(
+  createProcessV2DeprecatedGlobals: CreateProcessV2DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    CreateProcessV2DeprecatedGlobals$outboundSchema.parse(
+      createProcessV2DeprecatedGlobals,
+    ),
+  );
+}
+
+export function createProcessV2DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProcessV2DeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProcessV2DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProcessV2DeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateProcessV2DeprecatedRequest$inboundSchema: z.ZodType<
   CreateProcessV2DeprecatedRequest,
@@ -87,4 +110,24 @@ export namespace CreateProcessV2DeprecatedRequest$ {
   export const outboundSchema = CreateProcessV2DeprecatedRequest$outboundSchema;
   /** @deprecated use `CreateProcessV2DeprecatedRequest$Outbound` instead. */
   export type Outbound = CreateProcessV2DeprecatedRequest$Outbound;
+}
+
+export function createProcessV2DeprecatedRequestToJSON(
+  createProcessV2DeprecatedRequest: CreateProcessV2DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    CreateProcessV2DeprecatedRequest$outboundSchema.parse(
+      createProcessV2DeprecatedRequest,
+    ),
+  );
+}
+
+export function createProcessV2DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProcessV2DeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProcessV2DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProcessV2DeprecatedRequest' from JSON`,
+  );
 }

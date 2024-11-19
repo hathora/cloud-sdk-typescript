@@ -81,6 +81,9 @@ export async function appsV2DeleteApp(
   const context = {
     operationID: "DeleteApp",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

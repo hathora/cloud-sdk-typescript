@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type MetricValue = {
   value: number;
@@ -46,4 +49,18 @@ export namespace MetricValue$ {
   export const outboundSchema = MetricValue$outboundSchema;
   /** @deprecated use `MetricValue$Outbound` instead. */
   export type Outbound = MetricValue$Outbound;
+}
+
+export function metricValueToJSON(metricValue: MetricValue): string {
+  return JSON.stringify(MetricValue$outboundSchema.parse(metricValue));
+}
+
+export function metricValueFromJSON(
+  jsonString: string,
+): SafeParseResult<MetricValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MetricValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MetricValue' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SetLobbyStateParams = {
   /**
@@ -45,4 +48,22 @@ export namespace SetLobbyStateParams$ {
   export const outboundSchema = SetLobbyStateParams$outboundSchema;
   /** @deprecated use `SetLobbyStateParams$Outbound` instead. */
   export type Outbound = SetLobbyStateParams$Outbound;
+}
+
+export function setLobbyStateParamsToJSON(
+  setLobbyStateParams: SetLobbyStateParams,
+): string {
+  return JSON.stringify(
+    SetLobbyStateParams$outboundSchema.parse(setLobbyStateParams),
+  );
+}
+
+export function setLobbyStateParamsFromJSON(
+  jsonString: string,
+): SafeParseResult<SetLobbyStateParams, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SetLobbyStateParams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SetLobbyStateParams' from JSON`,
+  );
 }

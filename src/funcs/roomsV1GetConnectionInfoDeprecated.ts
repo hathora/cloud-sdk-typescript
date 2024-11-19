@@ -84,6 +84,9 @@ export async function roomsV1GetConnectionInfoDeprecated(
   const context = {
     operationID: "GetConnectionInfoDeprecated",
     oAuth2Scopes: [],
+
+    resolvedSecurity: null,
+
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetConnectionInfoDeprecatedGlobals = {
   appId?: string | undefined;
@@ -50,6 +53,27 @@ export namespace GetConnectionInfoDeprecatedGlobals$ {
   export type Outbound = GetConnectionInfoDeprecatedGlobals$Outbound;
 }
 
+export function getConnectionInfoDeprecatedGlobalsToJSON(
+  getConnectionInfoDeprecatedGlobals: GetConnectionInfoDeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    GetConnectionInfoDeprecatedGlobals$outboundSchema.parse(
+      getConnectionInfoDeprecatedGlobals,
+    ),
+  );
+}
+
+export function getConnectionInfoDeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetConnectionInfoDeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetConnectionInfoDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetConnectionInfoDeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetConnectionInfoDeprecatedRequest$inboundSchema: z.ZodType<
   GetConnectionInfoDeprecatedRequest,
@@ -88,4 +112,25 @@ export namespace GetConnectionInfoDeprecatedRequest$ {
     GetConnectionInfoDeprecatedRequest$outboundSchema;
   /** @deprecated use `GetConnectionInfoDeprecatedRequest$Outbound` instead. */
   export type Outbound = GetConnectionInfoDeprecatedRequest$Outbound;
+}
+
+export function getConnectionInfoDeprecatedRequestToJSON(
+  getConnectionInfoDeprecatedRequest: GetConnectionInfoDeprecatedRequest,
+): string {
+  return JSON.stringify(
+    GetConnectionInfoDeprecatedRequest$outboundSchema.parse(
+      getConnectionInfoDeprecatedRequest,
+    ),
+  );
+}
+
+export function getConnectionInfoDeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetConnectionInfoDeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetConnectionInfoDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetConnectionInfoDeprecatedRequest' from JSON`,
+  );
 }

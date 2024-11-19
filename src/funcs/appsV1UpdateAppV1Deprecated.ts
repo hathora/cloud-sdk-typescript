@@ -87,6 +87,9 @@ export async function appsV1UpdateAppV1Deprecated(
   const context = {
     operationID: "UpdateAppV1Deprecated",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

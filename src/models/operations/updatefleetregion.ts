@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateFleetRegionRequest = {
   fleetId: string;
@@ -64,4 +67,22 @@ export namespace UpdateFleetRegionRequest$ {
   export const outboundSchema = UpdateFleetRegionRequest$outboundSchema;
   /** @deprecated use `UpdateFleetRegionRequest$Outbound` instead. */
   export type Outbound = UpdateFleetRegionRequest$Outbound;
+}
+
+export function updateFleetRegionRequestToJSON(
+  updateFleetRegionRequest: UpdateFleetRegionRequest,
+): string {
+  return JSON.stringify(
+    UpdateFleetRegionRequest$outboundSchema.parse(updateFleetRegionRequest),
+  );
+}
+
+export function updateFleetRegionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFleetRegionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFleetRegionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFleetRegionRequest' from JSON`,
+  );
 }

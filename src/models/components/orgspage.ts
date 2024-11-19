@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Organization,
   Organization$inboundSchema,
@@ -48,4 +51,18 @@ export namespace OrgsPage$ {
   export const outboundSchema = OrgsPage$outboundSchema;
   /** @deprecated use `OrgsPage$Outbound` instead. */
   export type Outbound = OrgsPage$Outbound;
+}
+
+export function orgsPageToJSON(orgsPage: OrgsPage): string {
+  return JSON.stringify(OrgsPage$outboundSchema.parse(orgsPage));
+}
+
+export function orgsPageFromJSON(
+  jsonString: string,
+): SafeParseResult<OrgsPage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrgsPage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrgsPage' from JSON`,
+  );
 }

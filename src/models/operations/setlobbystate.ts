@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SetLobbyStateGlobals = {
   appId?: string | undefined;
@@ -50,6 +53,24 @@ export namespace SetLobbyStateGlobals$ {
   export const outboundSchema = SetLobbyStateGlobals$outboundSchema;
   /** @deprecated use `SetLobbyStateGlobals$Outbound` instead. */
   export type Outbound = SetLobbyStateGlobals$Outbound;
+}
+
+export function setLobbyStateGlobalsToJSON(
+  setLobbyStateGlobals: SetLobbyStateGlobals,
+): string {
+  return JSON.stringify(
+    SetLobbyStateGlobals$outboundSchema.parse(setLobbyStateGlobals),
+  );
+}
+
+export function setLobbyStateGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<SetLobbyStateGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SetLobbyStateGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SetLobbyStateGlobals' from JSON`,
+  );
 }
 
 /** @internal */
@@ -100,4 +121,22 @@ export namespace SetLobbyStateRequest$ {
   export const outboundSchema = SetLobbyStateRequest$outboundSchema;
   /** @deprecated use `SetLobbyStateRequest$Outbound` instead. */
   export type Outbound = SetLobbyStateRequest$Outbound;
+}
+
+export function setLobbyStateRequestToJSON(
+  setLobbyStateRequest: SetLobbyStateRequest,
+): string {
+  return JSON.stringify(
+    SetLobbyStateRequest$outboundSchema.parse(setLobbyStateRequest),
+  );
+}
+
+export function setLobbyStateRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<SetLobbyStateRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SetLobbyStateRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SetLobbyStateRequest' from JSON`,
+  );
 }

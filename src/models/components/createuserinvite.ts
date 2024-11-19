@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateUserInvite = {
   /**
@@ -45,4 +48,22 @@ export namespace CreateUserInvite$ {
   export const outboundSchema = CreateUserInvite$outboundSchema;
   /** @deprecated use `CreateUserInvite$Outbound` instead. */
   export type Outbound = CreateUserInvite$Outbound;
+}
+
+export function createUserInviteToJSON(
+  createUserInvite: CreateUserInvite,
+): string {
+  return JSON.stringify(
+    CreateUserInvite$outboundSchema.parse(createUserInvite),
+  );
+}
+
+export function createUserInviteFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateUserInvite, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateUserInvite$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateUserInvite' from JSON`,
+  );
 }

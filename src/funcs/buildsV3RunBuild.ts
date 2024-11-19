@@ -87,6 +87,9 @@ export async function buildsV3RunBuild(
   const context = {
     operationID: "RunBuild",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -87,6 +87,9 @@ export async function roomsV1DestroyRoomDeprecated(
   const context = {
     operationID: "DestroyRoomDeprecated",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

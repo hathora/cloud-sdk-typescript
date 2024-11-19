@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetDeploymentsV1DeprecatedGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace GetDeploymentsV1DeprecatedGlobals$ {
   export type Outbound = GetDeploymentsV1DeprecatedGlobals$Outbound;
 }
 
+export function getDeploymentsV1DeprecatedGlobalsToJSON(
+  getDeploymentsV1DeprecatedGlobals: GetDeploymentsV1DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    GetDeploymentsV1DeprecatedGlobals$outboundSchema.parse(
+      getDeploymentsV1DeprecatedGlobals,
+    ),
+  );
+}
+
+export function getDeploymentsV1DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsV1DeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsV1DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsV1DeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetDeploymentsV1DeprecatedRequest$inboundSchema: z.ZodType<
   GetDeploymentsV1DeprecatedRequest,
@@ -84,4 +107,24 @@ export namespace GetDeploymentsV1DeprecatedRequest$ {
     GetDeploymentsV1DeprecatedRequest$outboundSchema;
   /** @deprecated use `GetDeploymentsV1DeprecatedRequest$Outbound` instead. */
   export type Outbound = GetDeploymentsV1DeprecatedRequest$Outbound;
+}
+
+export function getDeploymentsV1DeprecatedRequestToJSON(
+  getDeploymentsV1DeprecatedRequest: GetDeploymentsV1DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    GetDeploymentsV1DeprecatedRequest$outboundSchema.parse(
+      getDeploymentsV1DeprecatedRequest,
+    ),
+  );
+}
+
+export function getDeploymentsV1DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsV1DeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsV1DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsV1DeprecatedRequest' from JSON`,
+  );
 }

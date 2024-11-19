@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   MetricValue,
   MetricValue$inboundSchema,
@@ -77,4 +80,24 @@ export namespace DeprecatedProcessMetricsData$ {
   export const outboundSchema = DeprecatedProcessMetricsData$outboundSchema;
   /** @deprecated use `DeprecatedProcessMetricsData$Outbound` instead. */
   export type Outbound = DeprecatedProcessMetricsData$Outbound;
+}
+
+export function deprecatedProcessMetricsDataToJSON(
+  deprecatedProcessMetricsData: DeprecatedProcessMetricsData,
+): string {
+  return JSON.stringify(
+    DeprecatedProcessMetricsData$outboundSchema.parse(
+      deprecatedProcessMetricsData,
+    ),
+  );
+}
+
+export function deprecatedProcessMetricsDataFromJSON(
+  jsonString: string,
+): SafeParseResult<DeprecatedProcessMetricsData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeprecatedProcessMetricsData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeprecatedProcessMetricsData' from JSON`,
+  );
 }

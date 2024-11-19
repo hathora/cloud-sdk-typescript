@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type StopProcessV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace StopProcessV2DeprecatedGlobals$ {
   export type Outbound = StopProcessV2DeprecatedGlobals$Outbound;
 }
 
+export function stopProcessV2DeprecatedGlobalsToJSON(
+  stopProcessV2DeprecatedGlobals: StopProcessV2DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    StopProcessV2DeprecatedGlobals$outboundSchema.parse(
+      stopProcessV2DeprecatedGlobals,
+    ),
+  );
+}
+
+export function stopProcessV2DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<StopProcessV2DeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StopProcessV2DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StopProcessV2DeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const StopProcessV2DeprecatedRequest$inboundSchema: z.ZodType<
   StopProcessV2DeprecatedRequest,
@@ -86,4 +109,24 @@ export namespace StopProcessV2DeprecatedRequest$ {
   export const outboundSchema = StopProcessV2DeprecatedRequest$outboundSchema;
   /** @deprecated use `StopProcessV2DeprecatedRequest$Outbound` instead. */
   export type Outbound = StopProcessV2DeprecatedRequest$Outbound;
+}
+
+export function stopProcessV2DeprecatedRequestToJSON(
+  stopProcessV2DeprecatedRequest: StopProcessV2DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    StopProcessV2DeprecatedRequest$outboundSchema.parse(
+      stopProcessV2DeprecatedRequest,
+    ),
+  );
+}
+
+export function stopProcessV2DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<StopProcessV2DeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StopProcessV2DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StopProcessV2DeprecatedRequest' from JSON`,
+  );
 }

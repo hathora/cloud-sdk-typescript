@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LinkPaymentMethod = {
   email?: string | undefined;
@@ -42,4 +45,22 @@ export namespace LinkPaymentMethod$ {
   export const outboundSchema = LinkPaymentMethod$outboundSchema;
   /** @deprecated use `LinkPaymentMethod$Outbound` instead. */
   export type Outbound = LinkPaymentMethod$Outbound;
+}
+
+export function linkPaymentMethodToJSON(
+  linkPaymentMethod: LinkPaymentMethod,
+): string {
+  return JSON.stringify(
+    LinkPaymentMethod$outboundSchema.parse(linkPaymentMethod),
+  );
+}
+
+export function linkPaymentMethodFromJSON(
+  jsonString: string,
+): SafeParseResult<LinkPaymentMethod, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LinkPaymentMethod$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkPaymentMethod' from JSON`,
+  );
 }

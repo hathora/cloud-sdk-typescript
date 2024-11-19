@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ExposedPort,
   ExposedPort$inboundSchema,
@@ -77,4 +80,22 @@ export namespace ConnectionInfoV2$ {
   export const outboundSchema = ConnectionInfoV2$outboundSchema;
   /** @deprecated use `ConnectionInfoV2$Outbound` instead. */
   export type Outbound = ConnectionInfoV2$Outbound;
+}
+
+export function connectionInfoV2ToJSON(
+  connectionInfoV2: ConnectionInfoV2,
+): string {
+  return JSON.stringify(
+    ConnectionInfoV2$outboundSchema.parse(connectionInfoV2),
+  );
+}
+
+export function connectionInfoV2FromJSON(
+  jsonString: string,
+): SafeParseResult<ConnectionInfoV2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConnectionInfoV2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectionInfoV2' from JSON`,
+  );
 }

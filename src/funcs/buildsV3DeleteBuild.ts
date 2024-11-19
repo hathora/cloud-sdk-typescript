@@ -89,6 +89,9 @@ export async function buildsV3DeleteBuild(
   const context = {
     operationID: "DeleteBuild",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -53,6 +53,9 @@ export async function billingV1GetInvoices(
   const context = {
     operationID: "GetInvoices",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

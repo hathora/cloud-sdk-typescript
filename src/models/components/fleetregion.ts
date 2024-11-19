@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A fleet region is a region in which a fleet can be deployed.
@@ -59,4 +62,18 @@ export namespace FleetRegion$ {
   export const outboundSchema = FleetRegion$outboundSchema;
   /** @deprecated use `FleetRegion$Outbound` instead. */
   export type Outbound = FleetRegion$Outbound;
+}
+
+export function fleetRegionToJSON(fleetRegion: FleetRegion): string {
+  return JSON.stringify(FleetRegion$outboundSchema.parse(fleetRegion));
+}
+
+export function fleetRegionFromJSON(
+  jsonString: string,
+): SafeParseResult<FleetRegion, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FleetRegion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FleetRegion' from JSON`,
+  );
 }

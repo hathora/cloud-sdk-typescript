@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetLatestProcessesV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -53,6 +56,27 @@ export namespace GetLatestProcessesV2DeprecatedGlobals$ {
   export type Outbound = GetLatestProcessesV2DeprecatedGlobals$Outbound;
 }
 
+export function getLatestProcessesV2DeprecatedGlobalsToJSON(
+  getLatestProcessesV2DeprecatedGlobals: GetLatestProcessesV2DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    GetLatestProcessesV2DeprecatedGlobals$outboundSchema.parse(
+      getLatestProcessesV2DeprecatedGlobals,
+    ),
+  );
+}
+
+export function getLatestProcessesV2DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLatestProcessesV2DeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetLatestProcessesV2DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLatestProcessesV2DeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetLatestProcessesV2DeprecatedRequest$inboundSchema: z.ZodType<
   GetLatestProcessesV2DeprecatedRequest,
@@ -95,4 +119,25 @@ export namespace GetLatestProcessesV2DeprecatedRequest$ {
     GetLatestProcessesV2DeprecatedRequest$outboundSchema;
   /** @deprecated use `GetLatestProcessesV2DeprecatedRequest$Outbound` instead. */
   export type Outbound = GetLatestProcessesV2DeprecatedRequest$Outbound;
+}
+
+export function getLatestProcessesV2DeprecatedRequestToJSON(
+  getLatestProcessesV2DeprecatedRequest: GetLatestProcessesV2DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    GetLatestProcessesV2DeprecatedRequest$outboundSchema.parse(
+      getLatestProcessesV2DeprecatedRequest,
+    ),
+  );
+}
+
+export function getLatestProcessesV2DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLatestProcessesV2DeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetLatestProcessesV2DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLatestProcessesV2DeprecatedRequest' from JSON`,
+  );
 }

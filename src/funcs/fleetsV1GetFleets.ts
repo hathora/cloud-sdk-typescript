@@ -78,6 +78,9 @@ export async function fleetsV1GetFleets(
   const context = {
     operationID: "GetFleets",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

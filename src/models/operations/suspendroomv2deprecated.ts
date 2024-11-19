@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SuspendRoomV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace SuspendRoomV2DeprecatedGlobals$ {
   export type Outbound = SuspendRoomV2DeprecatedGlobals$Outbound;
 }
 
+export function suspendRoomV2DeprecatedGlobalsToJSON(
+  suspendRoomV2DeprecatedGlobals: SuspendRoomV2DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    SuspendRoomV2DeprecatedGlobals$outboundSchema.parse(
+      suspendRoomV2DeprecatedGlobals,
+    ),
+  );
+}
+
+export function suspendRoomV2DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<SuspendRoomV2DeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SuspendRoomV2DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SuspendRoomV2DeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const SuspendRoomV2DeprecatedRequest$inboundSchema: z.ZodType<
   SuspendRoomV2DeprecatedRequest,
@@ -86,4 +109,24 @@ export namespace SuspendRoomV2DeprecatedRequest$ {
   export const outboundSchema = SuspendRoomV2DeprecatedRequest$outboundSchema;
   /** @deprecated use `SuspendRoomV2DeprecatedRequest$Outbound` instead. */
   export type Outbound = SuspendRoomV2DeprecatedRequest$Outbound;
+}
+
+export function suspendRoomV2DeprecatedRequestToJSON(
+  suspendRoomV2DeprecatedRequest: SuspendRoomV2DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    SuspendRoomV2DeprecatedRequest$outboundSchema.parse(
+      suspendRoomV2DeprecatedRequest,
+    ),
+  );
+}
+
+export function suspendRoomV2DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<SuspendRoomV2DeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SuspendRoomV2DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SuspendRoomV2DeprecatedRequest' from JSON`,
+  );
 }

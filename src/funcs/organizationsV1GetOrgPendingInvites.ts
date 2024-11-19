@@ -79,6 +79,9 @@ export async function organizationsV1GetOrgPendingInvites(
   const context = {
     operationID: "GetOrgPendingInvites",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

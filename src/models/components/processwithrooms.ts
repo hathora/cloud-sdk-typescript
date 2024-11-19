@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ExposedPort,
   ExposedPort$inboundSchema,
@@ -170,6 +173,26 @@ export namespace ProcessWithRoomsExposedPort$ {
   export type Outbound = ProcessWithRoomsExposedPort$Outbound;
 }
 
+export function processWithRoomsExposedPortToJSON(
+  processWithRoomsExposedPort: ProcessWithRoomsExposedPort,
+): string {
+  return JSON.stringify(
+    ProcessWithRoomsExposedPort$outboundSchema.parse(
+      processWithRoomsExposedPort,
+    ),
+  );
+}
+
+export function processWithRoomsExposedPortFromJSON(
+  jsonString: string,
+): SafeParseResult<ProcessWithRoomsExposedPort, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProcessWithRoomsExposedPort$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProcessWithRoomsExposedPort' from JSON`,
+  );
+}
+
 /** @internal */
 export const ProcessWithRooms$inboundSchema: z.ZodType<
   ProcessWithRooms,
@@ -291,4 +314,22 @@ export namespace ProcessWithRooms$ {
   export const outboundSchema = ProcessWithRooms$outboundSchema;
   /** @deprecated use `ProcessWithRooms$Outbound` instead. */
   export type Outbound = ProcessWithRooms$Outbound;
+}
+
+export function processWithRoomsToJSON(
+  processWithRooms: ProcessWithRooms,
+): string {
+  return JSON.stringify(
+    ProcessWithRooms$outboundSchema.parse(processWithRooms),
+  );
+}
+
+export function processWithRoomsFromJSON(
+  jsonString: string,
+): SafeParseResult<ProcessWithRooms, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProcessWithRooms$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProcessWithRooms' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ContainerPort,
   ContainerPort$inboundSchema,
@@ -109,6 +112,22 @@ export namespace DeploymentV3Env$ {
   export type Outbound = DeploymentV3Env$Outbound;
 }
 
+export function deploymentV3EnvToJSON(
+  deploymentV3Env: DeploymentV3Env,
+): string {
+  return JSON.stringify(DeploymentV3Env$outboundSchema.parse(deploymentV3Env));
+}
+
+export function deploymentV3EnvFromJSON(
+  jsonString: string,
+): SafeParseResult<DeploymentV3Env, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeploymentV3Env$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeploymentV3Env' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeploymentV3$inboundSchema: z.ZodType<
   DeploymentV3,
@@ -179,4 +198,18 @@ export namespace DeploymentV3$ {
   export const outboundSchema = DeploymentV3$outboundSchema;
   /** @deprecated use `DeploymentV3$Outbound` instead. */
   export type Outbound = DeploymentV3$Outbound;
+}
+
+export function deploymentV3ToJSON(deploymentV3: DeploymentV3): string {
+  return JSON.stringify(DeploymentV3$outboundSchema.parse(deploymentV3));
+}
+
+export function deploymentV3FromJSON(
+  jsonString: string,
+): SafeParseResult<DeploymentV3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeploymentV3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeploymentV3' from JSON`,
+  );
 }

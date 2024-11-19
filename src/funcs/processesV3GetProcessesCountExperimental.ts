@@ -95,6 +95,9 @@ export async function processesV3GetProcessesCountExperimental(
   const context = {
     operationID: "GetProcessesCountExperimental",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

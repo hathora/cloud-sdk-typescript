@@ -90,6 +90,9 @@ export async function roomsV2SuspendRoomV2Deprecated(
   const context = {
     operationID: "SuspendRoomV2Deprecated",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

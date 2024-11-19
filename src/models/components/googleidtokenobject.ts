@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GoogleIdTokenObject = {
   /**
@@ -45,4 +48,22 @@ export namespace GoogleIdTokenObject$ {
   export const outboundSchema = GoogleIdTokenObject$outboundSchema;
   /** @deprecated use `GoogleIdTokenObject$Outbound` instead. */
   export type Outbound = GoogleIdTokenObject$Outbound;
+}
+
+export function googleIdTokenObjectToJSON(
+  googleIdTokenObject: GoogleIdTokenObject,
+): string {
+  return JSON.stringify(
+    GoogleIdTokenObject$outboundSchema.parse(googleIdTokenObject),
+  );
+}
+
+export function googleIdTokenObjectFromJSON(
+  jsonString: string,
+): SafeParseResult<GoogleIdTokenObject, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GoogleIdTokenObject$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GoogleIdTokenObject' from JSON`,
+  );
 }

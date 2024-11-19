@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetBuildsDeprecatedGlobals = {
   appId?: string | undefined;
@@ -48,6 +51,24 @@ export namespace GetBuildsDeprecatedGlobals$ {
   export type Outbound = GetBuildsDeprecatedGlobals$Outbound;
 }
 
+export function getBuildsDeprecatedGlobalsToJSON(
+  getBuildsDeprecatedGlobals: GetBuildsDeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    GetBuildsDeprecatedGlobals$outboundSchema.parse(getBuildsDeprecatedGlobals),
+  );
+}
+
+export function getBuildsDeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBuildsDeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBuildsDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBuildsDeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetBuildsDeprecatedRequest$inboundSchema: z.ZodType<
   GetBuildsDeprecatedRequest,
@@ -82,4 +103,22 @@ export namespace GetBuildsDeprecatedRequest$ {
   export const outboundSchema = GetBuildsDeprecatedRequest$outboundSchema;
   /** @deprecated use `GetBuildsDeprecatedRequest$Outbound` instead. */
   export type Outbound = GetBuildsDeprecatedRequest$Outbound;
+}
+
+export function getBuildsDeprecatedRequestToJSON(
+  getBuildsDeprecatedRequest: GetBuildsDeprecatedRequest,
+): string {
+  return JSON.stringify(
+    GetBuildsDeprecatedRequest$outboundSchema.parse(getBuildsDeprecatedRequest),
+  );
+}
+
+export function getBuildsDeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBuildsDeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBuildsDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBuildsDeprecatedRequest' from JSON`,
+  );
 }

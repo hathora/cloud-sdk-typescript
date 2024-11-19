@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetProcessGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,24 @@ export namespace GetProcessGlobals$ {
   export type Outbound = GetProcessGlobals$Outbound;
 }
 
+export function getProcessGlobalsToJSON(
+  getProcessGlobals: GetProcessGlobals,
+): string {
+  return JSON.stringify(
+    GetProcessGlobals$outboundSchema.parse(getProcessGlobals),
+  );
+}
+
+export function getProcessGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProcessGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProcessGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProcessGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetProcessRequest$inboundSchema: z.ZodType<
   GetProcessRequest,
@@ -86,4 +107,22 @@ export namespace GetProcessRequest$ {
   export const outboundSchema = GetProcessRequest$outboundSchema;
   /** @deprecated use `GetProcessRequest$Outbound` instead. */
   export type Outbound = GetProcessRequest$Outbound;
+}
+
+export function getProcessRequestToJSON(
+  getProcessRequest: GetProcessRequest,
+): string {
+  return JSON.stringify(
+    GetProcessRequest$outboundSchema.parse(getProcessRequest),
+  );
+}
+
+export function getProcessRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProcessRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProcessRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProcessRequest' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateAppGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,24 @@ export namespace UpdateAppGlobals$ {
   export const outboundSchema = UpdateAppGlobals$outboundSchema;
   /** @deprecated use `UpdateAppGlobals$Outbound` instead. */
   export type Outbound = UpdateAppGlobals$Outbound;
+}
+
+export function updateAppGlobalsToJSON(
+  updateAppGlobals: UpdateAppGlobals,
+): string {
+  return JSON.stringify(
+    UpdateAppGlobals$outboundSchema.parse(updateAppGlobals),
+  );
+}
+
+export function updateAppGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateAppGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateAppGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateAppGlobals' from JSON`,
+  );
 }
 
 /** @internal */
@@ -96,4 +117,22 @@ export namespace UpdateAppRequest$ {
   export const outboundSchema = UpdateAppRequest$outboundSchema;
   /** @deprecated use `UpdateAppRequest$Outbound` instead. */
   export type Outbound = UpdateAppRequest$Outbound;
+}
+
+export function updateAppRequestToJSON(
+  updateAppRequest: UpdateAppRequest,
+): string {
+  return JSON.stringify(
+    UpdateAppRequest$outboundSchema.parse(updateAppRequest),
+  );
+}
+
+export function updateAppRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateAppRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateAppRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateAppRequest' from JSON`,
+  );
 }

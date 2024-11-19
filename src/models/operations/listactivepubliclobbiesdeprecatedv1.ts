@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListActivePublicLobbiesDeprecatedV1Globals = {
   appId?: string | undefined;
@@ -52,6 +55,33 @@ export namespace ListActivePublicLobbiesDeprecatedV1Globals$ {
   export type Outbound = ListActivePublicLobbiesDeprecatedV1Globals$Outbound;
 }
 
+export function listActivePublicLobbiesDeprecatedV1GlobalsToJSON(
+  listActivePublicLobbiesDeprecatedV1Globals:
+    ListActivePublicLobbiesDeprecatedV1Globals,
+): string {
+  return JSON.stringify(
+    ListActivePublicLobbiesDeprecatedV1Globals$outboundSchema.parse(
+      listActivePublicLobbiesDeprecatedV1Globals,
+    ),
+  );
+}
+
+export function listActivePublicLobbiesDeprecatedV1GlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListActivePublicLobbiesDeprecatedV1Globals,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListActivePublicLobbiesDeprecatedV1Globals$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListActivePublicLobbiesDeprecatedV1Globals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListActivePublicLobbiesDeprecatedV1Request$inboundSchema:
   z.ZodType<ListActivePublicLobbiesDeprecatedV1Request, z.ZodTypeDef, unknown> =
@@ -93,4 +123,31 @@ export namespace ListActivePublicLobbiesDeprecatedV1Request$ {
     ListActivePublicLobbiesDeprecatedV1Request$outboundSchema;
   /** @deprecated use `ListActivePublicLobbiesDeprecatedV1Request$Outbound` instead. */
   export type Outbound = ListActivePublicLobbiesDeprecatedV1Request$Outbound;
+}
+
+export function listActivePublicLobbiesDeprecatedV1RequestToJSON(
+  listActivePublicLobbiesDeprecatedV1Request:
+    ListActivePublicLobbiesDeprecatedV1Request,
+): string {
+  return JSON.stringify(
+    ListActivePublicLobbiesDeprecatedV1Request$outboundSchema.parse(
+      listActivePublicLobbiesDeprecatedV1Request,
+    ),
+  );
+}
+
+export function listActivePublicLobbiesDeprecatedV1RequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListActivePublicLobbiesDeprecatedV1Request,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListActivePublicLobbiesDeprecatedV1Request$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListActivePublicLobbiesDeprecatedV1Request' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type VerificationEmailRequest = {
   userId: string;
@@ -42,4 +45,22 @@ export namespace VerificationEmailRequest$ {
   export const outboundSchema = VerificationEmailRequest$outboundSchema;
   /** @deprecated use `VerificationEmailRequest$Outbound` instead. */
   export type Outbound = VerificationEmailRequest$Outbound;
+}
+
+export function verificationEmailRequestToJSON(
+  verificationEmailRequest: VerificationEmailRequest,
+): string {
+  return JSON.stringify(
+    VerificationEmailRequest$outboundSchema.parse(verificationEmailRequest),
+  );
+}
+
+export function verificationEmailRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<VerificationEmailRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => VerificationEmailRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'VerificationEmailRequest' from JSON`,
+  );
 }

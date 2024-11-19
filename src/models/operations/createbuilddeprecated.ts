@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateBuildDeprecatedGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace CreateBuildDeprecatedGlobals$ {
   export const outboundSchema = CreateBuildDeprecatedGlobals$outboundSchema;
   /** @deprecated use `CreateBuildDeprecatedGlobals$Outbound` instead. */
   export type Outbound = CreateBuildDeprecatedGlobals$Outbound;
+}
+
+export function createBuildDeprecatedGlobalsToJSON(
+  createBuildDeprecatedGlobals: CreateBuildDeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    CreateBuildDeprecatedGlobals$outboundSchema.parse(
+      createBuildDeprecatedGlobals,
+    ),
+  );
+}
+
+export function createBuildDeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateBuildDeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateBuildDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateBuildDeprecatedGlobals' from JSON`,
+  );
 }
 
 /** @internal */
@@ -96,4 +119,24 @@ export namespace CreateBuildDeprecatedRequest$ {
   export const outboundSchema = CreateBuildDeprecatedRequest$outboundSchema;
   /** @deprecated use `CreateBuildDeprecatedRequest$Outbound` instead. */
   export type Outbound = CreateBuildDeprecatedRequest$Outbound;
+}
+
+export function createBuildDeprecatedRequestToJSON(
+  createBuildDeprecatedRequest: CreateBuildDeprecatedRequest,
+): string {
+  return JSON.stringify(
+    CreateBuildDeprecatedRequest$outboundSchema.parse(
+      createBuildDeprecatedRequest,
+    ),
+  );
+}
+
+export function createBuildDeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateBuildDeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateBuildDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateBuildDeprecatedRequest' from JSON`,
+  );
 }

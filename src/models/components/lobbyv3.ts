@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LobbyVisibility,
   LobbyVisibility$inboundSchema,
@@ -92,6 +95,24 @@ export namespace LobbyV3CreatedBy$ {
   export type Outbound = LobbyV3CreatedBy$Outbound;
 }
 
+export function lobbyV3CreatedByToJSON(
+  lobbyV3CreatedBy: LobbyV3CreatedBy,
+): string {
+  return JSON.stringify(
+    LobbyV3CreatedBy$outboundSchema.parse(lobbyV3CreatedBy),
+  );
+}
+
+export function lobbyV3CreatedByFromJSON(
+  jsonString: string,
+): SafeParseResult<LobbyV3CreatedBy, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LobbyV3CreatedBy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LobbyV3CreatedBy' from JSON`,
+  );
+}
+
 /** @internal */
 export const LobbyV3$inboundSchema: z.ZodType<LobbyV3, z.ZodTypeDef, unknown> =
   z.object({
@@ -146,4 +167,18 @@ export namespace LobbyV3$ {
   export const outboundSchema = LobbyV3$outboundSchema;
   /** @deprecated use `LobbyV3$Outbound` instead. */
   export type Outbound = LobbyV3$Outbound;
+}
+
+export function lobbyV3ToJSON(lobbyV3: LobbyV3): string {
+  return JSON.stringify(LobbyV3$outboundSchema.parse(lobbyV3));
+}
+
+export function lobbyV3FromJSON(
+  jsonString: string,
+): SafeParseResult<LobbyV3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LobbyV3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LobbyV3' from JSON`,
+  );
 }

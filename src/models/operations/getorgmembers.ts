@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetOrgMembersRequest = {
   orgId: string;
@@ -42,4 +45,22 @@ export namespace GetOrgMembersRequest$ {
   export const outboundSchema = GetOrgMembersRequest$outboundSchema;
   /** @deprecated use `GetOrgMembersRequest$Outbound` instead. */
   export type Outbound = GetOrgMembersRequest$Outbound;
+}
+
+export function getOrgMembersRequestToJSON(
+  getOrgMembersRequest: GetOrgMembersRequest,
+): string {
+  return JSON.stringify(
+    GetOrgMembersRequest$outboundSchema.parse(getOrgMembersRequest),
+  );
+}
+
+export function getOrgMembersRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOrgMembersRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOrgMembersRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOrgMembersRequest' from JSON`,
+  );
 }

@@ -84,6 +84,9 @@ export async function lobbiesV3ListActivePublicLobbies(
   const context = {
     operationID: "ListActivePublicLobbies",
     oAuth2Scopes: [],
+
+    resolvedSecurity: null,
+
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig

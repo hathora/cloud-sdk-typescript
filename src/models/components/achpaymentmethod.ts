@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AchPaymentMethod = {
   last4?: string | undefined;
@@ -46,4 +49,22 @@ export namespace AchPaymentMethod$ {
   export const outboundSchema = AchPaymentMethod$outboundSchema;
   /** @deprecated use `AchPaymentMethod$Outbound` instead. */
   export type Outbound = AchPaymentMethod$Outbound;
+}
+
+export function achPaymentMethodToJSON(
+  achPaymentMethod: AchPaymentMethod,
+): string {
+  return JSON.stringify(
+    AchPaymentMethod$outboundSchema.parse(achPaymentMethod),
+  );
+}
+
+export function achPaymentMethodFromJSON(
+  jsonString: string,
+): SafeParseResult<AchPaymentMethod, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchPaymentMethod$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchPaymentMethod' from JSON`,
+  );
 }

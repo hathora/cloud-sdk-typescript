@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetLogsForProcessGlobals = {
   appId?: string | undefined;
@@ -51,6 +54,24 @@ export namespace GetLogsForProcessGlobals$ {
   export type Outbound = GetLogsForProcessGlobals$Outbound;
 }
 
+export function getLogsForProcessGlobalsToJSON(
+  getLogsForProcessGlobals: GetLogsForProcessGlobals,
+): string {
+  return JSON.stringify(
+    GetLogsForProcessGlobals$outboundSchema.parse(getLogsForProcessGlobals),
+  );
+}
+
+export function getLogsForProcessGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLogsForProcessGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLogsForProcessGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLogsForProcessGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetLogsForProcessRequest$inboundSchema: z.ZodType<
   GetLogsForProcessRequest,
@@ -94,4 +115,22 @@ export namespace GetLogsForProcessRequest$ {
   export const outboundSchema = GetLogsForProcessRequest$outboundSchema;
   /** @deprecated use `GetLogsForProcessRequest$Outbound` instead. */
   export type Outbound = GetLogsForProcessRequest$Outbound;
+}
+
+export function getLogsForProcessRequestToJSON(
+  getLogsForProcessRequest: GetLogsForProcessRequest,
+): string {
+  return JSON.stringify(
+    GetLogsForProcessRequest$outboundSchema.parse(getLogsForProcessRequest),
+  );
+}
+
+export function getLogsForProcessRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLogsForProcessRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLogsForProcessRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLogsForProcessRequest' from JSON`,
+  );
 }

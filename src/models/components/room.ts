@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RoomAllocation,
   RoomAllocation$inboundSchema,
@@ -112,6 +115,24 @@ export namespace CurrentAllocation$ {
   export type Outbound = CurrentAllocation$Outbound;
 }
 
+export function currentAllocationToJSON(
+  currentAllocation: CurrentAllocation,
+): string {
+  return JSON.stringify(
+    CurrentAllocation$outboundSchema.parse(currentAllocation),
+  );
+}
+
+export function currentAllocationFromJSON(
+  jsonString: string,
+): SafeParseResult<CurrentAllocation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CurrentAllocation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CurrentAllocation' from JSON`,
+  );
+}
+
 /** @internal */
 export const Room$inboundSchema: z.ZodType<Room, z.ZodTypeDef, unknown> = z
   .object({
@@ -159,4 +180,18 @@ export namespace Room$ {
   export const outboundSchema = Room$outboundSchema;
   /** @deprecated use `Room$Outbound` instead. */
   export type Outbound = Room$Outbound;
+}
+
+export function roomToJSON(room: Room): string {
+  return JSON.stringify(Room$outboundSchema.parse(room));
+}
+
+export function roomFromJSON(
+  jsonString: string,
+): SafeParseResult<Room, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Room$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Room' from JSON`,
+  );
 }

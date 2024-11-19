@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetFleetRegionRequest = {
   fleetId: string;
@@ -51,4 +54,22 @@ export namespace GetFleetRegionRequest$ {
   export const outboundSchema = GetFleetRegionRequest$outboundSchema;
   /** @deprecated use `GetFleetRegionRequest$Outbound` instead. */
   export type Outbound = GetFleetRegionRequest$Outbound;
+}
+
+export function getFleetRegionRequestToJSON(
+  getFleetRegionRequest: GetFleetRegionRequest,
+): string {
+  return JSON.stringify(
+    GetFleetRegionRequest$outboundSchema.parse(getFleetRegionRequest),
+  );
+}
+
+export function getFleetRegionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetFleetRegionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetFleetRegionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFleetRegionRequest' from JSON`,
+  );
 }

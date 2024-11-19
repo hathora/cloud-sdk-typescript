@@ -49,6 +49,9 @@ export async function discoveryV2GetPingServiceEndpoints(
   const context = {
     operationID: "GetPingServiceEndpoints",
     oAuth2Scopes: [],
+
+    resolvedSecurity: null,
+
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig

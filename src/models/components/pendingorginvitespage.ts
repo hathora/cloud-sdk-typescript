@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PendingOrgInvite,
   PendingOrgInvite$inboundSchema,
@@ -48,4 +51,22 @@ export namespace PendingOrgInvitesPage$ {
   export const outboundSchema = PendingOrgInvitesPage$outboundSchema;
   /** @deprecated use `PendingOrgInvitesPage$Outbound` instead. */
   export type Outbound = PendingOrgInvitesPage$Outbound;
+}
+
+export function pendingOrgInvitesPageToJSON(
+  pendingOrgInvitesPage: PendingOrgInvitesPage,
+): string {
+  return JSON.stringify(
+    PendingOrgInvitesPage$outboundSchema.parse(pendingOrgInvitesPage),
+  );
+}
+
+export function pendingOrgInvitesPageFromJSON(
+  jsonString: string,
+): SafeParseResult<PendingOrgInvitesPage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PendingOrgInvitesPage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PendingOrgInvitesPage' from JSON`,
+  );
 }

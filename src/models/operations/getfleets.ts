@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetFleetsRequest = {
   orgId?: string | undefined;
@@ -42,4 +45,22 @@ export namespace GetFleetsRequest$ {
   export const outboundSchema = GetFleetsRequest$outboundSchema;
   /** @deprecated use `GetFleetsRequest$Outbound` instead. */
   export type Outbound = GetFleetsRequest$Outbound;
+}
+
+export function getFleetsRequestToJSON(
+  getFleetsRequest: GetFleetsRequest,
+): string {
+  return JSON.stringify(
+    GetFleetsRequest$outboundSchema.parse(getFleetsRequest),
+  );
+}
+
+export function getFleetsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetFleetsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetFleetsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFleetsRequest' from JSON`,
+  );
 }

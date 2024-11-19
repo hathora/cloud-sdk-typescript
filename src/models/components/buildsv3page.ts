@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BuildV3,
   BuildV3$inboundSchema,
@@ -48,4 +51,18 @@ export namespace BuildsV3Page$ {
   export const outboundSchema = BuildsV3Page$outboundSchema;
   /** @deprecated use `BuildsV3Page$Outbound` instead. */
   export type Outbound = BuildsV3Page$Outbound;
+}
+
+export function buildsV3PageToJSON(buildsV3Page: BuildsV3Page): string {
+  return JSON.stringify(BuildsV3Page$outboundSchema.parse(buildsV3Page));
+}
+
+export function buildsV3PageFromJSON(
+  jsonString: string,
+): SafeParseResult<BuildsV3Page, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuildsV3Page$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuildsV3Page' from JSON`,
+  );
 }

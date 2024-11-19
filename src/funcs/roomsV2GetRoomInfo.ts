@@ -87,6 +87,9 @@ export async function roomsV2GetRoomInfo(
   const context = {
     operationID: "GetRoomInfo",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

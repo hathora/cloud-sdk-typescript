@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   InvoiceItem,
   InvoiceItem$inboundSchema,
@@ -48,4 +51,20 @@ export namespace InvoiceItemPage$ {
   export const outboundSchema = InvoiceItemPage$outboundSchema;
   /** @deprecated use `InvoiceItemPage$Outbound` instead. */
   export type Outbound = InvoiceItemPage$Outbound;
+}
+
+export function invoiceItemPageToJSON(
+  invoiceItemPage: InvoiceItemPage,
+): string {
+  return JSON.stringify(InvoiceItemPage$outboundSchema.parse(invoiceItemPage));
+}
+
+export function invoiceItemPageFromJSON(
+  jsonString: string,
+): SafeParseResult<InvoiceItemPage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InvoiceItemPage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InvoiceItemPage' from JSON`,
+  );
 }

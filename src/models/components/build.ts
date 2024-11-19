@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BuildStatus,
   BuildStatus$inboundSchema,
@@ -99,6 +102,24 @@ export namespace RegionalContainerTags$ {
   export type Outbound = RegionalContainerTags$Outbound;
 }
 
+export function regionalContainerTagsToJSON(
+  regionalContainerTags: RegionalContainerTags,
+): string {
+  return JSON.stringify(
+    RegionalContainerTags$outboundSchema.parse(regionalContainerTags),
+  );
+}
+
+export function regionalContainerTagsFromJSON(
+  jsonString: string,
+): SafeParseResult<RegionalContainerTags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RegionalContainerTags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RegionalContainerTags' from JSON`,
+  );
+}
+
 /** @internal */
 export const Build$inboundSchema: z.ZodType<Build, z.ZodTypeDef, unknown> = z
   .object({
@@ -172,4 +193,18 @@ export namespace Build$ {
   export const outboundSchema = Build$outboundSchema;
   /** @deprecated use `Build$Outbound` instead. */
   export type Outbound = Build$Outbound;
+}
+
+export function buildToJSON(build: Build): string {
+  return JSON.stringify(Build$outboundSchema.parse(build));
+}
+
+export function buildFromJSON(
+  jsonString: string,
+): SafeParseResult<Build, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Build$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Build' from JSON`,
+  );
 }

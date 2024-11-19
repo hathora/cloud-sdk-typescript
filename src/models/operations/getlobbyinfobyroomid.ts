@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetLobbyInfoByRoomIdGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace GetLobbyInfoByRoomIdGlobals$ {
   export type Outbound = GetLobbyInfoByRoomIdGlobals$Outbound;
 }
 
+export function getLobbyInfoByRoomIdGlobalsToJSON(
+  getLobbyInfoByRoomIdGlobals: GetLobbyInfoByRoomIdGlobals,
+): string {
+  return JSON.stringify(
+    GetLobbyInfoByRoomIdGlobals$outboundSchema.parse(
+      getLobbyInfoByRoomIdGlobals,
+    ),
+  );
+}
+
+export function getLobbyInfoByRoomIdGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLobbyInfoByRoomIdGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLobbyInfoByRoomIdGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLobbyInfoByRoomIdGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetLobbyInfoByRoomIdRequest$inboundSchema: z.ZodType<
   GetLobbyInfoByRoomIdRequest,
@@ -86,4 +109,24 @@ export namespace GetLobbyInfoByRoomIdRequest$ {
   export const outboundSchema = GetLobbyInfoByRoomIdRequest$outboundSchema;
   /** @deprecated use `GetLobbyInfoByRoomIdRequest$Outbound` instead. */
   export type Outbound = GetLobbyInfoByRoomIdRequest$Outbound;
+}
+
+export function getLobbyInfoByRoomIdRequestToJSON(
+  getLobbyInfoByRoomIdRequest: GetLobbyInfoByRoomIdRequest,
+): string {
+  return JSON.stringify(
+    GetLobbyInfoByRoomIdRequest$outboundSchema.parse(
+      getLobbyInfoByRoomIdRequest,
+    ),
+  );
+}
+
+export function getLobbyInfoByRoomIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLobbyInfoByRoomIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLobbyInfoByRoomIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLobbyInfoByRoomIdRequest' from JSON`,
+  );
 }

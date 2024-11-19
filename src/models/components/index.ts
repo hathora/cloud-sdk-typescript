@@ -94,5 +94,6 @@ export * from "./setlobbystateparams.js";
 export * from "./startingconnectioninfo.js";
 export * from "./transporttype.js";
 export * from "./updateroomconfigparams.js";
+export * from "./usagelimits.js";
 export * from "./verificationemailrequest.js";
 export * from "./verificationemailsuccess.js";

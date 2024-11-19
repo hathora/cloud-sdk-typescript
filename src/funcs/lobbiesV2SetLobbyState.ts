@@ -94,6 +94,9 @@ export async function lobbiesV2SetLobbyState(
   const context = {
     operationID: "SetLobbyState",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

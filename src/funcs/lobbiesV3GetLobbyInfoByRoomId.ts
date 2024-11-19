@@ -83,6 +83,9 @@ export async function lobbiesV3GetLobbyInfoByRoomId(
   const context = {
     operationID: "GetLobbyInfoByRoomId",
     oAuth2Scopes: [],
+
+    resolvedSecurity: null,
+
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig

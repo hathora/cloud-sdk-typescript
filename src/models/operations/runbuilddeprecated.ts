@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RunBuildDeprecatedGlobals = {
   appId?: string | undefined;
@@ -61,6 +64,24 @@ export namespace RunBuildDeprecatedGlobals$ {
   export type Outbound = RunBuildDeprecatedGlobals$Outbound;
 }
 
+export function runBuildDeprecatedGlobalsToJSON(
+  runBuildDeprecatedGlobals: RunBuildDeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    RunBuildDeprecatedGlobals$outboundSchema.parse(runBuildDeprecatedGlobals),
+  );
+}
+
+export function runBuildDeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<RunBuildDeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RunBuildDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RunBuildDeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
   .object({
@@ -107,6 +128,20 @@ export namespace FileT$ {
   export type Outbound = FileT$Outbound;
 }
 
+export function fileTToJSON(fileT: FileT): string {
+  return JSON.stringify(FileT$outboundSchema.parse(fileT));
+}
+
+export function fileTFromJSON(
+  jsonString: string,
+): SafeParseResult<FileT, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FileT$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FileT' from JSON`,
+  );
+}
+
 /** @internal */
 export const RunBuildDeprecatedRequestBody$inboundSchema: z.ZodType<
   RunBuildDeprecatedRequestBody,
@@ -141,6 +176,26 @@ export namespace RunBuildDeprecatedRequestBody$ {
   export const outboundSchema = RunBuildDeprecatedRequestBody$outboundSchema;
   /** @deprecated use `RunBuildDeprecatedRequestBody$Outbound` instead. */
   export type Outbound = RunBuildDeprecatedRequestBody$Outbound;
+}
+
+export function runBuildDeprecatedRequestBodyToJSON(
+  runBuildDeprecatedRequestBody: RunBuildDeprecatedRequestBody,
+): string {
+  return JSON.stringify(
+    RunBuildDeprecatedRequestBody$outboundSchema.parse(
+      runBuildDeprecatedRequestBody,
+    ),
+  );
+}
+
+export function runBuildDeprecatedRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<RunBuildDeprecatedRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RunBuildDeprecatedRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RunBuildDeprecatedRequestBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -191,4 +246,22 @@ export namespace RunBuildDeprecatedRequest$ {
   export const outboundSchema = RunBuildDeprecatedRequest$outboundSchema;
   /** @deprecated use `RunBuildDeprecatedRequest$Outbound` instead. */
   export type Outbound = RunBuildDeprecatedRequest$Outbound;
+}
+
+export function runBuildDeprecatedRequestToJSON(
+  runBuildDeprecatedRequest: RunBuildDeprecatedRequest,
+): string {
+  return JSON.stringify(
+    RunBuildDeprecatedRequest$outboundSchema.parse(runBuildDeprecatedRequest),
+  );
+}
+
+export function runBuildDeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RunBuildDeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RunBuildDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RunBuildDeprecatedRequest' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InviteUserRequest = {
   orgId: string;
@@ -56,4 +59,22 @@ export namespace InviteUserRequest$ {
   export const outboundSchema = InviteUserRequest$outboundSchema;
   /** @deprecated use `InviteUserRequest$Outbound` instead. */
   export type Outbound = InviteUserRequest$Outbound;
+}
+
+export function inviteUserRequestToJSON(
+  inviteUserRequest: InviteUserRequest,
+): string {
+  return JSON.stringify(
+    InviteUserRequest$outboundSchema.parse(inviteUserRequest),
+  );
+}
+
+export function inviteUserRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<InviteUserRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InviteUserRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InviteUserRequest' from JSON`,
+  );
 }

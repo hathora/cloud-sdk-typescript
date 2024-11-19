@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Construct a type with a set of properties K of type T
@@ -37,4 +40,22 @@ export namespace RecordStringNever$ {
   export const outboundSchema = RecordStringNever$outboundSchema;
   /** @deprecated use `RecordStringNever$Outbound` instead. */
   export type Outbound = RecordStringNever$Outbound;
+}
+
+export function recordStringNeverToJSON(
+  recordStringNever: RecordStringNever,
+): string {
+  return JSON.stringify(
+    RecordStringNever$outboundSchema.parse(recordStringNever),
+  );
+}
+
+export function recordStringNeverFromJSON(
+  jsonString: string,
+): SafeParseResult<RecordStringNever, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RecordStringNever$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RecordStringNever' from JSON`,
+  );
 }

@@ -86,6 +86,9 @@ export async function deploymentsV1GetLatestDeploymentV1Deprecated(
   const context = {
     operationID: "GetLatestDeploymentV1Deprecated",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

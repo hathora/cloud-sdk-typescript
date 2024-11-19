@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RejectInviteRequest = {
   orgId: string;
@@ -42,4 +45,22 @@ export namespace RejectInviteRequest$ {
   export const outboundSchema = RejectInviteRequest$outboundSchema;
   /** @deprecated use `RejectInviteRequest$Outbound` instead. */
   export type Outbound = RejectInviteRequest$Outbound;
+}
+
+export function rejectInviteRequestToJSON(
+  rejectInviteRequest: RejectInviteRequest,
+): string {
+  return JSON.stringify(
+    RejectInviteRequest$outboundSchema.parse(rejectInviteRequest),
+  );
+}
+
+export function rejectInviteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RejectInviteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RejectInviteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectInviteRequest' from JSON`,
+  );
 }

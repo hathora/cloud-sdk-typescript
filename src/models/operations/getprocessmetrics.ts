@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetProcessMetricsGlobals = {
   appId?: string | undefined;
@@ -63,6 +66,24 @@ export namespace GetProcessMetricsGlobals$ {
   export type Outbound = GetProcessMetricsGlobals$Outbound;
 }
 
+export function getProcessMetricsGlobalsToJSON(
+  getProcessMetricsGlobals: GetProcessMetricsGlobals,
+): string {
+  return JSON.stringify(
+    GetProcessMetricsGlobals$outboundSchema.parse(getProcessMetricsGlobals),
+  );
+}
+
+export function getProcessMetricsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProcessMetricsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProcessMetricsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProcessMetricsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetProcessMetricsRequest$inboundSchema: z.ZodType<
   GetProcessMetricsRequest,
@@ -112,4 +133,22 @@ export namespace GetProcessMetricsRequest$ {
   export const outboundSchema = GetProcessMetricsRequest$outboundSchema;
   /** @deprecated use `GetProcessMetricsRequest$Outbound` instead. */
   export type Outbound = GetProcessMetricsRequest$Outbound;
+}
+
+export function getProcessMetricsRequestToJSON(
+  getProcessMetricsRequest: GetProcessMetricsRequest,
+): string {
+  return JSON.stringify(
+    GetProcessMetricsRequest$outboundSchema.parse(getProcessMetricsRequest),
+  );
+}
+
+export function getProcessMetricsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProcessMetricsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProcessMetricsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProcessMetricsRequest' from JSON`,
+  );
 }

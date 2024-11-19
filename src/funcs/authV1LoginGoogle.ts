@@ -81,6 +81,9 @@ export async function authV1LoginGoogle(
   const context = {
     operationID: "LoginGoogle",
     oAuth2Scopes: [],
+
+    resolvedSecurity: null,
+
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig

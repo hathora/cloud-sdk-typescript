@@ -90,6 +90,9 @@ export async function logsV1DownloadLogForProcess(
   const context = {
     operationID: "DownloadLogForProcess",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

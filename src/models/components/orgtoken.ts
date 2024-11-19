@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   OrgTokenStatus,
   OrgTokenStatus$inboundSchema,
@@ -77,4 +80,18 @@ export namespace OrgToken$ {
   export const outboundSchema = OrgToken$outboundSchema;
   /** @deprecated use `OrgToken$Outbound` instead. */
   export type Outbound = OrgToken$Outbound;
+}
+
+export function orgTokenToJSON(orgToken: OrgToken): string {
+  return JSON.stringify(OrgToken$outboundSchema.parse(orgToken));
+}
+
+export function orgTokenFromJSON(
+  jsonString: string,
+): SafeParseResult<OrgToken, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrgToken$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrgToken' from JSON`,
+  );
 }

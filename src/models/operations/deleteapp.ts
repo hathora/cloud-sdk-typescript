@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteAppGlobals = {
   appId?: string | undefined;
@@ -48,6 +51,24 @@ export namespace DeleteAppGlobals$ {
   export type Outbound = DeleteAppGlobals$Outbound;
 }
 
+export function deleteAppGlobalsToJSON(
+  deleteAppGlobals: DeleteAppGlobals,
+): string {
+  return JSON.stringify(
+    DeleteAppGlobals$outboundSchema.parse(deleteAppGlobals),
+  );
+}
+
+export function deleteAppGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteAppGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteAppGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteAppGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteAppRequest$inboundSchema: z.ZodType<
   DeleteAppRequest,
@@ -82,4 +103,22 @@ export namespace DeleteAppRequest$ {
   export const outboundSchema = DeleteAppRequest$outboundSchema;
   /** @deprecated use `DeleteAppRequest$Outbound` instead. */
   export type Outbound = DeleteAppRequest$Outbound;
+}
+
+export function deleteAppRequestToJSON(
+  deleteAppRequest: DeleteAppRequest,
+): string {
+  return JSON.stringify(
+    DeleteAppRequest$outboundSchema.parse(deleteAppRequest),
+  );
+}
+
+export function deleteAppRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteAppRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteAppRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteAppRequest' from JSON`,
+  );
 }

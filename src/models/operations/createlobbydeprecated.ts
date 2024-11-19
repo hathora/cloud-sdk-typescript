@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateLobbyDeprecatedGlobals = {
   appId?: string | undefined;
@@ -56,6 +59,26 @@ export namespace CreateLobbyDeprecatedGlobals$ {
   export type Outbound = CreateLobbyDeprecatedGlobals$Outbound;
 }
 
+export function createLobbyDeprecatedGlobalsToJSON(
+  createLobbyDeprecatedGlobals: CreateLobbyDeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    CreateLobbyDeprecatedGlobals$outboundSchema.parse(
+      createLobbyDeprecatedGlobals,
+    ),
+  );
+}
+
+export function createLobbyDeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLobbyDeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLobbyDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLobbyDeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateLobbyDeprecatedSecurity$inboundSchema: z.ZodType<
   CreateLobbyDeprecatedSecurity,
@@ -90,6 +113,26 @@ export namespace CreateLobbyDeprecatedSecurity$ {
   export const outboundSchema = CreateLobbyDeprecatedSecurity$outboundSchema;
   /** @deprecated use `CreateLobbyDeprecatedSecurity$Outbound` instead. */
   export type Outbound = CreateLobbyDeprecatedSecurity$Outbound;
+}
+
+export function createLobbyDeprecatedSecurityToJSON(
+  createLobbyDeprecatedSecurity: CreateLobbyDeprecatedSecurity,
+): string {
+  return JSON.stringify(
+    CreateLobbyDeprecatedSecurity$outboundSchema.parse(
+      createLobbyDeprecatedSecurity,
+    ),
+  );
+}
+
+export function createLobbyDeprecatedSecurityFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLobbyDeprecatedSecurity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLobbyDeprecatedSecurity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLobbyDeprecatedSecurity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -140,4 +183,24 @@ export namespace CreateLobbyDeprecatedRequest$ {
   export const outboundSchema = CreateLobbyDeprecatedRequest$outboundSchema;
   /** @deprecated use `CreateLobbyDeprecatedRequest$Outbound` instead. */
   export type Outbound = CreateLobbyDeprecatedRequest$Outbound;
+}
+
+export function createLobbyDeprecatedRequestToJSON(
+  createLobbyDeprecatedRequest: CreateLobbyDeprecatedRequest,
+): string {
+  return JSON.stringify(
+    CreateLobbyDeprecatedRequest$outboundSchema.parse(
+      createLobbyDeprecatedRequest,
+    ),
+  );
+}
+
+export function createLobbyDeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLobbyDeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLobbyDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLobbyDeprecatedRequest' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateLocalLobbyGlobals = {
   appId?: string | undefined;
@@ -64,6 +67,24 @@ export namespace CreateLocalLobbyGlobals$ {
   export type Outbound = CreateLocalLobbyGlobals$Outbound;
 }
 
+export function createLocalLobbyGlobalsToJSON(
+  createLocalLobbyGlobals: CreateLocalLobbyGlobals,
+): string {
+  return JSON.stringify(
+    CreateLocalLobbyGlobals$outboundSchema.parse(createLocalLobbyGlobals),
+  );
+}
+
+export function createLocalLobbyGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLocalLobbyGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLocalLobbyGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLocalLobbyGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateLocalLobbySecurity$inboundSchema: z.ZodType<
   CreateLocalLobbySecurity,
@@ -98,6 +119,24 @@ export namespace CreateLocalLobbySecurity$ {
   export const outboundSchema = CreateLocalLobbySecurity$outboundSchema;
   /** @deprecated use `CreateLocalLobbySecurity$Outbound` instead. */
   export type Outbound = CreateLocalLobbySecurity$Outbound;
+}
+
+export function createLocalLobbySecurityToJSON(
+  createLocalLobbySecurity: CreateLocalLobbySecurity,
+): string {
+  return JSON.stringify(
+    CreateLocalLobbySecurity$outboundSchema.parse(createLocalLobbySecurity),
+  );
+}
+
+export function createLocalLobbySecurityFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLocalLobbySecurity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLocalLobbySecurity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLocalLobbySecurity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -137,6 +176,26 @@ export namespace CreateLocalLobbyRequestBody$ {
   export const outboundSchema = CreateLocalLobbyRequestBody$outboundSchema;
   /** @deprecated use `CreateLocalLobbyRequestBody$Outbound` instead. */
   export type Outbound = CreateLocalLobbyRequestBody$Outbound;
+}
+
+export function createLocalLobbyRequestBodyToJSON(
+  createLocalLobbyRequestBody: CreateLocalLobbyRequestBody,
+): string {
+  return JSON.stringify(
+    CreateLocalLobbyRequestBody$outboundSchema.parse(
+      createLocalLobbyRequestBody,
+    ),
+  );
+}
+
+export function createLocalLobbyRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLocalLobbyRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLocalLobbyRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLocalLobbyRequestBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -187,4 +246,22 @@ export namespace CreateLocalLobbyRequest$ {
   export const outboundSchema = CreateLocalLobbyRequest$outboundSchema;
   /** @deprecated use `CreateLocalLobbyRequest$Outbound` instead. */
   export type Outbound = CreateLocalLobbyRequest$Outbound;
+}
+
+export function createLocalLobbyRequestToJSON(
+  createLocalLobbyRequest: CreateLocalLobbyRequest,
+): string {
+  return JSON.stringify(
+    CreateLocalLobbyRequest$outboundSchema.parse(createLocalLobbyRequest),
+  );
+}
+
+export function createLocalLobbyRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLocalLobbyRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLocalLobbyRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLocalLobbyRequest' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateRoomGlobals = {
   appId?: string | undefined;
@@ -50,6 +53,24 @@ export namespace CreateRoomGlobals$ {
   export const outboundSchema = CreateRoomGlobals$outboundSchema;
   /** @deprecated use `CreateRoomGlobals$Outbound` instead. */
   export type Outbound = CreateRoomGlobals$Outbound;
+}
+
+export function createRoomGlobalsToJSON(
+  createRoomGlobals: CreateRoomGlobals,
+): string {
+  return JSON.stringify(
+    CreateRoomGlobals$outboundSchema.parse(createRoomGlobals),
+  );
+}
+
+export function createRoomGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateRoomGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateRoomGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateRoomGlobals' from JSON`,
+  );
 }
 
 /** @internal */
@@ -100,4 +121,22 @@ export namespace CreateRoomRequest$ {
   export const outboundSchema = CreateRoomRequest$outboundSchema;
   /** @deprecated use `CreateRoomRequest$Outbound` instead. */
   export type Outbound = CreateRoomRequest$Outbound;
+}
+
+export function createRoomRequestToJSON(
+  createRoomRequest: CreateRoomRequest,
+): string {
+  return JSON.stringify(
+    CreateRoomRequest$outboundSchema.parse(createRoomRequest),
+  );
+}
+
+export function createRoomRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateRoomRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateRoomRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateRoomRequest' from JSON`,
+  );
 }

@@ -112,6 +112,9 @@ export async function buildsV1RunBuildDeprecated(
   const context = {
     operationID: "RunBuildDeprecated",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetDeploymentInfoV1DeprecatedGlobals = {
   appId?: string | undefined;
@@ -51,6 +54,27 @@ export namespace GetDeploymentInfoV1DeprecatedGlobals$ {
   export type Outbound = GetDeploymentInfoV1DeprecatedGlobals$Outbound;
 }
 
+export function getDeploymentInfoV1DeprecatedGlobalsToJSON(
+  getDeploymentInfoV1DeprecatedGlobals: GetDeploymentInfoV1DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    GetDeploymentInfoV1DeprecatedGlobals$outboundSchema.parse(
+      getDeploymentInfoV1DeprecatedGlobals,
+    ),
+  );
+}
+
+export function getDeploymentInfoV1DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentInfoV1DeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentInfoV1DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentInfoV1DeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetDeploymentInfoV1DeprecatedRequest$inboundSchema: z.ZodType<
   GetDeploymentInfoV1DeprecatedRequest,
@@ -90,4 +114,25 @@ export namespace GetDeploymentInfoV1DeprecatedRequest$ {
     GetDeploymentInfoV1DeprecatedRequest$outboundSchema;
   /** @deprecated use `GetDeploymentInfoV1DeprecatedRequest$Outbound` instead. */
   export type Outbound = GetDeploymentInfoV1DeprecatedRequest$Outbound;
+}
+
+export function getDeploymentInfoV1DeprecatedRequestToJSON(
+  getDeploymentInfoV1DeprecatedRequest: GetDeploymentInfoV1DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    GetDeploymentInfoV1DeprecatedRequest$outboundSchema.parse(
+      getDeploymentInfoV1DeprecatedRequest,
+    ),
+  );
+}
+
+export function getDeploymentInfoV1DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentInfoV1DeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentInfoV1DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentInfoV1DeprecatedRequest' from JSON`,
+  );
 }

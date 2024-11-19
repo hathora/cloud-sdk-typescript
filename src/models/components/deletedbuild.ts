@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Construct a type with a set of properties K of type T
@@ -37,4 +40,18 @@ export namespace DeletedBuild$ {
   export const outboundSchema = DeletedBuild$outboundSchema;
   /** @deprecated use `DeletedBuild$Outbound` instead. */
   export type Outbound = DeletedBuild$Outbound;
+}
+
+export function deletedBuildToJSON(deletedBuild: DeletedBuild): string {
+  return JSON.stringify(DeletedBuild$outboundSchema.parse(deletedBuild));
+}
+
+export function deletedBuildFromJSON(
+  jsonString: string,
+): SafeParseResult<DeletedBuild, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeletedBuild$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeletedBuild' from JSON`,
+  );
 }

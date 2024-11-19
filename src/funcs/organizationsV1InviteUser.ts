@@ -81,6 +81,9 @@ export async function organizationsV1InviteUser(
   const context = {
     operationID: "InviteUser",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

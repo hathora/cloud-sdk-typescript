@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateBuildRequest = {
   orgId?: string | undefined;
@@ -58,4 +61,22 @@ export namespace CreateBuildRequest$ {
   export const outboundSchema = CreateBuildRequest$outboundSchema;
   /** @deprecated use `CreateBuildRequest$Outbound` instead. */
   export type Outbound = CreateBuildRequest$Outbound;
+}
+
+export function createBuildRequestToJSON(
+  createBuildRequest: CreateBuildRequest,
+): string {
+  return JSON.stringify(
+    CreateBuildRequest$outboundSchema.parse(createBuildRequest),
+  );
+}
+
+export function createBuildRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateBuildRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateBuildRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateBuildRequest' from JSON`,
+  );
 }

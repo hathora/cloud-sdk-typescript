@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListActivePublicLobbiesGlobals = {
   appId?: string | undefined;
@@ -53,6 +56,26 @@ export namespace ListActivePublicLobbiesGlobals$ {
   export type Outbound = ListActivePublicLobbiesGlobals$Outbound;
 }
 
+export function listActivePublicLobbiesGlobalsToJSON(
+  listActivePublicLobbiesGlobals: ListActivePublicLobbiesGlobals,
+): string {
+  return JSON.stringify(
+    ListActivePublicLobbiesGlobals$outboundSchema.parse(
+      listActivePublicLobbiesGlobals,
+    ),
+  );
+}
+
+export function listActivePublicLobbiesGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListActivePublicLobbiesGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListActivePublicLobbiesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListActivePublicLobbiesGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListActivePublicLobbiesRequest$inboundSchema: z.ZodType<
   ListActivePublicLobbiesRequest,
@@ -90,4 +113,24 @@ export namespace ListActivePublicLobbiesRequest$ {
   export const outboundSchema = ListActivePublicLobbiesRequest$outboundSchema;
   /** @deprecated use `ListActivePublicLobbiesRequest$Outbound` instead. */
   export type Outbound = ListActivePublicLobbiesRequest$Outbound;
+}
+
+export function listActivePublicLobbiesRequestToJSON(
+  listActivePublicLobbiesRequest: ListActivePublicLobbiesRequest,
+): string {
+  return JSON.stringify(
+    ListActivePublicLobbiesRequest$outboundSchema.parse(
+      listActivePublicLobbiesRequest,
+    ),
+  );
+}
+
+export function listActivePublicLobbiesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListActivePublicLobbiesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListActivePublicLobbiesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListActivePublicLobbiesRequest' from JSON`,
+  );
 }

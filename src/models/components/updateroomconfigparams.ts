@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateRoomConfigParams = {
   /**
@@ -45,4 +48,22 @@ export namespace UpdateRoomConfigParams$ {
   export const outboundSchema = UpdateRoomConfigParams$outboundSchema;
   /** @deprecated use `UpdateRoomConfigParams$Outbound` instead. */
   export type Outbound = UpdateRoomConfigParams$Outbound;
+}
+
+export function updateRoomConfigParamsToJSON(
+  updateRoomConfigParams: UpdateRoomConfigParams,
+): string {
+  return JSON.stringify(
+    UpdateRoomConfigParams$outboundSchema.parse(updateRoomConfigParams),
+  );
+}
+
+export function updateRoomConfigParamsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateRoomConfigParams, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateRoomConfigParams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateRoomConfigParams' from JSON`,
+  );
 }

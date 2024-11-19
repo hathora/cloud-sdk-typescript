@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetProcessesCountExperimentalGlobals = {
   appId?: string | undefined;
@@ -60,6 +63,27 @@ export namespace GetProcessesCountExperimentalGlobals$ {
   export type Outbound = GetProcessesCountExperimentalGlobals$Outbound;
 }
 
+export function getProcessesCountExperimentalGlobalsToJSON(
+  getProcessesCountExperimentalGlobals: GetProcessesCountExperimentalGlobals,
+): string {
+  return JSON.stringify(
+    GetProcessesCountExperimentalGlobals$outboundSchema.parse(
+      getProcessesCountExperimentalGlobals,
+    ),
+  );
+}
+
+export function getProcessesCountExperimentalGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProcessesCountExperimentalGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProcessesCountExperimentalGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProcessesCountExperimentalGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetProcessesCountExperimentalRequest$inboundSchema: z.ZodType<
   GetProcessesCountExperimentalRequest,
@@ -104,6 +128,27 @@ export namespace GetProcessesCountExperimentalRequest$ {
   export type Outbound = GetProcessesCountExperimentalRequest$Outbound;
 }
 
+export function getProcessesCountExperimentalRequestToJSON(
+  getProcessesCountExperimentalRequest: GetProcessesCountExperimentalRequest,
+): string {
+  return JSON.stringify(
+    GetProcessesCountExperimentalRequest$outboundSchema.parse(
+      getProcessesCountExperimentalRequest,
+    ),
+  );
+}
+
+export function getProcessesCountExperimentalRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProcessesCountExperimentalRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProcessesCountExperimentalRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProcessesCountExperimentalRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetProcessesCountExperimentalResponseBody$inboundSchema: z.ZodType<
   GetProcessesCountExperimentalResponseBody,
@@ -141,4 +186,31 @@ export namespace GetProcessesCountExperimentalResponseBody$ {
     GetProcessesCountExperimentalResponseBody$outboundSchema;
   /** @deprecated use `GetProcessesCountExperimentalResponseBody$Outbound` instead. */
   export type Outbound = GetProcessesCountExperimentalResponseBody$Outbound;
+}
+
+export function getProcessesCountExperimentalResponseBodyToJSON(
+  getProcessesCountExperimentalResponseBody:
+    GetProcessesCountExperimentalResponseBody,
+): string {
+  return JSON.stringify(
+    GetProcessesCountExperimentalResponseBody$outboundSchema.parse(
+      getProcessesCountExperimentalResponseBody,
+    ),
+  );
+}
+
+export function getProcessesCountExperimentalResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProcessesCountExperimentalResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProcessesCountExperimentalResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProcessesCountExperimentalResponseBody' from JSON`,
+  );
 }

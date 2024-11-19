@@ -236,6 +236,7 @@ run();
 * [getOrgPendingInvites](docs/sdks/organizationsv1/README.md#getorgpendinginvites) - GetOrgPendingInvites
 * [acceptInvite](docs/sdks/organizationsv1/README.md#acceptinvite) - AcceptInvite
 * [rejectInvite](docs/sdks/organizationsv1/README.md#rejectinvite) - RejectInvite
+* [getUsageLimits](docs/sdks/organizationsv1/README.md#getusagelimits) - GetUsageLimits
 
 ### [~~processesV1~~](docs/sdks/processesv1/README.md)
 
@@ -313,10 +314,10 @@ If a HTTP request fails, an operation my also throw an error from the `models/er
 
 In addition, when custom error responses are specified for an operation, the SDK may throw their associated Error type. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation. For example, the `getOrgTokens` method may throw the following errors:
 
-| Error Type       | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401, 404, 429    | application/json |
-| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+| Error Type      | Status Code   | Content Type     |
+| --------------- | ------------- | ---------------- |
+| errors.ApiError | 401, 404, 429 | application/json |
+| errors.SDKError | 4XX, 5XX      | \*/\*            |
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
@@ -374,12 +375,14 @@ Validation errors can also occur when either method arguments or data returned f
 
 ### Select Server by Index
 
-You can override the default server globally by passing a server index to the `serverIdx` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.hathora.dev` | None |
-| 1 | `https:///` | None |
+| #   | Server                    |
+| --- | ------------------------- |
+| 0   | `https://api.hathora.dev` |
+| 1   | `https:///`               |
+
+#### Example
 
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
@@ -403,11 +406,9 @@ run();
 
 ```
 
-
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
-
+The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -491,9 +492,9 @@ const sdk = new HathoraCloud({ httpClient });
 
 This SDK supports the following security scheme globally:
 
-| Name              | Type              | Scheme            |
-| ----------------- | ----------------- | ----------------- |
-| `hathoraDevToken` | http              | HTTP Bearer       |
+| Name              | Type | Scheme      |
+| ----------------- | ---- | ----------- |
+| `hathoraDevToken` | http | HTTP Bearer |
 
 To authenticate with the API the `hathoraDevToken` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
@@ -607,6 +608,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`organizationsV1GetOrgMembers`](docs/sdks/organizationsv1/README.md#getorgmembers) - GetOrgMembers
 - [`organizationsV1GetOrgPendingInvites`](docs/sdks/organizationsv1/README.md#getorgpendinginvites) - GetOrgPendingInvites
 - [`organizationsV1GetOrgs`](docs/sdks/organizationsv1/README.md#getorgs) - GetOrgs
+- [`organizationsV1GetUsageLimits`](docs/sdks/organizationsv1/README.md#getusagelimits) - GetUsageLimits
 - [`organizationsV1GetUserPendingInvites`](docs/sdks/organizationsv1/README.md#getuserpendinginvites) - GetUserPendingInvites
 - [`organizationsV1InviteUser`](docs/sdks/organizationsv1/README.md#inviteuser) - InviteUser
 - [`organizationsV1RejectInvite`](docs/sdks/organizationsv1/README.md#rejectinvite) - RejectInvite
@@ -696,10 +698,9 @@ For example, you can set `appId` to `"app-af469a92-5b45-4565-b3c4-b79878de67d2"`
 
 The following global parameter is available.
 
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| appId | string |  | The appId parameter. |
-
+| Name  | Type   | Description          |
+| ----- | ------ | -------------------- |
+| appId | string | The appId parameter. |
 
 ### Example
 

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BuildPart,
   BuildPart$inboundSchema,
@@ -138,4 +141,24 @@ export namespace CreatedBuildV3WithMultipartUrls$ {
   export const outboundSchema = CreatedBuildV3WithMultipartUrls$outboundSchema;
   /** @deprecated use `CreatedBuildV3WithMultipartUrls$Outbound` instead. */
   export type Outbound = CreatedBuildV3WithMultipartUrls$Outbound;
+}
+
+export function createdBuildV3WithMultipartUrlsToJSON(
+  createdBuildV3WithMultipartUrls: CreatedBuildV3WithMultipartUrls,
+): string {
+  return JSON.stringify(
+    CreatedBuildV3WithMultipartUrls$outboundSchema.parse(
+      createdBuildV3WithMultipartUrls,
+    ),
+  );
+}
+
+export function createdBuildV3WithMultipartUrlsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreatedBuildV3WithMultipartUrls, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatedBuildV3WithMultipartUrls$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatedBuildV3WithMultipartUrls' from JSON`,
+  );
 }

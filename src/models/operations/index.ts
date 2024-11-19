@@ -80,6 +80,7 @@ export * from "./getroominfodeprecated.js";
 export * from "./getrunningprocesses.js";
 export * from "./getstoppedprocesses.js";
 export * from "./getupcominginvoicetotal.js";
+export * from "./getusagelimits.js";
 export * from "./inviteuser.js";
 export * from "./listactivepubliclobbies.js";
 export * from "./listactivepubliclobbiesdeprecatedv1.js";

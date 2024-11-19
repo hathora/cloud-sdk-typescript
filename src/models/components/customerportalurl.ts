@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CustomerPortalUrl = {
   returnUrl: string;
@@ -42,4 +45,22 @@ export namespace CustomerPortalUrl$ {
   export const outboundSchema = CustomerPortalUrl$outboundSchema;
   /** @deprecated use `CustomerPortalUrl$Outbound` instead. */
   export type Outbound = CustomerPortalUrl$Outbound;
+}
+
+export function customerPortalUrlToJSON(
+  customerPortalUrl: CustomerPortalUrl,
+): string {
+  return JSON.stringify(
+    CustomerPortalUrl$outboundSchema.parse(customerPortalUrl),
+  );
+}
+
+export function customerPortalUrlFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomerPortalUrl, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomerPortalUrl$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomerPortalUrl' from JSON`,
+  );
 }

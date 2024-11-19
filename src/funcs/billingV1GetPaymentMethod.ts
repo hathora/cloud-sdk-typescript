@@ -52,6 +52,9 @@ export async function billingV1GetPaymentMethod(
   const context = {
     operationID: "GetPaymentMethod",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

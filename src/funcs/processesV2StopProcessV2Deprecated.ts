@@ -90,6 +90,9 @@ export async function processesV2StopProcessV2Deprecated(
   const context = {
     operationID: "StopProcessV2Deprecated",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

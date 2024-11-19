@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LoginAnonymousGlobals = {
   appId?: string | undefined;
@@ -48,6 +51,24 @@ export namespace LoginAnonymousGlobals$ {
   export type Outbound = LoginAnonymousGlobals$Outbound;
 }
 
+export function loginAnonymousGlobalsToJSON(
+  loginAnonymousGlobals: LoginAnonymousGlobals,
+): string {
+  return JSON.stringify(
+    LoginAnonymousGlobals$outboundSchema.parse(loginAnonymousGlobals),
+  );
+}
+
+export function loginAnonymousGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<LoginAnonymousGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LoginAnonymousGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LoginAnonymousGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const LoginAnonymousRequest$inboundSchema: z.ZodType<
   LoginAnonymousRequest,
@@ -82,4 +103,22 @@ export namespace LoginAnonymousRequest$ {
   export const outboundSchema = LoginAnonymousRequest$outboundSchema;
   /** @deprecated use `LoginAnonymousRequest$Outbound` instead. */
   export type Outbound = LoginAnonymousRequest$Outbound;
+}
+
+export function loginAnonymousRequestToJSON(
+  loginAnonymousRequest: LoginAnonymousRequest,
+): string {
+  return JSON.stringify(
+    LoginAnonymousRequest$outboundSchema.parse(loginAnonymousRequest),
+  );
+}
+
+export function loginAnonymousRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LoginAnonymousRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LoginAnonymousRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LoginAnonymousRequest' from JSON`,
+  );
 }

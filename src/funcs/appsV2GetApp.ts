@@ -81,6 +81,9 @@ export async function appsV2GetApp(
   const context = {
     operationID: "GetApp",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

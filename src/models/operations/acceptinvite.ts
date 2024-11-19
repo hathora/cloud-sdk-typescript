@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AcceptInviteRequest = {
   orgId: string;
@@ -42,4 +45,22 @@ export namespace AcceptInviteRequest$ {
   export const outboundSchema = AcceptInviteRequest$outboundSchema;
   /** @deprecated use `AcceptInviteRequest$Outbound` instead. */
   export type Outbound = AcceptInviteRequest$Outbound;
+}
+
+export function acceptInviteRequestToJSON(
+  acceptInviteRequest: AcceptInviteRequest,
+): string {
+  return JSON.stringify(
+    AcceptInviteRequest$outboundSchema.parse(acceptInviteRequest),
+  );
+}
+
+export function acceptInviteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AcceptInviteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AcceptInviteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AcceptInviteRequest' from JSON`,
+  );
 }

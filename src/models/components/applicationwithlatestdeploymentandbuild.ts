@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AuthConfiguration,
   AuthConfiguration$inboundSchema,
@@ -166,6 +169,33 @@ export namespace ApplicationWithLatestDeploymentAndBuildEnv$ {
   export type Outbound = ApplicationWithLatestDeploymentAndBuildEnv$Outbound;
 }
 
+export function applicationWithLatestDeploymentAndBuildEnvToJSON(
+  applicationWithLatestDeploymentAndBuildEnv:
+    ApplicationWithLatestDeploymentAndBuildEnv,
+): string {
+  return JSON.stringify(
+    ApplicationWithLatestDeploymentAndBuildEnv$outboundSchema.parse(
+      applicationWithLatestDeploymentAndBuildEnv,
+    ),
+  );
+}
+
+export function applicationWithLatestDeploymentAndBuildEnvFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ApplicationWithLatestDeploymentAndBuildEnv,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ApplicationWithLatestDeploymentAndBuildEnv$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ApplicationWithLatestDeploymentAndBuildEnv' from JSON`,
+  );
+}
+
 /** @internal */
 export const ApplicationWithLatestDeploymentAndBuildDeployment$inboundSchema:
   z.ZodType<
@@ -252,6 +282,33 @@ export namespace ApplicationWithLatestDeploymentAndBuildDeployment$ {
     ApplicationWithLatestDeploymentAndBuildDeployment$Outbound;
 }
 
+export function applicationWithLatestDeploymentAndBuildDeploymentToJSON(
+  applicationWithLatestDeploymentAndBuildDeployment:
+    ApplicationWithLatestDeploymentAndBuildDeployment,
+): string {
+  return JSON.stringify(
+    ApplicationWithLatestDeploymentAndBuildDeployment$outboundSchema.parse(
+      applicationWithLatestDeploymentAndBuildDeployment,
+    ),
+  );
+}
+
+export function applicationWithLatestDeploymentAndBuildDeploymentFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ApplicationWithLatestDeploymentAndBuildDeployment,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ApplicationWithLatestDeploymentAndBuildDeployment$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ApplicationWithLatestDeploymentAndBuildDeployment' from JSON`,
+  );
+}
+
 /** @internal */
 export const ApplicationWithLatestDeploymentAndBuild$inboundSchema: z.ZodType<
   ApplicationWithLatestDeploymentAndBuild,
@@ -323,4 +380,31 @@ export namespace ApplicationWithLatestDeploymentAndBuild$ {
     ApplicationWithLatestDeploymentAndBuild$outboundSchema;
   /** @deprecated use `ApplicationWithLatestDeploymentAndBuild$Outbound` instead. */
   export type Outbound = ApplicationWithLatestDeploymentAndBuild$Outbound;
+}
+
+export function applicationWithLatestDeploymentAndBuildToJSON(
+  applicationWithLatestDeploymentAndBuild:
+    ApplicationWithLatestDeploymentAndBuild,
+): string {
+  return JSON.stringify(
+    ApplicationWithLatestDeploymentAndBuild$outboundSchema.parse(
+      applicationWithLatestDeploymentAndBuild,
+    ),
+  );
+}
+
+export function applicationWithLatestDeploymentAndBuildFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ApplicationWithLatestDeploymentAndBuild,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ApplicationWithLatestDeploymentAndBuild$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ApplicationWithLatestDeploymentAndBuild' from JSON`,
+  );
 }

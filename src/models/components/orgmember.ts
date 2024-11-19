@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type OrgMember = {
   lastLogin?: Date | undefined;
@@ -69,4 +72,18 @@ export namespace OrgMember$ {
   export const outboundSchema = OrgMember$outboundSchema;
   /** @deprecated use `OrgMember$Outbound` instead. */
   export type Outbound = OrgMember$Outbound;
+}
+
+export function orgMemberToJSON(orgMember: OrgMember): string {
+  return JSON.stringify(OrgMember$outboundSchema.parse(orgMember));
+}
+
+export function orgMemberFromJSON(
+  jsonString: string,
+): SafeParseResult<OrgMember, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrgMember$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrgMember' from JSON`,
+  );
 }

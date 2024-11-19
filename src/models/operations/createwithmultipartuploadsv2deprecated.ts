@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateWithMultipartUploadsV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -53,6 +56,33 @@ export namespace CreateWithMultipartUploadsV2DeprecatedGlobals$ {
     CreateWithMultipartUploadsV2DeprecatedGlobals$outboundSchema;
   /** @deprecated use `CreateWithMultipartUploadsV2DeprecatedGlobals$Outbound` instead. */
   export type Outbound = CreateWithMultipartUploadsV2DeprecatedGlobals$Outbound;
+}
+
+export function createWithMultipartUploadsV2DeprecatedGlobalsToJSON(
+  createWithMultipartUploadsV2DeprecatedGlobals:
+    CreateWithMultipartUploadsV2DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    CreateWithMultipartUploadsV2DeprecatedGlobals$outboundSchema.parse(
+      createWithMultipartUploadsV2DeprecatedGlobals,
+    ),
+  );
+}
+
+export function createWithMultipartUploadsV2DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateWithMultipartUploadsV2DeprecatedGlobals,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateWithMultipartUploadsV2DeprecatedGlobals$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateWithMultipartUploadsV2DeprecatedGlobals' from JSON`,
+  );
 }
 
 /** @internal */
@@ -106,4 +136,31 @@ export namespace CreateWithMultipartUploadsV2DeprecatedRequest$ {
     CreateWithMultipartUploadsV2DeprecatedRequest$outboundSchema;
   /** @deprecated use `CreateWithMultipartUploadsV2DeprecatedRequest$Outbound` instead. */
   export type Outbound = CreateWithMultipartUploadsV2DeprecatedRequest$Outbound;
+}
+
+export function createWithMultipartUploadsV2DeprecatedRequestToJSON(
+  createWithMultipartUploadsV2DeprecatedRequest:
+    CreateWithMultipartUploadsV2DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    CreateWithMultipartUploadsV2DeprecatedRequest$outboundSchema.parse(
+      createWithMultipartUploadsV2DeprecatedRequest,
+    ),
+  );
+}
+
+export function createWithMultipartUploadsV2DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateWithMultipartUploadsV2DeprecatedRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateWithMultipartUploadsV2DeprecatedRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateWithMultipartUploadsV2DeprecatedRequest' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateAppV1DeprecatedGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace UpdateAppV1DeprecatedGlobals$ {
   export const outboundSchema = UpdateAppV1DeprecatedGlobals$outboundSchema;
   /** @deprecated use `UpdateAppV1DeprecatedGlobals$Outbound` instead. */
   export type Outbound = UpdateAppV1DeprecatedGlobals$Outbound;
+}
+
+export function updateAppV1DeprecatedGlobalsToJSON(
+  updateAppV1DeprecatedGlobals: UpdateAppV1DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    UpdateAppV1DeprecatedGlobals$outboundSchema.parse(
+      updateAppV1DeprecatedGlobals,
+    ),
+  );
+}
+
+export function updateAppV1DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateAppV1DeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateAppV1DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateAppV1DeprecatedGlobals' from JSON`,
+  );
 }
 
 /** @internal */
@@ -96,4 +119,24 @@ export namespace UpdateAppV1DeprecatedRequest$ {
   export const outboundSchema = UpdateAppV1DeprecatedRequest$outboundSchema;
   /** @deprecated use `UpdateAppV1DeprecatedRequest$Outbound` instead. */
   export type Outbound = UpdateAppV1DeprecatedRequest$Outbound;
+}
+
+export function updateAppV1DeprecatedRequestToJSON(
+  updateAppV1DeprecatedRequest: UpdateAppV1DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    UpdateAppV1DeprecatedRequest$outboundSchema.parse(
+      updateAppV1DeprecatedRequest,
+    ),
+  );
+}
+
+export function updateAppV1DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateAppV1DeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateAppV1DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateAppV1DeprecatedRequest' from JSON`,
+  );
 }

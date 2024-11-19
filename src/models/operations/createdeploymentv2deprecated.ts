@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateDeploymentV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -52,6 +55,27 @@ export namespace CreateDeploymentV2DeprecatedGlobals$ {
     CreateDeploymentV2DeprecatedGlobals$outboundSchema;
   /** @deprecated use `CreateDeploymentV2DeprecatedGlobals$Outbound` instead. */
   export type Outbound = CreateDeploymentV2DeprecatedGlobals$Outbound;
+}
+
+export function createDeploymentV2DeprecatedGlobalsToJSON(
+  createDeploymentV2DeprecatedGlobals: CreateDeploymentV2DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    CreateDeploymentV2DeprecatedGlobals$outboundSchema.parse(
+      createDeploymentV2DeprecatedGlobals,
+    ),
+  );
+}
+
+export function createDeploymentV2DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentV2DeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentV2DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentV2DeprecatedGlobals' from JSON`,
+  );
 }
 
 /** @internal */
@@ -104,4 +128,25 @@ export namespace CreateDeploymentV2DeprecatedRequest$ {
     CreateDeploymentV2DeprecatedRequest$outboundSchema;
   /** @deprecated use `CreateDeploymentV2DeprecatedRequest$Outbound` instead. */
   export type Outbound = CreateDeploymentV2DeprecatedRequest$Outbound;
+}
+
+export function createDeploymentV2DeprecatedRequestToJSON(
+  createDeploymentV2DeprecatedRequest: CreateDeploymentV2DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    CreateDeploymentV2DeprecatedRequest$outboundSchema.parse(
+      createDeploymentV2DeprecatedRequest,
+    ),
+  );
+}
+
+export function createDeploymentV2DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentV2DeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentV2DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentV2DeprecatedRequest' from JSON`,
+  );
 }

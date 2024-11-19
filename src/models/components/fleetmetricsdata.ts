@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   MetricValue,
   MetricValue$inboundSchema,
@@ -60,4 +63,22 @@ export namespace FleetMetricsData$ {
   export const outboundSchema = FleetMetricsData$outboundSchema;
   /** @deprecated use `FleetMetricsData$Outbound` instead. */
   export type Outbound = FleetMetricsData$Outbound;
+}
+
+export function fleetMetricsDataToJSON(
+  fleetMetricsData: FleetMetricsData,
+): string {
+  return JSON.stringify(
+    FleetMetricsData$outboundSchema.parse(fleetMetricsData),
+  );
+}
+
+export function fleetMetricsDataFromJSON(
+  jsonString: string,
+): SafeParseResult<FleetMetricsData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FleetMetricsData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FleetMetricsData' from JSON`,
+  );
 }

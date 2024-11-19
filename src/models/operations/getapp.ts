@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetAppGlobals = {
   appId?: string | undefined;
@@ -48,6 +51,20 @@ export namespace GetAppGlobals$ {
   export type Outbound = GetAppGlobals$Outbound;
 }
 
+export function getAppGlobalsToJSON(getAppGlobals: GetAppGlobals): string {
+  return JSON.stringify(GetAppGlobals$outboundSchema.parse(getAppGlobals));
+}
+
+export function getAppGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAppGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAppGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAppGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAppRequest$inboundSchema: z.ZodType<
   GetAppRequest,
@@ -82,4 +99,18 @@ export namespace GetAppRequest$ {
   export const outboundSchema = GetAppRequest$outboundSchema;
   /** @deprecated use `GetAppRequest$Outbound` instead. */
   export type Outbound = GetAppRequest$Outbound;
+}
+
+export function getAppRequestToJSON(getAppRequest: GetAppRequest): string {
+  return JSON.stringify(GetAppRequest$outboundSchema.parse(getAppRequest));
+}
+
+export function getAppRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAppRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAppRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAppRequest' from JSON`,
+  );
 }

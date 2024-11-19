@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetRoomInfoGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,24 @@ export namespace GetRoomInfoGlobals$ {
   export type Outbound = GetRoomInfoGlobals$Outbound;
 }
 
+export function getRoomInfoGlobalsToJSON(
+  getRoomInfoGlobals: GetRoomInfoGlobals,
+): string {
+  return JSON.stringify(
+    GetRoomInfoGlobals$outboundSchema.parse(getRoomInfoGlobals),
+  );
+}
+
+export function getRoomInfoGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetRoomInfoGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRoomInfoGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoomInfoGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetRoomInfoRequest$inboundSchema: z.ZodType<
   GetRoomInfoRequest,
@@ -86,4 +107,22 @@ export namespace GetRoomInfoRequest$ {
   export const outboundSchema = GetRoomInfoRequest$outboundSchema;
   /** @deprecated use `GetRoomInfoRequest$Outbound` instead. */
   export type Outbound = GetRoomInfoRequest$Outbound;
+}
+
+export function getRoomInfoRequestToJSON(
+  getRoomInfoRequest: GetRoomInfoRequest,
+): string {
+  return JSON.stringify(
+    GetRoomInfoRequest$outboundSchema.parse(getRoomInfoRequest),
+  );
+}
+
+export function getRoomInfoRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetRoomInfoRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRoomInfoRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoomInfoRequest' from JSON`,
+  );
 }

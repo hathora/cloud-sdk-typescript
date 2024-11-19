@@ -85,6 +85,9 @@ export async function lobbiesV3GetLobbyInfoByShortCode(
   const context = {
     operationID: "GetLobbyInfoByShortCode",
     oAuth2Scopes: [],
+
+    resolvedSecurity: null,
+
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig

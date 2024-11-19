@@ -79,6 +79,9 @@ export async function authV1LoginNickname(
   const context = {
     operationID: "LoginNickname",
     oAuth2Scopes: [],
+
+    resolvedSecurity: null,
+
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig

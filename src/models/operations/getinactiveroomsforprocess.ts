@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetInactiveRoomsForProcessGlobals = {
   appId?: string | undefined;
@@ -50,6 +53,26 @@ export namespace GetInactiveRoomsForProcessGlobals$ {
   export type Outbound = GetInactiveRoomsForProcessGlobals$Outbound;
 }
 
+export function getInactiveRoomsForProcessGlobalsToJSON(
+  getInactiveRoomsForProcessGlobals: GetInactiveRoomsForProcessGlobals,
+): string {
+  return JSON.stringify(
+    GetInactiveRoomsForProcessGlobals$outboundSchema.parse(
+      getInactiveRoomsForProcessGlobals,
+    ),
+  );
+}
+
+export function getInactiveRoomsForProcessGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetInactiveRoomsForProcessGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetInactiveRoomsForProcessGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetInactiveRoomsForProcessGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetInactiveRoomsForProcessRequest$inboundSchema: z.ZodType<
   GetInactiveRoomsForProcessRequest,
@@ -88,4 +111,24 @@ export namespace GetInactiveRoomsForProcessRequest$ {
     GetInactiveRoomsForProcessRequest$outboundSchema;
   /** @deprecated use `GetInactiveRoomsForProcessRequest$Outbound` instead. */
   export type Outbound = GetInactiveRoomsForProcessRequest$Outbound;
+}
+
+export function getInactiveRoomsForProcessRequestToJSON(
+  getInactiveRoomsForProcessRequest: GetInactiveRoomsForProcessRequest,
+): string {
+  return JSON.stringify(
+    GetInactiveRoomsForProcessRequest$outboundSchema.parse(
+      getInactiveRoomsForProcessRequest,
+    ),
+  );
+}
+
+export function getInactiveRoomsForProcessRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetInactiveRoomsForProcessRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetInactiveRoomsForProcessRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetInactiveRoomsForProcessRequest' from JSON`,
+  );
 }

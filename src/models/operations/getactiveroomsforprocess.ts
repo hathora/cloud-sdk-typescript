@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetActiveRoomsForProcessGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace GetActiveRoomsForProcessGlobals$ {
   export type Outbound = GetActiveRoomsForProcessGlobals$Outbound;
 }
 
+export function getActiveRoomsForProcessGlobalsToJSON(
+  getActiveRoomsForProcessGlobals: GetActiveRoomsForProcessGlobals,
+): string {
+  return JSON.stringify(
+    GetActiveRoomsForProcessGlobals$outboundSchema.parse(
+      getActiveRoomsForProcessGlobals,
+    ),
+  );
+}
+
+export function getActiveRoomsForProcessGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetActiveRoomsForProcessGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetActiveRoomsForProcessGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetActiveRoomsForProcessGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetActiveRoomsForProcessRequest$inboundSchema: z.ZodType<
   GetActiveRoomsForProcessRequest,
@@ -86,4 +109,24 @@ export namespace GetActiveRoomsForProcessRequest$ {
   export const outboundSchema = GetActiveRoomsForProcessRequest$outboundSchema;
   /** @deprecated use `GetActiveRoomsForProcessRequest$Outbound` instead. */
   export type Outbound = GetActiveRoomsForProcessRequest$Outbound;
+}
+
+export function getActiveRoomsForProcessRequestToJSON(
+  getActiveRoomsForProcessRequest: GetActiveRoomsForProcessRequest,
+): string {
+  return JSON.stringify(
+    GetActiveRoomsForProcessRequest$outboundSchema.parse(
+      getActiveRoomsForProcessRequest,
+    ),
+  );
+}
+
+export function getActiveRoomsForProcessRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetActiveRoomsForProcessRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetActiveRoomsForProcessRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetActiveRoomsForProcessRequest' from JSON`,
+  );
 }

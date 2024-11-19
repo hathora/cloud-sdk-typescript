@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A fleet is a collection of vCPUs accross your regions that can scale up and down based on demand.
@@ -52,4 +55,18 @@ export namespace Fleet$ {
   export const outboundSchema = Fleet$outboundSchema;
   /** @deprecated use `Fleet$Outbound` instead. */
   export type Outbound = Fleet$Outbound;
+}
+
+export function fleetToJSON(fleet: Fleet): string {
+  return JSON.stringify(Fleet$outboundSchema.parse(fleet));
+}
+
+export function fleetFromJSON(
+  jsonString: string,
+): SafeParseResult<Fleet, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Fleet$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fleet' from JSON`,
+  );
 }

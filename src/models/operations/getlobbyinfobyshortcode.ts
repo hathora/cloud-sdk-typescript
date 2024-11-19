@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetLobbyInfoByShortCodeGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace GetLobbyInfoByShortCodeGlobals$ {
   export type Outbound = GetLobbyInfoByShortCodeGlobals$Outbound;
 }
 
+export function getLobbyInfoByShortCodeGlobalsToJSON(
+  getLobbyInfoByShortCodeGlobals: GetLobbyInfoByShortCodeGlobals,
+): string {
+  return JSON.stringify(
+    GetLobbyInfoByShortCodeGlobals$outboundSchema.parse(
+      getLobbyInfoByShortCodeGlobals,
+    ),
+  );
+}
+
+export function getLobbyInfoByShortCodeGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLobbyInfoByShortCodeGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLobbyInfoByShortCodeGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLobbyInfoByShortCodeGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetLobbyInfoByShortCodeRequest$inboundSchema: z.ZodType<
   GetLobbyInfoByShortCodeRequest,
@@ -86,4 +109,24 @@ export namespace GetLobbyInfoByShortCodeRequest$ {
   export const outboundSchema = GetLobbyInfoByShortCodeRequest$outboundSchema;
   /** @deprecated use `GetLobbyInfoByShortCodeRequest$Outbound` instead. */
   export type Outbound = GetLobbyInfoByShortCodeRequest$Outbound;
+}
+
+export function getLobbyInfoByShortCodeRequestToJSON(
+  getLobbyInfoByShortCodeRequest: GetLobbyInfoByShortCodeRequest,
+): string {
+  return JSON.stringify(
+    GetLobbyInfoByShortCodeRequest$outboundSchema.parse(
+      getLobbyInfoByShortCodeRequest,
+    ),
+  );
+}
+
+export function getLobbyInfoByShortCodeRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLobbyInfoByShortCodeRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLobbyInfoByShortCodeRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLobbyInfoByShortCodeRequest' from JSON`,
+  );
 }

@@ -62,6 +62,9 @@ export async function managementV1SendVerificationEmail(
   const context = {
     operationID: "SendVerificationEmail",
     oAuth2Scopes: [],
+
+    resolvedSecurity: null,
+
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Fleet,
   Fleet$inboundSchema,
@@ -48,4 +51,18 @@ export namespace FleetsPage$ {
   export const outboundSchema = FleetsPage$outboundSchema;
   /** @deprecated use `FleetsPage$Outbound` instead. */
   export type Outbound = FleetsPage$Outbound;
+}
+
+export function fleetsPageToJSON(fleetsPage: FleetsPage): string {
+  return JSON.stringify(FleetsPage$outboundSchema.parse(fleetsPage));
+}
+
+export function fleetsPageFromJSON(
+  jsonString: string,
+): SafeParseResult<FleetsPage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FleetsPage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FleetsPage' from JSON`,
+  );
 }

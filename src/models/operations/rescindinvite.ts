@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RescindInviteRequest = {
   orgId: string;
@@ -56,4 +59,22 @@ export namespace RescindInviteRequest$ {
   export const outboundSchema = RescindInviteRequest$outboundSchema;
   /** @deprecated use `RescindInviteRequest$Outbound` instead. */
   export type Outbound = RescindInviteRequest$Outbound;
+}
+
+export function rescindInviteRequestToJSON(
+  rescindInviteRequest: RescindInviteRequest,
+): string {
+  return JSON.stringify(
+    RescindInviteRequest$outboundSchema.parse(rescindInviteRequest),
+  );
+}
+
+export function rescindInviteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RescindInviteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RescindInviteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RescindInviteRequest' from JSON`,
+  );
 }

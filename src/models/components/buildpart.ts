@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BuildPart = {
   putRequestUrl: string;
@@ -46,4 +49,18 @@ export namespace BuildPart$ {
   export const outboundSchema = BuildPart$outboundSchema;
   /** @deprecated use `BuildPart$Outbound` instead. */
   export type Outbound = BuildPart$Outbound;
+}
+
+export function buildPartToJSON(buildPart: BuildPart): string {
+  return JSON.stringify(BuildPart$outboundSchema.parse(buildPart));
+}
+
+export function buildPartFromJSON(
+  jsonString: string,
+): SafeParseResult<BuildPart, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuildPart$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuildPart' from JSON`,
+  );
 }

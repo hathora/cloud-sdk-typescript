@@ -91,6 +91,9 @@ export async function fleetsV1GetFleetMetrics(
   const context = {
     operationID: "GetFleetMetrics",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -91,6 +91,9 @@ export async function processesV1GetStoppedProcesses(
   const context = {
     operationID: "GetStoppedProcesses",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

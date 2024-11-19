@@ -84,6 +84,9 @@ export async function tokensV1CreateOrgToken(
   const context = {
     operationID: "CreateOrgToken",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

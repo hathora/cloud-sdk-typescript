@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ExposedPort,
   ExposedPort$inboundSchema,
@@ -84,4 +87,22 @@ export namespace RoomConnectionData$ {
   export const outboundSchema = RoomConnectionData$outboundSchema;
   /** @deprecated use `RoomConnectionData$Outbound` instead. */
   export type Outbound = RoomConnectionData$Outbound;
+}
+
+export function roomConnectionDataToJSON(
+  roomConnectionData: RoomConnectionData,
+): string {
+  return JSON.stringify(
+    RoomConnectionData$outboundSchema.parse(roomConnectionData),
+  );
+}
+
+export function roomConnectionDataFromJSON(
+  jsonString: string,
+): SafeParseResult<RoomConnectionData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RoomConnectionData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RoomConnectionData' from JSON`,
+  );
 }

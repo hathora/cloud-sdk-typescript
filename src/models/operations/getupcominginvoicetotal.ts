@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Ok
@@ -47,4 +50,25 @@ export namespace GetUpcomingInvoiceTotalResponseBody$ {
     GetUpcomingInvoiceTotalResponseBody$outboundSchema;
   /** @deprecated use `GetUpcomingInvoiceTotalResponseBody$Outbound` instead. */
   export type Outbound = GetUpcomingInvoiceTotalResponseBody$Outbound;
+}
+
+export function getUpcomingInvoiceTotalResponseBodyToJSON(
+  getUpcomingInvoiceTotalResponseBody: GetUpcomingInvoiceTotalResponseBody,
+): string {
+  return JSON.stringify(
+    GetUpcomingInvoiceTotalResponseBody$outboundSchema.parse(
+      getUpcomingInvoiceTotalResponseBody,
+    ),
+  );
+}
+
+export function getUpcomingInvoiceTotalResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetUpcomingInvoiceTotalResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetUpcomingInvoiceTotalResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetUpcomingInvoiceTotalResponseBody' from JSON`,
+  );
 }

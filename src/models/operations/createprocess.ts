@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateProcessGlobals = {
   appId?: string | undefined;
@@ -50,6 +53,24 @@ export namespace CreateProcessGlobals$ {
   export type Outbound = CreateProcessGlobals$Outbound;
 }
 
+export function createProcessGlobalsToJSON(
+  createProcessGlobals: CreateProcessGlobals,
+): string {
+  return JSON.stringify(
+    CreateProcessGlobals$outboundSchema.parse(createProcessGlobals),
+  );
+}
+
+export function createProcessGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProcessGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProcessGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProcessGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateProcessRequest$inboundSchema: z.ZodType<
   CreateProcessRequest,
@@ -87,4 +108,22 @@ export namespace CreateProcessRequest$ {
   export const outboundSchema = CreateProcessRequest$outboundSchema;
   /** @deprecated use `CreateProcessRequest$Outbound` instead. */
   export type Outbound = CreateProcessRequest$Outbound;
+}
+
+export function createProcessRequestToJSON(
+  createProcessRequest: CreateProcessRequest,
+): string {
+  return JSON.stringify(
+    CreateProcessRequest$outboundSchema.parse(createProcessRequest),
+  );
+}
+
+export function createProcessRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProcessRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProcessRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProcessRequest' from JSON`,
+  );
 }

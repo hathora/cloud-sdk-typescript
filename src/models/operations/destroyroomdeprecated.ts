@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DestroyRoomDeprecatedGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace DestroyRoomDeprecatedGlobals$ {
   export type Outbound = DestroyRoomDeprecatedGlobals$Outbound;
 }
 
+export function destroyRoomDeprecatedGlobalsToJSON(
+  destroyRoomDeprecatedGlobals: DestroyRoomDeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    DestroyRoomDeprecatedGlobals$outboundSchema.parse(
+      destroyRoomDeprecatedGlobals,
+    ),
+  );
+}
+
+export function destroyRoomDeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<DestroyRoomDeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DestroyRoomDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DestroyRoomDeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const DestroyRoomDeprecatedRequest$inboundSchema: z.ZodType<
   DestroyRoomDeprecatedRequest,
@@ -86,4 +109,24 @@ export namespace DestroyRoomDeprecatedRequest$ {
   export const outboundSchema = DestroyRoomDeprecatedRequest$outboundSchema;
   /** @deprecated use `DestroyRoomDeprecatedRequest$Outbound` instead. */
   export type Outbound = DestroyRoomDeprecatedRequest$Outbound;
+}
+
+export function destroyRoomDeprecatedRequestToJSON(
+  destroyRoomDeprecatedRequest: DestroyRoomDeprecatedRequest,
+): string {
+  return JSON.stringify(
+    DestroyRoomDeprecatedRequest$outboundSchema.parse(
+      destroyRoomDeprecatedRequest,
+    ),
+  );
+}
+
+export function destroyRoomDeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DestroyRoomDeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DestroyRoomDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DestroyRoomDeprecatedRequest' from JSON`,
+  );
 }

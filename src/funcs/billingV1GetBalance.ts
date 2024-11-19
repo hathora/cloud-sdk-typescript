@@ -52,6 +52,9 @@ export async function billingV1GetBalance(
   const context = {
     operationID: "GetBalance",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

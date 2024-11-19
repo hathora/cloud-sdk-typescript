@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateBuildWithUploadUrlV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -53,6 +56,33 @@ export namespace CreateBuildWithUploadUrlV2DeprecatedGlobals$ {
     CreateBuildWithUploadUrlV2DeprecatedGlobals$outboundSchema;
   /** @deprecated use `CreateBuildWithUploadUrlV2DeprecatedGlobals$Outbound` instead. */
   export type Outbound = CreateBuildWithUploadUrlV2DeprecatedGlobals$Outbound;
+}
+
+export function createBuildWithUploadUrlV2DeprecatedGlobalsToJSON(
+  createBuildWithUploadUrlV2DeprecatedGlobals:
+    CreateBuildWithUploadUrlV2DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    CreateBuildWithUploadUrlV2DeprecatedGlobals$outboundSchema.parse(
+      createBuildWithUploadUrlV2DeprecatedGlobals,
+    ),
+  );
+}
+
+export function createBuildWithUploadUrlV2DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateBuildWithUploadUrlV2DeprecatedGlobals,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateBuildWithUploadUrlV2DeprecatedGlobals$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateBuildWithUploadUrlV2DeprecatedGlobals' from JSON`,
+  );
 }
 
 /** @internal */
@@ -104,4 +134,31 @@ export namespace CreateBuildWithUploadUrlV2DeprecatedRequest$ {
     CreateBuildWithUploadUrlV2DeprecatedRequest$outboundSchema;
   /** @deprecated use `CreateBuildWithUploadUrlV2DeprecatedRequest$Outbound` instead. */
   export type Outbound = CreateBuildWithUploadUrlV2DeprecatedRequest$Outbound;
+}
+
+export function createBuildWithUploadUrlV2DeprecatedRequestToJSON(
+  createBuildWithUploadUrlV2DeprecatedRequest:
+    CreateBuildWithUploadUrlV2DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    CreateBuildWithUploadUrlV2DeprecatedRequest$outboundSchema.parse(
+      createBuildWithUploadUrlV2DeprecatedRequest,
+    ),
+  );
+}
+
+export function createBuildWithUploadUrlV2DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateBuildWithUploadUrlV2DeprecatedRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateBuildWithUploadUrlV2DeprecatedRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateBuildWithUploadUrlV2DeprecatedRequest' from JSON`,
+  );
 }

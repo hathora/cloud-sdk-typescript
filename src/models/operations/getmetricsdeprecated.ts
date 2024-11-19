@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetMetricsDeprecatedGlobals = {
   appId?: string | undefined;
@@ -63,6 +66,26 @@ export namespace GetMetricsDeprecatedGlobals$ {
   export type Outbound = GetMetricsDeprecatedGlobals$Outbound;
 }
 
+export function getMetricsDeprecatedGlobalsToJSON(
+  getMetricsDeprecatedGlobals: GetMetricsDeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    GetMetricsDeprecatedGlobals$outboundSchema.parse(
+      getMetricsDeprecatedGlobals,
+    ),
+  );
+}
+
+export function getMetricsDeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMetricsDeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMetricsDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMetricsDeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetMetricsDeprecatedRequest$inboundSchema: z.ZodType<
   GetMetricsDeprecatedRequest,
@@ -114,4 +137,24 @@ export namespace GetMetricsDeprecatedRequest$ {
   export const outboundSchema = GetMetricsDeprecatedRequest$outboundSchema;
   /** @deprecated use `GetMetricsDeprecatedRequest$Outbound` instead. */
   export type Outbound = GetMetricsDeprecatedRequest$Outbound;
+}
+
+export function getMetricsDeprecatedRequestToJSON(
+  getMetricsDeprecatedRequest: GetMetricsDeprecatedRequest,
+): string {
+  return JSON.stringify(
+    GetMetricsDeprecatedRequest$outboundSchema.parse(
+      getMetricsDeprecatedRequest,
+    ),
+  );
+}
+
+export function getMetricsDeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMetricsDeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMetricsDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMetricsDeprecatedRequest' from JSON`,
+  );
 }

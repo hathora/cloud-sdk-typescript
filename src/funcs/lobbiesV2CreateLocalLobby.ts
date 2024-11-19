@@ -96,6 +96,9 @@ export async function lobbiesV2CreateLocalLobby(
   const context = {
     operationID: "CreateLocalLobby",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: security,
     retryConfig: options?.retries
       || client._options.retryConfig

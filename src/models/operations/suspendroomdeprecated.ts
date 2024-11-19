@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SuspendRoomDeprecatedGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,26 @@ export namespace SuspendRoomDeprecatedGlobals$ {
   export type Outbound = SuspendRoomDeprecatedGlobals$Outbound;
 }
 
+export function suspendRoomDeprecatedGlobalsToJSON(
+  suspendRoomDeprecatedGlobals: SuspendRoomDeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    SuspendRoomDeprecatedGlobals$outboundSchema.parse(
+      suspendRoomDeprecatedGlobals,
+    ),
+  );
+}
+
+export function suspendRoomDeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<SuspendRoomDeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SuspendRoomDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SuspendRoomDeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const SuspendRoomDeprecatedRequest$inboundSchema: z.ZodType<
   SuspendRoomDeprecatedRequest,
@@ -86,4 +109,24 @@ export namespace SuspendRoomDeprecatedRequest$ {
   export const outboundSchema = SuspendRoomDeprecatedRequest$outboundSchema;
   /** @deprecated use `SuspendRoomDeprecatedRequest$Outbound` instead. */
   export type Outbound = SuspendRoomDeprecatedRequest$Outbound;
+}
+
+export function suspendRoomDeprecatedRequestToJSON(
+  suspendRoomDeprecatedRequest: SuspendRoomDeprecatedRequest,
+): string {
+  return JSON.stringify(
+    SuspendRoomDeprecatedRequest$outboundSchema.parse(
+      suspendRoomDeprecatedRequest,
+    ),
+  );
+}
+
+export function suspendRoomDeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<SuspendRoomDeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SuspendRoomDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SuspendRoomDeprecatedRequest' from JSON`,
+  );
 }

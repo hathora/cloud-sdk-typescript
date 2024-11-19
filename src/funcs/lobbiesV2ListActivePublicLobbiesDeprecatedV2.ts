@@ -87,6 +87,9 @@ export async function lobbiesV2ListActivePublicLobbiesDeprecatedV2(
   const context = {
     operationID: "ListActivePublicLobbiesDeprecatedV2",
     oAuth2Scopes: [],
+
+    resolvedSecurity: null,
+
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetRunningProcessesGlobals = {
   appId?: string | undefined;
@@ -50,6 +53,24 @@ export namespace GetRunningProcessesGlobals$ {
   export type Outbound = GetRunningProcessesGlobals$Outbound;
 }
 
+export function getRunningProcessesGlobalsToJSON(
+  getRunningProcessesGlobals: GetRunningProcessesGlobals,
+): string {
+  return JSON.stringify(
+    GetRunningProcessesGlobals$outboundSchema.parse(getRunningProcessesGlobals),
+  );
+}
+
+export function getRunningProcessesGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetRunningProcessesGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRunningProcessesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRunningProcessesGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetRunningProcessesRequest$inboundSchema: z.ZodType<
   GetRunningProcessesRequest,
@@ -87,4 +108,22 @@ export namespace GetRunningProcessesRequest$ {
   export const outboundSchema = GetRunningProcessesRequest$outboundSchema;
   /** @deprecated use `GetRunningProcessesRequest$Outbound` instead. */
   export type Outbound = GetRunningProcessesRequest$Outbound;
+}
+
+export function getRunningProcessesRequestToJSON(
+  getRunningProcessesRequest: GetRunningProcessesRequest,
+): string {
+  return JSON.stringify(
+    GetRunningProcessesRequest$outboundSchema.parse(getRunningProcessesRequest),
+  );
+}
+
+export function getRunningProcessesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetRunningProcessesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRunningProcessesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRunningProcessesRequest' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LobbyVisibility,
   LobbyVisibility$inboundSchema,
@@ -74,4 +77,22 @@ export namespace CreateLobbyParams$ {
   export const outboundSchema = CreateLobbyParams$outboundSchema;
   /** @deprecated use `CreateLobbyParams$Outbound` instead. */
   export type Outbound = CreateLobbyParams$Outbound;
+}
+
+export function createLobbyParamsToJSON(
+  createLobbyParams: CreateLobbyParams,
+): string {
+  return JSON.stringify(
+    CreateLobbyParams$outboundSchema.parse(createLobbyParams),
+  );
+}
+
+export function createLobbyParamsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLobbyParams, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLobbyParams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLobbyParams' from JSON`,
+  );
 }

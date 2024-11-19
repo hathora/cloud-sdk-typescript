@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateAppRequest = {
   orgId?: string | undefined;
@@ -56,4 +59,22 @@ export namespace CreateAppRequest$ {
   export const outboundSchema = CreateAppRequest$outboundSchema;
   /** @deprecated use `CreateAppRequest$Outbound` instead. */
   export type Outbound = CreateAppRequest$Outbound;
+}
+
+export function createAppRequestToJSON(
+  createAppRequest: CreateAppRequest,
+): string {
+  return JSON.stringify(
+    CreateAppRequest$outboundSchema.parse(createAppRequest),
+  );
+}
+
+export function createAppRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateAppRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateAppRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateAppRequest' from JSON`,
+  );
 }

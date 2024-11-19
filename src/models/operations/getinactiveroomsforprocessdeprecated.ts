@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetInactiveRoomsForProcessDeprecatedGlobals = {
   appId?: string | undefined;
@@ -53,6 +56,33 @@ export namespace GetInactiveRoomsForProcessDeprecatedGlobals$ {
   export type Outbound = GetInactiveRoomsForProcessDeprecatedGlobals$Outbound;
 }
 
+export function getInactiveRoomsForProcessDeprecatedGlobalsToJSON(
+  getInactiveRoomsForProcessDeprecatedGlobals:
+    GetInactiveRoomsForProcessDeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    GetInactiveRoomsForProcessDeprecatedGlobals$outboundSchema.parse(
+      getInactiveRoomsForProcessDeprecatedGlobals,
+    ),
+  );
+}
+
+export function getInactiveRoomsForProcessDeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetInactiveRoomsForProcessDeprecatedGlobals,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetInactiveRoomsForProcessDeprecatedGlobals$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetInactiveRoomsForProcessDeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetInactiveRoomsForProcessDeprecatedRequest$inboundSchema:
   z.ZodType<
@@ -94,4 +124,31 @@ export namespace GetInactiveRoomsForProcessDeprecatedRequest$ {
     GetInactiveRoomsForProcessDeprecatedRequest$outboundSchema;
   /** @deprecated use `GetInactiveRoomsForProcessDeprecatedRequest$Outbound` instead. */
   export type Outbound = GetInactiveRoomsForProcessDeprecatedRequest$Outbound;
+}
+
+export function getInactiveRoomsForProcessDeprecatedRequestToJSON(
+  getInactiveRoomsForProcessDeprecatedRequest:
+    GetInactiveRoomsForProcessDeprecatedRequest,
+): string {
+  return JSON.stringify(
+    GetInactiveRoomsForProcessDeprecatedRequest$outboundSchema.parse(
+      getInactiveRoomsForProcessDeprecatedRequest,
+    ),
+  );
+}
+
+export function getInactiveRoomsForProcessDeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetInactiveRoomsForProcessDeprecatedRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetInactiveRoomsForProcessDeprecatedRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetInactiveRoomsForProcessDeprecatedRequest' from JSON`,
+  );
 }

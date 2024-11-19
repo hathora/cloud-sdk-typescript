@@ -91,6 +91,9 @@ export async function roomsV1GetInactiveRoomsForProcessDeprecated(
   const context = {
     operationID: "GetInactiveRoomsForProcessDeprecated",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

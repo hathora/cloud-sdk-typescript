@@ -78,6 +78,9 @@ export async function organizationsV1GetOrgMembers(
   const context = {
     operationID: "GetOrgMembers",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

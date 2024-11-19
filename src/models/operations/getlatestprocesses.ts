@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetLatestProcessesGlobals = {
   appId?: string | undefined;
@@ -51,6 +54,24 @@ export namespace GetLatestProcessesGlobals$ {
   export type Outbound = GetLatestProcessesGlobals$Outbound;
 }
 
+export function getLatestProcessesGlobalsToJSON(
+  getLatestProcessesGlobals: GetLatestProcessesGlobals,
+): string {
+  return JSON.stringify(
+    GetLatestProcessesGlobals$outboundSchema.parse(getLatestProcessesGlobals),
+  );
+}
+
+export function getLatestProcessesGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLatestProcessesGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLatestProcessesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLatestProcessesGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetLatestProcessesRequest$inboundSchema: z.ZodType<
   GetLatestProcessesRequest,
@@ -91,4 +112,22 @@ export namespace GetLatestProcessesRequest$ {
   export const outboundSchema = GetLatestProcessesRequest$outboundSchema;
   /** @deprecated use `GetLatestProcessesRequest$Outbound` instead. */
   export type Outbound = GetLatestProcessesRequest$Outbound;
+}
+
+export function getLatestProcessesRequestToJSON(
+  getLatestProcessesRequest: GetLatestProcessesRequest,
+): string {
+  return JSON.stringify(
+    GetLatestProcessesRequest$outboundSchema.parse(getLatestProcessesRequest),
+  );
+}
+
+export function getLatestProcessesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLatestProcessesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLatestProcessesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLatestProcessesRequest' from JSON`,
+  );
 }

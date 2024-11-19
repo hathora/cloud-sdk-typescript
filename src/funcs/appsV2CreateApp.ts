@@ -81,6 +81,9 @@ export async function appsV2CreateApp(
   const context = {
     operationID: "CreateApp",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.hathoraDevToken,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetFleetMetricsRequest = {
   fleetId: string;
@@ -73,4 +76,22 @@ export namespace GetFleetMetricsRequest$ {
   export const outboundSchema = GetFleetMetricsRequest$outboundSchema;
   /** @deprecated use `GetFleetMetricsRequest$Outbound` instead. */
   export type Outbound = GetFleetMetricsRequest$Outbound;
+}
+
+export function getFleetMetricsRequestToJSON(
+  getFleetMetricsRequest: GetFleetMetricsRequest,
+): string {
+  return JSON.stringify(
+    GetFleetMetricsRequest$outboundSchema.parse(getFleetMetricsRequest),
+  );
+}
+
+export function getFleetMetricsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetFleetMetricsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetFleetMetricsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFleetMetricsRequest' from JSON`,
+  );
 }

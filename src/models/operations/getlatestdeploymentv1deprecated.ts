@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetLatestDeploymentV1DeprecatedGlobals = {
   appId?: string | undefined;
@@ -50,6 +53,28 @@ export namespace GetLatestDeploymentV1DeprecatedGlobals$ {
   export type Outbound = GetLatestDeploymentV1DeprecatedGlobals$Outbound;
 }
 
+export function getLatestDeploymentV1DeprecatedGlobalsToJSON(
+  getLatestDeploymentV1DeprecatedGlobals:
+    GetLatestDeploymentV1DeprecatedGlobals,
+): string {
+  return JSON.stringify(
+    GetLatestDeploymentV1DeprecatedGlobals$outboundSchema.parse(
+      getLatestDeploymentV1DeprecatedGlobals,
+    ),
+  );
+}
+
+export function getLatestDeploymentV1DeprecatedGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLatestDeploymentV1DeprecatedGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetLatestDeploymentV1DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLatestDeploymentV1DeprecatedGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetLatestDeploymentV1DeprecatedRequest$inboundSchema: z.ZodType<
   GetLatestDeploymentV1DeprecatedRequest,
@@ -86,4 +111,26 @@ export namespace GetLatestDeploymentV1DeprecatedRequest$ {
     GetLatestDeploymentV1DeprecatedRequest$outboundSchema;
   /** @deprecated use `GetLatestDeploymentV1DeprecatedRequest$Outbound` instead. */
   export type Outbound = GetLatestDeploymentV1DeprecatedRequest$Outbound;
+}
+
+export function getLatestDeploymentV1DeprecatedRequestToJSON(
+  getLatestDeploymentV1DeprecatedRequest:
+    GetLatestDeploymentV1DeprecatedRequest,
+): string {
+  return JSON.stringify(
+    GetLatestDeploymentV1DeprecatedRequest$outboundSchema.parse(
+      getLatestDeploymentV1DeprecatedRequest,
+    ),
+  );
+}
+
+export function getLatestDeploymentV1DeprecatedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLatestDeploymentV1DeprecatedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetLatestDeploymentV1DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLatestDeploymentV1DeprecatedRequest' from JSON`,
+  );
 }

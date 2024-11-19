@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetDeploymentsGlobals = {
   appId?: string | undefined;
@@ -49,6 +52,24 @@ export namespace GetDeploymentsGlobals$ {
   export type Outbound = GetDeploymentsGlobals$Outbound;
 }
 
+export function getDeploymentsGlobalsToJSON(
+  getDeploymentsGlobals: GetDeploymentsGlobals,
+): string {
+  return JSON.stringify(
+    GetDeploymentsGlobals$outboundSchema.parse(getDeploymentsGlobals),
+  );
+}
+
+export function getDeploymentsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetDeploymentsRequest$inboundSchema: z.ZodType<
   GetDeploymentsRequest,
@@ -86,4 +107,22 @@ export namespace GetDeploymentsRequest$ {
   export const outboundSchema = GetDeploymentsRequest$outboundSchema;
   /** @deprecated use `GetDeploymentsRequest$Outbound` instead. */
   export type Outbound = GetDeploymentsRequest$Outbound;
+}
+
+export function getDeploymentsRequestToJSON(
+  getDeploymentsRequest: GetDeploymentsRequest,
+): string {
+  return JSON.stringify(
+    GetDeploymentsRequest$outboundSchema.parse(getDeploymentsRequest),
+  );
+}
+
+export function getDeploymentsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsRequest' from JSON`,
+  );
 }

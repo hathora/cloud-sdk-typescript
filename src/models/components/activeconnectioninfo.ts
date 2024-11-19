@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TransportType,
   TransportType$inboundSchema,
@@ -116,4 +119,22 @@ export namespace ActiveConnectionInfo$ {
   export const outboundSchema = ActiveConnectionInfo$outboundSchema;
   /** @deprecated use `ActiveConnectionInfo$Outbound` instead. */
   export type Outbound = ActiveConnectionInfo$Outbound;
+}
+
+export function activeConnectionInfoToJSON(
+  activeConnectionInfo: ActiveConnectionInfo,
+): string {
+  return JSON.stringify(
+    ActiveConnectionInfo$outboundSchema.parse(activeConnectionInfo),
+  );
+}
+
+export function activeConnectionInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<ActiveConnectionInfo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ActiveConnectionInfo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ActiveConnectionInfo' from JSON`,
+  );
 }
