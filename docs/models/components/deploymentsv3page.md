@@ -8,6 +8,7 @@ import { DeploymentsV3Page } from "@hathora/cloud-sdk-typescript/models/componen
 let value: DeploymentsV3Page = {
   deployments: [
     {
+      deploymentTag: "alpha",
       idleTimeoutEnabled: false,
       env: [
         {

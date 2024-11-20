@@ -18,6 +18,7 @@ let value: ApplicationsPage = {
       appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
       appName: "minecraft",
       deployment: {
+        deploymentTag: "alpha",
         idleTimeoutEnabled: false,
         env: [
           {

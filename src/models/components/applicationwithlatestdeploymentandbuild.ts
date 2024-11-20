@@ -32,6 +32,10 @@ export type ApplicationWithLatestDeploymentAndBuildEnv = {
 
 export type ApplicationWithLatestDeploymentAndBuildDeployment = {
   /**
+   * Arbitrary metadata associated with a deployment.
+   */
+  deploymentTag?: string | undefined;
+  /**
    * Option to shut down processes that have had no new connections or rooms
    *
    * @remarks
@@ -203,6 +207,7 @@ export const ApplicationWithLatestDeploymentAndBuildDeployment$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
+    deploymentTag: z.string().optional(),
     idleTimeoutEnabled: z.boolean(),
     env: z.array(
       z.lazy(() => ApplicationWithLatestDeploymentAndBuildEnv$inboundSchema),
@@ -225,6 +230,7 @@ export const ApplicationWithLatestDeploymentAndBuildDeployment$inboundSchema:
 
 /** @internal */
 export type ApplicationWithLatestDeploymentAndBuildDeployment$Outbound = {
+  deploymentTag?: string | undefined;
   idleTimeoutEnabled: boolean;
   env: Array<ApplicationWithLatestDeploymentAndBuildEnv$Outbound>;
   roomsPerProcess: number;
@@ -248,6 +254,7 @@ export const ApplicationWithLatestDeploymentAndBuildDeployment$outboundSchema:
     z.ZodTypeDef,
     ApplicationWithLatestDeploymentAndBuildDeployment
   > = z.object({
+    deploymentTag: z.string().optional(),
     idleTimeoutEnabled: z.boolean(),
     env: z.array(
       z.lazy(() => ApplicationWithLatestDeploymentAndBuildEnv$outboundSchema),
