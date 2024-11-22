@@ -5,7 +5,7 @@
 ```typescript
 import { OrgTokenStatus } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: OrgTokenStatus = "active";
+let value: OrgTokenStatus = "revoked";
 ```
 
 ## Values

@@ -5,7 +5,7 @@
 ```typescript
 import { Region } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: Region = "Dubai";
+let value: Region = "Singapore";
 ```
 
 ## Values

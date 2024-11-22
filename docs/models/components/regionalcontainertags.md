@@ -7,7 +7,7 @@ import { RegionalContainerTags } from "@hathora/cloud-sdk-typescript/models/comp
 
 let value: RegionalContainerTags = {
   containerTag: "<value>",
-  region: "Tokyo",
+  region: "Sydney",
 };
 ```
 

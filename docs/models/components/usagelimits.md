@@ -6,8 +6,8 @@
 import { UsageLimits } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: UsageLimits = {
-  monthlyProcessVcpuHoursConsumed: 5759.46,
-  concurrentProcessVcpus7DayMax: 9292.96,
+  monthlyProcessVcpuHoursConsumed: 6674.10,
+  concurrentProcessVcpus7DayMax: 1317.98,
 };
 ```
 

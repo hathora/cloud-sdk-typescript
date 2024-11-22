@@ -22,11 +22,11 @@ let value: DeploymentV2 = {
     },
   ],
   defaultContainerPort: {
-    transportType: "udp",
+    transportType: "tls",
     port: 8000,
     name: "default",
   },
-  createdAt: new Date("2024-08-23T16:32:18.589Z"),
+  createdAt: new Date("2024-01-30T00:21:03.404Z"),
   createdBy: "noreply@hathora.dev",
   requestedMemoryMB: 1024,
   requestedCPU: 0.5,

@@ -6,7 +6,7 @@
 import { CreateProcessRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: CreateProcessRequest = {
-  region: "Dallas",
+  region: "London",
 };
 ```
 

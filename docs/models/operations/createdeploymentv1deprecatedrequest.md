@@ -18,12 +18,12 @@ let value: CreateDeploymentV1DeprecatedRequest = {
     planName: "tiny",
     additionalContainerPorts: [
       {
-        transportType: "udp",
+        transportType: "tcp",
         port: 8000,
         name: "default",
       },
     ],
-    transportType: "tcp",
+    transportType: "udp",
     containerPort: 4000,
   },
 };

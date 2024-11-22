@@ -19,9 +19,9 @@ const value: components.StartingConnectionInfo = {
 ```typescript
 const value: components.ActiveConnectionInfo = {
   status: "active",
-  transportType: "tls",
-  port: 4614.79,
-  host: "sparse-cardboard.name",
+  transportType: "tcp",
+  port: 6399.21,
+  host: "corrupt-unblinking.name",
   roomId: "2swovpy1fnunu",
 };
 ```

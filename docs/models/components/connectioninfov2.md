@@ -22,7 +22,7 @@ let value: ConnectionInfoV2 = {
     host: "1.proxy.hathora.dev",
     name: "default",
   },
-  status: "active",
+  status: "starting",
   roomId: "2swovpy1fnunu",
 };
 ```

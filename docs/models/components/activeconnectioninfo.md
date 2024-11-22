@@ -7,9 +7,9 @@ import { ActiveConnectionInfo } from "@hathora/cloud-sdk-typescript/models/compo
 
 let value: ActiveConnectionInfo = {
   status: "active",
-  transportType: "tcp",
-  port: 9446.69,
-  host: "misguided-hawk.biz",
+  transportType: "udp",
+  port: 2645.56,
+  host: "sorrowful-import.name",
   roomId: "2swovpy1fnunu",
 };
 ```

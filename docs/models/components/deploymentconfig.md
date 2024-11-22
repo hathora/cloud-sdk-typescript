@@ -18,12 +18,12 @@ let value: DeploymentConfig = {
   planName: "tiny",
   additionalContainerPorts: [
     {
-      transportType: "tcp",
+      transportType: "tls",
       port: 8000,
       name: "default",
     },
   ],
-  transportType: "tls",
+  transportType: "udp",
   containerPort: 4000,
 };
 ```

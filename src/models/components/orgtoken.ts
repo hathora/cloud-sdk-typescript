@@ -4,6 +4,11 @@
 
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
+import {
+  catchUnrecognizedEnum,
+  OpenEnum,
+  Unrecognized,
+} from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -11,8 +16,23 @@ import {
   OrgTokenStatus$inboundSchema,
   OrgTokenStatus$outboundSchema,
 } from "./orgtokenstatus.js";
+import { Scope, Scope$inboundSchema, Scope$outboundSchema } from "./scope.js";
+
+export const Two = {
+  Admin: "admin",
+} as const;
+export type Two = OpenEnum<typeof Two>;
+
+/**
+ * If not defined, the token has Admin access.
+ */
+export type Scopes = Array<Scope> | Two;
 
 export type OrgToken = {
+  /**
+   * If not defined, the token has Admin access.
+   */
+  scopes?: Array<Scope> | Two | undefined;
   createdAt: Date;
   createdBy: string;
   lastFourCharsOfKey: string;
@@ -29,11 +49,77 @@ export type OrgToken = {
 };
 
 /** @internal */
+export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
+  .union([
+    z.nativeEnum(Two),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const Two$outboundSchema: z.ZodType<Two, z.ZodTypeDef, Two> = z.union([
+  z.nativeEnum(Two),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Two$ {
+  /** @deprecated use `Two$inboundSchema` instead. */
+  export const inboundSchema = Two$inboundSchema;
+  /** @deprecated use `Two$outboundSchema` instead. */
+  export const outboundSchema = Two$outboundSchema;
+}
+
+/** @internal */
+export const Scopes$inboundSchema: z.ZodType<Scopes, z.ZodTypeDef, unknown> = z
+  .union([z.array(Scope$inboundSchema), Two$inboundSchema]);
+
+/** @internal */
+export type Scopes$Outbound = Array<string> | string;
+
+/** @internal */
+export const Scopes$outboundSchema: z.ZodType<
+  Scopes$Outbound,
+  z.ZodTypeDef,
+  Scopes
+> = z.union([z.array(Scope$outboundSchema), Two$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Scopes$ {
+  /** @deprecated use `Scopes$inboundSchema` instead. */
+  export const inboundSchema = Scopes$inboundSchema;
+  /** @deprecated use `Scopes$outboundSchema` instead. */
+  export const outboundSchema = Scopes$outboundSchema;
+  /** @deprecated use `Scopes$Outbound` instead. */
+  export type Outbound = Scopes$Outbound;
+}
+
+export function scopesToJSON(scopes: Scopes): string {
+  return JSON.stringify(Scopes$outboundSchema.parse(scopes));
+}
+
+export function scopesFromJSON(
+  jsonString: string,
+): SafeParseResult<Scopes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Scopes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Scopes' from JSON`,
+  );
+}
+
+/** @internal */
 export const OrgToken$inboundSchema: z.ZodType<
   OrgToken,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  scopes: z.union([z.array(Scope$inboundSchema), Two$inboundSchema]).optional(),
   createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   createdBy: z.string(),
   lastFourCharsOfKey: z.string(),
@@ -45,6 +131,7 @@ export const OrgToken$inboundSchema: z.ZodType<
 
 /** @internal */
 export type OrgToken$Outbound = {
+  scopes?: Array<string> | string | undefined;
   createdAt: string;
   createdBy: string;
   lastFourCharsOfKey: string;
@@ -60,6 +147,8 @@ export const OrgToken$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OrgToken
 > = z.object({
+  scopes: z.union([z.array(Scope$outboundSchema), Two$outboundSchema])
+    .optional(),
   createdAt: z.date().transform(v => v.toISOString()),
   createdBy: z.string(),
   lastFourCharsOfKey: z.string(),

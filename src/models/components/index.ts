@@ -89,6 +89,7 @@ export * from "./roomconnectiondata.js";
 export * from "./roomreadystatus.js";
 export * from "./roomstatus.js";
 export * from "./roomwithoutallocations.js";
+export * from "./scope.js";
 export * from "./security.js";
 export * from "./setlobbystateparams.js";
 export * from "./startingconnectioninfo.js";

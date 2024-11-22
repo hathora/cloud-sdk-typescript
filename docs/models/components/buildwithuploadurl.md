@@ -12,15 +12,15 @@ let value: BuildWithUploadUrl = {
   regionalContainerTags: [
     {
       containerTag: "<value>",
-      region: "Tokyo",
+      region: "Sydney",
     },
   ],
-  imageSize: 574325,
-  status: "succeeded",
-  deletedAt: new Date("2023-12-16T16:55:27.891Z"),
-  finishedAt: new Date("2023-04-18T20:01:49.892Z"),
-  startedAt: new Date("2024-09-09T14:45:41.967Z"),
-  createdAt: new Date("2023-02-07T20:20:50.747Z"),
+  imageSize: 431418,
+  status: "failed",
+  deletedAt: new Date("2023-02-07T20:20:50.747Z"),
+  finishedAt: new Date("2023-04-23T16:59:27.579Z"),
+  startedAt: new Date("2024-09-04T13:09:06.950Z"),
+  createdAt: new Date("2024-06-02T14:07:36.077Z"),
   createdBy: "noreply@hathora.dev",
   buildId: 1,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -30,7 +30,7 @@ let value: BuildWithUploadUrl = {
       key: "<key>",
     },
   ],
-  uploadUrl: "https://unique-shipper.net/",
+  uploadUrl: "https://calculating-tooth.net",
 };
 ```
 

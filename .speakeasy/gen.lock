@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 2e6d96fd26cc8e0abdaab86068eece08
+  docChecksum: 25f4c1321324459bae1ae0e40bd9591e
   docVersion: 0.0.1
-  speakeasyVersion: 1.441.0
-  generationVersion: 2.460.1
-  releaseVersion: 2.11.2
-  configChecksum: 591985764dd164a2529894ed0fbbb49c
+  speakeasyVersion: 1.443.0
+  generationVersion: 2.461.4
+  releaseVersion: 2.11.3
+  configChecksum: d158ec8052d1af92ddb1a9890323c8ff
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.5
+    core: 3.18.6
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -78,6 +78,7 @@ generatedFiles:
   - docs/models/components/createlobbyv3params.md
   - docs/models/components/createmultipartbuildparams.md
   - docs/models/components/createorgtoken.md
+  - docs/models/components/createorgtokenscopes.md
   - docs/models/components/createroomparams.md
   - docs/models/components/createuserinvite.md
   - docs/models/components/currentallocation.md
@@ -155,11 +156,15 @@ generatedFiles:
   - docs/models/components/roomstatus.md
   - docs/models/components/roomwithoutallocations.md
   - docs/models/components/roomwithoutallocationscurrentallocation.md
+  - docs/models/components/scope.md
+  - docs/models/components/scopes.md
+  - docs/models/components/scopes2.md
   - docs/models/components/security.md
   - docs/models/components/setlobbystateparams.md
   - docs/models/components/startingconnectioninfo.md
   - docs/models/components/status.md
   - docs/models/components/transporttype.md
+  - docs/models/components/two.md
   - docs/models/components/updateroomconfigparams.md
   - docs/models/components/uploadbodyparams.md
   - docs/models/components/usagelimits.md
@@ -612,6 +617,7 @@ generatedFiles:
   - src/models/components/roomreadystatus.ts
   - src/models/components/roomstatus.ts
   - src/models/components/roomwithoutallocations.ts
+  - src/models/components/scope.ts
   - src/models/components/security.ts
   - src/models/components/setlobbystateparams.ts
   - src/models/components/startingconnectioninfo.ts
@@ -1984,6 +1990,8 @@ examples:
         "404":
           application/json: {"message": "<value>"}
         "200": {}
+        "401":
+          application/json: {"message": "<value>"}
   GetUsageLimits:
     speakeasy-default-get-usage-limits:
       parameters:
