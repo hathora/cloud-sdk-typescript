@@ -10,9 +10,9 @@ scaleIncrementVcpus
 import { FleetRegion } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: FleetRegion = {
-  cloudMinVcpusUpdatedAt: new Date("2024-01-13T21:17:10.262Z"),
-  cloudMinVcpus: 270008,
-  scaleIncrementVcpus: 735194,
+  cloudMinVcpusUpdatedAt: new Date("2024-01-30T00:21:03.404Z"),
+  cloudMinVcpus: 725255,
+  scaleIncrementVcpus: 501324,
 };
 ```
 

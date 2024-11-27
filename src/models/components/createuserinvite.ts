@@ -6,8 +6,23 @@ import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { Scope, Scope$inboundSchema, Scope$outboundSchema } from "./scope.js";
+import {
+  UserRole,
+  UserRole$inboundSchema,
+  UserRole$outboundSchema,
+} from "./userrole.js";
+
+/**
+ * If not defined, the user has Admin access.
+ */
+export type CreateUserInviteScopes = UserRole | Array<Scope>;
 
 export type CreateUserInvite = {
+  /**
+   * If not defined, the user has Admin access.
+   */
+  scopes?: UserRole | Array<Scope> | undefined;
   /**
    * A user's email.
    */
@@ -15,16 +30,67 @@ export type CreateUserInvite = {
 };
 
 /** @internal */
+export const CreateUserInviteScopes$inboundSchema: z.ZodType<
+  CreateUserInviteScopes,
+  z.ZodTypeDef,
+  unknown
+> = z.union([UserRole$inboundSchema, z.array(Scope$inboundSchema)]);
+
+/** @internal */
+export type CreateUserInviteScopes$Outbound = string | Array<string>;
+
+/** @internal */
+export const CreateUserInviteScopes$outboundSchema: z.ZodType<
+  CreateUserInviteScopes$Outbound,
+  z.ZodTypeDef,
+  CreateUserInviteScopes
+> = z.union([UserRole$outboundSchema, z.array(Scope$outboundSchema)]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateUserInviteScopes$ {
+  /** @deprecated use `CreateUserInviteScopes$inboundSchema` instead. */
+  export const inboundSchema = CreateUserInviteScopes$inboundSchema;
+  /** @deprecated use `CreateUserInviteScopes$outboundSchema` instead. */
+  export const outboundSchema = CreateUserInviteScopes$outboundSchema;
+  /** @deprecated use `CreateUserInviteScopes$Outbound` instead. */
+  export type Outbound = CreateUserInviteScopes$Outbound;
+}
+
+export function createUserInviteScopesToJSON(
+  createUserInviteScopes: CreateUserInviteScopes,
+): string {
+  return JSON.stringify(
+    CreateUserInviteScopes$outboundSchema.parse(createUserInviteScopes),
+  );
+}
+
+export function createUserInviteScopesFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateUserInviteScopes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateUserInviteScopes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateUserInviteScopes' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateUserInvite$inboundSchema: z.ZodType<
   CreateUserInvite,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  scopes: z.union([UserRole$inboundSchema, z.array(Scope$inboundSchema)])
+    .optional(),
   userEmail: z.string(),
 });
 
 /** @internal */
 export type CreateUserInvite$Outbound = {
+  scopes?: string | Array<string> | undefined;
   userEmail: string;
 };
 
@@ -34,6 +100,8 @@ export const CreateUserInvite$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateUserInvite
 > = z.object({
+  scopes: z.union([UserRole$outboundSchema, z.array(Scope$outboundSchema)])
+    .optional(),
   userEmail: z.string(),
 });
 

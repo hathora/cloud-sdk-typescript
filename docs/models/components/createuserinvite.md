@@ -12,6 +12,7 @@ let value: CreateUserInvite = {
 
 ## Fields
 
-| Field               | Type                | Required            | Description         | Example             |
-| ------------------- | ------------------- | ------------------- | ------------------- | ------------------- |
-| `userEmail`         | *string*            | :heavy_check_mark:  | A user's email.     | noreply@hathora.dev |
+| Field                                      | Type                                       | Required                                   | Description                                | Example                                    |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `scopes`                                   | *components.CreateUserInviteScopes*        | :heavy_minus_sign:                         | If not defined, the user has Admin access. |                                            |
+| `userEmail`                                | *string*                                   | :heavy_check_mark:                         | A user's email.                            | noreply@hathora.dev                        |

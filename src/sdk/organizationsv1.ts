@@ -11,6 +11,7 @@ import { organizationsV1GetUserPendingInvites } from "../funcs/organizationsV1Ge
 import { organizationsV1InviteUser } from "../funcs/organizationsV1InviteUser.js";
 import { organizationsV1RejectInvite } from "../funcs/organizationsV1RejectInvite.js";
 import { organizationsV1RescindInvite } from "../funcs/organizationsV1RescindInvite.js";
+import { organizationsV1UpdateUserInvite } from "../funcs/organizationsV1UpdateUserInvite.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -68,6 +69,22 @@ export class OrganizationsV1 extends ClientSDK {
     return unwrapAsync(organizationsV1InviteUser(
       this,
       createUserInvite,
+      orgId,
+      options,
+    ));
+  }
+
+  /**
+   * UpdateUserInvite
+   */
+  async updateUserInvite(
+    updateUserInvite: components.UpdateUserInvite,
+    orgId: string,
+    options?: RequestOptions,
+  ): Promise<boolean> {
+    return unwrapAsync(organizationsV1UpdateUserInvite(
+      this,
+      updateUserInvite,
       orgId,
       options,
     ));

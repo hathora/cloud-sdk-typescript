@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 25f4c1321324459bae1ae0e40bd9591e
+  docChecksum: 305de65bc19b35410e32b57b55a6f38d
   docVersion: 0.0.1
-  speakeasyVersion: 1.443.0
-  generationVersion: 2.461.4
-  releaseVersion: 2.11.3
-  configChecksum: d158ec8052d1af92ddb1a9890323c8ff
+  speakeasyVersion: 1.448.0
+  generationVersion: 2.466.0
+  releaseVersion: 2.11.4
+  configChecksum: 059524de8e7c14aa561ce5ffa710367a
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.6
+    core: 3.18.7
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -81,6 +81,7 @@ generatedFiles:
   - docs/models/components/createorgtokenscopes.md
   - docs/models/components/createroomparams.md
   - docs/models/components/createuserinvite.md
+  - docs/models/components/createuserinvitescopes.md
   - docs/models/components/currentallocation.md
   - docs/models/components/customerportalurl.md
   - docs/models/components/deletedbuild.md
@@ -124,12 +125,14 @@ generatedFiles:
   - docs/models/components/nicknameobject.md
   - docs/models/components/organization.md
   - docs/models/components/orgmember.md
+  - docs/models/components/orgmemberscopes.md
   - docs/models/components/orgmemberspage.md
   - docs/models/components/orgspage.md
   - docs/models/components/orgtoken.md
   - docs/models/components/orgtokenstatus.md
   - docs/models/components/paymentmethod.md
   - docs/models/components/pendingorginvite.md
+  - docs/models/components/pendingorginvitescopes.md
   - docs/models/components/pendingorginvitespage.md
   - docs/models/components/pingendpoints.md
   - docs/models/components/planname.md
@@ -166,8 +169,11 @@ generatedFiles:
   - docs/models/components/transporttype.md
   - docs/models/components/two.md
   - docs/models/components/updateroomconfigparams.md
+  - docs/models/components/updateuserinvite.md
+  - docs/models/components/updateuserinvitescopes.md
   - docs/models/components/uploadbodyparams.md
   - docs/models/components/usagelimits.md
+  - docs/models/components/userrole.md
   - docs/models/components/verificationemailrequest.md
   - docs/models/components/verificationemailsuccess.md
   - docs/models/errors/apierror.md
@@ -367,6 +373,7 @@ generatedFiles:
   - docs/models/operations/updatefleetregionrequest.md
   - docs/models/operations/updateroomconfigglobals.md
   - docs/models/operations/updateroomconfigrequest.md
+  - docs/models/operations/updateuserinviterequest.md
   - docs/sdks/appsv1/README.md
   - docs/sdks/appsv2/README.md
   - docs/sdks/authv1/README.md
@@ -478,6 +485,7 @@ generatedFiles:
   - src/funcs/organizationsV1InviteUser.ts
   - src/funcs/organizationsV1RejectInvite.ts
   - src/funcs/organizationsV1RescindInvite.ts
+  - src/funcs/organizationsV1UpdateUserInvite.ts
   - src/funcs/processesV1GetProcessInfoDeprecated.ts
   - src/funcs/processesV1GetRunningProcesses.ts
   - src/funcs/processesV1GetStoppedProcesses.ts
@@ -623,7 +631,9 @@ generatedFiles:
   - src/models/components/startingconnectioninfo.ts
   - src/models/components/transporttype.ts
   - src/models/components/updateroomconfigparams.ts
+  - src/models/components/updateuserinvite.ts
   - src/models/components/usagelimits.ts
+  - src/models/components/userrole.ts
   - src/models/components/verificationemailrequest.ts
   - src/models/components/verificationemailsuccess.ts
   - src/models/errors/apierror.ts
@@ -733,6 +743,7 @@ generatedFiles:
   - src/models/operations/updateappv1deprecated.ts
   - src/models/operations/updatefleetregion.ts
   - src/models/operations/updateroomconfig.ts
+  - src/models/operations/updateuserinvite.ts
   - src/sdk/appsv1.ts
   - src/sdk/appsv2.ts
   - src/sdk/authv1.ts
@@ -1139,7 +1150,7 @@ examples:
         application/json: {"userEmail": "noreply@hathora.dev"}
       responses:
         "200":
-          application/json: {"createdAt": "2024-05-26T01:23:01.974Z", "invitedBy": "noreply@hathora.dev", "userEmail": "noreply@hathora.dev", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"}
+          application/json: {"scopes": [], "createdAt": "2024-05-26T01:23:01.974Z", "invitedBy": "noreply@hathora.dev", "userEmail": "noreply@hathora.dev", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"}
         "401":
           application/json: {"message": "<value>"}
   RescindInvite:
@@ -2002,3 +2013,16 @@ examples:
           application/json: {"monthlyProcessVcpuHoursConsumed": "5579.88", "concurrentProcessVcpus7DayMax": "7121.65"}
         "401":
           application/json: {"message": "<value>"}
+  UpdateUserInvite:
+    speakeasy-default-update-user-invite:
+      parameters:
+        path:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      requestBody:
+        application/json: {"scopes": "viewer", "userEmail": "noreply@hathora.dev"}
+      responses:
+        "200":
+          application/json: true
+        "401":
+          application/json: {"message": "<value>"}
+generatedTests: {}

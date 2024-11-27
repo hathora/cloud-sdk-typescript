@@ -6,8 +6,11 @@
 import { OrgMember } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: OrgMember = {
-  joinedAt: new Date("2024-10-15T12:12:25.852Z"),
-  createdAt: new Date("2022-12-16T03:38:15.811Z"),
+  scopes: [
+    "deployments:read-write",
+  ],
+  joinedAt: new Date("2024-03-16T18:32:36.809Z"),
+  createdAt: new Date("2024-11-20T13:24:26.967Z"),
   invitedBy: "noreply@hathora.dev",
   userEmail: "noreply@hathora.dev",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
@@ -18,6 +21,7 @@ let value: OrgMember = {
 
 | Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       | Example                                                                                           |
 | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `scopes`                                                                                          | *components.OrgMemberScopes*                                                                      | :heavy_check_mark:                                                                                | N/A                                                                                               |                                                                                                   |
 | `lastLogin`                                                                                       | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)     | :heavy_minus_sign:                                                                                | N/A                                                                                               |                                                                                                   |
 | `joinedAt`                                                                                        | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)     | :heavy_check_mark:                                                                                | N/A                                                                                               |                                                                                                   |
 | `createdAt`                                                                                       | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)     | :heavy_check_mark:                                                                                | N/A                                                                                               |                                                                                                   |

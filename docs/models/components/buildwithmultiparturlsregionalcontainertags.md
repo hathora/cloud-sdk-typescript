@@ -7,7 +7,7 @@ import { BuildWithMultipartUrlsRegionalContainerTags } from "@hathora/cloud-sdk-
 
 let value: BuildWithMultipartUrlsRegionalContainerTags = {
   containerTag: "<value>",
-  region: "Dubai",
+  region: "Sao_Paulo",
 };
 ```
 

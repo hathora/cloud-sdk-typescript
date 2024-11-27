@@ -12,15 +12,15 @@ let value: BuildWithUploadUrl = {
   regionalContainerTags: [
     {
       containerTag: "<value>",
-      region: "Sydney",
+      region: "Singapore",
     },
   ],
-  imageSize: 431418,
-  status: "failed",
-  deletedAt: new Date("2023-02-07T20:20:50.747Z"),
-  finishedAt: new Date("2023-04-23T16:59:27.579Z"),
-  startedAt: new Date("2024-09-04T13:09:06.950Z"),
-  createdAt: new Date("2024-06-02T14:07:36.077Z"),
+  imageSize: 407183,
+  status: "created",
+  deletedAt: new Date("2024-02-04T09:09:59.216Z"),
+  finishedAt: new Date("2023-05-13T01:59:12.211Z"),
+  startedAt: new Date("2024-03-02T08:57:01.759Z"),
+  createdAt: new Date("2024-08-07T13:19:14.525Z"),
   createdBy: "noreply@hathora.dev",
   buildId: 1,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -30,7 +30,7 @@ let value: BuildWithUploadUrl = {
       key: "<key>",
     },
   ],
-  uploadUrl: "https://calculating-tooth.net",
+  uploadUrl: "https://tight-address.info",
 };
 ```
 

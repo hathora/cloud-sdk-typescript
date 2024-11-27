@@ -103,3 +103,4 @@ export * from "./updateapp.js";
 export * from "./updateappv1deprecated.js";
 export * from "./updatefleetregion.js";
 export * from "./updateroomconfig.js";
+export * from "./updateuserinvite.js";

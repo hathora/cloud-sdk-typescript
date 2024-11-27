@@ -6,7 +6,8 @@
 import { PendingOrgInvite } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: PendingOrgInvite = {
-  createdAt: new Date("2023-07-28T11:31:00.474Z"),
+  scopes: "viewer",
+  createdAt: new Date("2022-05-25T10:48:39.501Z"),
   invitedBy: "noreply@hathora.dev",
   userEmail: "noreply@hathora.dev",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
@@ -17,6 +18,7 @@ let value: PendingOrgInvite = {
 
 | Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       | Example                                                                                           |
 | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `scopes`                                                                                          | *components.PendingOrgInviteScopes*                                                               | :heavy_check_mark:                                                                                | N/A                                                                                               |                                                                                                   |
 | `createdAt`                                                                                       | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)     | :heavy_check_mark:                                                                                | N/A                                                                                               |                                                                                                   |
 | `invitedBy`                                                                                       | *string*                                                                                          | :heavy_check_mark:                                                                                | N/A                                                                                               | noreply@hathora.dev                                                                               |
 | `userEmail`                                                                                       | *string*                                                                                          | :heavy_check_mark:                                                                                | A user's email.                                                                                   | noreply@hathora.dev                                                                               |

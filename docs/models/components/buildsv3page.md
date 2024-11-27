@@ -9,12 +9,12 @@ let value: BuildsV3Page = {
   builds: [
     {
       buildTag: "0.1.14-14c793",
-      imageSize: 18521,
+      imageSize: 186193,
       status: "failed",
-      deletedAt: new Date("2022-09-03T10:06:53.981Z"),
-      finishedAt: new Date("2023-01-14T12:07:50.192Z"),
-      startedAt: new Date("2024-10-14T04:15:01.236Z"),
-      createdAt: new Date("2024-02-12T00:54:59.142Z"),
+      deletedAt: new Date("2024-03-21T13:08:38.807Z"),
+      finishedAt: new Date("2023-06-22T13:01:42.607Z"),
+      startedAt: new Date("2022-09-07T05:54:51.747Z"),
+      createdAt: new Date("2022-10-06T18:35:34.427Z"),
       createdBy: "noreply@hathora.dev",
       buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
       orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",

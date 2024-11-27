@@ -6,8 +6,17 @@ import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { Scope, Scope$inboundSchema, Scope$outboundSchema } from "./scope.js";
+import {
+  UserRole,
+  UserRole$inboundSchema,
+  UserRole$outboundSchema,
+} from "./userrole.js";
+
+export type OrgMemberScopes = UserRole | Array<Scope>;
 
 export type OrgMember = {
+  scopes: UserRole | Array<Scope>;
   lastLogin?: Date | undefined;
   joinedAt: Date;
   createdAt: Date;
@@ -23,11 +32,58 @@ export type OrgMember = {
 };
 
 /** @internal */
+export const OrgMemberScopes$inboundSchema: z.ZodType<
+  OrgMemberScopes,
+  z.ZodTypeDef,
+  unknown
+> = z.union([UserRole$inboundSchema, z.array(Scope$inboundSchema)]);
+
+/** @internal */
+export type OrgMemberScopes$Outbound = string | Array<string>;
+
+/** @internal */
+export const OrgMemberScopes$outboundSchema: z.ZodType<
+  OrgMemberScopes$Outbound,
+  z.ZodTypeDef,
+  OrgMemberScopes
+> = z.union([UserRole$outboundSchema, z.array(Scope$outboundSchema)]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OrgMemberScopes$ {
+  /** @deprecated use `OrgMemberScopes$inboundSchema` instead. */
+  export const inboundSchema = OrgMemberScopes$inboundSchema;
+  /** @deprecated use `OrgMemberScopes$outboundSchema` instead. */
+  export const outboundSchema = OrgMemberScopes$outboundSchema;
+  /** @deprecated use `OrgMemberScopes$Outbound` instead. */
+  export type Outbound = OrgMemberScopes$Outbound;
+}
+
+export function orgMemberScopesToJSON(
+  orgMemberScopes: OrgMemberScopes,
+): string {
+  return JSON.stringify(OrgMemberScopes$outboundSchema.parse(orgMemberScopes));
+}
+
+export function orgMemberScopesFromJSON(
+  jsonString: string,
+): SafeParseResult<OrgMemberScopes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrgMemberScopes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrgMemberScopes' from JSON`,
+  );
+}
+
+/** @internal */
 export const OrgMember$inboundSchema: z.ZodType<
   OrgMember,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  scopes: z.union([UserRole$inboundSchema, z.array(Scope$inboundSchema)]),
   lastLogin: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   joinedAt: z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -39,6 +95,7 @@ export const OrgMember$inboundSchema: z.ZodType<
 
 /** @internal */
 export type OrgMember$Outbound = {
+  scopes: string | Array<string>;
   lastLogin?: string | undefined;
   joinedAt: string;
   createdAt: string;
@@ -53,6 +110,7 @@ export const OrgMember$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OrgMember
 > = z.object({
+  scopes: z.union([UserRole$outboundSchema, z.array(Scope$outboundSchema)]),
   lastLogin: z.date().transform(v => v.toISOString()).optional(),
   joinedAt: z.date().transform(v => v.toISOString()),
   createdAt: z.date().transform(v => v.toISOString()),

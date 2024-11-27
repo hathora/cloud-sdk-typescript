@@ -9,21 +9,21 @@ import { CreatedBuildV3WithMultipartUrls } from "@hathora/cloud-sdk-typescript/m
 
 let value: CreatedBuildV3WithMultipartUrls = {
   buildTag: "0.1.14-14c793",
-  imageSize: 613966,
-  status: "succeeded",
-  deletedAt: new Date("2023-10-09T12:59:31.265Z"),
-  finishedAt: new Date("2024-03-11T05:07:47.512Z"),
-  startedAt: new Date("2022-12-08T21:24:04.180Z"),
-  createdAt: new Date("2023-03-13T10:48:24.554Z"),
+  imageSize: 24678,
+  status: "created",
+  deletedAt: new Date("2024-01-15T14:44:51.051Z"),
+  finishedAt: new Date("2023-05-13T06:02:30.477Z"),
+  startedAt: new Date("2023-08-12T02:10:46.448Z"),
+  createdAt: new Date("2024-09-09T18:02:30.092Z"),
   createdBy: "noreply@hathora.dev",
   buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  completeUploadPostRequestUrl: "https://descriptive-unblinking.net/",
-  maxChunkSize: 4904.59,
+  completeUploadPostRequestUrl: "https://edible-pharmacopoeia.biz",
+  maxChunkSize: 206.51,
   uploadParts: [
     {
-      putRequestUrl: "https://fake-backburn.info/",
-      partNumber: 3117.96,
+      putRequestUrl: "https://glittering-godparent.name",
+      partNumber: 8310.48,
     },
   ],
 };

@@ -8,7 +8,8 @@ import { PendingOrgInvitesPage } from "@hathora/cloud-sdk-typescript/models/comp
 let value: PendingOrgInvitesPage = {
   invites: [
     {
-      createdAt: new Date("2022-10-18T20:48:18.611Z"),
+      scopes: "member",
+      createdAt: new Date("2022-04-13T23:00:40.302Z"),
       invitedBy: "noreply@hathora.dev",
       userEmail: "noreply@hathora.dev",
       orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",

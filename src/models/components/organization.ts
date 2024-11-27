@@ -6,8 +6,13 @@ import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { Scope, Scope$inboundSchema, Scope$outboundSchema } from "./scope.js";
 
 export type Organization = {
+  /**
+   * The scopes the user who loaded this has on this org.
+   */
+  scopes?: Array<Scope> | undefined;
   isSingleTenant: boolean;
   stripeCustomerId: string;
   /**
@@ -22,6 +27,7 @@ export const Organization$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  scopes: z.array(Scope$inboundSchema).optional(),
   isSingleTenant: z.boolean(),
   stripeCustomerId: z.string(),
   orgId: z.string(),
@@ -29,6 +35,7 @@ export const Organization$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Organization$Outbound = {
+  scopes?: Array<string> | undefined;
   isSingleTenant: boolean;
   stripeCustomerId: string;
   orgId: string;
@@ -40,6 +47,7 @@ export const Organization$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Organization
 > = z.object({
+  scopes: z.array(Scope$outboundSchema).optional(),
   isSingleTenant: z.boolean(),
   stripeCustomerId: z.string(),
   orgId: z.string(),

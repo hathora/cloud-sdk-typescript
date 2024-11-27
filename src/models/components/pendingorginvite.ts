@@ -6,8 +6,17 @@ import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { Scope, Scope$inboundSchema, Scope$outboundSchema } from "./scope.js";
+import {
+  UserRole,
+  UserRole$inboundSchema,
+  UserRole$outboundSchema,
+} from "./userrole.js";
+
+export type PendingOrgInviteScopes = UserRole | Array<Scope>;
 
 export type PendingOrgInvite = {
+  scopes: UserRole | Array<Scope>;
   createdAt: Date;
   invitedBy: string;
   /**
@@ -21,11 +30,60 @@ export type PendingOrgInvite = {
 };
 
 /** @internal */
+export const PendingOrgInviteScopes$inboundSchema: z.ZodType<
+  PendingOrgInviteScopes,
+  z.ZodTypeDef,
+  unknown
+> = z.union([UserRole$inboundSchema, z.array(Scope$inboundSchema)]);
+
+/** @internal */
+export type PendingOrgInviteScopes$Outbound = string | Array<string>;
+
+/** @internal */
+export const PendingOrgInviteScopes$outboundSchema: z.ZodType<
+  PendingOrgInviteScopes$Outbound,
+  z.ZodTypeDef,
+  PendingOrgInviteScopes
+> = z.union([UserRole$outboundSchema, z.array(Scope$outboundSchema)]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PendingOrgInviteScopes$ {
+  /** @deprecated use `PendingOrgInviteScopes$inboundSchema` instead. */
+  export const inboundSchema = PendingOrgInviteScopes$inboundSchema;
+  /** @deprecated use `PendingOrgInviteScopes$outboundSchema` instead. */
+  export const outboundSchema = PendingOrgInviteScopes$outboundSchema;
+  /** @deprecated use `PendingOrgInviteScopes$Outbound` instead. */
+  export type Outbound = PendingOrgInviteScopes$Outbound;
+}
+
+export function pendingOrgInviteScopesToJSON(
+  pendingOrgInviteScopes: PendingOrgInviteScopes,
+): string {
+  return JSON.stringify(
+    PendingOrgInviteScopes$outboundSchema.parse(pendingOrgInviteScopes),
+  );
+}
+
+export function pendingOrgInviteScopesFromJSON(
+  jsonString: string,
+): SafeParseResult<PendingOrgInviteScopes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PendingOrgInviteScopes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PendingOrgInviteScopes' from JSON`,
+  );
+}
+
+/** @internal */
 export const PendingOrgInvite$inboundSchema: z.ZodType<
   PendingOrgInvite,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  scopes: z.union([UserRole$inboundSchema, z.array(Scope$inboundSchema)]),
   createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   invitedBy: z.string(),
   userEmail: z.string(),
@@ -34,6 +92,7 @@ export const PendingOrgInvite$inboundSchema: z.ZodType<
 
 /** @internal */
 export type PendingOrgInvite$Outbound = {
+  scopes: string | Array<string>;
   createdAt: string;
   invitedBy: string;
   userEmail: string;
@@ -46,6 +105,7 @@ export const PendingOrgInvite$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PendingOrgInvite
 > = z.object({
+  scopes: z.union([UserRole$outboundSchema, z.array(Scope$outboundSchema)]),
   createdAt: z.date().transform(v => v.toISOString()),
   invitedBy: z.string(),
   userEmail: z.string(),

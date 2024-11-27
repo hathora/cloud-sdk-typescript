@@ -232,6 +232,7 @@ run();
 * [getUserPendingInvites](docs/sdks/organizationsv1/README.md#getuserpendinginvites) - GetUserPendingInvites
 * [getOrgMembers](docs/sdks/organizationsv1/README.md#getorgmembers) - GetOrgMembers
 * [inviteUser](docs/sdks/organizationsv1/README.md#inviteuser) - InviteUser
+* [updateUserInvite](docs/sdks/organizationsv1/README.md#updateuserinvite) - UpdateUserInvite
 * [rescindInvite](docs/sdks/organizationsv1/README.md#rescindinvite) - RescindInvite
 * [getOrgPendingInvites](docs/sdks/organizationsv1/README.md#getorgpendinginvites) - GetOrgPendingInvites
 * [acceptInvite](docs/sdks/organizationsv1/README.md#acceptinvite) - AcceptInvite
@@ -613,6 +614,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`organizationsV1InviteUser`](docs/sdks/organizationsv1/README.md#inviteuser) - InviteUser
 - [`organizationsV1RejectInvite`](docs/sdks/organizationsv1/README.md#rejectinvite) - RejectInvite
 - [`organizationsV1RescindInvite`](docs/sdks/organizationsv1/README.md#rescindinvite) - RescindInvite
+- [`organizationsV1UpdateUserInvite`](docs/sdks/organizationsv1/README.md#updateuserinvite) - UpdateUserInvite
 - [`processesV3CreateProcess`](docs/sdks/processesv3/README.md#createprocess) - CreateProcess
 - [`processesV3GetLatestProcesses`](docs/sdks/processesv3/README.md#getlatestprocesses) - GetLatestProcesses
 - [`processesV3GetProcess`](docs/sdks/processesv3/README.md#getprocess) - GetProcess
