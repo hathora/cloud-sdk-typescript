@@ -64,7 +64,7 @@ export async function appsV2GetApps(
   const path = pathToFunc("/apps/v2/apps")();
 
   const query = encodeFormQuery({
-    "orgId": payload.orgId,
+    "orgId": payload.orgId ?? client._options.orgId,
   });
 
   const headers = new Headers({

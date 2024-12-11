@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 305de65bc19b35410e32b57b55a6f38d
+  docChecksum: d71c95af60ddb2e3da566c90fc29674d
   docVersion: 0.0.1
-  speakeasyVersion: 1.448.0
-  generationVersion: 2.466.0
-  releaseVersion: 2.11.4
-  configChecksum: 059524de8e7c14aa561ce5ffa710367a
+  speakeasyVersion: 1.453.10
+  generationVersion: 2.474.15
+  releaseVersion: 2.11.5
+  configChecksum: fe437466a73df86c61d5273646e21275
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,13 +14,13 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.7
+    core: 3.18.9
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    flattening: 2.82.0
+    flattening: 2.82.1
     globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
@@ -178,9 +178,11 @@ generatedFiles:
   - docs/models/components/verificationemailsuccess.md
   - docs/models/errors/apierror.md
   - docs/models/operations/acceptinviterequest.md
+  - docs/models/operations/createappglobals.md
   - docs/models/operations/createapprequest.md
   - docs/models/operations/createbuilddeprecatedglobals.md
   - docs/models/operations/createbuilddeprecatedrequest.md
+  - docs/models/operations/createbuildglobals.md
   - docs/models/operations/createbuildrequest.md
   - docs/models/operations/createbuildv2deprecatedglobals.md
   - docs/models/operations/createbuildv2deprecatedrequest.md
@@ -233,6 +235,7 @@ generatedFiles:
   - docs/models/operations/deleteappv1deprecatedrequest.md
   - docs/models/operations/deletebuilddeprecatedglobals.md
   - docs/models/operations/deletebuilddeprecatedrequest.md
+  - docs/models/operations/deletebuildglobals.md
   - docs/models/operations/deletebuildrequest.md
   - docs/models/operations/deletebuildv2deprecatedglobals.md
   - docs/models/operations/deletebuildv2deprecatedrequest.md
@@ -251,7 +254,11 @@ generatedFiles:
   - docs/models/operations/getappinfov1deprecatedglobals.md
   - docs/models/operations/getappinfov1deprecatedrequest.md
   - docs/models/operations/getapprequest.md
+  - docs/models/operations/getappsglobals.md
   - docs/models/operations/getappsrequest.md
+  - docs/models/operations/getbalanceglobals.md
+  - docs/models/operations/getbalancerequest.md
+  - docs/models/operations/getbuildglobals.md
   - docs/models/operations/getbuildinfodeprecatedglobals.md
   - docs/models/operations/getbuildinfodeprecatedrequest.md
   - docs/models/operations/getbuildinfov2deprecatedglobals.md
@@ -259,6 +266,7 @@ generatedFiles:
   - docs/models/operations/getbuildrequest.md
   - docs/models/operations/getbuildsdeprecatedglobals.md
   - docs/models/operations/getbuildsdeprecatedrequest.md
+  - docs/models/operations/getbuildsglobals.md
   - docs/models/operations/getbuildsrequest.md
   - docs/models/operations/getbuildsv2deprecatedglobals.md
   - docs/models/operations/getbuildsv2deprecatedrequest.md
@@ -278,13 +286,18 @@ generatedFiles:
   - docs/models/operations/getdeploymentsv1deprecatedrequest.md
   - docs/models/operations/getdeploymentsv2deprecatedglobals.md
   - docs/models/operations/getdeploymentsv2deprecatedrequest.md
+  - docs/models/operations/getfleetmetricsglobals.md
   - docs/models/operations/getfleetmetricsrequest.md
+  - docs/models/operations/getfleetregionglobals.md
   - docs/models/operations/getfleetregionrequest.md
+  - docs/models/operations/getfleetsglobals.md
   - docs/models/operations/getfleetsrequest.md
   - docs/models/operations/getinactiveroomsforprocessdeprecatedglobals.md
   - docs/models/operations/getinactiveroomsforprocessdeprecatedrequest.md
   - docs/models/operations/getinactiveroomsforprocessglobals.md
   - docs/models/operations/getinactiveroomsforprocessrequest.md
+  - docs/models/operations/getinvoicesglobals.md
+  - docs/models/operations/getinvoicesrequest.md
   - docs/models/operations/getlatestdeploymentglobals.md
   - docs/models/operations/getlatestdeploymentrequest.md
   - docs/models/operations/getlatestdeploymentv1deprecatedglobals.md
@@ -308,6 +321,8 @@ generatedFiles:
   - docs/models/operations/getorgmembersrequest.md
   - docs/models/operations/getorgpendinginvitesrequest.md
   - docs/models/operations/getorgtokensrequest.md
+  - docs/models/operations/getpaymentmethodglobals.md
+  - docs/models/operations/getpaymentmethodrequest.md
   - docs/models/operations/getprocessescountexperimentalglobals.md
   - docs/models/operations/getprocessescountexperimentalrequest.md
   - docs/models/operations/getprocessescountexperimentalresponsebody.md
@@ -330,8 +345,15 @@ generatedFiles:
   - docs/models/operations/getrunningprocessesrequest.md
   - docs/models/operations/getstoppedprocessesglobals.md
   - docs/models/operations/getstoppedprocessesrequest.md
+  - docs/models/operations/getupcominginvoiceitemsglobals.md
+  - docs/models/operations/getupcominginvoiceitemsrequest.md
+  - docs/models/operations/getupcominginvoicetotalglobals.md
+  - docs/models/operations/getupcominginvoicetotalrequest.md
   - docs/models/operations/getupcominginvoicetotalresponsebody.md
+  - docs/models/operations/getusagelimitsglobals.md
   - docs/models/operations/getusagelimitsrequest.md
+  - docs/models/operations/initstripecustomerportalurlglobals.md
+  - docs/models/operations/initstripecustomerportalurlrequest.md
   - docs/models/operations/inviteuserrequest.md
   - docs/models/operations/listactivepubliclobbiesdeprecatedv1globals.md
   - docs/models/operations/listactivepubliclobbiesdeprecatedv1request.md
@@ -351,6 +373,7 @@ generatedFiles:
   - docs/models/operations/runbuilddeprecatedglobals.md
   - docs/models/operations/runbuilddeprecatedrequest.md
   - docs/models/operations/runbuilddeprecatedrequestbody.md
+  - docs/models/operations/runbuildglobals.md
   - docs/models/operations/runbuildrequest.md
   - docs/models/operations/runbuildv2deprecatedfile.md
   - docs/models/operations/runbuildv2deprecatedglobals.md
@@ -370,6 +393,7 @@ generatedFiles:
   - docs/models/operations/updateapprequest.md
   - docs/models/operations/updateappv1deprecatedglobals.md
   - docs/models/operations/updateappv1deprecatedrequest.md
+  - docs/models/operations/updatefleetregionglobals.md
   - docs/models/operations/updatefleetregionrequest.md
   - docs/models/operations/updateroomconfigglobals.md
   - docs/models/operations/updateroomconfigrequest.md
@@ -676,6 +700,7 @@ generatedFiles:
   - src/models/operations/getapp.ts
   - src/models/operations/getappinfov1deprecated.ts
   - src/models/operations/getapps.ts
+  - src/models/operations/getbalance.ts
   - src/models/operations/getbuild.ts
   - src/models/operations/getbuildinfodeprecated.ts
   - src/models/operations/getbuildinfov2deprecated.ts
@@ -695,6 +720,7 @@ generatedFiles:
   - src/models/operations/getfleets.ts
   - src/models/operations/getinactiveroomsforprocess.ts
   - src/models/operations/getinactiveroomsforprocessdeprecated.ts
+  - src/models/operations/getinvoices.ts
   - src/models/operations/getlatestdeployment.ts
   - src/models/operations/getlatestdeploymentv1deprecated.ts
   - src/models/operations/getlatestdeploymentv2deprecated.ts
@@ -708,6 +734,7 @@ generatedFiles:
   - src/models/operations/getorgmembers.ts
   - src/models/operations/getorgpendinginvites.ts
   - src/models/operations/getorgtokens.ts
+  - src/models/operations/getpaymentmethod.ts
   - src/models/operations/getprocess.ts
   - src/models/operations/getprocessescountexperimental.ts
   - src/models/operations/getprocessescountexperimentalv2deprecated.ts
@@ -718,9 +745,11 @@ generatedFiles:
   - src/models/operations/getroominfodeprecated.ts
   - src/models/operations/getrunningprocesses.ts
   - src/models/operations/getstoppedprocesses.ts
+  - src/models/operations/getupcominginvoiceitems.ts
   - src/models/operations/getupcominginvoicetotal.ts
   - src/models/operations/getusagelimits.ts
   - src/models/operations/index.ts
+  - src/models/operations/initstripecustomerportalurl.ts
   - src/models/operations/inviteuser.ts
   - src/models/operations/listactivepubliclobbies.ts
   - src/models/operations/listactivepubliclobbiesdeprecatedv1.ts
@@ -1758,6 +1787,9 @@ examples:
         "200": {}
   GetBalance:
     speakeasy-default-get-balance:
+      parameters:
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       responses:
         "200":
           application/json: "68.43"
@@ -1765,6 +1797,9 @@ examples:
           application/json: {"message": "<value>"}
   GetUpcomingInvoiceItems:
     speakeasy-default-get-upcoming-invoice-items:
+      parameters:
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       responses:
         "200":
           application/json: {"invoiceItems": []}
@@ -1772,6 +1807,9 @@ examples:
           application/json: {"message": "<value>"}
   GetUpcomingInvoiceTotal:
     speakeasy-default-get-upcoming-invoice-total:
+      parameters:
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       responses:
         "200":
           application/json: {"value": "2752.14"}
@@ -1779,12 +1817,18 @@ examples:
           application/json: {"message": "<value>"}
   GetPaymentMethod:
     speakeasy-default-get-payment-method:
+      parameters:
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       responses:
         "401":
           application/json: {"message": "<value>"}
         "200": {}
   InitStripeCustomerPortalUrl:
     speakeasy-default-init-stripe-customer-portal-url:
+      parameters:
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       requestBody:
         application/json: {"returnUrl": "<value>"}
       responses:
@@ -1794,6 +1838,9 @@ examples:
           application/json: {"message": "<value>"}
   GetInvoices:
     speakeasy-default-get-invoices:
+      parameters:
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       responses:
         "200":
           application/json: []

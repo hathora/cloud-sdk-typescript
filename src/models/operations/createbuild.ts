@@ -9,10 +9,68 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export type CreateBuildGlobals = {
+  orgId?: string | undefined;
+};
+
 export type CreateBuildRequest = {
   orgId?: string | undefined;
   createMultipartBuildParams: components.CreateMultipartBuildParams;
 };
+
+/** @internal */
+export const CreateBuildGlobals$inboundSchema: z.ZodType<
+  CreateBuildGlobals,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  orgId: z.string().optional(),
+});
+
+/** @internal */
+export type CreateBuildGlobals$Outbound = {
+  orgId?: string | undefined;
+};
+
+/** @internal */
+export const CreateBuildGlobals$outboundSchema: z.ZodType<
+  CreateBuildGlobals$Outbound,
+  z.ZodTypeDef,
+  CreateBuildGlobals
+> = z.object({
+  orgId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateBuildGlobals$ {
+  /** @deprecated use `CreateBuildGlobals$inboundSchema` instead. */
+  export const inboundSchema = CreateBuildGlobals$inboundSchema;
+  /** @deprecated use `CreateBuildGlobals$outboundSchema` instead. */
+  export const outboundSchema = CreateBuildGlobals$outboundSchema;
+  /** @deprecated use `CreateBuildGlobals$Outbound` instead. */
+  export type Outbound = CreateBuildGlobals$Outbound;
+}
+
+export function createBuildGlobalsToJSON(
+  createBuildGlobals: CreateBuildGlobals,
+): string {
+  return JSON.stringify(
+    CreateBuildGlobals$outboundSchema.parse(createBuildGlobals),
+  );
+}
+
+export function createBuildGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateBuildGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateBuildGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateBuildGlobals' from JSON`,
+  );
+}
 
 /** @internal */
 export const CreateBuildRequest$inboundSchema: z.ZodType<

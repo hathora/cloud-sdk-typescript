@@ -9,12 +9,70 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export type UpdateFleetRegionGlobals = {
+  orgId?: string | undefined;
+};
+
 export type UpdateFleetRegionRequest = {
   fleetId: string;
   region: components.Region;
   orgId?: string | undefined;
   fleetRegionConfig: components.FleetRegionConfig;
 };
+
+/** @internal */
+export const UpdateFleetRegionGlobals$inboundSchema: z.ZodType<
+  UpdateFleetRegionGlobals,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  orgId: z.string().optional(),
+});
+
+/** @internal */
+export type UpdateFleetRegionGlobals$Outbound = {
+  orgId?: string | undefined;
+};
+
+/** @internal */
+export const UpdateFleetRegionGlobals$outboundSchema: z.ZodType<
+  UpdateFleetRegionGlobals$Outbound,
+  z.ZodTypeDef,
+  UpdateFleetRegionGlobals
+> = z.object({
+  orgId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFleetRegionGlobals$ {
+  /** @deprecated use `UpdateFleetRegionGlobals$inboundSchema` instead. */
+  export const inboundSchema = UpdateFleetRegionGlobals$inboundSchema;
+  /** @deprecated use `UpdateFleetRegionGlobals$outboundSchema` instead. */
+  export const outboundSchema = UpdateFleetRegionGlobals$outboundSchema;
+  /** @deprecated use `UpdateFleetRegionGlobals$Outbound` instead. */
+  export type Outbound = UpdateFleetRegionGlobals$Outbound;
+}
+
+export function updateFleetRegionGlobalsToJSON(
+  updateFleetRegionGlobals: UpdateFleetRegionGlobals,
+): string {
+  return JSON.stringify(
+    UpdateFleetRegionGlobals$outboundSchema.parse(updateFleetRegionGlobals),
+  );
+}
+
+export function updateFleetRegionGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFleetRegionGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFleetRegionGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFleetRegionGlobals' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateFleetRegionRequest$inboundSchema: z.ZodType<

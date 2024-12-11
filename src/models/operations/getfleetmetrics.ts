@@ -8,6 +8,10 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export type GetFleetMetricsGlobals = {
+  orgId?: string | undefined;
+};
+
 export type GetFleetMetricsRequest = {
   fleetId: string;
   region: components.Region;
@@ -23,6 +27,60 @@ export type GetFleetMetricsRequest = {
   step?: number | undefined;
   orgId?: string | undefined;
 };
+
+/** @internal */
+export const GetFleetMetricsGlobals$inboundSchema: z.ZodType<
+  GetFleetMetricsGlobals,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  orgId: z.string().optional(),
+});
+
+/** @internal */
+export type GetFleetMetricsGlobals$Outbound = {
+  orgId?: string | undefined;
+};
+
+/** @internal */
+export const GetFleetMetricsGlobals$outboundSchema: z.ZodType<
+  GetFleetMetricsGlobals$Outbound,
+  z.ZodTypeDef,
+  GetFleetMetricsGlobals
+> = z.object({
+  orgId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetFleetMetricsGlobals$ {
+  /** @deprecated use `GetFleetMetricsGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetFleetMetricsGlobals$inboundSchema;
+  /** @deprecated use `GetFleetMetricsGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetFleetMetricsGlobals$outboundSchema;
+  /** @deprecated use `GetFleetMetricsGlobals$Outbound` instead. */
+  export type Outbound = GetFleetMetricsGlobals$Outbound;
+}
+
+export function getFleetMetricsGlobalsToJSON(
+  getFleetMetricsGlobals: GetFleetMetricsGlobals,
+): string {
+  return JSON.stringify(
+    GetFleetMetricsGlobals$outboundSchema.parse(getFleetMetricsGlobals),
+  );
+}
+
+export function getFleetMetricsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetFleetMetricsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetFleetMetricsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFleetMetricsGlobals' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetFleetMetricsRequest$inboundSchema: z.ZodType<

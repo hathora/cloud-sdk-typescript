@@ -64,7 +64,7 @@ export async function fleetsV1GetFleets(
   const path = pathToFunc("/fleets/v1/fleets")();
 
   const query = encodeFormQuery({
-    "orgId": payload.orgId,
+    "orgId": payload.orgId ?? client._options.orgId,
   });
 
   const headers = new Headers({

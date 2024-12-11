@@ -75,7 +75,7 @@ export async function fleetsV1GetFleetMetrics(
   const query = encodeFormQuery({
     "end": payload.end,
     "metrics": payload.metrics,
-    "orgId": payload.orgId,
+    "orgId": payload.orgId ?? client._options.orgId,
     "start": payload.start,
     "step": payload.step,
   });

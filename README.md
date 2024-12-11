@@ -15,19 +15,20 @@ Hathora Cloud API: Welcome to the Hathora Cloud API documentation! Learn how to 
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+  * [SDK Installation](#sdk-installation)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [Standalone functions](#standalone-functions)
+  * [Global Parameters](#global-parameters)
+  * [Requirements](#requirements)
+  * [Retries](#retries)
+  * [Debugging](#debugging)
 
-* [SDK Installation](#sdk-installation)
-* [Requirements](#requirements)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Standalone functions](#standalone-functions)
-* [Global Parameters](#global-parameters)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -73,6 +74,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -329,6 +331,7 @@ import {
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -391,6 +394,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 const hathoraCloud = new HathoraCloud({
   serverIdx: 1,
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -416,6 +420,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 const hathoraCloud = new HathoraCloud({
   serverURL: "https://api.hathora.dev",
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -503,6 +508,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -526,6 +532,7 @@ Some operations in this SDK require the security scheme to be specified at the r
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -691,17 +698,18 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 <!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
-A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `appId` to `"app-af469a92-5b45-4565-b3c4-b79878de67d2"` at SDK initialization and then you do not have to pass the same value on calls to operations like `createRoom`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `orgId` to `"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"` at SDK initialization and then you do not have to pass the same value on calls to operations like `getOrgTokens`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
 
-The following global parameter is available.
+The following global parameters are available.
 
 | Name  | Type   | Description          |
 | ----- | ------ | -------------------- |
+| orgId | string | The orgId parameter. |
 | appId | string | The appId parameter. |
 
 ### Example
@@ -711,21 +719,13 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const result = await hathoraCloud.roomsV2.createRoom(
-    {
-      deploymentId: "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
-      clientIPs: [
-        "123.123.123.123",
-      ],
-      roomConfig: "{\"name\":\"my-room\"}",
-      region: "Sao_Paulo",
-    },
-    "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-    "2swovpy1fnunu",
+  const result = await hathoraCloud.tokensV1.getOrgTokens(
+    "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   );
 
   // Handle the result
@@ -754,6 +754,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -798,6 +799,7 @@ const hathoraCloud = new HathoraCloud({
     retryConnectionErrors: false,
   },
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 

@@ -19,6 +19,11 @@ export type SDKOptions = {
   hathoraDevToken?: string | (() => Promise<string>);
 
   /**
+   * Allows setting the orgId parameter for all supported operations
+   */
+  orgId?: string | undefined;
+
+  /**
    * Allows setting the appId parameter for all supported operations
    */
   appId?: string | undefined;
@@ -60,8 +65,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "0.0.1",
-  sdkVersion: "2.11.4",
-  genVersion: "2.466.0",
+  sdkVersion: "2.11.5",
+  genVersion: "2.474.15",
   userAgent:
-    "speakeasy-sdk/typescript 2.11.4 2.466.0 0.0.1 @hathora/cloud-sdk-typescript",
+    "speakeasy-sdk/typescript 2.11.5 2.474.15 0.0.1 @hathora/cloud-sdk-typescript",
 } as const;

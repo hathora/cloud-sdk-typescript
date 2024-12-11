@@ -84,7 +84,7 @@ export async function fleetsV1UpdateFleetRegion(
   );
 
   const query = encodeFormQuery({
-    "orgId": payload.orgId,
+    "orgId": payload.orgId ?? client._options.orgId,
   });
 
   const headers = new Headers({

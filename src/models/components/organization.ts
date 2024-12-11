@@ -16,6 +16,10 @@ export type Organization = {
   isSingleTenant: boolean;
   stripeCustomerId: string;
   /**
+   * The name of an organization.
+   */
+  name?: string | undefined;
+  /**
    * System generated unique identifier for an organization. Not guaranteed to have a specific format.
    */
   orgId: string;
@@ -30,6 +34,7 @@ export const Organization$inboundSchema: z.ZodType<
   scopes: z.array(Scope$inboundSchema).optional(),
   isSingleTenant: z.boolean(),
   stripeCustomerId: z.string(),
+  name: z.string().optional(),
   orgId: z.string(),
 });
 
@@ -38,6 +43,7 @@ export type Organization$Outbound = {
   scopes?: Array<string> | undefined;
   isSingleTenant: boolean;
   stripeCustomerId: string;
+  name?: string | undefined;
   orgId: string;
 };
 
@@ -50,6 +56,7 @@ export const Organization$outboundSchema: z.ZodType<
   scopes: z.array(Scope$outboundSchema).optional(),
   isSingleTenant: z.boolean(),
   stripeCustomerId: z.string(),
+  name: z.string().optional(),
   orgId: z.string(),
 });
 

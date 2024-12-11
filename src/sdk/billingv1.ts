@@ -18,10 +18,12 @@ export class BillingV1 extends ClientSDK {
    * GetBalance
    */
   async getBalance(
+    orgId?: string | undefined,
     options?: RequestOptions,
   ): Promise<number> {
     return unwrapAsync(billingV1GetBalance(
       this,
+      orgId,
       options,
     ));
   }
@@ -30,10 +32,12 @@ export class BillingV1 extends ClientSDK {
    * GetUpcomingInvoiceItems
    */
   async getUpcomingInvoiceItems(
+    orgId?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.InvoiceItemPage> {
     return unwrapAsync(billingV1GetUpcomingInvoiceItems(
       this,
+      orgId,
       options,
     ));
   }
@@ -42,10 +46,12 @@ export class BillingV1 extends ClientSDK {
    * GetUpcomingInvoiceTotal
    */
   async getUpcomingInvoiceTotal(
+    orgId?: string | undefined,
     options?: RequestOptions,
   ): Promise<operations.GetUpcomingInvoiceTotalResponseBody> {
     return unwrapAsync(billingV1GetUpcomingInvoiceTotal(
       this,
+      orgId,
       options,
     ));
   }
@@ -54,10 +60,12 @@ export class BillingV1 extends ClientSDK {
    * GetPaymentMethod
    */
   async getPaymentMethod(
+    orgId?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.PaymentMethod> {
     return unwrapAsync(billingV1GetPaymentMethod(
       this,
+      orgId,
       options,
     ));
   }
@@ -66,12 +74,14 @@ export class BillingV1 extends ClientSDK {
    * InitStripeCustomerPortalUrl
    */
   async initStripeCustomerPortalUrl(
-    request: components.CustomerPortalUrl,
+    customerPortalUrl: components.CustomerPortalUrl,
+    orgId?: string | undefined,
     options?: RequestOptions,
   ): Promise<string> {
     return unwrapAsync(billingV1InitStripeCustomerPortalUrl(
       this,
-      request,
+      customerPortalUrl,
+      orgId,
       options,
     ));
   }
@@ -80,10 +90,12 @@ export class BillingV1 extends ClientSDK {
    * GetInvoices
    */
   async getInvoices(
+    orgId?: string | undefined,
     options?: RequestOptions,
   ): Promise<Array<components.Invoice>> {
     return unwrapAsync(billingV1GetInvoices(
       this,
+      orgId,
       options,
     ));
   }

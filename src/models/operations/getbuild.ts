@@ -7,10 +7,66 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export type GetBuildGlobals = {
+  orgId?: string | undefined;
+};
+
 export type GetBuildRequest = {
   buildId: string;
   orgId?: string | undefined;
 };
+
+/** @internal */
+export const GetBuildGlobals$inboundSchema: z.ZodType<
+  GetBuildGlobals,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  orgId: z.string().optional(),
+});
+
+/** @internal */
+export type GetBuildGlobals$Outbound = {
+  orgId?: string | undefined;
+};
+
+/** @internal */
+export const GetBuildGlobals$outboundSchema: z.ZodType<
+  GetBuildGlobals$Outbound,
+  z.ZodTypeDef,
+  GetBuildGlobals
+> = z.object({
+  orgId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetBuildGlobals$ {
+  /** @deprecated use `GetBuildGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetBuildGlobals$inboundSchema;
+  /** @deprecated use `GetBuildGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetBuildGlobals$outboundSchema;
+  /** @deprecated use `GetBuildGlobals$Outbound` instead. */
+  export type Outbound = GetBuildGlobals$Outbound;
+}
+
+export function getBuildGlobalsToJSON(
+  getBuildGlobals: GetBuildGlobals,
+): string {
+  return JSON.stringify(GetBuildGlobals$outboundSchema.parse(getBuildGlobals));
+}
+
+export function getBuildGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBuildGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBuildGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBuildGlobals' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetBuildRequest$inboundSchema: z.ZodType<

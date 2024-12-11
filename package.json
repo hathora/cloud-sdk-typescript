@@ -1,6 +1,6 @@
 {
   "name": "@hathora/cloud-sdk-typescript",
-  "version": "2.11.4",
+  "version": "2.11.5",
   "author": "Hathora",
   "main": "./index.js",
   "sideEffects": false,
@@ -14,8 +14,6 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "react": "^18 || ^19",
-    "react-dom": "^18 || ^19",
     "zod": ">= 3"
   },
   "devDependencies": {

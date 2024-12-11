@@ -25,6 +25,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -57,6 +58,7 @@ import { roomsV2CreateRoom } from "@hathora/cloud-sdk-typescript/funcs/roomsV2Cr
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -116,6 +118,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -141,6 +144,7 @@ import { roomsV2GetRoomInfo } from "@hathora/cloud-sdk-typescript/funcs/roomsV2G
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -192,6 +196,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -217,6 +222,7 @@ import { roomsV2GetActiveRoomsForProcess } from "@hathora/cloud-sdk-typescript/f
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -268,6 +274,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -293,6 +300,7 @@ import { roomsV2GetInactiveRoomsForProcess } from "@hathora/cloud-sdk-typescript
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -344,6 +352,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -368,6 +377,7 @@ import { roomsV2DestroyRoom } from "@hathora/cloud-sdk-typescript/funcs/roomsV2D
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -420,6 +430,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -444,6 +455,7 @@ import { roomsV2SuspendRoomV2Deprecated } from "@hathora/cloud-sdk-typescript/fu
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -493,6 +505,7 @@ Poll this endpoint to get connection details to a [room](https://hathora.dev/doc
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -517,6 +530,7 @@ import { roomsV2GetConnectionInfo } from "@hathora/cloud-sdk-typescript/funcs/ro
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -568,6 +582,7 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -594,6 +609,7 @@ import { roomsV2UpdateRoomConfig } from "@hathora/cloud-sdk-typescript/funcs/roo
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 

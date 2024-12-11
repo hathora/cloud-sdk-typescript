@@ -61,7 +61,7 @@ export async function organizationsV1GetUsageLimits(
   const path = pathToFunc("/orgs/v1/metadata/usageLimits")();
 
   const query = encodeFormQuery({
-    "orgId": payload.orgId,
+    "orgId": payload.orgId ?? client._options.orgId,
   });
 
   const headers = new Headers({

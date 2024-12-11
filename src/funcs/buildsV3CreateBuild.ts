@@ -68,7 +68,7 @@ export async function buildsV3CreateBuild(
   const path = pathToFunc("/builds/v3/builds")();
 
   const query = encodeFormQuery({
-    "orgId": payload.orgId,
+    "orgId": payload.orgId ?? client._options.orgId,
   });
 
   const headers = new Headers({
