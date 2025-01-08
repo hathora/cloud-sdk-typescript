@@ -100,6 +100,7 @@ export async function roomsV1DestroyRoomDeprecated(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "POST",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     body: body,

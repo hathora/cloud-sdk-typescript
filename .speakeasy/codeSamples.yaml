@@ -290,7 +290,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "GetProcessMetrics"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.processesV3.getProcessMetrics({\n    processId: \"cbfcddd2-0006-43ae-996c-995fff7bed2e\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.processesV3.getProcessMetrics({\n    appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n    processId: \"cbfcddd2-0006-43ae-996c-995fff7bed2e\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/processes/v3/apps/{appId}/processes/regions/{region}"]["post"]
     update:
       "x-codeSamples":
@@ -345,6 +345,12 @@ actions:
         - "lang": "typescript"
           "label": "GetInactiveRoomsForProcess"
           "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.roomsV2.getInactiveRoomsForProcess(\"cbfcddd2-0006-43ae-996c-995fff7bed2e\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/rooms/v2/{appId}/resume/{roomId}"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "ResumeRoom"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.roomsV2.resumeRoom(\"2swovpy1fnunu\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/rooms/v2/{appId}/update/{roomId}"]["post"]
     update:
       "x-codeSamples":

@@ -109,6 +109,7 @@ export async function logsV1GetLogsForProcess(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "GET",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     query: query,

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: d71c95af60ddb2e3da566c90fc29674d
+  docChecksum: 42b2f02d9a957fd022003d721821201e
   docVersion: 0.0.1
-  speakeasyVersion: 1.453.10
-  generationVersion: 2.474.15
-  releaseVersion: 2.11.5
-  configChecksum: fe437466a73df86c61d5273646e21275
+  speakeasyVersion: 1.465.0
+  generationVersion: 2.486.6
+  releaseVersion: 2.11.6
+  configChecksum: 2f17ade2c35c46eeff1c84e9582fae78
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,20 +14,20 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.9
+    core: 3.18.12
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     flattening: 2.82.1
-    globalSecurity: 2.82.11
+    globalSecurity: 2.82.12
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
     globals: 2.82.1
     groups: 2.81.2
-    methodSecurity: 2.82.4
+    methodSecurity: 2.82.5
     nullables: 0.1.0
     openEnums: 0.1.1
     responseFormat: 0.2.3
@@ -369,6 +369,8 @@ generatedFiles:
   - docs/models/operations/loginnicknamerequest.md
   - docs/models/operations/rejectinviterequest.md
   - docs/models/operations/rescindinviterequest.md
+  - docs/models/operations/resumeroomglobals.md
+  - docs/models/operations/resumeroomrequest.md
   - docs/models/operations/revokeorgtokenrequest.md
   - docs/models/operations/runbuilddeprecatedglobals.md
   - docs/models/operations/runbuilddeprecatedrequest.md
@@ -537,6 +539,7 @@ generatedFiles:
   - src/funcs/roomsV2GetConnectionInfo.ts
   - src/funcs/roomsV2GetInactiveRoomsForProcess.ts
   - src/funcs/roomsV2GetRoomInfo.ts
+  - src/funcs/roomsV2ResumeRoom.ts
   - src/funcs/roomsV2SuspendRoomV2Deprecated.ts
   - src/funcs/roomsV2UpdateRoomConfig.ts
   - src/funcs/tokensV1CreateOrgToken.ts
@@ -759,6 +762,7 @@ generatedFiles:
   - src/models/operations/loginnickname.ts
   - src/models/operations/rejectinvite.ts
   - src/models/operations/rescindinvite.ts
+  - src/models/operations/resumeroom.ts
   - src/models/operations/revokeorgtoken.ts
   - src/models/operations/runbuild.ts
   - src/models/operations/runbuilddeprecated.ts
@@ -1773,7 +1777,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>"}
-        "200": {}
+        "200":
+          application/json: {}
   RunBuild:
     speakeasy-default-run-build:
       parameters:
@@ -1823,7 +1828,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>"}
-        "200": {}
+        "200":
+          application/json: {}
   InitStripeCustomerPortalUrl:
     speakeasy-default-init-stripe-customer-portal-url:
       parameters:
@@ -2024,7 +2030,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>"}
-        "200": {}
+        "200":
+          application/json: {}
   GetMetricsDeprecated:
     speakeasy-default-get-metrics-deprecated:
       parameters:
@@ -2035,7 +2042,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>"}
-        "200": {}
+        "200":
+          application/json: {}
   GetFleetMetrics:
     speakeasy-default-get-fleet-metrics:
       parameters:
@@ -2047,7 +2055,8 @@ examples:
       responses:
         "404":
           application/json: {"message": "<value>"}
-        "200": {}
+        "200":
+          application/json: {}
         "401":
           application/json: {"message": "<value>"}
   GetUsageLimits:
@@ -2071,5 +2080,16 @@ examples:
         "200":
           application/json: true
         "401":
+          application/json: {"message": "<value>"}
+  ResumeRoom:
+    speakeasy-default-resume-room:
+      parameters:
+        path:
+          appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2"
+          roomId: "2swovpy1fnunu"
+      responses:
+        "200":
+          application/json: {"additionalExposedPorts": [{"transportType": "tcp", "port": 34567, "host": "1.proxy.hathora.dev", "name": "default"}], "exposedPort": {"transportType": "tcp", "port": 34567, "host": "1.proxy.hathora.dev", "name": "default"}, "status": "starting", "roomId": "2swovpy1fnunu"}
+        "400":
           application/json: {"message": "<value>"}
 generatedTests: {}

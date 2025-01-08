@@ -8,6 +8,7 @@ import { roomsV2GetActiveRoomsForProcess } from "../funcs/roomsV2GetActiveRoomsF
 import { roomsV2GetConnectionInfo } from "../funcs/roomsV2GetConnectionInfo.js";
 import { roomsV2GetInactiveRoomsForProcess } from "../funcs/roomsV2GetInactiveRoomsForProcess.js";
 import { roomsV2GetRoomInfo } from "../funcs/roomsV2GetRoomInfo.js";
+import { roomsV2ResumeRoom } from "../funcs/roomsV2ResumeRoom.js";
 import { roomsV2SuspendRoomV2Deprecated } from "../funcs/roomsV2SuspendRoomV2Deprecated.js";
 import { roomsV2UpdateRoomConfig } from "../funcs/roomsV2UpdateRoomConfig.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -164,6 +165,22 @@ export class RoomsV2 extends ClientSDK {
     return unwrapAsync(roomsV2UpdateRoomConfig(
       this,
       updateRoomConfigParams,
+      roomId,
+      appId,
+      options,
+    ));
+  }
+
+  /**
+   * ResumeRoom
+   */
+  async resumeRoom(
+    roomId: string,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.ConnectionInfoV2> {
+    return unwrapAsync(roomsV2ResumeRoom(
+      this,
       roomId,
       appId,
       options,

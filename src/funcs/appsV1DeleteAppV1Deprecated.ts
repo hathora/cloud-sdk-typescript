@@ -97,6 +97,7 @@ export async function appsV1DeleteAppV1Deprecated(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "DELETE",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     body: body,

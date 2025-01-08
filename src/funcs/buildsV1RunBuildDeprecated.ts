@@ -125,6 +125,7 @@ export async function buildsV1RunBuildDeprecated(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "POST",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     body: body,

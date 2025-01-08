@@ -99,6 +99,7 @@ export async function lobbiesV1ListActivePublicLobbiesDeprecatedV1(
 
   const requestRes = client._createRequest(context, {
     method: "GET",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     query: query,

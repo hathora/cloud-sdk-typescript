@@ -8,10 +8,10 @@ import { ProcessV2 } from "@hathora/cloud-sdk-typescript/models/components";
 let value: ProcessV2 = {
   status: "starting",
   roomsAllocated: 1,
-  terminatedAt: new Date("2024-12-06T04:47:23.164Z"),
-  stoppingAt: new Date("2023-05-29T15:24:04.349Z"),
-  startedAt: new Date("2024-12-06T12:43:25.190Z"),
-  createdAt: new Date("2023-10-25T21:51:23.585Z"),
+  terminatedAt: new Date("2025-12-06T04:47:23.164Z"),
+  stoppingAt: new Date("2024-05-28T15:24:04.349Z"),
+  startedAt: new Date("2025-12-06T12:43:25.190Z"),
+  createdAt: new Date("2024-10-24T21:51:23.585Z"),
   roomsPerProcess: 3,
   additionalExposedPorts: [
     {

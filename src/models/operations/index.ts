@@ -95,6 +95,7 @@ export * from "./logingoogle.js";
 export * from "./loginnickname.js";
 export * from "./rejectinvite.js";
 export * from "./rescindinvite.js";
+export * from "./resumeroom.js";
 export * from "./revokeorgtoken.js";
 export * from "./runbuild.js";
 export * from "./runbuilddeprecated.js";

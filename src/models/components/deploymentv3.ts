@@ -52,7 +52,10 @@ export type DeploymentV3 = {
   createdAt: Date;
   createdBy: string;
   /**
-   * The amount of memory allocated to your process.
+   * The amount of memory allocated to your process. By default, this is capped
+   *
+   * @remarks
+   * at 8192 MB, but can be increased further on the Enterprise tier.
    */
   requestedMemoryMB: number;
   /**

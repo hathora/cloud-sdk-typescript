@@ -74,6 +74,7 @@ export async function managementV1SendVerificationEmail(
 
   const requestRes = client._createRequest(context, {
     method: "POST",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     body: body,

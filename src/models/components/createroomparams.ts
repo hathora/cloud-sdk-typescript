@@ -17,6 +17,9 @@ export type CreateRoomParams = {
    * System generated id for a deployment.
    */
   deploymentId?: string | undefined;
+  /**
+   * An optional list of client IP addresses to whitelist for DDoS protection.
+   */
   clientIPs?: Array<string> | undefined;
   /**
    * Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).

@@ -99,6 +99,7 @@ export async function deploymentsV1GetLatestDeploymentV1Deprecated(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "GET",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     body: body,

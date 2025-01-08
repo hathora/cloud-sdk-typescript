@@ -16,6 +16,10 @@ import {
  * A build represents a game server artifact and its associated metadata.
  */
 export type BuildV3 = {
+  /**
+   * Url to view details, like build logs, of the build.
+   */
+  shareUrl?: string | undefined;
   contentHash?: string | undefined;
   /**
    * Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
@@ -56,6 +60,7 @@ export type BuildV3 = {
 /** @internal */
 export const BuildV3$inboundSchema: z.ZodType<BuildV3, z.ZodTypeDef, unknown> =
   z.object({
+    shareUrl: z.string().optional(),
     contentHash: z.string().optional(),
     buildTag: z.string().optional(),
     imageSize: z.number().int(),
@@ -79,6 +84,7 @@ export const BuildV3$inboundSchema: z.ZodType<BuildV3, z.ZodTypeDef, unknown> =
 
 /** @internal */
 export type BuildV3$Outbound = {
+  shareUrl?: string | undefined;
   contentHash?: string | undefined;
   buildTag?: string | undefined;
   imageSize: number;
@@ -98,6 +104,7 @@ export const BuildV3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BuildV3
 > = z.object({
+  shareUrl: z.string().optional(),
   contentHash: z.string().optional(),
   buildTag: z.string().optional(),
   imageSize: z.number().int(),

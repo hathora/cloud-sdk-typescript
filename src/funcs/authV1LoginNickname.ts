@@ -91,6 +91,7 @@ export async function authV1LoginNickname(
 
   const requestRes = client._createRequest(context, {
     method: "POST",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     body: body,

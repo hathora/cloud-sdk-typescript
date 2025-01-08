@@ -100,6 +100,7 @@ export async function buildsV3RunBuild(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "POST",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     query: query,

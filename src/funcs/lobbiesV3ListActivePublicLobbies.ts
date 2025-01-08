@@ -96,6 +96,7 @@ export async function lobbiesV3ListActivePublicLobbies(
 
   const requestRes = client._createRequest(context, {
     method: "GET",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     query: query,

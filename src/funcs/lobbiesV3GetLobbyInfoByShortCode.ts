@@ -97,6 +97,7 @@ export async function lobbiesV3GetLobbyInfoByShortCode(
 
   const requestRes = client._createRequest(context, {
     method: "GET",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     body: body,

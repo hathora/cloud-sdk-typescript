@@ -63,6 +63,7 @@ export async function discoveryV1GetPingServiceEndpointsDeprecated(
 
   const requestRes = client._createRequest(context, {
     method: "GET",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,

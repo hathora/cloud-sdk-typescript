@@ -6,6 +6,7 @@
 import { GetLogsForProcessRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: GetLogsForProcessRequest = {
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
   tailLines: 100,
 };

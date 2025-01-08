@@ -88,6 +88,7 @@ export async function authV1LoginAnonymous(
 
   const requestRes = client._createRequest(context, {
     method: "POST",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     body: body,

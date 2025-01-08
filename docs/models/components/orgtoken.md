@@ -6,7 +6,7 @@
 import { OrgToken } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: OrgToken = {
-  createdAt: new Date("2023-08-21T04:36:26.084Z"),
+  createdAt: new Date("2024-08-20T04:36:26.084Z"),
   createdBy: "noreply@hathora.dev",
   lastFourCharsOfKey: "<value>",
   status: "active",
