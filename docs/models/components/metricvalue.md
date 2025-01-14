@@ -6,8 +6,8 @@
 import { MetricValue } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: MetricValue = {
-  value: 641.47,
-  timestamp: 6924.72,
+  value: 6924.72,
+  timestamp: 5666.01,
 };
 ```
 

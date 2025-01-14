@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 42b2f02d9a957fd022003d721821201e
+  docChecksum: 4e5d6bf648df8a38de388af5e97cd1a7
   docVersion: 0.0.1
-  speakeasyVersion: 1.465.0
-  generationVersion: 2.486.6
-  releaseVersion: 2.11.6
-  configChecksum: 2f17ade2c35c46eeff1c84e9582fae78
+  speakeasyVersion: 1.468.3
+  generationVersion: 2.493.4
+  releaseVersion: 2.11.7
+  configChecksum: 435a3cd2b3ef15208fc0a4017e3cd3c5
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -39,7 +39,6 @@ generatedFiles:
   - .eslintrc.cjs
   - .gitattributes
   - .npmignore
-  - CONTRIBUTING.md
   - FUNCTIONS.md
   - RUNTIMES.md
   - USAGE.md
@@ -154,6 +153,7 @@ generatedFiles:
   - docs/models/components/rescinduserinvite.md
   - docs/models/components/room.md
   - docs/models/components/roomallocation.md
+  - docs/models/components/roomallocationdata.md
   - docs/models/components/roomconnectiondata.md
   - docs/models/components/roomreadystatus.md
   - docs/models/components/roomstatus.md
@@ -648,6 +648,7 @@ generatedFiles:
   - src/models/components/rescinduserinvite.ts
   - src/models/components/room.ts
   - src/models/components/roomallocation.ts
+  - src/models/components/roomallocationdata.ts
   - src/models/components/roomconnectiondata.ts
   - src/models/components/roomreadystatus.ts
   - src/models/components/roomstatus.ts

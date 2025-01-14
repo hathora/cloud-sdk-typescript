@@ -85,6 +85,7 @@ export * from "./region.js";
 export * from "./rescinduserinvite.js";
 export * from "./room.js";
 export * from "./roomallocation.js";
+export * from "./roomallocationdata.js";
 export * from "./roomconnectiondata.js";
 export * from "./roomreadystatus.js";
 export * from "./roomstatus.js";

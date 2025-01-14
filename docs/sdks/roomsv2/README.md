@@ -722,7 +722,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ConnectionInfoV2](../../models/components/connectioninfov2.md)\>**
+**Promise\<[components.RoomAllocationData](../../models/components/roomallocationdata.md)\>**
 
 ### Errors
 

@@ -5,7 +5,7 @@
 ```typescript
 import { UserRole } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: UserRole = "viewer";
+let value: UserRole = "admin";
 ```
 
 ## Values

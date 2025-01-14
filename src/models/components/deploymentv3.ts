@@ -52,6 +52,14 @@ export type DeploymentV3 = {
   createdAt: Date;
   createdBy: string;
   /**
+   * EXPERIMENTAL - this feature is in closed beta.
+   *
+   * @remarks
+   * The number of GPUs allocated to your process. Must be an integer.
+   * If not provided, the requested GPU is 0.
+   */
+  experimentalRequestedGPU?: number | undefined;
+  /**
    * The amount of memory allocated to your process. By default, this is capped
    *
    * @remarks
@@ -149,6 +157,7 @@ export const DeploymentV3$inboundSchema: z.ZodType<
   defaultContainerPort: ContainerPort$inboundSchema,
   createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   createdBy: z.string(),
+  experimentalRequestedGPU: z.number().optional(),
   requestedMemoryMB: z.number(),
   requestedCPU: z.number(),
   deploymentId: z.string(),
@@ -167,6 +176,7 @@ export type DeploymentV3$Outbound = {
   defaultContainerPort: ContainerPort$Outbound;
   createdAt: string;
   createdBy: string;
+  experimentalRequestedGPU?: number | undefined;
   requestedMemoryMB: number;
   requestedCPU: number;
   deploymentId: string;
@@ -189,6 +199,7 @@ export const DeploymentV3$outboundSchema: z.ZodType<
   defaultContainerPort: ContainerPort$outboundSchema,
   createdAt: z.date().transform(v => v.toISOString()),
   createdBy: z.string(),
+  experimentalRequestedGPU: z.number().optional(),
   requestedMemoryMB: z.number(),
   requestedCPU: z.number(),
   deploymentId: z.string(),

@@ -33,7 +33,7 @@ export async function roomsV2ResumeRoom(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.ConnectionInfoV2,
+    components.RoomAllocationData,
     | errors.ApiError
     | SDKError
     | SDKValidationError
@@ -124,7 +124,7 @@ export async function roomsV2ResumeRoom(
   };
 
   const [result] = await M.match<
-    components.ConnectionInfoV2,
+    components.RoomAllocationData,
     | errors.ApiError
     | SDKError
     | SDKValidationError
@@ -134,7 +134,7 @@ export async function roomsV2ResumeRoom(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ConnectionInfoV2$inboundSchema),
+    M.json(200, components.RoomAllocationData$inboundSchema),
     M.jsonErr(
       [400, 401, 402, 404, 422, 429, 500],
       errors.ApiError$inboundSchema,

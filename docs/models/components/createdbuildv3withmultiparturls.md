@@ -9,21 +9,21 @@ import { CreatedBuildV3WithMultipartUrls } from "@hathora/cloud-sdk-typescript/m
 
 let value: CreatedBuildV3WithMultipartUrls = {
   buildTag: "0.1.14-14c793",
-  imageSize: 24678,
-  status: "created",
-  deletedAt: new Date("2025-01-14T14:44:51.051Z"),
-  finishedAt: new Date("2024-05-12T06:02:30.477Z"),
-  startedAt: new Date("2024-08-11T02:10:46.448Z"),
-  createdAt: new Date("2025-09-09T18:02:30.092Z"),
+  imageSize: 67249,
+  status: "succeeded",
+  deletedAt: new Date("2024-05-12T06:02:30.477Z"),
+  finishedAt: new Date("2024-08-11T02:10:46.448Z"),
+  startedAt: new Date("2025-09-09T18:02:30.092Z"),
+  createdAt: new Date("2025-12-21T09:52:32.421Z"),
   createdBy: "noreply@hathora.dev",
   buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  completeUploadPostRequestUrl: "https://edible-pharmacopoeia.biz",
-  maxChunkSize: 206.51,
+  completeUploadPostRequestUrl: "https://radiant-dividend.com/",
+  maxChunkSize: 7583.79,
   uploadParts: [
     {
-      putRequestUrl: "https://glittering-godparent.name",
-      partNumber: 8310.48,
+      putRequestUrl: "https://ideal-mortise.net/",
+      partNumber: 6289.82,
     },
   ],
 };

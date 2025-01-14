@@ -178,7 +178,7 @@ export class RoomsV2 extends ClientSDK {
     roomId: string,
     appId?: string | undefined,
     options?: RequestOptions,
-  ): Promise<components.ConnectionInfoV2> {
+  ): Promise<components.RoomAllocationData> {
     return unwrapAsync(roomsV2ResumeRoom(
       this,
       roomId,

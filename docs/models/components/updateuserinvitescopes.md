@@ -15,7 +15,7 @@ const value: components.UserRole = "member";
 
 ```typescript
 const value: components.Scope[] = [
-  "processes:read-write",
+  "deployments:read",
 ];
 ```
 

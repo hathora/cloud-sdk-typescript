@@ -6,7 +6,7 @@
 import { FleetRegionConfig } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: FleetRegionConfig = {
-  cloudMinVcpus: 956084,
+  cloudMinVcpus: 643990,
 };
 ```
 

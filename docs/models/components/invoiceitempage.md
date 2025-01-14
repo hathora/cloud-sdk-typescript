@@ -8,10 +8,10 @@ import { InvoiceItemPage } from "@hathora/cloud-sdk-typescript/models/components
 let value: InvoiceItemPage = {
   invoiceItems: [
     {
-      amount: 6289.82,
-      unitPrice: 8726.51,
-      quantity: 2735.42,
-      unit: "farad",
+      amount: 8726.51,
+      unitPrice: 2735.42,
+      quantity: 7980.47,
+      unit: "candela",
       productName: "<value>",
     },
   ],

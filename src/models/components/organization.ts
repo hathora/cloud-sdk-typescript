@@ -10,6 +10,14 @@ import { Scope, Scope$inboundSchema, Scope$outboundSchema } from "./scope.js";
 
 export type Organization = {
   /**
+   * The features enabled for this org and user.
+   */
+  enabledFeatureFlags?: Array<string> | undefined;
+  /**
+   * The maximum memory in MB that can be used by any process in this org.
+   */
+  maxRequestedMemoryMB?: number | undefined;
+  /**
    * The scopes the user who loaded this has on this org.
    */
   scopes?: Array<Scope> | undefined;
@@ -31,6 +39,8 @@ export const Organization$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  enabledFeatureFlags: z.array(z.string()).optional(),
+  maxRequestedMemoryMB: z.number().optional(),
   scopes: z.array(Scope$inboundSchema).optional(),
   isSingleTenant: z.boolean(),
   stripeCustomerId: z.string(),
@@ -40,6 +50,8 @@ export const Organization$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Organization$Outbound = {
+  enabledFeatureFlags?: Array<string> | undefined;
+  maxRequestedMemoryMB?: number | undefined;
   scopes?: Array<string> | undefined;
   isSingleTenant: boolean;
   stripeCustomerId: string;
@@ -53,6 +65,8 @@ export const Organization$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Organization
 > = z.object({
+  enabledFeatureFlags: z.array(z.string()).optional(),
+  maxRequestedMemoryMB: z.number().optional(),
   scopes: z.array(Scope$outboundSchema).optional(),
   isSingleTenant: z.boolean(),
   stripeCustomerId: z.string(),

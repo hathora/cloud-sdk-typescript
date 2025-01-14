@@ -12,15 +12,15 @@ let value: BuildWithUploadUrl = {
   regionalContainerTags: [
     {
       containerTag: "<value>",
-      region: "Singapore",
+      region: "Frankfurt",
     },
   ],
-  imageSize: 407183,
-  status: "created",
-  deletedAt: new Date("2025-02-03T09:09:59.216Z"),
-  finishedAt: new Date("2024-05-12T01:59:12.211Z"),
-  startedAt: new Date("2025-03-02T08:57:01.759Z"),
-  createdAt: new Date("2025-08-07T13:19:14.525Z"),
+  imageSize: 69167,
+  status: "succeeded",
+  deletedAt: new Date("2024-05-12T01:59:12.211Z"),
+  finishedAt: new Date("2025-03-02T08:57:01.759Z"),
+  startedAt: new Date("2025-08-07T13:19:14.525Z"),
+  createdAt: new Date("2025-12-05T04:07:03.604Z"),
   createdBy: "noreply@hathora.dev",
   buildId: 1,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -30,7 +30,7 @@ let value: BuildWithUploadUrl = {
       key: "<key>",
     },
   ],
-  uploadUrl: "https://tight-address.info",
+  uploadUrl: "https://advanced-fort.net",
 };
 ```
 

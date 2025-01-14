@@ -6,7 +6,7 @@
 import { CustomerPortalUrl } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: CustomerPortalUrl = {
-  returnUrl: "https://earnest-legend.com/",
+  returnUrl: "https://minty-airman.biz/",
 };
 ```
 

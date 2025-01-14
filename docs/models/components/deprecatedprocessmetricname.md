@@ -5,7 +5,7 @@
 ```typescript
 import { DeprecatedProcessMetricName } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: DeprecatedProcessMetricName = "total_egress";
+let value: DeprecatedProcessMetricName = "memory";
 ```
 
 ## Values

@@ -5,7 +5,7 @@
 ```typescript
 import { FleetMetricName } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: FleetMetricName = "provisionedCloud";
+let value: FleetMetricName = "provisionedBareMetal";
 ```
 
 ## Values

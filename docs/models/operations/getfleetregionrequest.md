@@ -7,7 +7,7 @@ import { GetFleetRegionRequest } from "@hathora/cloud-sdk-typescript/models/oper
 
 let value: GetFleetRegionRequest = {
   fleetId: "<id>",
-  region: "Sao_Paulo",
+  region: "Washington_DC",
 };
 ```
 

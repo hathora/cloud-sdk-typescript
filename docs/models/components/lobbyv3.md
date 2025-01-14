@@ -9,11 +9,11 @@ import { LobbyV3 } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: LobbyV3 = {
   shortCode: "LFG4",
-  createdAt: new Date("2025-08-23T16:32:18.589Z"),
+  createdAt: new Date("2024-09-29T01:48:05.911Z"),
   createdBy: "google-oauth2|107030234048588177467",
   roomConfig: "{\"name\":\"my-room\"}",
   visibility: "private",
-  region: "Tokyo",
+  region: "Johannesburg",
   roomId: "2swovpy1fnunu",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 };
