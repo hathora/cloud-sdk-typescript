@@ -5,6 +5,7 @@
 import * as z from "zod";
 import { HathoraCloudCore } from "../core.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -47,9 +48,9 @@ export async function appsV1GetAppsV1Deprecated(
 > {
   const path = pathToFunc("/apps/v1/list")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.hathoraDevToken);
   const securityInput = secConfig == null ? {} : { hathoraDevToken: secConfig };
@@ -115,7 +116,8 @@ export async function appsV1GetAppsV1Deprecated(
       ),
     ),
     M.jsonErr([401, 429], errors.ApiError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

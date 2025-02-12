@@ -5,6 +5,7 @@
 import { HathoraCloudCore } from "../core.js";
 import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -78,9 +79,9 @@ export async function deploymentsV3GetDeployment(
     "/deployments/v3/apps/{appId}/deployments/{deploymentId}",
   )(pathParams);
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.hathoraDevToken);
   const securityInput = secConfig == null ? {} : { hathoraDevToken: secConfig };
@@ -141,7 +142,8 @@ export async function deploymentsV3GetDeployment(
   >(
     M.json(200, components.DeploymentV3$inboundSchema),
     M.jsonErr([401, 404, 429], errors.ApiError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

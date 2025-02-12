@@ -5,6 +5,7 @@
 import { HathoraCloudCore } from "../core.js";
 import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { pathToFunc } from "../lib/url.js";
@@ -69,9 +70,9 @@ export async function authV1LoginAnonymous(
 
   const path = pathToFunc("/auth/v1/{appId}/login/anonymous")(pathParams);
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const context = {
     operationID: "LoginAnonymous",
@@ -127,7 +128,8 @@ export async function authV1LoginAnonymous(
   >(
     M.json(200, components.PlayerTokenObject$inboundSchema),
     M.jsonErr([404, 429], errors.ApiError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

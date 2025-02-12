@@ -108,23 +108,21 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.deploymentsV3.createDeployment({
     deploymentTag: "alpha",
-    idleTimeoutEnabled: true,
+    idleTimeoutEnabled: false,
     env: [
-      {
-        value: "TRUE",
-        name: "EULA",
-      },
+
     ],
     roomsPerProcess: 3,
     additionalContainerPorts: [
       {
-        transportType: "udp",
+        transportType: "tcp",
         port: 8000,
         name: "default",
       },
     ],
-    transportType: "tcp",
+    transportType: "tls",
     containerPort: 4000,
+    experimentalRequestedGPU: 1,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
     buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
@@ -156,12 +154,9 @@ const hathoraCloud = new HathoraCloudCore({
 async function run() {
   const res = await deploymentsV3CreateDeployment(hathoraCloud, {
     deploymentTag: "alpha",
-    idleTimeoutEnabled: true,
+    idleTimeoutEnabled: false,
     env: [
-      {
-        value: "TRUE",
-        name: "EULA",
-      },
+  
     ],
     roomsPerProcess: 3,
     additionalContainerPorts: [
@@ -171,8 +166,9 @@ async function run() {
         name: "default",
       },
     ],
-    transportType: "tcp",
+    transportType: "tls",
     containerPort: 4000,
+    experimentalRequestedGPU: 1,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
     buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
@@ -207,10 +203,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ApiError              | 400, 401, 404, 422, 429, 500 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400, 401, 404, 422, 429 | application/json        |
+| errors.ApiError         | 500                     | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## getLatestDeployment
 

@@ -387,7 +387,7 @@ You can override the default server globally by passing a server index to the `s
 | #   | Server                    |
 | --- | ------------------------- |
 | 0   | `https://api.hathora.dev` |
-| 1   | `https:///`               |
+| 1   | `/`                       |
 
 #### Example
 

@@ -273,6 +273,10 @@ async function run() {
         value: "TRUE",
         name: "EULA",
       },
+      {
+        value: "TRUE",
+        name: "EULA",
+      },
     ],
     roomsPerProcess: 3,
     additionalContainerPorts: [
@@ -282,7 +286,7 @@ async function run() {
         name: "default",
       },
     ],
-    transportType: "tcp",
+    transportType: "udp",
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
@@ -319,16 +323,20 @@ async function run() {
         value: "TRUE",
         name: "EULA",
       },
+      {
+        value: "TRUE",
+        name: "EULA",
+      },
     ],
     roomsPerProcess: 3,
     additionalContainerPorts: [
       {
-        transportType: "tcp",
+        transportType: "tls",
         port: 8000,
         name: "default",
       },
     ],
-    transportType: "tcp",
+    transportType: "udp",
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
@@ -364,7 +372,8 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ApiError              | 400, 401, 404, 422, 429, 500 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400, 401, 404, 422, 429 | application/json        |
+| errors.ApiError         | 500                     | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

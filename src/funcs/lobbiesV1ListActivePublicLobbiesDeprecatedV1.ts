@@ -6,6 +6,7 @@ import * as z from "zod";
 import { HathoraCloudCore } from "../core.js";
 import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { pathToFunc } from "../lib/url.js";
@@ -80,9 +81,9 @@ export async function lobbiesV1ListActivePublicLobbiesDeprecatedV1(
     "region": payload.region,
   });
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const context = {
     operationID: "ListActivePublicLobbiesDeprecatedV1",
@@ -139,7 +140,8 @@ export async function lobbiesV1ListActivePublicLobbiesDeprecatedV1(
   >(
     M.json(200, z.array(components.Lobby$inboundSchema)),
     M.jsonErr([404, 422, 429], errors.ApiError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

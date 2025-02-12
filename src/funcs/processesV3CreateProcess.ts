@@ -5,6 +5,7 @@
 import { HathoraCloudCore } from "../core.js";
 import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -37,6 +38,7 @@ export async function processesV3CreateProcess(
 ): Promise<
   Result<
     components.ProcessV3,
+    | errors.ApiError
     | errors.ApiError
     | SDKError
     | SDKValidationError
@@ -78,9 +80,9 @@ export async function processesV3CreateProcess(
     "/processes/v3/apps/{appId}/processes/regions/{region}",
   )(pathParams);
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.hathoraDevToken);
   const securityInput = secConfig == null ? {} : { hathoraDevToken: secConfig };
@@ -131,6 +133,7 @@ export async function processesV3CreateProcess(
   const [result] = await M.match<
     components.ProcessV3,
     | errors.ApiError
+    | errors.ApiError
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -140,8 +143,10 @@ export async function processesV3CreateProcess(
     | ConnectionError
   >(
     M.json(201, components.ProcessV3$inboundSchema),
-    M.jsonErr([401, 402, 404, 422, 429, 500], errors.ApiError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.jsonErr([401, 402, 404, 422, 429], errors.ApiError$inboundSchema),
+    M.jsonErr(500, errors.ApiError$inboundSchema),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

@@ -89,6 +89,7 @@ run();
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.ApiError  | 401, 404, 429    | application/json |
+| errors.ApiError  | 500              | application/json |
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getUpcomingInvoiceItems
@@ -166,6 +167,7 @@ run();
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.ApiError  | 401, 404, 429    | application/json |
+| errors.ApiError  | 500              | application/json |
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getUpcomingInvoiceTotal
@@ -243,6 +245,7 @@ run();
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.ApiError  | 401, 404, 429    | application/json |
+| errors.ApiError  | 500              | application/json |
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getPaymentMethod
@@ -317,10 +320,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.ApiError    | 401, 404, 429, 500 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.ApiError  | 500              | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## initStripeCustomerPortalUrl
 
@@ -339,7 +343,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.billingV1.initStripeCustomerPortalUrl({
-    returnUrl: "<value>",
+    returnUrl: "https://smart-puppet.biz/",
   }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   // Handle the result
@@ -367,7 +371,7 @@ const hathoraCloud = new HathoraCloudCore({
 
 async function run() {
   const res = await billingV1InitStripeCustomerPortalUrl(hathoraCloud, {
-    returnUrl: "<value>",
+    returnUrl: "https://smart-puppet.biz/",
   }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   if (!res.ok) {
@@ -402,6 +406,7 @@ run();
 | Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | errors.ApiError    | 401, 404, 422, 429 | application/json   |
+| errors.ApiError    | 500                | application/json   |
 | errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## getInvoices

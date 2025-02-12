@@ -7,7 +7,7 @@ import { Invoice } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: Invoice = {
   status: "paid",
-  amountDue: 3741.70,
+  amountDue: 3741.7,
   pdfUrl: "https://flawless-morbidity.org/",
   dueDate: new Date("2023-05-09T19:33:28.581Z"),
   year: 5173.79,

@@ -4,6 +4,7 @@
 
 import { HathoraCloudCore } from "../core.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -44,9 +45,9 @@ export async function organizationsV1GetOrgs(
 > {
   const path = pathToFunc("/orgs/v1")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.hathoraDevToken);
   const securityInput = secConfig == null ? {} : { hathoraDevToken: secConfig };
@@ -106,7 +107,8 @@ export async function organizationsV1GetOrgs(
   >(
     M.json(200, components.OrgsPage$inboundSchema),
     M.jsonErr([401, 404, 429], errors.ApiError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

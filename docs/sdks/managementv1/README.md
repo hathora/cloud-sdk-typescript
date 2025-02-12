@@ -25,7 +25,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.managementV1.sendVerificationEmail({
-    userId: "<value>",
+    userId: "<id>",
   });
 
   // Handle the result
@@ -52,7 +52,7 @@ const hathoraCloud = new HathoraCloudCore({
 
 async function run() {
   const res = await managementV1SendVerificationEmail(hathoraCloud, {
-    userId: "<value>",
+    userId: "<id>",
   });
 
   if (!res.ok) {
@@ -85,5 +85,6 @@ run();
 
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401, 429, 500    | application/json |
+| errors.ApiError  | 401, 429         | application/json |
+| errors.ApiError  | 500              | application/json |
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |

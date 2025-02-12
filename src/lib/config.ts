@@ -12,7 +12,7 @@ import { Params, pathToFunc } from "./url.js";
  */
 export const ServerList = [
   "https://api.hathora.dev",
-  "https:///",
+  "/",
 ] as const;
 
 export type SDKOptions = {
@@ -65,8 +65,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "0.0.1",
-  sdkVersion: "2.11.7",
-  genVersion: "2.493.4",
+  sdkVersion: "2.12.0",
+  genVersion: "2.506.0",
   userAgent:
-    "speakeasy-sdk/typescript 2.11.7 2.493.4 0.0.1 @hathora/cloud-sdk-typescript",
+    "speakeasy-sdk/typescript 2.12.0 2.506.0 0.0.1 @hathora/cloud-sdk-typescript",
 } as const;

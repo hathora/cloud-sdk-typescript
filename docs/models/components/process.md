@@ -15,7 +15,7 @@ let value: Process = {
   roomsAllocatedUpdatedAt: new Date("2024-05-26T01:50:18.849Z"),
   roomsAllocated: 1,
   roomSlotsAvailableUpdatedAt: new Date("2023-09-25T21:22:14.779Z"),
-  roomSlotsAvailable: 1589.70,
+  roomSlotsAvailable: 1589.69,
   draining: false,
   terminatedAt: new Date("2023-05-01T23:18:27.767Z"),
   stoppingAt: new Date("2024-12-20T08:05:36.677Z"),

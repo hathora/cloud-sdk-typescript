@@ -328,10 +328,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.ApiError    | 401, 404, 429, 500 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.ApiError  | 500              | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## ~~createProcessV2Deprecated~~
 
@@ -351,7 +352,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.processesV2.createProcessV2Deprecated("Mumbai", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.processesV2.createProcessV2Deprecated("Tokyo", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   // Handle the result
   console.log(result);
@@ -377,7 +378,7 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await processesV2CreateProcessV2Deprecated(hathoraCloud, "Mumbai", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const res = await processesV2CreateProcessV2Deprecated(hathoraCloud, "Tokyo", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   if (!res.ok) {
     throw res.error;
@@ -408,7 +409,8 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ApiError              | 401, 402, 404, 422, 429, 500 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 401, 402, 404, 422, 429 | application/json        |
+| errors.ApiError         | 500                     | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

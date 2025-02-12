@@ -25,7 +25,7 @@ let value: BuildWithMultipartUrls = {
   buildId: 1,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   completeUploadPostRequestUrl: "https://same-alligator.com",
-  maxChunkSize: 6214.78,
+  maxChunkSize: 6214.79,
   uploadParts: [
     {
       putRequestUrl: "https://everlasting-trick.name",

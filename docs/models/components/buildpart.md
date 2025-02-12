@@ -7,7 +7,7 @@ import { BuildPart } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: BuildPart = {
   putRequestUrl: "https://shallow-exploration.info",
-  partNumber: 2098.44,
+  partNumber: 2098.43,
 };
 ```
 

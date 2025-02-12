@@ -5,6 +5,7 @@
 import { HathoraCloudCore } from "../core.js";
 import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { pathToFunc } from "../lib/url.js";
@@ -32,6 +33,7 @@ export async function managementV1SendVerificationEmail(
   Result<
     components.VerificationEmailSuccess,
     | errors.ApiError
+    | errors.ApiError
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -54,10 +56,10 @@ export async function managementV1SendVerificationEmail(
 
   const path = pathToFunc("/management/v1/sendverificationemail")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-  });
+  }));
 
   const context = {
     operationID: "SendVerificationEmail",
@@ -103,6 +105,7 @@ export async function managementV1SendVerificationEmail(
   const [result] = await M.match<
     components.VerificationEmailSuccess,
     | errors.ApiError
+    | errors.ApiError
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -112,8 +115,10 @@ export async function managementV1SendVerificationEmail(
     | ConnectionError
   >(
     M.json(200, components.VerificationEmailSuccess$inboundSchema),
-    M.jsonErr([401, 429, 500], errors.ApiError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.jsonErr([401, 429], errors.ApiError$inboundSchema),
+    M.jsonErr(500, errors.ApiError$inboundSchema),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

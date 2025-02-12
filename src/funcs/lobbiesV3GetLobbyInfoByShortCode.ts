@@ -5,6 +5,7 @@
 import { HathoraCloudCore } from "../core.js";
 import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { pathToFunc } from "../lib/url.js";
@@ -78,9 +79,9 @@ export async function lobbiesV3GetLobbyInfoByShortCode(
     pathParams,
   );
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const context = {
     operationID: "GetLobbyInfoByShortCode",
@@ -136,7 +137,8 @@ export async function lobbiesV3GetLobbyInfoByShortCode(
   >(
     M.json(200, components.LobbyV3$inboundSchema),
     M.jsonErr([404, 429], errors.ApiError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

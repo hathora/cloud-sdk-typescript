@@ -277,12 +277,12 @@ async function run() {
     planName: "tiny",
     additionalContainerPorts: [
       {
-        transportType: "tcp",
+        transportType: "tls",
         port: 8000,
         name: "default",
       },
     ],
-    transportType: "tcp",
+    transportType: "udp",
     containerPort: 4000,
   }, 1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
@@ -326,7 +326,7 @@ async function run() {
         name: "default",
       },
     ],
-    transportType: "tcp",
+    transportType: "udp",
     containerPort: 4000,
   }, 1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
@@ -360,7 +360,8 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ApiError              | 400, 401, 404, 422, 429, 500 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400, 401, 404, 422, 429 | application/json        |
+| errors.ApiError         | 500                     | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

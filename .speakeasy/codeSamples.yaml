@@ -98,7 +98,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "CreateBuild"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.buildsV3.createBuild({\n    buildId: \"bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5\",\n    buildTag: \"0.1.14-14c793\",\n    buildSizeInBytes: 5387.84,\n  }, \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.buildsV3.createBuild({\n    buildId: \"bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5\",\n    buildTag: \"0.1.14-14c793\",\n    buildSizeInBytes: 5387.85,\n  }, \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/builds/v3/builds/{buildId}"]["delete"]
     update:
       "x-codeSamples":
@@ -128,7 +128,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "CreateDeployment"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.deploymentsV3.createDeployment({\n    deploymentTag: \"alpha\",\n    idleTimeoutEnabled: false,\n    env: [\n      {\n        value: \"TRUE\",\n        name: \"EULA\",\n      },\n    ],\n    roomsPerProcess: 3,\n    additionalContainerPorts: [\n      {\n        transportType: \"udp\",\n        port: 8000,\n        name: \"default\",\n      },\n    ],\n    transportType: \"tcp\",\n    containerPort: 4000,\n    experimentalRequestedGPU: 1,\n    requestedMemoryMB: 1024,\n    requestedCPU: 0.5,\n    buildId: \"bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5\",\n  }, \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.deploymentsV3.createDeployment({\n    deploymentTag: \"alpha\",\n    idleTimeoutEnabled: false,\n    env: [\n\n    ],\n    roomsPerProcess: 3,\n    additionalContainerPorts: [\n      {\n        transportType: \"tcp\",\n        port: 8000,\n        name: \"default\",\n      },\n    ],\n    transportType: \"tls\",\n    containerPort: 4000,\n    experimentalRequestedGPU: 1,\n    requestedMemoryMB: 1024,\n    requestedCPU: 0.5,\n    buildId: \"bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5\",\n  }, \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/deployments/v3/apps/{appId}/deployments/latest"]["get"]
     update:
       "x-codeSamples":
@@ -200,7 +200,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "GetLogsForProcess"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.logsV1.getLogsForProcess(\"cbfcddd2-0006-43ae-996c-995fff7bed2e\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\", 100);\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.logsV1.getLogsForProcess(\"cbfcddd2-0006-43ae-996c-995fff7bed2e\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/logs/v1/{appId}/process/{processId}/download"]["get"]
     update:
       "x-codeSamples":

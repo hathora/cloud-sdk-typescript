@@ -5,6 +5,7 @@
 import * as z from "zod";
 import { HathoraCloudCore } from "../core.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { pathToFunc } from "../lib/url.js";
 import * as components from "../models/components/index.js";
@@ -42,9 +43,9 @@ export async function discoveryV2GetPingServiceEndpoints(
 > {
   const path = pathToFunc("/discovery/v2/ping")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const context = {
     operationID: "GetPingServiceEndpoints",
@@ -93,7 +94,8 @@ export async function discoveryV2GetPingServiceEndpoints(
     | ConnectionError
   >(
     M.json(200, z.array(components.PingEndpoints$inboundSchema)),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response);
   if (!result.ok) {
     return result;

@@ -5,6 +5,7 @@
 import { HathoraCloudCore } from "../core.js";
 import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { pathToFunc } from "../lib/url.js";
@@ -35,6 +36,7 @@ export async function roomsV1GetConnectionInfoDeprecated(
 ): Promise<
   Result<
     components.ConnectionInfo,
+    | errors.ApiError
     | errors.ApiError
     | SDKError
     | SDKValidationError
@@ -77,9 +79,9 @@ export async function roomsV1GetConnectionInfoDeprecated(
     pathParams,
   );
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const context = {
     operationID: "GetConnectionInfoDeprecated",
@@ -125,6 +127,7 @@ export async function roomsV1GetConnectionInfoDeprecated(
   const [result] = await M.match<
     components.ConnectionInfo,
     | errors.ApiError
+    | errors.ApiError
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -134,8 +137,10 @@ export async function roomsV1GetConnectionInfoDeprecated(
     | ConnectionError
   >(
     M.json(200, components.ConnectionInfo$inboundSchema),
-    M.jsonErr([400, 402, 404, 429, 500], errors.ApiError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.jsonErr([400, 402, 404, 429], errors.ApiError$inboundSchema),
+    M.jsonErr(500, errors.ApiError$inboundSchema),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

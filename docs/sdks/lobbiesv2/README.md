@@ -34,7 +34,7 @@ async function run() {
     playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   }, {
     initialConfig: "<value>",
-    region: "Chicago",
+    region: "London",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   // Handle the result
@@ -64,7 +64,7 @@ async function run() {
     playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   }, {
     initialConfig: "<value>",
-    region: "Chicago",
+    region: "London",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   if (!res.ok) {
@@ -98,10 +98,11 @@ run();
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ApiError                   | 400, 401, 402, 404, 422, 429, 500 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ApiError              | 400, 401, 402, 404, 422, 429 | application/json             |
+| errors.ApiError              | 500                          | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## ~~createPublicLobby~~
 
@@ -124,7 +125,7 @@ async function run() {
     playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   }, {
     initialConfig: "<value>",
-    region: "Sao_Paulo",
+    region: "Johannesburg",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   // Handle the result
@@ -154,7 +155,7 @@ async function run() {
     playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   }, {
     initialConfig: "<value>",
-    region: "Sao_Paulo",
+    region: "Johannesburg",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   if (!res.ok) {
@@ -188,10 +189,11 @@ run();
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ApiError                   | 400, 401, 402, 404, 422, 429, 500 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ApiError              | 400, 401, 402, 404, 422, 429 | application/json             |
+| errors.ApiError              | 500                          | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## ~~createLocalLobby~~
 
@@ -214,7 +216,7 @@ async function run() {
     playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   }, {
     initialConfig: "<value>",
-    region: "Sao_Paulo",
+    region: "Johannesburg",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   // Handle the result
@@ -244,7 +246,7 @@ async function run() {
     playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   }, {
     initialConfig: "<value>",
-    region: "Sao_Paulo",
+    region: "Johannesburg",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   if (!res.ok) {
@@ -278,10 +280,11 @@ run();
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ApiError                   | 400, 401, 402, 404, 422, 429, 500 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ApiError              | 400, 401, 402, 404, 422, 429 | application/json             |
+| errors.ApiError              | 500                          | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## ~~createLobbyDeprecated~~
 
@@ -305,7 +308,7 @@ async function run() {
   }, {
     visibility: "private",
     initialConfig: "<value>",
-    region: "Tokyo",
+    region: "Sao_Paulo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   // Handle the result
@@ -336,7 +339,7 @@ async function run() {
   }, {
     visibility: "private",
     initialConfig: "<value>",
-    region: "Tokyo",
+    region: "Sao_Paulo",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   if (!res.ok) {
@@ -370,10 +373,11 @@ run();
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ApiError                   | 400, 401, 402, 404, 422, 429, 500 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ApiError              | 400, 401, 402, 404, 422, 429 | application/json             |
+| errors.ApiError              | 500                          | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## ~~listActivePublicLobbiesDeprecatedV2~~
 

@@ -169,10 +169,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.ApiError         | 401, 404, 422, 429, 500 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 401, 404, 422, 429 | application/json   |
+| errors.ApiError    | 500                | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## updateApp
 
@@ -253,10 +254,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.ApiError         | 401, 404, 422, 429, 500 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 401, 404, 422, 429 | application/json   |
+| errors.ApiError    | 500                | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## getApp
 
@@ -405,7 +407,8 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.ApiError    | 401, 404, 429, 500 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.ApiError  | 500              | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

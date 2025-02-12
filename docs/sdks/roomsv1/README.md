@@ -37,7 +37,7 @@ async function run() {
       "123.123.123.123",
     ],
     roomConfig: "{\"name\":\"my-room\"}",
-    region: "Chicago",
+    region: "London",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   // Handle the result
@@ -70,7 +70,7 @@ async function run() {
       "123.123.123.123",
     ],
     roomConfig: "{\"name\":\"my-room\"}",
-    region: "Chicago",
+    region: "London",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
 
   if (!res.ok) {
@@ -103,10 +103,11 @@ run();
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ApiError                   | 400, 401, 402, 404, 422, 429, 500 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ApiError              | 400, 401, 402, 404, 422, 429 | application/json             |
+| errors.ApiError              | 500                          | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## ~~getRoomInfoDeprecated~~
 
@@ -421,10 +422,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.ApiError    | 401, 404, 429, 500 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.ApiError  | 500              | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## ~~suspendRoomDeprecated~~
 
@@ -499,10 +501,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.ApiError    | 401, 404, 429, 500 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.ApiError  | 401, 404, 429    | application/json |
+| errors.ApiError  | 500              | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## ~~getConnectionInfoDeprecated~~
 
@@ -577,7 +580,8 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.ApiError         | 400, 402, 404, 429, 500 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 400, 402, 404, 429 | application/json   |
+| errors.ApiError    | 500                | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
