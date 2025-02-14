@@ -90,6 +90,7 @@ export async function buildsV1DeleteBuildDeprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "DeleteBuildDeprecated",
     oAuth2Scopes: [],
 

@@ -89,6 +89,7 @@ export async function processesV3CreateProcess(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "CreateProcess",
     oAuth2Scopes: [],
 

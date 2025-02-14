@@ -48,6 +48,7 @@ export async function discoveryV2GetPingServiceEndpoints(
   }));
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetPingServiceEndpoints",
     oAuth2Scopes: [],
 

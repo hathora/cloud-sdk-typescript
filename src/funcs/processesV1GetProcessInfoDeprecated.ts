@@ -90,6 +90,7 @@ export async function processesV1GetProcessInfoDeprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetProcessInfoDeprecated",
     oAuth2Scopes: [],
 

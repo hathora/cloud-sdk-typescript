@@ -77,6 +77,7 @@ export async function fleetsV1GetFleets(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetFleets",
     oAuth2Scopes: [],
 

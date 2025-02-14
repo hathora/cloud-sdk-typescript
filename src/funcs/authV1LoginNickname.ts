@@ -78,6 +78,7 @@ export async function authV1LoginNickname(
   }));
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "LoginNickname",
     oAuth2Scopes: [],
 

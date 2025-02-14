@@ -88,6 +88,7 @@ export async function deploymentsV3GetDeployment(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetDeployment",
     oAuth2Scopes: [],
 

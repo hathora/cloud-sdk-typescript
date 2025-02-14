@@ -86,6 +86,7 @@ export async function roomsV1GetRoomInfoDeprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetRoomInfoDeprecated",
     oAuth2Scopes: [],
 

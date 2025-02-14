@@ -94,6 +94,7 @@ export async function processesV3GetProcessesCountExperimental(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetProcessesCountExperimental",
     oAuth2Scopes: [],
 

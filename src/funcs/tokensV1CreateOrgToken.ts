@@ -83,6 +83,7 @@ export async function tokensV1CreateOrgToken(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "CreateOrgToken",
     oAuth2Scopes: [],
 

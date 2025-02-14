@@ -78,6 +78,7 @@ export async function organizationsV1GetOrgPendingInvites(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetOrgPendingInvites",
     oAuth2Scopes: [],
 

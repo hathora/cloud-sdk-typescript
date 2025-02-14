@@ -72,6 +72,7 @@ export async function appsV1CreateAppV1Deprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "CreateAppV1Deprecated",
     oAuth2Scopes: [],
 

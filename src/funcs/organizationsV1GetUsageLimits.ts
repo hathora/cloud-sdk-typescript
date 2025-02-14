@@ -75,6 +75,7 @@ export async function organizationsV1GetUsageLimits(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetUsageLimits",
     oAuth2Scopes: [],
 

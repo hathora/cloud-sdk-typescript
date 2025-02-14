@@ -102,6 +102,7 @@ export async function lobbiesV3CreateLobby(
   );
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "CreateLobby",
     oAuth2Scopes: [],
 

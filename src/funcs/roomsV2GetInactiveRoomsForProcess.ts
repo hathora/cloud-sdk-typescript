@@ -90,6 +90,7 @@ export async function roomsV2GetInactiveRoomsForProcess(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetInactiveRoomsForProcess",
     oAuth2Scopes: [],
 

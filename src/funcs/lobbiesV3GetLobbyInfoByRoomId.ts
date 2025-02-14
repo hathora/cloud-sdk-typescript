@@ -82,6 +82,7 @@ export async function lobbiesV3GetLobbyInfoByRoomId(
   }));
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetLobbyInfoByRoomId",
     oAuth2Scopes: [],
 

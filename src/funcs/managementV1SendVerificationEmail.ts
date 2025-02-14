@@ -62,6 +62,7 @@ export async function managementV1SendVerificationEmail(
   }));
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "SendVerificationEmail",
     oAuth2Scopes: [],
 

@@ -80,6 +80,7 @@ export async function appsV2GetApp(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetApp",
     oAuth2Scopes: [],
 

@@ -89,6 +89,7 @@ export async function buildsV2GetBuildInfoV2Deprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetBuildInfoV2Deprecated",
     oAuth2Scopes: [],
 

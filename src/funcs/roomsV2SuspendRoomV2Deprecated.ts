@@ -90,6 +90,7 @@ export async function roomsV2SuspendRoomV2Deprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "SuspendRoomV2Deprecated",
     oAuth2Scopes: [],
 

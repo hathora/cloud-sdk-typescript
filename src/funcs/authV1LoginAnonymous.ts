@@ -75,6 +75,7 @@ export async function authV1LoginAnonymous(
   }));
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "LoginAnonymous",
     oAuth2Scopes: [],
 

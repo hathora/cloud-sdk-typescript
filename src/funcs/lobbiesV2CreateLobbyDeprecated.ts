@@ -100,6 +100,7 @@ export async function lobbiesV2CreateLobbyDeprecated(
   );
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "CreateLobbyDeprecated",
     oAuth2Scopes: [],
 

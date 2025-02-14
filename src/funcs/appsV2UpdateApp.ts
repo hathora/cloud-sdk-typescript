@@ -84,6 +84,7 @@ export async function appsV2UpdateApp(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "UpdateApp",
     oAuth2Scopes: [],
 

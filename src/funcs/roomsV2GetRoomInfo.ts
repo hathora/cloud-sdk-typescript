@@ -86,6 +86,7 @@ export async function roomsV2GetRoomInfo(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetRoomInfo",
     oAuth2Scopes: [],
 

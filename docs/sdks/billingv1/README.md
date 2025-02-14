@@ -7,16 +7,18 @@
 
 ### Available Operations
 
-* [getBalance](#getbalance) - GetBalance
+* [~~getBalance~~](#getbalance) - GetBalance :warning: **Deprecated**
 * [getUpcomingInvoiceItems](#getupcominginvoiceitems) - GetUpcomingInvoiceItems
 * [getUpcomingInvoiceTotal](#getupcominginvoicetotal) - GetUpcomingInvoiceTotal
 * [getPaymentMethod](#getpaymentmethod) - GetPaymentMethod
 * [initStripeCustomerPortalUrl](#initstripecustomerportalurl) - InitStripeCustomerPortalUrl
 * [getInvoices](#getinvoices) - GetInvoices
 
-## getBalance
+## ~~getBalance~~
 
 GetBalance
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

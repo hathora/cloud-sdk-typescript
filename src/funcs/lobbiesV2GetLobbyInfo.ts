@@ -83,6 +83,7 @@ export async function lobbiesV2GetLobbyInfo(
   }));
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetLobbyInfo",
     oAuth2Scopes: [],
 

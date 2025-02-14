@@ -91,6 +91,7 @@ export async function roomsV1CreateRoomDeprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "CreateRoomDeprecated",
     oAuth2Scopes: [],
 

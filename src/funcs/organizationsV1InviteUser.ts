@@ -80,6 +80,7 @@ export async function organizationsV1InviteUser(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "InviteUser",
     oAuth2Scopes: [],
 

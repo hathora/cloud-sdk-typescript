@@ -94,6 +94,7 @@ export async function fleetsV1GetFleetRegion(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetFleetRegion",
     oAuth2Scopes: [],
 

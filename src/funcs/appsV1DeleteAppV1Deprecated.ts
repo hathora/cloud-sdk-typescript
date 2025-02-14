@@ -84,6 +84,7 @@ export async function appsV1DeleteAppV1Deprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "DeleteAppV1Deprecated",
     oAuth2Scopes: [],
 

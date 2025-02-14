@@ -90,6 +90,7 @@ export async function roomsV2UpdateRoomConfig(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "UpdateRoomConfig",
     oAuth2Scopes: [],
 

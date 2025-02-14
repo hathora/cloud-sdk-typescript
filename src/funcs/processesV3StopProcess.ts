@@ -89,6 +89,7 @@ export async function processesV3StopProcess(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "StopProcess",
     oAuth2Scopes: [],
 

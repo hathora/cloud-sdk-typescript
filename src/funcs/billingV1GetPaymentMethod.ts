@@ -75,6 +75,7 @@ export async function billingV1GetPaymentMethod(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetPaymentMethod",
     oAuth2Scopes: [],
 

@@ -86,6 +86,7 @@ export async function lobbiesV2ListActivePublicLobbiesDeprecatedV2(
   }));
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ListActivePublicLobbiesDeprecatedV2",
     oAuth2Scopes: [],
 

@@ -87,6 +87,7 @@ export async function buildsV3RunBuild(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "RunBuild",
     oAuth2Scopes: [],
 

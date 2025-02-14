@@ -81,6 +81,7 @@ export async function appsV2DeleteApp(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "DeleteApp",
     oAuth2Scopes: [],
 

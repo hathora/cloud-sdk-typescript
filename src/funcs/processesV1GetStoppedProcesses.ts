@@ -90,6 +90,7 @@ export async function processesV1GetStoppedProcesses(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetStoppedProcesses",
     oAuth2Scopes: [],
 

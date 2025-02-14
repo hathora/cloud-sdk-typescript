@@ -16,6 +16,8 @@ import { unwrapAsync } from "../types/fp.js";
 export class BillingV1 extends ClientSDK {
   /**
    * GetBalance
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getBalance(
     orgId?: string | undefined,

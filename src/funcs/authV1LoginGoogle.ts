@@ -80,6 +80,7 @@ export async function authV1LoginGoogle(
   }));
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "LoginGoogle",
     oAuth2Scopes: [],
 

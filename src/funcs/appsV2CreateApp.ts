@@ -81,6 +81,7 @@ export async function appsV2CreateApp(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "CreateApp",
     oAuth2Scopes: [],
 

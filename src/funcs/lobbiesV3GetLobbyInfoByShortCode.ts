@@ -84,6 +84,7 @@ export async function lobbiesV3GetLobbyInfoByShortCode(
   }));
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetLobbyInfoByShortCode",
     oAuth2Scopes: [],
 

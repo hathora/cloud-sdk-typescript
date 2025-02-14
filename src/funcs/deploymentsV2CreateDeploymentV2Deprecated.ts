@@ -99,6 +99,7 @@ export async function deploymentsV2CreateDeploymentV2Deprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "CreateDeploymentV2Deprecated",
     oAuth2Scopes: [],
 

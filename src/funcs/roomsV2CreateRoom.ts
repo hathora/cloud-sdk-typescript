@@ -90,6 +90,7 @@ export async function roomsV2CreateRoom(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "CreateRoom",
     oAuth2Scopes: [],
 

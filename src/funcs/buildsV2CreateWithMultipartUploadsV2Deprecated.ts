@@ -92,6 +92,7 @@ export async function buildsV2CreateWithMultipartUploadsV2Deprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "CreateWithMultipartUploadsV2Deprecated",
     oAuth2Scopes: [],
 

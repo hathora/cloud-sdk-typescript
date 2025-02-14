@@ -80,6 +80,7 @@ export async function billingV1InitStripeCustomerPortalUrl(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "InitStripeCustomerPortalUrl",
     oAuth2Scopes: [],
 

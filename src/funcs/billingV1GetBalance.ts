@@ -26,6 +26,8 @@ import { Result } from "../types/fp.js";
 
 /**
  * GetBalance
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function billingV1GetBalance(
   client: HathoraCloudCore,
@@ -75,6 +77,7 @@ export async function billingV1GetBalance(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetBalance",
     oAuth2Scopes: [],
 

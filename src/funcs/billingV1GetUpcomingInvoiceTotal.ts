@@ -75,6 +75,7 @@ export async function billingV1GetUpcomingInvoiceTotal(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetUpcomingInvoiceTotal",
     oAuth2Scopes: [],
 

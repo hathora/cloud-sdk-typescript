@@ -93,6 +93,7 @@ export async function lobbiesV2SetLobbyState(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "SetLobbyState",
     oAuth2Scopes: [],
 

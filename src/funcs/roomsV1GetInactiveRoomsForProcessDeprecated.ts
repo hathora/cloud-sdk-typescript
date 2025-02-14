@@ -90,6 +90,7 @@ export async function roomsV1GetInactiveRoomsForProcessDeprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetInactiveRoomsForProcessDeprecated",
     oAuth2Scopes: [],
 

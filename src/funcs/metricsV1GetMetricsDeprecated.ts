@@ -93,6 +93,7 @@ export async function metricsV1GetMetricsDeprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetMetricsDeprecated",
     oAuth2Scopes: [],
 

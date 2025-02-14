@@ -84,6 +84,7 @@ export async function roomsV2ResumeRoom(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ResumeRoom",
     oAuth2Scopes: [],
 

@@ -83,6 +83,7 @@ export async function appsV1GetAppInfoV1Deprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetAppInfoV1Deprecated",
     oAuth2Scopes: [],
 

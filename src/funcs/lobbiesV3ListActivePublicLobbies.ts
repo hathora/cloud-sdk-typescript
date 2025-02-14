@@ -83,6 +83,7 @@ export async function lobbiesV3ListActivePublicLobbies(
   }));
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ListActivePublicLobbies",
     oAuth2Scopes: [],
 

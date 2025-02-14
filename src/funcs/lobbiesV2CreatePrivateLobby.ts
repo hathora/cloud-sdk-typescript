@@ -96,6 +96,7 @@ export async function lobbiesV2CreatePrivateLobby(
   );
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "CreatePrivateLobby",
     oAuth2Scopes: [],
 

@@ -84,6 +84,7 @@ export async function roomsV1GetConnectionInfoDeprecated(
   }));
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetConnectionInfoDeprecated",
     oAuth2Scopes: [],
 

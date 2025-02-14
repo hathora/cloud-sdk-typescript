@@ -122,7 +122,7 @@ run();
 
 ### [billingV1](docs/sdks/billingv1/README.md)
 
-* [getBalance](docs/sdks/billingv1/README.md#getbalance) - GetBalance
+* [~~getBalance~~](docs/sdks/billingv1/README.md#getbalance) - GetBalance :warning: **Deprecated**
 * [getUpcomingInvoiceItems](docs/sdks/billingv1/README.md#getupcominginvoiceitems) - GetUpcomingInvoiceItems
 * [getUpcomingInvoiceTotal](docs/sdks/billingv1/README.md#getupcominginvoicetotal) - GetUpcomingInvoiceTotal
 * [getPaymentMethod](docs/sdks/billingv1/README.md#getpaymentmethod) - GetPaymentMethod
@@ -588,7 +588,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`authV1LoginAnonymous`](docs/sdks/authv1/README.md#loginanonymous) - LoginAnonymous
 - [`authV1LoginGoogle`](docs/sdks/authv1/README.md#logingoogle) - LoginGoogle
 - [`authV1LoginNickname`](docs/sdks/authv1/README.md#loginnickname) - LoginNickname
-- [`billingV1GetBalance`](docs/sdks/billingv1/README.md#getbalance) - GetBalance
 - [`billingV1GetInvoices`](docs/sdks/billingv1/README.md#getinvoices) - GetInvoices
 - [`billingV1GetPaymentMethod`](docs/sdks/billingv1/README.md#getpaymentmethod) - GetPaymentMethod
 - [`billingV1GetUpcomingInvoiceItems`](docs/sdks/billingv1/README.md#getupcominginvoiceitems) - GetUpcomingInvoiceItems
@@ -647,6 +646,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - ~~[`appsV1GetAppInfoV1Deprecated`](docs/sdks/appsv1/README.md#getappinfov1deprecated)~~ - GetAppInfoV1Deprecated :warning: **Deprecated**
 - ~~[`appsV1GetAppsV1Deprecated`](docs/sdks/appsv1/README.md#getappsv1deprecated)~~ - GetAppsV1Deprecated :warning: **Deprecated**
 - ~~[`appsV1UpdateAppV1Deprecated`](docs/sdks/appsv1/README.md#updateappv1deprecated)~~ - UpdateAppV1Deprecated :warning: **Deprecated**
+- ~~[`billingV1GetBalance`](docs/sdks/billingv1/README.md#getbalance)~~ - GetBalance :warning: **Deprecated**
 - ~~[`buildsV1CreateBuildDeprecated`](docs/sdks/buildsv1/README.md#createbuilddeprecated)~~ - CreateBuildDeprecated :warning: **Deprecated**
 - ~~[`buildsV1DeleteBuildDeprecated`](docs/sdks/buildsv1/README.md#deletebuilddeprecated)~~ - DeleteBuildDeprecated :warning: **Deprecated**
 - ~~[`buildsV1GetBuildInfoDeprecated`](docs/sdks/buildsv1/README.md#getbuildinfodeprecated)~~ - GetBuildInfoDeprecated :warning: **Deprecated**

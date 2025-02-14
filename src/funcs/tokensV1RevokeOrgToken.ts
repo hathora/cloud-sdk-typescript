@@ -88,6 +88,7 @@ export async function tokensV1RevokeOrgToken(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "RevokeOrgToken",
     oAuth2Scopes: [],
 

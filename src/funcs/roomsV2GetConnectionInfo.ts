@@ -84,6 +84,7 @@ export async function roomsV2GetConnectionInfo(
   }));
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetConnectionInfo",
     oAuth2Scopes: [],
 

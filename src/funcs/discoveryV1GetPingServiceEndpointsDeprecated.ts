@@ -50,6 +50,7 @@ export async function discoveryV1GetPingServiceEndpointsDeprecated(
   }));
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetPingServiceEndpointsDeprecated",
     oAuth2Scopes: [],
 

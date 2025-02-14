@@ -89,6 +89,7 @@ export async function buildsV3DeleteBuild(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "DeleteBuild",
     oAuth2Scopes: [],
 

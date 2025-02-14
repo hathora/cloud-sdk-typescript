@@ -83,6 +83,7 @@ export async function buildsV3CreateBuild(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "CreateBuild",
     oAuth2Scopes: [],
 

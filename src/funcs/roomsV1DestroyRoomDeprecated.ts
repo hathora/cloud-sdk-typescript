@@ -87,6 +87,7 @@ export async function roomsV1DestroyRoomDeprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "DestroyRoomDeprecated",
     oAuth2Scopes: [],
 

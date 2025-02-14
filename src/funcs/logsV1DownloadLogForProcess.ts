@@ -89,6 +89,7 @@ export async function logsV1DownloadLogForProcess(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "DownloadLogForProcess",
     oAuth2Scopes: [],
 

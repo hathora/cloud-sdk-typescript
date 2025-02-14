@@ -96,6 +96,7 @@ export async function logsV1GetLogsForProcess(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetLogsForProcess",
     oAuth2Scopes: [],
 

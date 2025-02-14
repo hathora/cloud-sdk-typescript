@@ -77,6 +77,7 @@ export async function organizationsV1RejectInvite(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "RejectInvite",
     oAuth2Scopes: [],
 

@@ -54,6 +54,7 @@ export async function organizationsV1GetOrgs(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetOrgs",
     oAuth2Scopes: [],
 

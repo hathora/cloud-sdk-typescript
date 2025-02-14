@@ -87,6 +87,7 @@ export async function processesV3GetProcessMetrics(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetProcessMetrics",
     oAuth2Scopes: [],
 

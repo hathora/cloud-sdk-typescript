@@ -93,6 +93,7 @@ export async function processesV2GetProcessesCountExperimentalV2Deprecated(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "GetProcessesCountExperimentalV2Deprecated",
     oAuth2Scopes: [],
 
