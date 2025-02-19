@@ -34,7 +34,7 @@ typescript:
   enableReactQuery: false
   enumFormat: union
   flattenGlobalSecurity: true
-  flatteningOrder: body-first
+  flatteningOrder: parameters-first
   imports:
     option: openapi
     paths:
