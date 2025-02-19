@@ -23,17 +23,18 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
  * UpdateUserInvite
  */
-export async function organizationsV1UpdateUserInvite(
+export function organizationsV1UpdateUserInvite(
   client: HathoraCloudCore,
   updateUserInvite: components.UpdateUserInvite,
   orgId: string,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     boolean,
     | errors.ApiError
@@ -46,6 +47,35 @@ export async function organizationsV1UpdateUserInvite(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    updateUserInvite,
+    orgId,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  updateUserInvite: components.UpdateUserInvite,
+  orgId: string,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      boolean,
+      | errors.ApiError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const input: operations.UpdateUserInviteRequest = {
     updateUserInvite: updateUserInvite,
     orgId: orgId,
@@ -57,7 +87,7 @@ export async function organizationsV1UpdateUserInvite(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.UpdateUserInvite, { explode: true });
@@ -104,7 +134,7 @@ export async function organizationsV1UpdateUserInvite(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -115,7 +145,7 @@ export async function organizationsV1UpdateUserInvite(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -140,8 +170,8 @@ export async function organizationsV1UpdateUserInvite(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

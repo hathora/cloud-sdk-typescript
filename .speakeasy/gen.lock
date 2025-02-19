@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: a0f3015a1f27fa4899c84e0be72fb20c
+  docChecksum: 4873c45b707062dca7ef5a8720951a34
   docVersion: 0.0.1
-  speakeasyVersion: 1.492.0
-  generationVersion: 2.512.4
-  releaseVersion: 2.12.1
-  configChecksum: 5973bf2b14f723347e991967674fa08e
+  speakeasyVersion: 1.494.0
+  generationVersion: 2.515.0
+  releaseVersion: 2.13.0
+  configChecksum: ce8d41e03c55e206d40dc3e049b6f6b3
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.19.0
+    core: 3.20.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -806,6 +806,7 @@ generatedFiles:
   - src/sdk/roomsv2.ts
   - src/sdk/sdk.ts
   - src/sdk/tokensv1.ts
+  - src/types/async.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts
   - src/types/enums.ts

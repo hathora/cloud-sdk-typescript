@@ -22,6 +22,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -30,12 +31,12 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
  */
-export async function lobbiesV3ListActivePublicLobbies(
+export function lobbiesV3ListActivePublicLobbies(
   client: HathoraCloudCore,
   appId?: string | undefined,
   region?: components.Region | undefined,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     Array<components.LobbyV3>,
     | errors.ApiError
@@ -47,6 +48,35 @@ export async function lobbiesV3ListActivePublicLobbies(
     | RequestTimeoutError
     | ConnectionError
   >
+> {
+  return new APIPromise($do(
+    client,
+    appId,
+    region,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  appId?: string | undefined,
+  region?: components.Region | undefined,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      Array<components.LobbyV3>,
+      | errors.ApiError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
 > {
   const input: operations.ListActivePublicLobbiesRequest = {
     appId: appId,
@@ -60,7 +90,7 @@ export async function lobbiesV3ListActivePublicLobbies(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -106,7 +136,7 @@ export async function lobbiesV3ListActivePublicLobbies(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -117,7 +147,7 @@ export async function lobbiesV3ListActivePublicLobbies(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -142,8 +172,8 @@ export async function lobbiesV3ListActivePublicLobbies(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

@@ -22,6 +22,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -30,12 +31,12 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
  */
-export async function buildsV3RunBuild(
+export function buildsV3RunBuild(
   client: HathoraCloudCore,
   buildId: string,
   orgId?: string | undefined,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     ReadableStream<Uint8Array>,
     | errors.ApiError
@@ -49,6 +50,36 @@ export async function buildsV3RunBuild(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    buildId,
+    orgId,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  buildId: string,
+  orgId?: string | undefined,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      ReadableStream<Uint8Array>,
+      | errors.ApiError
+      | errors.ApiError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const input: operations.RunBuildRequest = {
     buildId: buildId,
     orgId: orgId,
@@ -60,7 +91,7 @@ export async function buildsV3RunBuild(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -111,7 +142,7 @@ export async function buildsV3RunBuild(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -122,7 +153,7 @@ export async function buildsV3RunBuild(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -149,8 +180,8 @@ export async function buildsV3RunBuild(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

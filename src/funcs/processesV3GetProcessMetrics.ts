@@ -22,16 +22,17 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
  * GetProcessMetrics
  */
-export async function processesV3GetProcessMetrics(
+export function processesV3GetProcessMetrics(
   client: HathoraCloudCore,
   request: operations.GetProcessMetricsRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.ProcessMetricsData,
     | errors.ApiError
@@ -45,13 +46,41 @@ export async function processesV3GetProcessMetrics(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  request: operations.GetProcessMetricsRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.ProcessMetricsData,
+      | errors.ApiError
+      | errors.ApiError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => operations.GetProcessMetricsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -111,7 +140,7 @@ export async function processesV3GetProcessMetrics(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -122,7 +151,7 @@ export async function processesV3GetProcessMetrics(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -149,8 +178,8 @@ export async function processesV3GetProcessMetrics(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

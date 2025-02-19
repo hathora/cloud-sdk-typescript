@@ -18,6 +18,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -26,10 +27,10 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
  */
-export async function discoveryV2GetPingServiceEndpoints(
+export function discoveryV2GetPingServiceEndpoints(
   client: HathoraCloudCore,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     Array<components.PingEndpoints>,
     | SDKError
@@ -40,6 +41,30 @@ export async function discoveryV2GetPingServiceEndpoints(
     | RequestTimeoutError
     | ConnectionError
   >
+> {
+  return new APIPromise($do(
+    client,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      Array<components.PingEndpoints>,
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
 > {
   const path = pathToFunc("/discovery/v2/ping")();
 
@@ -69,7 +94,7 @@ export async function discoveryV2GetPingServiceEndpoints(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -80,7 +105,7 @@ export async function discoveryV2GetPingServiceEndpoints(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -99,8 +124,8 @@ export async function discoveryV2GetPingServiceEndpoints(
     M.fail("5XX"),
   )(response);
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

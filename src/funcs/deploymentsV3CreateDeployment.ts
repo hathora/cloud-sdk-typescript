@@ -22,6 +22,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -30,12 +31,12 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
  */
-export async function deploymentsV3CreateDeployment(
+export function deploymentsV3CreateDeployment(
   client: HathoraCloudCore,
   deploymentConfigV3: components.DeploymentConfigV3,
   appId?: string | undefined,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.DeploymentV3,
     | errors.ApiError
@@ -49,6 +50,36 @@ export async function deploymentsV3CreateDeployment(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    deploymentConfigV3,
+    appId,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  deploymentConfigV3: components.DeploymentConfigV3,
+  appId?: string | undefined,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.DeploymentV3,
+      | errors.ApiError
+      | errors.ApiError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const input: operations.CreateDeploymentRequest = {
     deploymentConfigV3: deploymentConfigV3,
     appId: appId,
@@ -60,7 +91,7 @@ export async function deploymentsV3CreateDeployment(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.DeploymentConfigV3, {
@@ -111,7 +142,7 @@ export async function deploymentsV3CreateDeployment(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -122,7 +153,7 @@ export async function deploymentsV3CreateDeployment(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -149,8 +180,8 @@ export async function deploymentsV3CreateDeployment(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

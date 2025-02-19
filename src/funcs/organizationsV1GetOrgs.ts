@@ -19,6 +19,7 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -27,10 +28,10 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Returns an unsorted list of all organizations that you are a member of (an accepted membership invite). An organization is uniquely identified by an `orgId`.
  */
-export async function organizationsV1GetOrgs(
+export function organizationsV1GetOrgs(
   client: HathoraCloudCore,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.OrgsPage,
     | errors.ApiError
@@ -42,6 +43,31 @@ export async function organizationsV1GetOrgs(
     | RequestTimeoutError
     | ConnectionError
   >
+> {
+  return new APIPromise($do(
+    client,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.OrgsPage,
+      | errors.ApiError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
 > {
   const path = pathToFunc("/orgs/v1")();
 
@@ -76,7 +102,7 @@ export async function organizationsV1GetOrgs(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -87,7 +113,7 @@ export async function organizationsV1GetOrgs(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -112,8 +138,8 @@ export async function organizationsV1GetOrgs(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

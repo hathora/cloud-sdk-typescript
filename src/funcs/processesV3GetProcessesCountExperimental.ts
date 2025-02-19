@@ -22,6 +22,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -30,13 +31,13 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `status` or `region`.
  */
-export async function processesV3GetProcessesCountExperimental(
+export function processesV3GetProcessesCountExperimental(
   client: HathoraCloudCore,
   appId?: string | undefined,
   status?: Array<components.ProcessStatus> | undefined,
   region?: Array<components.Region> | undefined,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     operations.GetProcessesCountExperimentalResponseBody,
     | errors.ApiError
@@ -48,6 +49,37 @@ export async function processesV3GetProcessesCountExperimental(
     | RequestTimeoutError
     | ConnectionError
   >
+> {
+  return new APIPromise($do(
+    client,
+    appId,
+    status,
+    region,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  appId?: string | undefined,
+  status?: Array<components.ProcessStatus> | undefined,
+  region?: Array<components.Region> | undefined,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.GetProcessesCountExperimentalResponseBody,
+      | errors.ApiError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
 > {
   const input: operations.GetProcessesCountExperimentalRequest = {
     appId: appId,
@@ -64,7 +96,7 @@ export async function processesV3GetProcessesCountExperimental(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -118,7 +150,7 @@ export async function processesV3GetProcessesCountExperimental(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -129,7 +161,7 @@ export async function processesV3GetProcessesCountExperimental(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -157,8 +189,8 @@ export async function processesV3GetProcessesCountExperimental(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

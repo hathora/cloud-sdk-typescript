@@ -22,6 +22,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -30,12 +31,12 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
  */
-export async function processesV3CreateProcess(
+export function processesV3CreateProcess(
   client: HathoraCloudCore,
   region: components.Region,
   appId?: string | undefined,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.ProcessV3,
     | errors.ApiError
@@ -49,6 +50,36 @@ export async function processesV3CreateProcess(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    region,
+    appId,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  region: components.Region,
+  appId?: string | undefined,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.ProcessV3,
+      | errors.ApiError
+      | errors.ApiError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const input: operations.CreateProcessRequest = {
     region: region,
     appId: appId,
@@ -60,7 +91,7 @@ export async function processesV3CreateProcess(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -112,7 +143,7 @@ export async function processesV3CreateProcess(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -123,7 +154,7 @@ export async function processesV3CreateProcess(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -150,8 +181,8 @@ export async function processesV3CreateProcess(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

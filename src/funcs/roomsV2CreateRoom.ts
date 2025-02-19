@@ -22,6 +22,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -30,13 +31,13 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
  */
-export async function roomsV2CreateRoom(
+export function roomsV2CreateRoom(
   client: HathoraCloudCore,
   createRoomParams: components.CreateRoomParams,
   appId?: string | undefined,
   roomId?: string | undefined,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.RoomConnectionData,
     | errors.ApiError
@@ -50,6 +51,38 @@ export async function roomsV2CreateRoom(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    createRoomParams,
+    appId,
+    roomId,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  createRoomParams: components.CreateRoomParams,
+  appId?: string | undefined,
+  roomId?: string | undefined,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.RoomConnectionData,
+      | errors.ApiError
+      | errors.ApiError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const input: operations.CreateRoomRequest = {
     createRoomParams: createRoomParams,
     appId: appId,
@@ -62,7 +95,7 @@ export async function roomsV2CreateRoom(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.CreateRoomParams, { explode: true });
@@ -114,7 +147,7 @@ export async function roomsV2CreateRoom(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -125,7 +158,7 @@ export async function roomsV2CreateRoom(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -152,8 +185,8 @@ export async function roomsV2CreateRoom(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

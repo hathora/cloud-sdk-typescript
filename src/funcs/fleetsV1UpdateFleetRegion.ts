@@ -23,6 +23,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -31,14 +32,14 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
  */
-export async function fleetsV1UpdateFleetRegion(
+export function fleetsV1UpdateFleetRegion(
   client: HathoraCloudCore,
   fleetRegionConfig: components.FleetRegionConfig,
   fleetId: string,
   region: components.Region,
   orgId?: string | undefined,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     void,
     | errors.ApiError
@@ -51,6 +52,40 @@ export async function fleetsV1UpdateFleetRegion(
     | RequestTimeoutError
     | ConnectionError
   >
+> {
+  return new APIPromise($do(
+    client,
+    fleetRegionConfig,
+    fleetId,
+    region,
+    orgId,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  fleetRegionConfig: components.FleetRegionConfig,
+  fleetId: string,
+  region: components.Region,
+  orgId?: string | undefined,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      void,
+      | errors.ApiError
+      | errors.ApiError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
 > {
   const input: operations.UpdateFleetRegionRequest = {
     fleetRegionConfig: fleetRegionConfig,
@@ -65,7 +100,7 @@ export async function fleetsV1UpdateFleetRegion(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.FleetRegionConfig, { explode: true });
@@ -123,7 +158,7 @@ export async function fleetsV1UpdateFleetRegion(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -134,7 +169,7 @@ export async function fleetsV1UpdateFleetRegion(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -161,8 +196,8 @@ export async function fleetsV1UpdateFleetRegion(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

@@ -21,6 +21,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -29,12 +30,12 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Returns a unique player token using a Google-signed OIDC `idToken`.
  */
-export async function authV1LoginGoogle(
+export function authV1LoginGoogle(
   client: HathoraCloudCore,
   googleIdTokenObject: components.GoogleIdTokenObject,
   appId?: string | undefined,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.PlayerTokenObject,
     | errors.ApiError
@@ -47,6 +48,35 @@ export async function authV1LoginGoogle(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    googleIdTokenObject,
+    appId,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  googleIdTokenObject: components.GoogleIdTokenObject,
+  appId?: string | undefined,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.PlayerTokenObject,
+      | errors.ApiError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const input: operations.LoginGoogleRequest = {
     googleIdTokenObject: googleIdTokenObject,
     appId: appId,
@@ -58,7 +88,7 @@ export async function authV1LoginGoogle(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.GoogleIdTokenObject, {
@@ -102,7 +132,7 @@ export async function authV1LoginGoogle(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -113,7 +143,7 @@ export async function authV1LoginGoogle(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -138,8 +168,8 @@ export async function authV1LoginGoogle(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

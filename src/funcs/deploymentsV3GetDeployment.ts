@@ -22,6 +22,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -30,12 +31,12 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
  */
-export async function deploymentsV3GetDeployment(
+export function deploymentsV3GetDeployment(
   client: HathoraCloudCore,
   deploymentId: string,
   appId?: string | undefined,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.DeploymentV3,
     | errors.ApiError
@@ -48,6 +49,35 @@ export async function deploymentsV3GetDeployment(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    deploymentId,
+    appId,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  deploymentId: string,
+  appId?: string | undefined,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.DeploymentV3,
+      | errors.ApiError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const input: operations.GetDeploymentRequest = {
     deploymentId: deploymentId,
     appId: appId,
@@ -59,7 +89,7 @@ export async function deploymentsV3GetDeployment(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -111,7 +141,7 @@ export async function deploymentsV3GetDeployment(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -122,7 +152,7 @@ export async function deploymentsV3GetDeployment(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -147,8 +177,8 @@ export async function deploymentsV3GetDeployment(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

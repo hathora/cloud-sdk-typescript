@@ -18,6 +18,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -28,10 +29,10 @@ import { Result } from "../types/fp.js";
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
-export async function discoveryV1GetPingServiceEndpointsDeprecated(
+export function discoveryV1GetPingServiceEndpointsDeprecated(
   client: HathoraCloudCore,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     Array<components.PingEndpoints>,
     | SDKError
@@ -42,6 +43,30 @@ export async function discoveryV1GetPingServiceEndpointsDeprecated(
     | RequestTimeoutError
     | ConnectionError
   >
+> {
+  return new APIPromise($do(
+    client,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      Array<components.PingEndpoints>,
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
 > {
   const path = pathToFunc("/discovery/v1/ping")();
 
@@ -71,7 +96,7 @@ export async function discoveryV1GetPingServiceEndpointsDeprecated(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -82,7 +107,7 @@ export async function discoveryV1GetPingServiceEndpointsDeprecated(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -101,8 +126,8 @@ export async function discoveryV1GetPingServiceEndpointsDeprecated(
     M.fail("5XX"),
   )(response);
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

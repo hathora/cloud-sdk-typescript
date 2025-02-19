@@ -22,17 +22,18 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
  * InviteUser
  */
-export async function organizationsV1InviteUser(
+export function organizationsV1InviteUser(
   client: HathoraCloudCore,
   createUserInvite: components.CreateUserInvite,
   orgId: string,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.PendingOrgInvite,
     | errors.ApiError
@@ -45,6 +46,35 @@ export async function organizationsV1InviteUser(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    createUserInvite,
+    orgId,
+    options,
+  ));
+}
+
+async function $do(
+  client: HathoraCloudCore,
+  createUserInvite: components.CreateUserInvite,
+  orgId: string,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.PendingOrgInvite,
+      | errors.ApiError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const input: operations.InviteUserRequest = {
     createUserInvite: createUserInvite,
     orgId: orgId,
@@ -56,7 +86,7 @@ export async function organizationsV1InviteUser(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.CreateUserInvite, { explode: true });
@@ -103,7 +133,7 @@ export async function organizationsV1InviteUser(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -114,7 +144,7 @@ export async function organizationsV1InviteUser(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -139,8 +169,8 @@ export async function organizationsV1InviteUser(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }
