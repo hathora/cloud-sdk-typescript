@@ -34,14 +34,14 @@ export class TokensV1 extends ClientSDK {
    * Create a new organization token.
    */
   async createOrgToken(
-    createOrgToken: components.CreateOrgToken,
     orgId: string,
+    createOrgToken: components.CreateOrgToken,
     options?: RequestOptions,
   ): Promise<components.CreatedOrgToken> {
     return unwrapAsync(tokensV1CreateOrgToken(
       this,
-      createOrgToken,
       orgId,
+      createOrgToken,
       options,
     ));
   }

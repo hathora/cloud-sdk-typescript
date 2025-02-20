@@ -57,17 +57,17 @@ export class FleetsV1 extends ClientSDK {
    * Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
    */
   async updateFleetRegion(
-    fleetRegionConfig: components.FleetRegionConfig,
     fleetId: string,
     region: components.Region,
+    fleetRegionConfig: components.FleetRegionConfig,
     orgId?: string | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(fleetsV1UpdateFleetRegion(
       this,
-      fleetRegionConfig,
       fleetId,
       region,
+      fleetRegionConfig,
       orgId,
       options,
     ));

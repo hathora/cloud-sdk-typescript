@@ -158,7 +158,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "UpdateFleetRegion"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.fleetsV1.updateFleetRegion({\n    cloudMinVcpus: 511402,\n  }, \"<id>\", \"Singapore\", \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n\n}\n\nrun();"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.fleetsV1.updateFleetRegion(\"<id>\", \"Singapore\", {\n    cloudMinVcpus: 511402,\n  }, \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n\n}\n\nrun();"
   - target: $["paths"]["/fleets/v1/fleets/{fleetId}/regions/{region}/metrics"]["get"]
     update:
       "x-codeSamples":
@@ -230,13 +230,13 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "UpdateUserInvite"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.organizationsV1.updateUserInvite({\n    scopes: \"viewer\",\n    userEmail: \"noreply@hathora.dev\",\n  }, \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.organizationsV1.updateUserInvite(\"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\", {\n    scopes: \"viewer\",\n    userEmail: \"noreply@hathora.dev\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/orgs/v1/{orgId}/invites"]["put"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "InviteUser"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.organizationsV1.inviteUser({\n    userEmail: \"noreply@hathora.dev\",\n  }, \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.organizationsV1.inviteUser(\"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\", {\n    userEmail: \"noreply@hathora.dev\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/orgs/v1/{orgId}/invites/accept"]["post"]
     update:
       "x-codeSamples":
@@ -260,7 +260,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "RescindInvite"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.organizationsV1.rescindInvite({\n    userEmail: \"noreply@hathora.dev\",\n  }, \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n\n}\n\nrun();"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.organizationsV1.rescindInvite(\"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\", {\n    userEmail: \"noreply@hathora.dev\",\n  });\n\n\n}\n\nrun();"
   - target: $["paths"]["/orgs/v1/{orgId}/members"]["get"]
     update:
       "x-codeSamples":
@@ -350,7 +350,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "UpdateRoomConfig"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.roomsV2.updateRoomConfig({\n    roomConfig: \"{\\\"name\\\":\\\"my-room\\\"}\",\n  }, \"2swovpy1fnunu\", \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n\n}\n\nrun();"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  await hathoraCloud.roomsV2.updateRoomConfig(\"2swovpy1fnunu\", {\n    roomConfig: \"{\\\"name\\\":\\\"my-room\\\"}\",\n  }, \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n\n}\n\nrun();"
   - target: $["paths"]["/tokens/v1/orgs/{orgId}"]["get"]
     update:
       "x-codeSamples":
@@ -362,7 +362,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "CreateOrgToken"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.tokensV1.createOrgToken({\n    name: \"ci-token\",\n  }, \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.tokensV1.createOrgToken(\"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\", {\n    name: \"ci-token\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/tokens/v1/orgs/{orgId}/tokens/{orgTokenId}/revoke"]["post"]
     update:
       "x-codeSamples":

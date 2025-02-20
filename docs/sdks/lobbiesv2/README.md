@@ -553,9 +553,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV2.setLobbyState({
+  const result = await hathoraCloud.lobbiesV2.setLobbyState("2swovpy1fnunu", {
     state: "South Dakota",
-  }, "2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   // Handle the result
   console.log(result);
@@ -581,9 +581,9 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await lobbiesV2SetLobbyState(hathoraCloud, {
+  const res = await lobbiesV2SetLobbyState(hathoraCloud, "2swovpy1fnunu", {
     state: "South Dakota",
-  }, "2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   if (!res.ok) {
     throw res.error;

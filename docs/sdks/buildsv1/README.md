@@ -353,9 +353,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.buildsV1.runBuildDeprecated({
+  const result = await hathoraCloud.buildsV1.runBuildDeprecated(1, {
     file: await openAsBlob("example.file"),
-  }, 1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   // Handle the result
   console.log(result);
@@ -382,9 +382,9 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await buildsV1RunBuildDeprecated(hathoraCloud, {
+  const res = await buildsV1RunBuildDeprecated(hathoraCloud, 1, {
     file: await openAsBlob("example.file"),
-  }, 1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   if (!res.ok) {
     throw res.error;

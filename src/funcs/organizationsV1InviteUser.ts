@@ -30,8 +30,8 @@ import { Result } from "../types/fp.js";
  */
 export function organizationsV1InviteUser(
   client: HathoraCloudCore,
-  createUserInvite: components.CreateUserInvite,
   orgId: string,
+  createUserInvite: components.CreateUserInvite,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -48,16 +48,16 @@ export function organizationsV1InviteUser(
 > {
   return new APIPromise($do(
     client,
-    createUserInvite,
     orgId,
+    createUserInvite,
     options,
   ));
 }
 
 async function $do(
   client: HathoraCloudCore,
-  createUserInvite: components.CreateUserInvite,
   orgId: string,
+  createUserInvite: components.CreateUserInvite,
   options?: RequestOptions,
 ): Promise<
   [
@@ -76,8 +76,8 @@ async function $do(
   ]
 > {
   const input: operations.InviteUserRequest = {
-    createUserInvite: createUserInvite,
     orgId: orgId,
+    createUserInvite: createUserInvite,
   };
 
   const parsed = safeParse(
@@ -110,7 +110,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "InviteUser",
     oAuth2Scopes: [],
 

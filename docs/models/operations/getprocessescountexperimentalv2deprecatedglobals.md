@@ -5,7 +5,9 @@
 ```typescript
 import { GetProcessesCountExperimentalV2DeprecatedGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
 
-let value: GetProcessesCountExperimentalV2DeprecatedGlobals = {};
+let value: GetProcessesCountExperimentalV2DeprecatedGlobals = {
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+};
 ```
 
 ## Fields

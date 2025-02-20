@@ -592,9 +592,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  await hathoraCloud.roomsV2.updateRoomConfig({
+  await hathoraCloud.roomsV2.updateRoomConfig("2swovpy1fnunu", {
     roomConfig: "{\"name\":\"my-room\"}",
-  }, "2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
 
 }
@@ -619,9 +619,9 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await roomsV2UpdateRoomConfig(hathoraCloud, {
+  const res = await roomsV2UpdateRoomConfig(hathoraCloud, "2swovpy1fnunu", {
     roomConfig: "{\"name\":\"my-room\"}",
-  }, "2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   if (!res.ok) {
     throw res.error;

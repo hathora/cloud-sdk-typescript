@@ -5,7 +5,9 @@
 ```typescript
 import { DestroyRoomGlobals } from "@hathora/cloud-sdk-typescript/models/operations";
 
-let value: DestroyRoomGlobals = {};
+let value: DestroyRoomGlobals = {
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+};
 ```
 
 ## Fields

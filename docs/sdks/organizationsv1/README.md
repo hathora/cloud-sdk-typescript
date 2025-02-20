@@ -261,9 +261,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.organizationsV1.inviteUser({
+  const result = await hathoraCloud.organizationsV1.inviteUser("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
     userEmail: "noreply@hathora.dev",
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  });
 
   // Handle the result
   console.log(result);
@@ -289,9 +289,9 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await organizationsV1InviteUser(hathoraCloud, {
+  const res = await organizationsV1InviteUser(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
     userEmail: "noreply@hathora.dev",
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -343,10 +343,10 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.organizationsV1.updateUserInvite({
+  const result = await hathoraCloud.organizationsV1.updateUserInvite("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
     scopes: "viewer",
     userEmail: "noreply@hathora.dev",
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  });
 
   // Handle the result
   console.log(result);
@@ -372,10 +372,10 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await organizationsV1UpdateUserInvite(hathoraCloud, {
+  const res = await organizationsV1UpdateUserInvite(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
     scopes: "viewer",
     userEmail: "noreply@hathora.dev",
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -427,9 +427,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  await hathoraCloud.organizationsV1.rescindInvite({
+  await hathoraCloud.organizationsV1.rescindInvite("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
     userEmail: "noreply@hathora.dev",
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  });
 
 
 }
@@ -454,9 +454,9 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await organizationsV1RescindInvite(hathoraCloud, {
+  const res = await organizationsV1RescindInvite(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
     userEmail: "noreply@hathora.dev",
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  });
 
   if (!res.ok) {
     throw res.error;

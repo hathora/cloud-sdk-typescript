@@ -35,8 +35,8 @@ import { Result } from "../types/fp.js";
  */
 export function deploymentsV2CreateDeploymentV2Deprecated(
   client: HathoraCloudCore,
-  deploymentConfigV2: components.DeploymentConfigV2,
   buildId: number,
+  deploymentConfigV2: components.DeploymentConfigV2,
   appId?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -55,8 +55,8 @@ export function deploymentsV2CreateDeploymentV2Deprecated(
 > {
   return new APIPromise($do(
     client,
-    deploymentConfigV2,
     buildId,
+    deploymentConfigV2,
     appId,
     options,
   ));
@@ -64,8 +64,8 @@ export function deploymentsV2CreateDeploymentV2Deprecated(
 
 async function $do(
   client: HathoraCloudCore,
-  deploymentConfigV2: components.DeploymentConfigV2,
   buildId: number,
+  deploymentConfigV2: components.DeploymentConfigV2,
   appId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -86,8 +86,8 @@ async function $do(
   ]
 > {
   const input: operations.CreateDeploymentV2DeprecatedRequest = {
-    deploymentConfigV2: deploymentConfigV2,
     buildId: buildId,
+    deploymentConfigV2: deploymentConfigV2,
     appId: appId,
   };
 
@@ -132,7 +132,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "CreateDeploymentV2Deprecated",
     oAuth2Scopes: [],
 

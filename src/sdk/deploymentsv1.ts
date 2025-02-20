@@ -79,15 +79,15 @@ export class DeploymentsV1 extends ClientSDK {
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async createDeploymentV1Deprecated(
-    deploymentConfig: components.DeploymentConfig,
     buildId: number,
+    deploymentConfig: components.DeploymentConfig,
     appId?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.DeploymentV1> {
     return unwrapAsync(deploymentsV1CreateDeploymentV1Deprecated(
       this,
-      deploymentConfig,
       buildId,
+      deploymentConfig,
       appId,
       options,
     ));

@@ -104,9 +104,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.tokensV1.createOrgToken({
+  const result = await hathoraCloud.tokensV1.createOrgToken("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
     name: "ci-token",
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  });
 
   // Handle the result
   console.log(result);
@@ -132,9 +132,9 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await tokensV1CreateOrgToken(hathoraCloud, {
+  const res = await tokensV1CreateOrgToken(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
     name: "ci-token",
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  });
 
   if (!res.ok) {
     throw res.error;

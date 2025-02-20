@@ -157,15 +157,15 @@ export class RoomsV2 extends ClientSDK {
    * UpdateRoomConfig
    */
   async updateRoomConfig(
-    updateRoomConfigParams: components.UpdateRoomConfigParams,
     roomId: string,
+    updateRoomConfigParams: components.UpdateRoomConfigParams,
     appId?: string | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(roomsV2UpdateRoomConfig(
       this,
-      updateRoomConfigParams,
       roomId,
+      updateRoomConfigParams,
       appId,
       options,
     ));

@@ -62,14 +62,14 @@ export class OrganizationsV1 extends ClientSDK {
    * InviteUser
    */
   async inviteUser(
-    createUserInvite: components.CreateUserInvite,
     orgId: string,
+    createUserInvite: components.CreateUserInvite,
     options?: RequestOptions,
   ): Promise<components.PendingOrgInvite> {
     return unwrapAsync(organizationsV1InviteUser(
       this,
-      createUserInvite,
       orgId,
+      createUserInvite,
       options,
     ));
   }
@@ -78,14 +78,14 @@ export class OrganizationsV1 extends ClientSDK {
    * UpdateUserInvite
    */
   async updateUserInvite(
-    updateUserInvite: components.UpdateUserInvite,
     orgId: string,
+    updateUserInvite: components.UpdateUserInvite,
     options?: RequestOptions,
   ): Promise<boolean> {
     return unwrapAsync(organizationsV1UpdateUserInvite(
       this,
-      updateUserInvite,
       orgId,
+      updateUserInvite,
       options,
     ));
   }
@@ -94,14 +94,14 @@ export class OrganizationsV1 extends ClientSDK {
    * RescindInvite
    */
   async rescindInvite(
-    rescindUserInvite: components.RescindUserInvite,
     orgId: string,
+    rescindUserInvite: components.RescindUserInvite,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(organizationsV1RescindInvite(
       this,
-      rescindUserInvite,
       orgId,
+      rescindUserInvite,
       options,
     ));
   }

@@ -157,15 +157,15 @@ export class LobbiesV2 extends ClientSDK {
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async setLobbyState(
-    setLobbyStateParams: components.SetLobbyStateParams,
     roomId: string,
+    setLobbyStateParams: components.SetLobbyStateParams,
     appId?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.Lobby> {
     return unwrapAsync(lobbiesV2SetLobbyState(
       this,
-      setLobbyStateParams,
       roomId,
+      setLobbyStateParams,
       appId,
       options,
     ));

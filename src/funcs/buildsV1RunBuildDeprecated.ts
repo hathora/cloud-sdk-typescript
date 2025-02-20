@@ -38,8 +38,8 @@ import { isReadableStream } from "../types/streams.js";
  */
 export function buildsV1RunBuildDeprecated(
   client: HathoraCloudCore,
-  requestBody: operations.RunBuildDeprecatedRequestBody,
   buildId: number,
+  requestBody: operations.RunBuildDeprecatedRequestBody,
   appId?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -58,8 +58,8 @@ export function buildsV1RunBuildDeprecated(
 > {
   return new APIPromise($do(
     client,
-    requestBody,
     buildId,
+    requestBody,
     appId,
     options,
   ));
@@ -67,8 +67,8 @@ export function buildsV1RunBuildDeprecated(
 
 async function $do(
   client: HathoraCloudCore,
-  requestBody: operations.RunBuildDeprecatedRequestBody,
   buildId: number,
+  requestBody: operations.RunBuildDeprecatedRequestBody,
   appId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -89,8 +89,8 @@ async function $do(
   ]
 > {
   const input: operations.RunBuildDeprecatedRequest = {
-    requestBody: requestBody,
     buildId: buildId,
+    requestBody: requestBody,
     appId: appId,
   };
 
@@ -146,7 +146,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "RunBuildDeprecated",
     oAuth2Scopes: [],
 

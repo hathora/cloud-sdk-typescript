@@ -34,9 +34,9 @@ import { Result } from "../types/fp.js";
  */
 export function fleetsV1UpdateFleetRegion(
   client: HathoraCloudCore,
-  fleetRegionConfig: components.FleetRegionConfig,
   fleetId: string,
   region: components.Region,
+  fleetRegionConfig: components.FleetRegionConfig,
   orgId?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -55,9 +55,9 @@ export function fleetsV1UpdateFleetRegion(
 > {
   return new APIPromise($do(
     client,
-    fleetRegionConfig,
     fleetId,
     region,
+    fleetRegionConfig,
     orgId,
     options,
   ));
@@ -65,9 +65,9 @@ export function fleetsV1UpdateFleetRegion(
 
 async function $do(
   client: HathoraCloudCore,
-  fleetRegionConfig: components.FleetRegionConfig,
   fleetId: string,
   region: components.Region,
+  fleetRegionConfig: components.FleetRegionConfig,
   orgId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -88,9 +88,9 @@ async function $do(
   ]
 > {
   const input: operations.UpdateFleetRegionRequest = {
-    fleetRegionConfig: fleetRegionConfig,
     fleetId: fleetId,
     region: region,
+    fleetRegionConfig: fleetRegionConfig,
     orgId: orgId,
   };
 
@@ -134,7 +134,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "UpdateFleetRegion",
     oAuth2Scopes: [],
 

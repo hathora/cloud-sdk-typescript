@@ -35,8 +35,8 @@ import { Result } from "../types/fp.js";
  */
 export function lobbiesV2SetLobbyState(
   client: HathoraCloudCore,
-  setLobbyStateParams: components.SetLobbyStateParams,
   roomId: string,
+  setLobbyStateParams: components.SetLobbyStateParams,
   appId?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -54,8 +54,8 @@ export function lobbiesV2SetLobbyState(
 > {
   return new APIPromise($do(
     client,
-    setLobbyStateParams,
     roomId,
+    setLobbyStateParams,
     appId,
     options,
   ));
@@ -63,8 +63,8 @@ export function lobbiesV2SetLobbyState(
 
 async function $do(
   client: HathoraCloudCore,
-  setLobbyStateParams: components.SetLobbyStateParams,
   roomId: string,
+  setLobbyStateParams: components.SetLobbyStateParams,
   appId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -84,8 +84,8 @@ async function $do(
   ]
 > {
   const input: operations.SetLobbyStateRequest = {
-    setLobbyStateParams: setLobbyStateParams,
     roomId: roomId,
+    setLobbyStateParams: setLobbyStateParams,
     appId: appId,
   };
 
@@ -125,7 +125,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "SetLobbyState",
     oAuth2Scopes: [],
 

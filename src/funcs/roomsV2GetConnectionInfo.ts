@@ -115,7 +115,7 @@ async function $do(
   }));
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "GetConnectionInfo",
     oAuth2Scopes: [],
 

@@ -35,8 +35,8 @@ import { Result } from "../types/fp.js";
  */
 export function deploymentsV1CreateDeploymentV1Deprecated(
   client: HathoraCloudCore,
-  deploymentConfig: components.DeploymentConfig,
   buildId: number,
+  deploymentConfig: components.DeploymentConfig,
   appId?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -55,8 +55,8 @@ export function deploymentsV1CreateDeploymentV1Deprecated(
 > {
   return new APIPromise($do(
     client,
-    deploymentConfig,
     buildId,
+    deploymentConfig,
     appId,
     options,
   ));
@@ -64,8 +64,8 @@ export function deploymentsV1CreateDeploymentV1Deprecated(
 
 async function $do(
   client: HathoraCloudCore,
-  deploymentConfig: components.DeploymentConfig,
   buildId: number,
+  deploymentConfig: components.DeploymentConfig,
   appId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -86,8 +86,8 @@ async function $do(
   ]
 > {
   const input: operations.CreateDeploymentV1DeprecatedRequest = {
-    deploymentConfig: deploymentConfig,
     buildId: buildId,
+    deploymentConfig: deploymentConfig,
     appId: appId,
   };
 
@@ -130,7 +130,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "CreateDeploymentV1Deprecated",
     oAuth2Scopes: [],
 

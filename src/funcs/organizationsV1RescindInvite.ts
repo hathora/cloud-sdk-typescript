@@ -31,8 +31,8 @@ import { Result } from "../types/fp.js";
  */
 export function organizationsV1RescindInvite(
   client: HathoraCloudCore,
-  rescindUserInvite: components.RescindUserInvite,
   orgId: string,
+  rescindUserInvite: components.RescindUserInvite,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -50,16 +50,16 @@ export function organizationsV1RescindInvite(
 > {
   return new APIPromise($do(
     client,
-    rescindUserInvite,
     orgId,
+    rescindUserInvite,
     options,
   ));
 }
 
 async function $do(
   client: HathoraCloudCore,
-  rescindUserInvite: components.RescindUserInvite,
   orgId: string,
+  rescindUserInvite: components.RescindUserInvite,
   options?: RequestOptions,
 ): Promise<
   [
@@ -79,8 +79,8 @@ async function $do(
   ]
 > {
   const input: operations.RescindInviteRequest = {
-    rescindUserInvite: rescindUserInvite,
     orgId: orgId,
+    rescindUserInvite: rescindUserInvite,
   };
 
   const parsed = safeParse(
@@ -113,7 +113,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "RescindInvite",
     oAuth2Scopes: [],
 

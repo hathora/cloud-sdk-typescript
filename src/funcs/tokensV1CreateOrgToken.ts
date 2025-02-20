@@ -33,8 +33,8 @@ import { Result } from "../types/fp.js";
  */
 export function tokensV1CreateOrgToken(
   client: HathoraCloudCore,
-  createOrgToken: components.CreateOrgToken,
   orgId: string,
+  createOrgToken: components.CreateOrgToken,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -51,16 +51,16 @@ export function tokensV1CreateOrgToken(
 > {
   return new APIPromise($do(
     client,
-    createOrgToken,
     orgId,
+    createOrgToken,
     options,
   ));
 }
 
 async function $do(
   client: HathoraCloudCore,
-  createOrgToken: components.CreateOrgToken,
   orgId: string,
+  createOrgToken: components.CreateOrgToken,
   options?: RequestOptions,
 ): Promise<
   [
@@ -79,8 +79,8 @@ async function $do(
   ]
 > {
   const input: operations.CreateOrgTokenRequest = {
-    createOrgToken: createOrgToken,
     orgId: orgId,
+    createOrgToken: createOrgToken,
   };
 
   const parsed = safeParse(
@@ -113,7 +113,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "CreateOrgToken",
     oAuth2Scopes: [],
 

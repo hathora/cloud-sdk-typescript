@@ -266,7 +266,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.deploymentsV2.createDeploymentV2Deprecated({
+  const result = await hathoraCloud.deploymentsV2.createDeploymentV2Deprecated(1, {
     idleTimeoutEnabled: false,
     env: [
       {
@@ -290,7 +290,7 @@ async function run() {
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
-  }, 1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   // Handle the result
   console.log(result);
@@ -316,7 +316,7 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await deploymentsV2CreateDeploymentV2Deprecated(hathoraCloud, {
+  const res = await deploymentsV2CreateDeploymentV2Deprecated(hathoraCloud, 1, {
     idleTimeoutEnabled: false,
     env: [
       {
@@ -340,7 +340,7 @@ async function run() {
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
-  }, 1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   if (!res.ok) {
     throw res.error;

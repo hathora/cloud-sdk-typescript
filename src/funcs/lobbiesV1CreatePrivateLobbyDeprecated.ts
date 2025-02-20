@@ -135,7 +135,7 @@ async function $do(
   );
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "CreatePrivateLobbyDeprecated",
     oAuth2Scopes: [],
 

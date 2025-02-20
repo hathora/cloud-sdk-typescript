@@ -31,8 +31,8 @@ import { Result } from "../types/fp.js";
  */
 export function roomsV2UpdateRoomConfig(
   client: HathoraCloudCore,
-  updateRoomConfigParams: components.UpdateRoomConfigParams,
   roomId: string,
+  updateRoomConfigParams: components.UpdateRoomConfigParams,
   appId?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -51,8 +51,8 @@ export function roomsV2UpdateRoomConfig(
 > {
   return new APIPromise($do(
     client,
-    updateRoomConfigParams,
     roomId,
+    updateRoomConfigParams,
     appId,
     options,
   ));
@@ -60,8 +60,8 @@ export function roomsV2UpdateRoomConfig(
 
 async function $do(
   client: HathoraCloudCore,
-  updateRoomConfigParams: components.UpdateRoomConfigParams,
   roomId: string,
+  updateRoomConfigParams: components.UpdateRoomConfigParams,
   appId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -82,8 +82,8 @@ async function $do(
   ]
 > {
   const input: operations.UpdateRoomConfigRequest = {
-    updateRoomConfigParams: updateRoomConfigParams,
     roomId: roomId,
+    updateRoomConfigParams: updateRoomConfigParams,
     appId: appId,
   };
 
@@ -123,7 +123,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "UpdateRoomConfig",
     oAuth2Scopes: [],
 
