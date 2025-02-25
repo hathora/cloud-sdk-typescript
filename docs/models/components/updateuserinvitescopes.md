@@ -8,14 +8,14 @@ Scopes can only be removed or added if a user has those scopes.
 ### `components.UserRole`
 
 ```typescript
-const value: components.UserRole = "member";
+const value: components.UserRole = "viewer";
 ```
 
 ### `components.Scope[]`
 
 ```typescript
 const value: components.Scope[] = [
-  "deployments:read",
+  "fleets:read-write",
 ];
 ```
 

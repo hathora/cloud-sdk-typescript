@@ -12,15 +12,15 @@ let value: BuildWithUploadUrl = {
   regionalContainerTags: [
     {
       containerTag: "<value>",
-      region: "Frankfurt",
+      region: "Sao_Paulo",
     },
   ],
-  imageSize: 69167,
-  status: "succeeded",
-  deletedAt: new Date("2024-05-12T01:59:12.211Z"),
-  finishedAt: new Date("2025-03-02T08:57:01.759Z"),
-  startedAt: new Date("2025-08-07T13:19:14.525Z"),
-  createdAt: new Date("2025-12-05T04:07:03.604Z"),
+  imageSize: 866383,
+  status: "failed",
+  deletedAt: new Date("2025-07-26T23:03:04.026Z"),
+  finishedAt: new Date("2023-01-13T20:07:38.173Z"),
+  startedAt: new Date("2024-01-30T12:51:46.829Z"),
+  createdAt: new Date("2025-03-11T01:40:18.315Z"),
   createdBy: "noreply@hathora.dev",
   buildId: 1,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -30,7 +30,7 @@ let value: BuildWithUploadUrl = {
       key: "<key>",
     },
   ],
-  uploadUrl: "https://advanced-fort.net",
+  uploadUrl: "https://misguided-avalanche.biz/",
 };
 ```
 

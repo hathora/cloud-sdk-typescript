@@ -6,9 +6,7 @@
 import { UpdateUserInvite } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: UpdateUserInvite = {
-  scopes: [
-    "applications:read-write",
-  ],
+  scopes: "viewer",
   userEmail: "noreply@hathora.dev",
 };
 ```

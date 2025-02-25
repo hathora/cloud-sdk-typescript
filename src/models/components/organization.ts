@@ -10,17 +10,21 @@ import { Scope, Scope$inboundSchema, Scope$outboundSchema } from "./scope.js";
 
 export type Organization = {
   /**
+   * The maximum lifespan in hours of a pod.
+   */
+  podMaxLifespanHrs?: number | undefined;
+  /**
    * The features enabled for this org and user.
    */
   enabledFeatureFlags?: Array<string> | undefined;
   /**
    * The maximum memory in MB that can be used by any process in this org.
    */
-  maxRequestedMemoryMB?: number | undefined;
+  maxRequestedMemoryMB: number;
   /**
    * The scopes the user who loaded this has on this org.
    */
-  scopes?: Array<Scope> | undefined;
+  scopes: Array<Scope>;
   isSingleTenant: boolean;
   stripeCustomerId: string;
   /**
@@ -39,9 +43,10 @@ export const Organization$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  podMaxLifespanHrs: z.number().optional(),
   enabledFeatureFlags: z.array(z.string()).optional(),
-  maxRequestedMemoryMB: z.number().optional(),
-  scopes: z.array(Scope$inboundSchema).optional(),
+  maxRequestedMemoryMB: z.number(),
+  scopes: z.array(Scope$inboundSchema),
   isSingleTenant: z.boolean(),
   stripeCustomerId: z.string(),
   name: z.string().optional(),
@@ -50,9 +55,10 @@ export const Organization$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Organization$Outbound = {
+  podMaxLifespanHrs?: number | undefined;
   enabledFeatureFlags?: Array<string> | undefined;
-  maxRequestedMemoryMB?: number | undefined;
-  scopes?: Array<string> | undefined;
+  maxRequestedMemoryMB: number;
+  scopes: Array<string>;
   isSingleTenant: boolean;
   stripeCustomerId: string;
   name?: string | undefined;
@@ -65,9 +71,10 @@ export const Organization$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Organization
 > = z.object({
+  podMaxLifespanHrs: z.number().optional(),
   enabledFeatureFlags: z.array(z.string()).optional(),
-  maxRequestedMemoryMB: z.number().optional(),
-  scopes: z.array(Scope$outboundSchema).optional(),
+  maxRequestedMemoryMB: z.number(),
+  scopes: z.array(Scope$outboundSchema),
   isSingleTenant: z.boolean(),
   stripeCustomerId: z.string(),
   name: z.string().optional(),

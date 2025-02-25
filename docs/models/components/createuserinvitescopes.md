@@ -8,14 +8,14 @@ If not defined, the user has Admin access.
 ### `components.UserRole`
 
 ```typescript
-const value: components.UserRole = "member";
+const value: components.UserRole = "viewer";
 ```
 
 ### `components.Scope[]`
 
 ```typescript
 const value: components.Scope[] = [
-  "processes:read-write",
+  "applications:read-write",
 ];
 ```
 

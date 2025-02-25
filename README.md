@@ -62,6 +62,60 @@ yarn add @hathora/cloud-sdk-typescript zod
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
 ```
+
+
+
+### Model Context Protocol (MCP) Server
+
+This SDK is also an installable MCP server where the various SDK methods are
+exposed as tools that can be invoked by AI applications.
+
+> Node.js v20 or greater is required to run the MCP server.
+
+<details>
+<summary>Claude installation steps</summary>
+
+Add the following server definition to your `claude_desktop_config.json` file:
+
+```json
+{
+  "mcpServers": {
+    "HathoraCloud": {
+      "command": "npx",
+      "args": [
+        "-y", "--package", "@hathora/cloud-sdk-typescript",
+        "--",
+        "mcp", "start",
+        "--hathora-dev-token", "...",
+        "--org-id", "...",
+        "--app-id", "..."
+      ]
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>Cursor installation steps</summary>
+
+Go to `Cursor Settings > Features > MCP Servers > Add new MCP server` and use the following settings:
+
+- Name: HathoraCloud
+- Type: `command`
+- Command:
+```sh
+npx -y --package @hathora/cloud-sdk-typescript -- mcp start --hathora-dev-token ... --org-id ... --app-id ... 
+```
+
+</details>
+
+For a full list of server arguments, run:
+
+```sh
+npx -y --package @hathora/cloud-sdk-typescript -- mcp start --help
+```
 <!-- End SDK Installation [installation] -->
 
 <!-- Start SDK Example Usage [usage] -->

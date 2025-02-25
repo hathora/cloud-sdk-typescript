@@ -7,7 +7,7 @@ import { CreateProcessRequest } from "@hathora/cloud-sdk-typescript/models/opera
 
 let value: CreateProcessRequest = {
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  region: "Johannesburg",
+  region: "Frankfurt",
 };
 ```
 

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 1b344d6e4640afb0eddbf46bd29140a6
+  docChecksum: 1da7a62395f8ac8bb6a9bc887cf88d11
   docVersion: 0.0.1
-  speakeasyVersion: 1.498.1
-  generationVersion: 2.518.1
-  releaseVersion: 2.13.2
-  configChecksum: dce6b0ab8f8ee6b54ec81b5fcc3a4875
+  speakeasyVersion: 1.502.0
+  generationVersion: 2.524.1
+  releaseVersion: 2.14.0
+  configChecksum: 002b63144632aa5c76b4abac9316af84
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.20.0
+    core: 3.21.1
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -27,6 +27,7 @@ features:
     globalServerURLs: 2.82.4
     globals: 2.82.2
     groups: 2.81.2
+    mcpServer: 0.3.0
     methodSecurity: 2.82.6
     nullables: 0.1.1
     openEnums: 0.1.1
@@ -564,6 +565,125 @@ generatedFiles:
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
+  - src/mcp-server/build.mts
+  - src/mcp-server/cli.ts
+  - src/mcp-server/cli/start/command.ts
+  - src/mcp-server/cli/start/impl.ts
+  - src/mcp-server/console-logger.ts
+  - src/mcp-server/mcp-server.ts
+  - src/mcp-server/resources.ts
+  - src/mcp-server/scopes.ts
+  - src/mcp-server/server.ts
+  - src/mcp-server/shared.ts
+  - src/mcp-server/tools.ts
+  - src/mcp-server/tools/appsV1CreateAppV1Deprecated.ts
+  - src/mcp-server/tools/appsV1DeleteAppV1Deprecated.ts
+  - src/mcp-server/tools/appsV1GetAppInfoV1Deprecated.ts
+  - src/mcp-server/tools/appsV1GetAppsV1Deprecated.ts
+  - src/mcp-server/tools/appsV1UpdateAppV1Deprecated.ts
+  - src/mcp-server/tools/appsV2CreateApp.ts
+  - src/mcp-server/tools/appsV2DeleteApp.ts
+  - src/mcp-server/tools/appsV2GetApp.ts
+  - src/mcp-server/tools/appsV2GetApps.ts
+  - src/mcp-server/tools/appsV2UpdateApp.ts
+  - src/mcp-server/tools/authV1LoginAnonymous.ts
+  - src/mcp-server/tools/authV1LoginGoogle.ts
+  - src/mcp-server/tools/authV1LoginNickname.ts
+  - src/mcp-server/tools/billingV1GetBalance.ts
+  - src/mcp-server/tools/billingV1GetInvoices.ts
+  - src/mcp-server/tools/billingV1GetPaymentMethod.ts
+  - src/mcp-server/tools/billingV1GetUpcomingInvoiceItems.ts
+  - src/mcp-server/tools/billingV1GetUpcomingInvoiceTotal.ts
+  - src/mcp-server/tools/billingV1InitStripeCustomerPortalUrl.ts
+  - src/mcp-server/tools/buildsV1CreateBuildDeprecated.ts
+  - src/mcp-server/tools/buildsV1DeleteBuildDeprecated.ts
+  - src/mcp-server/tools/buildsV1GetBuildInfoDeprecated.ts
+  - src/mcp-server/tools/buildsV1GetBuildsDeprecated.ts
+  - src/mcp-server/tools/buildsV1RunBuildDeprecated.ts
+  - src/mcp-server/tools/buildsV2CreateBuildV2Deprecated.ts
+  - src/mcp-server/tools/buildsV2CreateBuildWithUploadUrlV2Deprecated.ts
+  - src/mcp-server/tools/buildsV2CreateWithMultipartUploadsV2Deprecated.ts
+  - src/mcp-server/tools/buildsV2DeleteBuildV2Deprecated.ts
+  - src/mcp-server/tools/buildsV2GetBuildInfoV2Deprecated.ts
+  - src/mcp-server/tools/buildsV2GetBuildsV2Deprecated.ts
+  - src/mcp-server/tools/buildsV2RunBuildV2Deprecated.ts
+  - src/mcp-server/tools/buildsV3CreateBuild.ts
+  - src/mcp-server/tools/buildsV3DeleteBuild.ts
+  - src/mcp-server/tools/buildsV3GetBuild.ts
+  - src/mcp-server/tools/buildsV3GetBuilds.ts
+  - src/mcp-server/tools/buildsV3RunBuild.ts
+  - src/mcp-server/tools/deploymentsV1CreateDeploymentV1Deprecated.ts
+  - src/mcp-server/tools/deploymentsV1GetDeploymentInfoV1Deprecated.ts
+  - src/mcp-server/tools/deploymentsV1GetDeploymentsV1Deprecated.ts
+  - src/mcp-server/tools/deploymentsV1GetLatestDeploymentV1Deprecated.ts
+  - src/mcp-server/tools/deploymentsV2CreateDeploymentV2Deprecated.ts
+  - src/mcp-server/tools/deploymentsV2GetDeploymentInfoV2Deprecated.ts
+  - src/mcp-server/tools/deploymentsV2GetDeploymentsV2Deprecated.ts
+  - src/mcp-server/tools/deploymentsV2GetLatestDeploymentV2Deprecated.ts
+  - src/mcp-server/tools/deploymentsV3CreateDeployment.ts
+  - src/mcp-server/tools/deploymentsV3GetDeployment.ts
+  - src/mcp-server/tools/deploymentsV3GetDeployments.ts
+  - src/mcp-server/tools/deploymentsV3GetLatestDeployment.ts
+  - src/mcp-server/tools/discoveryV1GetPingServiceEndpointsDeprecated.ts
+  - src/mcp-server/tools/discoveryV2GetPingServiceEndpoints.ts
+  - src/mcp-server/tools/fleetsV1GetFleetMetrics.ts
+  - src/mcp-server/tools/fleetsV1GetFleetRegion.ts
+  - src/mcp-server/tools/fleetsV1GetFleets.ts
+  - src/mcp-server/tools/fleetsV1UpdateFleetRegion.ts
+  - src/mcp-server/tools/lobbiesV1ListActivePublicLobbiesDeprecatedV1.ts
+  - src/mcp-server/tools/lobbiesV2GetLobbyInfo.ts
+  - src/mcp-server/tools/lobbiesV2ListActivePublicLobbiesDeprecatedV2.ts
+  - src/mcp-server/tools/lobbiesV2SetLobbyState.ts
+  - src/mcp-server/tools/lobbiesV3GetLobbyInfoByRoomId.ts
+  - src/mcp-server/tools/lobbiesV3GetLobbyInfoByShortCode.ts
+  - src/mcp-server/tools/lobbiesV3ListActivePublicLobbies.ts
+  - src/mcp-server/tools/logsV1DownloadLogForProcess.ts
+  - src/mcp-server/tools/logsV1GetLogsForProcess.ts
+  - src/mcp-server/tools/managementV1SendVerificationEmail.ts
+  - src/mcp-server/tools/metricsV1GetMetricsDeprecated.ts
+  - src/mcp-server/tools/organizationsV1AcceptInvite.ts
+  - src/mcp-server/tools/organizationsV1GetOrgMembers.ts
+  - src/mcp-server/tools/organizationsV1GetOrgPendingInvites.ts
+  - src/mcp-server/tools/organizationsV1GetOrgs.ts
+  - src/mcp-server/tools/organizationsV1GetUsageLimits.ts
+  - src/mcp-server/tools/organizationsV1GetUserPendingInvites.ts
+  - src/mcp-server/tools/organizationsV1InviteUser.ts
+  - src/mcp-server/tools/organizationsV1RejectInvite.ts
+  - src/mcp-server/tools/organizationsV1RescindInvite.ts
+  - src/mcp-server/tools/organizationsV1UpdateUserInvite.ts
+  - src/mcp-server/tools/processesV1GetProcessInfoDeprecated.ts
+  - src/mcp-server/tools/processesV1GetRunningProcesses.ts
+  - src/mcp-server/tools/processesV1GetStoppedProcesses.ts
+  - src/mcp-server/tools/processesV2CreateProcessV2Deprecated.ts
+  - src/mcp-server/tools/processesV2GetLatestProcessesV2Deprecated.ts
+  - src/mcp-server/tools/processesV2GetProcessInfoV2Deprecated.ts
+  - src/mcp-server/tools/processesV2GetProcessesCountExperimentalV2Deprecated.ts
+  - src/mcp-server/tools/processesV2StopProcessV2Deprecated.ts
+  - src/mcp-server/tools/processesV3CreateProcess.ts
+  - src/mcp-server/tools/processesV3GetLatestProcesses.ts
+  - src/mcp-server/tools/processesV3GetProcess.ts
+  - src/mcp-server/tools/processesV3GetProcessMetrics.ts
+  - src/mcp-server/tools/processesV3GetProcessesCountExperimental.ts
+  - src/mcp-server/tools/processesV3StopProcess.ts
+  - src/mcp-server/tools/roomsV1CreateRoomDeprecated.ts
+  - src/mcp-server/tools/roomsV1DestroyRoomDeprecated.ts
+  - src/mcp-server/tools/roomsV1GetActiveRoomsForProcessDeprecated.ts
+  - src/mcp-server/tools/roomsV1GetConnectionInfoDeprecated.ts
+  - src/mcp-server/tools/roomsV1GetInactiveRoomsForProcessDeprecated.ts
+  - src/mcp-server/tools/roomsV1GetRoomInfoDeprecated.ts
+  - src/mcp-server/tools/roomsV1SuspendRoomDeprecated.ts
+  - src/mcp-server/tools/roomsV2CreateRoom.ts
+  - src/mcp-server/tools/roomsV2DestroyRoom.ts
+  - src/mcp-server/tools/roomsV2GetActiveRoomsForProcess.ts
+  - src/mcp-server/tools/roomsV2GetConnectionInfo.ts
+  - src/mcp-server/tools/roomsV2GetInactiveRoomsForProcess.ts
+  - src/mcp-server/tools/roomsV2GetRoomInfo.ts
+  - src/mcp-server/tools/roomsV2ResumeRoom.ts
+  - src/mcp-server/tools/roomsV2SuspendRoomV2Deprecated.ts
+  - src/mcp-server/tools/roomsV2UpdateRoomConfig.ts
+  - src/mcp-server/tools/tokensV1CreateOrgToken.ts
+  - src/mcp-server/tools/tokensV1GetOrgTokens.ts
+  - src/mcp-server/tools/tokensV1RevokeOrgToken.ts
   - src/models/components/achpaymentmethod.ts
   - src/models/components/activeconnectioninfo.ts
   - src/models/components/appconfig.ts
