@@ -24,6 +24,7 @@ export class ProcessesV3 extends ClientSDK {
     appId?: string | undefined,
     status?: Array<components.ProcessStatus> | undefined,
     region?: Array<components.Region> | undefined,
+    before?: number | undefined,
     options?: RequestOptions,
   ): Promise<Array<components.ProcessV3>> {
     return unwrapAsync(processesV3GetLatestProcesses(
@@ -31,6 +32,7 @@ export class ProcessesV3 extends ClientSDK {
       appId,
       status,
       region,
+      before,
       options,
     ));
   }
@@ -45,6 +47,7 @@ export class ProcessesV3 extends ClientSDK {
     appId?: string | undefined,
     status?: Array<components.ProcessStatus> | undefined,
     region?: Array<components.Region> | undefined,
+    before?: number | undefined,
     options?: RequestOptions,
   ): Promise<operations.GetProcessesCountExperimentalResponseBody> {
     return unwrapAsync(processesV3GetProcessesCountExperimental(
@@ -52,6 +55,7 @@ export class ProcessesV3 extends ClientSDK {
       appId,
       status,
       region,
+      before,
       options,
     ));
   }

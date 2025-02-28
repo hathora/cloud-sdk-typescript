@@ -21,7 +21,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.14.0
+  version: 2.14.1
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -46,6 +46,7 @@ typescript:
       webhooks: models/webhooks
   inputModelSuffix: input
   installationURL: https://github.com/hathora/cloud-sdk-typescript
+  jsonpath: legacy
   maxMethodParams: 4
   methodArguments: require-security-and-request
   moduleFormat: commonjs

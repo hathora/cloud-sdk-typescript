@@ -37,6 +37,7 @@ export function processesV3GetLatestProcesses(
   appId?: string | undefined,
   status?: Array<components.ProcessStatus> | undefined,
   region?: Array<components.Region> | undefined,
+  before?: number | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -56,6 +57,7 @@ export function processesV3GetLatestProcesses(
     appId,
     status,
     region,
+    before,
     options,
   ));
 }
@@ -65,6 +67,7 @@ async function $do(
   appId?: string | undefined,
   status?: Array<components.ProcessStatus> | undefined,
   region?: Array<components.Region> | undefined,
+  before?: number | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -86,6 +89,7 @@ async function $do(
     appId: appId,
     status: status,
     region: region,
+    before: before,
   };
 
   const parsed = safeParse(
@@ -111,6 +115,7 @@ async function $do(
   );
 
   const query = encodeFormQuery({
+    "before": payload.before,
     "region": payload.region,
     "status": payload.status,
   });

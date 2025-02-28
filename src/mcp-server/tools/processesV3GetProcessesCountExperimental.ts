@@ -11,6 +11,7 @@ const args = {
   appId: z.string().optional(),
   status: z.array(components.ProcessStatus$inboundSchema).optional(),
   region: z.array(components.Region$inboundSchema).optional(),
+  before: z.number().optional(),
 };
 
 export const tool$processesV3GetProcessesCountExperimental: ToolDefinition<
@@ -27,6 +28,7 @@ Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entiti
       args.appId,
       args.status,
       args.region,
+      args.before,
       { fetchOptions: { signal: ctx.signal } },
     ).$inspect();
 

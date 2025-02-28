@@ -16,6 +16,7 @@ export type GetLatestProcessesRequest = {
   appId?: string | undefined;
   status?: Array<components.ProcessStatus> | undefined;
   region?: Array<components.Region> | undefined;
+  before?: number | undefined;
 };
 
 /** @internal */
@@ -81,6 +82,7 @@ export const GetLatestProcessesRequest$inboundSchema: z.ZodType<
   appId: z.string().optional(),
   status: z.array(components.ProcessStatus$inboundSchema).optional(),
   region: z.array(components.Region$inboundSchema).optional(),
+  before: z.number().optional(),
 });
 
 /** @internal */
@@ -88,6 +90,7 @@ export type GetLatestProcessesRequest$Outbound = {
   appId?: string | undefined;
   status?: Array<string> | undefined;
   region?: Array<string> | undefined;
+  before?: number | undefined;
 };
 
 /** @internal */
@@ -99,6 +102,7 @@ export const GetLatestProcessesRequest$outboundSchema: z.ZodType<
   appId: z.string().optional(),
   status: z.array(components.ProcessStatus$outboundSchema).optional(),
   region: z.array(components.Region$outboundSchema).optional(),
+  before: z.number().optional(),
 });
 
 /**
