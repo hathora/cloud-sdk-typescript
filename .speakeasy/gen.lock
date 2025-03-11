@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 809e95b9fc6c63586fcc02554c7670c1
+  docChecksum: aa7c3732d232a25f3101e98f1de5504e
   docVersion: 0.0.1
-  speakeasyVersion: 1.507.0
-  generationVersion: 2.533.0
-  releaseVersion: 2.14.1
-  configChecksum: a11a55efb43600a2a96a9fccc8252bb1
+  speakeasyVersion: 1.514.1
+  generationVersion: 2.546.3
+  releaseVersion: 2.15.0
+  configChecksum: 0a8a6dc9e0bfe00bbca1d7c619761da3
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -27,7 +27,7 @@ features:
     globalServerURLs: 2.82.4
     globals: 2.82.2
     groups: 2.81.2
-    mcpServer: 0.3.0
+    mcpServer: 0.6.0
     methodSecurity: 2.82.6
     nullables: 0.1.1
     openEnums: 0.1.1
@@ -570,6 +570,7 @@ generatedFiles:
   - src/mcp-server/cli/start/command.ts
   - src/mcp-server/cli/start/impl.ts
   - src/mcp-server/console-logger.ts
+  - src/mcp-server/extensions.ts
   - src/mcp-server/mcp-server.ts
   - src/mcp-server/resources.ts
   - src/mcp-server/scopes.ts
