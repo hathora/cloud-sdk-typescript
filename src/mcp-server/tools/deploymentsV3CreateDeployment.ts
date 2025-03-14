@@ -13,7 +13,7 @@ const args = {
 };
 
 export const tool$deploymentsV3CreateDeployment: ToolDefinition<typeof args> = {
-  name: "deployments-v3_create-deployment",
+  name: "deployments-v3-create-deployment",
   description: `CreateDeployment
 
 Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.`,

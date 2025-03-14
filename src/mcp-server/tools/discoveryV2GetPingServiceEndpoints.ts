@@ -6,7 +6,7 @@ import { discoveryV2GetPingServiceEndpoints } from "../../funcs/discoveryV2GetPi
 import { formatResult, ToolDefinition } from "../tools.js";
 
 export const tool$discoveryV2GetPingServiceEndpoints: ToolDefinition = {
-  name: "discovery-v2_get-ping-service-endpoints",
+  name: "discovery-v2-get-ping-service-endpoints",
   description: `GetPingServiceEndpoints
 
 Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to \`wss://<host>:<port>/ws\` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.`,

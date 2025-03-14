@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$deploymentsV3GetDeployments: ToolDefinition<typeof args> = {
-  name: "deployments-v3_get-deployments",
+  name: "deployments-v3-get-deployments",
   description: `GetDeployments
 
 Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application), optionally filtered by deploymentTag.`,

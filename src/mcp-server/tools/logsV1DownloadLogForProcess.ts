@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$logsV1DownloadLogForProcess: ToolDefinition<typeof args> = {
-  name: "logs-v1_download-log-for-process",
+  name: "logs-v1-download-log-for-process",
   description: `DownloadLogForProcess
 
 Download entire log file for a stopped process.`,

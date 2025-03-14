@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$billingV1GetBalance: ToolDefinition<typeof args> = {
-  name: "billing-v1_get-balance",
+  name: "billing-v1-get-balance",
   description: `GetBalance`,
   args,
   tool: async (client, args, ctx) => {

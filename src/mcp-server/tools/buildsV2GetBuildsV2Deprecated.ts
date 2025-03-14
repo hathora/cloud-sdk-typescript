@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$buildsV2GetBuildsV2Deprecated: ToolDefinition<typeof args> = {
-  name: "builds-v2_get-builds-v2-deprecated",
+  name: "builds-v2-get-builds-v2-deprecated",
   description: `GetBuildsV2Deprecated
 
 Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).`,

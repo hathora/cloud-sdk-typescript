@@ -13,7 +13,7 @@ const args = {
 };
 
 export const tool$authV1LoginNickname: ToolDefinition<typeof args> = {
-  name: "auth-v1_login-nickname",
+  name: "auth-v1-login-nickname",
   description: `LoginNickname
 
 Returns a unique player token with a specified nickname for a user.`,

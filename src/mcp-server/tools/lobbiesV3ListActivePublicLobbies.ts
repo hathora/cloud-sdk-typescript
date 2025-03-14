@@ -15,7 +15,7 @@ const args = {
 export const tool$lobbiesV3ListActivePublicLobbies: ToolDefinition<
   typeof args
 > = {
-  name: "lobbies-v3_list-active-public-lobbies",
+  name: "lobbies-v3-list-active-public-lobbies",
   description: `ListActivePublicLobbies
 
 Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a \`region\`. Use this endpoint to display all public lobbies that a player can join in the game client.`,

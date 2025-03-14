@@ -14,7 +14,7 @@ const args = {
 export const tool$processesV2GetProcessInfoV2Deprecated: ToolDefinition<
   typeof args
 > = {
-  name: "processes-v2_get-process-info-v2-deprecated",
+  name: "processes-v2-get-process-info-v2-deprecated",
   description: `GetProcessInfoV2Deprecated
 
 Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).`,

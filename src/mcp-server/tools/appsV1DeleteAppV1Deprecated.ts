@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$appsV1DeleteAppV1Deprecated: ToolDefinition<typeof args> = {
-  name: "apps-v1_delete-app-v1-deprecated",
+  name: "apps-v1-delete-app-v1-deprecated",
   description: `DeleteAppV1Deprecated
 
 Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using \`appId\`. Your organization will lose access to this application.`,

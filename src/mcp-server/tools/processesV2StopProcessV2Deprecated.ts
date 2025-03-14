@@ -14,7 +14,7 @@ const args = {
 export const tool$processesV2StopProcessV2Deprecated: ToolDefinition<
   typeof args
 > = {
-  name: "processes-v2_stop-process-v2-deprecated",
+  name: "processes-v2-stop-process-v2-deprecated",
   description: `StopProcessV2Deprecated
 
 Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.`,

@@ -14,7 +14,7 @@ const args = {
 export const tool$roomsV2GetInactiveRoomsForProcess: ToolDefinition<
   typeof args
 > = {
-  name: "rooms-v2_get-inactive-rooms-for-process",
+  name: "rooms-v2-get-inactive-rooms-for-process",
   description: `GetInactiveRoomsForProcess
 
 Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).`,

@@ -6,7 +6,7 @@ import { organizationsV1GetOrgs } from "../../funcs/organizationsV1GetOrgs.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 export const tool$organizationsV1GetOrgs: ToolDefinition = {
-  name: "organizations-v1_get-orgs",
+  name: "organizations-v1-get-orgs",
   description: `GetOrgs
 
 Returns an unsorted list of all organizations that you are a member of (an accepted membership invite). An organization is uniquely identified by an \`orgId\`.`,

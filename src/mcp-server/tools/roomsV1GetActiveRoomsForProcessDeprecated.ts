@@ -14,7 +14,7 @@ const args = {
 export const tool$roomsV1GetActiveRoomsForProcessDeprecated: ToolDefinition<
   typeof args
 > = {
-  name: "rooms-v1_get-active-rooms-for-process-deprecated",
+  name: "rooms-v1-get-active-rooms-for-process-deprecated",
   description: `GetActiveRoomsForProcessDeprecated`,
   args,
   tool: async (client, args, ctx) => {

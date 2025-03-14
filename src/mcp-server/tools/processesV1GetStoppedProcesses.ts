@@ -14,7 +14,7 @@ const args = {
 
 export const tool$processesV1GetStoppedProcesses: ToolDefinition<typeof args> =
   {
-    name: "processes-v1_get-stopped-processes",
+    name: "processes-v1-get-stopped-processes",
     description: `GetStoppedProcesses
 
 Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a \`region\`.`,

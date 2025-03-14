@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$processesV3GetProcessMetrics: ToolDefinition<typeof args> = {
-  name: "processes-v3_get-process-metrics",
+  name: "processes-v3-get-process-metrics",
   description: `GetProcessMetrics`,
   args,
   tool: async (client, args, ctx) => {

@@ -13,7 +13,7 @@ const args = {
 
 export const tool$roomsV2SuspendRoomV2Deprecated: ToolDefinition<typeof args> =
   {
-    name: "rooms-v2_suspend-room-v2-deprecated",
+    name: "rooms-v2-suspend-room-v2-deprecated",
     description: `SuspendRoomV2Deprecated
 
 Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same \`roomId\`.`,

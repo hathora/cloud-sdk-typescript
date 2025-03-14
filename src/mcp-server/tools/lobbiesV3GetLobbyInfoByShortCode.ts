@@ -14,7 +14,7 @@ const args = {
 export const tool$lobbiesV3GetLobbyInfoByShortCode: ToolDefinition<
   typeof args
 > = {
-  name: "lobbies-v3_get-lobby-info-by-short-code",
+  name: "lobbies-v3-get-lobby-info-by-short-code",
   description: `GetLobbyInfoByShortCode
 
 Get details for a lobby. If 2 or more lobbies have the same \`shortCode\`, then the most recently created lobby will be returned.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$buildsV3GetBuilds: ToolDefinition<typeof args> = {
-  name: "builds-v3_get-builds",
+  name: "builds-v3-get-builds",
   description: `GetBuilds
 
 Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).`,

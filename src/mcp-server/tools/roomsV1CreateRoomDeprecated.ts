@@ -14,7 +14,7 @@ const args = {
 };
 
 export const tool$roomsV1CreateRoomDeprecated: ToolDefinition<typeof args> = {
-  name: "rooms-v1_create-room-deprecated",
+  name: "rooms-v1-create-room-deprecated",
   description: `CreateRoomDeprecated`,
   args,
   tool: async (client, args, ctx) => {

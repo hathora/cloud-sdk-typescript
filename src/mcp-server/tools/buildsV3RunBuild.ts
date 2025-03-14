@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$buildsV3RunBuild: ToolDefinition<typeof args> = {
-  name: "builds-v3_run-build",
+  name: "builds-v3-run-build",
   description: `RunBuild
 
 Builds a game server artifact from a tarball you provide. Pass in the \`buildId\` generated from [\`CreateBuild()\`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).`,

@@ -8,9 +8,27 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UsageLimits = {
+  /**
+   * The number of vCPU hours used up by the organization in the current month.
+   */
   monthlyProcessVcpuHoursConsumed: number;
+  /**
+   * The maximum number of monthly process vcpu hours that can be run by the organization
+   *
+   * @remarks
+   * If undefined, the organization has no limit.
+   */
   monthlyProcessVcpuHoursLimit?: number | undefined;
+  /**
+   * The maximum number of concurrent processes that have been run by the organization in the last 7 days.
+   */
   concurrentProcessVcpus7DayMax: number;
+  /**
+   * The maximum number of concurrent processes that can be run by the organization
+   *
+   * @remarks
+   * If undefined, the organization has no limit.
+   */
   concurrentProcessVcpusLimit?: number | undefined;
 };
 

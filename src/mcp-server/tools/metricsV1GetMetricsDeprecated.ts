@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$metricsV1GetMetricsDeprecated: ToolDefinition<typeof args> = {
-  name: "metrics-v1_get-metrics-deprecated",
+  name: "metrics-v1-get-metrics-deprecated",
   description: `GetMetricsDeprecated
 
 Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using \`appId\` and \`processId\`.`,

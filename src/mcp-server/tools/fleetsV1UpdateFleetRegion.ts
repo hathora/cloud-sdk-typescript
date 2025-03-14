@@ -15,7 +15,7 @@ const args = {
 };
 
 export const tool$fleetsV1UpdateFleetRegion: ToolDefinition<typeof args> = {
-  name: "fleets-v1_update-fleet-region",
+  name: "fleets-v1-update-fleet-region",
   description: `UpdateFleetRegion
 
 Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.`,

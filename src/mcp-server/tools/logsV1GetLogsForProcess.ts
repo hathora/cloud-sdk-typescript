@@ -14,7 +14,7 @@ const args = {
 };
 
 export const tool$logsV1GetLogsForProcess: ToolDefinition<typeof args> = {
-  name: "logs-v1_get-logs-for-process",
+  name: "logs-v1-get-logs-for-process",
   description: `GetLogsForProcess
 
 Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using \`appId\` and \`processId\`.`,

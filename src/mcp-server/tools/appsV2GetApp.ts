@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$appsV2GetApp: ToolDefinition<typeof args> = {
-  name: "apps-v2_get-app",
+  name: "apps-v2-get-app",
   description: `GetApp
 
 Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using \`appId\`.`,

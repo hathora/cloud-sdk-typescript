@@ -14,7 +14,7 @@ const args = {
 };
 
 export const tool$fleetsV1GetFleetRegion: ToolDefinition<typeof args> = {
-  name: "fleets-v1_get-fleet-region",
+  name: "fleets-v1-get-fleet-region",
   description: `GetFleetRegion
 
 Gets the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.`,

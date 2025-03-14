@@ -16,7 +16,7 @@ const args = {
 export const tool$processesV2GetLatestProcessesV2Deprecated: ToolDefinition<
   typeof args
 > = {
-  name: "processes-v2_get-latest-processes-v2-deprecated",
+  name: "processes-v2-get-latest-processes-v2-deprecated",
   description: `GetLatestProcessesV2Deprecated
 
 Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a \`status\` or \`region\`.`,

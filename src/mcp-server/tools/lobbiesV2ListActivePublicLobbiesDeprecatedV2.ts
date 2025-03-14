@@ -15,7 +15,7 @@ const args = {
 export const tool$lobbiesV2ListActivePublicLobbiesDeprecatedV2: ToolDefinition<
   typeof args
 > = {
-  name: "lobbies-v2_list-active-public-lobbies-deprecated-v2",
+  name: "lobbies-v2-list-active-public-lobbies-deprecated-v2",
   description: `ListActivePublicLobbiesDeprecatedV2
 
 Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a \`region\`. Use this endpoint to display all public lobbies that a player can join in the game client.`,

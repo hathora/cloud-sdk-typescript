@@ -14,7 +14,7 @@ const args = {
 };
 
 export const tool$buildsV1RunBuildDeprecated: ToolDefinition<typeof args> = {
-  name: "builds-v1_run-build-deprecated",
+  name: "builds-v1-run-build-deprecated",
   description: `RunBuildDeprecated
 
 Builds a game server artifact from a tarball you provide. Pass in the \`buildId\` generated from [\`CreateBuild()\`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).`,

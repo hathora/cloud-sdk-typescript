@@ -13,7 +13,7 @@ const args = {
 export const tool$deploymentsV1GetDeploymentsV1Deprecated: ToolDefinition<
   typeof args
 > = {
-  name: "deployments-v1_get-deployments-v1-deprecated",
+  name: "deployments-v1-get-deployments-v1-deprecated",
   description: `GetDeploymentsV1Deprecated
 
 Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).`,

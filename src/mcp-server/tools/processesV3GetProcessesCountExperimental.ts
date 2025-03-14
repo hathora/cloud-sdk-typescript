@@ -17,7 +17,7 @@ const args = {
 export const tool$processesV3GetProcessesCountExperimental: ToolDefinition<
   typeof args
 > = {
-  name: "processes-v3_get-processes-count-experimental",
+  name: "processes-v3-get-processes-count-experimental",
   description: `GetProcessesCountExperimental
 
 Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a \`status\` or \`region\`.`,

@@ -13,7 +13,7 @@ const args = {
 };
 
 export const tool$processesV3CreateProcess: ToolDefinition<typeof args> = {
-  name: "processes-v3_create-process",
+  name: "processes-v3-create-process",
   description: `CreateProcess
 
 Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.`,

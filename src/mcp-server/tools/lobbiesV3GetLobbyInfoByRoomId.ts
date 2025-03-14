@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$lobbiesV3GetLobbyInfoByRoomId: ToolDefinition<typeof args> = {
-  name: "lobbies-v3_get-lobby-info-by-room-id",
+  name: "lobbies-v3-get-lobby-info-by-room-id",
   description: `GetLobbyInfoByRoomId
 
 Get details for a lobby.`,

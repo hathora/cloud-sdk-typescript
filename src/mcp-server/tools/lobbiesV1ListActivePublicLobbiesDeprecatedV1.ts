@@ -16,7 +16,7 @@ const args = {
 export const tool$lobbiesV1ListActivePublicLobbiesDeprecatedV1: ToolDefinition<
   typeof args
 > = {
-  name: "lobbies-v1_list-active-public-lobbies-deprecated-v1",
+  name: "lobbies-v1-list-active-public-lobbies-deprecated-v1",
   description: `ListActivePublicLobbiesDeprecatedV1`,
   args,
   tool: async (client, args, ctx) => {

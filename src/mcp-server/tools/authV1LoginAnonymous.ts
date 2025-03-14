@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$authV1LoginAnonymous: ToolDefinition<typeof args> = {
-  name: "auth-v1_login-anonymous",
+  name: "auth-v1-login-anonymous",
   description: `LoginAnonymous
 
 Returns a unique player token for an anonymous user.`,

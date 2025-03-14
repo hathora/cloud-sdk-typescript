@@ -13,7 +13,7 @@ const args = {
 export const tool$billingV1GetUpcomingInvoiceItems: ToolDefinition<
   typeof args
 > = {
-  name: "billing-v1_get-upcoming-invoice-items",
+  name: "billing-v1-get-upcoming-invoice-items",
   description: `GetUpcomingInvoiceItems`,
   args,
   tool: async (client, args, ctx) => {

@@ -13,7 +13,7 @@ const args = {
 export const tool$deploymentsV3GetLatestDeployment: ToolDefinition<
   typeof args
 > = {
-  name: "deployments-v3_get-latest-deployment",
+  name: "deployments-v3-get-latest-deployment",
   description: `GetLatestDeployment
 
 Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).`,

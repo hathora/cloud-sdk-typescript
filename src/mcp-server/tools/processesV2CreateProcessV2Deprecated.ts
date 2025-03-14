@@ -15,7 +15,7 @@ const args = {
 export const tool$processesV2CreateProcessV2Deprecated: ToolDefinition<
   typeof args
 > = {
-  name: "processes-v2_create-process-v2-deprecated",
+  name: "processes-v2-create-process-v2-deprecated",
   description: `CreateProcessV2Deprecated
 
 Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.`,

@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$buildsV3GetBuild: ToolDefinition<typeof args> = {
-  name: "builds-v3_get-build",
+  name: "builds-v3-get-build",
   description: `GetBuild
 
 Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).`,

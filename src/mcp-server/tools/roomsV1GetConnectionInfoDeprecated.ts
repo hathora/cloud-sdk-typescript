@@ -14,7 +14,7 @@ const args = {
 export const tool$roomsV1GetConnectionInfoDeprecated: ToolDefinition<
   typeof args
 > = {
-  name: "rooms-v1_get-connection-info-deprecated",
+  name: "rooms-v1-get-connection-info-deprecated",
   description: `GetConnectionInfoDeprecated`,
   args,
   tool: async (client, args, ctx) => {

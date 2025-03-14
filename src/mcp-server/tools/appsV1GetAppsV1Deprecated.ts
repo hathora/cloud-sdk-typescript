@@ -6,7 +6,7 @@ import { appsV1GetAppsV1Deprecated } from "../../funcs/appsV1GetAppsV1Deprecated
 import { formatResult, ToolDefinition } from "../tools.js";
 
 export const tool$appsV1GetAppsV1Deprecated: ToolDefinition = {
-  name: "apps-v1_get-apps-v1-deprecated",
+  name: "apps-v1-get-apps-v1-deprecated",
   description: `GetAppsV1Deprecated
 
 Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an \`appId\`.`,

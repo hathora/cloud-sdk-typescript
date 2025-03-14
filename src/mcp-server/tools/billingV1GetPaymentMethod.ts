@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$billingV1GetPaymentMethod: ToolDefinition<typeof args> = {
-  name: "billing-v1_get-payment-method",
+  name: "billing-v1-get-payment-method",
   description: `GetPaymentMethod`,
   args,
   tool: async (client, args, ctx) => {

@@ -13,7 +13,7 @@ const args = {
 };
 
 export const tool$appsV2CreateApp: ToolDefinition<typeof args> = {
-  name: "apps-v2_create-app",
+  name: "apps-v2-create-app",
   description: `CreateApp
 
 Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application).`,

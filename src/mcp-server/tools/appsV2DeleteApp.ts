@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$appsV2DeleteApp: ToolDefinition<typeof args> = {
-  name: "apps-v2_delete-app",
+  name: "apps-v2-delete-app",
   description: `DeleteApp
 
 Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using \`appId\`. Your organization will lose access to this application.`,

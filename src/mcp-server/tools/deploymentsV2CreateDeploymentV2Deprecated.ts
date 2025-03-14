@@ -16,7 +16,7 @@ const args = {
 export const tool$deploymentsV2CreateDeploymentV2Deprecated: ToolDefinition<
   typeof args
 > = {
-  name: "deployments-v2_create-deployment-v2-deprecated",
+  name: "deployments-v2-create-deployment-v2-deprecated",
   description: `CreateDeploymentV2Deprecated
 
 Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.`,

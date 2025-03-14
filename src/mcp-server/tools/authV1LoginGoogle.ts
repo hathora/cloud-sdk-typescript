@@ -13,7 +13,7 @@ const args = {
 };
 
 export const tool$authV1LoginGoogle: ToolDefinition<typeof args> = {
-  name: "auth-v1_login-google",
+  name: "auth-v1-login-google",
   description: `LoginGoogle
 
 Returns a unique player token using a Google-signed OIDC \`idToken\`.`,

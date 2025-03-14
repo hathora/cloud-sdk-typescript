@@ -14,7 +14,7 @@ const args = {
 };
 
 export const tool$roomsV2UpdateRoomConfig: ToolDefinition<typeof args> = {
-  name: "rooms-v2_update-room-config",
+  name: "rooms-v2-update-room-config",
   description: `UpdateRoomConfig`,
   args,
   tool: async (client, args, ctx) => {

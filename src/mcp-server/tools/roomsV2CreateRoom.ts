@@ -14,7 +14,7 @@ const args = {
 };
 
 export const tool$roomsV2CreateRoom: ToolDefinition<typeof args> = {
-  name: "rooms-v2_create-room",
+  name: "rooms-v2-create-room",
   description: `CreateRoom
 
 Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [\`GetConnectionInfo()\`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.`,

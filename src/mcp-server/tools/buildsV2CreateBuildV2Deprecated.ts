@@ -14,7 +14,7 @@ const args = {
 
 export const tool$buildsV2CreateBuildV2Deprecated: ToolDefinition<typeof args> =
   {
-    name: "builds-v2_create-build-v2-deprecated",
+    name: "builds-v2-create-build-v2-deprecated",
     description: `CreateBuildV2Deprecated
 
 Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a \`buildId\` that you must pass to [\`RunBuild()\`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a \`buildTag\` to associate an external version with a build.`,

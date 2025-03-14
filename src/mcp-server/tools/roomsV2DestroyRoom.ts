@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$roomsV2DestroyRoom: ToolDefinition<typeof args> = {
-  name: "rooms-v2_destroy-room",
+  name: "rooms-v2-destroy-room",
   description: `DestroyRoom
 
 Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.`,

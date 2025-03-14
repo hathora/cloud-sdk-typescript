@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$tokensV1RevokeOrgToken: ToolDefinition<typeof args> = {
-  name: "tokens-v1_revoke-org-token",
+  name: "tokens-v1-revoke-org-token",
   description: `RevokeOrgToken
 
 Revoke an organization token.`,

@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$processesV3StopProcess: ToolDefinition<typeof args> = {
-  name: "processes-v3_stop-process",
+  name: "processes-v3-stop-process",
   description: `StopProcess
 
 Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.`,

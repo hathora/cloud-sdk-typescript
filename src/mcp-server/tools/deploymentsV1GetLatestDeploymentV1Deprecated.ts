@@ -13,7 +13,7 @@ const args = {
 export const tool$deploymentsV1GetLatestDeploymentV1Deprecated: ToolDefinition<
   typeof args
 > = {
-  name: "deployments-v1_get-latest-deployment-v1-deprecated",
+  name: "deployments-v1-get-latest-deployment-v1-deprecated",
   description: `GetLatestDeploymentV1Deprecated
 
 Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).`,

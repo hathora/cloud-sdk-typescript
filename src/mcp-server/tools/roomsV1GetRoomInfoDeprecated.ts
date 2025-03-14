@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$roomsV1GetRoomInfoDeprecated: ToolDefinition<typeof args> = {
-  name: "rooms-v1_get-room-info-deprecated",
+  name: "rooms-v1-get-room-info-deprecated",
   description: `GetRoomInfoDeprecated`,
   args,
   tool: async (client, args, ctx) => {

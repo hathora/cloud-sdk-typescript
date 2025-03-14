@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$tokensV1GetOrgTokens: ToolDefinition<typeof args> = {
-  name: "tokens-v1_get-org-tokens",
+  name: "tokens-v1-get-org-tokens",
   description: `GetOrgTokens
 
 List all organization tokens for a given org.`,

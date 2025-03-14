@@ -14,7 +14,7 @@ const args = {
 };
 
 export const tool$buildsV3CreateBuild: ToolDefinition<typeof args> = {
-  name: "builds-v3_create-build",
+  name: "builds-v3-create-build",
   description: `CreateBuild
 
 Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build) with optional \`multipartUploadUrls\` that can be used to upload larger builds in parts before calling \`runBuild\`. Responds with a \`buildId\` that you must pass to [\`RunBuild()\`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a \`buildTag\` to associate an external version with a build.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$appsV1GetAppInfoV1Deprecated: ToolDefinition<typeof args> = {
-  name: "apps-v1_get-app-info-v1-deprecated",
+  name: "apps-v1-get-app-info-v1-deprecated",
   description: `GetAppInfoV1Deprecated
 
 Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using \`appId\`.`,

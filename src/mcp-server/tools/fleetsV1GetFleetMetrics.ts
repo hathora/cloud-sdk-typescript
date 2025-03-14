@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$fleetsV1GetFleetMetrics: ToolDefinition<typeof args> = {
-  name: "fleets-v1_get-fleet-metrics",
+  name: "fleets-v1-get-fleet-metrics",
   description: `GetFleetMetrics
 
 Gets metrics for a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.`,

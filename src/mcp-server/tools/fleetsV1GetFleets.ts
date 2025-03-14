@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$fleetsV1GetFleets: ToolDefinition<typeof args> = {
-  name: "fleets-v1_get-fleets",
+  name: "fleets-v1-get-fleets",
   description: `GetFleets
 
 Returns an array of [fleets](https://hathora.dev/docs/concepts/hathora-entities#fleet).`,

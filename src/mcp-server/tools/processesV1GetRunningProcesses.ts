@@ -14,7 +14,7 @@ const args = {
 
 export const tool$processesV1GetRunningProcesses: ToolDefinition<typeof args> =
   {
-    name: "processes-v1_get-running-processes",
+    name: "processes-v1-get-running-processes",
     description: `GetRunningProcesses
 
 Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a \`region\`.`,

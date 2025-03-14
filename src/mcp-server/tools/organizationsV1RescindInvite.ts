@@ -13,7 +13,7 @@ const args = {
 };
 
 export const tool$organizationsV1RescindInvite: ToolDefinition<typeof args> = {
-  name: "organizations-v1_rescind-invite",
+  name: "organizations-v1-rescind-invite",
   description: `RescindInvite`,
   args,
   tool: async (client, args, ctx) => {

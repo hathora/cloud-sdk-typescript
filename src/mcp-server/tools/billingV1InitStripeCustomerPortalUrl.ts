@@ -15,7 +15,7 @@ const args = {
 export const tool$billingV1InitStripeCustomerPortalUrl: ToolDefinition<
   typeof args
 > = {
-  name: "billing-v1_init-stripe-customer-portal-url",
+  name: "billing-v1-init-stripe-customer-portal-url",
   description: `InitStripeCustomerPortalUrl`,
   args,
   tool: async (client, args, ctx) => {

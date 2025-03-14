@@ -15,7 +15,7 @@ const args = {
 
 export const tool$processesV2GetProcessesCountExperimentalV2Deprecated:
   ToolDefinition<typeof args> = {
-    name: "processes-v2_get-processes-count-experimental-v2-deprecated",
+    name: "processes-v2-get-processes-count-experimental-v2-deprecated",
     description: `GetProcessesCountExperimentalV2Deprecated
 
 Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a \`status\` or \`region\`.`,

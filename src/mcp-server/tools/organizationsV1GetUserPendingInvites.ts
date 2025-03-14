@@ -6,7 +6,7 @@ import { organizationsV1GetUserPendingInvites } from "../../funcs/organizationsV
 import { formatResult, ToolDefinition } from "../tools.js";
 
 export const tool$organizationsV1GetUserPendingInvites: ToolDefinition = {
-  name: "organizations-v1_get-user-pending-invites",
+  name: "organizations-v1-get-user-pending-invites",
   description: `GetUserPendingInvites`,
   tool: async (client, ctx) => {
     const [result, apiCall] = await organizationsV1GetUserPendingInvites(

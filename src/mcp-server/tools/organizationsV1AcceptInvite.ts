@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$organizationsV1AcceptInvite: ToolDefinition<typeof args> = {
-  name: "organizations-v1_accept-invite",
+  name: "organizations-v1-accept-invite",
   description: `AcceptInvite`,
   args,
   tool: async (client, args, ctx) => {

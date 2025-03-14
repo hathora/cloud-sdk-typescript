@@ -13,7 +13,7 @@ const args = {
 };
 
 export const tool$tokensV1CreateOrgToken: ToolDefinition<typeof args> = {
-  name: "tokens-v1_create-org-token",
+  name: "tokens-v1-create-org-token",
   description: `CreateOrgToken
 
 Create a new organization token.`,

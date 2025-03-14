@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$roomsV2GetConnectionInfo: ToolDefinition<typeof args> = {
-  name: "rooms-v2_get-connection-info",
+  name: "rooms-v2-get-connection-info",
   description: `GetConnectionInfo
 
 Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.`,

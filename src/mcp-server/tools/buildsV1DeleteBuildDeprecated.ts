@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$buildsV1DeleteBuildDeprecated: ToolDefinition<typeof args> = {
-  name: "builds-v1_delete-build-deprecated",
+  name: "builds-v1-delete-build-deprecated",
   description: `DeleteBuildDeprecated
 
 Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$organizationsV1GetUsageLimits: ToolDefinition<typeof args> = {
-  name: "organizations-v1_get-usage-limits",
+  name: "organizations-v1-get-usage-limits",
   description: `GetUsageLimits`,
   args,
   tool: async (client, args, ctx) => {

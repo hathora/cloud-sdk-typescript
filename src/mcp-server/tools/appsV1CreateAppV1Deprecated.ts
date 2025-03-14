@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$appsV1CreateAppV1Deprecated: ToolDefinition<typeof args> = {
-  name: "apps-v1_create-app-v1-deprecated",
+  name: "apps-v1-create-app-v1-deprecated",
   description: `CreateAppV1Deprecated
 
 Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application).`,

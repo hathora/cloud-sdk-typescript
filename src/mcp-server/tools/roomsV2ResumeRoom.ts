@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$roomsV2ResumeRoom: ToolDefinition<typeof args> = {
-  name: "rooms-v2_resume-room",
+  name: "rooms-v2-resume-room",
   description: `ResumeRoom`,
   args,
   tool: async (client, args, ctx) => {

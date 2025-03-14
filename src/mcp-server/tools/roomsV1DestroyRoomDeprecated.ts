@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$roomsV1DestroyRoomDeprecated: ToolDefinition<typeof args> = {
-  name: "rooms-v1_destroy-room-deprecated",
+  name: "rooms-v1-destroy-room-deprecated",
   description: `DestroyRoomDeprecated`,
   args,
   tool: async (client, args, ctx) => {

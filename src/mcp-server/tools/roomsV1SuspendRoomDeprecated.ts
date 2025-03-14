@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$roomsV1SuspendRoomDeprecated: ToolDefinition<typeof args> = {
-  name: "rooms-v1_suspend-room-deprecated",
+  name: "rooms-v1-suspend-room-deprecated",
   description: `SuspendRoomDeprecated`,
   args,
   tool: async (client, args, ctx) => {

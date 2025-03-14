@@ -13,7 +13,7 @@ const args = {
 };
 
 export const tool$appsV1UpdateAppV1Deprecated: ToolDefinition<typeof args> = {
-  name: "apps-v1_update-app-v1-deprecated",
+  name: "apps-v1-update-app-v1-deprecated",
   description: `UpdateAppV1Deprecated
 
 Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using \`appId\`.`,

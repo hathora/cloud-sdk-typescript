@@ -14,6 +14,20 @@ export type Organization = {
    */
   podMaxLifespanHrs?: number | undefined;
   /**
+   * The maximum number of monthly process vcpu hours that can be run by the organization
+   *
+   * @remarks
+   * If undefined, the organization has no limit.
+   */
+  monthlyProcessVcpuHoursLimit?: number | undefined;
+  /**
+   * The maximum number of concurrent processes that can be run by the organization
+   *
+   * @remarks
+   * If undefined, the organization has no limit.
+   */
+  concurrentProcessVcpusLimit?: number | undefined;
+  /**
    * The features enabled for this org and user.
    */
   enabledFeatureFlags?: Array<string> | undefined;
@@ -44,6 +58,8 @@ export const Organization$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   podMaxLifespanHrs: z.number().optional(),
+  monthlyProcessVcpuHoursLimit: z.number().optional(),
+  concurrentProcessVcpusLimit: z.number().optional(),
   enabledFeatureFlags: z.array(z.string()).optional(),
   maxRequestedMemoryMB: z.number(),
   scopes: z.array(Scope$inboundSchema),
@@ -56,6 +72,8 @@ export const Organization$inboundSchema: z.ZodType<
 /** @internal */
 export type Organization$Outbound = {
   podMaxLifespanHrs?: number | undefined;
+  monthlyProcessVcpuHoursLimit?: number | undefined;
+  concurrentProcessVcpusLimit?: number | undefined;
   enabledFeatureFlags?: Array<string> | undefined;
   maxRequestedMemoryMB: number;
   scopes: Array<string>;
@@ -72,6 +90,8 @@ export const Organization$outboundSchema: z.ZodType<
   Organization
 > = z.object({
   podMaxLifespanHrs: z.number().optional(),
+  monthlyProcessVcpuHoursLimit: z.number().optional(),
+  concurrentProcessVcpusLimit: z.number().optional(),
   enabledFeatureFlags: z.array(z.string()).optional(),
   maxRequestedMemoryMB: z.number(),
   scopes: z.array(Scope$outboundSchema),

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$appsV2GetApps: ToolDefinition<typeof args> = {
-  name: "apps-v2_get-apps",
+  name: "apps-v2-get-apps",
   description: `GetApps
 
 Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an \`appId\`.`,

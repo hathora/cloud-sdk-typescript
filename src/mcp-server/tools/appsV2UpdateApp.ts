@@ -13,7 +13,7 @@ const args = {
 };
 
 export const tool$appsV2UpdateApp: ToolDefinition<typeof args> = {
-  name: "apps-v2_update-app",
+  name: "apps-v2-update-app",
   description: `UpdateApp
 
 Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using \`appId\`.`,

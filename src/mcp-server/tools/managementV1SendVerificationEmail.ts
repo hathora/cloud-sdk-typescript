@@ -13,7 +13,7 @@ const args = {
 export const tool$managementV1SendVerificationEmail: ToolDefinition<
   typeof args
 > = {
-  name: "management-v1_send-verification-email",
+  name: "management-v1-send-verification-email",
   description: `SendVerificationEmail`,
   args,
   tool: async (client, args, ctx) => {

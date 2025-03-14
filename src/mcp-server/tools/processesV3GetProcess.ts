@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$processesV3GetProcess: ToolDefinition<typeof args> = {
-  name: "processes-v3_get-process",
+  name: "processes-v3-get-process",
   description: `GetProcess
 
 Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).`,

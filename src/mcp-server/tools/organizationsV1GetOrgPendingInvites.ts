@@ -13,7 +13,7 @@ const args = {
 export const tool$organizationsV1GetOrgPendingInvites: ToolDefinition<
   typeof args
 > = {
-  name: "organizations-v1_get-org-pending-invites",
+  name: "organizations-v1-get-org-pending-invites",
   description: `GetOrgPendingInvites`,
   args,
   tool: async (client, args, ctx) => {

@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$roomsV2GetRoomInfo: ToolDefinition<typeof args> = {
-  name: "rooms-v2_get-room-info",
+  name: "rooms-v2-get-room-info",
   description: `GetRoomInfo
 
 Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).`,

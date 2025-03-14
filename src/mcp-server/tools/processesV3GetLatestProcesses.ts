@@ -15,7 +15,7 @@ const args = {
 };
 
 export const tool$processesV3GetLatestProcesses: ToolDefinition<typeof args> = {
-  name: "processes-v3_get-latest-processes",
+  name: "processes-v3-get-latest-processes",
   description: `GetLatestProcesses
 
 Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a \`status\` or \`region\`.`,
