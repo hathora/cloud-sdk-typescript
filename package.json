@@ -1,6 +1,6 @@
 {
   "name": "@hathora/cloud-sdk-typescript",
-  "version": "2.16.0",
+  "version": "2.17.0",
   "author": "Hathora",
   "bin": {
     "mcp": "bin/mcp-server.js"

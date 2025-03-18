@@ -161,7 +161,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "401", "404", "410", "429", "4XX", "500", "5XX"],
+    errorCodes: ["400", "401", "404", "408", "410", "429", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -187,7 +187,7 @@ async function $do(
     | ConnectionError
   >(
     M.stream(200, z.instanceof(ReadableStream<Uint8Array>)),
-    M.jsonErr([400, 401, 404, 410, 429], errors.ApiError$inboundSchema),
+    M.jsonErr([400, 401, 404, 408, 410, 429], errors.ApiError$inboundSchema),
     M.jsonErr(500, errors.ApiError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
