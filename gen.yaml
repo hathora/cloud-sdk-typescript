@@ -31,7 +31,7 @@ typescript:
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
-  enableMCPServer: false
+  enableMCPServer: true
   enableReactQuery: false
   enumFormat: union
   flattenGlobalSecurity: true
