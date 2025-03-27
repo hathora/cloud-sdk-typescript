@@ -21,7 +21,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.17.0
+  version: 2.18.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}

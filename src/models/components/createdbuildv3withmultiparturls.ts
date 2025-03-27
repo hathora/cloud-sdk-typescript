@@ -23,6 +23,10 @@ import {
  */
 export type CreatedBuildV3WithMultipartUrls = {
   /**
+   * When the build expired
+   */
+  expiredAt?: Date | undefined;
+  /**
    * Url to view details, like build logs, of the build.
    */
   shareUrl?: string | undefined;
@@ -72,6 +76,8 @@ export const CreatedBuildV3WithMultipartUrls$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  expiredAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
   shareUrl: z.string().optional(),
   contentHash: z.string().optional(),
   buildTag: z.string().optional(),
@@ -97,6 +103,7 @@ export const CreatedBuildV3WithMultipartUrls$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreatedBuildV3WithMultipartUrls$Outbound = {
+  expiredAt?: string | undefined;
   shareUrl?: string | undefined;
   contentHash?: string | undefined;
   buildTag?: string | undefined;
@@ -120,6 +127,7 @@ export const CreatedBuildV3WithMultipartUrls$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreatedBuildV3WithMultipartUrls
 > = z.object({
+  expiredAt: z.date().transform(v => v.toISOString()).optional(),
   shareUrl: z.string().optional(),
   contentHash: z.string().optional(),
   buildTag: z.string().optional(),

@@ -32,6 +32,10 @@ export type BuildWithMultipartUrlsRegionalContainerTags = {
  * A build represents a game server artifact and its associated metadata.
  */
 export type BuildWithMultipartUrls = {
+  /**
+   * When the build expired
+   */
+  expiredAt?: Date | undefined;
   buildTag?: string | null | undefined;
   /**
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -148,6 +152,8 @@ export const BuildWithMultipartUrls$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  expiredAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
   buildTag: z.nullable(z.string()).optional(),
   regionalContainerTags: z.array(
     z.lazy(() => BuildWithMultipartUrlsRegionalContainerTags$inboundSchema),
@@ -174,6 +180,7 @@ export const BuildWithMultipartUrls$inboundSchema: z.ZodType<
 
 /** @internal */
 export type BuildWithMultipartUrls$Outbound = {
+  expiredAt?: string | undefined;
   buildTag?: string | null | undefined;
   regionalContainerTags: Array<
     BuildWithMultipartUrlsRegionalContainerTags$Outbound
@@ -198,6 +205,7 @@ export const BuildWithMultipartUrls$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BuildWithMultipartUrls
 > = z.object({
+  expiredAt: z.date().transform(v => v.toISOString()).optional(),
   buildTag: z.nullable(z.string()).optional(),
   regionalContainerTags: z.array(
     z.lazy(() => BuildWithMultipartUrlsRegionalContainerTags$outboundSchema),

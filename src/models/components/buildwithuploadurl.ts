@@ -31,6 +31,10 @@ export type UploadBodyParams = {
  * A build represents a game server artifact and its associated metadata.
  */
 export type BuildWithUploadUrl = {
+  /**
+   * When the build expired
+   */
+  expiredAt?: Date | undefined;
   buildTag?: string | null | undefined;
   /**
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -201,6 +205,8 @@ export const BuildWithUploadUrl$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  expiredAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
   buildTag: z.nullable(z.string()).optional(),
   regionalContainerTags: z.array(
     z.lazy(() => BuildWithUploadUrlRegionalContainerTags$inboundSchema),
@@ -226,6 +232,7 @@ export const BuildWithUploadUrl$inboundSchema: z.ZodType<
 
 /** @internal */
 export type BuildWithUploadUrl$Outbound = {
+  expiredAt?: string | undefined;
   buildTag?: string | null | undefined;
   regionalContainerTags: Array<
     BuildWithUploadUrlRegionalContainerTags$Outbound
@@ -249,6 +256,7 @@ export const BuildWithUploadUrl$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BuildWithUploadUrl
 > = z.object({
+  expiredAt: z.date().transform(v => v.toISOString()).optional(),
   buildTag: z.nullable(z.string()).optional(),
   regionalContainerTags: z.array(
     z.lazy(() => BuildWithUploadUrlRegionalContainerTags$outboundSchema),

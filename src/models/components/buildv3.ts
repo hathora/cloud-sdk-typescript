@@ -17,6 +17,10 @@ import {
  */
 export type BuildV3 = {
   /**
+   * When the build expired
+   */
+  expiredAt?: Date | undefined;
+  /**
    * Url to view details, like build logs, of the build.
    */
   shareUrl?: string | undefined;
@@ -60,6 +64,8 @@ export type BuildV3 = {
 /** @internal */
 export const BuildV3$inboundSchema: z.ZodType<BuildV3, z.ZodTypeDef, unknown> =
   z.object({
+    expiredAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
     shareUrl: z.string().optional(),
     contentHash: z.string().optional(),
     buildTag: z.string().optional(),
@@ -84,6 +90,7 @@ export const BuildV3$inboundSchema: z.ZodType<BuildV3, z.ZodTypeDef, unknown> =
 
 /** @internal */
 export type BuildV3$Outbound = {
+  expiredAt?: string | undefined;
   shareUrl?: string | undefined;
   contentHash?: string | undefined;
   buildTag?: string | undefined;
@@ -104,6 +111,7 @@ export const BuildV3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BuildV3
 > = z.object({
+  expiredAt: z.date().transform(v => v.toISOString()).optional(),
   shareUrl: z.string().optional(),
   contentHash: z.string().optional(),
   buildTag: z.string().optional(),
