@@ -12,15 +12,15 @@ let value: BuildWithUploadUrl = {
   regionalContainerTags: [
     {
       containerTag: "<value>",
-      region: "Sao_Paulo",
+      region: "Johannesburg",
     },
   ],
-  imageSize: 866383,
+  imageSize: 975522,
   status: "failed",
-  deletedAt: new Date("2025-07-26T23:03:04.026Z"),
-  finishedAt: new Date("2023-01-13T20:07:38.173Z"),
-  startedAt: new Date("2024-01-30T12:51:46.829Z"),
-  createdAt: new Date("2025-03-11T01:40:18.315Z"),
+  deletedAt: new Date("2023-01-13T20:07:38.173Z"),
+  finishedAt: new Date("2024-01-30T12:51:46.829Z"),
+  startedAt: new Date("2025-03-11T01:40:18.315Z"),
+  createdAt: new Date("2023-07-08T02:32:49.310Z"),
   createdBy: "noreply@hathora.dev",
   buildId: 1,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -30,7 +30,7 @@ let value: BuildWithUploadUrl = {
       key: "<key>",
     },
   ],
-  uploadUrl: "https://misguided-avalanche.biz/",
+  uploadUrl: "https://awful-councilman.com",
 };
 ```
 

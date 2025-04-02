@@ -7,7 +7,7 @@ import { InitStripeCustomerPortalUrlRequest } from "@hathora/cloud-sdk-typescrip
 
 let value: InitStripeCustomerPortalUrlRequest = {
   customerPortalUrl: {
-    returnUrl: "https://hungry-conservative.net/",
+    returnUrl: "https://delirious-scorpion.com/",
   },
 };
 ```

@@ -13,6 +13,11 @@ import {
   ExposedPort$outboundSchema,
 } from "./exposedport.js";
 import {
+  Hosting,
+  Hosting$inboundSchema,
+  Hosting$outboundSchema,
+} from "./hosting.js";
+import {
   ProcessStatus,
   ProcessStatus$inboundSchema,
   ProcessStatus$outboundSchema,
@@ -42,6 +47,7 @@ export type ProcessV3ExposedPort = {
 };
 
 export type ProcessV3 = {
+  hosting?: Hosting | undefined;
   status: ProcessStatus;
   /**
    * Tracks the number of rooms that have been allocated to the process.
@@ -153,6 +159,7 @@ export const ProcessV3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  hosting: Hosting$inboundSchema.optional(),
   status: ProcessStatus$inboundSchema,
   roomsAllocated: z.number().int(),
   terminatedAt: z.nullable(
@@ -176,6 +183,7 @@ export const ProcessV3$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ProcessV3$Outbound = {
+  hosting?: string | undefined;
   status: string;
   roomsAllocated: number;
   terminatedAt: string | null;
@@ -197,6 +205,7 @@ export const ProcessV3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ProcessV3
 > = z.object({
+  hosting: Hosting$outboundSchema.optional(),
   status: ProcessStatus$outboundSchema,
   roomsAllocated: z.number().int(),
   terminatedAt: z.nullable(z.date().transform(v => v.toISOString())),

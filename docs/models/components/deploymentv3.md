@@ -27,7 +27,7 @@ let value: DeploymentV3 = {
     port: 8000,
     name: "default",
   },
-  createdAt: new Date("2025-12-30T17:40:17.979Z"),
+  createdAt: new Date("2023-06-13T19:05:17.540Z"),
   createdBy: "noreply@hathora.dev",
   experimentalRequestedGPU: 1,
   requestedMemoryMB: 1024,

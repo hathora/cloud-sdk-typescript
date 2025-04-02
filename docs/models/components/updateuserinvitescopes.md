@@ -15,7 +15,7 @@ const value: components.UserRole = "viewer";
 
 ```typescript
 const value: components.Scope[] = [
-  "fleets:read-write",
+  "deployments:read-write",
 ];
 ```
 

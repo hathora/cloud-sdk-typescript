@@ -118,7 +118,7 @@ async function $do(
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "ListActivePublicLobbiesDeprecatedV2",
-    oAuth2Scopes: null,
+    oAuth2Scopes: [],
 
     resolvedSecurity: null,
 

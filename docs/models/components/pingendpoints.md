@@ -6,9 +6,9 @@
 import { PingEndpoints } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: PingEndpoints = {
-  port: 2900.77,
-  host: "polished-horde.com",
-  region: "London",
+  port: 6180.16,
+  host: "interesting-chairperson.biz",
+  region: "Singapore",
 };
 ```
 

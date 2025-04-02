@@ -24,7 +24,7 @@ let value: CreateDeploymentRequest = {
         name: "default",
       },
     ],
-    transportType: "tcp",
+    transportType: "udp",
     containerPort: 4000,
     experimentalRequestedGPU: 1,
     requestedMemoryMB: 1024,

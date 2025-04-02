@@ -6,8 +6,10 @@
 import { PendingOrgInvite } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: PendingOrgInvite = {
-  scopes: "member",
-  createdAt: new Date("2023-01-23T00:54:32.021Z"),
+  scopes: [
+    "billing:read-write",
+  ],
+  createdAt: new Date("2025-06-27T12:26:18.703Z"),
   invitedBy: "noreply@hathora.dev",
   userEmail: "noreply@hathora.dev",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",

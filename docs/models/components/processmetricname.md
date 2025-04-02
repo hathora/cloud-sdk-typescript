@@ -7,7 +7,7 @@ Available metrics to query over time.
 ```typescript
 import { ProcessMetricName } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: ProcessMetricName = "memory";
+let value: ProcessMetricName = "rateEgress";
 ```
 
 ## Values

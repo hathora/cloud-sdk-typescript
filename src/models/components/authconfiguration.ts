@@ -7,11 +7,11 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  RecordStringNever,
-  RecordStringNever$inboundSchema,
-  RecordStringNever$Outbound,
-  RecordStringNever$outboundSchema,
-} from "./recordstringnever.js";
+  DeletedBuild,
+  DeletedBuild$inboundSchema,
+  DeletedBuild$Outbound,
+  DeletedBuild$outboundSchema,
+} from "./deletedbuild.js";
 
 /**
  * Enable google auth for your application.
@@ -34,11 +34,11 @@ export type AuthConfiguration = {
   /**
    * Construct a type with a set of properties K of type T
    */
-  nickname?: RecordStringNever | undefined;
+  nickname?: DeletedBuild | undefined;
   /**
    * Construct a type with a set of properties K of type T
    */
-  anonymous?: RecordStringNever | undefined;
+  anonymous?: DeletedBuild | undefined;
 };
 
 /** @internal */
@@ -95,15 +95,15 @@ export const AuthConfiguration$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   google: z.lazy(() => Google$inboundSchema).optional(),
-  nickname: RecordStringNever$inboundSchema.optional(),
-  anonymous: RecordStringNever$inboundSchema.optional(),
+  nickname: DeletedBuild$inboundSchema.optional(),
+  anonymous: DeletedBuild$inboundSchema.optional(),
 });
 
 /** @internal */
 export type AuthConfiguration$Outbound = {
   google?: Google$Outbound | undefined;
-  nickname?: RecordStringNever$Outbound | undefined;
-  anonymous?: RecordStringNever$Outbound | undefined;
+  nickname?: DeletedBuild$Outbound | undefined;
+  anonymous?: DeletedBuild$Outbound | undefined;
 };
 
 /** @internal */
@@ -113,8 +113,8 @@ export const AuthConfiguration$outboundSchema: z.ZodType<
   AuthConfiguration
 > = z.object({
   google: z.lazy(() => Google$outboundSchema).optional(),
-  nickname: RecordStringNever$outboundSchema.optional(),
-  anonymous: RecordStringNever$outboundSchema.optional(),
+  nickname: DeletedBuild$outboundSchema.optional(),
+  anonymous: DeletedBuild$outboundSchema.optional(),
 });
 
 /**

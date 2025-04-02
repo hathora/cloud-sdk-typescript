@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: bbeebbda94ea7786222f39d3859f81eb
+  docChecksum: 7262f9847edb8033a23086747d5580b0
   docVersion: 0.0.1
-  speakeasyVersion: 1.524.0
-  generationVersion: 2.562.2
-  releaseVersion: 2.18.0
-  configChecksum: d2e15063cd2c987038c186dcf835a395
+  speakeasyVersion: 1.527.1
+  generationVersion: 2.564.5
+  releaseVersion: 2.18.1
+  configChecksum: 89b87a51d786ae3974c73d7ba5264d7a
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -110,6 +110,7 @@ generatedFiles:
   - docs/models/components/fleetspage.md
   - docs/models/components/google.md
   - docs/models/components/googleidtokenobject.md
+  - docs/models/components/hosting.md
   - docs/models/components/invoice.md
   - docs/models/components/invoiceitem.md
   - docs/models/components/invoiceitempage.md
@@ -147,7 +148,6 @@ generatedFiles:
   - docs/models/components/processv3exposedport.md
   - docs/models/components/processwithrooms.md
   - docs/models/components/processwithroomsexposedport.md
-  - docs/models/components/recordstringnever.md
   - docs/models/components/region.md
   - docs/models/components/regionalcontainertags.md
   - docs/models/components/rescinduserinvite.md
@@ -734,6 +734,7 @@ generatedFiles:
   - src/models/components/fleetregionconfig.ts
   - src/models/components/fleetspage.ts
   - src/models/components/googleidtokenobject.ts
+  - src/models/components/hosting.ts
   - src/models/components/index.ts
   - src/models/components/invoice.ts
   - src/models/components/invoiceitem.ts
@@ -765,7 +766,6 @@ generatedFiles:
   - src/models/components/processv2.ts
   - src/models/components/processv3.ts
   - src/models/components/processwithrooms.ts
-  - src/models/components/recordstringnever.ts
   - src/models/components/region.ts
   - src/models/components/rescinduserinvite.ts
   - src/models/components/room.ts

@@ -5,7 +5,7 @@
 ```typescript
 import { CardBrand } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: CardBrand = "cartes_bancaires";
+let value: CardBrand = "discover";
 ```
 
 ## Values

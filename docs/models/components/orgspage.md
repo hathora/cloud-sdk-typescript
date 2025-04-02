@@ -8,9 +8,9 @@ import { OrgsPage } from "@hathora/cloud-sdk-typescript/models/components";
 let value: OrgsPage = {
   orgs: [
     {
-      maxRequestedMemoryMB: 5232.48,
+      maxRequestedMemoryMB: 939.4,
       scopes: [
-        "builds:read",
+        "processes:read-write",
       ],
       isSingleTenant: false,
       stripeCustomerId: "<id>",

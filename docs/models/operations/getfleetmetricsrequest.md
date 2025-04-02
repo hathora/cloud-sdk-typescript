@@ -7,7 +7,7 @@ import { GetFleetMetricsRequest } from "@hathora/cloud-sdk-typescript/models/ope
 
 let value: GetFleetMetricsRequest = {
   fleetId: "<id>",
-  region: "Johannesburg",
+  region: "Sao_Paulo",
 };
 ```
 

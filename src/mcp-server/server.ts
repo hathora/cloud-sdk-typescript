@@ -134,7 +134,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "HathoraCloud",
-    version: "2.18.0",
+    version: "2.18.1",
   });
 
   const client = new HathoraCloudCore({

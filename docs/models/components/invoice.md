@@ -6,12 +6,12 @@
 import { Invoice } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: Invoice = {
-  status: "paid",
-  amountDue: 8638.56,
-  pdfUrl: "https://minor-ceramics.net/",
-  dueDate: new Date("2024-03-10T01:57:15.921Z"),
-  year: 5654.21,
-  month: 1832.8,
+  status: "overdue",
+  amountDue: 1175.31,
+  pdfUrl: "https://complete-provision.info",
+  dueDate: new Date("2024-09-11T16:50:31.874Z"),
+  year: 1832.8,
+  month: 1448.47,
   id: "<id>",
 };
 ```

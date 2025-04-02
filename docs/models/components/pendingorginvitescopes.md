@@ -6,14 +6,14 @@
 ### `components.UserRole`
 
 ```typescript
-const value: components.UserRole = "viewer";
+const value: components.UserRole = "admin";
 ```
 
 ### `components.Scope[]`
 
 ```typescript
 const value: components.Scope[] = [
-  "deployments:read-write",
+  "builds:read-write",
 ];
 ```
 
