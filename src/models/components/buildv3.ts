@@ -26,7 +26,7 @@ export type BuildV3 = {
   shareUrl?: string | undefined;
   contentHash?: string | undefined;
   /**
-   * Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
+   * Tag to associate an external version with a build. It is accessible via [`GetBuild()`](https://hathora.dev/api#tag/BuildsV3/operation/GetBuild).
    */
   buildTag?: string | undefined;
   /**
