@@ -7,9 +7,9 @@ import { UpdateFleetRegionRequest } from "@hathora/cloud-sdk-typescript/models/o
 
 let value: UpdateFleetRegionRequest = {
   fleetId: "<id>",
-  region: "Singapore",
+  region: "Tokyo",
   fleetRegionConfig: {
-    cloudMinVcpus: 860552,
+    cloudMinVcpus: 385222,
   },
 };
 ```

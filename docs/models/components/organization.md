@@ -6,9 +6,9 @@
 import { Organization } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: Organization = {
-  maxRequestedMemoryMB: 9292.97,
+  maxRequestedMemoryMB: 8765.27,
   scopes: [
-    "deployments:read-write",
+    "builds:read-write",
   ],
   isSingleTenant: false,
   stripeCustomerId: "<id>",

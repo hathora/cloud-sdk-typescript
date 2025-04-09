@@ -7,7 +7,7 @@ import { BuildWithUploadUrlRegionalContainerTags } from "@hathora/cloud-sdk-type
 
 let value: BuildWithUploadUrlRegionalContainerTags = {
   containerTag: "<value>",
-  region: "Sao_Paulo",
+  region: "Seattle",
 };
 ```
 

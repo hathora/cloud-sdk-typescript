@@ -20,8 +20,8 @@ const value: components.StartingConnectionInfo = {
 const value: components.ActiveConnectionInfo = {
   status: "active",
   transportType: "tcp",
-  port: 6399.21,
-  host: "corrupt-unblinking.name",
+  port: 3963.08,
+  host: "unwieldy-discourse.com",
   roomId: "2swovpy1fnunu",
 };
 ```

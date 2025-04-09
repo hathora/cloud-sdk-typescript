@@ -5,7 +5,7 @@
 ```typescript
 import { Hosting } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: Hosting = "shared";
+let value: Hosting = "cloud";
 ```
 
 ## Values

@@ -11,7 +11,7 @@ let value: CreateLobbyDeprecatedRequest = {
   createLobbyParams: {
     visibility: "private",
     initialConfig: "<value>",
-    region: "Sydney",
+    region: "Mumbai",
   },
 };
 ```

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: d3da5e5be9a629a2aefa58cb328f8ac5
+  docChecksum: 2c90156aaf74783c9422552eb6ddbc45
   docVersion: 0.0.1
-  speakeasyVersion: 1.528.1
-  generationVersion: 2.565.1
-  releaseVersion: 2.18.2
-  configChecksum: 8ff02610c79526b2f465e5ebb1f49416
+  speakeasyVersion: 1.531.0
+  generationVersion: 2.568.2
+  releaseVersion: 2.18.3
+  configChecksum: a220b1979faf3e55ff1ec1f2c007bb2c
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.21.4
+    core: 3.21.5
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -27,7 +27,7 @@ features:
     globalServerURLs: 2.82.4
     globals: 2.82.2
     groups: 2.81.2
-    mcpServer: 0.9.0
+    mcpServer: 0.9.1
     methodSecurity: 2.82.6
     nullables: 0.1.1
     openEnums: 0.1.1
@@ -2302,5 +2302,5 @@ examples:
           application/json: {"message": "<value>"}
         "500":
           application/json: {"message": "<value>"}
-examplesVersion: 1.0.0
+examplesVersion: 1.0.1
 generatedTests: {}

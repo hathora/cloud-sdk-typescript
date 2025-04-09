@@ -9,7 +9,7 @@ If not defined, the token has Admin access.
 
 ```typescript
 const value: components.Scope[] = [
-  "applications:read",
+  "billing:read-write",
 ];
 ```
 

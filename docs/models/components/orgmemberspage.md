@@ -9,10 +9,10 @@ let value: OrgMembersPage = {
   members: [
     {
       scopes: [
-        "deployments:read-write",
+        "applications:read-write",
       ],
-      joinedAt: new Date("2025-03-16T18:32:36.809Z"),
-      createdAt: new Date("2025-11-20T13:24:26.967Z"),
+      joinedAt: new Date("2023-06-04T06:22:29.142Z"),
+      createdAt: new Date("2025-02-26T05:29:29.873Z"),
       invitedBy: "noreply@hathora.dev",
       userEmail: "noreply@hathora.dev",
       orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",

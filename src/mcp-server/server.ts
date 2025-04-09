@@ -11,7 +11,7 @@ import {
   createRegisterResource,
   createRegisterResourceTemplate,
 } from "./resources.js";
-import { MCPScope, mcpScopes } from "./scopes.js";
+import { MCPScope } from "./scopes.js";
 import { createRegisterTool } from "./tools.js";
 import { tool$appsV1CreateAppV1Deprecated } from "./tools/appsV1CreateAppV1Deprecated.js";
 import { tool$appsV1DeleteAppV1Deprecated } from "./tools/appsV1DeleteAppV1Deprecated.js";
@@ -134,7 +134,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "HathoraCloud",
-    version: "2.18.2",
+    version: "2.18.3",
   });
 
   const client = new HathoraCloudCore({
@@ -145,7 +145,7 @@ export function createMCPServer(deps: {
     serverIdx: deps.serverIdx,
   });
 
-  const scopes = new Set(deps.scopes ?? mcpScopes);
+  const scopes = new Set(deps.scopes);
 
   const allowedTools = deps.allowedTools && new Set(deps.allowedTools);
   const tool = createRegisterTool(

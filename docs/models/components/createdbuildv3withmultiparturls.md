@@ -9,21 +9,21 @@ import { CreatedBuildV3WithMultipartUrls } from "@hathora/cloud-sdk-typescript/m
 
 let value: CreatedBuildV3WithMultipartUrls = {
   buildTag: "0.1.14-14c793",
-  imageSize: 990339,
-  status: "created",
-  deletedAt: new Date("2024-12-27T17:36:32.596Z"),
-  finishedAt: new Date("2023-10-16T14:25:54.471Z"),
-  startedAt: new Date("2023-01-23T15:12:14.003Z"),
-  createdAt: new Date("2025-04-11T04:23:31.598Z"),
+  imageSize: 941796,
+  status: "succeeded",
+  deletedAt: new Date("2024-04-17T20:53:49.774Z"),
+  finishedAt: new Date("2025-09-12T03:20:03.065Z"),
+  startedAt: new Date("2023-01-22T19:56:04.110Z"),
+  createdAt: new Date("2024-03-08T09:24:31.099Z"),
   createdBy: "noreply@hathora.dev",
   buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  completeUploadPostRequestUrl: "https://ideal-mortise.net/",
-  maxChunkSize: 6289.82,
+  completeUploadPostRequestUrl: "https://inconsequential-hornet.com",
+  maxChunkSize: 6905.53,
   uploadParts: [
     {
-      putRequestUrl: "https://firsthand-section.biz",
-      partNumber: 9527.92,
+      putRequestUrl: "https://diligent-morbidity.com",
+      partNumber: 2921.76,
     },
   ],
 };

@@ -5,7 +5,7 @@
 ```typescript
 import { Scope } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: Scope = "applications:read-write";
+let value: Scope = "builds:read-write";
 ```
 
 ## Values

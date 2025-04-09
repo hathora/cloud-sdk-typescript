@@ -6,10 +6,10 @@
 import { OrgToken } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: OrgToken = {
-  createdAt: new Date("2024-08-20T04:36:26.084Z"),
+  createdAt: new Date("2023-07-23T18:53:48.907Z"),
   createdBy: "noreply@hathora.dev",
   lastFourCharsOfKey: "<value>",
-  status: "active",
+  status: "revoked",
   name: "ci-token",
   orgId: "<id>",
   orgTokenId: "org-token-af469a92-5b45-4565-b3c4-b79878de67d2",

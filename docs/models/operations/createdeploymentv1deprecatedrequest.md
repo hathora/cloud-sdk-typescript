@@ -24,7 +24,7 @@ let value: CreateDeploymentV1DeprecatedRequest = {
         name: "default",
       },
     ],
-    transportType: "tcp",
+    transportType: "tls",
     containerPort: 4000,
   },
 };

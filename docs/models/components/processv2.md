@@ -6,12 +6,12 @@
 import { ProcessV2 } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: ProcessV2 = {
-  status: "failed",
+  status: "stopping",
   roomsAllocated: 1,
-  terminatedAt: new Date("2024-05-28T15:24:04.349Z"),
-  stoppingAt: new Date("2025-12-06T12:43:25.190Z"),
-  startedAt: new Date("2024-10-24T21:51:23.585Z"),
-  createdAt: new Date("2025-03-21T05:35:21.093Z"),
+  terminatedAt: new Date("2023-05-27T06:49:28.120Z"),
+  stoppingAt: new Date("2023-02-24T15:28:54.879Z"),
+  startedAt: new Date("2025-12-26T02:08:51.729Z"),
+  createdAt: new Date("2023-04-27T08:19:00.464Z"),
   roomsPerProcess: 3,
   additionalExposedPorts: [
     {
@@ -27,7 +27,7 @@ let value: ProcessV2 = {
     host: "1.proxy.hathora.dev",
     name: "default",
   },
-  region: "Seattle",
+  region: "Singapore",
   processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
   deploymentId: 1,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",

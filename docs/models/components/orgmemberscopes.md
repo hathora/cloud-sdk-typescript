@@ -13,7 +13,7 @@ const value: components.UserRole = "admin";
 
 ```typescript
 const value: components.Scope[] = [
-  "processes:read-write",
+  "billing:read-write",
 ];
 ```
 

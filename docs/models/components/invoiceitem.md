@@ -6,10 +6,10 @@
 import { InvoiceItem } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: InvoiceItem = {
-  amount: 2539.41,
-  unitPrice: 2133.12,
-  quantity: 5182.01,
-  unit: "meter",
+  amount: 4615.83,
+  unitPrice: 5223.08,
+  quantity: 5825.78,
+  unit: "second",
   productName: "<value>",
 };
 ```

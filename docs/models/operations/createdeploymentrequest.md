@@ -19,12 +19,12 @@ let value: CreateDeploymentRequest = {
     roomsPerProcess: 3,
     additionalContainerPorts: [
       {
-        transportType: "tcp",
+        transportType: "tls",
         port: 8000,
         name: "default",
       },
     ],
-    transportType: "udp",
+    transportType: "tls",
     containerPort: 4000,
     experimentalRequestedGPU: 1,
     requestedMemoryMB: 1024,

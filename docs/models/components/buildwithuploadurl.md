@@ -12,15 +12,15 @@ let value: BuildWithUploadUrl = {
   regionalContainerTags: [
     {
       containerTag: "<value>",
-      region: "Johannesburg",
+      region: "Los_Angeles",
     },
   ],
-  imageSize: 975522,
+  imageSize: 932879,
   status: "failed",
-  deletedAt: new Date("2023-01-13T20:07:38.173Z"),
-  finishedAt: new Date("2024-01-30T12:51:46.829Z"),
-  startedAt: new Date("2025-03-11T01:40:18.315Z"),
-  createdAt: new Date("2023-07-08T02:32:49.310Z"),
+  deletedAt: new Date("2024-02-29T07:26:16.161Z"),
+  finishedAt: new Date("2023-08-30T12:05:14.751Z"),
+  startedAt: new Date("2024-01-29T13:25:20.643Z"),
+  createdAt: new Date("2023-12-25T01:06:39.032Z"),
   createdBy: "noreply@hathora.dev",
   buildId: 1,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -30,7 +30,7 @@ let value: BuildWithUploadUrl = {
       key: "<key>",
     },
   ],
-  uploadUrl: "https://awful-councilman.com",
+  uploadUrl: "https://equatorial-euphonium.name",
 };
 ```
 

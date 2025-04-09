@@ -8,7 +8,7 @@ import { CreatedOrgToken } from "@hathora/cloud-sdk-typescript/models/components
 let value: CreatedOrgToken = {
   plainTextToken: "<value>",
   orgToken: {
-    createdAt: new Date("2025-09-04T09:11:49.246Z"),
+    createdAt: new Date("2025-02-11T19:38:40.891Z"),
     createdBy: "noreply@hathora.dev",
     lastFourCharsOfKey: "<value>",
     status: "revoked",
