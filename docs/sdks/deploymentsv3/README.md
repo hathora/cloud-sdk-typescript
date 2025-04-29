@@ -109,9 +109,7 @@ async function run() {
   const result = await hathoraCloud.deploymentsV3.createDeployment({
     deploymentTag: "alpha",
     idleTimeoutEnabled: false,
-    env: [
-
-    ],
+    env: [],
     roomsPerProcess: 3,
     additionalContainerPorts: [
       {
@@ -155,9 +153,7 @@ async function run() {
   const res = await deploymentsV3CreateDeployment(hathoraCloud, {
     deploymentTag: "alpha",
     idleTimeoutEnabled: false,
-    env: [
-  
-    ],
+    env: [],
     roomsPerProcess: 3,
     additionalContainerPorts: [
       {

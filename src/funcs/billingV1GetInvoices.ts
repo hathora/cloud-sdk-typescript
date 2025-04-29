@@ -37,6 +37,7 @@ export function billingV1GetInvoices(
   Result<
     Array<components.Invoice>,
     | errors.ApiError
+    | errors.ApiError
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -61,6 +62,7 @@ async function $do(
   [
     Result<
       Array<components.Invoice>,
+      | errors.ApiError
       | errors.ApiError
       | SDKError
       | SDKValidationError
@@ -133,7 +135,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["401", "404", "422", "429", "4XX", "5XX"],
+    errorCodes: ["401", "404", "422", "429", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -149,6 +151,7 @@ async function $do(
   const [result] = await M.match<
     Array<components.Invoice>,
     | errors.ApiError
+    | errors.ApiError
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -159,6 +162,7 @@ async function $do(
   >(
     M.json(200, z.array(components.Invoice$inboundSchema)),
     M.jsonErr([401, 404, 422, 429], errors.ApiError$inboundSchema),
+    M.jsonErr(500, errors.ApiError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

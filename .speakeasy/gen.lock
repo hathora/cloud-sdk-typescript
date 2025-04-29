@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 2c90156aaf74783c9422552eb6ddbc45
+  docChecksum: 10e30077996f3af35f5722c7de9180a4
   docVersion: 0.0.1
-  speakeasyVersion: 1.531.0
-  generationVersion: 2.568.2
-  releaseVersion: 2.18.3
-  configChecksum: a220b1979faf3e55ff1ec1f2c007bb2c
+  speakeasyVersion: 1.540.1
+  generationVersion: 2.593.4
+  releaseVersion: 2.18.4
+  configChecksum: 18bf1ccd7967a197be450a6314f914d9
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.21.5
+    core: 3.21.6
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -27,7 +27,7 @@ features:
     globalServerURLs: 2.82.4
     globals: 2.82.2
     groups: 2.81.2
-    mcpServer: 0.9.1
+    mcpServer: 0.9.2
     methodSecurity: 2.82.6
     nullables: 0.1.1
     openEnums: 0.1.1
@@ -2157,6 +2157,8 @@ examples:
         "200":
           application/json: [{"status": "paid", "amountDue": 9402.67, "pdfUrl": "https://happy-go-lucky-bakeware.biz", "dueDate": "2024-05-16T21:30:38.840Z", "year": 9590.25, "month": 8858.56, "id": "<id>"}, {"status": "overdue", "amountDue": 1743.65, "pdfUrl": "https://somber-bowling.org", "dueDate": "2025-08-05T20:02:10.376Z", "year": 614.14, "month": 4221.79, "id": "<id>"}, {"status": "pending", "amountDue": 8173.15, "pdfUrl": "https://crushing-suspension.org/", "dueDate": "2024-04-30T02:38:56.141Z", "year": 9770.57, "month": 67.53, "id": "<id>"}]
         "401":
+          application/json: {"message": "<value>"}
+        "500":
           application/json: {"message": "<value>"}
   LoginAnonymous:
     speakeasy-default-login-anonymous:
