@@ -9,7 +9,7 @@ let value: OrgMembersPage = {
   members: [
     {
       scopes: [
-        "applications:read-write",
+        "processes:read",
       ],
       joinedAt: new Date("2023-06-04T06:22:29.142Z"),
       createdAt: new Date("2025-02-26T05:29:29.873Z"),

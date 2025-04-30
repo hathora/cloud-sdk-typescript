@@ -25,6 +25,8 @@ export const Scope = {
   OrgsReadWrite: "orgs:read-write",
   TokensRead: "tokens:read",
   TokensReadWrite: "tokens:read-write",
+  TicketsRead: "tickets:read",
+  TicketsReadWrite: "tickets:read-write",
 } as const;
 export type Scope = OpenEnum<typeof Scope>;
 

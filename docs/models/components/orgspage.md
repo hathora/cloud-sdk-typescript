@@ -10,7 +10,7 @@ let value: OrgsPage = {
     {
       maxRequestedMemoryMB: 4362.52,
       scopes: [
-        "orgs:read",
+        "orgs:read-write",
       ],
       isSingleTenant: false,
       stripeCustomerId: "<id>",

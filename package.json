@@ -1,10 +1,7 @@
 {
   "name": "@hathora/cloud-sdk-typescript",
-  "version": "2.18.4",
+  "version": "2.19.0",
   "author": "Hathora",
-  "bin": {
-    "mcp": "bin/mcp-server.js"
-  },
   "main": "./index.js",
   "sideEffects": false,
   "repository": {
@@ -13,26 +10,15 @@
   },
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
-    "build:mcp": "bun src/mcp-server/build.mts",
-    "build": "npm run build:mcp && tsc",
+    "build": "tsc",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "@modelcontextprotocol/sdk": ">=1.5.0 <1.10.0",
     "zod": ">= 3"
-  },
-  "peerDependenciesMeta": {
-    "@modelcontextprotocol/sdk": {"optional":true}
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
-    "@modelcontextprotocol/sdk": ">=1.5.0 <1.10.0",
-    "@stricli/core": "^1.1.1",
-    "@types/express": "^4.17.21",
-    "bun": "^1.2.2",
-    "bun-types": "^1.2.2",
     "eslint": "^9.19.0",
-    "express": "^4.21.2",
     "globals": "^15.14.0",
     "typescript": "^5.4.5",
     "typescript-eslint": "^8.22.0",
