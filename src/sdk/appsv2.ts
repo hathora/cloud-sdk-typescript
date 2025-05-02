@@ -6,6 +6,7 @@ import { appsV2CreateApp } from "../funcs/appsV2CreateApp.js";
 import { appsV2DeleteApp } from "../funcs/appsV2DeleteApp.js";
 import { appsV2GetApp } from "../funcs/appsV2GetApp.js";
 import { appsV2GetApps } from "../funcs/appsV2GetApps.js";
+import { appsV2PatchApp } from "../funcs/appsV2PatchApp.js";
 import { appsV2UpdateApp } from "../funcs/appsV2UpdateApp.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -52,16 +53,36 @@ export class AppsV2 extends ClientSDK {
    * UpdateApp
    *
    * @remarks
-   * Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+   * Set application config (will override all fields) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
    */
   async updateApp(
-    appConfig: components.AppConfig,
+    appConfigWithServiceConfig: components.AppConfigWithServiceConfig,
     appId?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.Application> {
     return unwrapAsync(appsV2UpdateApp(
       this,
-      appConfig,
+      appConfigWithServiceConfig,
+      appId,
+      options,
+    ));
+  }
+
+  /**
+   * PatchApp
+   *
+   * @remarks
+   * Patch data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+   */
+  async patchApp(
+    partialAppConfigWithServiceConfig:
+      components.PartialAppConfigWithServiceConfig,
+    appId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.Application> {
+    return unwrapAsync(appsV2PatchApp(
+      this,
+      partialAppConfigWithServiceConfig,
       appId,
       options,
     ));

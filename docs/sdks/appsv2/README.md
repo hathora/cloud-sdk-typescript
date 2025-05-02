@@ -10,6 +10,7 @@ Operations that allow you manage your [applications](https://hathora.dev/docs/co
 * [getApps](#getapps) - GetApps
 * [createApp](#createapp) - CreateApp
 * [updateApp](#updateapp) - UpdateApp
+* [patchApp](#patchapp) - PatchApp
 * [getApp](#getapp) - GetApp
 * [deleteApp](#deleteapp) - DeleteApp
 
@@ -177,7 +178,7 @@ run();
 
 ## updateApp
 
-Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+Set application config (will override all fields) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
 
 ### Example Usage
 
@@ -192,6 +193,9 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.appsV2.updateApp({
+    serviceConfig: {
+      staticProcessAllocation: [],
+    },
     authConfiguration: {},
     appName: "minecraft",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
@@ -221,6 +225,9 @@ const hathoraCloud = new HathoraCloudCore({
 
 async function run() {
   const res = await appsV2UpdateApp(hathoraCloud, {
+    serviceConfig: {
+      staticProcessAllocation: [],
+    },
     authConfiguration: {},
     appName: "minecraft",
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
@@ -242,7 +249,94 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `appConfig`                                                                                                                                                                    | [components.AppConfig](../../models/components/appconfig.md)                                                                                                                   | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `appConfigWithServiceConfig`                                                                                                                                                   | [components.AppConfigWithServiceConfig](../../models/components/appconfigwithserviceconfig.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `appId`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[components.Application](../../models/components/application.md)\>**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 401, 404, 422, 429 | application/json   |
+| errors.ApiError    | 500                | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+
+## patchApp
+
+Patch data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+
+### Example Usage
+
+```typescript
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+const hathoraCloud = new HathoraCloud({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const result = await hathoraCloud.appsV2.patchApp({
+    serviceConfig: {
+      staticProcessAllocation: [],
+    },
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { appsV2PatchApp } from "@hathora/cloud-sdk-typescript/funcs/appsV2PatchApp.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
+  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+});
+
+async function run() {
+  const res = await appsV2PatchApp(hathoraCloud, {
+    serviceConfig: {
+      staticProcessAllocation: [],
+    },
+  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `partialAppConfigWithServiceConfig`                                                                                                                                            | [components.PartialAppConfigWithServiceConfig](../../models/components/partialappconfigwithserviceconfig.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
 | `appId`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |

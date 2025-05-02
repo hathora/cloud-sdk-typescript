@@ -24,6 +24,22 @@ import {
   ContainerPort$Outbound,
   ContainerPort$outboundSchema,
 } from "./containerport.js";
+import {
+  StaticProcessAllocationConfig,
+  StaticProcessAllocationConfig$inboundSchema,
+  StaticProcessAllocationConfig$Outbound,
+  StaticProcessAllocationConfig$outboundSchema,
+} from "./staticprocessallocationconfig.js";
+
+export type ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig = {
+  /**
+   * The headroom configuration for each region.
+   *
+   * @remarks
+   * EXPERIMENTAL - this feature is in closed beta.
+   */
+  staticProcessAllocation: Array<StaticProcessAllocationConfig>;
+};
 
 export type ApplicationWithLatestDeploymentAndBuildDeprecatedEnv = {
   value: string;
@@ -106,6 +122,9 @@ export type ApplicationWithLatestDeploymentAndBuildDeprecated = {
    * System generated unique identifier for an organization. Not guaranteed to have a specific format.
    */
   orgId: string;
+  serviceConfig:
+    | ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig
+    | null;
   /**
    * Configure [player authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service) for your application. Use Hathora's built-in auth providers or use your own [custom authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service#custom-auth-provider).
    */
@@ -124,6 +143,77 @@ export type ApplicationWithLatestDeploymentAndBuildDeprecated = {
   appName: string;
   deployment?: Deployment | undefined;
 };
+
+/** @internal */
+export const ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$inboundSchema:
+  z.ZodType<
+    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    staticProcessAllocation: z.array(
+      StaticProcessAllocationConfig$inboundSchema,
+    ),
+  });
+
+/** @internal */
+export type ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$Outbound =
+  {
+    staticProcessAllocation: Array<StaticProcessAllocationConfig$Outbound>;
+  };
+
+/** @internal */
+export const ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$outboundSchema:
+  z.ZodType<
+    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$Outbound,
+    z.ZodTypeDef,
+    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig
+  > = z.object({
+    staticProcessAllocation: z.array(
+      StaticProcessAllocationConfig$outboundSchema,
+    ),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$ {
+  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$inboundSchema` instead. */
+  export const inboundSchema =
+    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$inboundSchema;
+  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$outboundSchema` instead. */
+  export const outboundSchema =
+    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$outboundSchema;
+  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$Outbound` instead. */
+  export type Outbound =
+    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$Outbound;
+}
+
+export function applicationWithLatestDeploymentAndBuildDeprecatedServiceConfigToJSON(
+  applicationWithLatestDeploymentAndBuildDeprecatedServiceConfig:
+    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig,
+): string {
+  return JSON.stringify(
+    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$outboundSchema
+      .parse(applicationWithLatestDeploymentAndBuildDeprecatedServiceConfig),
+  );
+}
+
+export function applicationWithLatestDeploymentAndBuildDeprecatedServiceConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig' from JSON`,
+  );
+}
 
 /** @internal */
 export const ApplicationWithLatestDeploymentAndBuildDeprecatedEnv$inboundSchema:
@@ -306,6 +396,11 @@ export const ApplicationWithLatestDeploymentAndBuildDeprecated$inboundSchema:
     ),
     createdBy: z.string(),
     orgId: z.string(),
+    serviceConfig: z.nullable(
+      z.lazy(() =>
+        ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$inboundSchema
+      ),
+    ),
     authConfiguration: AuthConfiguration$inboundSchema,
     appSecret: z.string(),
     appId: z.string(),
@@ -320,6 +415,9 @@ export type ApplicationWithLatestDeploymentAndBuildDeprecated$Outbound = {
   createdAt: string;
   createdBy: string;
   orgId: string;
+  serviceConfig:
+    | ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$Outbound
+    | null;
   authConfiguration: AuthConfiguration$Outbound;
   appSecret: string;
   appId: string;
@@ -339,6 +437,11 @@ export const ApplicationWithLatestDeploymentAndBuildDeprecated$outboundSchema:
     createdAt: z.date().transform(v => v.toISOString()),
     createdBy: z.string(),
     orgId: z.string(),
+    serviceConfig: z.nullable(
+      z.lazy(() =>
+        ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$outboundSchema
+      ),
+    ),
     authConfiguration: AuthConfiguration$outboundSchema,
     appSecret: z.string(),
     appId: z.string(),

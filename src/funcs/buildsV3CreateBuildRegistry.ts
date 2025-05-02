@@ -3,7 +3,7 @@
  */
 
 import { HathoraCloudCore } from "../core.js";
-import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -26,19 +26,19 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * UpdateApp
+ * CreateBuildRegistry
  *
  * @remarks
- * Set application config (will override all fields) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+ * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build) to be used with `runBuildRegistry`. Responds with a `buildId` that you must pass to [`RunBuildRegistry()`](https://hathora.dev/api#tag/BuildV3/operation/RunBuildRegistry) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
  */
-export function appsV2UpdateApp(
+export function buildsV3CreateBuildRegistry(
   client: HathoraCloudCore,
-  appConfigWithServiceConfig: components.AppConfigWithServiceConfig,
-  appId?: string | undefined,
+  createBuildV3Params: components.CreateBuildV3Params,
+  orgId?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.Application,
+    components.BuildV3,
     | errors.ApiError
     | errors.ApiError
     | SDKError
@@ -52,21 +52,21 @@ export function appsV2UpdateApp(
 > {
   return new APIPromise($do(
     client,
-    appConfigWithServiceConfig,
-    appId,
+    createBuildV3Params,
+    orgId,
     options,
   ));
 }
 
 async function $do(
   client: HathoraCloudCore,
-  appConfigWithServiceConfig: components.AppConfigWithServiceConfig,
-  appId?: string | undefined,
+  createBuildV3Params: components.CreateBuildV3Params,
+  orgId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      components.Application,
+      components.BuildV3,
       | errors.ApiError
       | errors.ApiError
       | SDKError
@@ -80,32 +80,30 @@ async function $do(
     APICall,
   ]
 > {
-  const input: operations.UpdateAppRequest = {
-    appConfigWithServiceConfig: appConfigWithServiceConfig,
-    appId: appId,
+  const input: operations.CreateBuildRegistryRequest = {
+    createBuildV3Params: createBuildV3Params,
+    orgId: orgId,
   };
 
   const parsed = safeParse(
     input,
-    (value) => operations.UpdateAppRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.CreateBuildRegistryRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.AppConfigWithServiceConfig, {
+  const body = encodeJSON("body", payload.CreateBuildV3Params, {
     explode: true,
   });
 
-  const pathParams = {
-    appId: encodeSimple("appId", payload.appId ?? client._options.appId, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
+  const path = pathToFunc("/builds/v3/builds/registry")();
 
-  const path = pathToFunc("/apps/v2/apps/{appId}")(pathParams);
+  const query = encodeFormQuery({
+    "orgId": payload.orgId ?? client._options.orgId,
+  });
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -118,7 +116,7 @@ async function $do(
 
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "UpdateApp",
+    operationID: "CreateBuildRegistry",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -136,6 +134,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
@@ -146,7 +145,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["401", "404", "422", "429", "4XX", "500", "5XX"],
+    errorCodes: ["400", "401", "404", "422", "429", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -160,7 +159,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    components.Application,
+    components.BuildV3,
     | errors.ApiError
     | errors.ApiError
     | SDKError
@@ -171,8 +170,8 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.Application$inboundSchema),
-    M.jsonErr([401, 404, 422, 429], errors.ApiError$inboundSchema),
+    M.json(201, components.BuildV3$inboundSchema),
+    M.jsonErr([400, 401, 404, 422, 429], errors.ApiError$inboundSchema),
     M.jsonErr(500, errors.ApiError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

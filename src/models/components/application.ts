@@ -12,6 +12,22 @@ import {
   AuthConfiguration$Outbound,
   AuthConfiguration$outboundSchema,
 } from "./authconfiguration.js";
+import {
+  StaticProcessAllocationConfig,
+  StaticProcessAllocationConfig$inboundSchema,
+  StaticProcessAllocationConfig$Outbound,
+  StaticProcessAllocationConfig$outboundSchema,
+} from "./staticprocessallocationconfig.js";
+
+export type ApplicationServiceConfig = {
+  /**
+   * The headroom configuration for each region.
+   *
+   * @remarks
+   * EXPERIMENTAL - this feature is in closed beta.
+   */
+  staticProcessAllocation: Array<StaticProcessAllocationConfig>;
+};
 
 /**
  * An application object is the top level namespace for the game server.
@@ -34,6 +50,7 @@ export type Application = {
    * System generated unique identifier for an organization. Not guaranteed to have a specific format.
    */
   orgId: string;
+  serviceConfig: ApplicationServiceConfig | null;
   /**
    * Configure [player authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service) for your application. Use Hathora's built-in auth providers or use your own [custom authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service#custom-auth-provider).
    */
@@ -53,6 +70,62 @@ export type Application = {
 };
 
 /** @internal */
+export const ApplicationServiceConfig$inboundSchema: z.ZodType<
+  ApplicationServiceConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  staticProcessAllocation: z.array(StaticProcessAllocationConfig$inboundSchema),
+});
+
+/** @internal */
+export type ApplicationServiceConfig$Outbound = {
+  staticProcessAllocation: Array<StaticProcessAllocationConfig$Outbound>;
+};
+
+/** @internal */
+export const ApplicationServiceConfig$outboundSchema: z.ZodType<
+  ApplicationServiceConfig$Outbound,
+  z.ZodTypeDef,
+  ApplicationServiceConfig
+> = z.object({
+  staticProcessAllocation: z.array(
+    StaticProcessAllocationConfig$outboundSchema,
+  ),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ApplicationServiceConfig$ {
+  /** @deprecated use `ApplicationServiceConfig$inboundSchema` instead. */
+  export const inboundSchema = ApplicationServiceConfig$inboundSchema;
+  /** @deprecated use `ApplicationServiceConfig$outboundSchema` instead. */
+  export const outboundSchema = ApplicationServiceConfig$outboundSchema;
+  /** @deprecated use `ApplicationServiceConfig$Outbound` instead. */
+  export type Outbound = ApplicationServiceConfig$Outbound;
+}
+
+export function applicationServiceConfigToJSON(
+  applicationServiceConfig: ApplicationServiceConfig,
+): string {
+  return JSON.stringify(
+    ApplicationServiceConfig$outboundSchema.parse(applicationServiceConfig),
+  );
+}
+
+export function applicationServiceConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<ApplicationServiceConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ApplicationServiceConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApplicationServiceConfig' from JSON`,
+  );
+}
+
+/** @internal */
 export const Application$inboundSchema: z.ZodType<
   Application,
   z.ZodTypeDef,
@@ -65,6 +138,9 @@ export const Application$inboundSchema: z.ZodType<
   createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   createdBy: z.string(),
   orgId: z.string(),
+  serviceConfig: z.nullable(
+    z.lazy(() => ApplicationServiceConfig$inboundSchema),
+  ),
   authConfiguration: AuthConfiguration$inboundSchema,
   appSecret: z.string(),
   appId: z.string(),
@@ -78,6 +154,7 @@ export type Application$Outbound = {
   createdAt: string;
   createdBy: string;
   orgId: string;
+  serviceConfig: ApplicationServiceConfig$Outbound | null;
   authConfiguration: AuthConfiguration$Outbound;
   appSecret: string;
   appId: string;
@@ -95,6 +172,9 @@ export const Application$outboundSchema: z.ZodType<
   createdAt: z.date().transform(v => v.toISOString()),
   createdBy: z.string(),
   orgId: z.string(),
+  serviceConfig: z.nullable(
+    z.lazy(() => ApplicationServiceConfig$outboundSchema),
+  ),
   authConfiguration: AuthConfiguration$outboundSchema,
   appSecret: z.string(),
   appId: z.string(),

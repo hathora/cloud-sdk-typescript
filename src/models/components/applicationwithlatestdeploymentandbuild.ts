@@ -24,6 +24,22 @@ import {
   ContainerPort$Outbound,
   ContainerPort$outboundSchema,
 } from "./containerport.js";
+import {
+  StaticProcessAllocationConfig,
+  StaticProcessAllocationConfig$inboundSchema,
+  StaticProcessAllocationConfig$Outbound,
+  StaticProcessAllocationConfig$outboundSchema,
+} from "./staticprocessallocationconfig.js";
+
+export type ApplicationWithLatestDeploymentAndBuildServiceConfig = {
+  /**
+   * The headroom configuration for each region.
+   *
+   * @remarks
+   * EXPERIMENTAL - this feature is in closed beta.
+   */
+  staticProcessAllocation: Array<StaticProcessAllocationConfig>;
+};
 
 export type ApplicationWithLatestDeploymentAndBuildEnv = {
   value: string;
@@ -125,6 +141,7 @@ export type ApplicationWithLatestDeploymentAndBuild = {
    * System generated unique identifier for an organization. Not guaranteed to have a specific format.
    */
   orgId: string;
+  serviceConfig: ApplicationWithLatestDeploymentAndBuildServiceConfig | null;
   /**
    * Configure [player authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service) for your application. Use Hathora's built-in auth providers or use your own [custom authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service#custom-auth-provider).
    */
@@ -143,6 +160,78 @@ export type ApplicationWithLatestDeploymentAndBuild = {
   appName: string;
   deployment?: ApplicationWithLatestDeploymentAndBuildDeployment | undefined;
 };
+
+/** @internal */
+export const ApplicationWithLatestDeploymentAndBuildServiceConfig$inboundSchema:
+  z.ZodType<
+    ApplicationWithLatestDeploymentAndBuildServiceConfig,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    staticProcessAllocation: z.array(
+      StaticProcessAllocationConfig$inboundSchema,
+    ),
+  });
+
+/** @internal */
+export type ApplicationWithLatestDeploymentAndBuildServiceConfig$Outbound = {
+  staticProcessAllocation: Array<StaticProcessAllocationConfig$Outbound>;
+};
+
+/** @internal */
+export const ApplicationWithLatestDeploymentAndBuildServiceConfig$outboundSchema:
+  z.ZodType<
+    ApplicationWithLatestDeploymentAndBuildServiceConfig$Outbound,
+    z.ZodTypeDef,
+    ApplicationWithLatestDeploymentAndBuildServiceConfig
+  > = z.object({
+    staticProcessAllocation: z.array(
+      StaticProcessAllocationConfig$outboundSchema,
+    ),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ApplicationWithLatestDeploymentAndBuildServiceConfig$ {
+  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildServiceConfig$inboundSchema` instead. */
+  export const inboundSchema =
+    ApplicationWithLatestDeploymentAndBuildServiceConfig$inboundSchema;
+  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildServiceConfig$outboundSchema` instead. */
+  export const outboundSchema =
+    ApplicationWithLatestDeploymentAndBuildServiceConfig$outboundSchema;
+  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildServiceConfig$Outbound` instead. */
+  export type Outbound =
+    ApplicationWithLatestDeploymentAndBuildServiceConfig$Outbound;
+}
+
+export function applicationWithLatestDeploymentAndBuildServiceConfigToJSON(
+  applicationWithLatestDeploymentAndBuildServiceConfig:
+    ApplicationWithLatestDeploymentAndBuildServiceConfig,
+): string {
+  return JSON.stringify(
+    ApplicationWithLatestDeploymentAndBuildServiceConfig$outboundSchema.parse(
+      applicationWithLatestDeploymentAndBuildServiceConfig,
+    ),
+  );
+}
+
+export function applicationWithLatestDeploymentAndBuildServiceConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ApplicationWithLatestDeploymentAndBuildServiceConfig,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ApplicationWithLatestDeploymentAndBuildServiceConfig$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ApplicationWithLatestDeploymentAndBuildServiceConfig' from JSON`,
+  );
+}
 
 /** @internal */
 export const ApplicationWithLatestDeploymentAndBuildEnv$inboundSchema:
@@ -343,6 +432,11 @@ export const ApplicationWithLatestDeploymentAndBuild$inboundSchema: z.ZodType<
   createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   createdBy: z.string(),
   orgId: z.string(),
+  serviceConfig: z.nullable(
+    z.lazy(() =>
+      ApplicationWithLatestDeploymentAndBuildServiceConfig$inboundSchema
+    ),
+  ),
   authConfiguration: AuthConfiguration$inboundSchema,
   appSecret: z.string(),
   appId: z.string(),
@@ -359,6 +453,9 @@ export type ApplicationWithLatestDeploymentAndBuild$Outbound = {
   createdAt: string;
   createdBy: string;
   orgId: string;
+  serviceConfig:
+    | ApplicationWithLatestDeploymentAndBuildServiceConfig$Outbound
+    | null;
   authConfiguration: AuthConfiguration$Outbound;
   appSecret: string;
   appId: string;
@@ -379,6 +476,11 @@ export const ApplicationWithLatestDeploymentAndBuild$outboundSchema: z.ZodType<
   createdAt: z.date().transform(v => v.toISOString()),
   createdBy: z.string(),
   orgId: z.string(),
+  serviceConfig: z.nullable(
+    z.lazy(() =>
+      ApplicationWithLatestDeploymentAndBuildServiceConfig$outboundSchema
+    ),
+  ),
   authConfiguration: AuthConfiguration$outboundSchema,
   appSecret: z.string(),
   appId: z.string(),

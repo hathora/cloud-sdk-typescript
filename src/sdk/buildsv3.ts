@@ -3,10 +3,12 @@
  */
 
 import { buildsV3CreateBuild } from "../funcs/buildsV3CreateBuild.js";
+import { buildsV3CreateBuildRegistry } from "../funcs/buildsV3CreateBuildRegistry.js";
 import { buildsV3DeleteBuild } from "../funcs/buildsV3DeleteBuild.js";
 import { buildsV3GetBuild } from "../funcs/buildsV3GetBuild.js";
 import { buildsV3GetBuilds } from "../funcs/buildsV3GetBuilds.js";
 import { buildsV3RunBuild } from "../funcs/buildsV3RunBuild.js";
+import { buildsV3RunBuildRegistry } from "../funcs/buildsV3RunBuildRegistry.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -89,6 +91,25 @@ export class BuildsV3 extends ClientSDK {
   }
 
   /**
+   * CreateBuildRegistry
+   *
+   * @remarks
+   * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build) to be used with `runBuildRegistry`. Responds with a `buildId` that you must pass to [`RunBuildRegistry()`](https://hathora.dev/api#tag/BuildV3/operation/RunBuildRegistry) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
+   */
+  async createBuildRegistry(
+    createBuildV3Params: components.CreateBuildV3Params,
+    orgId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.BuildV3> {
+    return unwrapAsync(buildsV3CreateBuildRegistry(
+      this,
+      createBuildV3Params,
+      orgId,
+      options,
+    ));
+  }
+
+  /**
    * RunBuild
    *
    * @remarks
@@ -102,6 +123,27 @@ export class BuildsV3 extends ClientSDK {
     return unwrapAsync(buildsV3RunBuild(
       this,
       buildId,
+      orgId,
+      options,
+    ));
+  }
+
+  /**
+   * RunBuildRegistry
+   *
+   * @remarks
+   * Builds a game server artifact from a public or private registry. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
+   */
+  async runBuildRegistry(
+    buildId: string,
+    registryConfig: components.RegistryConfig,
+    orgId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<ReadableStream<Uint8Array>> {
+    return unwrapAsync(buildsV3RunBuildRegistry(
+      this,
+      buildId,
+      registryConfig,
       orgId,
       options,
     ));

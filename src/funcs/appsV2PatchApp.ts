@@ -26,14 +26,15 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * UpdateApp
+ * PatchApp
  *
  * @remarks
- * Set application config (will override all fields) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+ * Patch data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
  */
-export function appsV2UpdateApp(
+export function appsV2PatchApp(
   client: HathoraCloudCore,
-  appConfigWithServiceConfig: components.AppConfigWithServiceConfig,
+  partialAppConfigWithServiceConfig:
+    components.PartialAppConfigWithServiceConfig,
   appId?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -52,7 +53,7 @@ export function appsV2UpdateApp(
 > {
   return new APIPromise($do(
     client,
-    appConfigWithServiceConfig,
+    partialAppConfigWithServiceConfig,
     appId,
     options,
   ));
@@ -60,7 +61,8 @@ export function appsV2UpdateApp(
 
 async function $do(
   client: HathoraCloudCore,
-  appConfigWithServiceConfig: components.AppConfigWithServiceConfig,
+  partialAppConfigWithServiceConfig:
+    components.PartialAppConfigWithServiceConfig,
   appId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -80,21 +82,21 @@ async function $do(
     APICall,
   ]
 > {
-  const input: operations.UpdateAppRequest = {
-    appConfigWithServiceConfig: appConfigWithServiceConfig,
+  const input: operations.PatchAppRequest = {
+    partialAppConfigWithServiceConfig: partialAppConfigWithServiceConfig,
     appId: appId,
   };
 
   const parsed = safeParse(
     input,
-    (value) => operations.UpdateAppRequest$outboundSchema.parse(value),
+    (value) => operations.PatchAppRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.AppConfigWithServiceConfig, {
+  const body = encodeJSON("body", payload.Partial_AppConfigWithServiceConfig_, {
     explode: true,
   });
 
@@ -118,7 +120,7 @@ async function $do(
 
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "UpdateApp",
+    operationID: "PatchApp",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -132,7 +134,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "POST",
+    method: "PATCH",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,

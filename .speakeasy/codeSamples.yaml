@@ -27,12 +27,18 @@ actions:
         - "lang": "typescript"
           "label": "GetApp"
           "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.appsV2.getApp(\"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/apps/v2/apps/{appId}"]["patch"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "PatchApp"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.appsV2.patchApp({\n    serviceConfig: {\n      staticProcessAllocation: [],\n    },\n  }, \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/apps/v2/apps/{appId}"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "UpdateApp"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.appsV2.updateApp({\n    authConfiguration: {},\n    appName: \"minecraft\",\n  }, \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.appsV2.updateApp({\n    serviceConfig: {\n      staticProcessAllocation: [],\n    },\n    authConfiguration: {},\n    appName: \"minecraft\",\n  }, \"app-af469a92-5b45-4565-b3c4-b79878de67d2\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/auth/v1/{appId}/login/anonymous"]["post"]
     update:
       "x-codeSamples":
@@ -93,6 +99,12 @@ actions:
         - "lang": "typescript"
           "label": "CreateBuild"
           "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.buildsV3.createBuild({\n    buildId: \"bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5\",\n    buildTag: \"0.1.14-14c793\",\n    buildSizeInBytes: 5387.85,\n  }, \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/builds/v3/builds/registry"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "CreateBuildRegistry"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.buildsV3.createBuildRegistry({\n    buildId: \"bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5\",\n    buildTag: \"0.1.14-14c793\",\n  }, \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/builds/v3/builds/{buildId}"]["delete"]
     update:
       "x-codeSamples":
@@ -111,6 +123,12 @@ actions:
         - "lang": "typescript"
           "label": "RunBuild"
           "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.buildsV3.runBuild(\"bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5\", \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/builds/v3/builds/{buildId}/runRegistry"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "RunBuildRegistry"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  appId: \"app-af469a92-5b45-4565-b3c4-b79878de67d2\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.buildsV3.runBuildRegistry(\"bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5\", {\n    image: \"https://loremflickr.com/1435/2196?lock=7778272511635490\",\n  }, \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/deployments/v3/apps/{appId}/deployments"]["get"]
     update:
       "x-codeSamples":

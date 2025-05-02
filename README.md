@@ -111,6 +111,7 @@ run();
 * [getApps](docs/sdks/appsv2/README.md#getapps) - GetApps
 * [createApp](docs/sdks/appsv2/README.md#createapp) - CreateApp
 * [updateApp](docs/sdks/appsv2/README.md#updateapp) - UpdateApp
+* [patchApp](docs/sdks/appsv2/README.md#patchapp) - PatchApp
 * [getApp](docs/sdks/appsv2/README.md#getapp) - GetApp
 * [deleteApp](docs/sdks/appsv2/README.md#deleteapp) - DeleteApp
 
@@ -153,7 +154,9 @@ run();
 * [createBuild](docs/sdks/buildsv3/README.md#createbuild) - CreateBuild
 * [getBuild](docs/sdks/buildsv3/README.md#getbuild) - GetBuild
 * [deleteBuild](docs/sdks/buildsv3/README.md#deletebuild) - DeleteBuild
+* [createBuildRegistry](docs/sdks/buildsv3/README.md#createbuildregistry) - CreateBuildRegistry
 * [runBuild](docs/sdks/buildsv3/README.md#runbuild) - RunBuild
+* [runBuildRegistry](docs/sdks/buildsv3/README.md#runbuildregistry) - RunBuildRegistry
 
 ### [~~deploymentsV1~~](docs/sdks/deploymentsv1/README.md)
 
@@ -584,6 +587,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`appsV2DeleteApp`](docs/sdks/appsv2/README.md#deleteapp) - DeleteApp
 - [`appsV2GetApp`](docs/sdks/appsv2/README.md#getapp) - GetApp
 - [`appsV2GetApps`](docs/sdks/appsv2/README.md#getapps) - GetApps
+- [`appsV2PatchApp`](docs/sdks/appsv2/README.md#patchapp) - PatchApp
 - [`appsV2UpdateApp`](docs/sdks/appsv2/README.md#updateapp) - UpdateApp
 - [`authV1LoginAnonymous`](docs/sdks/authv1/README.md#loginanonymous) - LoginAnonymous
 - [`authV1LoginGoogle`](docs/sdks/authv1/README.md#logingoogle) - LoginGoogle
@@ -594,10 +598,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`billingV1GetUpcomingInvoiceTotal`](docs/sdks/billingv1/README.md#getupcominginvoicetotal) - GetUpcomingInvoiceTotal
 - [`billingV1InitStripeCustomerPortalUrl`](docs/sdks/billingv1/README.md#initstripecustomerportalurl) - InitStripeCustomerPortalUrl
 - [`buildsV3CreateBuild`](docs/sdks/buildsv3/README.md#createbuild) - CreateBuild
+- [`buildsV3CreateBuildRegistry`](docs/sdks/buildsv3/README.md#createbuildregistry) - CreateBuildRegistry
 - [`buildsV3DeleteBuild`](docs/sdks/buildsv3/README.md#deletebuild) - DeleteBuild
 - [`buildsV3GetBuild`](docs/sdks/buildsv3/README.md#getbuild) - GetBuild
 - [`buildsV3GetBuilds`](docs/sdks/buildsv3/README.md#getbuilds) - GetBuilds
 - [`buildsV3RunBuild`](docs/sdks/buildsv3/README.md#runbuild) - RunBuild
+- [`buildsV3RunBuildRegistry`](docs/sdks/buildsv3/README.md#runbuildregistry) - RunBuildRegistry
 - [`deploymentsV3CreateDeployment`](docs/sdks/deploymentsv3/README.md#createdeployment) - CreateDeployment
 - [`deploymentsV3GetDeployment`](docs/sdks/deploymentsv3/README.md#getdeployment) - GetDeployment
 - [`deploymentsV3GetDeployments`](docs/sdks/deploymentsv3/README.md#getdeployments) - GetDeployments

@@ -15,7 +15,7 @@ export type UpdateAppGlobals = {
 
 export type UpdateAppRequest = {
   appId?: string | undefined;
-  appConfig: components.AppConfig;
+  appConfigWithServiceConfig: components.AppConfigWithServiceConfig;
 };
 
 /** @internal */
@@ -79,17 +79,18 @@ export const UpdateAppRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   appId: z.string().optional(),
-  AppConfig: components.AppConfig$inboundSchema,
+  AppConfigWithServiceConfig:
+    components.AppConfigWithServiceConfig$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "AppConfig": "appConfig",
+    "AppConfigWithServiceConfig": "appConfigWithServiceConfig",
   });
 });
 
 /** @internal */
 export type UpdateAppRequest$Outbound = {
   appId?: string | undefined;
-  AppConfig: components.AppConfig$Outbound;
+  AppConfigWithServiceConfig: components.AppConfigWithServiceConfig$Outbound;
 };
 
 /** @internal */
@@ -99,10 +100,11 @@ export const UpdateAppRequest$outboundSchema: z.ZodType<
   UpdateAppRequest
 > = z.object({
   appId: z.string().optional(),
-  appConfig: components.AppConfig$outboundSchema,
+  appConfigWithServiceConfig:
+    components.AppConfigWithServiceConfig$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    appConfig: "AppConfig",
+    appConfigWithServiceConfig: "AppConfigWithServiceConfig",
   });
 });
 
