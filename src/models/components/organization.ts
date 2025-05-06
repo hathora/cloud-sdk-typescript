@@ -10,6 +10,13 @@ import { Scope, Scope$inboundSchema, Scope$outboundSchema } from "./scope.js";
 
 export type Organization = {
   /**
+   * The retention period for process logs in hours
+   *
+   * @remarks
+   * If undefined, the default is 72h
+   */
+  logRetentionPeriodHours?: number | undefined;
+  /**
    * The maximum lifespan in hours of a pod.
    */
   podMaxLifespanHrs?: number | undefined;
@@ -57,6 +64,7 @@ export const Organization$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  logRetentionPeriodHours: z.number().optional(),
   podMaxLifespanHrs: z.number().optional(),
   monthlyProcessVcpuHoursLimit: z.number().optional(),
   concurrentProcessVcpusLimit: z.number().optional(),
@@ -71,6 +79,7 @@ export const Organization$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Organization$Outbound = {
+  logRetentionPeriodHours?: number | undefined;
   podMaxLifespanHrs?: number | undefined;
   monthlyProcessVcpuHoursLimit?: number | undefined;
   concurrentProcessVcpusLimit?: number | undefined;
@@ -89,6 +98,7 @@ export const Organization$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Organization
 > = z.object({
+  logRetentionPeriodHours: z.number().optional(),
   podMaxLifespanHrs: z.number().optional(),
   monthlyProcessVcpuHoursLimit: z.number().optional(),
   concurrentProcessVcpusLimit: z.number().optional(),
