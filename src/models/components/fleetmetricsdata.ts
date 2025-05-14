@@ -14,6 +14,7 @@ import {
 } from "./metricvalue.js";
 
 export type FleetMetricsData = {
+  systemOverhead?: Array<MetricValue> | undefined;
   utilized?: Array<MetricValue> | undefined;
   provisionedCloud?: Array<MetricValue> | undefined;
   provisionedBareMetal?: Array<MetricValue> | undefined;
@@ -26,6 +27,7 @@ export const FleetMetricsData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  systemOverhead: z.array(MetricValue$inboundSchema).optional(),
   utilized: z.array(MetricValue$inboundSchema).optional(),
   provisionedCloud: z.array(MetricValue$inboundSchema).optional(),
   provisionedBareMetal: z.array(MetricValue$inboundSchema).optional(),
@@ -34,6 +36,7 @@ export const FleetMetricsData$inboundSchema: z.ZodType<
 
 /** @internal */
 export type FleetMetricsData$Outbound = {
+  systemOverhead?: Array<MetricValue$Outbound> | undefined;
   utilized?: Array<MetricValue$Outbound> | undefined;
   provisionedCloud?: Array<MetricValue$Outbound> | undefined;
   provisionedBareMetal?: Array<MetricValue$Outbound> | undefined;
@@ -46,6 +49,7 @@ export const FleetMetricsData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FleetMetricsData
 > = z.object({
+  systemOverhead: z.array(MetricValue$outboundSchema).optional(),
   utilized: z.array(MetricValue$outboundSchema).optional(),
   provisionedCloud: z.array(MetricValue$outboundSchema).optional(),
   provisionedBareMetal: z.array(MetricValue$outboundSchema).optional(),

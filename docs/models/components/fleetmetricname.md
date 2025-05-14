@@ -1,5 +1,7 @@
 # FleetMetricName
 
+Represents the valid metric names available to measure/manage fleets in a given region
+
 ## Example Usage
 
 ```typescript
@@ -13,5 +15,5 @@ let value: FleetMetricName = "provisionedBareMetal";
 This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 ```typescript
-"provisionedTotal" | "provisionedBareMetal" | "provisionedCloud" | "utilized" | Unrecognized<string>
+"provisionedTotal" | "provisionedBareMetal" | "provisionedCloud" | "utilized" | "systemOverhead" | Unrecognized<string>
 ```

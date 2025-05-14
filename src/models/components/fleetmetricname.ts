@@ -9,12 +9,19 @@ import {
   Unrecognized,
 } from "../../types/enums.js";
 
+/**
+ * Represents the valid metric names available to measure/manage fleets in a given region
+ */
 export const FleetMetricName = {
   ProvisionedTotal: "provisionedTotal",
   ProvisionedBareMetal: "provisionedBareMetal",
   ProvisionedCloud: "provisionedCloud",
   Utilized: "utilized",
+  SystemOverhead: "systemOverhead",
 } as const;
+/**
+ * Represents the valid metric names available to measure/manage fleets in a given region
+ */
 export type FleetMetricName = OpenEnum<typeof FleetMetricName>;
 
 /** @internal */
