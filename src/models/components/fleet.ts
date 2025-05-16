@@ -6,11 +6,18 @@ import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  AutoscalerConfig,
+  AutoscalerConfig$inboundSchema,
+  AutoscalerConfig$Outbound,
+  AutoscalerConfig$outboundSchema,
+} from "./autoscalerconfig.js";
 
 /**
- * A fleet is a collection of vCPUs accross your regions that can scale up and down based on demand.
+ * A fleet is a collection of vCPUs across your regions that can scale up and down based on demand.
  */
 export type Fleet = {
+  autoscalerConfig?: AutoscalerConfig | undefined;
   /**
    * System generated unique identifier for an organization. Not guaranteed to have a specific format.
    */
@@ -24,12 +31,14 @@ export type Fleet = {
 /** @internal */
 export const Fleet$inboundSchema: z.ZodType<Fleet, z.ZodTypeDef, unknown> = z
   .object({
+    autoscalerConfig: AutoscalerConfig$inboundSchema.optional(),
     orgId: z.string(),
     fleetId: z.string(),
   });
 
 /** @internal */
 export type Fleet$Outbound = {
+  autoscalerConfig?: AutoscalerConfig$Outbound | undefined;
   orgId: string;
   fleetId: string;
 };
@@ -40,6 +49,7 @@ export const Fleet$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Fleet
 > = z.object({
+  autoscalerConfig: AutoscalerConfig$outboundSchema.optional(),
   orgId: z.string(),
   fleetId: z.string(),
 });

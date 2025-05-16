@@ -110,6 +110,7 @@ export * from "./suspendroomdeprecated.js";
 export * from "./suspendroomv2deprecated.js";
 export * from "./updateapp.js";
 export * from "./updateappv1deprecated.js";
+export * from "./updatefleet.js";
 export * from "./updatefleetregion.js";
 export * from "./updateroomconfig.js";
 export * from "./updateuserinvite.js";

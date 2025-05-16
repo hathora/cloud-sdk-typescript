@@ -190,6 +190,7 @@ run();
 ### [fleetsV1](docs/sdks/fleetsv1/README.md)
 
 * [getFleets](docs/sdks/fleetsv1/README.md#getfleets) - GetFleets
+* [updateFleet](docs/sdks/fleetsv1/README.md#updatefleet) - UpdateFleet
 * [getFleetRegion](docs/sdks/fleetsv1/README.md#getfleetregion) - GetFleetRegion
 * [updateFleetRegion](docs/sdks/fleetsv1/README.md#updatefleetregion) - UpdateFleetRegion
 * [getFleetMetrics](docs/sdks/fleetsv1/README.md#getfleetmetrics) - GetFleetMetrics
@@ -612,6 +613,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`fleetsV1GetFleetMetrics`](docs/sdks/fleetsv1/README.md#getfleetmetrics) - GetFleetMetrics
 - [`fleetsV1GetFleetRegion`](docs/sdks/fleetsv1/README.md#getfleetregion) - GetFleetRegion
 - [`fleetsV1GetFleets`](docs/sdks/fleetsv1/README.md#getfleets) - GetFleets
+- [`fleetsV1UpdateFleet`](docs/sdks/fleetsv1/README.md#updatefleet) - UpdateFleet
 - [`fleetsV1UpdateFleetRegion`](docs/sdks/fleetsv1/README.md#updatefleetregion) - UpdateFleetRegion
 - [`lobbiesV3CreateLobby`](docs/sdks/lobbiesv3/README.md#createlobby) - CreateLobby
 - [`lobbiesV3GetLobbyInfoByRoomId`](docs/sdks/lobbiesv3/README.md#getlobbyinfobyroomid) - GetLobbyInfoByRoomId

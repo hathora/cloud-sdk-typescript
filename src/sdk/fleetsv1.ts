@@ -5,6 +5,7 @@
 import { fleetsV1GetFleetMetrics } from "../funcs/fleetsV1GetFleetMetrics.js";
 import { fleetsV1GetFleetRegion } from "../funcs/fleetsV1GetFleetRegion.js";
 import { fleetsV1GetFleets } from "../funcs/fleetsV1GetFleets.js";
+import { fleetsV1UpdateFleet } from "../funcs/fleetsV1UpdateFleet.js";
 import { fleetsV1UpdateFleetRegion } from "../funcs/fleetsV1UpdateFleetRegion.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -24,6 +25,27 @@ export class FleetsV1 extends ClientSDK {
   ): Promise<components.FleetsPage> {
     return unwrapAsync(fleetsV1GetFleets(
       this,
+      orgId,
+      options,
+    ));
+  }
+
+  /**
+   * UpdateFleet
+   *
+   * @remarks
+   * Updates a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet)'s configuration.
+   */
+  async updateFleet(
+    fleetId: string,
+    updateFleet: components.UpdateFleet,
+    orgId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(fleetsV1UpdateFleet(
+      this,
+      fleetId,
+      updateFleet,
       orgId,
       options,
     ));

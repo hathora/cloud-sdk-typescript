@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: ad6787b952846cc650a586f8449dbdb2
+  docChecksum: f3522e0b996c7a5831055ada2045b4e9
   docVersion: 0.0.1
-  speakeasyVersion: 1.544.0
+  speakeasyVersion: 1.545.0
   generationVersion: 2.599.0
-  releaseVersion: 2.19.3
-  configChecksum: cce1b275c4b4744e8cd5c5ec7bbe6f64
+  releaseVersion: 2.19.4
+  configChecksum: b3581eef762d735c3012db3d3641c3ab
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -58,6 +58,7 @@ generatedFiles:
   - docs/models/components/applicationwithlatestdeploymentandbuildenv.md
   - docs/models/components/applicationwithlatestdeploymentandbuildserviceconfig.md
   - docs/models/components/authconfiguration.md
+  - docs/models/components/autoscalerconfig.md
   - docs/models/components/build.md
   - docs/models/components/buildpart.md
   - docs/models/components/buildstatus.md
@@ -176,6 +177,7 @@ generatedFiles:
   - docs/models/components/status.md
   - docs/models/components/transporttype.md
   - docs/models/components/two.md
+  - docs/models/components/updatefleet.md
   - docs/models/components/updateroomconfigparams.md
   - docs/models/components/updateuserinvite.md
   - docs/models/components/updateuserinvitescopes.md
@@ -409,8 +411,10 @@ generatedFiles:
   - docs/models/operations/updateapprequest.md
   - docs/models/operations/updateappv1deprecatedglobals.md
   - docs/models/operations/updateappv1deprecatedrequest.md
+  - docs/models/operations/updatefleetglobals.md
   - docs/models/operations/updatefleetregionglobals.md
   - docs/models/operations/updatefleetregionrequest.md
+  - docs/models/operations/updatefleetrequest.md
   - docs/models/operations/updateroomconfigglobals.md
   - docs/models/operations/updateroomconfigrequest.md
   - docs/models/operations/updateuserinviterequest.md
@@ -501,6 +505,7 @@ generatedFiles:
   - src/funcs/fleetsV1GetFleetMetrics.ts
   - src/funcs/fleetsV1GetFleetRegion.ts
   - src/funcs/fleetsV1GetFleets.ts
+  - src/funcs/fleetsV1UpdateFleet.ts
   - src/funcs/fleetsV1UpdateFleetRegion.ts
   - src/funcs/lobbiesV1CreatePrivateLobbyDeprecated.ts
   - src/funcs/lobbiesV1CreatePublicLobbyDeprecated.ts
@@ -591,6 +596,7 @@ generatedFiles:
   - src/models/components/applicationwithlatestdeploymentandbuild.ts
   - src/models/components/applicationwithlatestdeploymentandbuilddeprecated.ts
   - src/models/components/authconfiguration.ts
+  - src/models/components/autoscalerconfig.ts
   - src/models/components/build.ts
   - src/models/components/buildpart.ts
   - src/models/components/buildstatus.ts
@@ -682,6 +688,7 @@ generatedFiles:
   - src/models/components/startingconnectioninfo.ts
   - src/models/components/staticprocessallocationconfig.ts
   - src/models/components/transporttype.ts
+  - src/models/components/updatefleet.ts
   - src/models/components/updateroomconfigparams.ts
   - src/models/components/updateuserinvite.ts
   - src/models/components/usagelimits.ts
@@ -802,6 +809,7 @@ generatedFiles:
   - src/models/operations/suspendroomv2deprecated.ts
   - src/models/operations/updateapp.ts
   - src/models/operations/updateappv1deprecated.ts
+  - src/models/operations/updatefleet.ts
   - src/models/operations/updatefleetregion.ts
   - src/models/operations/updateroomconfig.ts
   - src/models/operations/updateuserinvite.ts
@@ -2249,6 +2257,20 @@ examples:
       responses:
         "200":
           application/json: {"deletedBy": "noreply@hathora.dev", "deletedAt": "2024-07-23T05:20:09.479Z", "createdAt": "2023-04-07T22:28:10.234Z", "createdBy": "noreply@hathora.dev", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "serviceConfig": {"staticProcessAllocation": []}, "authConfiguration": {}, "appSecret": "secret-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2", "appName": "minecraft"}
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+  UpdateFleet:
+    speakeasy-default-update-fleet:
+      parameters:
+        path:
+          fleetId: "<id>"
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      requestBody:
+        application/json: {"autoscalerConfig": {"scaleUpThreshold": 679459}}
+      responses:
         "401":
           application/json: {"message": "<value>"}
         "500":
