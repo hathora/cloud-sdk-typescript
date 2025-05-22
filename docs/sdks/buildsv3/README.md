@@ -111,7 +111,7 @@ async function run() {
   const result = await hathoraCloud.buildsV3.createBuild({
     buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
     buildTag: "0.1.14-14c793",
-    buildSizeInBytes: 5387.85,
+    buildSizeInBytes: 2645.24,
   }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   // Handle the result
@@ -141,7 +141,7 @@ async function run() {
   const res = await buildsV3CreateBuild(hathoraCloud, {
     buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
     buildTag: "0.1.14-14c793",
-    buildSizeInBytes: 5387.85,
+    buildSizeInBytes: 2645.24,
   }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   if (!res.ok) {
@@ -496,11 +496,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.ApiError    | 400, 401, 404, 429 | application/json   |
-| errors.ApiError    | 500                | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400, 401, 404, 422, 429 | application/json        |
+| errors.ApiError         | 500                     | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## runBuildRegistry
 
@@ -519,7 +519,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.buildsV3.runBuildRegistry("bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", {
-    image: "https://loremflickr.com/1435/2196?lock=7778272511635490",
+    image: "https://picsum.photos/seed/3gDPgtj/723/1525",
   }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   // Handle the result
@@ -547,7 +547,7 @@ const hathoraCloud = new HathoraCloudCore({
 
 async function run() {
   const res = await buildsV3RunBuildRegistry(hathoraCloud, "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", {
-    image: "https://loremflickr.com/1435/2196?lock=7778272511635490",
+    image: "https://picsum.photos/seed/3gDPgtj/723/1525",
   }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   if (!res.ok) {
@@ -580,8 +580,8 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.ApiError    | 400, 401, 404, 429 | application/json   |
-| errors.ApiError    | 500                | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400, 401, 404, 422, 429 | application/json        |
+| errors.ApiError         | 500                     | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

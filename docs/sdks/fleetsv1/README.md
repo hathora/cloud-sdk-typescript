@@ -108,7 +108,7 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   await hathoraCloud.fleetsV1.updateFleet("<id>", {
     autoscalerConfig: {
-      scaleUpThreshold: 679459,
+      scaleUpThreshold: 979840,
     },
   }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
@@ -137,7 +137,7 @@ const hathoraCloud = new HathoraCloudCore({
 async function run() {
   const res = await fleetsV1UpdateFleet(hathoraCloud, "<id>", {
     autoscalerConfig: {
-      scaleUpThreshold: 679459,
+      scaleUpThreshold: 979840,
     },
   }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
@@ -192,7 +192,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.fleetsV1.getFleetRegion("<id>", "Sao_Paulo", "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  const result = await hathoraCloud.fleetsV1.getFleetRegion("<id>", "Singapore", "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   // Handle the result
   console.log(result);
@@ -218,7 +218,7 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await fleetsV1GetFleetRegion(hathoraCloud, "<id>", "Sao_Paulo", "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  const res = await fleetsV1GetFleetRegion(hathoraCloud, "<id>", "Singapore", "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   if (!res.ok) {
     throw res.error;
@@ -271,8 +271,8 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  await hathoraCloud.fleetsV1.updateFleetRegion("<id>", "Singapore", {
-    cloudMinVcpus: 511402,
+  await hathoraCloud.fleetsV1.updateFleetRegion("<id>", "Chicago", {
+    cloudMinVcpus: 503995,
   }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
 
@@ -298,8 +298,8 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await fleetsV1UpdateFleetRegion(hathoraCloud, "<id>", "Singapore", {
-    cloudMinVcpus: 511402,
+  const res = await fleetsV1UpdateFleetRegion(hathoraCloud, "<id>", "Chicago", {
+    cloudMinVcpus: 503995,
   }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   if (!res.ok) {
@@ -356,7 +356,7 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.fleetsV1.getFleetMetrics({
     fleetId: "<id>",
-    region: "London",
+    region: "Washington_DC",
   });
 
   // Handle the result
@@ -385,7 +385,7 @@ const hathoraCloud = new HathoraCloudCore({
 async function run() {
   const res = await fleetsV1GetFleetMetrics(hathoraCloud, {
     fleetId: "<id>",
-    region: "London",
+    region: "Washington_DC",
   });
 
   if (!res.ok) {

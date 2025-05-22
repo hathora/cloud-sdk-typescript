@@ -345,7 +345,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   const result = await hathoraCloud.billingV1.initStripeCustomerPortalUrl({
-    returnUrl: "https://smart-puppet.biz/",
+    returnUrl: "https://sunny-majority.com/",
   }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   // Handle the result
@@ -373,7 +373,7 @@ const hathoraCloud = new HathoraCloudCore({
 
 async function run() {
   const res = await billingV1InitStripeCustomerPortalUrl(hathoraCloud, {
-    returnUrl: "https://smart-puppet.biz/",
+    returnUrl: "https://sunny-majority.com/",
   }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
   if (!res.ok) {

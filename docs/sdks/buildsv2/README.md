@@ -363,7 +363,7 @@ async function run() {
   const result = await hathoraCloud.buildsV2.createWithMultipartUploadsV2Deprecated({
     buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
     buildTag: "0.1.14-14c793",
-    buildSizeInBytes: 3146.66,
+    buildSizeInBytes: 5282.13,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   // Handle the result
@@ -393,7 +393,7 @@ async function run() {
   const res = await buildsV2CreateWithMultipartUploadsV2Deprecated(hathoraCloud, {
     buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
     buildTag: "0.1.14-14c793",
-    buildSizeInBytes: 3146.66,
+    buildSizeInBytes: 5282.13,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
   if (!res.ok) {
@@ -586,8 +586,8 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.ApiError    | 400, 401, 404, 429 | application/json   |
-| errors.ApiError    | 500                | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 400, 401, 404, 422, 429 | application/json        |
+| errors.ApiError         | 500                     | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

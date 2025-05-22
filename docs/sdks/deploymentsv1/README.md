@@ -272,17 +272,25 @@ async function run() {
         value: "TRUE",
         name: "EULA",
       },
+      {
+        value: "TRUE",
+        name: "EULA",
+      },
+      {
+        value: "TRUE",
+        name: "EULA",
+      },
     ],
     roomsPerProcess: 3,
     planName: "tiny",
     additionalContainerPorts: [
       {
-        transportType: "tls",
+        transportType: "udp",
         port: 8000,
         name: "default",
       },
     ],
-    transportType: "udp",
+    transportType: "tls",
     containerPort: 4000,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
@@ -316,17 +324,25 @@ async function run() {
         value: "TRUE",
         name: "EULA",
       },
+      {
+        value: "TRUE",
+        name: "EULA",
+      },
+      {
+        value: "TRUE",
+        name: "EULA",
+      },
     ],
     roomsPerProcess: 3,
     planName: "tiny",
     additionalContainerPorts: [
       {
-        transportType: "tls",
+        transportType: "udp",
         port: 8000,
         name: "default",
       },
     ],
-    transportType: "udp",
+    transportType: "tls",
     containerPort: 4000,
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 

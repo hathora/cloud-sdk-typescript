@@ -194,7 +194,20 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.appsV2.updateApp({
     serviceConfig: {
-      staticProcessAllocation: [],
+      staticProcessAllocation: [
+        {
+          maxProcesses: 3,
+          targetProcesses: 2,
+          minProcesses: 1,
+          region: "Sao_Paulo",
+        },
+        {
+          maxProcesses: 3,
+          targetProcesses: 2,
+          minProcesses: 1,
+          region: "Sao_Paulo",
+        },
+      ],
     },
     authConfiguration: {},
     appName: "minecraft",
@@ -226,7 +239,20 @@ const hathoraCloud = new HathoraCloudCore({
 async function run() {
   const res = await appsV2UpdateApp(hathoraCloud, {
     serviceConfig: {
-      staticProcessAllocation: [],
+      staticProcessAllocation: [
+        {
+          maxProcesses: 3,
+          targetProcesses: 2,
+          minProcesses: 1,
+          region: "Sao_Paulo",
+        },
+        {
+          maxProcesses: 3,
+          targetProcesses: 2,
+          minProcesses: 1,
+          region: "Sao_Paulo",
+        },
+      ],
     },
     authConfiguration: {},
     appName: "minecraft",
@@ -285,7 +311,26 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.appsV2.patchApp({
     serviceConfig: {
-      staticProcessAllocation: [],
+      staticProcessAllocation: [
+        {
+          maxProcesses: 3,
+          targetProcesses: 2,
+          minProcesses: 1,
+          region: "Tokyo",
+        },
+        {
+          maxProcesses: 3,
+          targetProcesses: 2,
+          minProcesses: 1,
+          region: "Tokyo",
+        },
+        {
+          maxProcesses: 3,
+          targetProcesses: 2,
+          minProcesses: 1,
+          region: "Tokyo",
+        },
+      ],
     },
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 
@@ -315,7 +360,26 @@ const hathoraCloud = new HathoraCloudCore({
 async function run() {
   const res = await appsV2PatchApp(hathoraCloud, {
     serviceConfig: {
-      staticProcessAllocation: [],
+      staticProcessAllocation: [
+        {
+          maxProcesses: 3,
+          targetProcesses: 2,
+          minProcesses: 1,
+          region: "Tokyo",
+        },
+        {
+          maxProcesses: 3,
+          targetProcesses: 2,
+          minProcesses: 1,
+          region: "Tokyo",
+        },
+        {
+          maxProcesses: 3,
+          targetProcesses: 2,
+          minProcesses: 1,
+          region: "Tokyo",
+        },
+      ],
     },
   }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
 

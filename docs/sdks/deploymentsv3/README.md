@@ -108,17 +108,31 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.deploymentsV3.createDeployment({
     deploymentTag: "alpha",
-    idleTimeoutEnabled: false,
-    env: [],
+    idleTimeoutEnabled: true,
+    env: [
+      {
+        value: "TRUE",
+        name: "EULA",
+      },
+      {
+        value: "TRUE",
+        name: "EULA",
+      },
+    ],
     roomsPerProcess: 3,
     additionalContainerPorts: [
       {
-        transportType: "tcp",
+        transportType: "udp",
+        port: 8000,
+        name: "default",
+      },
+      {
+        transportType: "udp",
         port: 8000,
         name: "default",
       },
     ],
-    transportType: "tls",
+    transportType: "udp",
     containerPort: 4000,
     experimentalRequestedGPU: 1,
     requestedMemoryMB: 1024,
@@ -152,17 +166,31 @@ const hathoraCloud = new HathoraCloudCore({
 async function run() {
   const res = await deploymentsV3CreateDeployment(hathoraCloud, {
     deploymentTag: "alpha",
-    idleTimeoutEnabled: false,
-    env: [],
+    idleTimeoutEnabled: true,
+    env: [
+      {
+        value: "TRUE",
+        name: "EULA",
+      },
+      {
+        value: "TRUE",
+        name: "EULA",
+      },
+    ],
     roomsPerProcess: 3,
     additionalContainerPorts: [
       {
-        transportType: "tcp",
+        transportType: "udp",
+        port: 8000,
+        name: "default",
+      },
+      {
+        transportType: "udp",
         port: 8000,
         name: "default",
       },
     ],
-    transportType: "tls",
+    transportType: "udp",
     containerPort: 4000,
     experimentalRequestedGPU: 1,
     requestedMemoryMB: 1024,

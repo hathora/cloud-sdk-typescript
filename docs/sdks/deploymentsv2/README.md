@@ -268,16 +268,7 @@ const hathoraCloud = new HathoraCloud({
 async function run() {
   const result = await hathoraCloud.deploymentsV2.createDeploymentV2Deprecated(1, {
     idleTimeoutEnabled: false,
-    env: [
-      {
-        value: "TRUE",
-        name: "EULA",
-      },
-      {
-        value: "TRUE",
-        name: "EULA",
-      },
-    ],
+    env: [],
     roomsPerProcess: 3,
     additionalContainerPorts: [
       {
@@ -286,7 +277,7 @@ async function run() {
         name: "default",
       },
     ],
-    transportType: "udp",
+    transportType: "tls",
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
@@ -318,16 +309,7 @@ const hathoraCloud = new HathoraCloudCore({
 async function run() {
   const res = await deploymentsV2CreateDeploymentV2Deprecated(hathoraCloud, 1, {
     idleTimeoutEnabled: false,
-    env: [
-      {
-        value: "TRUE",
-        name: "EULA",
-      },
-      {
-        value: "TRUE",
-        name: "EULA",
-      },
-    ],
+    env: [],
     roomsPerProcess: 3,
     additionalContainerPorts: [
       {
@@ -336,7 +318,7 @@ async function run() {
         name: "default",
       },
     ],
-    transportType: "udp",
+    transportType: "tls",
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
