@@ -10,6 +10,13 @@ import { Scope, Scope$inboundSchema, Scope$outboundSchema } from "./scope.js";
 
 export type Organization = {
   /**
+   * The maximum number of inbound connections that can be made to a process
+   *
+   * @remarks
+   * If undefined, the default is 1024 connections
+   */
+  maxProcessConnections?: number | undefined;
+  /**
    * The retention period for process logs in hours
    *
    * @remarks
@@ -64,7 +71,8 @@ export const Organization$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  logRetentionPeriodHours: z.number().optional(),
+  maxProcessConnections: z.number().optional(),
+  logRetentionPeriodHours: z.number().int().optional(),
   podMaxLifespanHrs: z.number().optional(),
   monthlyProcessVcpuHoursLimit: z.number().optional(),
   concurrentProcessVcpusLimit: z.number().optional(),
@@ -79,6 +87,7 @@ export const Organization$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Organization$Outbound = {
+  maxProcessConnections?: number | undefined;
   logRetentionPeriodHours?: number | undefined;
   podMaxLifespanHrs?: number | undefined;
   monthlyProcessVcpuHoursLimit?: number | undefined;
@@ -98,7 +107,8 @@ export const Organization$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Organization
 > = z.object({
-  logRetentionPeriodHours: z.number().optional(),
+  maxProcessConnections: z.number().optional(),
+  logRetentionPeriodHours: z.number().int().optional(),
   podMaxLifespanHrs: z.number().optional(),
   monthlyProcessVcpuHoursLimit: z.number().optional(),
   concurrentProcessVcpusLimit: z.number().optional(),
