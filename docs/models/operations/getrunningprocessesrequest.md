@@ -5,9 +5,7 @@
 ```typescript
 import { GetRunningProcessesRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
-let value: GetRunningProcessesRequest = {
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-};
+let value: GetRunningProcessesRequest = {};
 ```
 
 ## Fields

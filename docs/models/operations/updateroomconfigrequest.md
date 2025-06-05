@@ -6,11 +6,7 @@
 import { UpdateRoomConfigRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: UpdateRoomConfigRequest = {
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   roomId: "2swovpy1fnunu",
-  updateRoomConfigParams: {
-    roomConfig: "{\"name\":\"my-room\"}",
-  },
 };
 ```
 

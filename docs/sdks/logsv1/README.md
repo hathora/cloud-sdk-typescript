@@ -18,15 +18,13 @@ Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hatho
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.logsV1.getLogsForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.logsV1.getLogsForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -44,22 +42,18 @@ import { logsV1GetLogsForProcess } from "@hathora/cloud-sdk-typescript/funcs/log
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await logsV1GetLogsForProcess(hathoraCloud, "cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await logsV1GetLogsForProcess(hathoraCloud, "cbfcddd2-0006-43ae-996c-995fff7bed2e");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("logsV1GetLogsForProcess failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -99,15 +93,13 @@ Download entire log file for a stopped process.
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.logsV1.downloadLogForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.logsV1.downloadLogForProcess("cbfcddd2-0006-43ae-996c-995fff7bed2e");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -125,22 +117,18 @@ import { logsV1DownloadLogForProcess } from "@hathora/cloud-sdk-typescript/funcs
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await logsV1DownloadLogForProcess(hathoraCloud, "cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await logsV1DownloadLogForProcess(hathoraCloud, "cbfcddd2-0006-43ae-996c-995fff7bed2e");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("logsV1DownloadLogForProcess failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

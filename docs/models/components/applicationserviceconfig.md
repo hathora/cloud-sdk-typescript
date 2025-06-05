@@ -11,7 +11,7 @@ let value: ApplicationServiceConfig = {
       maxProcesses: 3,
       targetProcesses: 2,
       minProcesses: 1,
-      region: "Tokyo",
+      region: "Johannesburg",
     },
   ],
 };

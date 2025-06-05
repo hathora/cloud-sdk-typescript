@@ -8,11 +8,9 @@ import { OrgMembersPage } from "@hathora/cloud-sdk-typescript/models/components"
 let value: OrgMembersPage = {
   members: [
     {
-      scopes: [
-        "processes:read",
-      ],
-      joinedAt: new Date("2023-06-04T06:22:29.142Z"),
-      createdAt: new Date("2025-02-26T05:29:29.873Z"),
+      scopes: "admin",
+      joinedAt: new Date("2025-02-26T05:29:29.873Z"),
+      createdAt: new Date("2024-05-08T03:40:47.048Z"),
       invitedBy: "noreply@hathora.dev",
       userEmail: "noreply@hathora.dev",
       orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",

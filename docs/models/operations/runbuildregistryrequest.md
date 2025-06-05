@@ -7,9 +7,6 @@ import { RunBuildRegistryRequest } from "@hathora/cloud-sdk-typescript/models/op
 
 let value: RunBuildRegistryRequest = {
   buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
-  registryConfig: {
-    image: "https://picsum.photos/seed/a8dapdbaoK/1626/2103",
-  },
 };
 ```
 

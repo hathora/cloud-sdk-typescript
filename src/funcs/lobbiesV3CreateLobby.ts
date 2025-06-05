@@ -43,7 +43,6 @@ export function lobbiesV3CreateLobby(
   Result<
     components.LobbyV3,
     | errors.ApiError
-    | errors.ApiError
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -76,7 +75,6 @@ async function $do(
   [
     Result<
       components.LobbyV3,
-      | errors.ApiError
       | errors.ApiError
       | SDKError
       | SDKValidationError
@@ -139,6 +137,7 @@ async function $do(
   );
 
   const context = {
+    options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "CreateLobby",
     oAuth2Scopes: null,
@@ -160,6 +159,7 @@ async function $do(
     headers: headers,
     query: query,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
@@ -184,7 +184,6 @@ async function $do(
 
   const [result] = await M.match<
     components.LobbyV3,
-    | errors.ApiError
     | errors.ApiError
     | SDKError
     | SDKValidationError

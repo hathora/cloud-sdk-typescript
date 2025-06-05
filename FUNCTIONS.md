@@ -21,40 +21,21 @@ specific category of applications.
 ```typescript
 import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
 import { tokensV1GetOrgTokens } from "@hathora/cloud-sdk-typescript/funcs/tokensV1GetOrgTokens.js";
-import { SDKValidationError } from "@hathora/cloud-sdk-typescript/models/errors/sdkvalidationerror.js";
 
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
   const res = await tokensV1GetOrgTokens(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-  switch (true) {
-    case res.ok:
-      // The success case will be handled outside of the switch block
-      break;
-    case res.error instanceof SDKValidationError:
-      // Pretty-print validation errors.
-      return console.log(res.error.pretty());
-    case res.error instanceof Error:
-      return console.log(res.error);
-    default:
-      // TypeScript's type checking will fail on the following line if the above
-      // cases were not exhaustive.
-      res.error satisfies never;
-      throw new Error("Assertion failed: expected error checks to be exhaustive: " + res.error);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tokensV1GetOrgTokens failed:", res.error);
   }
-
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

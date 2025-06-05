@@ -14,7 +14,7 @@ let value: Lobby = {
   createdBy: "google-oauth2|107030234048588177467",
   local: false,
   visibility: "private",
-  region: "Tokyo",
+  region: "London",
   roomId: "2swovpy1fnunu",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 };

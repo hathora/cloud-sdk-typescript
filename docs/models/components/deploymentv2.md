@@ -6,13 +6,8 @@
 import { DeploymentV2 } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: DeploymentV2 = {
-  idleTimeoutEnabled: false,
-  env: [
-    {
-      value: "TRUE",
-      name: "EULA",
-    },
-  ],
+  idleTimeoutEnabled: true,
+  env: [],
   roomsPerProcess: 3,
   additionalContainerPorts: [
     {
@@ -26,7 +21,7 @@ let value: DeploymentV2 = {
     port: 8000,
     name: "default",
   },
-  createdAt: new Date("2024-06-13T05:08:58.372Z"),
+  createdAt: new Date("2024-05-14T09:01:37.189Z"),
   createdBy: "noreply@hathora.dev",
   requestedMemoryMB: 1024,
   requestedCPU: 0.5,

@@ -6,16 +6,7 @@
 import { CreateRoomRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: CreateRoomRequest = {
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   roomId: "2swovpy1fnunu",
-  createRoomParams: {
-    deploymentId: "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
-    clientIPs: [
-      "123.123.123.123",
-    ],
-    roomConfig: "{\"name\":\"my-room\"}",
-    region: "Singapore",
-  },
 };
 ```
 

@@ -12,26 +12,21 @@ let value: BuildWithMultipartUrls = {
   regionalContainerTags: [
     {
       containerTag: "<value>",
-      region: "Sydney",
+      region: "Singapore",
     },
   ],
-  imageSize: 520182,
-  status: "failed",
-  deletedAt: new Date("2024-06-19T18:32:02.991Z"),
-  finishedAt: new Date("2025-08-26T10:54:05.471Z"),
-  startedAt: new Date("2023-01-12T13:25:22.213Z"),
-  createdAt: new Date("2023-04-30T16:04:36.826Z"),
+  imageSize: 908571,
+  status: "running",
+  deletedAt: new Date("2023-01-12T13:25:22.213Z"),
+  finishedAt: new Date("2025-10-20T21:34:16.853Z"),
+  startedAt: new Date("2023-01-25T08:35:07.390Z"),
+  createdAt: new Date("2024-10-28T13:04:09.981Z"),
   createdBy: "noreply@hathora.dev",
   buildId: 1,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  completeUploadPostRequestUrl: "https://quick-aircraft.name",
-  maxChunkSize: 9704.7,
-  uploadParts: [
-    {
-      putRequestUrl: "https://jealous-complication.com/",
-      partNumber: 2087.21,
-    },
-  ],
+  completeUploadPostRequestUrl: "https://athletic-humor.biz",
+  maxChunkSize: 55.09,
+  uploadParts: [],
 };
 ```
 

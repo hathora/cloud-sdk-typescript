@@ -9,18 +9,13 @@ import { BuildWithUploadUrl } from "@hathora/cloud-sdk-typescript/models/compone
 
 let value: BuildWithUploadUrl = {
   buildTag: "0.1.14-14c793",
-  regionalContainerTags: [
-    {
-      containerTag: "<value>",
-      region: "Los_Angeles",
-    },
-  ],
+  regionalContainerTags: [],
   imageSize: 932879,
   status: "failed",
-  deletedAt: new Date("2024-02-29T07:26:16.161Z"),
-  finishedAt: new Date("2023-08-30T12:05:14.751Z"),
-  startedAt: new Date("2024-01-29T13:25:20.643Z"),
-  createdAt: new Date("2023-12-25T01:06:39.032Z"),
+  deletedAt: new Date("2023-08-30T12:05:14.751Z"),
+  finishedAt: new Date("2023-12-25T01:06:39.032Z"),
+  startedAt: new Date("2023-09-14T08:50:33.346Z"),
+  createdAt: new Date("2023-11-28T11:01:36.442Z"),
   createdBy: "noreply@hathora.dev",
   buildId: 1,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
@@ -30,7 +25,7 @@ let value: BuildWithUploadUrl = {
       key: "<key>",
     },
   ],
-  uploadUrl: "https://equatorial-euphonium.name",
+  uploadUrl: "https://turbulent-patroller.biz",
 };
 ```
 

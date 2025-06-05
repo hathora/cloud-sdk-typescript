@@ -22,15 +22,13 @@ Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-enti
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.deploymentsV2.getDeploymentsV2Deprecated("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.deploymentsV2.getDeploymentsV2Deprecated();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -48,22 +46,18 @@ import { deploymentsV2GetDeploymentsV2Deprecated } from "@hathora/cloud-sdk-type
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await deploymentsV2GetDeploymentsV2Deprecated(hathoraCloud, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await deploymentsV2GetDeploymentsV2Deprecated(hathoraCloud);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("deploymentsV2GetDeploymentsV2Deprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -101,15 +95,13 @@ Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#d
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.deploymentsV2.getLatestDeploymentV2Deprecated("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.deploymentsV2.getLatestDeploymentV2Deprecated();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -127,22 +119,18 @@ import { deploymentsV2GetLatestDeploymentV2Deprecated } from "@hathora/cloud-sdk
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await deploymentsV2GetLatestDeploymentV2Deprecated(hathoraCloud, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await deploymentsV2GetLatestDeploymentV2Deprecated(hathoraCloud);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("deploymentsV2GetLatestDeploymentV2Deprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -180,15 +168,13 @@ Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entitie
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.deploymentsV2.getDeploymentInfoV2Deprecated(1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.deploymentsV2.getDeploymentInfoV2Deprecated(1);
 
-  // Handle the result
   console.log(result);
 }
 
@@ -206,22 +192,18 @@ import { deploymentsV2GetDeploymentInfoV2Deprecated } from "@hathora/cloud-sdk-t
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await deploymentsV2GetDeploymentInfoV2Deprecated(hathoraCloud, 1, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await deploymentsV2GetDeploymentInfoV2Deprecated(hathoraCloud, 1);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("deploymentsV2GetDeploymentInfoV2Deprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -260,9 +242,8 @@ Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#dep
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -281,9 +262,8 @@ async function run() {
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -301,9 +281,8 @@ import { deploymentsV2CreateDeploymentV2Deprecated } from "@hathora/cloud-sdk-ty
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -322,16 +301,13 @@ async function run() {
     containerPort: 4000,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("deploymentsV2CreateDeploymentV2Deprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

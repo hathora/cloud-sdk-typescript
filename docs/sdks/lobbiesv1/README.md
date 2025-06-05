@@ -21,16 +21,14 @@ CreatePrivateLobbyDeprecated
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
   const result = await hathoraCloud.lobbiesV1.createPrivateLobbyDeprecated({
     playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -48,23 +46,19 @@ import { lobbiesV1CreatePrivateLobbyDeprecated } from "@hathora/cloud-sdk-typesc
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
   const res = await lobbiesV1CreatePrivateLobbyDeprecated(hathoraCloud, {
     playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lobbiesV1CreatePrivateLobbyDeprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -106,16 +100,14 @@ CreatePublicLobbyDeprecated
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
   const result = await hathoraCloud.lobbiesV1.createPublicLobbyDeprecated({
     playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -133,23 +125,19 @@ import { lobbiesV1CreatePublicLobbyDeprecated } from "@hathora/cloud-sdk-typescr
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
   const res = await lobbiesV1CreatePublicLobbyDeprecated(hathoraCloud, {
     playerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lobbiesV1CreatePublicLobbyDeprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -191,14 +179,12 @@ ListActivePublicLobbiesDeprecatedV1
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV1.listActivePublicLobbiesDeprecatedV1("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.lobbiesV1.listActivePublicLobbiesDeprecatedV1();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -216,21 +202,17 @@ import { lobbiesV1ListActivePublicLobbiesDeprecatedV1 } from "@hathora/cloud-sdk
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const res = await lobbiesV1ListActivePublicLobbiesDeprecatedV1(hathoraCloud, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await lobbiesV1ListActivePublicLobbiesDeprecatedV1(hathoraCloud);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lobbiesV1ListActivePublicLobbiesDeprecatedV1 failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

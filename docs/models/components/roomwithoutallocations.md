@@ -7,8 +7,8 @@ import { RoomWithoutAllocations } from "@hathora/cloud-sdk-typescript/models/com
 
 let value: RoomWithoutAllocations = {
   currentAllocation: {
-    unscheduledAt: new Date("2025-02-09T19:49:02.795Z"),
-    scheduledAt: new Date("2025-06-28T08:23:52.257Z"),
+    unscheduledAt: new Date("2025-08-07T11:22:38.157Z"),
+    scheduledAt: new Date("2023-05-23T18:54:41.544Z"),
     processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
     roomAllocationId: "e3a0aa32-1711-4036-acfa-008b96061a78",
   },

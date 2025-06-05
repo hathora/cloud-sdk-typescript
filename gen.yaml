@@ -4,6 +4,7 @@ generation:
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: true
@@ -22,7 +23,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.19.7
+  version: 2.20.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}

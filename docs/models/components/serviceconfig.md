@@ -6,14 +6,7 @@
 import { ServiceConfig } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: ServiceConfig = {
-  staticProcessAllocation: [
-    {
-      maxProcesses: 3,
-      targetProcesses: 2,
-      minProcesses: 1,
-      region: "Los_Angeles",
-    },
-  ],
+  staticProcessAllocation: [],
 };
 ```
 

@@ -24,15 +24,13 @@ Returns an unsorted list of your organization’s [applications](https://hathora
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.appsV2.getApps("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  const result = await hathoraCloud.appsV2.getApps();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -50,22 +48,18 @@ import { appsV2GetApps } from "@hathora/cloud-sdk-typescript/funcs/appsV2GetApps
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await appsV2GetApps(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await appsV2GetApps(hathoraCloud);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("appsV2GetApps failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -101,18 +95,16 @@ Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#ap
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
   const result = await hathoraCloud.appsV2.createApp({
     authConfiguration: {},
     appName: "minecraft",
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -130,25 +122,21 @@ import { appsV2CreateApp } from "@hathora/cloud-sdk-typescript/funcs/appsV2Creat
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
   const res = await appsV2CreateApp(hathoraCloud, {
     authConfiguration: {},
     appName: "minecraft",
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-  if (!res.ok) {
-    throw res.error;
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("appsV2CreateApp failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -186,9 +174,8 @@ Set application config (will override all fields) for an existing [application](
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -211,9 +198,8 @@ async function run() {
     },
     authConfiguration: {},
     appName: "minecraft",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -231,9 +217,8 @@ import { appsV2UpdateApp } from "@hathora/cloud-sdk-typescript/funcs/appsV2Updat
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -256,16 +241,13 @@ async function run() {
     },
     authConfiguration: {},
     appName: "minecraft",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("appsV2UpdateApp failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -303,9 +285,8 @@ Patch data for an existing [application](https://hathora.dev/docs/concepts/hatho
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -332,9 +313,8 @@ async function run() {
         },
       ],
     },
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -352,9 +332,8 @@ import { appsV2PatchApp } from "@hathora/cloud-sdk-typescript/funcs/appsV2PatchA
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -381,16 +360,13 @@ async function run() {
         },
       ],
     },
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("appsV2PatchApp failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -428,15 +404,13 @@ Get details for an [application](https://hathora.dev/docs/concepts/hathora-entit
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.appsV2.getApp("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.appsV2.getApp();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -454,22 +428,18 @@ import { appsV2GetApp } from "@hathora/cloud-sdk-typescript/funcs/appsV2GetApp.j
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await appsV2GetApp(hathoraCloud, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await appsV2GetApp(hathoraCloud);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("appsV2GetApp failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -505,13 +475,12 @@ Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#appli
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  await hathoraCloud.appsV2.deleteApp("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  await hathoraCloud.appsV2.deleteApp();
 
 
 }
@@ -530,21 +499,18 @@ import { appsV2DeleteApp } from "@hathora/cloud-sdk-typescript/funcs/appsV2Delet
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await appsV2DeleteApp(hathoraCloud, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await appsV2DeleteApp(hathoraCloud);
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("appsV2DeleteApp failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();

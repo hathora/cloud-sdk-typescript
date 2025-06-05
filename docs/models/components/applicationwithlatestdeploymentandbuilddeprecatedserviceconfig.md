@@ -11,7 +11,7 @@ let value: ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig = {
       maxProcesses: 3,
       targetProcesses: 2,
       minProcesses: 1,
-      region: "Dallas",
+      region: "Johannesburg",
     },
   ],
 };

@@ -14,7 +14,7 @@ let value: PartialAppConfigWithServiceConfig = {
         maxProcesses: 3,
         targetProcesses: 2,
         minProcesses: 1,
-        region: "Washington_DC",
+        region: "Johannesburg",
       },
     ],
   },

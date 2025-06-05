@@ -8,12 +8,7 @@ import { ApplicationWithLatestDeploymentAndBuildDeployment } from "@hathora/clou
 let value: ApplicationWithLatestDeploymentAndBuildDeployment = {
   deploymentTag: "alpha",
   idleTimeoutEnabled: false,
-  env: [
-    {
-      value: "TRUE",
-      name: "EULA",
-    },
-  ],
+  env: [],
   roomsPerProcess: 3,
   additionalContainerPorts: [
     {
@@ -23,11 +18,11 @@ let value: ApplicationWithLatestDeploymentAndBuildDeployment = {
     },
   ],
   defaultContainerPort: {
-    transportType: "tls",
+    transportType: "tcp",
     port: 8000,
     name: "default",
   },
-  createdAt: new Date("2023-02-05T01:07:37.031Z"),
+  createdAt: new Date("2024-01-02T02:39:58.454Z"),
   createdBy: "noreply@hathora.dev",
   experimentalRequestedGPU: 1,
   requestedMemoryMB: 1024,
@@ -38,12 +33,12 @@ let value: ApplicationWithLatestDeploymentAndBuildDeployment = {
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   build: {
     buildTag: "0.1.14-14c793",
-    imageSize: 334043,
-    status: "failed",
-    deletedAt: new Date("2025-01-31T21:40:18.365Z"),
-    finishedAt: new Date("2025-08-15T11:03:06.418Z"),
-    startedAt: new Date("2024-10-16T00:25:44.600Z"),
-    createdAt: new Date("2024-06-07T09:11:22.224Z"),
+    imageSize: 771171,
+    status: "succeeded",
+    deletedAt: new Date("2024-10-16T00:25:44.600Z"),
+    finishedAt: new Date("2023-08-27T06:03:14.931Z"),
+    startedAt: new Date("2025-11-01T16:56:57.204Z"),
+    createdAt: new Date("2024-03-28T09:45:42.821Z"),
     createdBy: "noreply@hathora.dev",
     buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
     orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",

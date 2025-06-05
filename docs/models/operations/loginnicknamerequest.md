@@ -5,12 +5,7 @@
 ```typescript
 import { LoginNicknameRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
-let value: LoginNicknameRequest = {
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  nicknameObject: {
-    nickname: "squiddytwoshoes",
-  },
-};
+let value: LoginNicknameRequest = {};
 ```
 
 ## Fields

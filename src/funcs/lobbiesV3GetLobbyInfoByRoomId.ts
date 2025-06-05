@@ -112,6 +112,7 @@ async function $do(
   }));
 
   const context = {
+    options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "GetLobbyInfoByRoomId",
     oAuth2Scopes: [],
@@ -131,6 +132,7 @@ async function $do(
     path: path,
     headers: headers,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {

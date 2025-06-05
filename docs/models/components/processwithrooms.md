@@ -9,18 +9,18 @@ import { ProcessWithRooms } from "@hathora/cloud-sdk-typescript/models/component
 
 let value: ProcessWithRooms = {
   egressedBytes: 435,
-  idleSince: new Date("2024-12-13T01:24:39.264Z"),
-  activeConnectionsUpdatedAt: new Date("2025-05-27T01:22:15.608Z"),
+  idleSince: new Date("2025-05-27T01:22:15.608Z"),
+  activeConnectionsUpdatedAt: new Date("2023-04-21T15:26:09.486Z"),
   activeConnections: 10,
-  roomsAllocatedUpdatedAt: new Date("2023-04-21T15:26:09.486Z"),
+  roomsAllocatedUpdatedAt: new Date("2023-03-29T05:45:42.964Z"),
   roomsAllocated: 1,
-  roomSlotsAvailableUpdatedAt: new Date("2023-03-29T05:45:42.964Z"),
-  roomSlotsAvailable: 8144.27,
-  draining: false,
-  terminatedAt: new Date("2023-10-06T06:06:25.236Z"),
-  stoppingAt: new Date("2024-05-28T15:46:25.583Z"),
-  startedAt: new Date("2024-07-23T08:20:12.852Z"),
-  startingAt: new Date("2025-07-22T22:18:05.549Z"),
+  roomSlotsAvailableUpdatedAt: new Date("2025-06-11T14:40:41.019Z"),
+  roomSlotsAvailable: 2538.82,
+  draining: true,
+  terminatedAt: new Date("2025-07-22T22:18:05.549Z"),
+  stoppingAt: new Date("2024-11-21T20:57:48.070Z"),
+  startedAt: new Date("2024-11-26T14:35:19.412Z"),
+  startingAt: new Date("2024-11-19T16:34:06.479Z"),
   roomsPerProcess: 3,
   additionalExposedPorts: [
     {
@@ -36,17 +36,17 @@ let value: ProcessWithRooms = {
     host: "1.proxy.hathora.dev",
     name: "default",
   },
-  port: 9380.93,
-  host: "present-resource.name",
-  region: "Tokyo",
+  port: 1976.15,
+  host: "delicious-contractor.biz",
+  region: "Singapore",
   processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
   deploymentId: 1,
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   rooms: [
     {
       currentAllocation: {
-        unscheduledAt: new Date("2023-08-05T14:04:23.536Z"),
-        scheduledAt: new Date("2023-07-17T12:16:19.634Z"),
+        unscheduledAt: new Date("2025-08-07T11:22:38.157Z"),
+        scheduledAt: new Date("2023-05-23T18:54:41.544Z"),
         processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
         roomAllocationId: "e3a0aa32-1711-4036-acfa-008b96061a78",
       },
@@ -56,7 +56,7 @@ let value: ProcessWithRooms = {
       appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
     },
   ],
-  totalRooms: 183485,
+  totalRooms: 272033,
 };
 ```
 

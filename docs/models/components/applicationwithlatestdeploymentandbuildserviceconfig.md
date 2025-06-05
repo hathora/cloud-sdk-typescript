@@ -11,7 +11,7 @@ let value: ApplicationWithLatestDeploymentAndBuildServiceConfig = {
       maxProcesses: 3,
       targetProcesses: 2,
       minProcesses: 1,
-      region: "Singapore",
+      region: "Johannesburg",
     },
   ],
 };

@@ -21,18 +21,15 @@ Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#p
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
   const result = await hathoraCloud.metricsV1.getMetricsDeprecated({
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
     processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -50,25 +47,20 @@ import { metricsV1GetMetricsDeprecated } from "@hathora/cloud-sdk-typescript/fun
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
   const res = await metricsV1GetMetricsDeprecated(hathoraCloud, {
-    appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
     processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("metricsV1GetMetricsDeprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

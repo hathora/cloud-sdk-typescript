@@ -7,7 +7,7 @@ import { DeploymentV3 } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: DeploymentV3 = {
   deploymentTag: "alpha",
-  idleTimeoutEnabled: false,
+  idleTimeoutEnabled: true,
   env: [
     {
       value: "TRUE",
@@ -27,7 +27,7 @@ let value: DeploymentV3 = {
     port: 8000,
     name: "default",
   },
-  createdAt: new Date("2025-03-30T09:15:55.596Z"),
+  createdAt: new Date("2024-06-15T10:30:01.048Z"),
   createdBy: "noreply@hathora.dev",
   experimentalRequestedGPU: 1,
   requestedMemoryMB: 1024,

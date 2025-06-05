@@ -8,9 +8,7 @@ If not defined, the token has Admin access.
 ### `components.Scope[]`
 
 ```typescript
-const value: components.Scope[] = [
-  "billing:read-write",
-];
+const value: components.Scope[] = [];
 ```
 
 ### `components.Two`

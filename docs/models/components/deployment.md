@@ -6,13 +6,8 @@
 import { Deployment } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: Deployment = {
-  idleTimeoutEnabled: false,
-  env: [
-    {
-      value: "TRUE",
-      name: "EULA",
-    },
-  ],
+  idleTimeoutEnabled: true,
+  env: [],
   roomsPerProcess: 3,
   additionalContainerPorts: [
     {
@@ -22,11 +17,11 @@ let value: Deployment = {
     },
   ],
   defaultContainerPort: {
-    transportType: "udp",
+    transportType: "tcp",
     port: 8000,
     name: "default",
   },
-  createdAt: new Date("2023-05-14T02:11:16.170Z"),
+  createdAt: new Date("2024-05-05T21:58:07.884Z"),
   createdBy: "noreply@hathora.dev",
   requestedMemoryMB: 1024,
   requestedCPU: 0.5,
@@ -35,18 +30,13 @@ let value: Deployment = {
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
   build: {
     buildTag: "0.1.14-14c793",
-    regionalContainerTags: [
-      {
-        containerTag: "<value>",
-        region: "Mumbai",
-      },
-    ],
-    imageSize: 342551,
-    status: "created",
-    deletedAt: new Date("2025-07-09T12:57:49.283Z"),
-    finishedAt: new Date("2024-11-14T04:39:09.144Z"),
-    startedAt: new Date("2025-02-13T19:52:44.371Z"),
-    createdAt: new Date("2025-11-10T08:28:02.554Z"),
+    regionalContainerTags: [],
+    imageSize: 167635,
+    status: "failed",
+    deletedAt: new Date("2025-02-13T19:52:44.371Z"),
+    finishedAt: new Date("2023-12-12T03:32:30.242Z"),
+    startedAt: new Date("2023-08-30T11:27:05.511Z"),
+    createdAt: new Date("2025-10-17T10:01:37.443Z"),
     createdBy: "noreply@hathora.dev",
     buildId: 1,
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",

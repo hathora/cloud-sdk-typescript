@@ -25,7 +25,6 @@ CreatePrivateLobby
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -35,9 +34,8 @@ async function run() {
   }, {
     initialConfig: "<value>",
     region: "Frankfurt",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+  }, "2swovpy1fnunu");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -55,7 +53,6 @@ import { lobbiesV2CreatePrivateLobby } from "@hathora/cloud-sdk-typescript/funcs
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -65,16 +62,13 @@ async function run() {
   }, {
     initialConfig: "<value>",
     region: "Frankfurt",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
-
-  if (!res.ok) {
-    throw res.error;
+  }, "2swovpy1fnunu");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lobbiesV2CreatePrivateLobby failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -116,7 +110,6 @@ CreatePublicLobby
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -126,9 +119,8 @@ async function run() {
   }, {
     initialConfig: "<value>",
     region: "Tokyo",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+  }, "2swovpy1fnunu");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -146,7 +138,6 @@ import { lobbiesV2CreatePublicLobby } from "@hathora/cloud-sdk-typescript/funcs/
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -156,16 +147,13 @@ async function run() {
   }, {
     initialConfig: "<value>",
     region: "Tokyo",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
-
-  if (!res.ok) {
-    throw res.error;
+  }, "2swovpy1fnunu");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lobbiesV2CreatePublicLobby failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -207,7 +195,6 @@ CreateLocalLobby
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -217,9 +204,8 @@ async function run() {
   }, {
     initialConfig: "<value>",
     region: "Johannesburg",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+  }, "2swovpy1fnunu");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -237,7 +223,6 @@ import { lobbiesV2CreateLocalLobby } from "@hathora/cloud-sdk-typescript/funcs/l
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -247,16 +232,13 @@ async function run() {
   }, {
     initialConfig: "<value>",
     region: "Johannesburg",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
-
-  if (!res.ok) {
-    throw res.error;
+  }, "2swovpy1fnunu");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lobbiesV2CreateLocalLobby failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -298,7 +280,6 @@ Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathor
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -309,9 +290,8 @@ async function run() {
     visibility: "private",
     initialConfig: "<value>",
     region: "Frankfurt",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+  }, "2swovpy1fnunu");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -329,7 +309,6 @@ import { lobbiesV2CreateLobbyDeprecated } from "@hathora/cloud-sdk-typescript/fu
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
@@ -340,16 +319,13 @@ async function run() {
     visibility: "private",
     initialConfig: "<value>",
     region: "Frankfurt",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
-
-  if (!res.ok) {
-    throw res.error;
+  }, "2swovpy1fnunu");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lobbiesV2CreateLobbyDeprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -391,14 +367,12 @@ Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV2.listActivePublicLobbiesDeprecatedV2("app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.lobbiesV2.listActivePublicLobbiesDeprecatedV2();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -416,21 +390,17 @@ import { lobbiesV2ListActivePublicLobbiesDeprecatedV2 } from "@hathora/cloud-sdk
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const res = await lobbiesV2ListActivePublicLobbiesDeprecatedV2(hathoraCloud, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await lobbiesV2ListActivePublicLobbiesDeprecatedV2(hathoraCloud);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lobbiesV2ListActivePublicLobbiesDeprecatedV2 failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -469,14 +439,12 @@ Get details for a lobby.
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const result = await hathoraCloud.lobbiesV2.getLobbyInfo("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.lobbiesV2.getLobbyInfo("2swovpy1fnunu");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -494,21 +462,17 @@ import { lobbiesV2GetLobbyInfo } from "@hathora/cloud-sdk-typescript/funcs/lobbi
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const res = await lobbiesV2GetLobbyInfo(hathoraCloud, "2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await lobbiesV2GetLobbyInfo(hathoraCloud, "2swovpy1fnunu");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lobbiesV2GetLobbyInfo failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -547,17 +511,15 @@ Set the state of a lobby. State is intended to be set by the server and must be 
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
   const result = await hathoraCloud.lobbiesV2.setLobbyState("2swovpy1fnunu", {
     state: "Connecticut",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -575,24 +537,20 @@ import { lobbiesV2SetLobbyState } from "@hathora/cloud-sdk-typescript/funcs/lobb
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
   const res = await lobbiesV2SetLobbyState(hathoraCloud, "2swovpy1fnunu", {
     state: "Connecticut",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lobbiesV2SetLobbyState failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

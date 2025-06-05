@@ -9,8 +9,8 @@ import { ApplicationWithLatestDeploymentAndBuildDeprecated } from "@hathora/clou
 
 let value: ApplicationWithLatestDeploymentAndBuildDeprecated = {
   deletedBy: "noreply@hathora.dev",
-  deletedAt: new Date("2024-05-06T23:22:05.395Z"),
-  createdAt: new Date("2024-06-20T20:30:17.031Z"),
+  deletedAt: new Date("2024-06-20T20:30:17.031Z"),
+  createdAt: new Date("2024-07-02T22:32:11.250Z"),
   createdBy: "noreply@hathora.dev",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   serviceConfig: {
@@ -19,7 +19,7 @@ let value: ApplicationWithLatestDeploymentAndBuildDeprecated = {
         maxProcesses: 3,
         targetProcesses: 2,
         minProcesses: 1,
-        region: "Singapore",
+        region: "Johannesburg",
       },
     ],
   },
@@ -29,12 +29,7 @@ let value: ApplicationWithLatestDeploymentAndBuildDeprecated = {
   appName: "minecraft",
   deployment: {
     idleTimeoutEnabled: false,
-    env: [
-      {
-        value: "TRUE",
-        name: "EULA",
-      },
-    ],
+    env: [],
     roomsPerProcess: 3,
     additionalContainerPorts: [
       {
@@ -44,11 +39,11 @@ let value: ApplicationWithLatestDeploymentAndBuildDeprecated = {
       },
     ],
     defaultContainerPort: {
-      transportType: "tls",
+      transportType: "tcp",
       port: 8000,
       name: "default",
     },
-    createdAt: new Date("2024-08-13T03:55:57.938Z"),
+    createdAt: new Date("2023-09-13T04:59:52.312Z"),
     createdBy: "noreply@hathora.dev",
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
@@ -57,18 +52,13 @@ let value: ApplicationWithLatestDeploymentAndBuildDeprecated = {
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
     build: {
       buildTag: "0.1.14-14c793",
-      regionalContainerTags: [
-        {
-          containerTag: "<value>",
-          region: "Dubai",
-        },
-      ],
-      imageSize: 355366,
-      status: "created",
-      deletedAt: new Date("2023-10-19T21:19:30.336Z"),
-      finishedAt: new Date("2025-10-14T11:13:24.438Z"),
-      startedAt: new Date("2025-03-26T11:12:09.466Z"),
-      createdAt: new Date("2024-05-26T21:39:45.618Z"),
+      regionalContainerTags: [],
+      imageSize: 167635,
+      status: "failed",
+      deletedAt: new Date("2025-02-13T19:52:44.371Z"),
+      finishedAt: new Date("2023-12-12T03:32:30.242Z"),
+      startedAt: new Date("2023-08-30T11:27:05.511Z"),
+      createdAt: new Date("2025-10-17T10:01:37.443Z"),
       createdBy: "noreply@hathora.dev",
       buildId: 1,
       appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",

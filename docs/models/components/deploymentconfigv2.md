@@ -6,7 +6,7 @@
 import { DeploymentConfigV2 } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: DeploymentConfigV2 = {
-  idleTimeoutEnabled: false,
+  idleTimeoutEnabled: true,
   env: [
     {
       value: "TRUE",
@@ -16,12 +16,12 @@ let value: DeploymentConfigV2 = {
   roomsPerProcess: 3,
   additionalContainerPorts: [
     {
-      transportType: "udp",
+      transportType: "tcp",
       port: 8000,
       name: "default",
     },
   ],
-  transportType: "tls",
+  transportType: "tcp",
   containerPort: 4000,
   requestedMemoryMB: 1024,
   requestedCPU: 0.5,

@@ -9,19 +9,12 @@ import { Application } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: Application = {
   deletedBy: "noreply@hathora.dev",
-  deletedAt: new Date("2024-02-08T19:11:45.236Z"),
-  createdAt: new Date("2025-02-25T07:36:21.751Z"),
+  deletedAt: new Date("2025-02-25T07:36:21.751Z"),
+  createdAt: new Date("2024-12-31T10:27:58.128Z"),
   createdBy: "noreply@hathora.dev",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   serviceConfig: {
-    staticProcessAllocation: [
-      {
-        maxProcesses: 3,
-        targetProcesses: 2,
-        minProcesses: 1,
-        region: "Sydney",
-      },
-    ],
+    staticProcessAllocation: [],
   },
   authConfiguration: {},
   appSecret: "secret-6f706e83-0ec1-437a-9a46-7d4281eb2f39",

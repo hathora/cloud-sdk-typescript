@@ -9,8 +9,8 @@ import { ApplicationWithLatestDeploymentAndBuild } from "@hathora/cloud-sdk-type
 
 let value: ApplicationWithLatestDeploymentAndBuild = {
   deletedBy: "noreply@hathora.dev",
-  deletedAt: new Date("2025-10-20T06:59:20.156Z"),
-  createdAt: new Date("2024-07-23T18:54:59.085Z"),
+  deletedAt: new Date("2024-07-23T18:54:59.085Z"),
+  createdAt: new Date("2025-10-23T18:46:48.593Z"),
   createdBy: "noreply@hathora.dev",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   serviceConfig: {
@@ -19,7 +19,7 @@ let value: ApplicationWithLatestDeploymentAndBuild = {
         maxProcesses: 3,
         targetProcesses: 2,
         minProcesses: 1,
-        region: "Dubai",
+        region: "Johannesburg",
       },
     ],
   },
@@ -29,7 +29,7 @@ let value: ApplicationWithLatestDeploymentAndBuild = {
   appName: "minecraft",
   deployment: {
     deploymentTag: "alpha",
-    idleTimeoutEnabled: false,
+    idleTimeoutEnabled: true,
     env: [
       {
         value: "TRUE",
@@ -49,7 +49,7 @@ let value: ApplicationWithLatestDeploymentAndBuild = {
       port: 8000,
       name: "default",
     },
-    createdAt: new Date("2025-01-01T09:14:25.512Z"),
+    createdAt: new Date("2024-12-08T05:38:57.817Z"),
     createdBy: "noreply@hathora.dev",
     experimentalRequestedGPU: 1,
     requestedMemoryMB: 1024,
@@ -60,12 +60,12 @@ let value: ApplicationWithLatestDeploymentAndBuild = {
     appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
     build: {
       buildTag: "0.1.14-14c793",
-      imageSize: 350453,
-      status: "failed",
-      deletedAt: new Date("2024-12-08T05:38:57.817Z"),
-      finishedAt: new Date("2025-05-29T18:10:56.995Z"),
-      startedAt: new Date("2025-01-03T11:52:56.642Z"),
-      createdAt: new Date("2024-12-19T21:47:29.366Z"),
+      imageSize: 771171,
+      status: "succeeded",
+      deletedAt: new Date("2024-10-16T00:25:44.600Z"),
+      finishedAt: new Date("2023-08-27T06:03:14.931Z"),
+      startedAt: new Date("2025-11-01T16:56:57.204Z"),
+      createdAt: new Date("2024-03-28T09:45:42.821Z"),
       createdBy: "noreply@hathora.dev",
       buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
       orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",

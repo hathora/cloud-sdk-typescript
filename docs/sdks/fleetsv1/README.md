@@ -23,15 +23,13 @@ Returns an array of [fleets](https://hathora.dev/docs/concepts/hathora-entities#
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.fleetsV1.getFleets("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  const result = await hathoraCloud.fleetsV1.getFleets();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -49,22 +47,18 @@ import { fleetsV1GetFleets } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1G
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await fleetsV1GetFleets(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await fleetsV1GetFleets(hathoraCloud);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("fleetsV1GetFleets failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -100,9 +94,8 @@ Updates a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet)'s co
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -110,7 +103,7 @@ async function run() {
     autoscalerConfig: {
       scaleUpThreshold: 979840,
     },
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  });
 
 
 }
@@ -129,9 +122,8 @@ import { fleetsV1UpdateFleet } from "@hathora/cloud-sdk-typescript/funcs/fleetsV
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -139,15 +131,13 @@ async function run() {
     autoscalerConfig: {
       scaleUpThreshold: 979840,
     },
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-  if (!res.ok) {
-    throw res.error;
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("fleetsV1UpdateFleet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -186,15 +176,13 @@ Gets the configuration for a given [fleet](https://hathora.dev/docs/concepts/hat
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.fleetsV1.getFleetRegion("<id>", "Singapore", "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  const result = await hathoraCloud.fleetsV1.getFleetRegion("<id>", "Singapore");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -212,22 +200,18 @@ import { fleetsV1GetFleetRegion } from "@hathora/cloud-sdk-typescript/funcs/flee
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await fleetsV1GetFleetRegion(hathoraCloud, "<id>", "Singapore", "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await fleetsV1GetFleetRegion(hathoraCloud, "<id>", "Singapore");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("fleetsV1GetFleetRegion failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -265,15 +249,14 @@ Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
   await hathoraCloud.fleetsV1.updateFleetRegion("<id>", "Chicago", {
     cloudMinVcpus: 503995,
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  });
 
 
 }
@@ -292,23 +275,20 @@ import { fleetsV1UpdateFleetRegion } from "@hathora/cloud-sdk-typescript/funcs/f
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
   const res = await fleetsV1UpdateFleetRegion(hathoraCloud, "<id>", "Chicago", {
     cloudMinVcpus: 503995,
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-  if (!res.ok) {
-    throw res.error;
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("fleetsV1UpdateFleetRegion failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -348,9 +328,8 @@ Gets metrics for a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fl
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -359,7 +338,6 @@ async function run() {
     region: "Washington_DC",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -377,9 +355,8 @@ import { fleetsV1GetFleetMetrics } from "@hathora/cloud-sdk-typescript/funcs/fle
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -387,15 +364,12 @@ async function run() {
     fleetId: "<id>",
     region: "Washington_DC",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("fleetsV1GetFleetMetrics failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

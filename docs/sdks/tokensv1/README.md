@@ -22,14 +22,11 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
   const result = await hathoraCloud.tokensV1.getOrgTokens("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -48,21 +45,16 @@ import { tokensV1GetOrgTokens } from "@hathora/cloud-sdk-typescript/funcs/tokens
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
   const res = await tokensV1GetOrgTokens(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tokensV1GetOrgTokens failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -99,8 +91,6 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
@@ -108,7 +98,6 @@ async function run() {
     name: "ci-token",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -127,23 +116,18 @@ import { tokensV1CreateOrgToken } from "@hathora/cloud-sdk-typescript/funcs/toke
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
   const res = await tokensV1CreateOrgToken(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", {
     name: "ci-token",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tokensV1CreateOrgToken failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -181,14 +165,11 @@ import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
   const result = await hathoraCloud.tokensV1.revokeOrgToken("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "org-token-af469a92-5b45-4565-b3c4-b79878de67d2");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -207,21 +188,16 @@ import { tokensV1RevokeOrgToken } from "@hathora/cloud-sdk-typescript/funcs/toke
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
   const res = await tokensV1RevokeOrgToken(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "org-token-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tokensV1RevokeOrgToken failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -18,17 +18,13 @@ SendVerificationEmail
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
-const hathoraCloud = new HathoraCloud({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-});
+const hathoraCloud = new HathoraCloud();
 
 async function run() {
   const result = await hathoraCloud.managementV1.sendVerificationEmail({
     userId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -45,24 +41,18 @@ import { managementV1SendVerificationEmail } from "@hathora/cloud-sdk-typescript
 
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hathoraCloud = new HathoraCloudCore({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-});
+const hathoraCloud = new HathoraCloudCore();
 
 async function run() {
   const res = await managementV1SendVerificationEmail(hathoraCloud, {
     userId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("managementV1SendVerificationEmail failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

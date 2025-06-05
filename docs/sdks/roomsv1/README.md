@@ -25,9 +25,8 @@ CreateRoomDeprecated
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -38,9 +37,8 @@ async function run() {
     ],
     roomConfig: "{\"name\":\"my-room\"}",
     region: "London",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
+  }, "2swovpy1fnunu");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -58,9 +56,8 @@ import { roomsV1CreateRoomDeprecated } from "@hathora/cloud-sdk-typescript/funcs
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -71,16 +68,13 @@ async function run() {
     ],
     roomConfig: "{\"name\":\"my-room\"}",
     region: "London",
-  }, "app-af469a92-5b45-4565-b3c4-b79878de67d2", "2swovpy1fnunu");
-
-  if (!res.ok) {
-    throw res.error;
+  }, "2swovpy1fnunu");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("roomsV1CreateRoomDeprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -121,15 +115,13 @@ GetRoomInfoDeprecated
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.roomsV1.getRoomInfoDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.roomsV1.getRoomInfoDeprecated("2swovpy1fnunu");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -147,22 +139,18 @@ import { roomsV1GetRoomInfoDeprecated } from "@hathora/cloud-sdk-typescript/func
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await roomsV1GetRoomInfoDeprecated(hathoraCloud, "2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await roomsV1GetRoomInfoDeprecated(hathoraCloud, "2swovpy1fnunu");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("roomsV1GetRoomInfoDeprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -201,15 +189,13 @@ GetActiveRoomsForProcessDeprecated
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.roomsV1.getActiveRoomsForProcessDeprecated("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.roomsV1.getActiveRoomsForProcessDeprecated("cbfcddd2-0006-43ae-996c-995fff7bed2e");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -227,22 +213,18 @@ import { roomsV1GetActiveRoomsForProcessDeprecated } from "@hathora/cloud-sdk-ty
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await roomsV1GetActiveRoomsForProcessDeprecated(hathoraCloud, "cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await roomsV1GetActiveRoomsForProcessDeprecated(hathoraCloud, "cbfcddd2-0006-43ae-996c-995fff7bed2e");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("roomsV1GetActiveRoomsForProcessDeprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -281,15 +263,13 @@ GetInactiveRoomsForProcessDeprecated
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.roomsV1.getInactiveRoomsForProcessDeprecated("cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.roomsV1.getInactiveRoomsForProcessDeprecated("cbfcddd2-0006-43ae-996c-995fff7bed2e");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -307,22 +287,18 @@ import { roomsV1GetInactiveRoomsForProcessDeprecated } from "@hathora/cloud-sdk-
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await roomsV1GetInactiveRoomsForProcessDeprecated(hathoraCloud, "cbfcddd2-0006-43ae-996c-995fff7bed2e", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await roomsV1GetInactiveRoomsForProcessDeprecated(hathoraCloud, "cbfcddd2-0006-43ae-996c-995fff7bed2e");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("roomsV1GetInactiveRoomsForProcessDeprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -361,13 +337,12 @@ DestroyRoomDeprecated
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  await hathoraCloud.roomsV1.destroyRoomDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  await hathoraCloud.roomsV1.destroyRoomDeprecated("2swovpy1fnunu");
 
 
 }
@@ -386,21 +361,18 @@ import { roomsV1DestroyRoomDeprecated } from "@hathora/cloud-sdk-typescript/func
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await roomsV1DestroyRoomDeprecated(hathoraCloud, "2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await roomsV1DestroyRoomDeprecated(hathoraCloud, "2swovpy1fnunu");
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("roomsV1DestroyRoomDeprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -440,13 +412,12 @@ SuspendRoomDeprecated
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  await hathoraCloud.roomsV1.suspendRoomDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  await hathoraCloud.roomsV1.suspendRoomDeprecated("2swovpy1fnunu");
 
 
 }
@@ -465,21 +436,18 @@ import { roomsV1SuspendRoomDeprecated } from "@hathora/cloud-sdk-typescript/func
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await roomsV1SuspendRoomDeprecated(hathoraCloud, "2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await roomsV1SuspendRoomDeprecated(hathoraCloud, "2swovpy1fnunu");
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("roomsV1SuspendRoomDeprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -519,14 +487,12 @@ GetConnectionInfoDeprecated
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const result = await hathoraCloud.roomsV1.getConnectionInfoDeprecated("2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
+  const result = await hathoraCloud.roomsV1.getConnectionInfoDeprecated("2swovpy1fnunu");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -544,21 +510,17 @@ import { roomsV1GetConnectionInfoDeprecated } from "@hathora/cloud-sdk-typescrip
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
 });
 
 async function run() {
-  const res = await roomsV1GetConnectionInfoDeprecated(hathoraCloud, "2swovpy1fnunu", "app-af469a92-5b45-4565-b3c4-b79878de67d2");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await roomsV1GetConnectionInfoDeprecated(hathoraCloud, "2swovpy1fnunu");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("roomsV1GetConnectionInfoDeprecated failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

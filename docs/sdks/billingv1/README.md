@@ -26,15 +26,13 @@ GetBalance
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.billingV1.getBalance("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  const result = await hathoraCloud.billingV1.getBalance();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -52,22 +50,18 @@ import { billingV1GetBalance } from "@hathora/cloud-sdk-typescript/funcs/billing
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await billingV1GetBalance(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await billingV1GetBalance(hathoraCloud);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("billingV1GetBalance failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -104,15 +98,13 @@ GetUpcomingInvoiceItems
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.billingV1.getUpcomingInvoiceItems("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  const result = await hathoraCloud.billingV1.getUpcomingInvoiceItems();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -130,22 +122,18 @@ import { billingV1GetUpcomingInvoiceItems } from "@hathora/cloud-sdk-typescript/
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await billingV1GetUpcomingInvoiceItems(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await billingV1GetUpcomingInvoiceItems(hathoraCloud);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("billingV1GetUpcomingInvoiceItems failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -182,15 +170,13 @@ GetUpcomingInvoiceTotal
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.billingV1.getUpcomingInvoiceTotal("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  const result = await hathoraCloud.billingV1.getUpcomingInvoiceTotal();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -208,22 +194,18 @@ import { billingV1GetUpcomingInvoiceTotal } from "@hathora/cloud-sdk-typescript/
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await billingV1GetUpcomingInvoiceTotal(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await billingV1GetUpcomingInvoiceTotal(hathoraCloud);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("billingV1GetUpcomingInvoiceTotal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -260,15 +242,13 @@ GetPaymentMethod
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.billingV1.getPaymentMethod("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  const result = await hathoraCloud.billingV1.getPaymentMethod();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -286,22 +266,18 @@ import { billingV1GetPaymentMethod } from "@hathora/cloud-sdk-typescript/funcs/b
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await billingV1GetPaymentMethod(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await billingV1GetPaymentMethod(hathoraCloud);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("billingV1GetPaymentMethod failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -338,17 +314,15 @@ InitStripeCustomerPortalUrl
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
   const result = await hathoraCloud.billingV1.initStripeCustomerPortalUrl({
     returnUrl: "https://sunny-majority.com/",
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -366,24 +340,20 @@ import { billingV1InitStripeCustomerPortalUrl } from "@hathora/cloud-sdk-typescr
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
   const res = await billingV1InitStripeCustomerPortalUrl(hathoraCloud, {
     returnUrl: "https://sunny-majority.com/",
-  }, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-  if (!res.ok) {
-    throw res.error;
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("billingV1InitStripeCustomerPortalUrl failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -421,15 +391,13 @@ GetInvoices
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await hathoraCloud.billingV1.getInvoices("org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
+  const result = await hathoraCloud.billingV1.getInvoices();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -447,22 +415,18 @@ import { billingV1GetInvoices } from "@hathora/cloud-sdk-typescript/funcs/billin
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const hathoraCloud = new HathoraCloudCore({
-  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const res = await billingV1GetInvoices(hathoraCloud, "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await billingV1GetInvoices(hathoraCloud);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("billingV1GetInvoices failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

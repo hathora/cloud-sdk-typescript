@@ -12,8 +12,6 @@ const value: components.UserRole = "admin";
 ### `components.Scope[]`
 
 ```typescript
-const value: components.Scope[] = [
-  "billing:read-write",
-];
+const value: components.Scope[] = [];
 ```
 

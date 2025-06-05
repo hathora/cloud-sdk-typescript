@@ -5,12 +5,7 @@
 ```typescript
 import { CreateBuildV2DeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
-let value: CreateBuildV2DeprecatedRequest = {
-  appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2",
-  createBuildParams: {
-    buildTag: "0.1.14-14c793",
-  },
-};
+let value: CreateBuildV2DeprecatedRequest = {};
 ```
 
 ## Fields

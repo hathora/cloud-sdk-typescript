@@ -7,13 +7,8 @@ import { DeploymentConfigV3 } from "@hathora/cloud-sdk-typescript/models/compone
 
 let value: DeploymentConfigV3 = {
   deploymentTag: "alpha",
-  idleTimeoutEnabled: false,
-  env: [
-    {
-      value: "TRUE",
-      name: "EULA",
-    },
-  ],
+  idleTimeoutEnabled: true,
+  env: [],
   roomsPerProcess: 3,
   additionalContainerPorts: [
     {
