@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 32a255542bbd502b564a1c5e29e04fd6
+  docChecksum: 53e66efcb9be59e2fefba65748f4508c
   docVersion: 0.0.1
-  speakeasyVersion: 1.555.3
-  generationVersion: 2.620.2
-  releaseVersion: 2.20.0
-  configChecksum: 01f280848c30631eb429f1eace6f8a54
+  speakeasyVersion: 1.557.0
+  generationVersion: 2.623.0
+  releaseVersion: 2.20.1
+  configChecksum: be66fdff537c171d7642d3c700f500b8
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -696,8 +696,10 @@ generatedFiles:
   - src/models/components/verificationemailrequest.ts
   - src/models/components/verificationemailsuccess.ts
   - src/models/errors/apierror.ts
+  - src/models/errors/hathoraclouderror.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/index.ts
+  - src/models/errors/responsevalidationerror.ts
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
   - src/models/operations/acceptinvite.ts

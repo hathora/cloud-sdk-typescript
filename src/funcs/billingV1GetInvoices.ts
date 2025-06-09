@@ -12,6 +12,7 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import * as components from "../models/components/index.js";
+import { HathoraCloudError } from "../models/errors/hathoraclouderror.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -20,7 +21,7 @@ import {
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import * as errors from "../models/errors/index.js";
-import { SDKError } from "../models/errors/sdkerror.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
@@ -37,13 +38,14 @@ export function billingV1GetInvoices(
   Result<
     Array<components.Invoice>,
     | errors.ApiError
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | HathoraCloudError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >
 > {
   return new APIPromise($do(
@@ -62,13 +64,14 @@ async function $do(
     Result<
       Array<components.Invoice>,
       | errors.ApiError
-      | SDKError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
+      | HathoraCloudError
+      | ResponseValidationError
+      | ConnectionError
       | RequestAbortedError
       | RequestTimeoutError
-      | ConnectionError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
     >,
     APICall,
   ]
@@ -151,20 +154,21 @@ async function $do(
   const [result] = await M.match<
     Array<components.Invoice>,
     | errors.ApiError
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | HathoraCloudError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >(
     M.json(200, z.array(components.Invoice$inboundSchema)),
     M.jsonErr([401, 404, 422, 429], errors.ApiError$inboundSchema),
     M.jsonErr(500, errors.ApiError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
-  )(response, { extraFields: responseFields });
+  )(response, req, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

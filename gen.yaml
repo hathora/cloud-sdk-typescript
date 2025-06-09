@@ -23,13 +23,14 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.20.0
+  version: 2.20.1
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON: {}
   author: Hathora
+  baseErrorName: HathoraCloudError
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
