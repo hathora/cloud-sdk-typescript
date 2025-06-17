@@ -22,7 +22,7 @@ import {
 /**
  * Connection information to the default port.
  */
-export type ConnectionInfo = StartingConnectionInfo | ActiveConnectionInfo;
+export type ConnectionInfo = ActiveConnectionInfo | StartingConnectionInfo;
 
 /** @internal */
 export const ConnectionInfo$inboundSchema: z.ZodType<
@@ -30,14 +30,14 @@ export const ConnectionInfo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  StartingConnectionInfo$inboundSchema,
   ActiveConnectionInfo$inboundSchema,
+  StartingConnectionInfo$inboundSchema,
 ]);
 
 /** @internal */
 export type ConnectionInfo$Outbound =
-  | StartingConnectionInfo$Outbound
-  | ActiveConnectionInfo$Outbound;
+  | ActiveConnectionInfo$Outbound
+  | StartingConnectionInfo$Outbound;
 
 /** @internal */
 export const ConnectionInfo$outboundSchema: z.ZodType<
@@ -45,8 +45,8 @@ export const ConnectionInfo$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ConnectionInfo
 > = z.union([
-  StartingConnectionInfo$outboundSchema,
   ActiveConnectionInfo$outboundSchema,
+  StartingConnectionInfo$outboundSchema,
 ]);
 
 /**

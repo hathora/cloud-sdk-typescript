@@ -5,7 +5,10 @@
 import * as z from "zod";
 import { HathoraCloudCore } from "../core.js";
 import { appendForm, encodeSimple } from "../lib/encodings.js";
-import { readableStreamToArrayBuffer } from "../lib/files.js";
+import {
+  getContentTypeFromFileName,
+  readableStreamToArrayBuffer,
+} from "../lib/files.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -112,15 +115,19 @@ async function $do(
     const buffer = await readableStreamToArrayBuffer(
       payload.RequestBody.file.content,
     );
-    const blob = new Blob([buffer], { type: "application/octet-stream" });
-    appendForm(body, "file", blob);
+    const contentType =
+      getContentTypeFromFileName(payload.RequestBody.file.fileName)
+      || "application/octet-stream";
+    const blob = new Blob([buffer], { type: contentType });
+    appendForm(body, "file", blob, payload.RequestBody.file.fileName);
   } else {
+    const contentType =
+      getContentTypeFromFileName(payload.RequestBody.file.fileName)
+      || "application/octet-stream";
     appendForm(
       body,
       "file",
-      new Blob([payload.RequestBody.file.content], {
-        type: "application/octet-stream",
-      }),
+      new Blob([payload.RequestBody.file.content], { type: contentType }),
       payload.RequestBody.file.fileName,
     );
   }

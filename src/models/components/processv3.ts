@@ -54,6 +54,10 @@ export type ProcessV3 = {
    */
   roomsAllocated: number;
   /**
+   * The summary of why the process exited, if it has stopped.
+   */
+  summaryExitReason?: string | undefined;
+  /**
    * When the process has been terminated.
    */
   terminatedAt: Date | null;
@@ -162,6 +166,7 @@ export const ProcessV3$inboundSchema: z.ZodType<
   hosting: Hosting$inboundSchema.optional(),
   status: ProcessStatus$inboundSchema,
   roomsAllocated: z.number().int(),
+  summaryExitReason: z.string().optional(),
   terminatedAt: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ),
@@ -186,6 +191,7 @@ export type ProcessV3$Outbound = {
   hosting?: string | undefined;
   status: string;
   roomsAllocated: number;
+  summaryExitReason?: string | undefined;
   terminatedAt: string | null;
   stoppingAt: string | null;
   startedAt: string | null;
@@ -208,6 +214,7 @@ export const ProcessV3$outboundSchema: z.ZodType<
   hosting: Hosting$outboundSchema.optional(),
   status: ProcessStatus$outboundSchema,
   roomsAllocated: z.number().int(),
+  summaryExitReason: z.string().optional(),
   terminatedAt: z.nullable(z.date().transform(v => v.toISOString())),
   stoppingAt: z.nullable(z.date().transform(v => v.toISOString())),
   startedAt: z.nullable(z.date().transform(v => v.toISOString())),
