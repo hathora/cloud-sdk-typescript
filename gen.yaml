@@ -16,6 +16,10 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 management:
   version: ""
   docChecksum: 8c7636bc24c0d5e96568913317b394b9
@@ -23,7 +27,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.20.3
+  version: 2.20.4
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -32,6 +36,7 @@ typescript:
   author: Hathora
   baseErrorName: HathoraCloudError
   clientServerStatusCodesAsErrors: true
+  constFieldsAlwaysOptional: true
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
   enableMCPServer: false
