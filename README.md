@@ -355,7 +355,7 @@ run();
 ### Error Classes
 **Primary errors:**
 * [`HathoraCloudError`](./src/models/errors/hathoraclouderror.ts): The base class for HTTP error responses.
-  * [`ApiError`](docs/models/errors/apierror.md): . *
+  * [`ApiError`](./src/models/errors/apierror.ts): . *
 
 <details><summary>Less common errors (6)</summary>
 
