@@ -1,6 +1,6 @@
 {
   "name": "@hathora/cloud-sdk-typescript",
-  "version": "2.20.5",
+  "version": "2.20.6",
   "author": "Hathora",
   "main": "./index.js",
   "sideEffects": false,
@@ -14,7 +14,7 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "zod": ">= 3"
+    "zod": "^3"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

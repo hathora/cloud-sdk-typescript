@@ -7,6 +7,11 @@ import { UpdateFleetRequest } from "@hathora/cloud-sdk-typescript/models/operati
 
 let value: UpdateFleetRequest = {
   fleetId: "<id>",
+  updateFleet: {
+    autoscalerConfig: {
+      scaleUpThreshold: 679459,
+    },
+  },
 };
 ```
 

@@ -5,7 +5,22 @@
 ```typescript
 import { UpdateAppRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
-let value: UpdateAppRequest = {};
+let value: UpdateAppRequest = {
+  appConfigWithServiceConfig: {
+    serviceConfig: {
+      staticProcessAllocation: [
+        {
+          maxProcesses: 3,
+          targetProcesses: 2,
+          minProcesses: 1,
+          region: "Johannesburg",
+        },
+      ],
+    },
+    authConfiguration: {},
+    appName: "minecraft",
+  },
+};
 ```
 
 ## Fields

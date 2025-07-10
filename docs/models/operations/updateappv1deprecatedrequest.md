@@ -5,7 +5,12 @@
 ```typescript
 import { UpdateAppV1DeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
-let value: UpdateAppV1DeprecatedRequest = {};
+let value: UpdateAppV1DeprecatedRequest = {
+  appConfig: {
+    authConfiguration: {},
+    appName: "minecraft",
+  },
+};
 ```
 
 ## Fields

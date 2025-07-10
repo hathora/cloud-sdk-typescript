@@ -30,12 +30,13 @@ import { Result } from "../types/fp.js";
  * GetDeployments
  *
  * @remarks
- * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application), optionally filtered by deploymentTag.
+ * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application), optionally filtered by deploymentTag or buildTag.
  */
 export function deploymentsV3GetDeployments(
   client: HathoraCloudCore,
   appId?: string | undefined,
   deploymentTag?: string | undefined,
+  buildTag?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -55,6 +56,7 @@ export function deploymentsV3GetDeployments(
     client,
     appId,
     deploymentTag,
+    buildTag,
     options,
   ));
 }
@@ -63,6 +65,7 @@ async function $do(
   client: HathoraCloudCore,
   appId?: string | undefined,
   deploymentTag?: string | undefined,
+  buildTag?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -84,6 +87,7 @@ async function $do(
   const input: operations.GetDeploymentsRequest = {
     appId: appId,
     deploymentTag: deploymentTag,
+    buildTag: buildTag,
   };
 
   const parsed = safeParse(
@@ -109,6 +113,7 @@ async function $do(
   );
 
   const query = encodeFormQuery({
+    "buildTag": payload.buildTag,
     "deploymentTag": payload.deploymentTag,
   });
 

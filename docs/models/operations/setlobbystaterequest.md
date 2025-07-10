@@ -7,6 +7,9 @@ import { SetLobbyStateRequest } from "@hathora/cloud-sdk-typescript/models/opera
 
 let value: SetLobbyStateRequest = {
   roomId: "2swovpy1fnunu",
+  setLobbyStateParams: {
+    state: "Massachusetts",
+  },
 };
 ```
 

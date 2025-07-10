@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: dda16b15cbbf7754d9b7d189777b8c2d
+  docChecksum: 7fb46afd4aba26a94f64cdadf68053fc
   docVersion: 0.0.1
-  speakeasyVersion: 1.575.1
-  generationVersion: 2.648.1
-  releaseVersion: 2.20.5
-  configChecksum: 16da27afe3ea9c79cfee9176ce3585d9
+  speakeasyVersion: 1.580.1
+  generationVersion: 2.656.3
+  releaseVersion: 2.20.6
+  configChecksum: a6c1f5d705cff14991945c969f58db9f
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.11
+    core: 3.21.14
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -446,6 +446,10 @@ generatedFiles:
   - docs/sdks/roomsv2/README.md
   - docs/sdks/tokensv1/README.md
   - eslint.config.mjs
+  - examples/.env.template
+  - examples/README.md
+  - examples/package.json
+  - examples/tokensV1GetOrgTokens.example.ts
   - jsr.json
   - package.json
   - src/core.ts
@@ -1753,6 +1757,7 @@ examples:
           appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2"
         query:
           deploymentTag: "alpha"
+          buildTag: "0.1.14-14c793"
       responses:
         "200":
           application/json: {"deployments": []}

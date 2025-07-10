@@ -7,6 +7,10 @@ import { CreateLocalLobbyRequest } from "@hathora/cloud-sdk-typescript/models/op
 
 let value: CreateLocalLobbyRequest = {
   roomId: "2swovpy1fnunu",
+  requestBody: {
+    initialConfig: "<value>",
+    region: "Mumbai",
+  },
 };
 ```
 

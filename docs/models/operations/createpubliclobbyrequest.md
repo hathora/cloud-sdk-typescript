@@ -7,6 +7,10 @@ import { CreatePublicLobbyRequest } from "@hathora/cloud-sdk-typescript/models/o
 
 let value: CreatePublicLobbyRequest = {
   roomId: "2swovpy1fnunu",
+  requestBody: {
+    initialConfig: "<value>",
+    region: "Sao_Paulo",
+  },
 };
 ```
 

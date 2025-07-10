@@ -5,7 +5,32 @@
 ```typescript
 import { CreateDeploymentRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
-let value: CreateDeploymentRequest = {};
+let value: CreateDeploymentRequest = {
+  deploymentConfigV3: {
+    deploymentTag: "alpha",
+    idleTimeoutEnabled: false,
+    env: [
+      {
+        value: "TRUE",
+        name: "EULA",
+      },
+    ],
+    roomsPerProcess: 3,
+    additionalContainerPorts: [
+      {
+        transportType: "tcp",
+        port: 8000,
+        name: "default",
+      },
+    ],
+    transportType: "tcp",
+    containerPort: 4000,
+    experimentalRequestedGPU: 1,
+    requestedMemoryMB: 1024,
+    requestedCPU: 0.5,
+    buildId: "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5",
+  },
+};
 ```
 
 ## Fields

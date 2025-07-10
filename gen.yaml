@@ -27,7 +27,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.20.5
+  version: 2.20.6
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -44,6 +44,7 @@ typescript:
   enumFormat: union
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
+  generateExamples: true
   imports:
     option: openapi
     paths:

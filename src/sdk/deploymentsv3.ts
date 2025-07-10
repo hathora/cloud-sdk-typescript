@@ -15,17 +15,19 @@ export class DeploymentsV3 extends ClientSDK {
    * GetDeployments
    *
    * @remarks
-   * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application), optionally filtered by deploymentTag.
+   * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application), optionally filtered by deploymentTag or buildTag.
    */
   async getDeployments(
     appId?: string | undefined,
     deploymentTag?: string | undefined,
+    buildTag?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.DeploymentsV3Page> {
     return unwrapAsync(deploymentsV3GetDeployments(
       this,
       appId,
       deploymentTag,
+      buildTag,
       options,
     ));
   }

@@ -5,7 +5,11 @@
 ```typescript
 import { InitStripeCustomerPortalUrlRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
-let value: InitStripeCustomerPortalUrlRequest = {};
+let value: InitStripeCustomerPortalUrlRequest = {
+  customerPortalUrl: {
+    returnUrl: "https://faint-reporter.org",
+  },
+};
 ```
 
 ## Fields

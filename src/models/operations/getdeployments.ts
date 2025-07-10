@@ -14,6 +14,7 @@ export type GetDeploymentsGlobals = {
 export type GetDeploymentsRequest = {
   appId?: string | undefined;
   deploymentTag?: string | undefined;
+  buildTag?: string | undefined;
 };
 
 /** @internal */
@@ -78,12 +79,14 @@ export const GetDeploymentsRequest$inboundSchema: z.ZodType<
 > = z.object({
   appId: z.string().optional(),
   deploymentTag: z.string().optional(),
+  buildTag: z.string().optional(),
 });
 
 /** @internal */
 export type GetDeploymentsRequest$Outbound = {
   appId?: string | undefined;
   deploymentTag?: string | undefined;
+  buildTag?: string | undefined;
 };
 
 /** @internal */
@@ -94,6 +97,7 @@ export const GetDeploymentsRequest$outboundSchema: z.ZodType<
 > = z.object({
   appId: z.string().optional(),
   deploymentTag: z.string().optional(),
+  buildTag: z.string().optional(),
 });
 
 /**

@@ -5,7 +5,12 @@
 ```typescript
 import { CreateAppRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
-let value: CreateAppRequest = {};
+let value: CreateAppRequest = {
+  appConfig: {
+    authConfiguration: {},
+    appName: "minecraft",
+  },
+};
 ```
 
 ## Fields

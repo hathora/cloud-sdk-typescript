@@ -5,7 +5,11 @@
 ```typescript
 import { CreateBuildWithUploadUrlV2DeprecatedRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
-let value: CreateBuildWithUploadUrlV2DeprecatedRequest = {};
+let value: CreateBuildWithUploadUrlV2DeprecatedRequest = {
+  createBuildParams: {
+    buildTag: "0.1.14-14c793",
+  },
+};
 ```
 
 ## Fields

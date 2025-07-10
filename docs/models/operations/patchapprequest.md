@@ -5,7 +5,20 @@
 ```typescript
 import { PatchAppRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
-let value: PatchAppRequest = {};
+let value: PatchAppRequest = {
+  partialAppConfigWithServiceConfig: {
+    serviceConfig: {
+      staticProcessAllocation: [
+        {
+          maxProcesses: 3,
+          targetProcesses: 2,
+          minProcesses: 1,
+          region: "Johannesburg",
+        },
+      ],
+    },
+  },
+};
 ```
 
 ## Fields
