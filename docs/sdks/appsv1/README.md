@@ -19,6 +19,7 @@ Returns an unsorted list of your organization’s [applications](https://hathora
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetAppsV1Deprecated" method="get" path="/apps/v1/list" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -89,6 +90,7 @@ Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#ap
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateAppV1Deprecated" method="post" path="/apps/v1/create" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -167,6 +169,7 @@ Update data for an existing [application](https://hathora.dev/docs/concepts/hath
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="UpdateAppV1Deprecated" method="post" path="/apps/v1/update/{appId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -248,6 +251,7 @@ Get details for an [application](https://hathora.dev/docs/concepts/hathora-entit
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetAppInfoV1Deprecated" method="get" path="/apps/v1/info/{appId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -321,6 +325,7 @@ Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#appli
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="DeleteAppV1Deprecated" method="delete" path="/apps/v1/delete/{appId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

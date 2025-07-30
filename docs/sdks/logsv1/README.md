@@ -14,6 +14,7 @@ Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hatho
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetLogsForProcess" method="get" path="/logs/v1/{appId}/process/{processId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -89,6 +90,7 @@ Download entire log file for a stopped process.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="DownloadLogForProcess" method="get" path="/logs/v1/{appId}/process/{processId}/download" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

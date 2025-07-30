@@ -17,6 +17,7 @@ List all organization tokens for a given org.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetOrgTokens" method="get" path="/tokens/v1/orgs/{orgId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -86,6 +87,7 @@ Create a new organization token.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateOrgToken" method="post" path="/tokens/v1/orgs/{orgId}/create" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -160,6 +162,7 @@ Revoke an organization token.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="RevokeOrgToken" method="post" path="/tokens/v1/orgs/{orgId}/tokens/{orgTokenId}/revoke" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

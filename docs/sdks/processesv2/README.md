@@ -21,6 +21,7 @@ Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#p
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetProcessInfoV2Deprecated" method="get" path="/processes/v2/{appId}/info/{processId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -95,6 +96,7 @@ Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathor
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetLatestProcessesV2Deprecated" method="get" path="/processes/v2/{appId}/list/latest" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -170,6 +172,7 @@ Count the number of [processes](https://hathora.dev/docs/concepts/hathora-entiti
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetProcessesCountExperimentalV2Deprecated" method="get" path="/processes/v2/{appId}/count" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -245,6 +248,7 @@ Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) im
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="StopProcessV2Deprecated" method="post" path="/processes/v2/{appId}/stop/{processId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -320,6 +324,7 @@ Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateProcessV2Deprecated" method="post" path="/processes/v2/{appId}/create/{region}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

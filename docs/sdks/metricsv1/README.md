@@ -17,6 +17,7 @@ Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#p
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetMetricsDeprecated" method="get" path="/metrics/v1/{appId}/process/{processId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

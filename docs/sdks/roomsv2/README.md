@@ -21,6 +21,7 @@ Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateRoom" method="post" path="/rooms/v2/{appId}/create" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -109,6 +110,7 @@ Retreive current and historical allocation data for a [room](https://hathora.dev
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetRoomInfo" method="get" path="/rooms/v2/{appId}/info/{roomId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -181,6 +183,7 @@ Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetActiveRoomsForProcess" method="get" path="/rooms/v2/{appId}/list/{processId}/active" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -253,6 +256,7 @@ Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetInactiveRoomsForProcess" method="get" path="/rooms/v2/{appId}/list/{processId}/inactive" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -325,6 +329,7 @@ Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All a
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="DestroyRoom" method="post" path="/rooms/v2/{appId}/destroy/{roomId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -400,6 +405,7 @@ Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The r
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="SuspendRoomV2Deprecated" method="post" path="/rooms/v2/{appId}/suspend/{roomId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -473,6 +479,7 @@ Poll this endpoint to get connection details to a [room](https://hathora.dev/doc
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetConnectionInfo" method="get" path="/rooms/v2/{appId}/connectioninfo/{roomId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -544,6 +551,7 @@ UpdateRoomConfig
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="UpdateRoomConfig" method="post" path="/rooms/v2/{appId}/update/{roomId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -622,6 +630,7 @@ ResumeRoom
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ResumeRoom" method="post" path="/rooms/v2/{appId}/resume/{roomId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

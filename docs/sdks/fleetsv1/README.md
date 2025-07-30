@@ -19,6 +19,7 @@ Returns an array of [fleets](https://hathora.dev/docs/concepts/hathora-entities#
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetFleets" method="get" path="/fleets/v1/fleets" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -90,6 +91,7 @@ Updates a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet)'s co
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="UpdateFleet" method="post" path="/fleets/v1/fleets/{fleetId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -172,6 +174,7 @@ Gets the configuration for a given [fleet](https://hathora.dev/docs/concepts/hat
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetFleetRegion" method="get" path="/fleets/v1/fleets/{fleetId}/regions/{region}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -245,6 +248,7 @@ Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="UpdateFleetRegion" method="put" path="/fleets/v1/fleets/{fleetId}/regions/{region}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -324,6 +328,7 @@ Gets metrics for a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fl
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetFleetMetrics" method="get" path="/fleets/v1/fleets/{fleetId}/regions/{region}/metrics" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

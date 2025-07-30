@@ -16,6 +16,7 @@ Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathor
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateLobby" method="post" path="/lobby/v3/{appId}/create" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -102,6 +103,7 @@ Get all active lobbies for a given [application](https://hathora.dev/docs/concep
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ListActivePublicLobbies" method="get" path="/lobby/v3/{appId}/list/public" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -172,6 +174,7 @@ Get details for a lobby.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetLobbyInfoByRoomId" method="get" path="/lobby/v3/{appId}/info/roomid/{roomId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -242,6 +245,7 @@ Get details for a lobby. If 2 or more lobbies have the same `shortCode`, then th
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetLobbyInfoByShortCode" method="get" path="/lobby/v3/{appId}/info/shortcode/{shortCode}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

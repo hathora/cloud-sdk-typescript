@@ -17,6 +17,7 @@ Returns an array of V1 regions with a host and port that a client can directly p
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetPingServiceEndpointsDeprecated" method="get" path="/discovery/v1/ping" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

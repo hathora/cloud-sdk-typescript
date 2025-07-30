@@ -15,6 +15,7 @@ SendVerificationEmail
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="SendVerificationEmail" method="post" path="/management/v1/sendverificationemail" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

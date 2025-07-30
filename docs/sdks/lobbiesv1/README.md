@@ -17,6 +17,7 @@ CreatePrivateLobbyDeprecated
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreatePrivateLobbyDeprecated" method="post" path="/lobby/v1/{appId}/create/private" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -96,6 +97,7 @@ CreatePublicLobbyDeprecated
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreatePublicLobbyDeprecated" method="post" path="/lobby/v1/{appId}/create/public" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -175,6 +177,7 @@ ListActivePublicLobbiesDeprecatedV1
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ListActivePublicLobbiesDeprecatedV1" method="get" path="/lobby/v1/{appId}/list" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

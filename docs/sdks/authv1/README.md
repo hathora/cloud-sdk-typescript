@@ -17,6 +17,7 @@ Returns a unique player token for an anonymous user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="LoginAnonymous" method="post" path="/auth/v1/{appId}/login/anonymous" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -86,6 +87,7 @@ Returns a unique player token with a specified nickname for a user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="LoginNickname" method="post" path="/auth/v1/{appId}/login/nickname" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -160,6 +162,7 @@ Returns a unique player token using a Google-signed OIDC `idToken`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="LoginGoogle" method="post" path="/auth/v1/{appId}/login/google" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

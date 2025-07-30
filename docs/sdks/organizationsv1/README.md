@@ -22,6 +22,7 @@ Returns an unsorted list of all organizations that you are a member of (an accep
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetOrgs" method="get" path="/orgs/v1" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -90,6 +91,7 @@ GetUserPendingInvites
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetUserPendingInvites" method="get" path="/orgs/v1/user/invites/pending" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -158,6 +160,7 @@ GetOrgMembers
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetOrgMembers" method="get" path="/orgs/v1/{orgId}/members" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -227,6 +230,7 @@ InviteUser
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="InviteUser" method="put" path="/orgs/v1/{orgId}/invites" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -301,6 +305,7 @@ UpdateUserInvite
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="UpdateUserInvite" method="post" path="/orgs/v1/{orgId}/invites" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -377,6 +382,7 @@ RescindInvite
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="RescindInvite" method="post" path="/orgs/v1/{orgId}/invites/rescind" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -452,6 +458,7 @@ GetOrgPendingInvites
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetOrgPendingInvites" method="get" path="/orgs/v1/{orgId}/invites/pending" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -521,6 +528,7 @@ AcceptInvite
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AcceptInvite" method="post" path="/orgs/v1/{orgId}/invites/accept" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -590,6 +598,7 @@ RejectInvite
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="RejectInvite" method="post" path="/orgs/v1/{orgId}/invites/reject" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -659,6 +668,7 @@ GetUsageLimits
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetUsageLimits" method="get" path="/orgs/v1/metadata/usageLimits" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

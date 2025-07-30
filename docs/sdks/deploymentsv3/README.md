@@ -18,6 +18,7 @@ Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-enti
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetDeployments" method="get" path="/deployments/v3/apps/{appId}/deployments" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -91,6 +92,7 @@ Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#dep
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateDeployment" method="post" path="/deployments/v3/apps/{appId}/deployments" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -228,6 +230,7 @@ Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#d
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetLatestDeployment" method="get" path="/deployments/v3/apps/{appId}/deployments/latest" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -299,6 +302,7 @@ Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entitie
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetDeployment" method="get" path="/deployments/v3/apps/{appId}/deployments/{deploymentId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

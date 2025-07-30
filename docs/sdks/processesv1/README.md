@@ -19,6 +19,7 @@ Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/ha
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetRunningProcesses" method="get" path="/processes/v1/{appId}/list/running" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -93,6 +94,7 @@ Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/ha
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetStoppedProcesses" method="get" path="/processes/v1/{appId}/list/stopped" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -167,6 +169,7 @@ Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#p
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetProcessInfoDeprecated" method="get" path="/processes/v1/{appId}/info/{processId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

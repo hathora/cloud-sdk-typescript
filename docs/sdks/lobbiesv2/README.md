@@ -21,6 +21,7 @@ CreatePrivateLobby
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreatePrivateLobby" method="post" path="/lobby/v2/{appId}/create/private" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -106,6 +107,7 @@ CreatePublicLobby
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreatePublicLobby" method="post" path="/lobby/v2/{appId}/create/public" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -191,6 +193,7 @@ CreateLocalLobby
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateLocalLobby" method="post" path="/lobby/v2/{appId}/create/local" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -276,6 +279,7 @@ Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathor
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateLobbyDeprecated" method="post" path="/lobby/v2/{appId}/create" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -363,6 +367,7 @@ Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ListActivePublicLobbiesDeprecatedV2" method="get" path="/lobby/v2/{appId}/list/public" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -435,6 +440,7 @@ Get details for a lobby.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetLobbyInfo" method="get" path="/lobby/v2/{appId}/info/{roomId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -507,6 +513,7 @@ Set the state of a lobby. State is intended to be set by the server and must be 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="SetLobbyState" method="post" path="/lobby/v2/{appId}/setState/{roomId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

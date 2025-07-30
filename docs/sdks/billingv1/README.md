@@ -22,6 +22,7 @@ GetBalance
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetBalance" method="get" path="/billing/v1/balance" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -94,6 +95,7 @@ GetUpcomingInvoiceItems
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetUpcomingInvoiceItems" method="get" path="/billing/v1/upcoming/items" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -166,6 +168,7 @@ GetUpcomingInvoiceTotal
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetUpcomingInvoiceTotal" method="get" path="/billing/v1/upcoming/total" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -238,6 +241,7 @@ GetPaymentMethod
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetPaymentMethod" method="get" path="/billing/v1/paymentmethod" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -310,6 +314,7 @@ InitStripeCustomerPortalUrl
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="InitStripeCustomerPortalUrl" method="post" path="/billing/v1/customerportalurl" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -387,6 +392,7 @@ GetInvoices
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetInvoices" method="get" path="/billing/v1/invoices" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

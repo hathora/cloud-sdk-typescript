@@ -21,6 +21,7 @@ CreateRoomDeprecated
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateRoomDeprecated" method="post" path="/rooms/v1/{appId}/create" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -111,6 +112,7 @@ GetRoomInfoDeprecated
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetRoomInfoDeprecated" method="get" path="/rooms/v1/{appId}/info/{roomId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -185,6 +187,7 @@ GetActiveRoomsForProcessDeprecated
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetActiveRoomsForProcessDeprecated" method="get" path="/rooms/v1/{appId}/list/{processId}/active" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -259,6 +262,7 @@ GetInactiveRoomsForProcessDeprecated
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetInactiveRoomsForProcessDeprecated" method="get" path="/rooms/v1/{appId}/list/{processId}/inactive" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -333,6 +337,7 @@ DestroyRoomDeprecated
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="DestroyRoomDeprecated" method="post" path="/rooms/v1/{appId}/destroy/{roomId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -408,6 +413,7 @@ SuspendRoomDeprecated
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="SuspendRoomDeprecated" method="post" path="/rooms/v1/{appId}/suspend/{roomId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -483,6 +489,7 @@ GetConnectionInfoDeprecated
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetConnectionInfoDeprecated" method="get" path="/rooms/v1/{appId}/connectioninfo/{roomId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

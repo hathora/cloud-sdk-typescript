@@ -21,6 +21,7 @@ Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetBuilds" method="get" path="/builds/v3/builds" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -92,6 +93,7 @@ Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build) 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateBuild" method="post" path="/builds/v3/builds" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -173,6 +175,7 @@ Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#bui
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetBuild" method="get" path="/builds/v3/builds/{buildId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -247,6 +250,7 @@ Deleting a build that is actively build used by an app's deployment will cause f
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="DeleteBuild" method="delete" path="/builds/v3/builds/{buildId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -320,6 +324,7 @@ Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build) 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateBuildRegistry" method="post" path="/builds/v3/builds/registry" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -399,6 +404,7 @@ Builds a game server artifact from a tarball you provide. Pass in the `buildId` 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="RunBuild" method="post" path="/builds/v3/builds/{buildId}/run" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -472,6 +478,7 @@ Builds a game server artifact from a public or private registry. Pass in the `bu
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="RunBuildRegistry" method="post" path="/builds/v3/builds/{buildId}/runRegistry" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

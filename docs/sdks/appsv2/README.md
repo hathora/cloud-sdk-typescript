@@ -20,6 +20,7 @@ Returns an unsorted list of your organization’s [applications](https://hathora
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetApps" method="get" path="/apps/v2/apps" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -91,6 +92,7 @@ Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#ap
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateApp" method="post" path="/apps/v2/apps" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -170,6 +172,7 @@ Set application config (will override all fields) for an existing [application](
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="UpdateApp" method="post" path="/apps/v2/apps/{appId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -281,6 +284,7 @@ Patch data for an existing [application](https://hathora.dev/docs/concepts/hatho
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="PatchApp" method="patch" path="/apps/v2/apps/{appId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -400,6 +404,7 @@ Get details for an [application](https://hathora.dev/docs/concepts/hathora-entit
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetApp" method="get" path="/apps/v2/apps/{appId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -471,6 +476,7 @@ Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#appli
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="DeleteApp" method="delete" path="/apps/v2/apps/{appId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

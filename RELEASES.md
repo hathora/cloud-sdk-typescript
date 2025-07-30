@@ -1131,3 +1131,13 @@ Based on:
 - [typescript v2.20.8] .
 ### Releases
 - [NPM v2.20.8] https://www.npmjs.com/package/@hathora/cloud-sdk-typescript/v/2.20.8 - .
+
+## 2025-07-30 00:19:16
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.592.1 (2.667.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v2.20.9] .
+### Releases
+- [NPM v2.20.9] https://www.npmjs.com/package/@hathora/cloud-sdk-typescript/v/2.20.9 - .

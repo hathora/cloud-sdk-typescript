@@ -21,6 +21,7 @@ Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetBuildsV2Deprecated" method="get" path="/builds/v2/{appId}/list" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -94,6 +95,7 @@ Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#bui
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetBuildInfoV2Deprecated" method="get" path="/builds/v2/{appId}/info/{buildId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -168,6 +170,7 @@ Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build).
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateBuildV2Deprecated" method="post" path="/builds/v2/{appId}/create" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -247,6 +250,7 @@ Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build) 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateBuildWithUploadUrlV2Deprecated" method="post" path="/builds/v2/{appId}/createWithUploadUrl" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -326,6 +330,7 @@ Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build) 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateWithMultipartUploadsV2Deprecated" method="post" path="/builds/v2/{appId}/createWithMultipartUploads" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -409,6 +414,7 @@ Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="DeleteBuildV2Deprecated" method="delete" path="/builds/v2/{appId}/delete/{buildId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -484,6 +490,7 @@ Builds a game server artifact from a tarball you provide. Pass in the `buildId` 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="RunBuildV2Deprecated" method="post" path="/builds/v2/{appId}/run/{buildId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 

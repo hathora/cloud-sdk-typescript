@@ -19,6 +19,7 @@ Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetBuildsDeprecated" method="get" path="/builds/v1/{appId}/list" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -92,6 +93,7 @@ Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#bui
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="GetBuildInfoDeprecated" method="get" path="/builds/v1/{appId}/info/{buildId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -166,6 +168,7 @@ Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build).
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CreateBuildDeprecated" method="post" path="/builds/v1/{appId}/create" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -245,6 +248,7 @@ Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="DeleteBuildDeprecated" method="delete" path="/builds/v1/{appId}/delete/{buildId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -320,6 +324,7 @@ Builds a game server artifact from a tarball you provide. Pass in the `buildId` 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="RunBuildDeprecated" method="post" path="/builds/v1/{appId}/run/{buildId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 import { openAsBlob } from "node:fs";
