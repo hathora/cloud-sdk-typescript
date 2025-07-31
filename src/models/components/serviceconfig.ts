@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  LoadBalancerConfig,
+  LoadBalancerConfig$inboundSchema,
+  LoadBalancerConfig$Outbound,
+  LoadBalancerConfig$outboundSchema,
+} from "./loadbalancerconfig.js";
+import {
   StaticProcessAllocationConfig,
   StaticProcessAllocationConfig$inboundSchema,
   StaticProcessAllocationConfig$Outbound,
@@ -14,6 +20,7 @@ import {
 } from "./staticprocessallocationconfig.js";
 
 export type ServiceConfig = {
+  loadBalancer?: LoadBalancerConfig | undefined;
   /**
    * The headroom configuration for each region.
    *
@@ -29,11 +36,13 @@ export const ServiceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  loadBalancer: LoadBalancerConfig$inboundSchema.optional(),
   staticProcessAllocation: z.array(StaticProcessAllocationConfig$inboundSchema),
 });
 
 /** @internal */
 export type ServiceConfig$Outbound = {
+  loadBalancer?: LoadBalancerConfig$Outbound | undefined;
   staticProcessAllocation: Array<StaticProcessAllocationConfig$Outbound>;
 };
 
@@ -43,6 +52,7 @@ export const ServiceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ServiceConfig
 > = z.object({
+  loadBalancer: LoadBalancerConfig$outboundSchema.optional(),
   staticProcessAllocation: z.array(
     StaticProcessAllocationConfig$outboundSchema,
   ),

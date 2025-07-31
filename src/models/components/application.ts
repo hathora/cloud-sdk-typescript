@@ -13,6 +13,12 @@ import {
   AuthConfiguration$outboundSchema,
 } from "./authconfiguration.js";
 import {
+  LoadBalancerConfig,
+  LoadBalancerConfig$inboundSchema,
+  LoadBalancerConfig$Outbound,
+  LoadBalancerConfig$outboundSchema,
+} from "./loadbalancerconfig.js";
+import {
   StaticProcessAllocationConfig,
   StaticProcessAllocationConfig$inboundSchema,
   StaticProcessAllocationConfig$Outbound,
@@ -20,6 +26,7 @@ import {
 } from "./staticprocessallocationconfig.js";
 
 export type ApplicationServiceConfig = {
+  loadBalancer?: LoadBalancerConfig | undefined;
   /**
    * The headroom configuration for each region.
    *
@@ -75,11 +82,13 @@ export const ApplicationServiceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  loadBalancer: LoadBalancerConfig$inboundSchema.optional(),
   staticProcessAllocation: z.array(StaticProcessAllocationConfig$inboundSchema),
 });
 
 /** @internal */
 export type ApplicationServiceConfig$Outbound = {
+  loadBalancer?: LoadBalancerConfig$Outbound | undefined;
   staticProcessAllocation: Array<StaticProcessAllocationConfig$Outbound>;
 };
 
@@ -89,6 +98,7 @@ export const ApplicationServiceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ApplicationServiceConfig
 > = z.object({
+  loadBalancer: LoadBalancerConfig$outboundSchema.optional(),
   staticProcessAllocation: z.array(
     StaticProcessAllocationConfig$outboundSchema,
   ),

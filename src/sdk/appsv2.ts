@@ -37,13 +37,13 @@ export class AppsV2 extends ClientSDK {
    * Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application).
    */
   async createApp(
-    appConfig: components.AppConfig,
+    createAppConfig: components.CreateAppConfig,
     orgId?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.Application> {
     return unwrapAsync(appsV2CreateApp(
       this,
-      appConfig,
+      createAppConfig,
       orgId,
       options,
     ));

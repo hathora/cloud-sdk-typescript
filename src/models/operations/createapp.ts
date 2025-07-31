@@ -15,7 +15,7 @@ export type CreateAppGlobals = {
 
 export type CreateAppRequest = {
   orgId?: string | undefined;
-  appConfig: components.AppConfig;
+  createAppConfig: components.CreateAppConfig;
 };
 
 /** @internal */
@@ -79,17 +79,17 @@ export const CreateAppRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   orgId: z.string().optional(),
-  AppConfig: components.AppConfig$inboundSchema,
+  CreateAppConfig: components.CreateAppConfig$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "AppConfig": "appConfig",
+    "CreateAppConfig": "createAppConfig",
   });
 });
 
 /** @internal */
 export type CreateAppRequest$Outbound = {
   orgId?: string | undefined;
-  AppConfig: components.AppConfig$Outbound;
+  CreateAppConfig: components.CreateAppConfig$Outbound;
 };
 
 /** @internal */
@@ -99,10 +99,10 @@ export const CreateAppRequest$outboundSchema: z.ZodType<
   CreateAppRequest
 > = z.object({
   orgId: z.string().optional(),
-  appConfig: components.AppConfig$outboundSchema,
+  createAppConfig: components.CreateAppConfig$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    appConfig: "AppConfig",
+    createAppConfig: "CreateAppConfig",
   });
 });
 

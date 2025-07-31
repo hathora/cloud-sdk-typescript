@@ -4,7 +4,6 @@
 
 export * from "./achpaymentmethod.js";
 export * from "./activeconnectioninfo.js";
-export * from "./appconfig.js";
 export * from "./appconfigwithserviceconfig.js";
 export * from "./application.js";
 export * from "./applicationspage.js";
@@ -24,6 +23,7 @@ export * from "./cardpaymentmethod.js";
 export * from "./connectioninfo.js";
 export * from "./connectioninfov2.js";
 export * from "./containerport.js";
+export * from "./createappconfig.js";
 export * from "./createbuildparams.js";
 export * from "./createbuildv3params.js";
 export * from "./createdbuildv3withmultiparturls.js";
@@ -60,6 +60,7 @@ export * from "./invoiceitempage.js";
 export * from "./invoicestatus.js";
 export * from "./linkpaymentmethod.js";
 export * from "./listorgtokens.js";
+export * from "./loadbalancerconfig.js";
 export * from "./lobby.js";
 export * from "./lobbyv3.js";
 export * from "./lobbyvisibility.js";

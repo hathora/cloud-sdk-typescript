@@ -15,7 +15,7 @@ export type UpdateAppV1DeprecatedGlobals = {
 
 export type UpdateAppV1DeprecatedRequest = {
   appId?: string | undefined;
-  appConfig: components.AppConfig;
+  createAppConfig: components.CreateAppConfig;
 };
 
 /** @internal */
@@ -81,17 +81,17 @@ export const UpdateAppV1DeprecatedRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   appId: z.string().optional(),
-  AppConfig: components.AppConfig$inboundSchema,
+  CreateAppConfig: components.CreateAppConfig$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "AppConfig": "appConfig",
+    "CreateAppConfig": "createAppConfig",
   });
 });
 
 /** @internal */
 export type UpdateAppV1DeprecatedRequest$Outbound = {
   appId?: string | undefined;
-  AppConfig: components.AppConfig$Outbound;
+  CreateAppConfig: components.CreateAppConfig$Outbound;
 };
 
 /** @internal */
@@ -101,10 +101,10 @@ export const UpdateAppV1DeprecatedRequest$outboundSchema: z.ZodType<
   UpdateAppV1DeprecatedRequest
 > = z.object({
   appId: z.string().optional(),
-  appConfig: components.AppConfig$outboundSchema,
+  createAppConfig: components.CreateAppConfig$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    appConfig: "AppConfig",
+    createAppConfig: "CreateAppConfig",
   });
 });
 

@@ -40,7 +40,7 @@ export class AppsV1 extends ClientSDK {
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async createAppV1Deprecated(
-    request: components.AppConfig,
+    request: components.CreateAppConfig,
     options?: RequestOptions,
   ): Promise<components.Application> {
     return unwrapAsync(appsV1CreateAppV1Deprecated(
@@ -59,13 +59,13 @@ export class AppsV1 extends ClientSDK {
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async updateAppV1Deprecated(
-    appConfig: components.AppConfig,
+    createAppConfig: components.CreateAppConfig,
     appId?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.Application> {
     return unwrapAsync(appsV1UpdateAppV1Deprecated(
       this,
-      appConfig,
+      createAppConfig,
       appId,
       options,
     ));

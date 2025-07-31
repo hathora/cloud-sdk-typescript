@@ -36,7 +36,7 @@ import { Result } from "../types/fp.js";
  */
 export function appsV1UpdateAppV1Deprecated(
   client: HathoraCloudCore,
-  appConfig: components.AppConfig,
+  createAppConfig: components.CreateAppConfig,
   appId?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -55,7 +55,7 @@ export function appsV1UpdateAppV1Deprecated(
 > {
   return new APIPromise($do(
     client,
-    appConfig,
+    createAppConfig,
     appId,
     options,
   ));
@@ -63,7 +63,7 @@ export function appsV1UpdateAppV1Deprecated(
 
 async function $do(
   client: HathoraCloudCore,
-  appConfig: components.AppConfig,
+  createAppConfig: components.CreateAppConfig,
   appId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -84,7 +84,7 @@ async function $do(
   ]
 > {
   const input: operations.UpdateAppV1DeprecatedRequest = {
-    appConfig: appConfig,
+    createAppConfig: createAppConfig,
     appId: appId,
   };
 
@@ -98,7 +98,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.AppConfig, { explode: true });
+  const body = encodeJSON("body", payload.CreateAppConfig, { explode: true });
 
   const pathParams = {
     appId: encodeSimple("appId", payload.appId ?? client._options.appId, {

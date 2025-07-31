@@ -12,8 +12,15 @@ import {
   AuthConfiguration$Outbound,
   AuthConfiguration$outboundSchema,
 } from "./authconfiguration.js";
+import {
+  LoadBalancerConfig,
+  LoadBalancerConfig$inboundSchema,
+  LoadBalancerConfig$Outbound,
+  LoadBalancerConfig$outboundSchema,
+} from "./loadbalancerconfig.js";
 
-export type AppConfig = {
+export type CreateAppConfig = {
+  loadBalancer?: LoadBalancerConfig | undefined;
   /**
    * Configure [player authentication](https://hathora.dev/docs/backend-integrations/lobbies-and-matchmaking/auth-service) for your application. Use Hathora's built-in auth providers or use your own [custom authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service#custom-auth-provider).
    */
@@ -25,27 +32,30 @@ export type AppConfig = {
 };
 
 /** @internal */
-export const AppConfig$inboundSchema: z.ZodType<
-  AppConfig,
+export const CreateAppConfig$inboundSchema: z.ZodType<
+  CreateAppConfig,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  loadBalancer: LoadBalancerConfig$inboundSchema.optional(),
   authConfiguration: AuthConfiguration$inboundSchema,
   appName: z.string(),
 });
 
 /** @internal */
-export type AppConfig$Outbound = {
+export type CreateAppConfig$Outbound = {
+  loadBalancer?: LoadBalancerConfig$Outbound | undefined;
   authConfiguration: AuthConfiguration$Outbound;
   appName: string;
 };
 
 /** @internal */
-export const AppConfig$outboundSchema: z.ZodType<
-  AppConfig$Outbound,
+export const CreateAppConfig$outboundSchema: z.ZodType<
+  CreateAppConfig$Outbound,
   z.ZodTypeDef,
-  AppConfig
+  CreateAppConfig
 > = z.object({
+  loadBalancer: LoadBalancerConfig$outboundSchema.optional(),
   authConfiguration: AuthConfiguration$outboundSchema,
   appName: z.string(),
 });
@@ -54,25 +64,27 @@ export const AppConfig$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AppConfig$ {
-  /** @deprecated use `AppConfig$inboundSchema` instead. */
-  export const inboundSchema = AppConfig$inboundSchema;
-  /** @deprecated use `AppConfig$outboundSchema` instead. */
-  export const outboundSchema = AppConfig$outboundSchema;
-  /** @deprecated use `AppConfig$Outbound` instead. */
-  export type Outbound = AppConfig$Outbound;
+export namespace CreateAppConfig$ {
+  /** @deprecated use `CreateAppConfig$inboundSchema` instead. */
+  export const inboundSchema = CreateAppConfig$inboundSchema;
+  /** @deprecated use `CreateAppConfig$outboundSchema` instead. */
+  export const outboundSchema = CreateAppConfig$outboundSchema;
+  /** @deprecated use `CreateAppConfig$Outbound` instead. */
+  export type Outbound = CreateAppConfig$Outbound;
 }
 
-export function appConfigToJSON(appConfig: AppConfig): string {
-  return JSON.stringify(AppConfig$outboundSchema.parse(appConfig));
+export function createAppConfigToJSON(
+  createAppConfig: CreateAppConfig,
+): string {
+  return JSON.stringify(CreateAppConfig$outboundSchema.parse(createAppConfig));
 }
 
-export function appConfigFromJSON(
+export function createAppConfigFromJSON(
   jsonString: string,
-): SafeParseResult<AppConfig, SDKValidationError> {
+): SafeParseResult<CreateAppConfig, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AppConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AppConfig' from JSON`,
+    (x) => CreateAppConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateAppConfig' from JSON`,
   );
 }

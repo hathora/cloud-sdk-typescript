@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 23e710b6efee2eb093f708d007ba6c79
+  docChecksum: e35f575b26fe307d06e104aa0a8adc59
   docVersion: 0.0.1
-  speakeasyVersion: 1.592.1
-  generationVersion: 2.667.0
-  releaseVersion: 2.20.9
-  configChecksum: fd5a888f85fa7dbd75c5c761d35da2ec
+  speakeasyVersion: 1.592.2
+  generationVersion: 2.668.4
+  releaseVersion: 2.20.10
+  configChecksum: 1719b8a1ecd5a0da04c36ad98ef788ac
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.16
+    core: 3.21.17
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -45,7 +45,6 @@ generatedFiles:
   - docs/models/components/achpaymentmethod.md
   - docs/models/components/activeconnectioninfo.md
   - docs/models/components/activeconnectioninfostatus.md
-  - docs/models/components/appconfig.md
   - docs/models/components/appconfigwithserviceconfig.md
   - docs/models/components/application.md
   - docs/models/components/applicationserviceconfig.md
@@ -73,6 +72,7 @@ generatedFiles:
   - docs/models/components/connectioninfo.md
   - docs/models/components/connectioninfov2.md
   - docs/models/components/containerport.md
+  - docs/models/components/createappconfig.md
   - docs/models/components/createbuildparams.md
   - docs/models/components/createbuildv3params.md
   - docs/models/components/createdbuildv3withmultiparturls.md
@@ -122,6 +122,7 @@ generatedFiles:
   - docs/models/components/invoicestatus.md
   - docs/models/components/linkpaymentmethod.md
   - docs/models/components/listorgtokens.md
+  - docs/models/components/loadbalancerconfig.md
   - docs/models/components/lobby.md
   - docs/models/components/lobbyv3.md
   - docs/models/components/lobbyv3createdby.md
@@ -593,7 +594,6 @@ generatedFiles:
   - src/lib/url.ts
   - src/models/components/achpaymentmethod.ts
   - src/models/components/activeconnectioninfo.ts
-  - src/models/components/appconfig.ts
   - src/models/components/appconfigwithserviceconfig.ts
   - src/models/components/application.ts
   - src/models/components/applicationspage.ts
@@ -613,6 +613,7 @@ generatedFiles:
   - src/models/components/connectioninfo.ts
   - src/models/components/connectioninfov2.ts
   - src/models/components/containerport.ts
+  - src/models/components/createappconfig.ts
   - src/models/components/createbuildparams.ts
   - src/models/components/createbuildv3params.ts
   - src/models/components/createdbuildv3withmultiparturls.ts
@@ -650,6 +651,7 @@ generatedFiles:
   - src/models/components/invoicestatus.ts
   - src/models/components/linkpaymentmethod.ts
   - src/models/components/listorgtokens.ts
+  - src/models/components/loadbalancerconfig.ts
   - src/models/components/lobby.ts
   - src/models/components/lobbyv3.ts
   - src/models/components/lobbyvisibility.ts

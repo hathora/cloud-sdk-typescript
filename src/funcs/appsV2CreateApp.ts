@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function appsV2CreateApp(
   client: HathoraCloudCore,
-  appConfig: components.AppConfig,
+  createAppConfig: components.CreateAppConfig,
   orgId?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -53,7 +53,7 @@ export function appsV2CreateApp(
 > {
   return new APIPromise($do(
     client,
-    appConfig,
+    createAppConfig,
     orgId,
     options,
   ));
@@ -61,7 +61,7 @@ export function appsV2CreateApp(
 
 async function $do(
   client: HathoraCloudCore,
-  appConfig: components.AppConfig,
+  createAppConfig: components.CreateAppConfig,
   orgId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -82,7 +82,7 @@ async function $do(
   ]
 > {
   const input: operations.CreateAppRequest = {
-    appConfig: appConfig,
+    createAppConfig: createAppConfig,
     orgId: orgId,
   };
 
@@ -95,7 +95,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.AppConfig, { explode: true });
+  const body = encodeJSON("body", payload.CreateAppConfig, { explode: true });
 
   const path = pathToFunc("/apps/v2/apps")();
 

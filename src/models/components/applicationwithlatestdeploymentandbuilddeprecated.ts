@@ -25,6 +25,12 @@ import {
   ContainerPort$outboundSchema,
 } from "./containerport.js";
 import {
+  LoadBalancerConfig,
+  LoadBalancerConfig$inboundSchema,
+  LoadBalancerConfig$Outbound,
+  LoadBalancerConfig$outboundSchema,
+} from "./loadbalancerconfig.js";
+import {
   StaticProcessAllocationConfig,
   StaticProcessAllocationConfig$inboundSchema,
   StaticProcessAllocationConfig$Outbound,
@@ -32,6 +38,7 @@ import {
 } from "./staticprocessallocationconfig.js";
 
 export type ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig = {
+  loadBalancer?: LoadBalancerConfig | undefined;
   /**
    * The headroom configuration for each region.
    *
@@ -151,6 +158,7 @@ export const ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$inbo
     z.ZodTypeDef,
     unknown
   > = z.object({
+    loadBalancer: LoadBalancerConfig$inboundSchema.optional(),
     staticProcessAllocation: z.array(
       StaticProcessAllocationConfig$inboundSchema,
     ),
@@ -159,6 +167,7 @@ export const ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$inbo
 /** @internal */
 export type ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$Outbound =
   {
+    loadBalancer?: LoadBalancerConfig$Outbound | undefined;
     staticProcessAllocation: Array<StaticProcessAllocationConfig$Outbound>;
   };
 
@@ -169,6 +178,7 @@ export const ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$outb
     z.ZodTypeDef,
     ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig
   > = z.object({
+    loadBalancer: LoadBalancerConfig$outboundSchema.optional(),
     staticProcessAllocation: z.array(
       StaticProcessAllocationConfig$outboundSchema,
     ),
