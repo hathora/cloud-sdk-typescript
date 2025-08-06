@@ -1,6 +1,6 @@
 {
   "name": "@hathora/cloud-sdk-typescript",
-  "version": "2.20.10",
+  "version": "2.20.11",
   "author": "Hathora",
   "main": "./index.js",
   "sideEffects": false,
@@ -20,7 +20,7 @@
     "@eslint/js": "^9.19.0",
     "eslint": "^9.19.0",
     "globals": "^15.14.0",
-    "typescript": "^5.4.5",
+    "typescript": "~5.8.3",
     "typescript-eslint": "^8.22.0"
   },
   "dependencies": {
