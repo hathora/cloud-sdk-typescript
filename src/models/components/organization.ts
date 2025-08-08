@@ -10,6 +10,13 @@ import { Scope, Scope$inboundSchema, Scope$outboundSchema } from "./scope.js";
 
 export type Organization = {
   /**
+   * The maximum number of cloud nodes that can be set as baseline
+   *
+   * @remarks
+   * If undefined, the default is 10
+   */
+  maxCloudBaseline?: number | undefined;
+  /**
    * The maximum number of inbound connections that can be made to a process
    *
    * @remarks
@@ -71,6 +78,7 @@ export const Organization$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  maxCloudBaseline: z.number().int().optional(),
   maxProcessConnections: z.number().optional(),
   logRetentionPeriodHours: z.number().int().optional(),
   podMaxLifespanHrs: z.number().optional(),
@@ -87,6 +95,7 @@ export const Organization$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Organization$Outbound = {
+  maxCloudBaseline?: number | undefined;
   maxProcessConnections?: number | undefined;
   logRetentionPeriodHours?: number | undefined;
   podMaxLifespanHrs?: number | undefined;
@@ -107,6 +116,7 @@ export const Organization$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Organization
 > = z.object({
+  maxCloudBaseline: z.number().int().optional(),
   maxProcessConnections: z.number().optional(),
   logRetentionPeriodHours: z.number().int().optional(),
   podMaxLifespanHrs: z.number().optional(),
