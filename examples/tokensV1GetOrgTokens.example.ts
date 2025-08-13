@@ -8,7 +8,7 @@ dotenv.config();
  * Example usage of the @hathora/cloud-sdk-typescript SDK
  *
  * To run this example from the examples directory:
- * npm run build && npx tsx tokensV1GetOrgTokens.ts
+ * npm run build && npx tsx tokensV1GetOrgTokens.example.ts
  */
 
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
