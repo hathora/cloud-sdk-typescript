@@ -1,0 +1,17 @@
+# NodeShape
+
+## Example Usage
+
+```typescript
+import { NodeShape } from "@hathora/cloud-sdk-typescript/models/components";
+
+let value: NodeShape = "cpu-4-8";
+```
+
+## Values
+
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
+```typescript
+"cpu-4-8" | "cpu-8-16" | "cpu-16-32" | "cpu-32-64" | "cpu-64-128" | "cpu-4-16" | "cpu-8-32" | "cpu-16-64" | "cpu-32-128" | "gpu-l4-1-4-16" | "gpu-l4-1-12-48" | "gpu-l4-2-24-96" | "gpu-l4-4-48-192" | "gpu-l4-8-96-384" | Unrecognized<string>
+```

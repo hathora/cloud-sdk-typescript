@@ -12,8 +12,14 @@ import {
   AutoscalerConfig$Outbound,
   AutoscalerConfig$outboundSchema,
 } from "./autoscalerconfig.js";
+import {
+  NodeShape,
+  NodeShape$inboundSchema,
+  NodeShape$outboundSchema,
+} from "./nodeshape.js";
 
 export type UpdateFleet = {
+  nodeShape?: NodeShape | undefined;
   autoscalerConfig: AutoscalerConfig;
 };
 
@@ -23,11 +29,13 @@ export const UpdateFleet$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  nodeShape: NodeShape$inboundSchema.optional(),
   autoscalerConfig: AutoscalerConfig$inboundSchema,
 });
 
 /** @internal */
 export type UpdateFleet$Outbound = {
+  nodeShape?: string | undefined;
   autoscalerConfig: AutoscalerConfig$Outbound;
 };
 
@@ -37,6 +45,7 @@ export const UpdateFleet$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateFleet
 > = z.object({
+  nodeShape: NodeShape$outboundSchema.optional(),
   autoscalerConfig: AutoscalerConfig$outboundSchema,
 });
 

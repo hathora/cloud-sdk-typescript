@@ -66,6 +66,7 @@ export * from "./lobbyv3.js";
 export * from "./lobbyvisibility.js";
 export * from "./metricvalue.js";
 export * from "./nicknameobject.js";
+export * from "./nodeshape.js";
 export * from "./organization.js";
 export * from "./orgmember.js";
 export * from "./orgmemberspage.js";

@@ -12,11 +12,17 @@ import {
   AutoscalerConfig$Outbound,
   AutoscalerConfig$outboundSchema,
 } from "./autoscalerconfig.js";
+import {
+  NodeShape,
+  NodeShape$inboundSchema,
+  NodeShape$outboundSchema,
+} from "./nodeshape.js";
 
 /**
  * A fleet is a collection of vCPUs across your regions that can scale up and down based on demand.
  */
 export type Fleet = {
+  nodeShape: NodeShape;
   autoscalerConfig?: AutoscalerConfig | undefined;
   /**
    * System generated unique identifier for an organization. Not guaranteed to have a specific format.
@@ -31,6 +37,7 @@ export type Fleet = {
 /** @internal */
 export const Fleet$inboundSchema: z.ZodType<Fleet, z.ZodTypeDef, unknown> = z
   .object({
+    nodeShape: NodeShape$inboundSchema,
     autoscalerConfig: AutoscalerConfig$inboundSchema.optional(),
     orgId: z.string(),
     fleetId: z.string(),
@@ -38,6 +45,7 @@ export const Fleet$inboundSchema: z.ZodType<Fleet, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Fleet$Outbound = {
+  nodeShape: string;
   autoscalerConfig?: AutoscalerConfig$Outbound | undefined;
   orgId: string;
   fleetId: string;
@@ -49,6 +57,7 @@ export const Fleet$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Fleet
 > = z.object({
+  nodeShape: NodeShape$outboundSchema,
   autoscalerConfig: AutoscalerConfig$outboundSchema.optional(),
   orgId: z.string(),
   fleetId: z.string(),

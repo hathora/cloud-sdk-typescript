@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 857a8ef49290f61ff1a491065f000a2e
+  docChecksum: 1e1f2df1d9c132cc6604e4b3279b4ec8
   docVersion: 0.0.1
-  speakeasyVersion: 1.603.0
-  generationVersion: 2.681.1
-  releaseVersion: 2.20.14
-  configChecksum: 45f807aa8d910ef1730731d569f88bf7
+  speakeasyVersion: 1.604.1
+  generationVersion: 2.683.1
+  releaseVersion: 2.20.15
+  configChecksum: cdde33540c2a9ddd7795cdda8e025bc3
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -129,6 +129,7 @@ generatedFiles:
   - docs/models/components/lobbyvisibility.md
   - docs/models/components/metricvalue.md
   - docs/models/components/nicknameobject.md
+  - docs/models/components/nodeshape.md
   - docs/models/components/organization.md
   - docs/models/components/orgmember.md
   - docs/models/components/orgmemberscopes.md
@@ -657,6 +658,7 @@ generatedFiles:
   - src/models/components/lobbyvisibility.ts
   - src/models/components/metricvalue.ts
   - src/models/components/nicknameobject.ts
+  - src/models/components/nodeshape.ts
   - src/models/components/organization.ts
   - src/models/components/orgmember.ts
   - src/models/components/orgmemberspage.ts
@@ -1589,7 +1591,7 @@ examples:
           orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       responses:
         "200":
-          application/json: {"fleets": [{"orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}, {"orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}]}
+          application/json: {"fleets": [{"nodeShape": "cpu-16-64", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}, {"nodeShape": "cpu-16-32", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}]}
         "401":
           application/json: {"message": "<value>"}
   UpdateFleet:
