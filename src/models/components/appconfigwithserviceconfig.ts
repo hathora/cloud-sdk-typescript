@@ -13,14 +13,14 @@ import {
   AuthConfiguration$outboundSchema,
 } from "./authconfiguration.js";
 import {
-  ServiceConfig,
-  ServiceConfig$inboundSchema,
-  ServiceConfig$Outbound,
-  ServiceConfig$outboundSchema,
-} from "./serviceconfig.js";
+  ServiceConfigWrite,
+  ServiceConfigWrite$inboundSchema,
+  ServiceConfigWrite$Outbound,
+  ServiceConfigWrite$outboundSchema,
+} from "./serviceconfigwrite.js";
 
 export type AppConfigWithServiceConfig = {
-  serviceConfig?: ServiceConfig | undefined;
+  serviceConfig?: ServiceConfigWrite | undefined;
   /**
    * Configure [player authentication](https://hathora.dev/docs/backend-integrations/lobbies-and-matchmaking/auth-service) for your application. Use Hathora's built-in auth providers or use your own [custom authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service#custom-auth-provider).
    */
@@ -37,14 +37,14 @@ export const AppConfigWithServiceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  serviceConfig: ServiceConfig$inboundSchema.optional(),
+  serviceConfig: ServiceConfigWrite$inboundSchema.optional(),
   authConfiguration: AuthConfiguration$inboundSchema,
   appName: z.string(),
 });
 
 /** @internal */
 export type AppConfigWithServiceConfig$Outbound = {
-  serviceConfig?: ServiceConfig$Outbound | undefined;
+  serviceConfig?: ServiceConfigWrite$Outbound | undefined;
   authConfiguration: AuthConfiguration$Outbound;
   appName: string;
 };
@@ -55,7 +55,7 @@ export const AppConfigWithServiceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AppConfigWithServiceConfig
 > = z.object({
-  serviceConfig: ServiceConfig$outboundSchema.optional(),
+  serviceConfig: ServiceConfigWrite$outboundSchema.optional(),
   authConfiguration: AuthConfiguration$outboundSchema,
   appName: z.string(),
 });

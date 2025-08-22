@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 657746570ffc8ea3e2fd55a1234281ca
+  docChecksum: deb2b45350ba2195d5a88586355d73d1
   docVersion: 0.0.1
-  speakeasyVersion: 1.605.0
-  generationVersion: 2.684.0
-  releaseVersion: 2.20.16
-  configChecksum: 5aaa654c457deb2d8ea618c2956bdefc
+  speakeasyVersion: 1.606.0
+  generationVersion: 2.686.7
+  releaseVersion: 2.20.17
+  configChecksum: 1f307af26dec6ef7794905aa9786439f
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -53,11 +53,11 @@ generatedFiles:
   - docs/models/components/applicationwithlatestdeploymentandbuilddeployment.md
   - docs/models/components/applicationwithlatestdeploymentandbuilddeprecated.md
   - docs/models/components/applicationwithlatestdeploymentandbuilddeprecatedenv.md
-  - docs/models/components/applicationwithlatestdeploymentandbuilddeprecatedserviceconfig.md
   - docs/models/components/applicationwithlatestdeploymentandbuildenv.md
   - docs/models/components/applicationwithlatestdeploymentandbuildserviceconfig.md
   - docs/models/components/authconfiguration.md
   - docs/models/components/autoscalerconfig.md
+  - docs/models/components/autoscalertargetmetric.md
   - docs/models/components/build.md
   - docs/models/components/buildpart.md
   - docs/models/components/buildstatus.md
@@ -127,6 +127,7 @@ generatedFiles:
   - docs/models/components/lobbyv3.md
   - docs/models/components/lobbyv3createdby.md
   - docs/models/components/lobbyvisibility.md
+  - docs/models/components/metricname.md
   - docs/models/components/metricvalue.md
   - docs/models/components/nicknameobject.md
   - docs/models/components/nodeshape.md
@@ -146,6 +147,7 @@ generatedFiles:
   - docs/models/components/planname.md
   - docs/models/components/playertokenobject.md
   - docs/models/components/process.md
+  - docs/models/components/processautoscalerconfig.md
   - docs/models/components/processexposedport.md
   - docs/models/components/processmetricname.md
   - docs/models/components/processmetricsdata.md
@@ -173,9 +175,11 @@ generatedFiles:
   - docs/models/components/scopes2.md
   - docs/models/components/security.md
   - docs/models/components/serviceconfig.md
+  - docs/models/components/serviceconfigwrite.md
   - docs/models/components/setlobbystateparams.md
   - docs/models/components/startingconnectioninfo.md
   - docs/models/components/staticprocessallocationconfig.md
+  - docs/models/components/staticprocessallocationconfigwrite.md
   - docs/models/components/status.md
   - docs/models/components/transporttype.md
   - docs/models/components/two.md
@@ -602,6 +606,7 @@ generatedFiles:
   - src/models/components/applicationwithlatestdeploymentandbuilddeprecated.ts
   - src/models/components/authconfiguration.ts
   - src/models/components/autoscalerconfig.ts
+  - src/models/components/autoscalertargetmetric.ts
   - src/models/components/build.ts
   - src/models/components/buildpart.ts
   - src/models/components/buildstatus.ts
@@ -673,6 +678,7 @@ generatedFiles:
   - src/models/components/planname.ts
   - src/models/components/playertokenobject.ts
   - src/models/components/process.ts
+  - src/models/components/processautoscalerconfig.ts
   - src/models/components/processmetricname.ts
   - src/models/components/processmetricsdata.ts
   - src/models/components/processstatus.ts
@@ -691,10 +697,11 @@ generatedFiles:
   - src/models/components/roomwithoutallocations.ts
   - src/models/components/scope.ts
   - src/models/components/security.ts
-  - src/models/components/serviceconfig.ts
+  - src/models/components/serviceconfigwrite.ts
   - src/models/components/setlobbystateparams.ts
   - src/models/components/startingconnectioninfo.ts
   - src/models/components/staticprocessallocationconfig.ts
+  - src/models/components/staticprocessallocationconfigwrite.ts
   - src/models/components/transporttype.ts
   - src/models/components/updatefleet.ts
   - src/models/components/updateroomconfigparams.ts
@@ -2280,3 +2287,4 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## SDK Changes Detected:\n* `hathoracloud.appsV1.getAppsV1Deprecated()`:  `response.[].serviceConfig` **Changed**\n* `hathoracloud.appsV1.createAppV1Deprecated()`:  `response.serviceconfig` **Changed**\n* `hathoracloud.appsV1.updateAppV1Deprecated()`:  `response.serviceconfig` **Changed**\n* `hathoracloud.appsV1.getAppInfoV1Deprecated()`:  `response.serviceconfig` **Changed**\n* `hathoracloud.appsV2.getApps()`:  `response.applications.[].serviceConfig` **Changed**\n* `hathoracloud.appsV2.createApp()`:  `response.serviceconfig` **Changed**\n* `hathoracloud.appsV2.getApp()`:  `response.serviceconfig` **Changed**\n* `hathoracloud.appsV2.updateApp()`: \n  *  `request.appconfigwithserviceconfig.serviceConfig` **Changed**\n  *  `response.serviceconfig` **Changed**\n* `hathoracloud.appsV2.patchApp()`: \n  *  `request.partial_appconfigwithserviceconfig_.serviceConfig` **Changed**\n  *  `response.serviceconfig` **Changed**\n"

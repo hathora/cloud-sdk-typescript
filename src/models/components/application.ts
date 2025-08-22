@@ -19,6 +19,12 @@ import {
   LoadBalancerConfig$outboundSchema,
 } from "./loadbalancerconfig.js";
 import {
+  ProcessAutoscalerConfig,
+  ProcessAutoscalerConfig$inboundSchema,
+  ProcessAutoscalerConfig$Outbound,
+  ProcessAutoscalerConfig$outboundSchema,
+} from "./processautoscalerconfig.js";
+import {
   StaticProcessAllocationConfig,
   StaticProcessAllocationConfig$inboundSchema,
   StaticProcessAllocationConfig$Outbound,
@@ -26,6 +32,14 @@ import {
 } from "./staticprocessallocationconfig.js";
 
 export type ApplicationServiceConfig = {
+  /**
+   * The configuration for the Process Autoscaler for this application.
+   *
+   * @remarks
+   * Autoscaling must be enabled on a per-region basis.
+   * EXPERIMENTAL - This feature is in closed beta.
+   */
+  processAutoscalerConfig?: ProcessAutoscalerConfig | undefined;
   loadBalancer?: LoadBalancerConfig | undefined;
   /**
    * The headroom configuration for each region.
@@ -82,12 +96,14 @@ export const ApplicationServiceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  processAutoscalerConfig: ProcessAutoscalerConfig$inboundSchema.optional(),
   loadBalancer: LoadBalancerConfig$inboundSchema.optional(),
   staticProcessAllocation: z.array(StaticProcessAllocationConfig$inboundSchema),
 });
 
 /** @internal */
 export type ApplicationServiceConfig$Outbound = {
+  processAutoscalerConfig?: ProcessAutoscalerConfig$Outbound | undefined;
   loadBalancer?: LoadBalancerConfig$Outbound | undefined;
   staticProcessAllocation: Array<StaticProcessAllocationConfig$Outbound>;
 };
@@ -98,6 +114,7 @@ export const ApplicationServiceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ApplicationServiceConfig
 > = z.object({
+  processAutoscalerConfig: ProcessAutoscalerConfig$outboundSchema.optional(),
   loadBalancer: LoadBalancerConfig$outboundSchema.optional(),
   staticProcessAllocation: z.array(
     StaticProcessAllocationConfig$outboundSchema,

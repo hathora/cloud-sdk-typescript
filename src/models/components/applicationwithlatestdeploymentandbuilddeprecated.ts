@@ -31,13 +31,27 @@ import {
   LoadBalancerConfig$outboundSchema,
 } from "./loadbalancerconfig.js";
 import {
+  ProcessAutoscalerConfig,
+  ProcessAutoscalerConfig$inboundSchema,
+  ProcessAutoscalerConfig$Outbound,
+  ProcessAutoscalerConfig$outboundSchema,
+} from "./processautoscalerconfig.js";
+import {
   StaticProcessAllocationConfig,
   StaticProcessAllocationConfig$inboundSchema,
   StaticProcessAllocationConfig$Outbound,
   StaticProcessAllocationConfig$outboundSchema,
 } from "./staticprocessallocationconfig.js";
 
-export type ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig = {
+export type ServiceConfig = {
+  /**
+   * The configuration for the Process Autoscaler for this application.
+   *
+   * @remarks
+   * Autoscaling must be enabled on a per-region basis.
+   * EXPERIMENTAL - This feature is in closed beta.
+   */
+  processAutoscalerConfig?: ProcessAutoscalerConfig | undefined;
   loadBalancer?: LoadBalancerConfig | undefined;
   /**
    * The headroom configuration for each region.
@@ -129,9 +143,7 @@ export type ApplicationWithLatestDeploymentAndBuildDeprecated = {
    * System generated unique identifier for an organization. Not guaranteed to have a specific format.
    */
   orgId: string;
-  serviceConfig:
-    | ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig
-    | null;
+  serviceConfig: ServiceConfig | null;
   /**
    * Configure [player authentication](https://hathora.dev/docs/backend-integrations/lobbies-and-matchmaking/auth-service) for your application. Use Hathora's built-in auth providers or use your own [custom authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service#custom-auth-provider).
    */
@@ -152,76 +164,60 @@ export type ApplicationWithLatestDeploymentAndBuildDeprecated = {
 };
 
 /** @internal */
-export const ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$inboundSchema:
-  z.ZodType<
-    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    loadBalancer: LoadBalancerConfig$inboundSchema.optional(),
-    staticProcessAllocation: z.array(
-      StaticProcessAllocationConfig$inboundSchema,
-    ),
-  });
+export const ServiceConfig$inboundSchema: z.ZodType<
+  ServiceConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  processAutoscalerConfig: ProcessAutoscalerConfig$inboundSchema.optional(),
+  loadBalancer: LoadBalancerConfig$inboundSchema.optional(),
+  staticProcessAllocation: z.array(StaticProcessAllocationConfig$inboundSchema),
+});
 
 /** @internal */
-export type ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$Outbound =
-  {
-    loadBalancer?: LoadBalancerConfig$Outbound | undefined;
-    staticProcessAllocation: Array<StaticProcessAllocationConfig$Outbound>;
-  };
+export type ServiceConfig$Outbound = {
+  processAutoscalerConfig?: ProcessAutoscalerConfig$Outbound | undefined;
+  loadBalancer?: LoadBalancerConfig$Outbound | undefined;
+  staticProcessAllocation: Array<StaticProcessAllocationConfig$Outbound>;
+};
 
 /** @internal */
-export const ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$outboundSchema:
-  z.ZodType<
-    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$Outbound,
-    z.ZodTypeDef,
-    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig
-  > = z.object({
-    loadBalancer: LoadBalancerConfig$outboundSchema.optional(),
-    staticProcessAllocation: z.array(
-      StaticProcessAllocationConfig$outboundSchema,
-    ),
-  });
+export const ServiceConfig$outboundSchema: z.ZodType<
+  ServiceConfig$Outbound,
+  z.ZodTypeDef,
+  ServiceConfig
+> = z.object({
+  processAutoscalerConfig: ProcessAutoscalerConfig$outboundSchema.optional(),
+  loadBalancer: LoadBalancerConfig$outboundSchema.optional(),
+  staticProcessAllocation: z.array(
+    StaticProcessAllocationConfig$outboundSchema,
+  ),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$ {
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$inboundSchema` instead. */
-  export const inboundSchema =
-    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$inboundSchema;
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$outboundSchema` instead. */
-  export const outboundSchema =
-    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$outboundSchema;
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$Outbound` instead. */
-  export type Outbound =
-    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$Outbound;
+export namespace ServiceConfig$ {
+  /** @deprecated use `ServiceConfig$inboundSchema` instead. */
+  export const inboundSchema = ServiceConfig$inboundSchema;
+  /** @deprecated use `ServiceConfig$outboundSchema` instead. */
+  export const outboundSchema = ServiceConfig$outboundSchema;
+  /** @deprecated use `ServiceConfig$Outbound` instead. */
+  export type Outbound = ServiceConfig$Outbound;
 }
 
-export function applicationWithLatestDeploymentAndBuildDeprecatedServiceConfigToJSON(
-  applicationWithLatestDeploymentAndBuildDeprecatedServiceConfig:
-    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig,
-): string {
-  return JSON.stringify(
-    ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$outboundSchema
-      .parse(applicationWithLatestDeploymentAndBuildDeprecatedServiceConfig),
-  );
+export function serviceConfigToJSON(serviceConfig: ServiceConfig): string {
+  return JSON.stringify(ServiceConfig$outboundSchema.parse(serviceConfig));
 }
 
-export function applicationWithLatestDeploymentAndBuildDeprecatedServiceConfigFromJSON(
+export function serviceConfigFromJSON(
   jsonString: string,
-): SafeParseResult<
-  ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig,
-  SDKValidationError
-> {
+): SafeParseResult<ServiceConfig, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig' from JSON`,
+    (x) => ServiceConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServiceConfig' from JSON`,
   );
 }
 
@@ -406,11 +402,7 @@ export const ApplicationWithLatestDeploymentAndBuildDeprecated$inboundSchema:
     ),
     createdBy: z.string(),
     orgId: z.string(),
-    serviceConfig: z.nullable(
-      z.lazy(() =>
-        ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$inboundSchema
-      ),
-    ),
+    serviceConfig: z.nullable(z.lazy(() => ServiceConfig$inboundSchema)),
     authConfiguration: AuthConfiguration$inboundSchema,
     appSecret: z.string(),
     appId: z.string(),
@@ -425,9 +417,7 @@ export type ApplicationWithLatestDeploymentAndBuildDeprecated$Outbound = {
   createdAt: string;
   createdBy: string;
   orgId: string;
-  serviceConfig:
-    | ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$Outbound
-    | null;
+  serviceConfig: ServiceConfig$Outbound | null;
   authConfiguration: AuthConfiguration$Outbound;
   appSecret: string;
   appId: string;
@@ -447,11 +437,7 @@ export const ApplicationWithLatestDeploymentAndBuildDeprecated$outboundSchema:
     createdAt: z.date().transform(v => v.toISOString()),
     createdBy: z.string(),
     orgId: z.string(),
-    serviceConfig: z.nullable(
-      z.lazy(() =>
-        ApplicationWithLatestDeploymentAndBuildDeprecatedServiceConfig$outboundSchema
-      ),
-    ),
+    serviceConfig: z.nullable(z.lazy(() => ServiceConfig$outboundSchema)),
     authConfiguration: AuthConfiguration$outboundSchema,
     appSecret: z.string(),
     appId: z.string(),

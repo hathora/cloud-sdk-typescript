@@ -19,7 +19,7 @@ let value: ApplicationWithLatestDeploymentAndBuild = {
         maxProcesses: 3,
         targetProcesses: 2,
         minProcesses: 1,
-        region: "Johannesburg",
+        region: "Dubai",
       },
     ],
   },

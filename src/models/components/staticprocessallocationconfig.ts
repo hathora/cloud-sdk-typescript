@@ -14,7 +14,14 @@ import {
 
 export type StaticProcessAllocationConfig = {
   /**
-   * The maximum number of running processes that can be spun up during upgrades
+   * Whether autoscaling is enabled in this region. When enabled, `targetProcesses` is managed by the Process Autoscaler
+   *
+   * @remarks
+   * in accordance with the `processAutoscalerConfig` field set on the application's `serviceConfig`.
+   */
+  autoscalingEnabled?: boolean | undefined;
+  /**
+   * The maximum number of running processes.
    *
    * @remarks
    * Invariant: minProcesses <= maxProcesses
@@ -22,10 +29,13 @@ export type StaticProcessAllocationConfig = {
   maxProcesses: number;
   /**
    * The target number of running processes
+   *
+   * @remarks
+   * When autoscaling is enabled, this field is managed by the Process Autoscaler
    */
   targetProcesses: number;
   /**
-   * The minimum running processes required during upgrades.
+   * The minimum number of running processes.
    *
    * @remarks
    * Invariant: 0 <= minProcesses < targetProcesses
@@ -40,6 +50,7 @@ export const StaticProcessAllocationConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  autoscalingEnabled: z.boolean().optional(),
   maxProcesses: z.number().int(),
   targetProcesses: z.number().int(),
   minProcesses: z.number().int(),
@@ -48,6 +59,7 @@ export const StaticProcessAllocationConfig$inboundSchema: z.ZodType<
 
 /** @internal */
 export type StaticProcessAllocationConfig$Outbound = {
+  autoscalingEnabled?: boolean | undefined;
   maxProcesses: number;
   targetProcesses: number;
   minProcesses: number;
@@ -60,6 +72,7 @@ export const StaticProcessAllocationConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   StaticProcessAllocationConfig
 > = z.object({
+  autoscalingEnabled: z.boolean().optional(),
   maxProcesses: z.number().int(),
   targetProcesses: z.number().int(),
   minProcesses: z.number().int(),

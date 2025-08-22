@@ -13,7 +13,7 @@ let value: UpdateAppRequest = {
           maxProcesses: 3,
           targetProcesses: 2,
           minProcesses: 1,
-          region: "Johannesburg",
+          region: "Sydney",
         },
       ],
     },
