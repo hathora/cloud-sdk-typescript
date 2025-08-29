@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: deb2b45350ba2195d5a88586355d73d1
+  docChecksum: 0228b2c9cc9813a224a13185b90697d8
   docVersion: 0.0.1
-  speakeasyVersion: 1.606.0
-  generationVersion: 2.686.7
-  releaseVersion: 2.20.17
-  configChecksum: 1f307af26dec6ef7794905aa9786439f
+  speakeasyVersion: 1.606.8
+  generationVersion: 2.687.13
+  releaseVersion: 2.20.18
+  configChecksum: f1db4b88218f763775c4f9e3120f5ec7
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -1780,10 +1780,10 @@ examples:
         path:
           appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2"
       requestBody:
-        application/json: {"deploymentTag": "alpha", "idleTimeoutEnabled": true, "env": [{"value": "TRUE", "name": "EULA"}, {"value": "TRUE", "name": "EULA"}], "roomsPerProcess": 3, "additionalContainerPorts": [{"transportType": "udp", "port": 8000, "name": "default"}, {"transportType": "udp", "port": 8000, "name": "default"}], "transportType": "udp", "containerPort": 4000, "experimentalRequestedGPU": 1, "requestedMemoryMB": 1024, "requestedCPU": 0.5, "buildId": "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5"}
+        application/json: {"deploymentTag": "alpha", "idleTimeoutEnabled": true, "env": [{"value": "TRUE", "name": "EULA"}, {"value": "TRUE", "name": "EULA"}], "roomsPerProcess": 3, "additionalContainerPorts": [{"transportType": "udp", "port": 8000, "name": "default"}, {"transportType": "udp", "port": 8000, "name": "default"}], "transportType": "udp", "containerPort": 4000, "requestedGPU": 1, "experimentalRequestedGPU": 1, "requestedMemoryMB": 1024, "requestedCPU": 0.5, "buildId": "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5"}
       responses:
         "201":
-          application/json: {"deploymentTag": "alpha", "idleTimeoutEnabled": false, "env": [{"value": "TRUE", "name": "EULA"}], "roomsPerProcess": 3, "additionalContainerPorts": [{"transportType": "tcp", "port": 4000, "name": "debug"}], "defaultContainerPort": {"transportType": "tls", "port": 8000, "name": "default"}, "createdAt": "2025-05-19T21:17:23.822Z", "createdBy": "noreply@hathora.dev", "experimentalRequestedGPU": 1, "requestedMemoryMB": 1024, "requestedCPU": 0.5, "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "buildTag": "0.1.14-14c793", "buildId": "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}
+          application/json: {"deploymentTag": "alpha", "idleTimeoutEnabled": false, "env": [{"value": "TRUE", "name": "EULA"}], "roomsPerProcess": 3, "additionalContainerPorts": [{"transportType": "tcp", "port": 4000, "name": "debug"}], "defaultContainerPort": {"transportType": "tls", "port": 8000, "name": "default"}, "createdAt": "2025-05-19T21:17:23.822Z", "createdBy": "noreply@hathora.dev", "requestedGPU": 1, "experimentalRequestedGPU": 1, "requestedMemoryMB": 1024, "requestedCPU": 0.5, "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "buildTag": "0.1.14-14c793", "buildId": "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}
         "400":
           application/json: {"message": "<value>"}
         "500":
@@ -1795,7 +1795,7 @@ examples:
           appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2"
       responses:
         "200":
-          application/json: {"deploymentTag": "alpha", "idleTimeoutEnabled": true, "env": [{"value": "TRUE", "name": "EULA"}, {"value": "TRUE", "name": "EULA"}], "roomsPerProcess": 3, "additionalContainerPorts": [{"transportType": "tcp", "port": 4000, "name": "debug"}], "defaultContainerPort": {"transportType": "tcp", "port": 8000, "name": "default"}, "createdAt": "2025-07-20T16:00:10.304Z", "createdBy": "noreply@hathora.dev", "experimentalRequestedGPU": 1, "requestedMemoryMB": 1024, "requestedCPU": 0.5, "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "buildTag": "0.1.14-14c793", "buildId": "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}
+          application/json: {"deploymentTag": "alpha", "idleTimeoutEnabled": true, "env": [{"value": "TRUE", "name": "EULA"}, {"value": "TRUE", "name": "EULA"}], "roomsPerProcess": 3, "additionalContainerPorts": [{"transportType": "tcp", "port": 4000, "name": "debug"}], "defaultContainerPort": {"transportType": "tcp", "port": 8000, "name": "default"}, "createdAt": "2025-07-20T16:00:10.304Z", "createdBy": "noreply@hathora.dev", "requestedGPU": 1, "experimentalRequestedGPU": 1, "requestedMemoryMB": 1024, "requestedCPU": 0.5, "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "buildTag": "0.1.14-14c793", "buildId": "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}
         "401":
           application/json: {"message": "<value>"}
   GetDeployment:
@@ -1806,7 +1806,7 @@ examples:
           deploymentId: "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5"
       responses:
         "200":
-          application/json: {"deploymentTag": "alpha", "idleTimeoutEnabled": false, "env": [{"value": "TRUE", "name": "EULA"}], "roomsPerProcess": 3, "additionalContainerPorts": [{"transportType": "tcp", "port": 4000, "name": "debug"}], "defaultContainerPort": {"transportType": "tcp", "port": 8000, "name": "default"}, "createdAt": "2024-03-05T11:52:41.680Z", "createdBy": "noreply@hathora.dev", "experimentalRequestedGPU": 1, "requestedMemoryMB": 1024, "requestedCPU": 0.5, "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "buildTag": "0.1.14-14c793", "buildId": "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}
+          application/json: {"deploymentTag": "alpha", "idleTimeoutEnabled": false, "env": [{"value": "TRUE", "name": "EULA"}], "roomsPerProcess": 3, "additionalContainerPorts": [{"transportType": "tcp", "port": 4000, "name": "debug"}], "defaultContainerPort": {"transportType": "tcp", "port": 8000, "name": "default"}, "createdAt": "2024-03-05T11:52:41.680Z", "createdBy": "noreply@hathora.dev", "requestedGPU": 1, "experimentalRequestedGPU": 1, "requestedMemoryMB": 1024, "requestedCPU": 0.5, "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "buildTag": "0.1.14-14c793", "buildId": "bld-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}
         "401":
           application/json: {"message": "<value>"}
   GetBuildsDeprecated:
@@ -2287,4 +2287,4 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `hathoracloud.appsV1.getAppsV1Deprecated()`:  `response.[].serviceConfig` **Changed**\n* `hathoracloud.appsV1.createAppV1Deprecated()`:  `response.serviceconfig` **Changed**\n* `hathoracloud.appsV1.updateAppV1Deprecated()`:  `response.serviceconfig` **Changed**\n* `hathoracloud.appsV1.getAppInfoV1Deprecated()`:  `response.serviceconfig` **Changed**\n* `hathoracloud.appsV2.getApps()`:  `response.applications.[].serviceConfig` **Changed**\n* `hathoracloud.appsV2.createApp()`:  `response.serviceconfig` **Changed**\n* `hathoracloud.appsV2.getApp()`:  `response.serviceconfig` **Changed**\n* `hathoracloud.appsV2.updateApp()`: \n  *  `request.appconfigwithserviceconfig.serviceConfig` **Changed**\n  *  `response.serviceconfig` **Changed**\n* `hathoracloud.appsV2.patchApp()`: \n  *  `request.partial_appconfigwithserviceconfig_.serviceConfig` **Changed**\n  *  `response.serviceconfig` **Changed**\n"
+releaseNotes: "## SDK Changes Detected:\n* `hathoracloud.deploymentsV3.getDeployments()`:  `response.deployments.[].requestedGpu` **Added**\n* `hathoracloud.deploymentsV3.createDeployment()`: \n  *  `request.deploymentconfigv3.requestedGpu` **Added**\n  *  `response.requestedgpu` **Added**\n* `hathoracloud.deploymentsV3.getLatestDeployment()`:  `response.requestedgpu` **Added**\n* `hathoracloud.deploymentsV3.getDeployment()`:  `response.requestedgpu` **Added**\n* `hathoracloud.appsV2.getApps()`:  `response.applications.[].deployment.requestedGpu` **Added**\n"

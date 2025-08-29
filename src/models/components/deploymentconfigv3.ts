@@ -56,6 +56,13 @@ export type DeploymentConfigV3 = {
    */
   containerPort: number;
   /**
+   * The number of GPUs allocated to your process. Must be an integer.
+   *
+   * @remarks
+   * If not provided, the requested GPU is 0.
+   */
+  requestedGPU?: number | undefined;
+  /**
    * EXPERIMENTAL - this feature is in closed beta.
    *
    * @remarks
@@ -147,6 +154,7 @@ export const DeploymentConfigV3$inboundSchema: z.ZodType<
   additionalContainerPorts: z.array(ContainerPort$inboundSchema).optional(),
   transportType: TransportType$inboundSchema,
   containerPort: z.number().int(),
+  requestedGPU: z.number().optional(),
   experimentalRequestedGPU: z.number().optional(),
   requestedMemoryMB: z.number(),
   requestedCPU: z.number(),
@@ -162,6 +170,7 @@ export type DeploymentConfigV3$Outbound = {
   additionalContainerPorts?: Array<ContainerPort$Outbound> | undefined;
   transportType: string;
   containerPort: number;
+  requestedGPU?: number | undefined;
   experimentalRequestedGPU?: number | undefined;
   requestedMemoryMB: number;
   requestedCPU: number;
@@ -181,6 +190,7 @@ export const DeploymentConfigV3$outboundSchema: z.ZodType<
   additionalContainerPorts: z.array(ContainerPort$outboundSchema).optional(),
   transportType: TransportType$outboundSchema,
   containerPort: z.number().int(),
+  requestedGPU: z.number().optional(),
   experimentalRequestedGPU: z.number().optional(),
   requestedMemoryMB: z.number(),
   requestedCPU: z.number(),

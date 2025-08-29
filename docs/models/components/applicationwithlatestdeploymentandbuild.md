@@ -51,6 +51,7 @@ let value: ApplicationWithLatestDeploymentAndBuild = {
     },
     createdAt: new Date("2024-12-08T05:38:57.817Z"),
     createdBy: "noreply@hathora.dev",
+    requestedGPU: 1,
     experimentalRequestedGPU: 1,
     requestedMemoryMB: 1024,
     requestedCPU: 0.5,
