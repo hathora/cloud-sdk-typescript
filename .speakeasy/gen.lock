@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 0228b2c9cc9813a224a13185b90697d8
+  docChecksum: 8f7fe40a3ddc3cdc0ac1a63a46a49fda
   docVersion: 0.0.1
-  speakeasyVersion: 1.606.8
+  speakeasyVersion: 1.606.9
   generationVersion: 2.687.13
-  releaseVersion: 2.20.18
-  configChecksum: f1db4b88218f763775c4f9e3120f5ec7
+  releaseVersion: 2.20.19
+  configChecksum: 4b49b7e32b06c14f3955548bb725c4e5
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -2287,4 +2287,4 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `hathoracloud.deploymentsV3.getDeployments()`:  `response.deployments.[].requestedGpu` **Added**\n* `hathoracloud.deploymentsV3.createDeployment()`: \n  *  `request.deploymentconfigv3.requestedGpu` **Added**\n  *  `response.requestedgpu` **Added**\n* `hathoracloud.deploymentsV3.getLatestDeployment()`:  `response.requestedgpu` **Added**\n* `hathoracloud.deploymentsV3.getDeployment()`:  `response.requestedgpu` **Added**\n* `hathoracloud.appsV2.getApps()`:  `response.applications.[].deployment.requestedGpu` **Added**\n"
+releaseNotes: "## SDK Changes Detected:\n* `hathoracloud.deploymentsV3.getDeployments()`:  `response.deployments.[].fleetId` **Added**\n* `hathoracloud.deploymentsV3.createDeployment()`: \n  *  `request.deploymentconfigv3.fleetId` **Added**\n  *  `response.fleetid` **Added**\n* `hathoracloud.deploymentsV3.getLatestDeployment()`:  `response.fleetid` **Added**\n* `hathoracloud.deploymentsV3.getDeployment()`:  `response.fleetid` **Added**\n* `hathoracloud.appsV2.getApps()`:  `response.applications.[].deployment.fleetId` **Added**\n"

@@ -25,6 +25,10 @@ export type DeploymentConfigV3Env = {
 
 export type DeploymentConfigV3 = {
   /**
+   * the id of the fleet
+   */
+  fleetId?: string | undefined;
+  /**
    * Arbitrary metadata associated with a deployment.
    */
   deploymentTag?: string | undefined;
@@ -147,6 +151,7 @@ export const DeploymentConfigV3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  fleetId: z.string().optional(),
   deploymentTag: z.string().optional(),
   idleTimeoutEnabled: z.boolean(),
   env: z.array(z.lazy(() => DeploymentConfigV3Env$inboundSchema)),
@@ -163,6 +168,7 @@ export const DeploymentConfigV3$inboundSchema: z.ZodType<
 
 /** @internal */
 export type DeploymentConfigV3$Outbound = {
+  fleetId?: string | undefined;
   deploymentTag?: string | undefined;
   idleTimeoutEnabled: boolean;
   env: Array<DeploymentConfigV3Env$Outbound>;
@@ -183,6 +189,7 @@ export const DeploymentConfigV3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DeploymentConfigV3
 > = z.object({
+  fleetId: z.string().optional(),
   deploymentTag: z.string().optional(),
   idleTimeoutEnabled: z.boolean(),
   env: z.array(z.lazy(() => DeploymentConfigV3Env$outboundSchema)),

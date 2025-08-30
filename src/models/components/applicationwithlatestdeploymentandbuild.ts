@@ -69,6 +69,10 @@ export type ApplicationWithLatestDeploymentAndBuildEnv = {
 
 export type ApplicationWithLatestDeploymentAndBuildDeployment = {
   /**
+   * the id of the fleet
+   */
+  fleetId?: string | undefined;
+  /**
    * Arbitrary metadata associated with a deployment.
    */
   deploymentTag?: string | undefined;
@@ -341,6 +345,7 @@ export const ApplicationWithLatestDeploymentAndBuildDeployment$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
+    fleetId: z.string().optional(),
     deploymentTag: z.string().optional(),
     idleTimeoutEnabled: z.boolean(),
     env: z.array(
@@ -366,6 +371,7 @@ export const ApplicationWithLatestDeploymentAndBuildDeployment$inboundSchema:
 
 /** @internal */
 export type ApplicationWithLatestDeploymentAndBuildDeployment$Outbound = {
+  fleetId?: string | undefined;
   deploymentTag?: string | undefined;
   idleTimeoutEnabled: boolean;
   env: Array<ApplicationWithLatestDeploymentAndBuildEnv$Outbound>;
@@ -392,6 +398,7 @@ export const ApplicationWithLatestDeploymentAndBuildDeployment$outboundSchema:
     z.ZodTypeDef,
     ApplicationWithLatestDeploymentAndBuildDeployment
   > = z.object({
+    fleetId: z.string().optional(),
     deploymentTag: z.string().optional(),
     idleTimeoutEnabled: z.boolean(),
     env: z.array(
