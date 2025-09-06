@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 8f7fe40a3ddc3cdc0ac1a63a46a49fda
+  docChecksum: e9c568c86ab38e573255d26b14a27ce6
   docVersion: 0.0.1
-  speakeasyVersion: 1.606.9
-  generationVersion: 2.687.13
-  releaseVersion: 2.20.19
-  configChecksum: 4b49b7e32b06c14f3955548bb725c4e5
+  speakeasyVersion: 1.611.0
+  generationVersion: 2.694.1
+  releaseVersion: 2.20.20
+  configChecksum: 438ad0770ca98ab4f2ecb9efe7dc0098
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.20
+    core: 3.21.22
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -2287,4 +2287,6 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `hathoracloud.deploymentsV3.getDeployments()`:  `response.deployments.[].fleetId` **Added**\n* `hathoracloud.deploymentsV3.createDeployment()`: \n  *  `request.deploymentconfigv3.fleetId` **Added**\n  *  `response.fleetid` **Added**\n* `hathoracloud.deploymentsV3.getLatestDeployment()`:  `response.fleetid` **Added**\n* `hathoracloud.deploymentsV3.getDeployment()`:  `response.fleetid` **Added**\n* `hathoracloud.appsV2.getApps()`:  `response.applications.[].deployment.fleetId` **Added**\n"
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `hathoracloud.lobbiesV3.listActivePublicLobbies()`:  `error.status[422]` **Added**

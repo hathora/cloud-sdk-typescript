@@ -165,7 +165,7 @@ run();
 
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401, 429         | application/json |
+| errors.ApiError  | 401, 422, 429    | application/json |
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getLobbyInfoByRoomId
