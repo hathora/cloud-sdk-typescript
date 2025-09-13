@@ -16,6 +16,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
   tests:
     generateTests: true
     generateNewTests: false
@@ -27,7 +28,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.20.20
+  version: 2.20.21
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -62,6 +63,7 @@ typescript:
   outputModelSuffix: output
   packageName: '@hathora/cloud-sdk-typescript'
   responseFormat: flat
+  sseFlatResponse: false
   templateVersion: v2
   usageSDKInitImports: []
   useIndexModules: true

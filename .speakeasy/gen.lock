@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: e9c568c86ab38e573255d26b14a27ce6
+  docChecksum: 8ae4ae74a57609205e46aa5168bfd31d
   docVersion: 0.0.1
-  speakeasyVersion: 1.611.0
-  generationVersion: 2.694.1
-  releaseVersion: 2.20.20
-  configChecksum: 438ad0770ca98ab4f2ecb9efe7dc0098
+  speakeasyVersion: 1.615.2
+  generationVersion: 2.698.4
+  releaseVersion: 2.20.21
+  configChecksum: 8d573e1c2658471ca3e8587ccedc51b7
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -21,7 +21,7 @@ features:
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     flattening: 2.82.1
-    globalSecurity: 2.82.13
+    globalSecurity: 2.82.14
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.5
@@ -2287,6 +2287,3 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `hathoracloud.lobbiesV3.listActivePublicLobbies()`:  `error.status[422]` **Added**

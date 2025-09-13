@@ -8,7 +8,7 @@ A fleet is a collection of vCPUs across your regions that can scale up and down 
 import { Fleet } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: Fleet = {
-  nodeShape: "gpu-l4-2-24-96",
+  nodeShape: "gpu-h100-1-26-234",
   orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   fleetId: "<id>",
 };

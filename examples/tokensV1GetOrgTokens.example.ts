@@ -18,7 +18,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function main() {
-  const result = await hathoraCloud.getOrgTokens(
+  const result = await hathoraCloud.tokensV1.getOrgTokens(
     "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
   );
 
