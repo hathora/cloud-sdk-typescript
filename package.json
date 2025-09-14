@@ -1,6 +1,6 @@
 {
   "name": "@hathora/cloud-sdk-typescript",
-  "version": "2.20.21",
+  "version": "2.20.22",
   "author": "Hathora",
   "main": "./index.js",
   "sideEffects": false,

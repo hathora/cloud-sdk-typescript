@@ -2,7 +2,7 @@
 
 {
   "name": "@hathora/cloud-sdk-typescript",
-  "version": "2.20.21",
+  "version": "2.20.22",
   "exports": {
     ".": "./src/index.ts",    
     "./models/errors": "./src/models/errors/index.ts",    

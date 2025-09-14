@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 8ae4ae74a57609205e46aa5168bfd31d
+  docChecksum: 3011fa200664f66a63b88f184e0089f2
   docVersion: 0.0.1
   speakeasyVersion: 1.615.2
   generationVersion: 2.698.4
-  releaseVersion: 2.20.21
-  configChecksum: 8d573e1c2658471ca3e8587ccedc51b7
+  releaseVersion: 2.20.22
+  configChecksum: bc8f25ca365ca4a9977020cc70ba7e1e
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
