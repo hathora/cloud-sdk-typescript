@@ -12,6 +12,7 @@ export * from "./createbuildwithuploadurlv2deprecated.js";
 export * from "./createdeployment.js";
 export * from "./createdeploymentv1deprecated.js";
 export * from "./createdeploymentv2deprecated.js";
+export * from "./createfleet.js";
 export * from "./createlobby.js";
 export * from "./createlobbydeprecated.js";
 export * from "./createlocallobby.js";

@@ -49,18 +49,22 @@ export type Organization = {
    */
   concurrentProcessVcpusLimit?: number | undefined;
   /**
-   * The features enabled for this org and user.
+   * The features enabled for this organization and user.
    */
   enabledFeatureFlags?: Array<string> | undefined;
   /**
-   * The maximum memory in MB that can be used by any process in this org.
+   * The maximum memory in MB that can be used by any process in this organization.
    */
   maxRequestedMemoryMB: number;
   /**
-   * The scopes the user who loaded this has on this org.
+   * The scopes the user who loaded this has on this organization.
    */
   scopes: Array<Scope>;
   isSingleTenant: boolean;
+  /**
+   * The default fleet ID for this organization.
+   */
+  defaultFleetId?: string | null | undefined;
   stripeCustomerId: string;
   /**
    * The name of an organization.
@@ -88,6 +92,7 @@ export const Organization$inboundSchema: z.ZodType<
   maxRequestedMemoryMB: z.number(),
   scopes: z.array(Scope$inboundSchema),
   isSingleTenant: z.boolean(),
+  defaultFleetId: z.nullable(z.string()).optional(),
   stripeCustomerId: z.string(),
   name: z.string().optional(),
   orgId: z.string(),
@@ -105,6 +110,7 @@ export type Organization$Outbound = {
   maxRequestedMemoryMB: number;
   scopes: Array<string>;
   isSingleTenant: boolean;
+  defaultFleetId?: string | null | undefined;
   stripeCustomerId: string;
   name?: string | undefined;
   orgId: string;
@@ -126,6 +132,7 @@ export const Organization$outboundSchema: z.ZodType<
   maxRequestedMemoryMB: z.number(),
   scopes: z.array(Scope$outboundSchema),
   isSingleTenant: z.boolean(),
+  defaultFleetId: z.nullable(z.string()).optional(),
   stripeCustomerId: z.string(),
   name: z.string().optional(),
   orgId: z.string(),

@@ -17,6 +17,11 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type FleetRegion = {
   cloudMinVcpusUpdatedAt: Date;
   cloudMinVcpus: number;
+  /**
+   * This field is deprecated and may contain the value -1. For node increment values, refer to nodeShape on the Fleet.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   scaleIncrementVcpus: number;
 };
 

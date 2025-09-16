@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: b9dd7071c68bc579663da268cd6ab307
+  docChecksum: 8a83b5c3177660b3e9f0dca5601887d5
   docVersion: 0.0.1
   speakeasyVersion: 1.615.2
   generationVersion: 2.698.4
-  releaseVersion: 2.20.23
-  configChecksum: ed29024258db51243c5b30e36ee6072f
+  releaseVersion: 2.20.24
+  configChecksum: deeeda7b7a595a68667b89e3baf1839f
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -78,6 +78,7 @@ generatedFiles:
   - docs/models/components/createdbuildv3withmultiparturls.md
   - docs/models/components/createdby.md
   - docs/models/components/createdorgtoken.md
+  - docs/models/components/createfleet.md
   - docs/models/components/createlobbyparams.md
   - docs/models/components/createlobbyv3params.md
   - docs/models/components/createmultipartbuildparams.md
@@ -212,6 +213,8 @@ generatedFiles:
   - docs/models/operations/createdeploymentv1deprecatedrequest.md
   - docs/models/operations/createdeploymentv2deprecatedglobals.md
   - docs/models/operations/createdeploymentv2deprecatedrequest.md
+  - docs/models/operations/createfleetglobals.md
+  - docs/models/operations/createfleetrequest.md
   - docs/models/operations/createlobbydeprecatedglobals.md
   - docs/models/operations/createlobbydeprecatedrequest.md
   - docs/models/operations/createlobbydeprecatedsecurity.md
@@ -512,6 +515,7 @@ generatedFiles:
   - src/funcs/deploymentsV3GetLatestDeployment.ts
   - src/funcs/discoveryV1GetPingServiceEndpointsDeprecated.ts
   - src/funcs/discoveryV2GetPingServiceEndpoints.ts
+  - src/funcs/fleetsV1CreateFleet.ts
   - src/funcs/fleetsV1GetFleetMetrics.ts
   - src/funcs/fleetsV1GetFleetRegion.ts
   - src/funcs/fleetsV1GetFleets.ts
@@ -624,6 +628,7 @@ generatedFiles:
   - src/models/components/createbuildv3params.ts
   - src/models/components/createdbuildv3withmultiparturls.ts
   - src/models/components/createdorgtoken.ts
+  - src/models/components/createfleet.ts
   - src/models/components/createlobbyparams.ts
   - src/models/components/createlobbyv3params.ts
   - src/models/components/createmultipartbuildparams.ts
@@ -727,6 +732,7 @@ generatedFiles:
   - src/models/operations/createdeployment.ts
   - src/models/operations/createdeploymentv1deprecated.ts
   - src/models/operations/createdeploymentv2deprecated.ts
+  - src/models/operations/createfleet.ts
   - src/models/operations/createlobby.ts
   - src/models/operations/createlobbydeprecated.ts
   - src/models/operations/createlocallobby.ts
@@ -2285,5 +2291,23 @@ examples:
           application/json: {"message": "<value>"}
         "500":
           application/json: {"message": "<value>"}
+  CreateFleet:
+    speakeasy-default-create-fleet:
+      parameters:
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {"nodeShape": "gpu-l4-1-12-48", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `hathoracloud.fleetsV1.createFleet()`: **Added**
+  * `hathoracloud.organizationsV1.getOrgs()`:  `response.orgs.[].defaultFleetId` **Added**

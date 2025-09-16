@@ -29,6 +29,7 @@ export * from "./createbuildparams.js";
 export * from "./createbuildv3params.js";
 export * from "./createdbuildv3withmultiparturls.js";
 export * from "./createdorgtoken.js";
+export * from "./createfleet.js";
 export * from "./createlobbyparams.js";
 export * from "./createlobbyv3params.js";
 export * from "./createmultipartbuildparams.js";
