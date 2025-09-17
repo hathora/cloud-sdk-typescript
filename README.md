@@ -188,6 +188,7 @@ run();
 
 * [getFleets](docs/sdks/fleetsv1/README.md#getfleets) - GetFleets
 * [createFleet](docs/sdks/fleetsv1/README.md#createfleet) - CreateFleet
+* [getFleet](docs/sdks/fleetsv1/README.md#getfleet) - GetFleet
 * [updateFleet](docs/sdks/fleetsv1/README.md#updatefleet) - UpdateFleet
 * [getFleetRegion](docs/sdks/fleetsv1/README.md#getfleetregion) - GetFleetRegion
 * [updateFleetRegion](docs/sdks/fleetsv1/README.md#updatefleetregion) - UpdateFleetRegion
@@ -598,6 +599,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`deploymentsV3GetLatestDeployment`](docs/sdks/deploymentsv3/README.md#getlatestdeployment) - GetLatestDeployment
 - [`discoveryV2GetPingServiceEndpoints`](docs/sdks/discoveryv2/README.md#getpingserviceendpoints) - GetPingServiceEndpoints
 - [`fleetsV1CreateFleet`](docs/sdks/fleetsv1/README.md#createfleet) - CreateFleet
+- [`fleetsV1GetFleet`](docs/sdks/fleetsv1/README.md#getfleet) - GetFleet
 - [`fleetsV1GetFleetMetrics`](docs/sdks/fleetsv1/README.md#getfleetmetrics) - GetFleetMetrics
 - [`fleetsV1GetFleetRegion`](docs/sdks/fleetsv1/README.md#getfleetregion) - GetFleetRegion
 - [`fleetsV1GetFleets`](docs/sdks/fleetsv1/README.md#getfleets) - GetFleets

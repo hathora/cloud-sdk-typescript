@@ -9,8 +9,9 @@ let value: UpdateFleetRequest = {
   fleetId: "<id>",
   updateFleet: {
     autoscalerConfig: {
-      scaleUpThreshold: 679459,
+      scaleUpThreshold: 513844,
     },
+    name: "production",
   },
 };
 ```

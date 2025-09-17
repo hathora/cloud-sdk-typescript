@@ -21,6 +21,10 @@ import {
 export type UpdateFleet = {
   nodeShape?: NodeShape | undefined;
   autoscalerConfig: AutoscalerConfig;
+  /**
+   * Readable name for a fleet. Must be unique within an organization.
+   */
+  name?: string | undefined;
 };
 
 /** @internal */
@@ -31,12 +35,14 @@ export const UpdateFleet$inboundSchema: z.ZodType<
 > = z.object({
   nodeShape: NodeShape$inboundSchema.optional(),
   autoscalerConfig: AutoscalerConfig$inboundSchema,
+  name: z.string().optional(),
 });
 
 /** @internal */
 export type UpdateFleet$Outbound = {
   nodeShape?: string | undefined;
   autoscalerConfig: AutoscalerConfig$Outbound;
+  name?: string | undefined;
 };
 
 /** @internal */
@@ -47,6 +53,7 @@ export const UpdateFleet$outboundSchema: z.ZodType<
 > = z.object({
   nodeShape: NodeShape$outboundSchema.optional(),
   autoscalerConfig: AutoscalerConfig$outboundSchema,
+  name: z.string().optional(),
 });
 
 /**

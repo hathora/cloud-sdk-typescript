@@ -3,6 +3,7 @@
  */
 
 import { fleetsV1CreateFleet } from "../funcs/fleetsV1CreateFleet.js";
+import { fleetsV1GetFleet } from "../funcs/fleetsV1GetFleet.js";
 import { fleetsV1GetFleetMetrics } from "../funcs/fleetsV1GetFleetMetrics.js";
 import { fleetsV1GetFleetRegion } from "../funcs/fleetsV1GetFleetRegion.js";
 import { fleetsV1GetFleets } from "../funcs/fleetsV1GetFleets.js";
@@ -42,6 +43,25 @@ export class FleetsV1 extends ClientSDK {
     return unwrapAsync(fleetsV1CreateFleet(
       this,
       createFleet,
+      orgId,
+      options,
+    ));
+  }
+
+  /**
+   * GetFleet
+   *
+   * @remarks
+   * Returns a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet).
+   */
+  async getFleet(
+    fleetId: string,
+    orgId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.Fleet> {
+    return unwrapAsync(fleetsV1GetFleet(
+      this,
+      fleetId,
       orgId,
       options,
     ));

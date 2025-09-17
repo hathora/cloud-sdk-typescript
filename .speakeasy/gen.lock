@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 8a83b5c3177660b3e9f0dca5601887d5
+  docChecksum: 536d01a4fc04a78cb72757cdad98e080
   docVersion: 0.0.1
-  speakeasyVersion: 1.615.2
-  generationVersion: 2.698.4
-  releaseVersion: 2.20.24
-  configChecksum: deeeda7b7a595a68667b89e3baf1839f
+  speakeasyVersion: 1.617.1
+  generationVersion: 2.701.8
+  releaseVersion: 2.20.25
+  configChecksum: 889fe408d93c33b79441bff8634238c4
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -307,10 +307,12 @@ generatedFiles:
   - docs/models/operations/getdeploymentsv1deprecatedrequest.md
   - docs/models/operations/getdeploymentsv2deprecatedglobals.md
   - docs/models/operations/getdeploymentsv2deprecatedrequest.md
+  - docs/models/operations/getfleetglobals.md
   - docs/models/operations/getfleetmetricsglobals.md
   - docs/models/operations/getfleetmetricsrequest.md
   - docs/models/operations/getfleetregionglobals.md
   - docs/models/operations/getfleetregionrequest.md
+  - docs/models/operations/getfleetrequest.md
   - docs/models/operations/getfleetsglobals.md
   - docs/models/operations/getfleetsrequest.md
   - docs/models/operations/getinactiveroomsforprocessdeprecatedglobals.md
@@ -516,6 +518,7 @@ generatedFiles:
   - src/funcs/discoveryV1GetPingServiceEndpointsDeprecated.ts
   - src/funcs/discoveryV2GetPingServiceEndpoints.ts
   - src/funcs/fleetsV1CreateFleet.ts
+  - src/funcs/fleetsV1GetFleet.ts
   - src/funcs/fleetsV1GetFleetMetrics.ts
   - src/funcs/fleetsV1GetFleetRegion.ts
   - src/funcs/fleetsV1GetFleets.ts
@@ -774,6 +777,7 @@ generatedFiles:
   - src/models/operations/getdeployments.ts
   - src/models/operations/getdeploymentsv1deprecated.ts
   - src/models/operations/getdeploymentsv2deprecated.ts
+  - src/models/operations/getfleet.ts
   - src/models/operations/getfleetmetrics.ts
   - src/models/operations/getfleetregion.ts
   - src/models/operations/getfleets.ts
@@ -1615,7 +1619,7 @@ examples:
         query:
           orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       requestBody:
-        application/json: {"autoscalerConfig": {"scaleUpThreshold": 979840}}
+        application/json: {"autoscalerConfig": {"scaleUpThreshold": 979840}, "name": "production"}
       responses:
         "401":
           application/json: {"message": "<value>"}
@@ -2297,17 +2301,28 @@ examples:
         query:
           orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       requestBody:
-        application/json: {}
+        application/json: {"nodeShape": "gpu-l4-1-12-48", "autoscalerConfig": {"scaleUpThreshold": 400145}, "name": "production"}
       responses:
         "200":
-          application/json: {"nodeShape": "gpu-l4-1-12-48", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}
+          application/json: {"nodeShape": "gpu-l4-1-12-48", "name": "production", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+  GetFleet:
+    speakeasy-default-get-fleet:
+      parameters:
+        path:
+          fleetId: "<id>"
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      responses:
+        "200":
+          application/json: {"nodeShape": "gpu-h100-4-104-936", "name": "production", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}
         "401":
           application/json: {"message": "<value>"}
         "500":
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `hathoracloud.fleetsV1.createFleet()`: **Added**
-  * `hathoracloud.organizationsV1.getOrgs()`:  `response.orgs.[].defaultFleetId` **Added**
+releaseNotes: "## Typescript SDK Changes Detected:\n* `hathoracloud.fleetsV1.createFleet()`: \n  *  `request.createfleet` **Changed** **Breaking** :warning:\n  *  `response.name` **Added**\n* `hathoracloud.fleetsV1.getFleet()`: **Added**\n* `hathoracloud.fleetsV1.getFleets()`:  `response.fleets.[].name` **Added**\n* `hathoracloud.fleetsV1.updateFleet()`: \n  *  `request.updatefleet.name` **Added**\n"

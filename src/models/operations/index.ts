@@ -54,6 +54,7 @@ export * from "./getdeploymentinfov2deprecated.js";
 export * from "./getdeployments.js";
 export * from "./getdeploymentsv1deprecated.js";
 export * from "./getdeploymentsv2deprecated.js";
+export * from "./getfleet.js";
 export * from "./getfleetmetrics.js";
 export * from "./getfleetregion.js";
 export * from "./getfleets.js";

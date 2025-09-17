@@ -19,8 +19,12 @@ import {
 } from "./nodeshape.js";
 
 export type CreateFleet = {
-  nodeShape?: NodeShape | undefined;
-  autoscalerConfig?: AutoscalerConfig | undefined;
+  nodeShape: NodeShape;
+  autoscalerConfig: AutoscalerConfig;
+  /**
+   * Readable name for a fleet. Must be unique within an organization.
+   */
+  name: string;
 };
 
 /** @internal */
@@ -29,14 +33,16 @@ export const CreateFleet$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  nodeShape: NodeShape$inboundSchema.optional(),
-  autoscalerConfig: AutoscalerConfig$inboundSchema.optional(),
+  nodeShape: NodeShape$inboundSchema,
+  autoscalerConfig: AutoscalerConfig$inboundSchema,
+  name: z.string(),
 });
 
 /** @internal */
 export type CreateFleet$Outbound = {
-  nodeShape?: string | undefined;
-  autoscalerConfig?: AutoscalerConfig$Outbound | undefined;
+  nodeShape: string;
+  autoscalerConfig: AutoscalerConfig$Outbound;
+  name: string;
 };
 
 /** @internal */
@@ -45,8 +51,9 @@ export const CreateFleet$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateFleet
 > = z.object({
-  nodeShape: NodeShape$outboundSchema.optional(),
-  autoscalerConfig: AutoscalerConfig$outboundSchema.optional(),
+  nodeShape: NodeShape$outboundSchema,
+  autoscalerConfig: AutoscalerConfig$outboundSchema,
+  name: z.string(),
 });
 
 /**

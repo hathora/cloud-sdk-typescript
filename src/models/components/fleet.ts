@@ -25,11 +25,15 @@ export type Fleet = {
   nodeShape: NodeShape;
   autoscalerConfig?: AutoscalerConfig | undefined;
   /**
+   * Readable name for a fleet. Must be unique within an organization.
+   */
+  name?: string | undefined;
+  /**
    * System generated unique identifier for an organization. Not guaranteed to have a specific format.
    */
   orgId: string;
   /**
-   * the id of the fleet
+   * The id of the fleet.
    */
   fleetId: string;
 };
@@ -39,6 +43,7 @@ export const Fleet$inboundSchema: z.ZodType<Fleet, z.ZodTypeDef, unknown> = z
   .object({
     nodeShape: NodeShape$inboundSchema,
     autoscalerConfig: AutoscalerConfig$inboundSchema.optional(),
+    name: z.string().optional(),
     orgId: z.string(),
     fleetId: z.string(),
   });
@@ -47,6 +52,7 @@ export const Fleet$inboundSchema: z.ZodType<Fleet, z.ZodTypeDef, unknown> = z
 export type Fleet$Outbound = {
   nodeShape: string;
   autoscalerConfig?: AutoscalerConfig$Outbound | undefined;
+  name?: string | undefined;
   orgId: string;
   fleetId: string;
 };
@@ -59,6 +65,7 @@ export const Fleet$outboundSchema: z.ZodType<
 > = z.object({
   nodeShape: NodeShape$outboundSchema,
   autoscalerConfig: AutoscalerConfig$outboundSchema.optional(),
+  name: z.string().optional(),
   orgId: z.string(),
   fleetId: z.string(),
 });

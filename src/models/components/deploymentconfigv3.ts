@@ -25,7 +25,7 @@ export type DeploymentConfigV3Env = {
 
 export type DeploymentConfigV3 = {
   /**
-   * the id of the fleet
+   * The id of the fleet.
    */
   fleetId?: string | undefined;
   /**
