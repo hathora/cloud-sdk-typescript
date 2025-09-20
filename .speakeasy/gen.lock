@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 536d01a4fc04a78cb72757cdad98e080
+  docChecksum: 2b17a6dd7733ff261821b9ff2485ab09
   docVersion: 0.0.1
-  speakeasyVersion: 1.617.1
-  generationVersion: 2.701.8
-  releaseVersion: 2.20.25
-  configChecksum: 889fe408d93c33b79441bff8634238c4
+  speakeasyVersion: 1.621.1
+  generationVersion: 2.708.2
+  releaseVersion: 2.20.26
+  configChecksum: 3c517e64c604b500daa59c6081001469
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.22
+    core: 3.21.23
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -2325,4 +2325,3 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `hathoracloud.fleetsV1.createFleet()`: \n  *  `request.createfleet` **Changed** **Breaking** :warning:\n  *  `response.name` **Added**\n* `hathoracloud.fleetsV1.getFleet()`: **Added**\n* `hathoracloud.fleetsV1.getFleets()`:  `response.fleets.[].name` **Added**\n* `hathoracloud.fleetsV1.updateFleet()`: \n  *  `request.updatefleet.name` **Added**\n"

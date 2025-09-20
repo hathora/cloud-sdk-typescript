@@ -28,7 +28,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.deploymentsV3.getDeployments("alpha", "0.1.14-14c793");
+  const result = await hathoraCloud.deploymentsV3.getDeployments(undefined, "alpha", "0.1.14-14c793");
 
   console.log(result);
 }
@@ -52,7 +52,7 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await deploymentsV3GetDeployments(hathoraCloud, "alpha", "0.1.14-14c793");
+  const res = await deploymentsV3GetDeployments(hathoraCloud, undefined, "alpha", "0.1.14-14c793");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);

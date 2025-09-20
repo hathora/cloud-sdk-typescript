@@ -3,6 +3,7 @@
  */
 
 export * from "./apierror.js";
+export * from "./hathoraclouderror.js";
 export * from "./httpclienterrors.js";
 export * from "./responsevalidationerror.js";
 export * from "./sdkerror.js";

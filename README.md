@@ -486,7 +486,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new HathoraCloud({ httpClient });
+const sdk = new HathoraCloud({ httpClient: httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
@@ -543,6 +543,7 @@ async function run() {
       roomConfig: "{\"name\":\"my-room\"}",
       region: "Dubai",
     },
+    undefined,
     "LFG4",
     "2swovpy1fnunu",
   );

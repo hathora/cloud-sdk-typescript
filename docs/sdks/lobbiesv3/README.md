@@ -31,7 +31,7 @@ async function run() {
     visibility: "private",
     roomConfig: "{\"name\":\"my-room\"}",
     region: "Dubai",
-  }, "LFG4", "2swovpy1fnunu");
+  }, undefined, "LFG4", "2swovpy1fnunu");
 
   console.log(result);
 }
@@ -60,7 +60,7 @@ async function run() {
     visibility: "private",
     roomConfig: "{\"name\":\"my-room\"}",
     region: "Dubai",
-  }, "LFG4", "2swovpy1fnunu");
+  }, undefined, "LFG4", "2swovpy1fnunu");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);

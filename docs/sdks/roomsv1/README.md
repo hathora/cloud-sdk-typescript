@@ -38,7 +38,7 @@ async function run() {
     ],
     roomConfig: "{\"name\":\"my-room\"}",
     region: "London",
-  }, "2swovpy1fnunu");
+  }, undefined, "2swovpy1fnunu");
 
   console.log(result);
 }
@@ -69,7 +69,7 @@ async function run() {
     ],
     roomConfig: "{\"name\":\"my-room\"}",
     region: "London",
-  }, "2swovpy1fnunu");
+  }, undefined, "2swovpy1fnunu");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
