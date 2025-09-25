@@ -57,10 +57,7 @@ bun add @hathora/cloud-sdk-typescript
 ### Yarn
 
 ```bash
-yarn add @hathora/cloud-sdk-typescript zod
-
-# Note that Yarn does not install peer dependencies automatically. You will need
-# to install zod as shown above.
+yarn add @hathora/cloud-sdk-typescript
 ```
 <!-- End SDK Installation [installation] -->
 

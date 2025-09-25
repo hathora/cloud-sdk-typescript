@@ -43,9 +43,6 @@ export type ApplicationServiceConfig = {
   loadBalancer?: LoadBalancerConfig | undefined;
   /**
    * The headroom configuration for each region.
-   *
-   * @remarks
-   * EXPERIMENTAL - this feature is in closed beta.
    */
   staticProcessAllocation: Array<StaticProcessAllocationConfig>;
 };
