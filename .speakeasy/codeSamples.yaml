@@ -183,6 +183,12 @@ actions:
         - "lang": "typescript"
           "label": "UpdateFleet"
           "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  await hathoraCloud.fleetsV1.updateFleet(\"<id>\", {\n    autoscalerConfig: {\n      scaleUpThreshold: 979840,\n    },\n    name: \"production\",\n  });\n\n\n}\n\nrun();"
+  - target: $["paths"]["/fleets/v1/fleets/{fleetId}/metrics"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetFleetMetrics"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV1.getFleetMetrics({\n    fleetId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/fleets/v1/fleets/{fleetId}/regions/{region}"]["get"]
     update:
       "x-codeSamples":
@@ -199,8 +205,8 @@ actions:
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "GetFleetMetrics"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV1.getFleetMetrics({\n    fleetId: \"<id>\",\n    region: \"Washington_DC\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "label": "GetFleetRegionMetrics"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV1.getFleetRegionMetrics({\n    fleetId: \"<id>\",\n    region: \"Chicago\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/lobby/v3/{appId}/create"]["post"]
     update:
       "x-codeSamples":

@@ -190,6 +190,7 @@ run();
 * [getFleetRegion](docs/sdks/fleetsv1/README.md#getfleetregion) - GetFleetRegion
 * [updateFleetRegion](docs/sdks/fleetsv1/README.md#updatefleetregion) - UpdateFleetRegion
 * [getFleetMetrics](docs/sdks/fleetsv1/README.md#getfleetmetrics) - GetFleetMetrics
+* [getFleetRegionMetrics](docs/sdks/fleetsv1/README.md#getfleetregionmetrics) - GetFleetRegionMetrics
 
 
 ### [~~lobbiesV1~~](docs/sdks/lobbiesv1/README.md)
@@ -600,6 +601,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`fleetsV1GetFleet`](docs/sdks/fleetsv1/README.md#getfleet) - GetFleet
 - [`fleetsV1GetFleetMetrics`](docs/sdks/fleetsv1/README.md#getfleetmetrics) - GetFleetMetrics
 - [`fleetsV1GetFleetRegion`](docs/sdks/fleetsv1/README.md#getfleetregion) - GetFleetRegion
+- [`fleetsV1GetFleetRegionMetrics`](docs/sdks/fleetsv1/README.md#getfleetregionmetrics) - GetFleetRegionMetrics
 - [`fleetsV1GetFleets`](docs/sdks/fleetsv1/README.md#getfleets) - GetFleets
 - [`fleetsV1UpdateFleet`](docs/sdks/fleetsv1/README.md#updatefleet) - UpdateFleet
 - [`fleetsV1UpdateFleetRegion`](docs/sdks/fleetsv1/README.md#updatefleetregion) - UpdateFleetRegion

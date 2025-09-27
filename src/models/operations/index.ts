@@ -57,6 +57,7 @@ export * from "./getdeploymentsv2deprecated.js";
 export * from "./getfleet.js";
 export * from "./getfleetmetrics.js";
 export * from "./getfleetregion.js";
+export * from "./getfleetregionmetrics.js";
 export * from "./getfleets.js";
 export * from "./getinactiveroomsforprocess.js";
 export * from "./getinactiveroomsforprocessdeprecated.js";

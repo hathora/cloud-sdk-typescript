@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: dd211338705dd3dfbe8f7ffcc627eae5
+  docChecksum: 1e65383ea92dc66b8ee5e130279e0e6a
   docVersion: 0.0.1
-  speakeasyVersion: 1.626.0
-  generationVersion: 2.715.0
-  releaseVersion: 2.20.27
-  configChecksum: 7d2bc888dff20e1caac65f96e9f9d148
+  speakeasyVersion: 1.631.0
+  generationVersion: 2.716.10
+  releaseVersion: 2.20.28
+  configChecksum: 50f49cfe37fb6f3ec6d80a889bbcfb0b
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -33,7 +33,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0
-    unions: 2.85.11
+    unions: 2.85.12
     uploadStreams: 0.1.0
 generatedFiles:
   - .gitattributes
@@ -311,6 +311,8 @@ generatedFiles:
   - docs/models/operations/getfleetmetricsglobals.md
   - docs/models/operations/getfleetmetricsrequest.md
   - docs/models/operations/getfleetregionglobals.md
+  - docs/models/operations/getfleetregionmetricsglobals.md
+  - docs/models/operations/getfleetregionmetricsrequest.md
   - docs/models/operations/getfleetregionrequest.md
   - docs/models/operations/getfleetrequest.md
   - docs/models/operations/getfleetsglobals.md
@@ -521,6 +523,7 @@ generatedFiles:
   - src/funcs/fleetsV1GetFleet.ts
   - src/funcs/fleetsV1GetFleetMetrics.ts
   - src/funcs/fleetsV1GetFleetRegion.ts
+  - src/funcs/fleetsV1GetFleetRegionMetrics.ts
   - src/funcs/fleetsV1GetFleets.ts
   - src/funcs/fleetsV1UpdateFleet.ts
   - src/funcs/fleetsV1UpdateFleetRegion.ts
@@ -780,6 +783,7 @@ generatedFiles:
   - src/models/operations/getfleet.ts
   - src/models/operations/getfleetmetrics.ts
   - src/models/operations/getfleetregion.ts
+  - src/models/operations/getfleetregionmetrics.ts
   - src/models/operations/getfleets.ts
   - src/models/operations/getinactiveroomsforprocess.ts
   - src/models/operations/getinactiveroomsforprocessdeprecated.ts
@@ -2323,5 +2327,22 @@ examples:
           application/json: {"message": "<value>"}
         "500":
           application/json: {"message": "<value>"}
+  GetFleetRegionMetrics:
+    speakeasy-default-get-fleet-region-metrics:
+      parameters:
+        path:
+          fleetId: "<id>"
+          region: "Chicago"
+        query:
+          step: 60
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes Detected:\n* `hathoracloud.fleetsV1.getFleetMetrics()`: \n  *  `request.region` **Removed** **Breaking** :warning:\n* `hathoracloud.fleetsV1.getFleetRegionMetrics()`: **Added**\n"

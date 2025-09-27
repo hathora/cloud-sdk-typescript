@@ -14,7 +14,6 @@ export type GetFleetMetricsGlobals = {
 
 export type GetFleetMetricsRequest = {
   fleetId: string;
-  region: components.Region;
   /**
    * Available metrics to query over time.
    */
@@ -89,7 +88,6 @@ export const GetFleetMetricsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   fleetId: z.string(),
-  region: components.Region$inboundSchema,
   metrics: z.array(components.FleetMetricName$inboundSchema).optional(),
   end: z.number().optional(),
   start: z.number().optional(),
@@ -100,7 +98,6 @@ export const GetFleetMetricsRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type GetFleetMetricsRequest$Outbound = {
   fleetId: string;
-  region: string;
   metrics?: Array<string> | undefined;
   end?: number | undefined;
   start?: number | undefined;
@@ -115,7 +112,6 @@ export const GetFleetMetricsRequest$outboundSchema: z.ZodType<
   GetFleetMetricsRequest
 > = z.object({
   fleetId: z.string(),
-  region: components.Region$outboundSchema,
   metrics: z.array(components.FleetMetricName$outboundSchema).optional(),
   end: z.number().optional(),
   start: z.number().optional(),

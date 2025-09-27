@@ -27,14 +27,14 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * GetFleetMetrics
+ * GetFleetRegionMetrics
  *
  * @remarks
- * Gets aggregate metrics for a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet).
+ * Gets metrics for a region in a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet).
  */
-export function fleetsV1GetFleetMetrics(
+export function fleetsV1GetFleetRegionMetrics(
   client: HathoraCloudCore,
-  request: operations.GetFleetMetricsRequest,
+  request: operations.GetFleetRegionMetricsRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -59,7 +59,7 @@ export function fleetsV1GetFleetMetrics(
 
 async function $do(
   client: HathoraCloudCore,
-  request: operations.GetFleetMetricsRequest,
+  request: operations.GetFleetRegionMetricsRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -80,7 +80,8 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.GetFleetMetricsRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.GetFleetRegionMetricsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -94,9 +95,15 @@ async function $do(
       explode: false,
       charEncoding: "percent",
     }),
+    region: encodeSimple("region", payload.region, {
+      explode: false,
+      charEncoding: "percent",
+    }),
   };
 
-  const path = pathToFunc("/fleets/v1/fleets/{fleetId}/metrics")(pathParams);
+  const path = pathToFunc(
+    "/fleets/v1/fleets/{fleetId}/regions/{region}/metrics",
+  )(pathParams);
 
   const query = encodeFormQuery({
     "end": payload.end,
@@ -117,7 +124,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "GetFleetMetrics",
+    operationID: "GetFleetRegionMetrics",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,

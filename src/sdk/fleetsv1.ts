@@ -6,6 +6,7 @@ import { fleetsV1CreateFleet } from "../funcs/fleetsV1CreateFleet.js";
 import { fleetsV1GetFleet } from "../funcs/fleetsV1GetFleet.js";
 import { fleetsV1GetFleetMetrics } from "../funcs/fleetsV1GetFleetMetrics.js";
 import { fleetsV1GetFleetRegion } from "../funcs/fleetsV1GetFleetRegion.js";
+import { fleetsV1GetFleetRegionMetrics } from "../funcs/fleetsV1GetFleetRegionMetrics.js";
 import { fleetsV1GetFleets } from "../funcs/fleetsV1GetFleets.js";
 import { fleetsV1UpdateFleet } from "../funcs/fleetsV1UpdateFleet.js";
 import { fleetsV1UpdateFleetRegion } from "../funcs/fleetsV1UpdateFleetRegion.js";
@@ -136,13 +137,30 @@ export class FleetsV1 extends ClientSDK {
    * GetFleetMetrics
    *
    * @remarks
-   * Gets metrics for a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
+   * Gets aggregate metrics for a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet).
    */
   async getFleetMetrics(
     request: operations.GetFleetMetricsRequest,
     options?: RequestOptions,
   ): Promise<components.FleetMetricsData> {
     return unwrapAsync(fleetsV1GetFleetMetrics(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * GetFleetRegionMetrics
+   *
+   * @remarks
+   * Gets metrics for a region in a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet).
+   */
+  async getFleetRegionMetrics(
+    request: operations.GetFleetRegionMetricsRequest,
+    options?: RequestOptions,
+  ): Promise<components.FleetMetricsData> {
+    return unwrapAsync(fleetsV1GetFleetRegionMetrics(
       this,
       request,
       options,

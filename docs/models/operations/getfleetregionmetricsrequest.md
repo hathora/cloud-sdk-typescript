@@ -1,12 +1,13 @@
-# GetFleetMetricsRequest
+# GetFleetRegionMetricsRequest
 
 ## Example Usage
 
 ```typescript
-import { GetFleetMetricsRequest } from "@hathora/cloud-sdk-typescript/models/operations";
+import { GetFleetRegionMetricsRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
-let value: GetFleetMetricsRequest = {
+let value: GetFleetRegionMetricsRequest = {
   fleetId: "<id>",
+  region: "Chicago",
 };
 ```
 
@@ -15,6 +16,7 @@ let value: GetFleetMetricsRequest = {
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | `fleetId`                                                                  | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |                                                                            |
+| `region`                                                                   | [components.Region](../../models/components/region.md)                     | :heavy_check_mark:                                                         | N/A                                                                        |                                                                            |
 | `metrics`                                                                  | [components.FleetMetricName](../../models/components/fleetmetricname.md)[] | :heavy_minus_sign:                                                         | Available metrics to query over time.                                      |                                                                            |
 | `end`                                                                      | *number*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |                                                                            |
 | `start`                                                                    | *number*                                                                   | :heavy_minus_sign:                                                         | Unix timestamp. Default is -1 hour from `end`.                             |                                                                            |
