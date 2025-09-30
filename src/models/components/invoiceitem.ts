@@ -8,6 +8,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InvoiceItem = {
+  discount?: number | undefined;
   amount: number;
   unitPrice: number;
   quantity: number;
@@ -21,6 +22,7 @@ export const InvoiceItem$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  discount: z.number().optional(),
   amount: z.number(),
   unitPrice: z.number(),
   quantity: z.number(),
@@ -30,6 +32,7 @@ export const InvoiceItem$inboundSchema: z.ZodType<
 
 /** @internal */
 export type InvoiceItem$Outbound = {
+  discount?: number | undefined;
   amount: number;
   unitPrice: number;
   quantity: number;
@@ -43,6 +46,7 @@ export const InvoiceItem$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InvoiceItem
 > = z.object({
+  discount: z.number().optional(),
   amount: z.number(),
   unitPrice: z.number(),
   quantity: z.number(),

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 1e65383ea92dc66b8ee5e130279e0e6a
+  docChecksum: 10240127441283c96aa9c5b8d199ce86
   docVersion: 0.0.1
-  speakeasyVersion: 1.631.0
-  generationVersion: 2.716.10
-  releaseVersion: 2.20.28
-  configChecksum: 50f49cfe37fb6f3ec6d80a889bbcfb0b
+  speakeasyVersion: 1.631.5
+  generationVersion: 2.716.16
+  releaseVersion: 2.20.29
+  configChecksum: e10e6502a93ca36ee38419083bd79afd
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -2345,4 +2345,6 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `hathoracloud.fleetsV1.getFleetMetrics()`: \n  *  `request.region` **Removed** **Breaking** :warning:\n* `hathoracloud.fleetsV1.getFleetRegionMetrics()`: **Added**\n"
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `hathoracloud.billingV1.getUpcomingInvoiceItems()`:  `response.invoiceitems.[].discount` **Added**

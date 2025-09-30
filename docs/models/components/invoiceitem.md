@@ -18,6 +18,7 @@ let value: InvoiceItem = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `discount`         | *number*           | :heavy_minus_sign: | N/A                |
 | `amount`           | *number*           | :heavy_check_mark: | N/A                |
 | `unitPrice`        | *number*           | :heavy_check_mark: | N/A                |
 | `quantity`         | *number*           | :heavy_check_mark: | N/A                |
