@@ -85,6 +85,10 @@ export type ProcessV3 = {
    */
   processId: string;
   /**
+   * The id of the fleet.
+   */
+  fleetId?: string | undefined;
+  /**
    * System generated id for a deployment.
    */
   deploymentId: string;
@@ -182,6 +186,7 @@ export const ProcessV3$inboundSchema: z.ZodType<
   exposedPort: z.nullable(z.lazy(() => ProcessV3ExposedPort$inboundSchema)),
   region: Region$inboundSchema,
   processId: z.string(),
+  fleetId: z.string().optional(),
   deploymentId: z.string(),
   appId: z.string(),
 });
@@ -201,6 +206,7 @@ export type ProcessV3$Outbound = {
   exposedPort: ProcessV3ExposedPort$Outbound | null;
   region: string;
   processId: string;
+  fleetId?: string | undefined;
   deploymentId: string;
   appId: string;
 };
@@ -224,6 +230,7 @@ export const ProcessV3$outboundSchema: z.ZodType<
   exposedPort: z.nullable(z.lazy(() => ProcessV3ExposedPort$outboundSchema)),
   region: Region$outboundSchema,
   processId: z.string(),
+  fleetId: z.string().optional(),
   deploymentId: z.string(),
   appId: z.string(),
 });
