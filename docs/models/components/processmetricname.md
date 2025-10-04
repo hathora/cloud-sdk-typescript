@@ -7,7 +7,7 @@ Available metrics to query over time.
 ```typescript
 import { ProcessMetricName } from "@hathora/cloud-sdk-typescript/models/components";
 
-let value: ProcessMetricName = "memory";
+let value: ProcessMetricName = "rateEgress";
 ```
 
 ## Values
@@ -15,5 +15,5 @@ let value: ProcessMetricName = "memory";
 This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 ```typescript
-"cpu" | "memory" | "rateEgress" | "totalEgress" | "activeConnections" | Unrecognized<string>
+"cpu" | "memory" | "rateEgress" | "totalEgress" | "activeConnections" | "gpuMemory" | "gpuUtilization" | Unrecognized<string>
 ```

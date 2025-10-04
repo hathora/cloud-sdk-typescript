@@ -18,6 +18,8 @@ export const ProcessMetricName = {
   RateEgress: "rateEgress",
   TotalEgress: "totalEgress",
   ActiveConnections: "activeConnections",
+  GpuMemory: "gpuMemory",
+  GpuUtilization: "gpuUtilization",
 } as const;
 /**
  * Available metrics to query over time.

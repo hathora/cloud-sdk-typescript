@@ -14,6 +14,8 @@ import {
 } from "./metricvalue.js";
 
 export type ProcessMetricsData = {
+  gpuMemory?: Array<MetricValue> | undefined;
+  gpuUtilization?: Array<MetricValue> | undefined;
   activeConnections?: Array<MetricValue> | undefined;
   totalEgress?: Array<MetricValue> | undefined;
   rateEgress?: Array<MetricValue> | undefined;
@@ -27,6 +29,8 @@ export const ProcessMetricsData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  gpuMemory: z.array(MetricValue$inboundSchema).optional(),
+  gpuUtilization: z.array(MetricValue$inboundSchema).optional(),
   activeConnections: z.array(MetricValue$inboundSchema).optional(),
   totalEgress: z.array(MetricValue$inboundSchema).optional(),
   rateEgress: z.array(MetricValue$inboundSchema).optional(),
@@ -36,6 +40,8 @@ export const ProcessMetricsData$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ProcessMetricsData$Outbound = {
+  gpuMemory?: Array<MetricValue$Outbound> | undefined;
+  gpuUtilization?: Array<MetricValue$Outbound> | undefined;
   activeConnections?: Array<MetricValue$Outbound> | undefined;
   totalEgress?: Array<MetricValue$Outbound> | undefined;
   rateEgress?: Array<MetricValue$Outbound> | undefined;
@@ -49,6 +55,8 @@ export const ProcessMetricsData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ProcessMetricsData
 > = z.object({
+  gpuMemory: z.array(MetricValue$outboundSchema).optional(),
+  gpuUtilization: z.array(MetricValue$outboundSchema).optional(),
   activeConnections: z.array(MetricValue$outboundSchema).optional(),
   totalEgress: z.array(MetricValue$outboundSchema).optional(),
   rateEgress: z.array(MetricValue$outboundSchema).optional(),

@@ -7,7 +7,7 @@ import { CreateFleetRequest } from "@hathora/cloud-sdk-typescript/models/operati
 
 let value: CreateFleetRequest = {
   createFleet: {
-    nodeShape: "cpu-16-64",
+    nodeShape: "cpu-32-128",
     autoscalerConfig: {
       scaleUpThreshold: 513844,
     },

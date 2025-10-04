@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: ffe18f22d493c17935e91701ae4ee5a6
+  docChecksum: 311400e4e43f3a6f32a4c3c868211dce
   docVersion: 0.0.1
-  speakeasyVersion: 1.633.1
-  generationVersion: 2.720.1
-  releaseVersion: 2.20.30
-  configChecksum: 7d5e7337d40359cb8837ac4159ec6d27
+  speakeasyVersion: 1.634.2
+  generationVersion: 2.721.3
+  releaseVersion: 2.21.0
+  configChecksum: 9a10ffb662367d77761f69dd90ad79b5
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -33,7 +33,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0
-    unions: 2.85.12
+    unions: 2.86.0
     uploadStreams: 0.1.0
 generatedFiles:
   - .gitattributes
@@ -2345,8 +2345,4 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `hathoracloud.processesV3.getLatestProcesses()`:  `response.[].fleetId` **Added**
-  * `hathoracloud.processesV3.createProcess()`:  `response.fleetid` **Added**
-  * `hathoracloud.processesV3.getProcess()`:  `response.fleetid` **Added**
+releaseNotes: "## Typescript SDK Changes Detected:\n* `hathoracloud.processesV3.getProcessMetrics()`: \n  *  `request.metrics` **Changed**\n  *  `response` **Changed**\n"
