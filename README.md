@@ -192,7 +192,6 @@ run();
 * [getFleetMetrics](docs/sdks/fleetsv1/README.md#getfleetmetrics) - GetFleetMetrics
 * [getFleetRegionMetrics](docs/sdks/fleetsv1/README.md#getfleetregionmetrics) - GetFleetRegionMetrics
 
-
 ### [~~lobbiesV1~~](docs/sdks/lobbiesv1/README.md)
 
 * [~~createPrivateLobbyDeprecated~~](docs/sdks/lobbiesv1/README.md#createprivatelobbydeprecated) - CreatePrivateLobbyDeprecated :warning: **Deprecated**

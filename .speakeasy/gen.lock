@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 311400e4e43f3a6f32a4c3c868211dce
+  docChecksum: 17af4545dadc394b9c08dbc40a1cba92
   docVersion: 0.0.1
-  speakeasyVersion: 1.634.2
-  generationVersion: 2.721.3
-  releaseVersion: 2.21.0
-  configChecksum: 9a10ffb662367d77761f69dd90ad79b5
+  speakeasyVersion: 1.636.0
+  generationVersion: 2.723.2
+  releaseVersion: 2.21.1
+  configChecksum: 59cca1777cc45fb540b3ac191a307c82
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -26,7 +26,7 @@ features:
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.5
     globals: 2.82.2
-    groups: 2.81.2
+    groups: 2.81.3
     methodSecurity: 2.82.6
     nullables: 0.1.1
     openEnums: 0.1.1
@@ -444,7 +444,6 @@ generatedFiles:
   - docs/sdks/discoveryv1/README.md
   - docs/sdks/discoveryv2/README.md
   - docs/sdks/fleetsv1/README.md
-  - docs/sdks/hathoracloud/README.md
   - docs/sdks/lobbiesv1/README.md
   - docs/sdks/lobbiesv2/README.md
   - docs/sdks/lobbiesv3/README.md
@@ -2345,4 +2344,3 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `hathoracloud.processesV3.getProcessMetrics()`: \n  *  `request.metrics` **Changed**\n  *  `response` **Changed**\n"
