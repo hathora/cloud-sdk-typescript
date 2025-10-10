@@ -228,6 +228,11 @@ run();
 
 * [~~getMetricsDeprecated~~](docs/sdks/metricsv1/README.md#getmetricsdeprecated) - GetMetricsDeprecated :warning: **Deprecated**
 
+### [nodesV1](docs/sdks/nodesv1/README.md)
+
+* [getNode](docs/sdks/nodesv1/README.md#getnode) - GetNode
+* [listProvisionedNodes](docs/sdks/nodesv1/README.md#listprovisionednodes) - ListProvisionedNodes
+
 ### [organizationsV1](docs/sdks/organizationsv1/README.md)
 
 * [getOrgs](docs/sdks/organizationsv1/README.md#getorgs) - GetOrgs
@@ -611,6 +616,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`logsV1DownloadLogForProcess`](docs/sdks/logsv1/README.md#downloadlogforprocess) - DownloadLogForProcess
 - [`logsV1GetLogsForProcess`](docs/sdks/logsv1/README.md#getlogsforprocess) - GetLogsForProcess
 - [`managementV1SendVerificationEmail`](docs/sdks/managementv1/README.md#sendverificationemail) - SendVerificationEmail
+- [`nodesV1GetNode`](docs/sdks/nodesv1/README.md#getnode) - GetNode
+- [`nodesV1ListProvisionedNodes`](docs/sdks/nodesv1/README.md#listprovisionednodes) - ListProvisionedNodes
 - [`organizationsV1AcceptInvite`](docs/sdks/organizationsv1/README.md#acceptinvite) - AcceptInvite
 - [`organizationsV1GetOrgMembers`](docs/sdks/organizationsv1/README.md#getorgmembers) - GetOrgMembers
 - [`organizationsV1GetOrgPendingInvites`](docs/sdks/organizationsv1/README.md#getorgpendinginvites) - GetOrgPendingInvites

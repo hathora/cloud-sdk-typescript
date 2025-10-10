@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 17af4545dadc394b9c08dbc40a1cba92
+  docChecksum: 71c38602fe87295b830968e222fd4219
   docVersion: 0.0.1
-  speakeasyVersion: 1.636.0
-  generationVersion: 2.723.2
-  releaseVersion: 2.21.1
-  configChecksum: 59cca1777cc45fb540b3ac191a307c82
+  speakeasyVersion: 1.636.3
+  generationVersion: 2.723.11
+  releaseVersion: 2.21.2
+  configChecksum: b661c6f07f63fa72bcdb2fccf8283916
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -132,6 +132,8 @@ generatedFiles:
   - docs/models/components/metricvalue.md
   - docs/models/components/nicknameobject.md
   - docs/models/components/nodeshape.md
+  - docs/models/components/nodev1.md
+  - docs/models/components/nodev1status.md
   - docs/models/components/organization.md
   - docs/models/components/orgmember.md
   - docs/models/components/orgmemberscopes.md
@@ -343,6 +345,7 @@ generatedFiles:
   - docs/models/operations/getlogsforprocessrequest.md
   - docs/models/operations/getmetricsdeprecatedglobals.md
   - docs/models/operations/getmetricsdeprecatedrequest.md
+  - docs/models/operations/getnoderequest.md
   - docs/models/operations/getorgmembersrequest.md
   - docs/models/operations/getorgpendinginvitesrequest.md
   - docs/models/operations/getorgtokensrequest.md
@@ -386,6 +389,8 @@ generatedFiles:
   - docs/models/operations/listactivepubliclobbiesdeprecatedv2request.md
   - docs/models/operations/listactivepubliclobbiesglobals.md
   - docs/models/operations/listactivepubliclobbiesrequest.md
+  - docs/models/operations/listprovisionednodesglobals.md
+  - docs/models/operations/listprovisionednodesrequest.md
   - docs/models/operations/loginanonymousglobals.md
   - docs/models/operations/loginanonymousrequest.md
   - docs/models/operations/logingoogleglobals.md
@@ -450,6 +455,7 @@ generatedFiles:
   - docs/sdks/logsv1/README.md
   - docs/sdks/managementv1/README.md
   - docs/sdks/metricsv1/README.md
+  - docs/sdks/nodesv1/README.md
   - docs/sdks/organizationsv1/README.md
   - docs/sdks/processesv1/README.md
   - docs/sdks/processesv2/README.md
@@ -544,6 +550,8 @@ generatedFiles:
   - src/funcs/logsV1GetLogsForProcess.ts
   - src/funcs/managementV1SendVerificationEmail.ts
   - src/funcs/metricsV1GetMetricsDeprecated.ts
+  - src/funcs/nodesV1GetNode.ts
+  - src/funcs/nodesV1ListProvisionedNodes.ts
   - src/funcs/organizationsV1AcceptInvite.ts
   - src/funcs/organizationsV1GetOrgMembers.ts
   - src/funcs/organizationsV1GetOrgPendingInvites.ts
@@ -674,6 +682,7 @@ generatedFiles:
   - src/models/components/metricvalue.ts
   - src/models/components/nicknameobject.ts
   - src/models/components/nodeshape.ts
+  - src/models/components/nodev1.ts
   - src/models/components/organization.ts
   - src/models/components/orgmember.ts
   - src/models/components/orgmemberspage.ts
@@ -797,6 +806,7 @@ generatedFiles:
   - src/models/operations/getlobbyinfobyshortcode.ts
   - src/models/operations/getlogsforprocess.ts
   - src/models/operations/getmetricsdeprecated.ts
+  - src/models/operations/getnode.ts
   - src/models/operations/getorgmembers.ts
   - src/models/operations/getorgpendinginvites.ts
   - src/models/operations/getorgtokens.ts
@@ -820,6 +830,7 @@ generatedFiles:
   - src/models/operations/listactivepubliclobbies.ts
   - src/models/operations/listactivepubliclobbiesdeprecatedv1.ts
   - src/models/operations/listactivepubliclobbiesdeprecatedv2.ts
+  - src/models/operations/listprovisionednodes.ts
   - src/models/operations/loginanonymous.ts
   - src/models/operations/logingoogle.ts
   - src/models/operations/loginnickname.ts
@@ -863,6 +874,7 @@ generatedFiles:
   - src/sdk/logsv1.ts
   - src/sdk/managementv1.ts
   - src/sdk/metricsv1.ts
+  - src/sdk/nodesv1.ts
   - src/sdk/organizationsv1.ts
   - src/sdk/processesv1.ts
   - src/sdk/processesv2.ts
@@ -2342,5 +2354,31 @@ examples:
           application/json: {"message": "<value>"}
         "500":
           application/json: {"message": "<value>"}
+  GetNode:
+    speakeasy-default-get-node:
+      parameters:
+        path:
+          nodeId: "<id>"
+      responses:
+        "200":
+          application/json: {"stoppedAt": "2023-07-18T08:08:07.171Z", "startedAt": "2024-11-27T01:07:01.517Z", "gpu": 288.15, "memoryMb": 6909.12, "cpu": 965.52, "region": "Dubai", "status": "running", "hosting": "shared", "host": "shadowy-strait.org", "nodeId": "<id>"}
+        "401":
+          application/json: {"message": "<value>"}
+  ListProvisionedNodes:
+    speakeasy-default-list-provisioned-nodes:
+      parameters:
+        path:
+          fleetId: "<id>"
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      responses:
+        "200":
+          application/json: [{"stoppedAt": null, "startedAt": "2025-11-18T11:40:48.434Z", "gpu": 7885.75, "memoryMb": 7642.95, "cpu": 5307.53, "region": "Frankfurt", "status": "draining", "hosting": "cloud", "host": "candid-tributary.name", "nodeId": "<id>"}]
+        "401":
+          application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `hathoracloud.nodesV1.getNode()`: **Added**
+  * `hathoracloud.nodesV1.listProvisionedNodes()`: **Added**

@@ -249,6 +249,18 @@ actions:
         - "lang": "typescript"
           "label": "SendVerificationEmail"
           "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud();\n\nasync function run() {\n  const result = await hathoraCloud.managementV1.sendVerificationEmail({\n    userId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/nodes/v1/fleet/{fleetId}/listProvisioned"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "ListProvisionedNodes"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.nodesV1.listProvisionedNodes(\"<id>\");\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/nodes/v1/{nodeId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetNode"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.nodesV1.getNode(\"<id>\");\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/orgs/v1"]["get"]
     update:
       "x-codeSamples":

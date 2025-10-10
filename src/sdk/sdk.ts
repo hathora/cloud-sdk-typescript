@@ -22,6 +22,7 @@ import { LobbiesV3 } from "./lobbiesv3.js";
 import { LogsV1 } from "./logsv1.js";
 import { ManagementV1 } from "./managementv1.js";
 import { MetricsV1 } from "./metricsv1.js";
+import { NodesV1 } from "./nodesv1.js";
 import { OrganizationsV1 } from "./organizationsv1.js";
 import { ProcessesV1 } from "./processesv1.js";
 import { ProcessesV2 } from "./processesv2.js";
@@ -64,6 +65,11 @@ export class HathoraCloud extends ClientSDK {
   private _organizationsV1?: OrganizationsV1;
   get organizationsV1(): OrganizationsV1 {
     return (this._organizationsV1 ??= new OrganizationsV1(this._options));
+  }
+
+  private _nodesV1?: NodesV1;
+  get nodesV1(): NodesV1 {
+    return (this._nodesV1 ??= new NodesV1(this._options));
   }
 
   private _metricsV1?: MetricsV1;
