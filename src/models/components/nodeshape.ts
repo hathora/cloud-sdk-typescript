@@ -33,6 +33,7 @@ export const NodeShape = {
   GpuH1004124720: "gpu-h100-4-124-720",
   GpuH10082521440: "gpu-h100-8-252-1440",
   GpuH10081921800: "gpu-h100-8-192-1800",
+  GpuH1008192960: "gpu-h100-8-192-960",
 } as const;
 export type NodeShape = OpenEnum<typeof NodeShape>;
 

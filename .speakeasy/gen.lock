@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 71c38602fe87295b830968e222fd4219
+  docChecksum: f8ea2ff166bb36ef7fc30e90f38e38e2
   docVersion: 0.0.1
   speakeasyVersion: 1.636.3
   generationVersion: 2.723.11
-  releaseVersion: 2.21.2
-  configChecksum: b661c6f07f63fa72bcdb2fccf8283916
+  releaseVersion: 2.21.3
+  configChecksum: 179a3ee44c626cab62e6a98548765283
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -2378,7 +2378,3 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `hathoracloud.nodesV1.getNode()`: **Added**
-  * `hathoracloud.nodesV1.listProvisionedNodes()`: **Added**
