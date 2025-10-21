@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 2fcf64e1d3b86b63fd52dd1b86bf4d2c
+  docChecksum: 6549133104eb763c7dd8d751ca52a6a8
   docVersion: 0.0.1
-  speakeasyVersion: 1.636.3
-  generationVersion: 2.723.11
-  releaseVersion: 2.21.4
-  configChecksum: 362d384707ca16de8d60d54f276eafa2
+  speakeasyVersion: 1.637.3
+  generationVersion: 2.727.9
+  releaseVersion: 2.22.0
+  configChecksum: b0c5fcb95b42efe5ed27a57f4c5529c3
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.26
+    core: 3.22.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -2378,3 +2378,6 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `hathoracloud.fleetsV1.getFleetRegionMetrics()`:  `error.status[408]` **Added**
