@@ -84,10 +84,10 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.ApiError    | 401, 404, 422, 429 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 401, 404, 408, 422, 429 | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## getProcessesCountExperimental
 
@@ -159,10 +159,10 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.ApiError    | 401, 404, 422, 429 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 401, 404, 408, 422, 429 | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## createProcess
 
@@ -232,11 +232,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.ApiError         | 401, 402, 404, 422, 429 | application/json        |
-| errors.ApiError         | 500                     | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ApiError              | 401, 402, 404, 408, 422, 429 | application/json             |
+| errors.ApiError              | 500                          | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## getProcess
 
@@ -306,10 +306,10 @@ run();
 
 ### Errors
 
-| Error Type       | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401, 404, 429    | application/json |
-| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 401, 404, 408, 429 | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## stopProcess
 
@@ -379,11 +379,11 @@ run();
 
 ### Errors
 
-| Error Type       | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401, 404, 429    | application/json |
-| errors.ApiError  | 500              | application/json |
-| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 401, 404, 408, 429 | application/json   |
+| errors.ApiError    | 500                | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## getProcessMetrics
 
@@ -456,8 +456,8 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.ApiError    | 401, 404, 422, 429 | application/json   |
-| errors.ApiError    | 500                | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 401, 404, 408, 422, 429 | application/json        |
+| errors.ApiError         | 500                     | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

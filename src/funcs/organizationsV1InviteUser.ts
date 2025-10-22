@@ -144,7 +144,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["401", "422", "429", "4XX", "5XX"],
+    errorCodes: ["401", "408", "422", "429", "4XX", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -170,7 +170,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, components.PendingOrgInvite$inboundSchema),
-    M.jsonErr([401, 422, 429], errors.ApiError$inboundSchema),
+    M.jsonErr([401, 408, 422, 429], errors.ApiError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

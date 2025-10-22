@@ -9,7 +9,7 @@ let value: PendingOrgInvitesPage = {
   invites: [
     {
       scopes: [
-        "tickets:read-write",
+        "load-balancer:access",
       ],
       createdAt: new Date("2024-03-04T23:16:22.046Z"),
       invitedBy: "noreply@hathora.dev",

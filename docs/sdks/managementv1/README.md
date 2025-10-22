@@ -76,6 +76,6 @@ run();
 
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 401, 429         | application/json |
+| errors.ApiError  | 401, 408, 429    | application/json |
 | errors.ApiError  | 500              | application/json |
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
