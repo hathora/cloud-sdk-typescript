@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 287f5c8746d1d332aa7bd3546f4a25e2
+  docChecksum: 7a16384f353017eea03d9a891f858351
   docVersion: 0.0.1
-  speakeasyVersion: 1.638.0
-  generationVersion: 2.728.0
-  releaseVersion: 2.23.0
-  configChecksum: 56aa4dbe4787aa2a3eb5da4f4c0f0d7a
+  speakeasyVersion: 1.640.0
+  generationVersion: 2.730.5
+  releaseVersion: 2.24.0
+  configChecksum: 2049313bf5d0c2c1f70b93d35c9bc96f
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.23.0
+    core: 3.24.1
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -2378,125 +2378,3 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `hathoracloud.tokensV1.getOrgTokens()`:  `error.status[408]` **Added**
-  * `hathoracloud.tokensV1.createOrgToken()`:  `error.status[408]` **Added**
-  * `hathoracloud.tokensV1.revokeOrgToken()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV1.createRoomDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV1.getRoomInfoDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV1.getActiveRoomsForProcessDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV1.getInactiveRoomsForProcessDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV1.destroyRoomDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV1.suspendRoomDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV1.getConnectionInfoDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV2.createRoom()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV2.getRoomInfo()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV2.getActiveRoomsForProcess()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV2.getInactiveRoomsForProcess()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV2.destroyRoom()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV2.suspendRoomV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV2.getConnectionInfo()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV2.updateRoomConfig()`:  `error.status[408]` **Added**
-  * `hathoracloud.roomsV2.resumeRoom()`:  `error.status[408]` **Added**
-  * `hathoracloud.processesV1.getRunningProcesses()`:  `error.status[408]` **Added**
-  * `hathoracloud.processesV1.getStoppedProcesses()`:  `error.status[408]` **Added**
-  * `hathoracloud.processesV1.getProcessInfoDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.processesV2.getProcessInfoV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.processesV2.getLatestProcessesV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.processesV2.getProcessesCountExperimentalV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.processesV2.stopProcessV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.processesV2.createProcessV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.processesV3.getLatestProcesses()`:  `error.status[408]` **Added**
-  * `hathoracloud.processesV3.getProcessesCountExperimental()`:  `error.status[408]` **Added**
-  * `hathoracloud.processesV3.createProcess()`:  `error.status[408]` **Added**
-  * `hathoracloud.processesV3.getProcess()`:  `error.status[408]` **Added**
-  * `hathoracloud.processesV3.stopProcess()`:  `error.status[408]` **Added**
-  * `hathoracloud.processesV3.getProcessMetrics()`:  `error.status[408]` **Added**
-  * `hathoracloud.organizationsV1.getOrgs()`:  `error.status[408]` **Added**
-  * `hathoracloud.organizationsV1.getUserPendingInvites()`:  `error.status[408]` **Added**
-  * `hathoracloud.organizationsV1.getOrgMembers()`:  `error.status[408]` **Added**
-  * `hathoracloud.organizationsV1.inviteUser()`:  `error.status[408]` **Added**
-  * `hathoracloud.organizationsV1.updateUserInvite()`:  `error.status[408]` **Added**
-  * `hathoracloud.organizationsV1.rescindInvite()`:  `error.status[408]` **Added**
-  * `hathoracloud.organizationsV1.getOrgPendingInvites()`:  `error.status[408]` **Added**
-  * `hathoracloud.organizationsV1.acceptInvite()`:  `error.status[408]` **Added**
-  * `hathoracloud.organizationsV1.rejectInvite()`:  `error.status[408]` **Added**
-  * `hathoracloud.organizationsV1.getUsageLimits()`:  `error.status[408]` **Added**
-  * `hathoracloud.nodesV1.getNode()`:  `error.status[408]` **Added**
-  * `hathoracloud.nodesV1.listProvisionedNodes()`:  `error.status[408]` **Added**
-  * `hathoracloud.metricsV1.getMetricsDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.managementV1.sendVerificationEmail()`:  `error.status[408]` **Added**
-  * `hathoracloud.logsV1.downloadLogForProcess()`:  `error.status[408]` **Added**
-  * `hathoracloud.lobbiesV1.createPrivateLobbyDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.lobbiesV1.createPublicLobbyDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.lobbiesV1.listActivePublicLobbiesDeprecatedV1()`:  `error.status[408]` **Added**
-  * `hathoracloud.lobbiesV2.createPrivateLobby()`:  `error.status[408]` **Added**
-  * `hathoracloud.lobbiesV2.createPublicLobby()`:  `error.status[408]` **Added**
-  * `hathoracloud.lobbiesV2.createLocalLobby()`:  `error.status[408]` **Added**
-  * `hathoracloud.lobbiesV2.createLobbyDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.lobbiesV2.listActivePublicLobbiesDeprecatedV2()`:  `error.status[408]` **Added**
-  * `hathoracloud.lobbiesV2.getLobbyInfo()`:  `error.status[408]` **Added**
-  * `hathoracloud.lobbiesV2.setLobbyState()`:  `error.status[408]` **Added**
-  * `hathoracloud.lobbiesV3.createLobby()`:  `error.status[408]` **Added**
-  * `hathoracloud.lobbiesV3.listActivePublicLobbies()`:  `error.status[408]` **Added**
-  * `hathoracloud.lobbiesV3.getLobbyInfoByRoomId()`:  `error.status[408]` **Added**
-  * `hathoracloud.lobbiesV3.getLobbyInfoByShortCode()`:  `error.status[408]` **Added**
-  * `hathoracloud.fleetsV1.getFleets()`:  `error.status[408]` **Added**
-  * `hathoracloud.fleetsV1.createFleet()`:  `error.status[408]` **Added**
-  * `hathoracloud.fleetsV1.getFleet()`:  `error.status[408]` **Added**
-  * `hathoracloud.fleetsV1.updateFleet()`:  `error.status[408]` **Added**
-  * `hathoracloud.fleetsV1.getFleetRegion()`:  `error.status[408]` **Added**
-  * `hathoracloud.fleetsV1.updateFleetRegion()`:  `error.status[408]` **Added**
-  * `hathoracloud.fleetsV1.getFleetMetrics()`:  `error.status[408]` **Added**
-  * `hathoracloud.deploymentsV1.getDeploymentsV1Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.deploymentsV1.getLatestDeploymentV1Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.deploymentsV1.getDeploymentInfoV1Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.deploymentsV1.createDeploymentV1Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.deploymentsV2.getDeploymentsV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.deploymentsV2.getLatestDeploymentV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.deploymentsV2.getDeploymentInfoV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.deploymentsV2.createDeploymentV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.deploymentsV3.getDeployments()`:  `error.status[408]` **Added**
-  * `hathoracloud.deploymentsV3.createDeployment()`:  `error.status[408]` **Added**
-  * `hathoracloud.deploymentsV3.getLatestDeployment()`:  `error.status[408]` **Added**
-  * `hathoracloud.deploymentsV3.getDeployment()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV1.getBuildsDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV1.getBuildInfoDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV1.createBuildDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV1.deleteBuildDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV1.runBuildDeprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV2.getBuildsV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV2.getBuildInfoV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV2.createBuildV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV2.createBuildWithUploadUrlV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV2.createWithMultipartUploadsV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV2.deleteBuildV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV2.runBuildV2Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV3.getBuilds()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV3.createBuild()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV3.getBuild()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV3.deleteBuild()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV3.createBuildRegistry()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV3.runBuild()`:  `error.status[408]` **Added**
-  * `hathoracloud.buildsV3.runBuildRegistry()`:  `error.status[408]` **Added**
-  * `hathoracloud.billingV1.getBalance()`:  `error.status[408]` **Added**
-  * `hathoracloud.billingV1.getUpcomingInvoiceItems()`:  `error.status[408]` **Added**
-  * `hathoracloud.billingV1.getUpcomingInvoiceTotal()`:  `error.status[408]` **Added**
-  * `hathoracloud.billingV1.getPaymentMethod()`:  `error.status[408]` **Added**
-  * `hathoracloud.billingV1.initStripeCustomerPortalUrl()`:  `error.status[408]` **Added**
-  * `hathoracloud.billingV1.getInvoices()`:  `error.status[408]` **Added**
-  * `hathoracloud.authV1.loginAnonymous()`:  `error.status[408]` **Added**
-  * `hathoracloud.authV1.loginNickname()`:  `error.status[408]` **Added**
-  * `hathoracloud.authV1.loginGoogle()`:  `error.status[408]` **Added**
-  * `hathoracloud.appsV1.getAppsV1Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.appsV1.createAppV1Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.appsV1.updateAppV1Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.appsV1.getAppInfoV1Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.appsV1.deleteAppV1Deprecated()`:  `error.status[408]` **Added**
-  * `hathoracloud.appsV2.getApps()`:  `error.status[408]` **Added**
-  * `hathoracloud.appsV2.createApp()`:  `error.status[408]` **Added**
-  * `hathoracloud.appsV2.getApp()`:  `error.status[408]` **Added**
-  * `hathoracloud.appsV2.updateApp()`:  `error.status[408]` **Added**
-  * `hathoracloud.appsV2.deleteApp()`:  `error.status[408]` **Added**
-  * `hathoracloud.appsV2.patchApp()`:  `error.status[408]` **Added**

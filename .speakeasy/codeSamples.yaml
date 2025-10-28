@@ -170,7 +170,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "CreateFleet"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV1.createFleet({\n    nodeShape: \"gpu-h100-1-26-234\",\n    autoscalerConfig: {\n      scaleUpThreshold: 400145,\n    },\n    name: \"production\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV1.createFleet({\n    nodeShape: \"gpu-h100-8-208-1872\",\n    autoscalerConfig: {\n      scaleUpThreshold: 400145,\n    },\n    name: \"production\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/fleets/v1/fleets/{fleetId}"]["get"]
     update:
       "x-codeSamples":
