@@ -192,6 +192,10 @@ run();
 * [getFleetMetrics](docs/sdks/fleetsv1/README.md#getfleetmetrics) - GetFleetMetrics
 * [getFleetRegionMetrics](docs/sdks/fleetsv1/README.md#getfleetregionmetrics) - GetFleetRegionMetrics
 
+### [fleetsV2](docs/sdks/fleetsv2/README.md)
+
+* [getNodeShapes](docs/sdks/fleetsv2/README.md#getnodeshapes) - GetNodeShapes
+
 ### [~~lobbiesV1~~](docs/sdks/lobbiesv1/README.md)
 
 * [~~createPrivateLobbyDeprecated~~](docs/sdks/lobbiesv1/README.md#createprivatelobbydeprecated) - CreatePrivateLobbyDeprecated :warning: **Deprecated**
@@ -609,6 +613,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`fleetsV1GetFleets`](docs/sdks/fleetsv1/README.md#getfleets) - GetFleets
 - [`fleetsV1UpdateFleet`](docs/sdks/fleetsv1/README.md#updatefleet) - UpdateFleet
 - [`fleetsV1UpdateFleetRegion`](docs/sdks/fleetsv1/README.md#updatefleetregion) - UpdateFleetRegion
+- [`fleetsV2GetNodeShapes`](docs/sdks/fleetsv2/README.md#getnodeshapes) - GetNodeShapes
 - [`lobbiesV3CreateLobby`](docs/sdks/lobbiesv3/README.md#createlobby) - CreateLobby
 - [`lobbiesV3GetLobbyInfoByRoomId`](docs/sdks/lobbiesv3/README.md#getlobbyinfobyroomid) - GetLobbyInfoByRoomId
 - [`lobbiesV3GetLobbyInfoByShortCode`](docs/sdks/lobbiesv3/README.md#getlobbyinfobyshortcode) - GetLobbyInfoByShortCode

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 7a16384f353017eea03d9a891f858351
+  docChecksum: b428a7f975dc943e30949d146c472edf
   docVersion: 0.0.1
-  speakeasyVersion: 1.640.0
-  generationVersion: 2.730.5
-  releaseVersion: 2.24.0
-  configChecksum: 2049313bf5d0c2c1f70b93d35c9bc96f
+  speakeasyVersion: 1.642.2
+  generationVersion: 2.731.6
+  releaseVersion: 2.24.1
+  configChecksum: 25777e6011f03bbd9cc2b0df414bf3b0
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -131,7 +131,10 @@ generatedFiles:
   - docs/models/components/metricname.md
   - docs/models/components/metricvalue.md
   - docs/models/components/nicknameobject.md
+  - docs/models/components/nodefamilyid.md
   - docs/models/components/nodeshape.md
+  - docs/models/components/nodeshapeid.md
+  - docs/models/components/nodeshapev2.md
   - docs/models/components/nodev1.md
   - docs/models/components/nodev1status.md
   - docs/models/components/organization.md
@@ -346,6 +349,8 @@ generatedFiles:
   - docs/models/operations/getmetricsdeprecatedglobals.md
   - docs/models/operations/getmetricsdeprecatedrequest.md
   - docs/models/operations/getnoderequest.md
+  - docs/models/operations/getnodeshapesglobals.md
+  - docs/models/operations/getnodeshapesrequest.md
   - docs/models/operations/getorgmembersrequest.md
   - docs/models/operations/getorgpendinginvitesrequest.md
   - docs/models/operations/getorgtokensrequest.md
@@ -449,6 +454,7 @@ generatedFiles:
   - docs/sdks/discoveryv1/README.md
   - docs/sdks/discoveryv2/README.md
   - docs/sdks/fleetsv1/README.md
+  - docs/sdks/fleetsv2/README.md
   - docs/sdks/lobbiesv1/README.md
   - docs/sdks/lobbiesv2/README.md
   - docs/sdks/lobbiesv3/README.md
@@ -532,6 +538,7 @@ generatedFiles:
   - src/funcs/fleetsV1GetFleets.ts
   - src/funcs/fleetsV1UpdateFleet.ts
   - src/funcs/fleetsV1UpdateFleetRegion.ts
+  - src/funcs/fleetsV2GetNodeShapes.ts
   - src/funcs/lobbiesV1CreatePrivateLobbyDeprecated.ts
   - src/funcs/lobbiesV1CreatePublicLobbyDeprecated.ts
   - src/funcs/lobbiesV1ListActivePublicLobbiesDeprecatedV1.ts
@@ -681,7 +688,10 @@ generatedFiles:
   - src/models/components/lobbyvisibility.ts
   - src/models/components/metricvalue.ts
   - src/models/components/nicknameobject.ts
+  - src/models/components/nodefamilyid.ts
   - src/models/components/nodeshape.ts
+  - src/models/components/nodeshapeid.ts
+  - src/models/components/nodeshapev2.ts
   - src/models/components/nodev1.ts
   - src/models/components/organization.ts
   - src/models/components/orgmember.ts
@@ -807,6 +817,7 @@ generatedFiles:
   - src/models/operations/getlogsforprocess.ts
   - src/models/operations/getmetricsdeprecated.ts
   - src/models/operations/getnode.ts
+  - src/models/operations/getnodeshapes.ts
   - src/models/operations/getorgmembers.ts
   - src/models/operations/getorgpendinginvites.ts
   - src/models/operations/getorgtokens.ts
@@ -867,6 +878,7 @@ generatedFiles:
   - src/sdk/discoveryv1.ts
   - src/sdk/discoveryv2.ts
   - src/sdk/fleetsv1.ts
+  - src/sdk/fleetsv2.ts
   - src/sdk/index.ts
   - src/sdk/lobbiesv1.ts
   - src/sdk/lobbiesv2.ts
@@ -2376,5 +2388,20 @@ examples:
           application/json: [{"stoppedAt": null, "startedAt": "2025-11-18T11:40:48.434Z", "gpu": 7885.75, "memoryMb": 7642.95, "cpu": 5307.53, "region": "Frankfurt", "status": "draining", "hosting": "cloud", "host": "candid-tributary.name", "nodeId": "<id>"}]
         "401":
           application/json: {"message": "<value>"}
+  GetNodeShapes:
+    speakeasy-default-get-node-shapes:
+      parameters:
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      responses:
+        "200":
+          application/json: [{"minMemoryMB": 6259.71, "minCPU": 3460.18, "minGPU": 9009.8, "familyName": "<value>", "familyId": "family-h100pcie", "name": "<value>", "nodeShapeId": "shape-l4-1"}]
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `hathoracloud.fleetsV2.getNodeShapes()`: **Added**

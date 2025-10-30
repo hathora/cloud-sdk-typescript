@@ -73,6 +73,7 @@ export * from "./getlobbyinfobyshortcode.js";
 export * from "./getlogsforprocess.js";
 export * from "./getmetricsdeprecated.js";
 export * from "./getnode.js";
+export * from "./getnodeshapes.js";
 export * from "./getorgmembers.js";
 export * from "./getorgpendinginvites.js";
 export * from "./getorgtokens.js";
