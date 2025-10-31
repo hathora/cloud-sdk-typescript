@@ -28,12 +28,12 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * UpdateFleet
+ * UpdateFleetDeprecated
  *
  * @remarks
  * Updates a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet)'s configuration.
  */
-export function fleetsV1UpdateFleet(
+export function fleetsV1UpdateFleetDeprecated(
   client: HathoraCloudCore,
   fleetId: string,
   updateFleet: components.UpdateFleet,
@@ -85,7 +85,7 @@ async function $do(
     APICall,
   ]
 > {
-  const input: operations.UpdateFleetRequest = {
+  const input: operations.UpdateFleetDeprecatedRequest = {
     fleetId: fleetId,
     updateFleet: updateFleet,
     orgId: orgId,
@@ -93,7 +93,8 @@ async function $do(
 
   const parsed = safeParse(
     input,
-    (value) => operations.UpdateFleetRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.UpdateFleetDeprecatedRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -127,7 +128,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "UpdateFleet",
+    operationID: "UpdateFleetDeprecated",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: b428a7f975dc943e30949d146c472edf
+  docChecksum: 52dfc4817d948b8125c83a166b79f318
   docVersion: 0.0.1
-  speakeasyVersion: 1.642.2
-  generationVersion: 2.731.6
-  releaseVersion: 2.24.1
-  configChecksum: 25777e6011f03bbd9cc2b0df414bf3b0
+  speakeasyVersion: 1.643.3
+  generationVersion: 2.731.9
+  releaseVersion: 2.24.2
+  configChecksum: b280ce6bf3f81623bbe26f24ef4729e0
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.24.1
+    core: 3.24.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -79,6 +79,7 @@ generatedFiles:
   - docs/models/components/createdby.md
   - docs/models/components/createdorgtoken.md
   - docs/models/components/createfleet.md
+  - docs/models/components/createfleetv2.md
   - docs/models/components/createlobbyparams.md
   - docs/models/components/createlobbyv3params.md
   - docs/models/components/createmultipartbuildparams.md
@@ -114,6 +115,8 @@ generatedFiles:
   - docs/models/components/fleetregion.md
   - docs/models/components/fleetregionconfig.md
   - docs/models/components/fleetspage.md
+  - docs/models/components/fleetspagev2.md
+  - docs/models/components/fleetv2.md
   - docs/models/components/google.md
   - docs/models/components/googleidtokenobject.md
   - docs/models/components/hosting.md
@@ -190,6 +193,7 @@ generatedFiles:
   - docs/models/components/transporttype.md
   - docs/models/components/two.md
   - docs/models/components/updatefleet.md
+  - docs/models/components/updatefleetv2.md
   - docs/models/components/updateroomconfigparams.md
   - docs/models/components/updateuserinvite.md
   - docs/models/components/updateuserinvitescopes.md
@@ -218,6 +222,8 @@ generatedFiles:
   - docs/models/operations/createdeploymentv1deprecatedrequest.md
   - docs/models/operations/createdeploymentv2deprecatedglobals.md
   - docs/models/operations/createdeploymentv2deprecatedrequest.md
+  - docs/models/operations/createfleetdeprecatedglobals.md
+  - docs/models/operations/createfleetdeprecatedrequest.md
   - docs/models/operations/createfleetglobals.md
   - docs/models/operations/createfleetrequest.md
   - docs/models/operations/createlobbydeprecatedglobals.md
@@ -312,6 +318,8 @@ generatedFiles:
   - docs/models/operations/getdeploymentsv1deprecatedrequest.md
   - docs/models/operations/getdeploymentsv2deprecatedglobals.md
   - docs/models/operations/getdeploymentsv2deprecatedrequest.md
+  - docs/models/operations/getfleetdeprecatedglobals.md
+  - docs/models/operations/getfleetdeprecatedrequest.md
   - docs/models/operations/getfleetglobals.md
   - docs/models/operations/getfleetmetricsglobals.md
   - docs/models/operations/getfleetmetricsrequest.md
@@ -320,6 +328,8 @@ generatedFiles:
   - docs/models/operations/getfleetregionmetricsrequest.md
   - docs/models/operations/getfleetregionrequest.md
   - docs/models/operations/getfleetrequest.md
+  - docs/models/operations/getfleetsdeprecatedglobals.md
+  - docs/models/operations/getfleetsdeprecatedrequest.md
   - docs/models/operations/getfleetsglobals.md
   - docs/models/operations/getfleetsrequest.md
   - docs/models/operations/getinactiveroomsforprocessdeprecatedglobals.md
@@ -434,6 +444,8 @@ generatedFiles:
   - docs/models/operations/updateapprequest.md
   - docs/models/operations/updateappv1deprecatedglobals.md
   - docs/models/operations/updateappv1deprecatedrequest.md
+  - docs/models/operations/updatefleetdeprecatedglobals.md
+  - docs/models/operations/updatefleetdeprecatedrequest.md
   - docs/models/operations/updatefleetglobals.md
   - docs/models/operations/updatefleetregionglobals.md
   - docs/models/operations/updatefleetregionrequest.md
@@ -530,15 +542,19 @@ generatedFiles:
   - src/funcs/deploymentsV3GetLatestDeployment.ts
   - src/funcs/discoveryV1GetPingServiceEndpointsDeprecated.ts
   - src/funcs/discoveryV2GetPingServiceEndpoints.ts
-  - src/funcs/fleetsV1CreateFleet.ts
-  - src/funcs/fleetsV1GetFleet.ts
+  - src/funcs/fleetsV1CreateFleetDeprecated.ts
+  - src/funcs/fleetsV1GetFleetDeprecated.ts
   - src/funcs/fleetsV1GetFleetMetrics.ts
   - src/funcs/fleetsV1GetFleetRegion.ts
   - src/funcs/fleetsV1GetFleetRegionMetrics.ts
-  - src/funcs/fleetsV1GetFleets.ts
-  - src/funcs/fleetsV1UpdateFleet.ts
+  - src/funcs/fleetsV1GetFleetsDeprecated.ts
+  - src/funcs/fleetsV1UpdateFleetDeprecated.ts
   - src/funcs/fleetsV1UpdateFleetRegion.ts
+  - src/funcs/fleetsV2CreateFleet.ts
+  - src/funcs/fleetsV2GetFleet.ts
+  - src/funcs/fleetsV2GetFleets.ts
   - src/funcs/fleetsV2GetNodeShapes.ts
+  - src/funcs/fleetsV2UpdateFleet.ts
   - src/funcs/lobbiesV1CreatePrivateLobbyDeprecated.ts
   - src/funcs/lobbiesV1CreatePublicLobbyDeprecated.ts
   - src/funcs/lobbiesV1ListActivePublicLobbiesDeprecatedV1.ts
@@ -649,6 +665,7 @@ generatedFiles:
   - src/models/components/createdbuildv3withmultiparturls.ts
   - src/models/components/createdorgtoken.ts
   - src/models/components/createfleet.ts
+  - src/models/components/createfleetv2.ts
   - src/models/components/createlobbyparams.ts
   - src/models/components/createlobbyv3params.ts
   - src/models/components/createmultipartbuildparams.ts
@@ -673,6 +690,8 @@ generatedFiles:
   - src/models/components/fleetregion.ts
   - src/models/components/fleetregionconfig.ts
   - src/models/components/fleetspage.ts
+  - src/models/components/fleetspagev2.ts
+  - src/models/components/fleetv2.ts
   - src/models/components/googleidtokenobject.ts
   - src/models/components/hosting.ts
   - src/models/components/index.ts
@@ -733,6 +752,7 @@ generatedFiles:
   - src/models/components/staticprocessallocationconfigwrite.ts
   - src/models/components/transporttype.ts
   - src/models/components/updatefleet.ts
+  - src/models/components/updatefleetv2.ts
   - src/models/components/updateroomconfigparams.ts
   - src/models/components/updateuserinvite.ts
   - src/models/components/usagelimits.ts
@@ -757,6 +777,7 @@ generatedFiles:
   - src/models/operations/createdeploymentv1deprecated.ts
   - src/models/operations/createdeploymentv2deprecated.ts
   - src/models/operations/createfleet.ts
+  - src/models/operations/createfleetdeprecated.ts
   - src/models/operations/createlobby.ts
   - src/models/operations/createlobbydeprecated.ts
   - src/models/operations/createlocallobby.ts
@@ -799,10 +820,12 @@ generatedFiles:
   - src/models/operations/getdeploymentsv1deprecated.ts
   - src/models/operations/getdeploymentsv2deprecated.ts
   - src/models/operations/getfleet.ts
+  - src/models/operations/getfleetdeprecated.ts
   - src/models/operations/getfleetmetrics.ts
   - src/models/operations/getfleetregion.ts
   - src/models/operations/getfleetregionmetrics.ts
   - src/models/operations/getfleets.ts
+  - src/models/operations/getfleetsdeprecated.ts
   - src/models/operations/getinactiveroomsforprocess.ts
   - src/models/operations/getinactiveroomsforprocessdeprecated.ts
   - src/models/operations/getinvoices.ts
@@ -862,6 +885,7 @@ generatedFiles:
   - src/models/operations/updateapp.ts
   - src/models/operations/updateappv1deprecated.ts
   - src/models/operations/updatefleet.ts
+  - src/models/operations/updatefleetdeprecated.ts
   - src/models/operations/updatefleetregion.ts
   - src/models/operations/updateroomconfig.ts
   - src/models/operations/updateuserinvite.ts
@@ -1635,8 +1659,10 @@ examples:
           orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       responses:
         "200":
-          application/json: {"fleets": [{"nodeShape": "cpu-16-64", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}, {"nodeShape": "cpu-16-32", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}]}
+          application/json: {"fleets": [{"nodeShapeId": "shape-l4-2", "name": "production", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}, {"nodeShapeId": "shape-amd64-64-128", "name": "production", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}]}
         "401":
+          application/json: {"message": "<value>"}
+        "500":
           application/json: {"message": "<value>"}
   UpdateFleet:
     speakeasy-default-update-fleet:
@@ -2328,10 +2354,10 @@ examples:
         query:
           orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       requestBody:
-        application/json: {"nodeShape": "gpu-l4-1-12-48", "autoscalerConfig": {"scaleUpThreshold": 400145}, "name": "production"}
+        application/json: {"nodeShapeId": "shape-l4-8", "autoscalerConfig": {"scaleUpThreshold": 400145}, "name": "production"}
       responses:
         "200":
-          application/json: {"nodeShape": "gpu-l4-1-12-48", "name": "production", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}
+          application/json: {"nodeShapeId": "shape-l4-1-4", "name": "production", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}
         "401":
           application/json: {"message": "<value>"}
         "500":
@@ -2345,7 +2371,7 @@ examples:
           orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       responses:
         "200":
-          application/json: {"nodeShape": "gpu-h100-4-104-936", "name": "production", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}
+          application/json: {"nodeShapeId": "shape-h200sxm5-1", "name": "production", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}
         "401":
           application/json: {"message": "<value>"}
         "500":
@@ -2400,8 +2426,73 @@ examples:
           application/json: {"message": "<value>"}
         "500":
           application/json: {"message": "<value>"}
+  GetFleetsDeprecated:
+    speakeasy-default-get-fleets-deprecated:
+      parameters:
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      responses:
+        "200":
+          application/json: {"fleets": [{"nodeShape": "cpu-16-32", "name": "production", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}]}
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+  CreateFleetDeprecated:
+    speakeasy-default-create-fleet-deprecated:
+      parameters:
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      requestBody:
+        application/json: {"nodeShape": "cpu-16-32", "autoscalerConfig": {"scaleUpThreshold": 557407}, "name": "production"}
+      responses:
+        "200":
+          application/json: {"nodeShape": "cpu-32-128", "name": "production", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+  GetFleetDeprecated:
+    speakeasy-default-get-fleet-deprecated:
+      parameters:
+        path:
+          fleetId: "<id>"
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      responses:
+        "200":
+          application/json: {"nodeShape": "gpu-h100-8-128-1600", "name": "production", "orgId": "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39", "fleetId": "<id>"}
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+  UpdateFleetDeprecated:
+    speakeasy-default-update-fleet-deprecated:
+      parameters:
+        path:
+          fleetId: "<id>"
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      requestBody:
+        application/json: {"autoscalerConfig": {"scaleUpThreshold": 638855}, "name": "production"}
+      responses:
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Typescript SDK Changes Detected:
-  * `hathoracloud.fleetsV2.getNodeShapes()`: **Added**
+  * `hathoracloud.fleetsV1.getFleetsDeprecated()`: **Added**
+  * `hathoracloud.fleetsV1.createFleetDeprecated()`: **Added**
+  * `hathoracloud.fleetsV1.getFleetDeprecated()`: **Added**
+  * `hathoracloud.fleetsV1.updateFleetDeprecated()`: **Added**
+  * `hathoracloud.fleetsV2.getFleets()`: **Added**
+  * `hathoracloud.fleetsV2.createFleet()`: **Added**
+  * `hathoracloud.fleetsV2.getFleet()`: **Added**
+  * `hathoracloud.fleetsV2.updateFleet()`: **Added**
+  * `hathoracloud.fleetsV1.getFleets()`: **Deleted** **Breaking** :warning:
+  * `hathoracloud.fleetsV1.createFleet()`: **Deleted** **Breaking** :warning:
+  * `hathoracloud.fleetsV1.getFleet()`: **Deleted** **Breaking** :warning:
+  * `hathoracloud.fleetsV1.updateFleet()`: **Deleted** **Breaking** :warning:

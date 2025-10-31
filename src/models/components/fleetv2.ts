@@ -13,21 +13,21 @@ import {
   AutoscalerConfig$outboundSchema,
 } from "./autoscalerconfig.js";
 import {
-  NodeShape,
-  NodeShape$inboundSchema,
-  NodeShape$outboundSchema,
-} from "./nodeshape.js";
+  NodeShapeId,
+  NodeShapeId$inboundSchema,
+  NodeShapeId$outboundSchema,
+} from "./nodeshapeid.js";
 
 /**
  * A fleet is a collection of nodes across your regions that can scale up and down based on demand.
  */
-export type Fleet = {
-  nodeShape: NodeShape;
+export type FleetV2 = {
+  nodeShapeId: NodeShapeId;
   autoscalerConfig?: AutoscalerConfig | undefined;
   /**
    * Readable name for a fleet. Must be unique within an organization.
    */
-  name?: string | undefined;
+  name: string;
   /**
    * System generated unique identifier for an organization. Not guaranteed to have a specific format.
    */
@@ -39,33 +39,33 @@ export type Fleet = {
 };
 
 /** @internal */
-export const Fleet$inboundSchema: z.ZodType<Fleet, z.ZodTypeDef, unknown> = z
-  .object({
-    nodeShape: NodeShape$inboundSchema,
+export const FleetV2$inboundSchema: z.ZodType<FleetV2, z.ZodTypeDef, unknown> =
+  z.object({
+    nodeShapeId: NodeShapeId$inboundSchema,
     autoscalerConfig: AutoscalerConfig$inboundSchema.optional(),
-    name: z.string().optional(),
+    name: z.string(),
     orgId: z.string(),
     fleetId: z.string(),
   });
 
 /** @internal */
-export type Fleet$Outbound = {
-  nodeShape: string;
+export type FleetV2$Outbound = {
+  nodeShapeId: string;
   autoscalerConfig?: AutoscalerConfig$Outbound | undefined;
-  name?: string | undefined;
+  name: string;
   orgId: string;
   fleetId: string;
 };
 
 /** @internal */
-export const Fleet$outboundSchema: z.ZodType<
-  Fleet$Outbound,
+export const FleetV2$outboundSchema: z.ZodType<
+  FleetV2$Outbound,
   z.ZodTypeDef,
-  Fleet
+  FleetV2
 > = z.object({
-  nodeShape: NodeShape$outboundSchema,
+  nodeShapeId: NodeShapeId$outboundSchema,
   autoscalerConfig: AutoscalerConfig$outboundSchema.optional(),
-  name: z.string().optional(),
+  name: z.string(),
   orgId: z.string(),
   fleetId: z.string(),
 });
@@ -74,25 +74,25 @@ export const Fleet$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Fleet$ {
-  /** @deprecated use `Fleet$inboundSchema` instead. */
-  export const inboundSchema = Fleet$inboundSchema;
-  /** @deprecated use `Fleet$outboundSchema` instead. */
-  export const outboundSchema = Fleet$outboundSchema;
-  /** @deprecated use `Fleet$Outbound` instead. */
-  export type Outbound = Fleet$Outbound;
+export namespace FleetV2$ {
+  /** @deprecated use `FleetV2$inboundSchema` instead. */
+  export const inboundSchema = FleetV2$inboundSchema;
+  /** @deprecated use `FleetV2$outboundSchema` instead. */
+  export const outboundSchema = FleetV2$outboundSchema;
+  /** @deprecated use `FleetV2$Outbound` instead. */
+  export type Outbound = FleetV2$Outbound;
 }
 
-export function fleetToJSON(fleet: Fleet): string {
-  return JSON.stringify(Fleet$outboundSchema.parse(fleet));
+export function fleetV2ToJSON(fleetV2: FleetV2): string {
+  return JSON.stringify(FleetV2$outboundSchema.parse(fleetV2));
 }
 
-export function fleetFromJSON(
+export function fleetV2FromJSON(
   jsonString: string,
-): SafeParseResult<Fleet, SDKValidationError> {
+): SafeParseResult<FleetV2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Fleet$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fleet' from JSON`,
+    (x) => FleetV2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FleetV2' from JSON`,
   );
 }

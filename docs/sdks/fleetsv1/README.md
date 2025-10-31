@@ -7,22 +7,22 @@ Operations to manage and view a [fleet](https://hathora.dev/docs/concepts/hathor
 
 ### Available Operations
 
-* [getFleets](#getfleets) - GetFleets
-* [createFleet](#createfleet) - CreateFleet
-* [getFleet](#getfleet) - GetFleet
-* [updateFleet](#updatefleet) - UpdateFleet
+* [getFleetsDeprecated](#getfleetsdeprecated) - GetFleetsDeprecated
+* [createFleetDeprecated](#createfleetdeprecated) - CreateFleetDeprecated
+* [getFleetDeprecated](#getfleetdeprecated) - GetFleetDeprecated
+* [updateFleetDeprecated](#updatefleetdeprecated) - UpdateFleetDeprecated
 * [getFleetRegion](#getfleetregion) - GetFleetRegion
 * [updateFleetRegion](#updatefleetregion) - UpdateFleetRegion
 * [getFleetMetrics](#getfleetmetrics) - GetFleetMetrics
 * [getFleetRegionMetrics](#getfleetregionmetrics) - GetFleetRegionMetrics
 
-## getFleets
+## getFleetsDeprecated
 
 Returns an array of [fleets](https://hathora.dev/docs/concepts/hathora-entities#fleet).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetFleets" method="get" path="/fleets/v1/fleets" -->
+<!-- UsageSnippet language="typescript" operationID="GetFleetsDeprecated" method="get" path="/fleets/v1/fleets" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -32,7 +32,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.fleetsV1.getFleets();
+  const result = await hathoraCloud.fleetsV1.getFleetsDeprecated();
 
   console.log(result);
 }
@@ -46,7 +46,7 @@ The standalone function version of this method:
 
 ```typescript
 import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
-import { fleetsV1GetFleets } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1GetFleets.js";
+import { fleetsV1GetFleetsDeprecated } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1GetFleetsDeprecated.js";
 
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -56,12 +56,12 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await fleetsV1GetFleets(hathoraCloud);
+  const res = await fleetsV1GetFleetsDeprecated(hathoraCloud);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("fleetsV1GetFleets failed:", res.error);
+    console.log("fleetsV1GetFleetsDeprecated failed:", res.error);
   }
 }
 
@@ -86,15 +86,16 @@ run();
 | Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | errors.ApiError    | 401, 404, 408, 429 | application/json   |
+| errors.ApiError    | 500                | application/json   |
 | errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
-## createFleet
+## createFleetDeprecated
 
-CreateFleet
+CreateFleetDeprecated
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="CreateFleet" method="post" path="/fleets/v1/fleets" -->
+<!-- UsageSnippet language="typescript" operationID="CreateFleetDeprecated" method="post" path="/fleets/v1/fleets" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -104,10 +105,10 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.fleetsV1.createFleet({
-    nodeShape: "gpu-l4-1-12-48",
+  const result = await hathoraCloud.fleetsV1.createFleetDeprecated({
+    nodeShape: "cpu-16-32",
     autoscalerConfig: {
-      scaleUpThreshold: 400145,
+      scaleUpThreshold: 557407,
     },
     name: "production",
   });
@@ -124,7 +125,7 @@ The standalone function version of this method:
 
 ```typescript
 import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
-import { fleetsV1CreateFleet } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1CreateFleet.js";
+import { fleetsV1CreateFleetDeprecated } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1CreateFleetDeprecated.js";
 
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -134,10 +135,10 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await fleetsV1CreateFleet(hathoraCloud, {
-    nodeShape: "gpu-l4-1-12-48",
+  const res = await fleetsV1CreateFleetDeprecated(hathoraCloud, {
+    nodeShape: "cpu-16-32",
     autoscalerConfig: {
-      scaleUpThreshold: 400145,
+      scaleUpThreshold: 557407,
     },
     name: "production",
   });
@@ -145,7 +146,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("fleetsV1CreateFleet failed:", res.error);
+    console.log("fleetsV1CreateFleetDeprecated failed:", res.error);
   }
 }
 
@@ -174,13 +175,13 @@ run();
 | errors.ApiError         | 500                     | application/json        |
 | errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
-## getFleet
+## getFleetDeprecated
 
 Returns a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetFleet" method="get" path="/fleets/v1/fleets/{fleetId}" -->
+<!-- UsageSnippet language="typescript" operationID="GetFleetDeprecated" method="get" path="/fleets/v1/fleets/{fleetId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -190,7 +191,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.fleetsV1.getFleet("<id>");
+  const result = await hathoraCloud.fleetsV1.getFleetDeprecated("<id>");
 
   console.log(result);
 }
@@ -204,7 +205,7 @@ The standalone function version of this method:
 
 ```typescript
 import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
-import { fleetsV1GetFleet } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1GetFleet.js";
+import { fleetsV1GetFleetDeprecated } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1GetFleetDeprecated.js";
 
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -214,12 +215,12 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await fleetsV1GetFleet(hathoraCloud, "<id>");
+  const res = await fleetsV1GetFleetDeprecated(hathoraCloud, "<id>");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("fleetsV1GetFleet failed:", res.error);
+    console.log("fleetsV1GetFleetDeprecated failed:", res.error);
   }
 }
 
@@ -248,13 +249,13 @@ run();
 | errors.ApiError         | 500                     | application/json        |
 | errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
-## updateFleet
+## updateFleetDeprecated
 
 Updates a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet)'s configuration.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="UpdateFleet" method="post" path="/fleets/v1/fleets/{fleetId}" -->
+<!-- UsageSnippet language="typescript" operationID="UpdateFleetDeprecated" method="post" path="/fleets/v1/fleets/{fleetId}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -264,9 +265,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  await hathoraCloud.fleetsV1.updateFleet("<id>", {
+  await hathoraCloud.fleetsV1.updateFleetDeprecated("<id>", {
     autoscalerConfig: {
-      scaleUpThreshold: 979840,
+      scaleUpThreshold: 638855,
     },
     name: "production",
   });
@@ -283,7 +284,7 @@ The standalone function version of this method:
 
 ```typescript
 import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
-import { fleetsV1UpdateFleet } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1UpdateFleet.js";
+import { fleetsV1UpdateFleetDeprecated } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1UpdateFleetDeprecated.js";
 
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -293,9 +294,9 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await fleetsV1UpdateFleet(hathoraCloud, "<id>", {
+  const res = await fleetsV1UpdateFleetDeprecated(hathoraCloud, "<id>", {
     autoscalerConfig: {
-      scaleUpThreshold: 979840,
+      scaleUpThreshold: 638855,
     },
     name: "production",
   });
@@ -303,7 +304,7 @@ async function run() {
     const { value: result } = res;
     
   } else {
-    console.log("fleetsV1UpdateFleet failed:", res.error);
+    console.log("fleetsV1UpdateFleetDeprecated failed:", res.error);
   }
 }
 

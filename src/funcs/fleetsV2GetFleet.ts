@@ -3,7 +3,7 @@
  */
 
 import { HathoraCloudCore } from "../core.js";
-import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -27,16 +27,19 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * CreateFleet
+ * GetFleet
+ *
+ * @remarks
+ * Returns a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet).
  */
-export function fleetsV1CreateFleet(
+export function fleetsV2GetFleet(
   client: HathoraCloudCore,
-  createFleet: components.CreateFleet,
+  fleetId: string,
   orgId?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.Fleet,
+    components.FleetV2,
     | errors.ApiError
     | HathoraCloudError
     | ResponseValidationError
@@ -50,7 +53,7 @@ export function fleetsV1CreateFleet(
 > {
   return new APIPromise($do(
     client,
-    createFleet,
+    fleetId,
     orgId,
     options,
   ));
@@ -58,13 +61,13 @@ export function fleetsV1CreateFleet(
 
 async function $do(
   client: HathoraCloudCore,
-  createFleet: components.CreateFleet,
+  fleetId: string,
   orgId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      components.Fleet,
+      components.FleetV2,
       | errors.ApiError
       | HathoraCloudError
       | ResponseValidationError
@@ -78,30 +81,36 @@ async function $do(
     APICall,
   ]
 > {
-  const input: operations.CreateFleetRequest = {
-    createFleet: createFleet,
+  const input: operations.GetFleetRequest = {
+    fleetId: fleetId,
     orgId: orgId,
   };
 
   const parsed = safeParse(
     input,
-    (value) => operations.CreateFleetRequest$outboundSchema.parse(value),
+    (value) => operations.GetFleetRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.CreateFleet, { explode: true });
+  const body = null;
 
-  const path = pathToFunc("/fleets/v1/fleets")();
+  const pathParams = {
+    fleetId: encodeSimple("fleetId", payload.fleetId, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+
+  const path = pathToFunc("/fleets/v2/fleets/{fleetId}")(pathParams);
 
   const query = encodeFormQuery({
     "orgId": payload.orgId ?? client._options.orgId,
   });
 
   const headers = new Headers(compactMap({
-    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -112,7 +121,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "CreateFleet",
+    operationID: "GetFleet",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -126,7 +135,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "POST",
+    method: "GET",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -156,7 +165,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    components.Fleet,
+    components.FleetV2,
     | errors.ApiError
     | HathoraCloudError
     | ResponseValidationError
@@ -167,7 +176,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, components.Fleet$inboundSchema),
+    M.json(200, components.FleetV2$inboundSchema),
     M.jsonErr([401, 404, 408, 422, 429], errors.ApiError$inboundSchema),
     M.jsonErr(500, errors.ApiError$inboundSchema),
     M.fail("4XX"),

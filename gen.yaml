@@ -30,7 +30,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.24.1
+  version: 2.24.2
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}

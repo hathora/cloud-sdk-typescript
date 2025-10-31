@@ -12,7 +12,7 @@ let value: NodeShapeV2 = {
   familyName: "<value>",
   familyId: "family-amd64-1-4",
   name: "<value>",
-  nodeShapeId: "shape-h200sxm5-8",
+  nodeShapeId: "shape-h200sxm5-1",
 };
 ```
 

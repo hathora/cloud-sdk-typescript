@@ -15,7 +15,7 @@ export type CreateFleetGlobals = {
 
 export type CreateFleetRequest = {
   orgId?: string | undefined;
-  createFleet: components.CreateFleet;
+  createFleetV2: components.CreateFleetV2;
 };
 
 /** @internal */
@@ -79,17 +79,17 @@ export const CreateFleetRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   orgId: z.string().optional(),
-  CreateFleet: z.lazy(() => components.CreateFleet$inboundSchema),
+  CreateFleetV2: components.CreateFleetV2$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "CreateFleet": "createFleet",
+    "CreateFleetV2": "createFleetV2",
   });
 });
 
 /** @internal */
 export type CreateFleetRequest$Outbound = {
   orgId?: string | undefined;
-  CreateFleet: components.CreateFleet$Outbound;
+  CreateFleetV2: components.CreateFleetV2$Outbound;
 };
 
 /** @internal */
@@ -99,10 +99,10 @@ export const CreateFleetRequest$outboundSchema: z.ZodType<
   CreateFleetRequest
 > = z.object({
   orgId: z.string().optional(),
-  createFleet: z.lazy(() => components.CreateFleet$outboundSchema),
+  createFleetV2: components.CreateFleetV2$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    createFleet: "CreateFleet",
+    createFleetV2: "CreateFleetV2",
   });
 });
 

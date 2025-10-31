@@ -3,7 +3,7 @@
  */
 
 import { HathoraCloudCore } from "../core.js";
-import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -27,14 +27,11 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * GetFleet
- *
- * @remarks
- * Returns a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet).
+ * CreateFleetDeprecated
  */
-export function fleetsV1GetFleet(
+export function fleetsV1CreateFleetDeprecated(
   client: HathoraCloudCore,
-  fleetId: string,
+  createFleet: components.CreateFleet,
   orgId?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -53,7 +50,7 @@ export function fleetsV1GetFleet(
 > {
   return new APIPromise($do(
     client,
-    fleetId,
+    createFleet,
     orgId,
     options,
   ));
@@ -61,7 +58,7 @@ export function fleetsV1GetFleet(
 
 async function $do(
   client: HathoraCloudCore,
-  fleetId: string,
+  createFleet: components.CreateFleet,
   orgId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -81,36 +78,31 @@ async function $do(
     APICall,
   ]
 > {
-  const input: operations.GetFleetRequest = {
-    fleetId: fleetId,
+  const input: operations.CreateFleetDeprecatedRequest = {
+    createFleet: createFleet,
     orgId: orgId,
   };
 
   const parsed = safeParse(
     input,
-    (value) => operations.GetFleetRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.CreateFleetDeprecatedRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload.CreateFleet, { explode: true });
 
-  const pathParams = {
-    fleetId: encodeSimple("fleetId", payload.fleetId, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
-
-  const path = pathToFunc("/fleets/v1/fleets/{fleetId}")(pathParams);
+  const path = pathToFunc("/fleets/v1/fleets")();
 
   const query = encodeFormQuery({
     "orgId": payload.orgId ?? client._options.orgId,
   });
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -121,7 +113,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "GetFleet",
+    operationID: "CreateFleetDeprecated",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -135,7 +127,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "GET",
+    method: "POST",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,

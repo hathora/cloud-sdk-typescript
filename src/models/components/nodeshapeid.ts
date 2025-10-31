@@ -23,6 +23,7 @@ export const NodeShapeId = {
   ShapeL41: "shape-l4-1",
   ShapeL42: "shape-l4-2",
   ShapeL44: "shape-l4-4",
+  ShapeL48: "shape-l4-8",
   ShapeH100pcie1: "shape-h100pcie-1",
   ShapeH100pcie2: "shape-h100pcie-2",
   ShapeH100pcie4: "shape-h100pcie-4",

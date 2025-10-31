@@ -16,7 +16,7 @@ export type UpdateFleetGlobals = {
 export type UpdateFleetRequest = {
   fleetId: string;
   orgId?: string | undefined;
-  updateFleet: components.UpdateFleet;
+  updateFleetV2: components.UpdateFleetV2;
 };
 
 /** @internal */
@@ -81,10 +81,10 @@ export const UpdateFleetRequest$inboundSchema: z.ZodType<
 > = z.object({
   fleetId: z.string(),
   orgId: z.string().optional(),
-  UpdateFleet: z.lazy(() => components.UpdateFleet$inboundSchema),
+  UpdateFleetV2: components.UpdateFleetV2$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "UpdateFleet": "updateFleet",
+    "UpdateFleetV2": "updateFleetV2",
   });
 });
 
@@ -92,7 +92,7 @@ export const UpdateFleetRequest$inboundSchema: z.ZodType<
 export type UpdateFleetRequest$Outbound = {
   fleetId: string;
   orgId?: string | undefined;
-  UpdateFleet: components.UpdateFleet$Outbound;
+  UpdateFleetV2: components.UpdateFleetV2$Outbound;
 };
 
 /** @internal */
@@ -103,10 +103,10 @@ export const UpdateFleetRequest$outboundSchema: z.ZodType<
 > = z.object({
   fleetId: z.string(),
   orgId: z.string().optional(),
-  updateFleet: z.lazy(() => components.UpdateFleet$outboundSchema),
+  updateFleetV2: components.UpdateFleetV2$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    updateFleet: "UpdateFleet",
+    updateFleetV2: "UpdateFleetV2",
   });
 });
 

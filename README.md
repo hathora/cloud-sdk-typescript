@@ -183,10 +183,10 @@ run();
 
 ### [fleetsV1](docs/sdks/fleetsv1/README.md)
 
-* [getFleets](docs/sdks/fleetsv1/README.md#getfleets) - GetFleets
-* [createFleet](docs/sdks/fleetsv1/README.md#createfleet) - CreateFleet
-* [getFleet](docs/sdks/fleetsv1/README.md#getfleet) - GetFleet
-* [updateFleet](docs/sdks/fleetsv1/README.md#updatefleet) - UpdateFleet
+* [getFleetsDeprecated](docs/sdks/fleetsv1/README.md#getfleetsdeprecated) - GetFleetsDeprecated
+* [createFleetDeprecated](docs/sdks/fleetsv1/README.md#createfleetdeprecated) - CreateFleetDeprecated
+* [getFleetDeprecated](docs/sdks/fleetsv1/README.md#getfleetdeprecated) - GetFleetDeprecated
+* [updateFleetDeprecated](docs/sdks/fleetsv1/README.md#updatefleetdeprecated) - UpdateFleetDeprecated
 * [getFleetRegion](docs/sdks/fleetsv1/README.md#getfleetregion) - GetFleetRegion
 * [updateFleetRegion](docs/sdks/fleetsv1/README.md#updatefleetregion) - UpdateFleetRegion
 * [getFleetMetrics](docs/sdks/fleetsv1/README.md#getfleetmetrics) - GetFleetMetrics
@@ -195,6 +195,10 @@ run();
 ### [fleetsV2](docs/sdks/fleetsv2/README.md)
 
 * [getNodeShapes](docs/sdks/fleetsv2/README.md#getnodeshapes) - GetNodeShapes
+* [getFleets](docs/sdks/fleetsv2/README.md#getfleets) - GetFleets
+* [createFleet](docs/sdks/fleetsv2/README.md#createfleet) - CreateFleet
+* [getFleet](docs/sdks/fleetsv2/README.md#getfleet) - GetFleet
+* [updateFleet](docs/sdks/fleetsv2/README.md#updatefleet) - UpdateFleet
 
 ### [~~lobbiesV1~~](docs/sdks/lobbiesv1/README.md)
 
@@ -605,15 +609,19 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`deploymentsV3GetDeployments`](docs/sdks/deploymentsv3/README.md#getdeployments) - GetDeployments
 - [`deploymentsV3GetLatestDeployment`](docs/sdks/deploymentsv3/README.md#getlatestdeployment) - GetLatestDeployment
 - [`discoveryV2GetPingServiceEndpoints`](docs/sdks/discoveryv2/README.md#getpingserviceendpoints) - GetPingServiceEndpoints
-- [`fleetsV1CreateFleet`](docs/sdks/fleetsv1/README.md#createfleet) - CreateFleet
-- [`fleetsV1GetFleet`](docs/sdks/fleetsv1/README.md#getfleet) - GetFleet
+- [`fleetsV1CreateFleetDeprecated`](docs/sdks/fleetsv1/README.md#createfleetdeprecated) - CreateFleetDeprecated
+- [`fleetsV1GetFleetDeprecated`](docs/sdks/fleetsv1/README.md#getfleetdeprecated) - GetFleetDeprecated
 - [`fleetsV1GetFleetMetrics`](docs/sdks/fleetsv1/README.md#getfleetmetrics) - GetFleetMetrics
 - [`fleetsV1GetFleetRegion`](docs/sdks/fleetsv1/README.md#getfleetregion) - GetFleetRegion
 - [`fleetsV1GetFleetRegionMetrics`](docs/sdks/fleetsv1/README.md#getfleetregionmetrics) - GetFleetRegionMetrics
-- [`fleetsV1GetFleets`](docs/sdks/fleetsv1/README.md#getfleets) - GetFleets
-- [`fleetsV1UpdateFleet`](docs/sdks/fleetsv1/README.md#updatefleet) - UpdateFleet
+- [`fleetsV1GetFleetsDeprecated`](docs/sdks/fleetsv1/README.md#getfleetsdeprecated) - GetFleetsDeprecated
+- [`fleetsV1UpdateFleetDeprecated`](docs/sdks/fleetsv1/README.md#updatefleetdeprecated) - UpdateFleetDeprecated
 - [`fleetsV1UpdateFleetRegion`](docs/sdks/fleetsv1/README.md#updatefleetregion) - UpdateFleetRegion
+- [`fleetsV2CreateFleet`](docs/sdks/fleetsv2/README.md#createfleet) - CreateFleet
+- [`fleetsV2GetFleet`](docs/sdks/fleetsv2/README.md#getfleet) - GetFleet
+- [`fleetsV2GetFleets`](docs/sdks/fleetsv2/README.md#getfleets) - GetFleets
 - [`fleetsV2GetNodeShapes`](docs/sdks/fleetsv2/README.md#getnodeshapes) - GetNodeShapes
+- [`fleetsV2UpdateFleet`](docs/sdks/fleetsv2/README.md#updatefleet) - UpdateFleet
 - [`lobbiesV3CreateLobby`](docs/sdks/lobbiesv3/README.md#createlobby) - CreateLobby
 - [`lobbiesV3GetLobbyInfoByRoomId`](docs/sdks/lobbiesv3/README.md#getlobbyinfobyroomid) - GetLobbyInfoByRoomId
 - [`lobbiesV3GetLobbyInfoByShortCode`](docs/sdks/lobbiesv3/README.md#getlobbyinfobyshortcode) - GetLobbyInfoByShortCode

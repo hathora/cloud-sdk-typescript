@@ -6,8 +6,8 @@
 import { CreateFleetRequest } from "@hathora/cloud-sdk-typescript/models/operations";
 
 let value: CreateFleetRequest = {
-  createFleet: {
-    nodeShape: "gpu-l4-2-24-96",
+  createFleetV2: {
+    nodeShapeId: "shape-l4-1-4",
     autoscalerConfig: {
       scaleUpThreshold: 513844,
     },
@@ -18,7 +18,7 @@ let value: CreateFleetRequest = {
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      | Example                                                          |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `orgId`                                                          | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              | org-6f706e83-0ec1-437a-9a46-7d4281eb2f39                         |
-| `createFleet`                                                    | [components.CreateFleet](../../models/components/createfleet.md) | :heavy_check_mark:                                               | N/A                                                              |                                                                  |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          | Example                                                              |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `orgId`                                                              | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  | org-6f706e83-0ec1-437a-9a46-7d4281eb2f39                             |
+| `createFleetV2`                                                      | [components.CreateFleetV2](../../models/components/createfleetv2.md) | :heavy_check_mark:                                                   | N/A                                                                  |                                                                      |

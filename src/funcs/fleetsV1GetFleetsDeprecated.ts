@@ -27,12 +27,12 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * GetFleets
+ * GetFleetsDeprecated
  *
  * @remarks
  * Returns an array of [fleets](https://hathora.dev/docs/concepts/hathora-entities#fleet).
  */
-export function fleetsV1GetFleets(
+export function fleetsV1GetFleetsDeprecated(
   client: HathoraCloudCore,
   orgId?: string | undefined,
   options?: RequestOptions,
@@ -78,13 +78,14 @@ async function $do(
     APICall,
   ]
 > {
-  const input: operations.GetFleetsRequest = {
+  const input: operations.GetFleetsDeprecatedRequest = {
     orgId: orgId,
   };
 
   const parsed = safeParse(
     input,
-    (value) => operations.GetFleetsRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.GetFleetsDeprecatedRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -110,7 +111,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "GetFleets",
+    operationID: "GetFleetsDeprecated",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -140,7 +141,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["401", "404", "408", "429", "4XX", "5XX"],
+    errorCodes: ["401", "404", "408", "429", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -167,6 +168,7 @@ async function $do(
   >(
     M.json(200, components.FleetsPage$inboundSchema),
     M.jsonErr([401, 404, 408, 429], errors.ApiError$inboundSchema),
+    M.jsonErr(500, errors.ApiError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

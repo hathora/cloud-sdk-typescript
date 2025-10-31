@@ -163,26 +163,26 @@ actions:
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "GetFleets"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV1.getFleets();\n\n  console.log(result);\n}\n\nrun();"
+          "label": "GetFleetsDeprecated"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV1.getFleetsDeprecated();\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/fleets/v1/fleets"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "CreateFleet"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV1.createFleet({\n    nodeShape: \"gpu-h100-8-208-1872\",\n    autoscalerConfig: {\n      scaleUpThreshold: 400145,\n    },\n    name: \"production\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "label": "CreateFleetDeprecated"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV1.createFleetDeprecated({\n    nodeShape: \"cpu-16-32\",\n    autoscalerConfig: {\n      scaleUpThreshold: 557407,\n    },\n    name: \"production\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/fleets/v1/fleets/{fleetId}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "GetFleet"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV1.getFleet(\"<id>\");\n\n  console.log(result);\n}\n\nrun();"
+          "label": "GetFleetDeprecated"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV1.getFleetDeprecated(\"<id>\");\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/fleets/v1/fleets/{fleetId}"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "UpdateFleet"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  await hathoraCloud.fleetsV1.updateFleet(\"<id>\", {\n    autoscalerConfig: {\n      scaleUpThreshold: 979840,\n    },\n    name: \"production\",\n  });\n\n\n}\n\nrun();"
+          "label": "UpdateFleetDeprecated"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  await hathoraCloud.fleetsV1.updateFleetDeprecated(\"<id>\", {\n    autoscalerConfig: {\n      scaleUpThreshold: 638855,\n    },\n    name: \"production\",\n  });\n\n\n}\n\nrun();"
   - target: $["paths"]["/fleets/v1/fleets/{fleetId}/metrics"]["get"]
     update:
       "x-codeSamples":
@@ -207,6 +207,30 @@ actions:
         - "lang": "typescript"
           "label": "GetFleetRegionMetrics"
           "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV1.getFleetRegionMetrics({\n    fleetId: \"<id>\",\n    region: \"Chicago\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/fleets/v2/fleets"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetFleets"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV2.getFleets();\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/fleets/v2/fleets"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "CreateFleet"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV2.createFleet({\n    nodeShapeId: \"shape-l4-8\",\n    autoscalerConfig: {\n      scaleUpThreshold: 400145,\n    },\n    name: \"production\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/fleets/v2/fleets/{fleetId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "GetFleet"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV2.getFleet(\"<id>\");\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/fleets/v2/fleets/{fleetId}"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "UpdateFleet"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  await hathoraCloud.fleetsV2.updateFleet(\"<id>\", {\n    autoscalerConfig: {\n      scaleUpThreshold: 979840,\n    },\n    name: \"production\",\n  });\n\n\n}\n\nrun();"
   - target: $["paths"]["/fleets/v2/nodeShapes"]["get"]
     update:
       "x-codeSamples":
