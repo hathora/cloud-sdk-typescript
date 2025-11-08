@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RunBuildGlobals = {
   orgId?: string | undefined;
@@ -15,68 +12,6 @@ export type RunBuildRequest = {
   buildId: string;
   orgId?: string | undefined;
 };
-
-/** @internal */
-export const RunBuildGlobals$inboundSchema: z.ZodType<
-  RunBuildGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type RunBuildGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const RunBuildGlobals$outboundSchema: z.ZodType<
-  RunBuildGlobals$Outbound,
-  z.ZodTypeDef,
-  RunBuildGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RunBuildGlobals$ {
-  /** @deprecated use `RunBuildGlobals$inboundSchema` instead. */
-  export const inboundSchema = RunBuildGlobals$inboundSchema;
-  /** @deprecated use `RunBuildGlobals$outboundSchema` instead. */
-  export const outboundSchema = RunBuildGlobals$outboundSchema;
-  /** @deprecated use `RunBuildGlobals$Outbound` instead. */
-  export type Outbound = RunBuildGlobals$Outbound;
-}
-
-export function runBuildGlobalsToJSON(
-  runBuildGlobals: RunBuildGlobals,
-): string {
-  return JSON.stringify(RunBuildGlobals$outboundSchema.parse(runBuildGlobals));
-}
-
-export function runBuildGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<RunBuildGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RunBuildGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RunBuildGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const RunBuildRequest$inboundSchema: z.ZodType<
-  RunBuildRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  buildId: z.string(),
-  orgId: z.string().optional(),
-});
 
 /** @internal */
 export type RunBuildRequest$Outbound = {
@@ -94,31 +29,8 @@ export const RunBuildRequest$outboundSchema: z.ZodType<
   orgId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RunBuildRequest$ {
-  /** @deprecated use `RunBuildRequest$inboundSchema` instead. */
-  export const inboundSchema = RunBuildRequest$inboundSchema;
-  /** @deprecated use `RunBuildRequest$outboundSchema` instead. */
-  export const outboundSchema = RunBuildRequest$outboundSchema;
-  /** @deprecated use `RunBuildRequest$Outbound` instead. */
-  export type Outbound = RunBuildRequest$Outbound;
-}
-
 export function runBuildRequestToJSON(
   runBuildRequest: RunBuildRequest,
 ): string {
   return JSON.stringify(RunBuildRequest$outboundSchema.parse(runBuildRequest));
-}
-
-export function runBuildRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RunBuildRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RunBuildRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RunBuildRequest' from JSON`,
-  );
 }

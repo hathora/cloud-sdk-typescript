@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetStoppedProcessesGlobals = {
   appId?: string | undefined;
@@ -16,70 +13,6 @@ export type GetStoppedProcessesRequest = {
   appId?: string | undefined;
   region?: components.Region | undefined;
 };
-
-/** @internal */
-export const GetStoppedProcessesGlobals$inboundSchema: z.ZodType<
-  GetStoppedProcessesGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetStoppedProcessesGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetStoppedProcessesGlobals$outboundSchema: z.ZodType<
-  GetStoppedProcessesGlobals$Outbound,
-  z.ZodTypeDef,
-  GetStoppedProcessesGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetStoppedProcessesGlobals$ {
-  /** @deprecated use `GetStoppedProcessesGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetStoppedProcessesGlobals$inboundSchema;
-  /** @deprecated use `GetStoppedProcessesGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetStoppedProcessesGlobals$outboundSchema;
-  /** @deprecated use `GetStoppedProcessesGlobals$Outbound` instead. */
-  export type Outbound = GetStoppedProcessesGlobals$Outbound;
-}
-
-export function getStoppedProcessesGlobalsToJSON(
-  getStoppedProcessesGlobals: GetStoppedProcessesGlobals,
-): string {
-  return JSON.stringify(
-    GetStoppedProcessesGlobals$outboundSchema.parse(getStoppedProcessesGlobals),
-  );
-}
-
-export function getStoppedProcessesGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetStoppedProcessesGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetStoppedProcessesGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetStoppedProcessesGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetStoppedProcessesRequest$inboundSchema: z.ZodType<
-  GetStoppedProcessesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  region: components.Region$inboundSchema.optional(),
-});
 
 /** @internal */
 export type GetStoppedProcessesRequest$Outbound = {
@@ -97,33 +30,10 @@ export const GetStoppedProcessesRequest$outboundSchema: z.ZodType<
   region: components.Region$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetStoppedProcessesRequest$ {
-  /** @deprecated use `GetStoppedProcessesRequest$inboundSchema` instead. */
-  export const inboundSchema = GetStoppedProcessesRequest$inboundSchema;
-  /** @deprecated use `GetStoppedProcessesRequest$outboundSchema` instead. */
-  export const outboundSchema = GetStoppedProcessesRequest$outboundSchema;
-  /** @deprecated use `GetStoppedProcessesRequest$Outbound` instead. */
-  export type Outbound = GetStoppedProcessesRequest$Outbound;
-}
-
 export function getStoppedProcessesRequestToJSON(
   getStoppedProcessesRequest: GetStoppedProcessesRequest,
 ): string {
   return JSON.stringify(
     GetStoppedProcessesRequest$outboundSchema.parse(getStoppedProcessesRequest),
-  );
-}
-
-export function getStoppedProcessesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetStoppedProcessesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetStoppedProcessesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetStoppedProcessesRequest' from JSON`,
   );
 }

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetDeploymentGlobals = {
   appId?: string | undefined;
@@ -15,70 +12,6 @@ export type GetDeploymentRequest = {
   appId?: string | undefined;
   deploymentId: string;
 };
-
-/** @internal */
-export const GetDeploymentGlobals$inboundSchema: z.ZodType<
-  GetDeploymentGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetDeploymentGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetDeploymentGlobals$outboundSchema: z.ZodType<
-  GetDeploymentGlobals$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentGlobals$ {
-  /** @deprecated use `GetDeploymentGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentGlobals$inboundSchema;
-  /** @deprecated use `GetDeploymentGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetDeploymentGlobals$outboundSchema;
-  /** @deprecated use `GetDeploymentGlobals$Outbound` instead. */
-  export type Outbound = GetDeploymentGlobals$Outbound;
-}
-
-export function getDeploymentGlobalsToJSON(
-  getDeploymentGlobals: GetDeploymentGlobals,
-): string {
-  return JSON.stringify(
-    GetDeploymentGlobals$outboundSchema.parse(getDeploymentGlobals),
-  );
-}
-
-export function getDeploymentGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentRequest$inboundSchema: z.ZodType<
-  GetDeploymentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  deploymentId: z.string(),
-});
 
 /** @internal */
 export type GetDeploymentRequest$Outbound = {
@@ -96,33 +29,10 @@ export const GetDeploymentRequest$outboundSchema: z.ZodType<
   deploymentId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentRequest$ {
-  /** @deprecated use `GetDeploymentRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentRequest$inboundSchema;
-  /** @deprecated use `GetDeploymentRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDeploymentRequest$outboundSchema;
-  /** @deprecated use `GetDeploymentRequest$Outbound` instead. */
-  export type Outbound = GetDeploymentRequest$Outbound;
-}
-
 export function getDeploymentRequestToJSON(
   getDeploymentRequest: GetDeploymentRequest,
 ): string {
   return JSON.stringify(
     GetDeploymentRequest$outboundSchema.parse(getDeploymentRequest),
-  );
-}
-
-export function getDeploymentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentRequest' from JSON`,
   );
 }

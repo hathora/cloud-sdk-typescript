@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetFleetRegionMetricsGlobals = {
   orgId?: string | undefined;
@@ -27,77 +24,6 @@ export type GetFleetRegionMetricsRequest = {
   step?: number | undefined;
   orgId?: string | undefined;
 };
-
-/** @internal */
-export const GetFleetRegionMetricsGlobals$inboundSchema: z.ZodType<
-  GetFleetRegionMetricsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type GetFleetRegionMetricsGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const GetFleetRegionMetricsGlobals$outboundSchema: z.ZodType<
-  GetFleetRegionMetricsGlobals$Outbound,
-  z.ZodTypeDef,
-  GetFleetRegionMetricsGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetFleetRegionMetricsGlobals$ {
-  /** @deprecated use `GetFleetRegionMetricsGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetFleetRegionMetricsGlobals$inboundSchema;
-  /** @deprecated use `GetFleetRegionMetricsGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetFleetRegionMetricsGlobals$outboundSchema;
-  /** @deprecated use `GetFleetRegionMetricsGlobals$Outbound` instead. */
-  export type Outbound = GetFleetRegionMetricsGlobals$Outbound;
-}
-
-export function getFleetRegionMetricsGlobalsToJSON(
-  getFleetRegionMetricsGlobals: GetFleetRegionMetricsGlobals,
-): string {
-  return JSON.stringify(
-    GetFleetRegionMetricsGlobals$outboundSchema.parse(
-      getFleetRegionMetricsGlobals,
-    ),
-  );
-}
-
-export function getFleetRegionMetricsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetFleetRegionMetricsGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetFleetRegionMetricsGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFleetRegionMetricsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetFleetRegionMetricsRequest$inboundSchema: z.ZodType<
-  GetFleetRegionMetricsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fleetId: z.string(),
-  region: components.Region$inboundSchema,
-  metrics: z.array(components.FleetMetricName$inboundSchema).optional(),
-  end: z.number().optional(),
-  start: z.number().optional(),
-  step: z.number().int().default(60),
-  orgId: z.string().optional(),
-});
 
 /** @internal */
 export type GetFleetRegionMetricsRequest$Outbound = {
@@ -125,19 +51,6 @@ export const GetFleetRegionMetricsRequest$outboundSchema: z.ZodType<
   orgId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetFleetRegionMetricsRequest$ {
-  /** @deprecated use `GetFleetRegionMetricsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetFleetRegionMetricsRequest$inboundSchema;
-  /** @deprecated use `GetFleetRegionMetricsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetFleetRegionMetricsRequest$outboundSchema;
-  /** @deprecated use `GetFleetRegionMetricsRequest$Outbound` instead. */
-  export type Outbound = GetFleetRegionMetricsRequest$Outbound;
-}
-
 export function getFleetRegionMetricsRequestToJSON(
   getFleetRegionMetricsRequest: GetFleetRegionMetricsRequest,
 ): string {
@@ -145,15 +58,5 @@ export function getFleetRegionMetricsRequestToJSON(
     GetFleetRegionMetricsRequest$outboundSchema.parse(
       getFleetRegionMetricsRequest,
     ),
-  );
-}
-
-export function getFleetRegionMetricsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetFleetRegionMetricsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetFleetRegionMetricsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFleetRegionMetricsRequest' from JSON`,
   );
 }

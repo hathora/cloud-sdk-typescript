@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateBuildParams = {
   /**
@@ -13,15 +10,6 @@ export type CreateBuildParams = {
    */
   buildTag?: string | undefined;
 };
-
-/** @internal */
-export const CreateBuildParams$inboundSchema: z.ZodType<
-  CreateBuildParams,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  buildTag: z.string().optional(),
-});
 
 /** @internal */
 export type CreateBuildParams$Outbound = {
@@ -37,33 +25,10 @@ export const CreateBuildParams$outboundSchema: z.ZodType<
   buildTag: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBuildParams$ {
-  /** @deprecated use `CreateBuildParams$inboundSchema` instead. */
-  export const inboundSchema = CreateBuildParams$inboundSchema;
-  /** @deprecated use `CreateBuildParams$outboundSchema` instead. */
-  export const outboundSchema = CreateBuildParams$outboundSchema;
-  /** @deprecated use `CreateBuildParams$Outbound` instead. */
-  export type Outbound = CreateBuildParams$Outbound;
-}
-
 export function createBuildParamsToJSON(
   createBuildParams: CreateBuildParams,
 ): string {
   return JSON.stringify(
     CreateBuildParams$outboundSchema.parse(createBuildParams),
-  );
-}
-
-export function createBuildParamsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateBuildParams, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateBuildParams$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateBuildParams' from JSON`,
   );
 }

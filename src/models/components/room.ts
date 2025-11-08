@@ -9,14 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RoomAllocation,
   RoomAllocation$inboundSchema,
-  RoomAllocation$Outbound,
-  RoomAllocation$outboundSchema,
 } from "./roomallocation.js";
-import {
-  RoomStatus,
-  RoomStatus$inboundSchema,
-  RoomStatus$outboundSchema,
-} from "./roomstatus.js";
+import { RoomStatus, RoomStatus$inboundSchema } from "./roomstatus.js";
 
 /**
  * Metadata on an allocated instance of a room.
@@ -82,47 +76,6 @@ export const CurrentAllocation$inboundSchema: z.ZodType<
   roomAllocationId: z.string(),
 });
 
-/** @internal */
-export type CurrentAllocation$Outbound = {
-  unscheduledAt: string | null;
-  scheduledAt: string;
-  processId: string;
-  roomAllocationId: string;
-};
-
-/** @internal */
-export const CurrentAllocation$outboundSchema: z.ZodType<
-  CurrentAllocation$Outbound,
-  z.ZodTypeDef,
-  CurrentAllocation
-> = z.object({
-  unscheduledAt: z.nullable(z.date().transform(v => v.toISOString())),
-  scheduledAt: z.date().transform(v => v.toISOString()),
-  processId: z.string(),
-  roomAllocationId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CurrentAllocation$ {
-  /** @deprecated use `CurrentAllocation$inboundSchema` instead. */
-  export const inboundSchema = CurrentAllocation$inboundSchema;
-  /** @deprecated use `CurrentAllocation$outboundSchema` instead. */
-  export const outboundSchema = CurrentAllocation$outboundSchema;
-  /** @deprecated use `CurrentAllocation$Outbound` instead. */
-  export type Outbound = CurrentAllocation$Outbound;
-}
-
-export function currentAllocationToJSON(
-  currentAllocation: CurrentAllocation,
-): string {
-  return JSON.stringify(
-    CurrentAllocation$outboundSchema.parse(currentAllocation),
-  );
-}
-
 export function currentAllocationFromJSON(
   jsonString: string,
 ): SafeParseResult<CurrentAllocation, SDKValidationError> {
@@ -145,46 +98,6 @@ export const Room$inboundSchema: z.ZodType<Room, z.ZodTypeDef, unknown> = z
     roomId: z.string(),
     appId: z.string(),
   });
-
-/** @internal */
-export type Room$Outbound = {
-  currentAllocation: CurrentAllocation$Outbound | null;
-  status: string;
-  allocations: Array<RoomAllocation$Outbound>;
-  roomConfig?: string | null | undefined;
-  roomId: string;
-  appId: string;
-};
-
-/** @internal */
-export const Room$outboundSchema: z.ZodType<Room$Outbound, z.ZodTypeDef, Room> =
-  z.object({
-    currentAllocation: z.nullable(
-      z.lazy(() => CurrentAllocation$outboundSchema),
-    ),
-    status: RoomStatus$outboundSchema,
-    allocations: z.array(RoomAllocation$outboundSchema),
-    roomConfig: z.nullable(z.string()).optional(),
-    roomId: z.string(),
-    appId: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Room$ {
-  /** @deprecated use `Room$inboundSchema` instead. */
-  export const inboundSchema = Room$inboundSchema;
-  /** @deprecated use `Room$outboundSchema` instead. */
-  export const outboundSchema = Room$outboundSchema;
-  /** @deprecated use `Room$Outbound` instead. */
-  export type Outbound = Room$Outbound;
-}
-
-export function roomToJSON(room: Room): string {
-  return JSON.stringify(Room$outboundSchema.parse(room));
-}
 
 export function roomFromJSON(
   jsonString: string,

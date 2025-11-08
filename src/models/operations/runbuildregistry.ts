@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RunBuildRegistryGlobals = {
   orgId?: string | undefined;
@@ -18,75 +15,6 @@ export type RunBuildRegistryRequest = {
   orgId?: string | undefined;
   registryConfig: components.RegistryConfig;
 };
-
-/** @internal */
-export const RunBuildRegistryGlobals$inboundSchema: z.ZodType<
-  RunBuildRegistryGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type RunBuildRegistryGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const RunBuildRegistryGlobals$outboundSchema: z.ZodType<
-  RunBuildRegistryGlobals$Outbound,
-  z.ZodTypeDef,
-  RunBuildRegistryGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RunBuildRegistryGlobals$ {
-  /** @deprecated use `RunBuildRegistryGlobals$inboundSchema` instead. */
-  export const inboundSchema = RunBuildRegistryGlobals$inboundSchema;
-  /** @deprecated use `RunBuildRegistryGlobals$outboundSchema` instead. */
-  export const outboundSchema = RunBuildRegistryGlobals$outboundSchema;
-  /** @deprecated use `RunBuildRegistryGlobals$Outbound` instead. */
-  export type Outbound = RunBuildRegistryGlobals$Outbound;
-}
-
-export function runBuildRegistryGlobalsToJSON(
-  runBuildRegistryGlobals: RunBuildRegistryGlobals,
-): string {
-  return JSON.stringify(
-    RunBuildRegistryGlobals$outboundSchema.parse(runBuildRegistryGlobals),
-  );
-}
-
-export function runBuildRegistryGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<RunBuildRegistryGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RunBuildRegistryGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RunBuildRegistryGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const RunBuildRegistryRequest$inboundSchema: z.ZodType<
-  RunBuildRegistryRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  buildId: z.string(),
-  orgId: z.string().optional(),
-  RegistryConfig: components.RegistryConfig$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "RegistryConfig": "registryConfig",
-  });
-});
 
 /** @internal */
 export type RunBuildRegistryRequest$Outbound = {
@@ -110,33 +38,10 @@ export const RunBuildRegistryRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RunBuildRegistryRequest$ {
-  /** @deprecated use `RunBuildRegistryRequest$inboundSchema` instead. */
-  export const inboundSchema = RunBuildRegistryRequest$inboundSchema;
-  /** @deprecated use `RunBuildRegistryRequest$outboundSchema` instead. */
-  export const outboundSchema = RunBuildRegistryRequest$outboundSchema;
-  /** @deprecated use `RunBuildRegistryRequest$Outbound` instead. */
-  export type Outbound = RunBuildRegistryRequest$Outbound;
-}
-
 export function runBuildRegistryRequestToJSON(
   runBuildRegistryRequest: RunBuildRegistryRequest,
 ): string {
   return JSON.stringify(
     RunBuildRegistryRequest$outboundSchema.parse(runBuildRegistryRequest),
-  );
-}
-
-export function runBuildRegistryRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RunBuildRegistryRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RunBuildRegistryRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RunBuildRegistryRequest' from JSON`,
   );
 }

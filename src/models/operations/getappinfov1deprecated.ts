@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetAppInfoV1DeprecatedGlobals = {
   appId?: string | undefined;
@@ -14,71 +11,6 @@ export type GetAppInfoV1DeprecatedGlobals = {
 export type GetAppInfoV1DeprecatedRequest = {
   appId?: string | undefined;
 };
-
-/** @internal */
-export const GetAppInfoV1DeprecatedGlobals$inboundSchema: z.ZodType<
-  GetAppInfoV1DeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetAppInfoV1DeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetAppInfoV1DeprecatedGlobals$outboundSchema: z.ZodType<
-  GetAppInfoV1DeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  GetAppInfoV1DeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAppInfoV1DeprecatedGlobals$ {
-  /** @deprecated use `GetAppInfoV1DeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetAppInfoV1DeprecatedGlobals$inboundSchema;
-  /** @deprecated use `GetAppInfoV1DeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetAppInfoV1DeprecatedGlobals$outboundSchema;
-  /** @deprecated use `GetAppInfoV1DeprecatedGlobals$Outbound` instead. */
-  export type Outbound = GetAppInfoV1DeprecatedGlobals$Outbound;
-}
-
-export function getAppInfoV1DeprecatedGlobalsToJSON(
-  getAppInfoV1DeprecatedGlobals: GetAppInfoV1DeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    GetAppInfoV1DeprecatedGlobals$outboundSchema.parse(
-      getAppInfoV1DeprecatedGlobals,
-    ),
-  );
-}
-
-export function getAppInfoV1DeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAppInfoV1DeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAppInfoV1DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAppInfoV1DeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetAppInfoV1DeprecatedRequest$inboundSchema: z.ZodType<
-  GetAppInfoV1DeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
 
 /** @internal */
 export type GetAppInfoV1DeprecatedRequest$Outbound = {
@@ -94,19 +26,6 @@ export const GetAppInfoV1DeprecatedRequest$outboundSchema: z.ZodType<
   appId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAppInfoV1DeprecatedRequest$ {
-  /** @deprecated use `GetAppInfoV1DeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAppInfoV1DeprecatedRequest$inboundSchema;
-  /** @deprecated use `GetAppInfoV1DeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAppInfoV1DeprecatedRequest$outboundSchema;
-  /** @deprecated use `GetAppInfoV1DeprecatedRequest$Outbound` instead. */
-  export type Outbound = GetAppInfoV1DeprecatedRequest$Outbound;
-}
-
 export function getAppInfoV1DeprecatedRequestToJSON(
   getAppInfoV1DeprecatedRequest: GetAppInfoV1DeprecatedRequest,
 ): string {
@@ -114,15 +33,5 @@ export function getAppInfoV1DeprecatedRequestToJSON(
     GetAppInfoV1DeprecatedRequest$outboundSchema.parse(
       getAppInfoV1DeprecatedRequest,
     ),
-  );
-}
-
-export function getAppInfoV1DeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAppInfoV1DeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAppInfoV1DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAppInfoV1DeprecatedRequest' from JSON`,
   );
 }

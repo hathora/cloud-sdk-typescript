@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetNodeShapesGlobals = {
   orgId?: string | undefined;
@@ -14,69 +11,6 @@ export type GetNodeShapesGlobals = {
 export type GetNodeShapesRequest = {
   orgId?: string | undefined;
 };
-
-/** @internal */
-export const GetNodeShapesGlobals$inboundSchema: z.ZodType<
-  GetNodeShapesGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type GetNodeShapesGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const GetNodeShapesGlobals$outboundSchema: z.ZodType<
-  GetNodeShapesGlobals$Outbound,
-  z.ZodTypeDef,
-  GetNodeShapesGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetNodeShapesGlobals$ {
-  /** @deprecated use `GetNodeShapesGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetNodeShapesGlobals$inboundSchema;
-  /** @deprecated use `GetNodeShapesGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetNodeShapesGlobals$outboundSchema;
-  /** @deprecated use `GetNodeShapesGlobals$Outbound` instead. */
-  export type Outbound = GetNodeShapesGlobals$Outbound;
-}
-
-export function getNodeShapesGlobalsToJSON(
-  getNodeShapesGlobals: GetNodeShapesGlobals,
-): string {
-  return JSON.stringify(
-    GetNodeShapesGlobals$outboundSchema.parse(getNodeShapesGlobals),
-  );
-}
-
-export function getNodeShapesGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetNodeShapesGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetNodeShapesGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetNodeShapesGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetNodeShapesRequest$inboundSchema: z.ZodType<
-  GetNodeShapesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
 
 /** @internal */
 export type GetNodeShapesRequest$Outbound = {
@@ -92,33 +26,10 @@ export const GetNodeShapesRequest$outboundSchema: z.ZodType<
   orgId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetNodeShapesRequest$ {
-  /** @deprecated use `GetNodeShapesRequest$inboundSchema` instead. */
-  export const inboundSchema = GetNodeShapesRequest$inboundSchema;
-  /** @deprecated use `GetNodeShapesRequest$outboundSchema` instead. */
-  export const outboundSchema = GetNodeShapesRequest$outboundSchema;
-  /** @deprecated use `GetNodeShapesRequest$Outbound` instead. */
-  export type Outbound = GetNodeShapesRequest$Outbound;
-}
-
 export function getNodeShapesRequestToJSON(
   getNodeShapesRequest: GetNodeShapesRequest,
 ): string {
   return JSON.stringify(
     GetNodeShapesRequest$outboundSchema.parse(getNodeShapesRequest),
-  );
-}
-
-export function getNodeShapesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetNodeShapesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetNodeShapesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetNodeShapesRequest' from JSON`,
   );
 }

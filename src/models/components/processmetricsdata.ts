@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  MetricValue,
-  MetricValue$inboundSchema,
-  MetricValue$Outbound,
-  MetricValue$outboundSchema,
-} from "./metricvalue.js";
+import { MetricValue, MetricValue$inboundSchema } from "./metricvalue.js";
 
 export type ProcessMetricsData = {
   gpuMemory?: Array<MetricValue> | undefined;
@@ -37,53 +32,6 @@ export const ProcessMetricsData$inboundSchema: z.ZodType<
   memory: z.array(MetricValue$inboundSchema).optional(),
   cpu: z.array(MetricValue$inboundSchema).optional(),
 });
-
-/** @internal */
-export type ProcessMetricsData$Outbound = {
-  gpuMemory?: Array<MetricValue$Outbound> | undefined;
-  gpuUtilization?: Array<MetricValue$Outbound> | undefined;
-  activeConnections?: Array<MetricValue$Outbound> | undefined;
-  totalEgress?: Array<MetricValue$Outbound> | undefined;
-  rateEgress?: Array<MetricValue$Outbound> | undefined;
-  memory?: Array<MetricValue$Outbound> | undefined;
-  cpu?: Array<MetricValue$Outbound> | undefined;
-};
-
-/** @internal */
-export const ProcessMetricsData$outboundSchema: z.ZodType<
-  ProcessMetricsData$Outbound,
-  z.ZodTypeDef,
-  ProcessMetricsData
-> = z.object({
-  gpuMemory: z.array(MetricValue$outboundSchema).optional(),
-  gpuUtilization: z.array(MetricValue$outboundSchema).optional(),
-  activeConnections: z.array(MetricValue$outboundSchema).optional(),
-  totalEgress: z.array(MetricValue$outboundSchema).optional(),
-  rateEgress: z.array(MetricValue$outboundSchema).optional(),
-  memory: z.array(MetricValue$outboundSchema).optional(),
-  cpu: z.array(MetricValue$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProcessMetricsData$ {
-  /** @deprecated use `ProcessMetricsData$inboundSchema` instead. */
-  export const inboundSchema = ProcessMetricsData$inboundSchema;
-  /** @deprecated use `ProcessMetricsData$outboundSchema` instead. */
-  export const outboundSchema = ProcessMetricsData$outboundSchema;
-  /** @deprecated use `ProcessMetricsData$Outbound` instead. */
-  export type Outbound = ProcessMetricsData$Outbound;
-}
-
-export function processMetricsDataToJSON(
-  processMetricsData: ProcessMetricsData,
-): string {
-  return JSON.stringify(
-    ProcessMetricsData$outboundSchema.parse(processMetricsData),
-  );
-}
 
 export function processMetricsDataFromJSON(
   jsonString: string,

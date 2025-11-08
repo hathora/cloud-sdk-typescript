@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetRunningProcessesGlobals = {
   appId?: string | undefined;
@@ -16,70 +13,6 @@ export type GetRunningProcessesRequest = {
   appId?: string | undefined;
   region?: components.Region | undefined;
 };
-
-/** @internal */
-export const GetRunningProcessesGlobals$inboundSchema: z.ZodType<
-  GetRunningProcessesGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetRunningProcessesGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetRunningProcessesGlobals$outboundSchema: z.ZodType<
-  GetRunningProcessesGlobals$Outbound,
-  z.ZodTypeDef,
-  GetRunningProcessesGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRunningProcessesGlobals$ {
-  /** @deprecated use `GetRunningProcessesGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetRunningProcessesGlobals$inboundSchema;
-  /** @deprecated use `GetRunningProcessesGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetRunningProcessesGlobals$outboundSchema;
-  /** @deprecated use `GetRunningProcessesGlobals$Outbound` instead. */
-  export type Outbound = GetRunningProcessesGlobals$Outbound;
-}
-
-export function getRunningProcessesGlobalsToJSON(
-  getRunningProcessesGlobals: GetRunningProcessesGlobals,
-): string {
-  return JSON.stringify(
-    GetRunningProcessesGlobals$outboundSchema.parse(getRunningProcessesGlobals),
-  );
-}
-
-export function getRunningProcessesGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetRunningProcessesGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetRunningProcessesGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRunningProcessesGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetRunningProcessesRequest$inboundSchema: z.ZodType<
-  GetRunningProcessesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  region: components.Region$inboundSchema.optional(),
-});
 
 /** @internal */
 export type GetRunningProcessesRequest$Outbound = {
@@ -97,33 +30,10 @@ export const GetRunningProcessesRequest$outboundSchema: z.ZodType<
   region: components.Region$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRunningProcessesRequest$ {
-  /** @deprecated use `GetRunningProcessesRequest$inboundSchema` instead. */
-  export const inboundSchema = GetRunningProcessesRequest$inboundSchema;
-  /** @deprecated use `GetRunningProcessesRequest$outboundSchema` instead. */
-  export const outboundSchema = GetRunningProcessesRequest$outboundSchema;
-  /** @deprecated use `GetRunningProcessesRequest$Outbound` instead. */
-  export type Outbound = GetRunningProcessesRequest$Outbound;
-}
-
 export function getRunningProcessesRequestToJSON(
   getRunningProcessesRequest: GetRunningProcessesRequest,
 ): string {
   return JSON.stringify(
     GetRunningProcessesRequest$outboundSchema.parse(getRunningProcessesRequest),
-  );
-}
-
-export function getRunningProcessesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetRunningProcessesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetRunningProcessesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRunningProcessesRequest' from JSON`,
   );
 }

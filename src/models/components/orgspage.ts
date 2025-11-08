@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Organization,
-  Organization$inboundSchema,
-  Organization$Outbound,
-  Organization$outboundSchema,
-} from "./organization.js";
+import { Organization, Organization$inboundSchema } from "./organization.js";
 
 export type OrgsPage = {
   orgs: Array<Organization>;
@@ -25,37 +20,6 @@ export const OrgsPage$inboundSchema: z.ZodType<
 > = z.object({
   orgs: z.array(Organization$inboundSchema),
 });
-
-/** @internal */
-export type OrgsPage$Outbound = {
-  orgs: Array<Organization$Outbound>;
-};
-
-/** @internal */
-export const OrgsPage$outboundSchema: z.ZodType<
-  OrgsPage$Outbound,
-  z.ZodTypeDef,
-  OrgsPage
-> = z.object({
-  orgs: z.array(Organization$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OrgsPage$ {
-  /** @deprecated use `OrgsPage$inboundSchema` instead. */
-  export const inboundSchema = OrgsPage$inboundSchema;
-  /** @deprecated use `OrgsPage$outboundSchema` instead. */
-  export const outboundSchema = OrgsPage$outboundSchema;
-  /** @deprecated use `OrgsPage$Outbound` instead. */
-  export type Outbound = OrgsPage$Outbound;
-}
-
-export function orgsPageToJSON(orgsPage: OrgsPage): string {
-  return JSON.stringify(OrgsPage$outboundSchema.parse(orgsPage));
-}
 
 export function orgsPageFromJSON(
   jsonString: string,

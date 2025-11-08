@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateRoomConfigGlobals = {
   appId?: string | undefined;
@@ -18,75 +15,6 @@ export type UpdateRoomConfigRequest = {
   roomId: string;
   updateRoomConfigParams: components.UpdateRoomConfigParams;
 };
-
-/** @internal */
-export const UpdateRoomConfigGlobals$inboundSchema: z.ZodType<
-  UpdateRoomConfigGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type UpdateRoomConfigGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const UpdateRoomConfigGlobals$outboundSchema: z.ZodType<
-  UpdateRoomConfigGlobals$Outbound,
-  z.ZodTypeDef,
-  UpdateRoomConfigGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRoomConfigGlobals$ {
-  /** @deprecated use `UpdateRoomConfigGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateRoomConfigGlobals$inboundSchema;
-  /** @deprecated use `UpdateRoomConfigGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateRoomConfigGlobals$outboundSchema;
-  /** @deprecated use `UpdateRoomConfigGlobals$Outbound` instead. */
-  export type Outbound = UpdateRoomConfigGlobals$Outbound;
-}
-
-export function updateRoomConfigGlobalsToJSON(
-  updateRoomConfigGlobals: UpdateRoomConfigGlobals,
-): string {
-  return JSON.stringify(
-    UpdateRoomConfigGlobals$outboundSchema.parse(updateRoomConfigGlobals),
-  );
-}
-
-export function updateRoomConfigGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateRoomConfigGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateRoomConfigGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateRoomConfigGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateRoomConfigRequest$inboundSchema: z.ZodType<
-  UpdateRoomConfigRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  roomId: z.string(),
-  UpdateRoomConfigParams: components.UpdateRoomConfigParams$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "UpdateRoomConfigParams": "updateRoomConfigParams",
-  });
-});
 
 /** @internal */
 export type UpdateRoomConfigRequest$Outbound = {
@@ -110,33 +38,10 @@ export const UpdateRoomConfigRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRoomConfigRequest$ {
-  /** @deprecated use `UpdateRoomConfigRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateRoomConfigRequest$inboundSchema;
-  /** @deprecated use `UpdateRoomConfigRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateRoomConfigRequest$outboundSchema;
-  /** @deprecated use `UpdateRoomConfigRequest$Outbound` instead. */
-  export type Outbound = UpdateRoomConfigRequest$Outbound;
-}
-
 export function updateRoomConfigRequestToJSON(
   updateRoomConfigRequest: UpdateRoomConfigRequest,
 ): string {
   return JSON.stringify(
     UpdateRoomConfigRequest$outboundSchema.parse(updateRoomConfigRequest),
-  );
-}
-
-export function updateRoomConfigRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateRoomConfigRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateRoomConfigRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateRoomConfigRequest' from JSON`,
   );
 }

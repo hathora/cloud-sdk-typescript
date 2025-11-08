@@ -46,7 +46,6 @@ export const Google$inboundSchema: z.ZodType<Google, z.ZodTypeDef, unknown> = z
   .object({
     clientId: z.string(),
   });
-
 /** @internal */
 export type Google$Outbound = {
   clientId: string;
@@ -61,23 +60,9 @@ export const Google$outboundSchema: z.ZodType<
   clientId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Google$ {
-  /** @deprecated use `Google$inboundSchema` instead. */
-  export const inboundSchema = Google$inboundSchema;
-  /** @deprecated use `Google$outboundSchema` instead. */
-  export const outboundSchema = Google$outboundSchema;
-  /** @deprecated use `Google$Outbound` instead. */
-  export type Outbound = Google$Outbound;
-}
-
 export function googleToJSON(google: Google): string {
   return JSON.stringify(Google$outboundSchema.parse(google));
 }
-
 export function googleFromJSON(
   jsonString: string,
 ): SafeParseResult<Google, SDKValidationError> {
@@ -98,7 +83,6 @@ export const AuthConfiguration$inboundSchema: z.ZodType<
   nickname: DeletedBuild$inboundSchema.optional(),
   anonymous: DeletedBuild$inboundSchema.optional(),
 });
-
 /** @internal */
 export type AuthConfiguration$Outbound = {
   google?: Google$Outbound | undefined;
@@ -117,19 +101,6 @@ export const AuthConfiguration$outboundSchema: z.ZodType<
   anonymous: DeletedBuild$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AuthConfiguration$ {
-  /** @deprecated use `AuthConfiguration$inboundSchema` instead. */
-  export const inboundSchema = AuthConfiguration$inboundSchema;
-  /** @deprecated use `AuthConfiguration$outboundSchema` instead. */
-  export const outboundSchema = AuthConfiguration$outboundSchema;
-  /** @deprecated use `AuthConfiguration$Outbound` instead. */
-  export type Outbound = AuthConfiguration$Outbound;
-}
-
 export function authConfigurationToJSON(
   authConfiguration: AuthConfiguration,
 ): string {
@@ -137,7 +108,6 @@ export function authConfigurationToJSON(
     AuthConfiguration$outboundSchema.parse(authConfiguration),
   );
 }
-
 export function authConfigurationFromJSON(
   jsonString: string,
 ): SafeParseResult<AuthConfiguration, SDKValidationError> {

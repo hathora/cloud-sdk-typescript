@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateMultipartBuildParams = {
   /**
@@ -18,17 +15,6 @@ export type CreateMultipartBuildParams = {
   buildTag?: string | undefined;
   buildSizeInBytes: number;
 };
-
-/** @internal */
-export const CreateMultipartBuildParams$inboundSchema: z.ZodType<
-  CreateMultipartBuildParams,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  buildId: z.string().optional(),
-  buildTag: z.string().optional(),
-  buildSizeInBytes: z.number(),
-});
 
 /** @internal */
 export type CreateMultipartBuildParams$Outbound = {
@@ -48,33 +34,10 @@ export const CreateMultipartBuildParams$outboundSchema: z.ZodType<
   buildSizeInBytes: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateMultipartBuildParams$ {
-  /** @deprecated use `CreateMultipartBuildParams$inboundSchema` instead. */
-  export const inboundSchema = CreateMultipartBuildParams$inboundSchema;
-  /** @deprecated use `CreateMultipartBuildParams$outboundSchema` instead. */
-  export const outboundSchema = CreateMultipartBuildParams$outboundSchema;
-  /** @deprecated use `CreateMultipartBuildParams$Outbound` instead. */
-  export type Outbound = CreateMultipartBuildParams$Outbound;
-}
-
 export function createMultipartBuildParamsToJSON(
   createMultipartBuildParams: CreateMultipartBuildParams,
 ): string {
   return JSON.stringify(
     CreateMultipartBuildParams$outboundSchema.parse(createMultipartBuildParams),
-  );
-}
-
-export function createMultipartBuildParamsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateMultipartBuildParams, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateMultipartBuildParams$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateMultipartBuildParams' from JSON`,
   );
 }

@@ -6,27 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ExposedPort,
-  ExposedPort$inboundSchema,
-  ExposedPort$Outbound,
-  ExposedPort$outboundSchema,
-} from "./exposedport.js";
-import {
-  ProcessStatus,
-  ProcessStatus$inboundSchema,
-  ProcessStatus$outboundSchema,
-} from "./processstatus.js";
-import {
-  Region,
-  Region$inboundSchema,
-  Region$outboundSchema,
-} from "./region.js";
-import {
-  TransportType,
-  TransportType$inboundSchema,
-  TransportType$outboundSchema,
-} from "./transporttype.js";
+import { ExposedPort, ExposedPort$inboundSchema } from "./exposedport.js";
+import { ProcessStatus, ProcessStatus$inboundSchema } from "./processstatus.js";
+import { Region, Region$inboundSchema } from "./region.js";
+import { TransportType, TransportType$inboundSchema } from "./transporttype.js";
 
 /**
  * Connection details for an active process.
@@ -96,47 +79,6 @@ export const ProcessV2ExposedPort$inboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/** @internal */
-export type ProcessV2ExposedPort$Outbound = {
-  transportType: string;
-  port: number;
-  host: string;
-  name: string;
-};
-
-/** @internal */
-export const ProcessV2ExposedPort$outboundSchema: z.ZodType<
-  ProcessV2ExposedPort$Outbound,
-  z.ZodTypeDef,
-  ProcessV2ExposedPort
-> = z.object({
-  transportType: TransportType$outboundSchema,
-  port: z.number().int(),
-  host: z.string(),
-  name: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProcessV2ExposedPort$ {
-  /** @deprecated use `ProcessV2ExposedPort$inboundSchema` instead. */
-  export const inboundSchema = ProcessV2ExposedPort$inboundSchema;
-  /** @deprecated use `ProcessV2ExposedPort$outboundSchema` instead. */
-  export const outboundSchema = ProcessV2ExposedPort$outboundSchema;
-  /** @deprecated use `ProcessV2ExposedPort$Outbound` instead. */
-  export type Outbound = ProcessV2ExposedPort$Outbound;
-}
-
-export function processV2ExposedPortToJSON(
-  processV2ExposedPort: ProcessV2ExposedPort,
-): string {
-  return JSON.stringify(
-    ProcessV2ExposedPort$outboundSchema.parse(processV2ExposedPort),
-  );
-}
-
 export function processV2ExposedPortFromJSON(
   jsonString: string,
 ): SafeParseResult<ProcessV2ExposedPort, SDKValidationError> {
@@ -173,61 +115,6 @@ export const ProcessV2$inboundSchema: z.ZodType<
   deploymentId: z.number().int(),
   appId: z.string(),
 });
-
-/** @internal */
-export type ProcessV2$Outbound = {
-  status: string;
-  roomsAllocated: number;
-  terminatedAt: string | null;
-  stoppingAt: string | null;
-  startedAt: string | null;
-  createdAt: string;
-  roomsPerProcess: number;
-  additionalExposedPorts: Array<ExposedPort$Outbound>;
-  exposedPort: ProcessV2ExposedPort$Outbound | null;
-  region: string;
-  processId: string;
-  deploymentId: number;
-  appId: string;
-};
-
-/** @internal */
-export const ProcessV2$outboundSchema: z.ZodType<
-  ProcessV2$Outbound,
-  z.ZodTypeDef,
-  ProcessV2
-> = z.object({
-  status: ProcessStatus$outboundSchema,
-  roomsAllocated: z.number().int(),
-  terminatedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  stoppingAt: z.nullable(z.date().transform(v => v.toISOString())),
-  startedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  createdAt: z.date().transform(v => v.toISOString()),
-  roomsPerProcess: z.number().int(),
-  additionalExposedPorts: z.array(ExposedPort$outboundSchema),
-  exposedPort: z.nullable(z.lazy(() => ProcessV2ExposedPort$outboundSchema)),
-  region: Region$outboundSchema,
-  processId: z.string(),
-  deploymentId: z.number().int(),
-  appId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProcessV2$ {
-  /** @deprecated use `ProcessV2$inboundSchema` instead. */
-  export const inboundSchema = ProcessV2$inboundSchema;
-  /** @deprecated use `ProcessV2$outboundSchema` instead. */
-  export const outboundSchema = ProcessV2$outboundSchema;
-  /** @deprecated use `ProcessV2$Outbound` instead. */
-  export type Outbound = ProcessV2$Outbound;
-}
-
-export function processV2ToJSON(processV2: ProcessV2): string {
-  return JSON.stringify(ProcessV2$outboundSchema.parse(processV2));
-}
 
 export function processV2FromJSON(
   jsonString: string,

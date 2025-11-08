@@ -4,19 +4,14 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   OrgTokenStatus,
   OrgTokenStatus$inboundSchema,
-  OrgTokenStatus$outboundSchema,
 } from "./orgtokenstatus.js";
-import { Scope, Scope$inboundSchema, Scope$outboundSchema } from "./scope.js";
+import { Scope, Scope$inboundSchema } from "./scope.js";
 
 export const Two = {
   Admin: "admin",
@@ -56,52 +51,8 @@ export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
   ]);
 
 /** @internal */
-export const Two$outboundSchema: z.ZodType<Two, z.ZodTypeDef, Two> = z.union([
-  z.nativeEnum(Two),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Two$ {
-  /** @deprecated use `Two$inboundSchema` instead. */
-  export const inboundSchema = Two$inboundSchema;
-  /** @deprecated use `Two$outboundSchema` instead. */
-  export const outboundSchema = Two$outboundSchema;
-}
-
-/** @internal */
 export const Scopes$inboundSchema: z.ZodType<Scopes, z.ZodTypeDef, unknown> = z
   .union([z.array(Scope$inboundSchema), Two$inboundSchema]);
-
-/** @internal */
-export type Scopes$Outbound = Array<string> | string;
-
-/** @internal */
-export const Scopes$outboundSchema: z.ZodType<
-  Scopes$Outbound,
-  z.ZodTypeDef,
-  Scopes
-> = z.union([z.array(Scope$outboundSchema), Two$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Scopes$ {
-  /** @deprecated use `Scopes$inboundSchema` instead. */
-  export const inboundSchema = Scopes$inboundSchema;
-  /** @deprecated use `Scopes$outboundSchema` instead. */
-  export const outboundSchema = Scopes$outboundSchema;
-  /** @deprecated use `Scopes$Outbound` instead. */
-  export type Outbound = Scopes$Outbound;
-}
-
-export function scopesToJSON(scopes: Scopes): string {
-  return JSON.stringify(Scopes$outboundSchema.parse(scopes));
-}
 
 export function scopesFromJSON(
   jsonString: string,
@@ -128,52 +79,6 @@ export const OrgToken$inboundSchema: z.ZodType<
   orgId: z.string(),
   orgTokenId: z.string(),
 });
-
-/** @internal */
-export type OrgToken$Outbound = {
-  scopes?: Array<string> | string | undefined;
-  createdAt: string;
-  createdBy: string;
-  lastFourCharsOfKey: string;
-  status: string;
-  name: string;
-  orgId: string;
-  orgTokenId: string;
-};
-
-/** @internal */
-export const OrgToken$outboundSchema: z.ZodType<
-  OrgToken$Outbound,
-  z.ZodTypeDef,
-  OrgToken
-> = z.object({
-  scopes: z.union([z.array(Scope$outboundSchema), Two$outboundSchema])
-    .optional(),
-  createdAt: z.date().transform(v => v.toISOString()),
-  createdBy: z.string(),
-  lastFourCharsOfKey: z.string(),
-  status: OrgTokenStatus$outboundSchema,
-  name: z.string(),
-  orgId: z.string(),
-  orgTokenId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OrgToken$ {
-  /** @deprecated use `OrgToken$inboundSchema` instead. */
-  export const inboundSchema = OrgToken$inboundSchema;
-  /** @deprecated use `OrgToken$outboundSchema` instead. */
-  export const outboundSchema = OrgToken$outboundSchema;
-  /** @deprecated use `OrgToken$Outbound` instead. */
-  export type Outbound = OrgToken$Outbound;
-}
-
-export function orgTokenToJSON(orgToken: OrgToken): string {
-  return JSON.stringify(OrgToken$outboundSchema.parse(orgToken));
-}
 
 export function orgTokenFromJSON(
   jsonString: string,

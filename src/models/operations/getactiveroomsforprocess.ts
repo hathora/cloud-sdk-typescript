@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetActiveRoomsForProcessGlobals = {
   appId?: string | undefined;
@@ -15,72 +12,6 @@ export type GetActiveRoomsForProcessRequest = {
   appId?: string | undefined;
   processId: string;
 };
-
-/** @internal */
-export const GetActiveRoomsForProcessGlobals$inboundSchema: z.ZodType<
-  GetActiveRoomsForProcessGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetActiveRoomsForProcessGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetActiveRoomsForProcessGlobals$outboundSchema: z.ZodType<
-  GetActiveRoomsForProcessGlobals$Outbound,
-  z.ZodTypeDef,
-  GetActiveRoomsForProcessGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetActiveRoomsForProcessGlobals$ {
-  /** @deprecated use `GetActiveRoomsForProcessGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetActiveRoomsForProcessGlobals$inboundSchema;
-  /** @deprecated use `GetActiveRoomsForProcessGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetActiveRoomsForProcessGlobals$outboundSchema;
-  /** @deprecated use `GetActiveRoomsForProcessGlobals$Outbound` instead. */
-  export type Outbound = GetActiveRoomsForProcessGlobals$Outbound;
-}
-
-export function getActiveRoomsForProcessGlobalsToJSON(
-  getActiveRoomsForProcessGlobals: GetActiveRoomsForProcessGlobals,
-): string {
-  return JSON.stringify(
-    GetActiveRoomsForProcessGlobals$outboundSchema.parse(
-      getActiveRoomsForProcessGlobals,
-    ),
-  );
-}
-
-export function getActiveRoomsForProcessGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetActiveRoomsForProcessGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetActiveRoomsForProcessGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetActiveRoomsForProcessGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetActiveRoomsForProcessRequest$inboundSchema: z.ZodType<
-  GetActiveRoomsForProcessRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  processId: z.string(),
-});
 
 /** @internal */
 export type GetActiveRoomsForProcessRequest$Outbound = {
@@ -98,19 +29,6 @@ export const GetActiveRoomsForProcessRequest$outboundSchema: z.ZodType<
   processId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetActiveRoomsForProcessRequest$ {
-  /** @deprecated use `GetActiveRoomsForProcessRequest$inboundSchema` instead. */
-  export const inboundSchema = GetActiveRoomsForProcessRequest$inboundSchema;
-  /** @deprecated use `GetActiveRoomsForProcessRequest$outboundSchema` instead. */
-  export const outboundSchema = GetActiveRoomsForProcessRequest$outboundSchema;
-  /** @deprecated use `GetActiveRoomsForProcessRequest$Outbound` instead. */
-  export type Outbound = GetActiveRoomsForProcessRequest$Outbound;
-}
-
 export function getActiveRoomsForProcessRequestToJSON(
   getActiveRoomsForProcessRequest: GetActiveRoomsForProcessRequest,
 ): string {
@@ -118,15 +36,5 @@ export function getActiveRoomsForProcessRequestToJSON(
     GetActiveRoomsForProcessRequest$outboundSchema.parse(
       getActiveRoomsForProcessRequest,
     ),
-  );
-}
-
-export function getActiveRoomsForProcessRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetActiveRoomsForProcessRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetActiveRoomsForProcessRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetActiveRoomsForProcessRequest' from JSON`,
   );
 }

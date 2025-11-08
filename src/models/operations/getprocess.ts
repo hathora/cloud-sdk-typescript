@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetProcessGlobals = {
   appId?: string | undefined;
@@ -15,70 +12,6 @@ export type GetProcessRequest = {
   appId?: string | undefined;
   processId: string;
 };
-
-/** @internal */
-export const GetProcessGlobals$inboundSchema: z.ZodType<
-  GetProcessGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetProcessGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetProcessGlobals$outboundSchema: z.ZodType<
-  GetProcessGlobals$Outbound,
-  z.ZodTypeDef,
-  GetProcessGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProcessGlobals$ {
-  /** @deprecated use `GetProcessGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetProcessGlobals$inboundSchema;
-  /** @deprecated use `GetProcessGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetProcessGlobals$outboundSchema;
-  /** @deprecated use `GetProcessGlobals$Outbound` instead. */
-  export type Outbound = GetProcessGlobals$Outbound;
-}
-
-export function getProcessGlobalsToJSON(
-  getProcessGlobals: GetProcessGlobals,
-): string {
-  return JSON.stringify(
-    GetProcessGlobals$outboundSchema.parse(getProcessGlobals),
-  );
-}
-
-export function getProcessGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProcessGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProcessGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProcessGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetProcessRequest$inboundSchema: z.ZodType<
-  GetProcessRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  processId: z.string(),
-});
 
 /** @internal */
 export type GetProcessRequest$Outbound = {
@@ -96,33 +29,10 @@ export const GetProcessRequest$outboundSchema: z.ZodType<
   processId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProcessRequest$ {
-  /** @deprecated use `GetProcessRequest$inboundSchema` instead. */
-  export const inboundSchema = GetProcessRequest$inboundSchema;
-  /** @deprecated use `GetProcessRequest$outboundSchema` instead. */
-  export const outboundSchema = GetProcessRequest$outboundSchema;
-  /** @deprecated use `GetProcessRequest$Outbound` instead. */
-  export type Outbound = GetProcessRequest$Outbound;
-}
-
 export function getProcessRequestToJSON(
   getProcessRequest: GetProcessRequest,
 ): string {
   return JSON.stringify(
     GetProcessRequest$outboundSchema.parse(getProcessRequest),
-  );
-}
-
-export function getProcessRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProcessRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProcessRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProcessRequest' from JSON`,
   );
 }

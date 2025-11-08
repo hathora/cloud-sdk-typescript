@@ -3,15 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import { Scope, Scope$inboundSchema, Scope$outboundSchema } from "./scope.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import { Scope, Scope$outboundSchema } from "./scope.js";
 
 export const Scopes2 = {
   Admin: "admin",
@@ -35,37 +28,11 @@ export type CreateOrgToken = {
 };
 
 /** @internal */
-export const Scopes2$inboundSchema: z.ZodType<Scopes2, z.ZodTypeDef, unknown> =
-  z
-    .union([
-      z.nativeEnum(Scopes2),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-/** @internal */
 export const Scopes2$outboundSchema: z.ZodType<Scopes2, z.ZodTypeDef, Scopes2> =
   z.union([
     z.nativeEnum(Scopes2),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Scopes2$ {
-  /** @deprecated use `Scopes2$inboundSchema` instead. */
-  export const inboundSchema = Scopes2$inboundSchema;
-  /** @deprecated use `Scopes2$outboundSchema` instead. */
-  export const outboundSchema = Scopes2$outboundSchema;
-}
-
-/** @internal */
-export const CreateOrgTokenScopes$inboundSchema: z.ZodType<
-  CreateOrgTokenScopes,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.array(Scope$inboundSchema), Scopes2$inboundSchema]);
 
 /** @internal */
 export type CreateOrgTokenScopes$Outbound = Array<string> | string;
@@ -77,19 +44,6 @@ export const CreateOrgTokenScopes$outboundSchema: z.ZodType<
   CreateOrgTokenScopes
 > = z.union([z.array(Scope$outboundSchema), Scopes2$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOrgTokenScopes$ {
-  /** @deprecated use `CreateOrgTokenScopes$inboundSchema` instead. */
-  export const inboundSchema = CreateOrgTokenScopes$inboundSchema;
-  /** @deprecated use `CreateOrgTokenScopes$outboundSchema` instead. */
-  export const outboundSchema = CreateOrgTokenScopes$outboundSchema;
-  /** @deprecated use `CreateOrgTokenScopes$Outbound` instead. */
-  export type Outbound = CreateOrgTokenScopes$Outbound;
-}
-
 export function createOrgTokenScopesToJSON(
   createOrgTokenScopes: CreateOrgTokenScopes,
 ): string {
@@ -97,27 +51,6 @@ export function createOrgTokenScopesToJSON(
     CreateOrgTokenScopes$outboundSchema.parse(createOrgTokenScopes),
   );
 }
-
-export function createOrgTokenScopesFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateOrgTokenScopes, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateOrgTokenScopes$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateOrgTokenScopes' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateOrgToken$inboundSchema: z.ZodType<
-  CreateOrgToken,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  scopes: z.union([z.array(Scope$inboundSchema), Scopes2$inboundSchema])
-    .optional(),
-  name: z.string(),
-});
 
 /** @internal */
 export type CreateOrgToken$Outbound = {
@@ -136,29 +69,6 @@ export const CreateOrgToken$outboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOrgToken$ {
-  /** @deprecated use `CreateOrgToken$inboundSchema` instead. */
-  export const inboundSchema = CreateOrgToken$inboundSchema;
-  /** @deprecated use `CreateOrgToken$outboundSchema` instead. */
-  export const outboundSchema = CreateOrgToken$outboundSchema;
-  /** @deprecated use `CreateOrgToken$Outbound` instead. */
-  export type Outbound = CreateOrgToken$Outbound;
-}
-
 export function createOrgTokenToJSON(createOrgToken: CreateOrgToken): string {
   return JSON.stringify(CreateOrgToken$outboundSchema.parse(createOrgToken));
-}
-
-export function createOrgTokenFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateOrgToken, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateOrgToken$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateOrgToken' from JSON`,
-  );
 }

@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  OrgToken,
-  OrgToken$inboundSchema,
-  OrgToken$Outbound,
-  OrgToken$outboundSchema,
-} from "./orgtoken.js";
+import { OrgToken, OrgToken$inboundSchema } from "./orgtoken.js";
 
 export type ListOrgTokens = {
   tokens: Array<OrgToken>;
@@ -25,37 +20,6 @@ export const ListOrgTokens$inboundSchema: z.ZodType<
 > = z.object({
   tokens: z.array(OrgToken$inboundSchema),
 });
-
-/** @internal */
-export type ListOrgTokens$Outbound = {
-  tokens: Array<OrgToken$Outbound>;
-};
-
-/** @internal */
-export const ListOrgTokens$outboundSchema: z.ZodType<
-  ListOrgTokens$Outbound,
-  z.ZodTypeDef,
-  ListOrgTokens
-> = z.object({
-  tokens: z.array(OrgToken$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListOrgTokens$ {
-  /** @deprecated use `ListOrgTokens$inboundSchema` instead. */
-  export const inboundSchema = ListOrgTokens$inboundSchema;
-  /** @deprecated use `ListOrgTokens$outboundSchema` instead. */
-  export const outboundSchema = ListOrgTokens$outboundSchema;
-  /** @deprecated use `ListOrgTokens$Outbound` instead. */
-  export type Outbound = ListOrgTokens$Outbound;
-}
-
-export function listOrgTokensToJSON(listOrgTokens: ListOrgTokens): string {
-  return JSON.stringify(ListOrgTokens$outboundSchema.parse(listOrgTokens));
-}
 
 export function listOrgTokensFromJSON(
   jsonString: string,

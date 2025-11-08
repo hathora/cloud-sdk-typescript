@@ -32,7 +32,6 @@ export const TransportType$inboundSchema: z.ZodType<
     z.nativeEnum(TransportType),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const TransportType$outboundSchema: z.ZodType<
   TransportType,
@@ -42,14 +41,3 @@ export const TransportType$outboundSchema: z.ZodType<
   z.nativeEnum(TransportType),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransportType$ {
-  /** @deprecated use `TransportType$inboundSchema` instead. */
-  export const inboundSchema = TransportType$inboundSchema;
-  /** @deprecated use `TransportType$outboundSchema` instead. */
-  export const outboundSchema = TransportType$outboundSchema;
-}

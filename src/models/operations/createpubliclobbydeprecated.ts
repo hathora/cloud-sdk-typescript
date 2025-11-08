@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreatePublicLobbyDeprecatedGlobals = {
   appId?: string | undefined;
@@ -23,73 +20,6 @@ export type CreatePublicLobbyDeprecatedRequest = {
 };
 
 /** @internal */
-export const CreatePublicLobbyDeprecatedGlobals$inboundSchema: z.ZodType<
-  CreatePublicLobbyDeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type CreatePublicLobbyDeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const CreatePublicLobbyDeprecatedGlobals$outboundSchema: z.ZodType<
-  CreatePublicLobbyDeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  CreatePublicLobbyDeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePublicLobbyDeprecatedGlobals$ {
-  /** @deprecated use `CreatePublicLobbyDeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreatePublicLobbyDeprecatedGlobals$inboundSchema;
-  /** @deprecated use `CreatePublicLobbyDeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    CreatePublicLobbyDeprecatedGlobals$outboundSchema;
-  /** @deprecated use `CreatePublicLobbyDeprecatedGlobals$Outbound` instead. */
-  export type Outbound = CreatePublicLobbyDeprecatedGlobals$Outbound;
-}
-
-export function createPublicLobbyDeprecatedGlobalsToJSON(
-  createPublicLobbyDeprecatedGlobals: CreatePublicLobbyDeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    CreatePublicLobbyDeprecatedGlobals$outboundSchema.parse(
-      createPublicLobbyDeprecatedGlobals,
-    ),
-  );
-}
-
-export function createPublicLobbyDeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePublicLobbyDeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreatePublicLobbyDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePublicLobbyDeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePublicLobbyDeprecatedSecurity$inboundSchema: z.ZodType<
-  CreatePublicLobbyDeprecatedSecurity,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  playerAuth: z.string(),
-});
-
-/** @internal */
 export type CreatePublicLobbyDeprecatedSecurity$Outbound = {
   playerAuth: string;
 };
@@ -103,21 +33,6 @@ export const CreatePublicLobbyDeprecatedSecurity$outboundSchema: z.ZodType<
   playerAuth: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePublicLobbyDeprecatedSecurity$ {
-  /** @deprecated use `CreatePublicLobbyDeprecatedSecurity$inboundSchema` instead. */
-  export const inboundSchema =
-    CreatePublicLobbyDeprecatedSecurity$inboundSchema;
-  /** @deprecated use `CreatePublicLobbyDeprecatedSecurity$outboundSchema` instead. */
-  export const outboundSchema =
-    CreatePublicLobbyDeprecatedSecurity$outboundSchema;
-  /** @deprecated use `CreatePublicLobbyDeprecatedSecurity$Outbound` instead. */
-  export type Outbound = CreatePublicLobbyDeprecatedSecurity$Outbound;
-}
-
 export function createPublicLobbyDeprecatedSecurityToJSON(
   createPublicLobbyDeprecatedSecurity: CreatePublicLobbyDeprecatedSecurity,
 ): string {
@@ -127,28 +42,6 @@ export function createPublicLobbyDeprecatedSecurityToJSON(
     ),
   );
 }
-
-export function createPublicLobbyDeprecatedSecurityFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePublicLobbyDeprecatedSecurity, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreatePublicLobbyDeprecatedSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePublicLobbyDeprecatedSecurity' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePublicLobbyDeprecatedRequest$inboundSchema: z.ZodType<
-  CreatePublicLobbyDeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  region: components.Region$inboundSchema.optional(),
-  local: z.boolean().default(false),
-});
 
 /** @internal */
 export type CreatePublicLobbyDeprecatedRequest$Outbound = {
@@ -168,20 +61,6 @@ export const CreatePublicLobbyDeprecatedRequest$outboundSchema: z.ZodType<
   local: z.boolean().default(false),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePublicLobbyDeprecatedRequest$ {
-  /** @deprecated use `CreatePublicLobbyDeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = CreatePublicLobbyDeprecatedRequest$inboundSchema;
-  /** @deprecated use `CreatePublicLobbyDeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    CreatePublicLobbyDeprecatedRequest$outboundSchema;
-  /** @deprecated use `CreatePublicLobbyDeprecatedRequest$Outbound` instead. */
-  export type Outbound = CreatePublicLobbyDeprecatedRequest$Outbound;
-}
-
 export function createPublicLobbyDeprecatedRequestToJSON(
   createPublicLobbyDeprecatedRequest: CreatePublicLobbyDeprecatedRequest,
 ): string {
@@ -189,16 +68,5 @@ export function createPublicLobbyDeprecatedRequestToJSON(
     CreatePublicLobbyDeprecatedRequest$outboundSchema.parse(
       createPublicLobbyDeprecatedRequest,
     ),
-  );
-}
-
-export function createPublicLobbyDeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePublicLobbyDeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreatePublicLobbyDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePublicLobbyDeprecatedRequest' from JSON`,
   );
 }

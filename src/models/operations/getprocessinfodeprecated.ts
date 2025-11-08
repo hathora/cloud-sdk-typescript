@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetProcessInfoDeprecatedGlobals = {
   appId?: string | undefined;
@@ -15,72 +12,6 @@ export type GetProcessInfoDeprecatedRequest = {
   appId?: string | undefined;
   processId: string;
 };
-
-/** @internal */
-export const GetProcessInfoDeprecatedGlobals$inboundSchema: z.ZodType<
-  GetProcessInfoDeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetProcessInfoDeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetProcessInfoDeprecatedGlobals$outboundSchema: z.ZodType<
-  GetProcessInfoDeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  GetProcessInfoDeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProcessInfoDeprecatedGlobals$ {
-  /** @deprecated use `GetProcessInfoDeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetProcessInfoDeprecatedGlobals$inboundSchema;
-  /** @deprecated use `GetProcessInfoDeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetProcessInfoDeprecatedGlobals$outboundSchema;
-  /** @deprecated use `GetProcessInfoDeprecatedGlobals$Outbound` instead. */
-  export type Outbound = GetProcessInfoDeprecatedGlobals$Outbound;
-}
-
-export function getProcessInfoDeprecatedGlobalsToJSON(
-  getProcessInfoDeprecatedGlobals: GetProcessInfoDeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    GetProcessInfoDeprecatedGlobals$outboundSchema.parse(
-      getProcessInfoDeprecatedGlobals,
-    ),
-  );
-}
-
-export function getProcessInfoDeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProcessInfoDeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProcessInfoDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProcessInfoDeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetProcessInfoDeprecatedRequest$inboundSchema: z.ZodType<
-  GetProcessInfoDeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  processId: z.string(),
-});
 
 /** @internal */
 export type GetProcessInfoDeprecatedRequest$Outbound = {
@@ -98,19 +29,6 @@ export const GetProcessInfoDeprecatedRequest$outboundSchema: z.ZodType<
   processId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProcessInfoDeprecatedRequest$ {
-  /** @deprecated use `GetProcessInfoDeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = GetProcessInfoDeprecatedRequest$inboundSchema;
-  /** @deprecated use `GetProcessInfoDeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema = GetProcessInfoDeprecatedRequest$outboundSchema;
-  /** @deprecated use `GetProcessInfoDeprecatedRequest$Outbound` instead. */
-  export type Outbound = GetProcessInfoDeprecatedRequest$Outbound;
-}
-
 export function getProcessInfoDeprecatedRequestToJSON(
   getProcessInfoDeprecatedRequest: GetProcessInfoDeprecatedRequest,
 ): string {
@@ -118,15 +36,5 @@ export function getProcessInfoDeprecatedRequestToJSON(
     GetProcessInfoDeprecatedRequest$outboundSchema.parse(
       getProcessInfoDeprecatedRequest,
     ),
-  );
-}
-
-export function getProcessInfoDeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProcessInfoDeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProcessInfoDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProcessInfoDeprecatedRequest' from JSON`,
   );
 }

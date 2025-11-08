@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateBuildRegistryGlobals = {
   orgId?: string | undefined;
@@ -17,74 +14,6 @@ export type CreateBuildRegistryRequest = {
   orgId?: string | undefined;
   createBuildV3Params: components.CreateBuildV3Params;
 };
-
-/** @internal */
-export const CreateBuildRegistryGlobals$inboundSchema: z.ZodType<
-  CreateBuildRegistryGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type CreateBuildRegistryGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const CreateBuildRegistryGlobals$outboundSchema: z.ZodType<
-  CreateBuildRegistryGlobals$Outbound,
-  z.ZodTypeDef,
-  CreateBuildRegistryGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBuildRegistryGlobals$ {
-  /** @deprecated use `CreateBuildRegistryGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateBuildRegistryGlobals$inboundSchema;
-  /** @deprecated use `CreateBuildRegistryGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateBuildRegistryGlobals$outboundSchema;
-  /** @deprecated use `CreateBuildRegistryGlobals$Outbound` instead. */
-  export type Outbound = CreateBuildRegistryGlobals$Outbound;
-}
-
-export function createBuildRegistryGlobalsToJSON(
-  createBuildRegistryGlobals: CreateBuildRegistryGlobals,
-): string {
-  return JSON.stringify(
-    CreateBuildRegistryGlobals$outboundSchema.parse(createBuildRegistryGlobals),
-  );
-}
-
-export function createBuildRegistryGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateBuildRegistryGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateBuildRegistryGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateBuildRegistryGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateBuildRegistryRequest$inboundSchema: z.ZodType<
-  CreateBuildRegistryRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-  CreateBuildV3Params: components.CreateBuildV3Params$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateBuildV3Params": "createBuildV3Params",
-  });
-});
 
 /** @internal */
 export type CreateBuildRegistryRequest$Outbound = {
@@ -106,33 +35,10 @@ export const CreateBuildRegistryRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBuildRegistryRequest$ {
-  /** @deprecated use `CreateBuildRegistryRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateBuildRegistryRequest$inboundSchema;
-  /** @deprecated use `CreateBuildRegistryRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateBuildRegistryRequest$outboundSchema;
-  /** @deprecated use `CreateBuildRegistryRequest$Outbound` instead. */
-  export type Outbound = CreateBuildRegistryRequest$Outbound;
-}
-
 export function createBuildRegistryRequestToJSON(
   createBuildRegistryRequest: CreateBuildRegistryRequest,
 ): string {
   return JSON.stringify(
     CreateBuildRegistryRequest$outboundSchema.parse(createBuildRegistryRequest),
-  );
-}
-
-export function createBuildRegistryRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateBuildRegistryRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateBuildRegistryRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateBuildRegistryRequest' from JSON`,
   );
 }

@@ -6,11 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  BuildStatus,
-  BuildStatus$inboundSchema,
-  BuildStatus$outboundSchema,
-} from "./buildstatus.js";
+import { BuildStatus, BuildStatus$inboundSchema } from "./buildstatus.js";
 
 /**
  * A build represents a game server artifact and its associated metadata.
@@ -87,61 +83,6 @@ export const BuildV3$inboundSchema: z.ZodType<BuildV3, z.ZodTypeDef, unknown> =
     buildId: z.string(),
     orgId: z.string(),
   });
-
-/** @internal */
-export type BuildV3$Outbound = {
-  expiredAt?: string | undefined;
-  shareUrl?: string | undefined;
-  contentHash?: string | undefined;
-  buildTag?: string | undefined;
-  imageSize: number;
-  status: string;
-  deletedAt: string | null;
-  finishedAt: string | null;
-  startedAt: string | null;
-  createdAt: string;
-  createdBy: string;
-  buildId: string;
-  orgId: string;
-};
-
-/** @internal */
-export const BuildV3$outboundSchema: z.ZodType<
-  BuildV3$Outbound,
-  z.ZodTypeDef,
-  BuildV3
-> = z.object({
-  expiredAt: z.date().transform(v => v.toISOString()).optional(),
-  shareUrl: z.string().optional(),
-  contentHash: z.string().optional(),
-  buildTag: z.string().optional(),
-  imageSize: z.number().int(),
-  status: BuildStatus$outboundSchema,
-  deletedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  finishedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  startedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  createdAt: z.date().transform(v => v.toISOString()),
-  createdBy: z.string(),
-  buildId: z.string(),
-  orgId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuildV3$ {
-  /** @deprecated use `BuildV3$inboundSchema` instead. */
-  export const inboundSchema = BuildV3$inboundSchema;
-  /** @deprecated use `BuildV3$outboundSchema` instead. */
-  export const outboundSchema = BuildV3$outboundSchema;
-  /** @deprecated use `BuildV3$Outbound` instead. */
-  export type Outbound = BuildV3$Outbound;
-}
-
-export function buildV3ToJSON(buildV3: BuildV3): string {
-  return JSON.stringify(BuildV3$outboundSchema.parse(buildV3));
-}
 
 export function buildV3FromJSON(
   jsonString: string,

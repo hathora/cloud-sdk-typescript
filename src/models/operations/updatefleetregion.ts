@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateFleetRegionGlobals = {
   orgId?: string | undefined;
@@ -19,76 +16,6 @@ export type UpdateFleetRegionRequest = {
   orgId?: string | undefined;
   fleetRegionConfig: components.FleetRegionConfig;
 };
-
-/** @internal */
-export const UpdateFleetRegionGlobals$inboundSchema: z.ZodType<
-  UpdateFleetRegionGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type UpdateFleetRegionGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const UpdateFleetRegionGlobals$outboundSchema: z.ZodType<
-  UpdateFleetRegionGlobals$Outbound,
-  z.ZodTypeDef,
-  UpdateFleetRegionGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFleetRegionGlobals$ {
-  /** @deprecated use `UpdateFleetRegionGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateFleetRegionGlobals$inboundSchema;
-  /** @deprecated use `UpdateFleetRegionGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateFleetRegionGlobals$outboundSchema;
-  /** @deprecated use `UpdateFleetRegionGlobals$Outbound` instead. */
-  export type Outbound = UpdateFleetRegionGlobals$Outbound;
-}
-
-export function updateFleetRegionGlobalsToJSON(
-  updateFleetRegionGlobals: UpdateFleetRegionGlobals,
-): string {
-  return JSON.stringify(
-    UpdateFleetRegionGlobals$outboundSchema.parse(updateFleetRegionGlobals),
-  );
-}
-
-export function updateFleetRegionGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFleetRegionGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFleetRegionGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFleetRegionGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateFleetRegionRequest$inboundSchema: z.ZodType<
-  UpdateFleetRegionRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fleetId: z.string(),
-  region: components.Region$inboundSchema,
-  orgId: z.string().optional(),
-  FleetRegionConfig: components.FleetRegionConfig$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "FleetRegionConfig": "fleetRegionConfig",
-  });
-});
 
 /** @internal */
 export type UpdateFleetRegionRequest$Outbound = {
@@ -114,33 +41,10 @@ export const UpdateFleetRegionRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFleetRegionRequest$ {
-  /** @deprecated use `UpdateFleetRegionRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateFleetRegionRequest$inboundSchema;
-  /** @deprecated use `UpdateFleetRegionRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateFleetRegionRequest$outboundSchema;
-  /** @deprecated use `UpdateFleetRegionRequest$Outbound` instead. */
-  export type Outbound = UpdateFleetRegionRequest$Outbound;
-}
-
 export function updateFleetRegionRequestToJSON(
   updateFleetRegionRequest: UpdateFleetRegionRequest,
 ): string {
   return JSON.stringify(
     UpdateFleetRegionRequest$outboundSchema.parse(updateFleetRegionRequest),
-  );
-}
-
-export function updateFleetRegionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFleetRegionRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFleetRegionRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFleetRegionRequest' from JSON`,
   );
 }

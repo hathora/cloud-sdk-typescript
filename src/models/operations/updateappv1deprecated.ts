@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateAppV1DeprecatedGlobals = {
   appId?: string | undefined;
@@ -17,76 +14,6 @@ export type UpdateAppV1DeprecatedRequest = {
   appId?: string | undefined;
   createAppConfig: components.CreateAppConfig;
 };
-
-/** @internal */
-export const UpdateAppV1DeprecatedGlobals$inboundSchema: z.ZodType<
-  UpdateAppV1DeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type UpdateAppV1DeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const UpdateAppV1DeprecatedGlobals$outboundSchema: z.ZodType<
-  UpdateAppV1DeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  UpdateAppV1DeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAppV1DeprecatedGlobals$ {
-  /** @deprecated use `UpdateAppV1DeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateAppV1DeprecatedGlobals$inboundSchema;
-  /** @deprecated use `UpdateAppV1DeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateAppV1DeprecatedGlobals$outboundSchema;
-  /** @deprecated use `UpdateAppV1DeprecatedGlobals$Outbound` instead. */
-  export type Outbound = UpdateAppV1DeprecatedGlobals$Outbound;
-}
-
-export function updateAppV1DeprecatedGlobalsToJSON(
-  updateAppV1DeprecatedGlobals: UpdateAppV1DeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    UpdateAppV1DeprecatedGlobals$outboundSchema.parse(
-      updateAppV1DeprecatedGlobals,
-    ),
-  );
-}
-
-export function updateAppV1DeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateAppV1DeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateAppV1DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateAppV1DeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateAppV1DeprecatedRequest$inboundSchema: z.ZodType<
-  UpdateAppV1DeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  CreateAppConfig: components.CreateAppConfig$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateAppConfig": "createAppConfig",
-  });
-});
 
 /** @internal */
 export type UpdateAppV1DeprecatedRequest$Outbound = {
@@ -108,19 +35,6 @@ export const UpdateAppV1DeprecatedRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAppV1DeprecatedRequest$ {
-  /** @deprecated use `UpdateAppV1DeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateAppV1DeprecatedRequest$inboundSchema;
-  /** @deprecated use `UpdateAppV1DeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateAppV1DeprecatedRequest$outboundSchema;
-  /** @deprecated use `UpdateAppV1DeprecatedRequest$Outbound` instead. */
-  export type Outbound = UpdateAppV1DeprecatedRequest$Outbound;
-}
-
 export function updateAppV1DeprecatedRequestToJSON(
   updateAppV1DeprecatedRequest: UpdateAppV1DeprecatedRequest,
 ): string {
@@ -128,15 +42,5 @@ export function updateAppV1DeprecatedRequestToJSON(
     UpdateAppV1DeprecatedRequest$outboundSchema.parse(
       updateAppV1DeprecatedRequest,
     ),
-  );
-}
-
-export function updateAppV1DeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateAppV1DeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateAppV1DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateAppV1DeprecatedRequest' from JSON`,
   );
 }

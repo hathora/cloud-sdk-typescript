@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InitStripeCustomerPortalUrlGlobals = {
   orgId?: string | undefined;
@@ -17,78 +14,6 @@ export type InitStripeCustomerPortalUrlRequest = {
   orgId?: string | undefined;
   customerPortalUrl: components.CustomerPortalUrl;
 };
-
-/** @internal */
-export const InitStripeCustomerPortalUrlGlobals$inboundSchema: z.ZodType<
-  InitStripeCustomerPortalUrlGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type InitStripeCustomerPortalUrlGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const InitStripeCustomerPortalUrlGlobals$outboundSchema: z.ZodType<
-  InitStripeCustomerPortalUrlGlobals$Outbound,
-  z.ZodTypeDef,
-  InitStripeCustomerPortalUrlGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InitStripeCustomerPortalUrlGlobals$ {
-  /** @deprecated use `InitStripeCustomerPortalUrlGlobals$inboundSchema` instead. */
-  export const inboundSchema = InitStripeCustomerPortalUrlGlobals$inboundSchema;
-  /** @deprecated use `InitStripeCustomerPortalUrlGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    InitStripeCustomerPortalUrlGlobals$outboundSchema;
-  /** @deprecated use `InitStripeCustomerPortalUrlGlobals$Outbound` instead. */
-  export type Outbound = InitStripeCustomerPortalUrlGlobals$Outbound;
-}
-
-export function initStripeCustomerPortalUrlGlobalsToJSON(
-  initStripeCustomerPortalUrlGlobals: InitStripeCustomerPortalUrlGlobals,
-): string {
-  return JSON.stringify(
-    InitStripeCustomerPortalUrlGlobals$outboundSchema.parse(
-      initStripeCustomerPortalUrlGlobals,
-    ),
-  );
-}
-
-export function initStripeCustomerPortalUrlGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<InitStripeCustomerPortalUrlGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      InitStripeCustomerPortalUrlGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InitStripeCustomerPortalUrlGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const InitStripeCustomerPortalUrlRequest$inboundSchema: z.ZodType<
-  InitStripeCustomerPortalUrlRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-  CustomerPortalUrl: components.CustomerPortalUrl$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CustomerPortalUrl": "customerPortalUrl",
-  });
-});
 
 /** @internal */
 export type InitStripeCustomerPortalUrlRequest$Outbound = {
@@ -110,20 +35,6 @@ export const InitStripeCustomerPortalUrlRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InitStripeCustomerPortalUrlRequest$ {
-  /** @deprecated use `InitStripeCustomerPortalUrlRequest$inboundSchema` instead. */
-  export const inboundSchema = InitStripeCustomerPortalUrlRequest$inboundSchema;
-  /** @deprecated use `InitStripeCustomerPortalUrlRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    InitStripeCustomerPortalUrlRequest$outboundSchema;
-  /** @deprecated use `InitStripeCustomerPortalUrlRequest$Outbound` instead. */
-  export type Outbound = InitStripeCustomerPortalUrlRequest$Outbound;
-}
-
 export function initStripeCustomerPortalUrlRequestToJSON(
   initStripeCustomerPortalUrlRequest: InitStripeCustomerPortalUrlRequest,
 ): string {
@@ -131,16 +42,5 @@ export function initStripeCustomerPortalUrlRequestToJSON(
     InitStripeCustomerPortalUrlRequest$outboundSchema.parse(
       initStripeCustomerPortalUrlRequest,
     ),
-  );
-}
-
-export function initStripeCustomerPortalUrlRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<InitStripeCustomerPortalUrlRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      InitStripeCustomerPortalUrlRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InitStripeCustomerPortalUrlRequest' from JSON`,
   );
 }

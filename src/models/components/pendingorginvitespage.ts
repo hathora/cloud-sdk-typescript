@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PendingOrgInvite,
   PendingOrgInvite$inboundSchema,
-  PendingOrgInvite$Outbound,
-  PendingOrgInvite$outboundSchema,
 } from "./pendingorginvite.js";
 
 export type PendingOrgInvitesPage = {
@@ -25,41 +23,6 @@ export const PendingOrgInvitesPage$inboundSchema: z.ZodType<
 > = z.object({
   invites: z.array(PendingOrgInvite$inboundSchema),
 });
-
-/** @internal */
-export type PendingOrgInvitesPage$Outbound = {
-  invites: Array<PendingOrgInvite$Outbound>;
-};
-
-/** @internal */
-export const PendingOrgInvitesPage$outboundSchema: z.ZodType<
-  PendingOrgInvitesPage$Outbound,
-  z.ZodTypeDef,
-  PendingOrgInvitesPage
-> = z.object({
-  invites: z.array(PendingOrgInvite$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PendingOrgInvitesPage$ {
-  /** @deprecated use `PendingOrgInvitesPage$inboundSchema` instead. */
-  export const inboundSchema = PendingOrgInvitesPage$inboundSchema;
-  /** @deprecated use `PendingOrgInvitesPage$outboundSchema` instead. */
-  export const outboundSchema = PendingOrgInvitesPage$outboundSchema;
-  /** @deprecated use `PendingOrgInvitesPage$Outbound` instead. */
-  export type Outbound = PendingOrgInvitesPage$Outbound;
-}
-
-export function pendingOrgInvitesPageToJSON(
-  pendingOrgInvitesPage: PendingOrgInvitesPage,
-): string {
-  return JSON.stringify(
-    PendingOrgInvitesPage$outboundSchema.parse(pendingOrgInvitesPage),
-  );
-}
 
 export function pendingOrgInvitesPageFromJSON(
   jsonString: string,

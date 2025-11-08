@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetProcessInfoV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -15,73 +12,6 @@ export type GetProcessInfoV2DeprecatedRequest = {
   appId?: string | undefined;
   processId: string;
 };
-
-/** @internal */
-export const GetProcessInfoV2DeprecatedGlobals$inboundSchema: z.ZodType<
-  GetProcessInfoV2DeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetProcessInfoV2DeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetProcessInfoV2DeprecatedGlobals$outboundSchema: z.ZodType<
-  GetProcessInfoV2DeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  GetProcessInfoV2DeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProcessInfoV2DeprecatedGlobals$ {
-  /** @deprecated use `GetProcessInfoV2DeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetProcessInfoV2DeprecatedGlobals$inboundSchema;
-  /** @deprecated use `GetProcessInfoV2DeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProcessInfoV2DeprecatedGlobals$outboundSchema;
-  /** @deprecated use `GetProcessInfoV2DeprecatedGlobals$Outbound` instead. */
-  export type Outbound = GetProcessInfoV2DeprecatedGlobals$Outbound;
-}
-
-export function getProcessInfoV2DeprecatedGlobalsToJSON(
-  getProcessInfoV2DeprecatedGlobals: GetProcessInfoV2DeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    GetProcessInfoV2DeprecatedGlobals$outboundSchema.parse(
-      getProcessInfoV2DeprecatedGlobals,
-    ),
-  );
-}
-
-export function getProcessInfoV2DeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProcessInfoV2DeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProcessInfoV2DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProcessInfoV2DeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetProcessInfoV2DeprecatedRequest$inboundSchema: z.ZodType<
-  GetProcessInfoV2DeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  processId: z.string(),
-});
 
 /** @internal */
 export type GetProcessInfoV2DeprecatedRequest$Outbound = {
@@ -99,20 +29,6 @@ export const GetProcessInfoV2DeprecatedRequest$outboundSchema: z.ZodType<
   processId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProcessInfoV2DeprecatedRequest$ {
-  /** @deprecated use `GetProcessInfoV2DeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = GetProcessInfoV2DeprecatedRequest$inboundSchema;
-  /** @deprecated use `GetProcessInfoV2DeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProcessInfoV2DeprecatedRequest$outboundSchema;
-  /** @deprecated use `GetProcessInfoV2DeprecatedRequest$Outbound` instead. */
-  export type Outbound = GetProcessInfoV2DeprecatedRequest$Outbound;
-}
-
 export function getProcessInfoV2DeprecatedRequestToJSON(
   getProcessInfoV2DeprecatedRequest: GetProcessInfoV2DeprecatedRequest,
 ): string {
@@ -120,15 +36,5 @@ export function getProcessInfoV2DeprecatedRequestToJSON(
     GetProcessInfoV2DeprecatedRequest$outboundSchema.parse(
       getProcessInfoV2DeprecatedRequest,
     ),
-  );
-}
-
-export function getProcessInfoV2DeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProcessInfoV2DeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProcessInfoV2DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProcessInfoV2DeprecatedRequest' from JSON`,
   );
 }

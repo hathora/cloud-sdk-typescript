@@ -20,41 +20,6 @@ export const LinkPaymentMethod$inboundSchema: z.ZodType<
   email: z.string().optional(),
 });
 
-/** @internal */
-export type LinkPaymentMethod$Outbound = {
-  email?: string | undefined;
-};
-
-/** @internal */
-export const LinkPaymentMethod$outboundSchema: z.ZodType<
-  LinkPaymentMethod$Outbound,
-  z.ZodTypeDef,
-  LinkPaymentMethod
-> = z.object({
-  email: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkPaymentMethod$ {
-  /** @deprecated use `LinkPaymentMethod$inboundSchema` instead. */
-  export const inboundSchema = LinkPaymentMethod$inboundSchema;
-  /** @deprecated use `LinkPaymentMethod$outboundSchema` instead. */
-  export const outboundSchema = LinkPaymentMethod$outboundSchema;
-  /** @deprecated use `LinkPaymentMethod$Outbound` instead. */
-  export type Outbound = LinkPaymentMethod$Outbound;
-}
-
-export function linkPaymentMethodToJSON(
-  linkPaymentMethod: LinkPaymentMethod,
-): string {
-  return JSON.stringify(
-    LinkPaymentMethod$outboundSchema.parse(linkPaymentMethod),
-  );
-}
-
 export function linkPaymentMethodFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkPaymentMethod, SDKValidationError> {

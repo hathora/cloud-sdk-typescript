@@ -6,7 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import { Scope, Scope$inboundSchema, Scope$outboundSchema } from "./scope.js";
+import { Scope, Scope$inboundSchema } from "./scope.js";
 
 export type Organization = {
   /**
@@ -97,63 +97,6 @@ export const Organization$inboundSchema: z.ZodType<
   name: z.string().optional(),
   orgId: z.string(),
 });
-
-/** @internal */
-export type Organization$Outbound = {
-  maxCloudBaseline?: number | undefined;
-  maxProcessConnections?: number | undefined;
-  logRetentionPeriodHours?: number | undefined;
-  podMaxLifespanHrs?: number | undefined;
-  monthlyProcessVcpuHoursLimit?: number | undefined;
-  concurrentProcessVcpusLimit?: number | undefined;
-  enabledFeatureFlags?: Array<string> | undefined;
-  maxRequestedMemoryMB: number;
-  scopes: Array<string>;
-  isSingleTenant: boolean;
-  defaultFleetId?: string | null | undefined;
-  stripeCustomerId: string;
-  name?: string | undefined;
-  orgId: string;
-};
-
-/** @internal */
-export const Organization$outboundSchema: z.ZodType<
-  Organization$Outbound,
-  z.ZodTypeDef,
-  Organization
-> = z.object({
-  maxCloudBaseline: z.number().int().optional(),
-  maxProcessConnections: z.number().optional(),
-  logRetentionPeriodHours: z.number().int().optional(),
-  podMaxLifespanHrs: z.number().optional(),
-  monthlyProcessVcpuHoursLimit: z.number().optional(),
-  concurrentProcessVcpusLimit: z.number().optional(),
-  enabledFeatureFlags: z.array(z.string()).optional(),
-  maxRequestedMemoryMB: z.number(),
-  scopes: z.array(Scope$outboundSchema),
-  isSingleTenant: z.boolean(),
-  defaultFleetId: z.nullable(z.string()).optional(),
-  stripeCustomerId: z.string(),
-  name: z.string().optional(),
-  orgId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Organization$ {
-  /** @deprecated use `Organization$inboundSchema` instead. */
-  export const inboundSchema = Organization$inboundSchema;
-  /** @deprecated use `Organization$outboundSchema` instead. */
-  export const outboundSchema = Organization$outboundSchema;
-  /** @deprecated use `Organization$Outbound` instead. */
-  export type Outbound = Organization$Outbound;
-}
-
-export function organizationToJSON(organization: Organization): string {
-  return JSON.stringify(Organization$outboundSchema.parse(organization));
-}
 
 export function organizationFromJSON(
   jsonString: string,

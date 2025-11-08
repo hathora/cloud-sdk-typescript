@@ -6,11 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Region,
-  Region$inboundSchema,
-  Region$outboundSchema,
-} from "./region.js";
+import { Region, Region$inboundSchema } from "./region.js";
 
 export type PingEndpoints = {
   port: number;
@@ -28,41 +24,6 @@ export const PingEndpoints$inboundSchema: z.ZodType<
   host: z.string(),
   region: Region$inboundSchema,
 });
-
-/** @internal */
-export type PingEndpoints$Outbound = {
-  port: number;
-  host: string;
-  region: string;
-};
-
-/** @internal */
-export const PingEndpoints$outboundSchema: z.ZodType<
-  PingEndpoints$Outbound,
-  z.ZodTypeDef,
-  PingEndpoints
-> = z.object({
-  port: z.number(),
-  host: z.string(),
-  region: Region$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PingEndpoints$ {
-  /** @deprecated use `PingEndpoints$inboundSchema` instead. */
-  export const inboundSchema = PingEndpoints$inboundSchema;
-  /** @deprecated use `PingEndpoints$outboundSchema` instead. */
-  export const outboundSchema = PingEndpoints$outboundSchema;
-  /** @deprecated use `PingEndpoints$Outbound` instead. */
-  export type Outbound = PingEndpoints$Outbound;
-}
-
-export function pingEndpointsToJSON(pingEndpoints: PingEndpoints): string {
-  return JSON.stringify(PingEndpoints$outboundSchema.parse(pingEndpoints));
-}
 
 export function pingEndpointsFromJSON(
   jsonString: string,

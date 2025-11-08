@@ -6,11 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RoomStatus,
-  RoomStatus$inboundSchema,
-  RoomStatus$outboundSchema,
-} from "./roomstatus.js";
+import { RoomStatus, RoomStatus$inboundSchema } from "./roomstatus.js";
 
 /**
  * Metadata on an allocated instance of a room.
@@ -72,52 +68,6 @@ export const RoomWithoutAllocationsCurrentAllocation$inboundSchema: z.ZodType<
   roomAllocationId: z.string(),
 });
 
-/** @internal */
-export type RoomWithoutAllocationsCurrentAllocation$Outbound = {
-  unscheduledAt: string | null;
-  scheduledAt: string;
-  processId: string;
-  roomAllocationId: string;
-};
-
-/** @internal */
-export const RoomWithoutAllocationsCurrentAllocation$outboundSchema: z.ZodType<
-  RoomWithoutAllocationsCurrentAllocation$Outbound,
-  z.ZodTypeDef,
-  RoomWithoutAllocationsCurrentAllocation
-> = z.object({
-  unscheduledAt: z.nullable(z.date().transform(v => v.toISOString())),
-  scheduledAt: z.date().transform(v => v.toISOString()),
-  processId: z.string(),
-  roomAllocationId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RoomWithoutAllocationsCurrentAllocation$ {
-  /** @deprecated use `RoomWithoutAllocationsCurrentAllocation$inboundSchema` instead. */
-  export const inboundSchema =
-    RoomWithoutAllocationsCurrentAllocation$inboundSchema;
-  /** @deprecated use `RoomWithoutAllocationsCurrentAllocation$outboundSchema` instead. */
-  export const outboundSchema =
-    RoomWithoutAllocationsCurrentAllocation$outboundSchema;
-  /** @deprecated use `RoomWithoutAllocationsCurrentAllocation$Outbound` instead. */
-  export type Outbound = RoomWithoutAllocationsCurrentAllocation$Outbound;
-}
-
-export function roomWithoutAllocationsCurrentAllocationToJSON(
-  roomWithoutAllocationsCurrentAllocation:
-    RoomWithoutAllocationsCurrentAllocation,
-): string {
-  return JSON.stringify(
-    RoomWithoutAllocationsCurrentAllocation$outboundSchema.parse(
-      roomWithoutAllocationsCurrentAllocation,
-    ),
-  );
-}
-
 export function roomWithoutAllocationsCurrentAllocationFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -148,51 +98,6 @@ export const RoomWithoutAllocations$inboundSchema: z.ZodType<
   roomId: z.string(),
   appId: z.string(),
 });
-
-/** @internal */
-export type RoomWithoutAllocations$Outbound = {
-  currentAllocation: RoomWithoutAllocationsCurrentAllocation$Outbound | null;
-  status: string;
-  roomConfig?: string | null | undefined;
-  roomId: string;
-  appId: string;
-};
-
-/** @internal */
-export const RoomWithoutAllocations$outboundSchema: z.ZodType<
-  RoomWithoutAllocations$Outbound,
-  z.ZodTypeDef,
-  RoomWithoutAllocations
-> = z.object({
-  currentAllocation: z.nullable(
-    z.lazy(() => RoomWithoutAllocationsCurrentAllocation$outboundSchema),
-  ),
-  status: RoomStatus$outboundSchema,
-  roomConfig: z.nullable(z.string()).optional(),
-  roomId: z.string(),
-  appId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RoomWithoutAllocations$ {
-  /** @deprecated use `RoomWithoutAllocations$inboundSchema` instead. */
-  export const inboundSchema = RoomWithoutAllocations$inboundSchema;
-  /** @deprecated use `RoomWithoutAllocations$outboundSchema` instead. */
-  export const outboundSchema = RoomWithoutAllocations$outboundSchema;
-  /** @deprecated use `RoomWithoutAllocations$Outbound` instead. */
-  export type Outbound = RoomWithoutAllocations$Outbound;
-}
-
-export function roomWithoutAllocationsToJSON(
-  roomWithoutAllocations: RoomWithoutAllocations,
-): string {
-  return JSON.stringify(
-    RoomWithoutAllocations$outboundSchema.parse(roomWithoutAllocations),
-  );
-}
 
 export function roomWithoutAllocationsFromJSON(
   jsonString: string,

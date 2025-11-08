@@ -6,16 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  BuildStatus,
-  BuildStatus$inboundSchema,
-  BuildStatus$outboundSchema,
-} from "./buildstatus.js";
-import {
-  Region,
-  Region$inboundSchema,
-  Region$outboundSchema,
-} from "./region.js";
+import { BuildStatus, BuildStatus$inboundSchema } from "./buildstatus.js";
+import { Region, Region$inboundSchema } from "./region.js";
 
 export type BuildWithUploadUrlRegionalContainerTags = {
   containerTag: string;
@@ -84,48 +76,6 @@ export const BuildWithUploadUrlRegionalContainerTags$inboundSchema: z.ZodType<
   region: Region$inboundSchema,
 });
 
-/** @internal */
-export type BuildWithUploadUrlRegionalContainerTags$Outbound = {
-  containerTag: string;
-  region: string;
-};
-
-/** @internal */
-export const BuildWithUploadUrlRegionalContainerTags$outboundSchema: z.ZodType<
-  BuildWithUploadUrlRegionalContainerTags$Outbound,
-  z.ZodTypeDef,
-  BuildWithUploadUrlRegionalContainerTags
-> = z.object({
-  containerTag: z.string(),
-  region: Region$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuildWithUploadUrlRegionalContainerTags$ {
-  /** @deprecated use `BuildWithUploadUrlRegionalContainerTags$inboundSchema` instead. */
-  export const inboundSchema =
-    BuildWithUploadUrlRegionalContainerTags$inboundSchema;
-  /** @deprecated use `BuildWithUploadUrlRegionalContainerTags$outboundSchema` instead. */
-  export const outboundSchema =
-    BuildWithUploadUrlRegionalContainerTags$outboundSchema;
-  /** @deprecated use `BuildWithUploadUrlRegionalContainerTags$Outbound` instead. */
-  export type Outbound = BuildWithUploadUrlRegionalContainerTags$Outbound;
-}
-
-export function buildWithUploadUrlRegionalContainerTagsToJSON(
-  buildWithUploadUrlRegionalContainerTags:
-    BuildWithUploadUrlRegionalContainerTags,
-): string {
-  return JSON.stringify(
-    BuildWithUploadUrlRegionalContainerTags$outboundSchema.parse(
-      buildWithUploadUrlRegionalContainerTags,
-    ),
-  );
-}
-
 export function buildWithUploadUrlRegionalContainerTagsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -151,43 +101,6 @@ export const UploadBodyParams$inboundSchema: z.ZodType<
   value: z.string(),
   key: z.string(),
 });
-
-/** @internal */
-export type UploadBodyParams$Outbound = {
-  value: string;
-  key: string;
-};
-
-/** @internal */
-export const UploadBodyParams$outboundSchema: z.ZodType<
-  UploadBodyParams$Outbound,
-  z.ZodTypeDef,
-  UploadBodyParams
-> = z.object({
-  value: z.string(),
-  key: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadBodyParams$ {
-  /** @deprecated use `UploadBodyParams$inboundSchema` instead. */
-  export const inboundSchema = UploadBodyParams$inboundSchema;
-  /** @deprecated use `UploadBodyParams$outboundSchema` instead. */
-  export const outboundSchema = UploadBodyParams$outboundSchema;
-  /** @deprecated use `UploadBodyParams$Outbound` instead. */
-  export type Outbound = UploadBodyParams$Outbound;
-}
-
-export function uploadBodyParamsToJSON(
-  uploadBodyParams: UploadBodyParams,
-): string {
-  return JSON.stringify(
-    UploadBodyParams$outboundSchema.parse(uploadBodyParams),
-  );
-}
 
 export function uploadBodyParamsFromJSON(
   jsonString: string,
@@ -229,71 +142,6 @@ export const BuildWithUploadUrl$inboundSchema: z.ZodType<
   uploadBodyParams: z.array(z.lazy(() => UploadBodyParams$inboundSchema)),
   uploadUrl: z.string(),
 });
-
-/** @internal */
-export type BuildWithUploadUrl$Outbound = {
-  expiredAt?: string | undefined;
-  buildTag?: string | null | undefined;
-  regionalContainerTags: Array<
-    BuildWithUploadUrlRegionalContainerTags$Outbound
-  >;
-  imageSize: number;
-  status: string;
-  deletedAt: string | null;
-  finishedAt: string | null;
-  startedAt: string | null;
-  createdAt: string;
-  createdBy: string;
-  buildId: number;
-  appId: string;
-  uploadBodyParams: Array<UploadBodyParams$Outbound>;
-  uploadUrl: string;
-};
-
-/** @internal */
-export const BuildWithUploadUrl$outboundSchema: z.ZodType<
-  BuildWithUploadUrl$Outbound,
-  z.ZodTypeDef,
-  BuildWithUploadUrl
-> = z.object({
-  expiredAt: z.date().transform(v => v.toISOString()).optional(),
-  buildTag: z.nullable(z.string()).optional(),
-  regionalContainerTags: z.array(
-    z.lazy(() => BuildWithUploadUrlRegionalContainerTags$outboundSchema),
-  ),
-  imageSize: z.number().int(),
-  status: BuildStatus$outboundSchema,
-  deletedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  finishedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  startedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  createdAt: z.date().transform(v => v.toISOString()),
-  createdBy: z.string(),
-  buildId: z.number().int(),
-  appId: z.string(),
-  uploadBodyParams: z.array(z.lazy(() => UploadBodyParams$outboundSchema)),
-  uploadUrl: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuildWithUploadUrl$ {
-  /** @deprecated use `BuildWithUploadUrl$inboundSchema` instead. */
-  export const inboundSchema = BuildWithUploadUrl$inboundSchema;
-  /** @deprecated use `BuildWithUploadUrl$outboundSchema` instead. */
-  export const outboundSchema = BuildWithUploadUrl$outboundSchema;
-  /** @deprecated use `BuildWithUploadUrl$Outbound` instead. */
-  export type Outbound = BuildWithUploadUrl$Outbound;
-}
-
-export function buildWithUploadUrlToJSON(
-  buildWithUploadUrl: BuildWithUploadUrl,
-): string {
-  return JSON.stringify(
-    BuildWithUploadUrl$outboundSchema.parse(buildWithUploadUrl),
-  );
-}
 
 export function buildWithUploadUrlFromJSON(
   jsonString: string,

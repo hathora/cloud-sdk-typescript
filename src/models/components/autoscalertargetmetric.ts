@@ -53,7 +53,6 @@ export const MetricName$inboundSchema: z.ZodType<
     z.nativeEnum(MetricName),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const MetricName$outboundSchema: z.ZodType<
   MetricName,
@@ -64,17 +63,6 @@ export const MetricName$outboundSchema: z.ZodType<
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MetricName$ {
-  /** @deprecated use `MetricName$inboundSchema` instead. */
-  export const inboundSchema = MetricName$inboundSchema;
-  /** @deprecated use `MetricName$outboundSchema` instead. */
-  export const outboundSchema = MetricName$outboundSchema;
-}
-
 /** @internal */
 export const AutoscalerTargetMetric$inboundSchema: z.ZodType<
   AutoscalerTargetMetric,
@@ -84,7 +72,6 @@ export const AutoscalerTargetMetric$inboundSchema: z.ZodType<
   metricValue: z.number(),
   metricName: MetricName$inboundSchema,
 });
-
 /** @internal */
 export type AutoscalerTargetMetric$Outbound = {
   metricValue: number;
@@ -101,19 +88,6 @@ export const AutoscalerTargetMetric$outboundSchema: z.ZodType<
   metricName: MetricName$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AutoscalerTargetMetric$ {
-  /** @deprecated use `AutoscalerTargetMetric$inboundSchema` instead. */
-  export const inboundSchema = AutoscalerTargetMetric$inboundSchema;
-  /** @deprecated use `AutoscalerTargetMetric$outboundSchema` instead. */
-  export const outboundSchema = AutoscalerTargetMetric$outboundSchema;
-  /** @deprecated use `AutoscalerTargetMetric$Outbound` instead. */
-  export type Outbound = AutoscalerTargetMetric$Outbound;
-}
-
 export function autoscalerTargetMetricToJSON(
   autoscalerTargetMetric: AutoscalerTargetMetric,
 ): string {
@@ -121,7 +95,6 @@ export function autoscalerTargetMetricToJSON(
     AutoscalerTargetMetric$outboundSchema.parse(autoscalerTargetMetric),
   );
 }
-
 export function autoscalerTargetMetricFromJSON(
   jsonString: string,
 ): SafeParseResult<AutoscalerTargetMetric, SDKValidationError> {

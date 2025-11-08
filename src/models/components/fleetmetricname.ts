@@ -3,11 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 /**
  * Represents the valid metric names available to measure/manage fleets in a given region
@@ -25,17 +21,6 @@ export const FleetMetricName = {
 export type FleetMetricName = OpenEnum<typeof FleetMetricName>;
 
 /** @internal */
-export const FleetMetricName$inboundSchema: z.ZodType<
-  FleetMetricName,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(FleetMetricName),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
-/** @internal */
 export const FleetMetricName$outboundSchema: z.ZodType<
   FleetMetricName,
   z.ZodTypeDef,
@@ -44,14 +29,3 @@ export const FleetMetricName$outboundSchema: z.ZodType<
   z.nativeEnum(FleetMetricName),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FleetMetricName$ {
-  /** @deprecated use `FleetMetricName$inboundSchema` instead. */
-  export const inboundSchema = FleetMetricName$inboundSchema;
-  /** @deprecated use `FleetMetricName$outboundSchema` instead. */
-  export const outboundSchema = FleetMetricName$outboundSchema;
-}

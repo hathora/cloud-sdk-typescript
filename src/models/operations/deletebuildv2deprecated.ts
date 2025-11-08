@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteBuildV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -15,72 +12,6 @@ export type DeleteBuildV2DeprecatedRequest = {
   appId?: string | undefined;
   buildId: number;
 };
-
-/** @internal */
-export const DeleteBuildV2DeprecatedGlobals$inboundSchema: z.ZodType<
-  DeleteBuildV2DeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type DeleteBuildV2DeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const DeleteBuildV2DeprecatedGlobals$outboundSchema: z.ZodType<
-  DeleteBuildV2DeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  DeleteBuildV2DeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteBuildV2DeprecatedGlobals$ {
-  /** @deprecated use `DeleteBuildV2DeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = DeleteBuildV2DeprecatedGlobals$inboundSchema;
-  /** @deprecated use `DeleteBuildV2DeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema = DeleteBuildV2DeprecatedGlobals$outboundSchema;
-  /** @deprecated use `DeleteBuildV2DeprecatedGlobals$Outbound` instead. */
-  export type Outbound = DeleteBuildV2DeprecatedGlobals$Outbound;
-}
-
-export function deleteBuildV2DeprecatedGlobalsToJSON(
-  deleteBuildV2DeprecatedGlobals: DeleteBuildV2DeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    DeleteBuildV2DeprecatedGlobals$outboundSchema.parse(
-      deleteBuildV2DeprecatedGlobals,
-    ),
-  );
-}
-
-export function deleteBuildV2DeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteBuildV2DeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteBuildV2DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteBuildV2DeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const DeleteBuildV2DeprecatedRequest$inboundSchema: z.ZodType<
-  DeleteBuildV2DeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  buildId: z.number().int(),
-});
 
 /** @internal */
 export type DeleteBuildV2DeprecatedRequest$Outbound = {
@@ -98,19 +29,6 @@ export const DeleteBuildV2DeprecatedRequest$outboundSchema: z.ZodType<
   buildId: z.number().int(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteBuildV2DeprecatedRequest$ {
-  /** @deprecated use `DeleteBuildV2DeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteBuildV2DeprecatedRequest$inboundSchema;
-  /** @deprecated use `DeleteBuildV2DeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteBuildV2DeprecatedRequest$outboundSchema;
-  /** @deprecated use `DeleteBuildV2DeprecatedRequest$Outbound` instead. */
-  export type Outbound = DeleteBuildV2DeprecatedRequest$Outbound;
-}
-
 export function deleteBuildV2DeprecatedRequestToJSON(
   deleteBuildV2DeprecatedRequest: DeleteBuildV2DeprecatedRequest,
 ): string {
@@ -118,15 +36,5 @@ export function deleteBuildV2DeprecatedRequestToJSON(
     DeleteBuildV2DeprecatedRequest$outboundSchema.parse(
       deleteBuildV2DeprecatedRequest,
     ),
-  );
-}
-
-export function deleteBuildV2DeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteBuildV2DeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteBuildV2DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteBuildV2DeprecatedRequest' from JSON`,
   );
 }

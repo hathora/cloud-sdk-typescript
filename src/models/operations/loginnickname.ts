@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LoginNicknameGlobals = {
   appId?: string | undefined;
@@ -17,74 +14,6 @@ export type LoginNicknameRequest = {
   appId?: string | undefined;
   nicknameObject: components.NicknameObject;
 };
-
-/** @internal */
-export const LoginNicknameGlobals$inboundSchema: z.ZodType<
-  LoginNicknameGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type LoginNicknameGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const LoginNicknameGlobals$outboundSchema: z.ZodType<
-  LoginNicknameGlobals$Outbound,
-  z.ZodTypeDef,
-  LoginNicknameGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LoginNicknameGlobals$ {
-  /** @deprecated use `LoginNicknameGlobals$inboundSchema` instead. */
-  export const inboundSchema = LoginNicknameGlobals$inboundSchema;
-  /** @deprecated use `LoginNicknameGlobals$outboundSchema` instead. */
-  export const outboundSchema = LoginNicknameGlobals$outboundSchema;
-  /** @deprecated use `LoginNicknameGlobals$Outbound` instead. */
-  export type Outbound = LoginNicknameGlobals$Outbound;
-}
-
-export function loginNicknameGlobalsToJSON(
-  loginNicknameGlobals: LoginNicknameGlobals,
-): string {
-  return JSON.stringify(
-    LoginNicknameGlobals$outboundSchema.parse(loginNicknameGlobals),
-  );
-}
-
-export function loginNicknameGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<LoginNicknameGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LoginNicknameGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LoginNicknameGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const LoginNicknameRequest$inboundSchema: z.ZodType<
-  LoginNicknameRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  NicknameObject: components.NicknameObject$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "NicknameObject": "nicknameObject",
-  });
-});
 
 /** @internal */
 export type LoginNicknameRequest$Outbound = {
@@ -106,33 +35,10 @@ export const LoginNicknameRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LoginNicknameRequest$ {
-  /** @deprecated use `LoginNicknameRequest$inboundSchema` instead. */
-  export const inboundSchema = LoginNicknameRequest$inboundSchema;
-  /** @deprecated use `LoginNicknameRequest$outboundSchema` instead. */
-  export const outboundSchema = LoginNicknameRequest$outboundSchema;
-  /** @deprecated use `LoginNicknameRequest$Outbound` instead. */
-  export type Outbound = LoginNicknameRequest$Outbound;
-}
-
 export function loginNicknameRequestToJSON(
   loginNicknameRequest: LoginNicknameRequest,
 ): string {
   return JSON.stringify(
     LoginNicknameRequest$outboundSchema.parse(loginNicknameRequest),
-  );
-}
-
-export function loginNicknameRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LoginNicknameRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LoginNicknameRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LoginNicknameRequest' from JSON`,
   );
 }

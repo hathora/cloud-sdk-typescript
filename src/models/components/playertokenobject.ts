@@ -23,41 +23,6 @@ export const PlayerTokenObject$inboundSchema: z.ZodType<
   token: z.string(),
 });
 
-/** @internal */
-export type PlayerTokenObject$Outbound = {
-  token: string;
-};
-
-/** @internal */
-export const PlayerTokenObject$outboundSchema: z.ZodType<
-  PlayerTokenObject$Outbound,
-  z.ZodTypeDef,
-  PlayerTokenObject
-> = z.object({
-  token: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PlayerTokenObject$ {
-  /** @deprecated use `PlayerTokenObject$inboundSchema` instead. */
-  export const inboundSchema = PlayerTokenObject$inboundSchema;
-  /** @deprecated use `PlayerTokenObject$outboundSchema` instead. */
-  export const outboundSchema = PlayerTokenObject$outboundSchema;
-  /** @deprecated use `PlayerTokenObject$Outbound` instead. */
-  export type Outbound = PlayerTokenObject$Outbound;
-}
-
-export function playerTokenObjectToJSON(
-  playerTokenObject: PlayerTokenObject,
-): string {
-  return JSON.stringify(
-    PlayerTokenObject$outboundSchema.parse(playerTokenObject),
-  );
-}
-
 export function playerTokenObjectFromJSON(
   jsonString: string,
 ): SafeParseResult<PlayerTokenObject, SDKValidationError> {

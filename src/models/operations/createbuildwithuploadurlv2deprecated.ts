@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateBuildWithUploadUrlV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -17,88 +14,6 @@ export type CreateBuildWithUploadUrlV2DeprecatedRequest = {
   appId?: string | undefined;
   createBuildParams: components.CreateBuildParams;
 };
-
-/** @internal */
-export const CreateBuildWithUploadUrlV2DeprecatedGlobals$inboundSchema:
-  z.ZodType<
-    CreateBuildWithUploadUrlV2DeprecatedGlobals,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    appId: z.string().optional(),
-  });
-
-/** @internal */
-export type CreateBuildWithUploadUrlV2DeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const CreateBuildWithUploadUrlV2DeprecatedGlobals$outboundSchema:
-  z.ZodType<
-    CreateBuildWithUploadUrlV2DeprecatedGlobals$Outbound,
-    z.ZodTypeDef,
-    CreateBuildWithUploadUrlV2DeprecatedGlobals
-  > = z.object({
-    appId: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBuildWithUploadUrlV2DeprecatedGlobals$ {
-  /** @deprecated use `CreateBuildWithUploadUrlV2DeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateBuildWithUploadUrlV2DeprecatedGlobals$inboundSchema;
-  /** @deprecated use `CreateBuildWithUploadUrlV2DeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateBuildWithUploadUrlV2DeprecatedGlobals$outboundSchema;
-  /** @deprecated use `CreateBuildWithUploadUrlV2DeprecatedGlobals$Outbound` instead. */
-  export type Outbound = CreateBuildWithUploadUrlV2DeprecatedGlobals$Outbound;
-}
-
-export function createBuildWithUploadUrlV2DeprecatedGlobalsToJSON(
-  createBuildWithUploadUrlV2DeprecatedGlobals:
-    CreateBuildWithUploadUrlV2DeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    CreateBuildWithUploadUrlV2DeprecatedGlobals$outboundSchema.parse(
-      createBuildWithUploadUrlV2DeprecatedGlobals,
-    ),
-  );
-}
-
-export function createBuildWithUploadUrlV2DeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateBuildWithUploadUrlV2DeprecatedGlobals,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateBuildWithUploadUrlV2DeprecatedGlobals$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateBuildWithUploadUrlV2DeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateBuildWithUploadUrlV2DeprecatedRequest$inboundSchema:
-  z.ZodType<
-    CreateBuildWithUploadUrlV2DeprecatedRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    appId: z.string().optional(),
-    CreateBuildParams: components.CreateBuildParams$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "CreateBuildParams": "createBuildParams",
-    });
-  });
 
 /** @internal */
 export type CreateBuildWithUploadUrlV2DeprecatedRequest$Outbound = {
@@ -121,21 +36,6 @@ export const CreateBuildWithUploadUrlV2DeprecatedRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBuildWithUploadUrlV2DeprecatedRequest$ {
-  /** @deprecated use `CreateBuildWithUploadUrlV2DeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateBuildWithUploadUrlV2DeprecatedRequest$inboundSchema;
-  /** @deprecated use `CreateBuildWithUploadUrlV2DeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateBuildWithUploadUrlV2DeprecatedRequest$outboundSchema;
-  /** @deprecated use `CreateBuildWithUploadUrlV2DeprecatedRequest$Outbound` instead. */
-  export type Outbound = CreateBuildWithUploadUrlV2DeprecatedRequest$Outbound;
-}
-
 export function createBuildWithUploadUrlV2DeprecatedRequestToJSON(
   createBuildWithUploadUrlV2DeprecatedRequest:
     CreateBuildWithUploadUrlV2DeprecatedRequest,
@@ -144,21 +44,5 @@ export function createBuildWithUploadUrlV2DeprecatedRequestToJSON(
     CreateBuildWithUploadUrlV2DeprecatedRequest$outboundSchema.parse(
       createBuildWithUploadUrlV2DeprecatedRequest,
     ),
-  );
-}
-
-export function createBuildWithUploadUrlV2DeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateBuildWithUploadUrlV2DeprecatedRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateBuildWithUploadUrlV2DeprecatedRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateBuildWithUploadUrlV2DeprecatedRequest' from JSON`,
   );
 }

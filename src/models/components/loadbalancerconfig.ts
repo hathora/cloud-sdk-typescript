@@ -22,7 +22,6 @@ export const LoadBalancerConfig$inboundSchema: z.ZodType<
 > = z.object({
   enabled: z.boolean(),
 });
-
 /** @internal */
 export type LoadBalancerConfig$Outbound = {
   enabled: boolean;
@@ -37,19 +36,6 @@ export const LoadBalancerConfig$outboundSchema: z.ZodType<
   enabled: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LoadBalancerConfig$ {
-  /** @deprecated use `LoadBalancerConfig$inboundSchema` instead. */
-  export const inboundSchema = LoadBalancerConfig$inboundSchema;
-  /** @deprecated use `LoadBalancerConfig$outboundSchema` instead. */
-  export const outboundSchema = LoadBalancerConfig$outboundSchema;
-  /** @deprecated use `LoadBalancerConfig$Outbound` instead. */
-  export type Outbound = LoadBalancerConfig$Outbound;
-}
-
 export function loadBalancerConfigToJSON(
   loadBalancerConfig: LoadBalancerConfig,
 ): string {
@@ -57,7 +43,6 @@ export function loadBalancerConfigToJSON(
     LoadBalancerConfig$outboundSchema.parse(loadBalancerConfig),
   );
 }
-
 export function loadBalancerConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<LoadBalancerConfig, SDKValidationError> {

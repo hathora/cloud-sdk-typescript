@@ -4,12 +4,12 @@
 
 import { fleetsV1CreateFleetDeprecated } from "../funcs/fleetsV1CreateFleetDeprecated.js";
 import { fleetsV1GetFleetDeprecated } from "../funcs/fleetsV1GetFleetDeprecated.js";
-import { fleetsV1GetFleetMetrics } from "../funcs/fleetsV1GetFleetMetrics.js";
-import { fleetsV1GetFleetRegion } from "../funcs/fleetsV1GetFleetRegion.js";
-import { fleetsV1GetFleetRegionMetrics } from "../funcs/fleetsV1GetFleetRegionMetrics.js";
+import { fleetsV1GetFleetMetricsDeprecated } from "../funcs/fleetsV1GetFleetMetricsDeprecated.js";
+import { fleetsV1GetFleetRegionDeprecated } from "../funcs/fleetsV1GetFleetRegionDeprecated.js";
+import { fleetsV1GetFleetRegionMetricsDeprecated } from "../funcs/fleetsV1GetFleetRegionMetricsDeprecated.js";
 import { fleetsV1GetFleetsDeprecated } from "../funcs/fleetsV1GetFleetsDeprecated.js";
 import { fleetsV1UpdateFleetDeprecated } from "../funcs/fleetsV1UpdateFleetDeprecated.js";
-import { fleetsV1UpdateFleetRegion } from "../funcs/fleetsV1UpdateFleetRegion.js";
+import { fleetsV1UpdateFleetRegionDeprecated } from "../funcs/fleetsV1UpdateFleetRegionDeprecated.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -90,18 +90,18 @@ export class FleetsV1 extends ClientSDK {
   }
 
   /**
-   * GetFleetRegion
+   * GetFleetRegionDeprecated
    *
    * @remarks
    * Gets the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
    */
-  async getFleetRegion(
+  async getFleetRegionDeprecated(
     fleetId: string,
     region: components.Region,
     orgId?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.FleetRegion> {
-    return unwrapAsync(fleetsV1GetFleetRegion(
+    return unwrapAsync(fleetsV1GetFleetRegionDeprecated(
       this,
       fleetId,
       region,
@@ -111,19 +111,19 @@ export class FleetsV1 extends ClientSDK {
   }
 
   /**
-   * UpdateFleetRegion
+   * UpdateFleetRegionDeprecated
    *
    * @remarks
    * Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
    */
-  async updateFleetRegion(
+  async updateFleetRegionDeprecated(
     fleetId: string,
     region: components.Region,
     fleetRegionConfig: components.FleetRegionConfig,
     orgId?: string | undefined,
     options?: RequestOptions,
   ): Promise<void> {
-    return unwrapAsync(fleetsV1UpdateFleetRegion(
+    return unwrapAsync(fleetsV1UpdateFleetRegionDeprecated(
       this,
       fleetId,
       region,
@@ -134,16 +134,16 @@ export class FleetsV1 extends ClientSDK {
   }
 
   /**
-   * GetFleetMetrics
+   * GetFleetMetricsDeprecated
    *
    * @remarks
    * Gets aggregate metrics for a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet).
    */
-  async getFleetMetrics(
-    request: operations.GetFleetMetricsRequest,
+  async getFleetMetricsDeprecated(
+    request: operations.GetFleetMetricsDeprecatedRequest,
     options?: RequestOptions,
   ): Promise<components.FleetMetricsData> {
-    return unwrapAsync(fleetsV1GetFleetMetrics(
+    return unwrapAsync(fleetsV1GetFleetMetricsDeprecated(
       this,
       request,
       options,
@@ -151,16 +151,16 @@ export class FleetsV1 extends ClientSDK {
   }
 
   /**
-   * GetFleetRegionMetrics
+   * GetFleetRegionMetricsDeprecated
    *
    * @remarks
    * Gets metrics for a region in a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet).
    */
-  async getFleetRegionMetrics(
-    request: operations.GetFleetRegionMetricsRequest,
+  async getFleetRegionMetricsDeprecated(
+    request: operations.GetFleetRegionMetricsDeprecatedRequest,
     options?: RequestOptions,
   ): Promise<components.FleetMetricsData> {
-    return unwrapAsync(fleetsV1GetFleetRegionMetrics(
+    return unwrapAsync(fleetsV1GetFleetRegionMetricsDeprecated(
       this,
       request,
       options,

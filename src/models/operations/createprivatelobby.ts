@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreatePrivateLobbyGlobals = {
   appId?: string | undefined;
@@ -32,69 +29,6 @@ export type CreatePrivateLobbyRequest = {
 };
 
 /** @internal */
-export const CreatePrivateLobbyGlobals$inboundSchema: z.ZodType<
-  CreatePrivateLobbyGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type CreatePrivateLobbyGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const CreatePrivateLobbyGlobals$outboundSchema: z.ZodType<
-  CreatePrivateLobbyGlobals$Outbound,
-  z.ZodTypeDef,
-  CreatePrivateLobbyGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePrivateLobbyGlobals$ {
-  /** @deprecated use `CreatePrivateLobbyGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreatePrivateLobbyGlobals$inboundSchema;
-  /** @deprecated use `CreatePrivateLobbyGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreatePrivateLobbyGlobals$outboundSchema;
-  /** @deprecated use `CreatePrivateLobbyGlobals$Outbound` instead. */
-  export type Outbound = CreatePrivateLobbyGlobals$Outbound;
-}
-
-export function createPrivateLobbyGlobalsToJSON(
-  createPrivateLobbyGlobals: CreatePrivateLobbyGlobals,
-): string {
-  return JSON.stringify(
-    CreatePrivateLobbyGlobals$outboundSchema.parse(createPrivateLobbyGlobals),
-  );
-}
-
-export function createPrivateLobbyGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePrivateLobbyGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePrivateLobbyGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePrivateLobbyGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePrivateLobbySecurity$inboundSchema: z.ZodType<
-  CreatePrivateLobbySecurity,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  playerAuth: z.string(),
-});
-
-/** @internal */
 export type CreatePrivateLobbySecurity$Outbound = {
   playerAuth: string;
 };
@@ -108,19 +42,6 @@ export const CreatePrivateLobbySecurity$outboundSchema: z.ZodType<
   playerAuth: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePrivateLobbySecurity$ {
-  /** @deprecated use `CreatePrivateLobbySecurity$inboundSchema` instead. */
-  export const inboundSchema = CreatePrivateLobbySecurity$inboundSchema;
-  /** @deprecated use `CreatePrivateLobbySecurity$outboundSchema` instead. */
-  export const outboundSchema = CreatePrivateLobbySecurity$outboundSchema;
-  /** @deprecated use `CreatePrivateLobbySecurity$Outbound` instead. */
-  export type Outbound = CreatePrivateLobbySecurity$Outbound;
-}
-
 export function createPrivateLobbySecurityToJSON(
   createPrivateLobbySecurity: CreatePrivateLobbySecurity,
 ): string {
@@ -128,26 +49,6 @@ export function createPrivateLobbySecurityToJSON(
     CreatePrivateLobbySecurity$outboundSchema.parse(createPrivateLobbySecurity),
   );
 }
-
-export function createPrivateLobbySecurityFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePrivateLobbySecurity, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePrivateLobbySecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePrivateLobbySecurity' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePrivateLobbyRequestBody$inboundSchema: z.ZodType<
-  CreatePrivateLobbyRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  initialConfig: z.any().optional(),
-  region: components.Region$inboundSchema,
-});
 
 /** @internal */
 export type CreatePrivateLobbyRequestBody$Outbound = {
@@ -165,19 +66,6 @@ export const CreatePrivateLobbyRequestBody$outboundSchema: z.ZodType<
   region: components.Region$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePrivateLobbyRequestBody$ {
-  /** @deprecated use `CreatePrivateLobbyRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreatePrivateLobbyRequestBody$inboundSchema;
-  /** @deprecated use `CreatePrivateLobbyRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreatePrivateLobbyRequestBody$outboundSchema;
-  /** @deprecated use `CreatePrivateLobbyRequestBody$Outbound` instead. */
-  export type Outbound = CreatePrivateLobbyRequestBody$Outbound;
-}
-
 export function createPrivateLobbyRequestBodyToJSON(
   createPrivateLobbyRequestBody: CreatePrivateLobbyRequestBody,
 ): string {
@@ -187,31 +75,6 @@ export function createPrivateLobbyRequestBodyToJSON(
     ),
   );
 }
-
-export function createPrivateLobbyRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePrivateLobbyRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePrivateLobbyRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePrivateLobbyRequestBody' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePrivateLobbyRequest$inboundSchema: z.ZodType<
-  CreatePrivateLobbyRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  roomId: z.string().optional(),
-  RequestBody: z.lazy(() => CreatePrivateLobbyRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 
 /** @internal */
 export type CreatePrivateLobbyRequest$Outbound = {
@@ -235,33 +98,10 @@ export const CreatePrivateLobbyRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePrivateLobbyRequest$ {
-  /** @deprecated use `CreatePrivateLobbyRequest$inboundSchema` instead. */
-  export const inboundSchema = CreatePrivateLobbyRequest$inboundSchema;
-  /** @deprecated use `CreatePrivateLobbyRequest$outboundSchema` instead. */
-  export const outboundSchema = CreatePrivateLobbyRequest$outboundSchema;
-  /** @deprecated use `CreatePrivateLobbyRequest$Outbound` instead. */
-  export type Outbound = CreatePrivateLobbyRequest$Outbound;
-}
-
 export function createPrivateLobbyRequestToJSON(
   createPrivateLobbyRequest: CreatePrivateLobbyRequest,
 ): string {
   return JSON.stringify(
     CreatePrivateLobbyRequest$outboundSchema.parse(createPrivateLobbyRequest),
-  );
-}
-
-export function createPrivateLobbyRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePrivateLobbyRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePrivateLobbyRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePrivateLobbyRequest' from JSON`,
   );
 }

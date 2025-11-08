@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetFleetsDeprecatedGlobals = {
   orgId?: string | undefined;
@@ -14,69 +11,6 @@ export type GetFleetsDeprecatedGlobals = {
 export type GetFleetsDeprecatedRequest = {
   orgId?: string | undefined;
 };
-
-/** @internal */
-export const GetFleetsDeprecatedGlobals$inboundSchema: z.ZodType<
-  GetFleetsDeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type GetFleetsDeprecatedGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const GetFleetsDeprecatedGlobals$outboundSchema: z.ZodType<
-  GetFleetsDeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  GetFleetsDeprecatedGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetFleetsDeprecatedGlobals$ {
-  /** @deprecated use `GetFleetsDeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetFleetsDeprecatedGlobals$inboundSchema;
-  /** @deprecated use `GetFleetsDeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetFleetsDeprecatedGlobals$outboundSchema;
-  /** @deprecated use `GetFleetsDeprecatedGlobals$Outbound` instead. */
-  export type Outbound = GetFleetsDeprecatedGlobals$Outbound;
-}
-
-export function getFleetsDeprecatedGlobalsToJSON(
-  getFleetsDeprecatedGlobals: GetFleetsDeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    GetFleetsDeprecatedGlobals$outboundSchema.parse(getFleetsDeprecatedGlobals),
-  );
-}
-
-export function getFleetsDeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetFleetsDeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetFleetsDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFleetsDeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetFleetsDeprecatedRequest$inboundSchema: z.ZodType<
-  GetFleetsDeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
 
 /** @internal */
 export type GetFleetsDeprecatedRequest$Outbound = {
@@ -92,33 +26,10 @@ export const GetFleetsDeprecatedRequest$outboundSchema: z.ZodType<
   orgId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetFleetsDeprecatedRequest$ {
-  /** @deprecated use `GetFleetsDeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = GetFleetsDeprecatedRequest$inboundSchema;
-  /** @deprecated use `GetFleetsDeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema = GetFleetsDeprecatedRequest$outboundSchema;
-  /** @deprecated use `GetFleetsDeprecatedRequest$Outbound` instead. */
-  export type Outbound = GetFleetsDeprecatedRequest$Outbound;
-}
-
 export function getFleetsDeprecatedRequestToJSON(
   getFleetsDeprecatedRequest: GetFleetsDeprecatedRequest,
 ): string {
   return JSON.stringify(
     GetFleetsDeprecatedRequest$outboundSchema.parse(getFleetsDeprecatedRequest),
-  );
-}
-
-export function getFleetsDeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetFleetsDeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetFleetsDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFleetsDeprecatedRequest' from JSON`,
   );
 }

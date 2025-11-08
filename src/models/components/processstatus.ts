@@ -29,7 +29,6 @@ export const ProcessStatus$inboundSchema: z.ZodType<
     z.nativeEnum(ProcessStatus),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const ProcessStatus$outboundSchema: z.ZodType<
   ProcessStatus,
@@ -39,14 +38,3 @@ export const ProcessStatus$outboundSchema: z.ZodType<
   z.nativeEnum(ProcessStatus),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProcessStatus$ {
-  /** @deprecated use `ProcessStatus$inboundSchema` instead. */
-  export const inboundSchema = ProcessStatus$inboundSchema;
-  /** @deprecated use `ProcessStatus$outboundSchema` instead. */
-  export const outboundSchema = ProcessStatus$outboundSchema;
-}

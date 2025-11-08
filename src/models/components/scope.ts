@@ -37,21 +37,9 @@ export const Scope$inboundSchema: z.ZodType<Scope, z.ZodTypeDef, unknown> = z
     z.nativeEnum(Scope),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const Scope$outboundSchema: z.ZodType<Scope, z.ZodTypeDef, Scope> = z
   .union([
     z.nativeEnum(Scope),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Scope$ {
-  /** @deprecated use `Scope$inboundSchema` instead. */
-  export const inboundSchema = Scope$inboundSchema;
-  /** @deprecated use `Scope$outboundSchema` instead. */
-  export const outboundSchema = Scope$outboundSchema;
-}

@@ -3,20 +3,12 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AutoscalerConfig,
-  AutoscalerConfig$inboundSchema,
   AutoscalerConfig$Outbound,
   AutoscalerConfig$outboundSchema,
 } from "./autoscalerconfig.js";
-import {
-  NodeShape,
-  NodeShape$inboundSchema,
-  NodeShape$outboundSchema,
-} from "./nodeshape.js";
+import { NodeShape, NodeShape$outboundSchema } from "./nodeshape.js";
 
 export type CreateFleet = {
   nodeShape: NodeShape;
@@ -26,17 +18,6 @@ export type CreateFleet = {
    */
   name: string;
 };
-
-/** @internal */
-export const CreateFleet$inboundSchema: z.ZodType<
-  CreateFleet,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  nodeShape: NodeShape$inboundSchema,
-  autoscalerConfig: AutoscalerConfig$inboundSchema,
-  name: z.string(),
-});
 
 /** @internal */
 export type CreateFleet$Outbound = {
@@ -56,29 +37,6 @@ export const CreateFleet$outboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateFleet$ {
-  /** @deprecated use `CreateFleet$inboundSchema` instead. */
-  export const inboundSchema = CreateFleet$inboundSchema;
-  /** @deprecated use `CreateFleet$outboundSchema` instead. */
-  export const outboundSchema = CreateFleet$outboundSchema;
-  /** @deprecated use `CreateFleet$Outbound` instead. */
-  export type Outbound = CreateFleet$Outbound;
-}
-
 export function createFleetToJSON(createFleet: CreateFleet): string {
   return JSON.stringify(CreateFleet$outboundSchema.parse(createFleet));
-}
-
-export function createFleetFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateFleet, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateFleet$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFleet' from JSON`,
-  );
 }

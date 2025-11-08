@@ -4,18 +4,10 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  TransportType,
-  TransportType$inboundSchema,
-  TransportType$outboundSchema,
-} from "./transporttype.js";
+import { TransportType, TransportType$inboundSchema } from "./transporttype.js";
 
 export const ActiveConnectionInfoStatus = {
   Active: "active",
@@ -53,27 +45,6 @@ export const ActiveConnectionInfoStatus$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const ActiveConnectionInfoStatus$outboundSchema: z.ZodType<
-  ActiveConnectionInfoStatus,
-  z.ZodTypeDef,
-  ActiveConnectionInfoStatus
-> = z.union([
-  z.nativeEnum(ActiveConnectionInfoStatus),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActiveConnectionInfoStatus$ {
-  /** @deprecated use `ActiveConnectionInfoStatus$inboundSchema` instead. */
-  export const inboundSchema = ActiveConnectionInfoStatus$inboundSchema;
-  /** @deprecated use `ActiveConnectionInfoStatus$outboundSchema` instead. */
-  export const outboundSchema = ActiveConnectionInfoStatus$outboundSchema;
-}
-
-/** @internal */
 export const ActiveConnectionInfo$inboundSchema: z.ZodType<
   ActiveConnectionInfo,
   z.ZodTypeDef,
@@ -85,49 +56,6 @@ export const ActiveConnectionInfo$inboundSchema: z.ZodType<
   host: z.string(),
   roomId: z.string(),
 });
-
-/** @internal */
-export type ActiveConnectionInfo$Outbound = {
-  status: string;
-  transportType: string;
-  port: number;
-  host: string;
-  roomId: string;
-};
-
-/** @internal */
-export const ActiveConnectionInfo$outboundSchema: z.ZodType<
-  ActiveConnectionInfo$Outbound,
-  z.ZodTypeDef,
-  ActiveConnectionInfo
-> = z.object({
-  status: ActiveConnectionInfoStatus$outboundSchema,
-  transportType: TransportType$outboundSchema,
-  port: z.number(),
-  host: z.string(),
-  roomId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActiveConnectionInfo$ {
-  /** @deprecated use `ActiveConnectionInfo$inboundSchema` instead. */
-  export const inboundSchema = ActiveConnectionInfo$inboundSchema;
-  /** @deprecated use `ActiveConnectionInfo$outboundSchema` instead. */
-  export const outboundSchema = ActiveConnectionInfo$outboundSchema;
-  /** @deprecated use `ActiveConnectionInfo$Outbound` instead. */
-  export type Outbound = ActiveConnectionInfo$Outbound;
-}
-
-export function activeConnectionInfoToJSON(
-  activeConnectionInfo: ActiveConnectionInfo,
-): string {
-  return JSON.stringify(
-    ActiveConnectionInfo$outboundSchema.parse(activeConnectionInfo),
-  );
-}
 
 export function activeConnectionInfoFromJSON(
   jsonString: string,

@@ -3,18 +3,13 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AuthConfiguration,
-  AuthConfiguration$inboundSchema,
   AuthConfiguration$Outbound,
   AuthConfiguration$outboundSchema,
 } from "./authconfiguration.js";
 import {
   LoadBalancerConfig,
-  LoadBalancerConfig$inboundSchema,
   LoadBalancerConfig$Outbound,
   LoadBalancerConfig$outboundSchema,
 } from "./loadbalancerconfig.js";
@@ -30,17 +25,6 @@ export type CreateAppConfig = {
    */
   appName: string;
 };
-
-/** @internal */
-export const CreateAppConfig$inboundSchema: z.ZodType<
-  CreateAppConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  loadBalancer: LoadBalancerConfig$inboundSchema.optional(),
-  authConfiguration: AuthConfiguration$inboundSchema,
-  appName: z.string(),
-});
 
 /** @internal */
 export type CreateAppConfig$Outbound = {
@@ -60,31 +44,8 @@ export const CreateAppConfig$outboundSchema: z.ZodType<
   appName: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAppConfig$ {
-  /** @deprecated use `CreateAppConfig$inboundSchema` instead. */
-  export const inboundSchema = CreateAppConfig$inboundSchema;
-  /** @deprecated use `CreateAppConfig$outboundSchema` instead. */
-  export const outboundSchema = CreateAppConfig$outboundSchema;
-  /** @deprecated use `CreateAppConfig$Outbound` instead. */
-  export type Outbound = CreateAppConfig$Outbound;
-}
-
 export function createAppConfigToJSON(
   createAppConfig: CreateAppConfig,
 ): string {
   return JSON.stringify(CreateAppConfig$outboundSchema.parse(createAppConfig));
-}
-
-export function createAppConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateAppConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateAppConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateAppConfig' from JSON`,
-  );
 }

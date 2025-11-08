@@ -38,41 +38,6 @@ export const FleetRegion$inboundSchema: z.ZodType<
   scaleIncrementVcpus: z.number().int(),
 });
 
-/** @internal */
-export type FleetRegion$Outbound = {
-  cloudMinVcpusUpdatedAt: string;
-  cloudMinVcpus: number;
-  scaleIncrementVcpus: number;
-};
-
-/** @internal */
-export const FleetRegion$outboundSchema: z.ZodType<
-  FleetRegion$Outbound,
-  z.ZodTypeDef,
-  FleetRegion
-> = z.object({
-  cloudMinVcpusUpdatedAt: z.date().transform(v => v.toISOString()),
-  cloudMinVcpus: z.number().int(),
-  scaleIncrementVcpus: z.number().int(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FleetRegion$ {
-  /** @deprecated use `FleetRegion$inboundSchema` instead. */
-  export const inboundSchema = FleetRegion$inboundSchema;
-  /** @deprecated use `FleetRegion$outboundSchema` instead. */
-  export const outboundSchema = FleetRegion$outboundSchema;
-  /** @deprecated use `FleetRegion$Outbound` instead. */
-  export type Outbound = FleetRegion$Outbound;
-}
-
-export function fleetRegionToJSON(fleetRegion: FleetRegion): string {
-  return JSON.stringify(FleetRegion$outboundSchema.parse(fleetRegion));
-}
-
 export function fleetRegionFromJSON(
   jsonString: string,
 ): SafeParseResult<FleetRegion, SDKValidationError> {

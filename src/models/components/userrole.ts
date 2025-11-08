@@ -26,7 +26,6 @@ export const UserRole$inboundSchema: z.ZodType<
     z.nativeEnum(UserRole),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const UserRole$outboundSchema: z.ZodType<
   UserRole,
@@ -36,14 +35,3 @@ export const UserRole$outboundSchema: z.ZodType<
   z.nativeEnum(UserRole),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserRole$ {
-  /** @deprecated use `UserRole$inboundSchema` instead. */
-  export const inboundSchema = UserRole$inboundSchema;
-  /** @deprecated use `UserRole$outboundSchema` instead. */
-  export const outboundSchema = UserRole$outboundSchema;
-}

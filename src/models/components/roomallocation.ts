@@ -39,43 +39,6 @@ export const RoomAllocation$inboundSchema: z.ZodType<
   roomAllocationId: z.string(),
 });
 
-/** @internal */
-export type RoomAllocation$Outbound = {
-  unscheduledAt: string | null;
-  scheduledAt: string;
-  processId: string;
-  roomAllocationId: string;
-};
-
-/** @internal */
-export const RoomAllocation$outboundSchema: z.ZodType<
-  RoomAllocation$Outbound,
-  z.ZodTypeDef,
-  RoomAllocation
-> = z.object({
-  unscheduledAt: z.nullable(z.date().transform(v => v.toISOString())),
-  scheduledAt: z.date().transform(v => v.toISOString()),
-  processId: z.string(),
-  roomAllocationId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RoomAllocation$ {
-  /** @deprecated use `RoomAllocation$inboundSchema` instead. */
-  export const inboundSchema = RoomAllocation$inboundSchema;
-  /** @deprecated use `RoomAllocation$outboundSchema` instead. */
-  export const outboundSchema = RoomAllocation$outboundSchema;
-  /** @deprecated use `RoomAllocation$Outbound` instead. */
-  export type Outbound = RoomAllocation$Outbound;
-}
-
-export function roomAllocationToJSON(roomAllocation: RoomAllocation): string {
-  return JSON.stringify(RoomAllocation$outboundSchema.parse(roomAllocation));
-}
-
 export function roomAllocationFromJSON(
   jsonString: string,
 ): SafeParseResult<RoomAllocation, SDKValidationError> {

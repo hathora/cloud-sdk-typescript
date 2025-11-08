@@ -22,39 +22,6 @@ export const BuildPart$inboundSchema: z.ZodType<
   partNumber: z.number(),
 });
 
-/** @internal */
-export type BuildPart$Outbound = {
-  putRequestUrl: string;
-  partNumber: number;
-};
-
-/** @internal */
-export const BuildPart$outboundSchema: z.ZodType<
-  BuildPart$Outbound,
-  z.ZodTypeDef,
-  BuildPart
-> = z.object({
-  putRequestUrl: z.string(),
-  partNumber: z.number(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuildPart$ {
-  /** @deprecated use `BuildPart$inboundSchema` instead. */
-  export const inboundSchema = BuildPart$inboundSchema;
-  /** @deprecated use `BuildPart$outboundSchema` instead. */
-  export const outboundSchema = BuildPart$outboundSchema;
-  /** @deprecated use `BuildPart$Outbound` instead. */
-  export type Outbound = BuildPart$Outbound;
-}
-
-export function buildPartToJSON(buildPart: BuildPart): string {
-  return JSON.stringify(BuildPart$outboundSchema.parse(buildPart));
-}
-
 export function buildPartFromJSON(
   jsonString: string,
 ): SafeParseResult<BuildPart, SDKValidationError> {

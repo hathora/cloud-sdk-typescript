@@ -3,20 +3,12 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AutoscalerConfig,
-  AutoscalerConfig$inboundSchema,
   AutoscalerConfig$Outbound,
   AutoscalerConfig$outboundSchema,
 } from "./autoscalerconfig.js";
-import {
-  NodeShape,
-  NodeShape$inboundSchema,
-  NodeShape$outboundSchema,
-} from "./nodeshape.js";
+import { NodeShape, NodeShape$outboundSchema } from "./nodeshape.js";
 
 export type UpdateFleet = {
   nodeShape?: NodeShape | undefined;
@@ -26,17 +18,6 @@ export type UpdateFleet = {
    */
   name?: string | undefined;
 };
-
-/** @internal */
-export const UpdateFleet$inboundSchema: z.ZodType<
-  UpdateFleet,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  nodeShape: NodeShape$inboundSchema.optional(),
-  autoscalerConfig: AutoscalerConfig$inboundSchema,
-  name: z.string().optional(),
-});
 
 /** @internal */
 export type UpdateFleet$Outbound = {
@@ -56,29 +37,6 @@ export const UpdateFleet$outboundSchema: z.ZodType<
   name: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFleet$ {
-  /** @deprecated use `UpdateFleet$inboundSchema` instead. */
-  export const inboundSchema = UpdateFleet$inboundSchema;
-  /** @deprecated use `UpdateFleet$outboundSchema` instead. */
-  export const outboundSchema = UpdateFleet$outboundSchema;
-  /** @deprecated use `UpdateFleet$Outbound` instead. */
-  export type Outbound = UpdateFleet$Outbound;
-}
-
 export function updateFleetToJSON(updateFleet: UpdateFleet): string {
   return JSON.stringify(UpdateFleet$outboundSchema.parse(updateFleet));
-}
-
-export function updateFleetFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFleet, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFleet$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFleet' from JSON`,
-  );
 }

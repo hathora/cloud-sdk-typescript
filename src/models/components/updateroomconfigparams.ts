@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateRoomConfigParams = {
   /**
@@ -13,15 +10,6 @@ export type UpdateRoomConfigParams = {
    */
   roomConfig: string;
 };
-
-/** @internal */
-export const UpdateRoomConfigParams$inboundSchema: z.ZodType<
-  UpdateRoomConfigParams,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  roomConfig: z.string(),
-});
 
 /** @internal */
 export type UpdateRoomConfigParams$Outbound = {
@@ -37,33 +25,10 @@ export const UpdateRoomConfigParams$outboundSchema: z.ZodType<
   roomConfig: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRoomConfigParams$ {
-  /** @deprecated use `UpdateRoomConfigParams$inboundSchema` instead. */
-  export const inboundSchema = UpdateRoomConfigParams$inboundSchema;
-  /** @deprecated use `UpdateRoomConfigParams$outboundSchema` instead. */
-  export const outboundSchema = UpdateRoomConfigParams$outboundSchema;
-  /** @deprecated use `UpdateRoomConfigParams$Outbound` instead. */
-  export type Outbound = UpdateRoomConfigParams$Outbound;
-}
-
 export function updateRoomConfigParamsToJSON(
   updateRoomConfigParams: UpdateRoomConfigParams,
 ): string {
   return JSON.stringify(
     UpdateRoomConfigParams$outboundSchema.parse(updateRoomConfigParams),
-  );
-}
-
-export function updateRoomConfigParamsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateRoomConfigParams, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateRoomConfigParams$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateRoomConfigParams' from JSON`,
   );
 }

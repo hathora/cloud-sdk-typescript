@@ -3,22 +3,10 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetNodeRequest = {
   nodeId: string;
 };
-
-/** @internal */
-export const GetNodeRequest$inboundSchema: z.ZodType<
-  GetNodeRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  nodeId: z.string(),
-});
 
 /** @internal */
 export type GetNodeRequest$Outbound = {
@@ -34,29 +22,6 @@ export const GetNodeRequest$outboundSchema: z.ZodType<
   nodeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetNodeRequest$ {
-  /** @deprecated use `GetNodeRequest$inboundSchema` instead. */
-  export const inboundSchema = GetNodeRequest$inboundSchema;
-  /** @deprecated use `GetNodeRequest$outboundSchema` instead. */
-  export const outboundSchema = GetNodeRequest$outboundSchema;
-  /** @deprecated use `GetNodeRequest$Outbound` instead. */
-  export type Outbound = GetNodeRequest$Outbound;
-}
-
 export function getNodeRequestToJSON(getNodeRequest: GetNodeRequest): string {
   return JSON.stringify(GetNodeRequest$outboundSchema.parse(getNodeRequest));
-}
-
-export function getNodeRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetNodeRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetNodeRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetNodeRequest' from JSON`,
-  );
 }

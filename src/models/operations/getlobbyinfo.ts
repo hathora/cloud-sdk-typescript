@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetLobbyInfoGlobals = {
   appId?: string | undefined;
@@ -15,70 +12,6 @@ export type GetLobbyInfoRequest = {
   appId?: string | undefined;
   roomId: string;
 };
-
-/** @internal */
-export const GetLobbyInfoGlobals$inboundSchema: z.ZodType<
-  GetLobbyInfoGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetLobbyInfoGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetLobbyInfoGlobals$outboundSchema: z.ZodType<
-  GetLobbyInfoGlobals$Outbound,
-  z.ZodTypeDef,
-  GetLobbyInfoGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLobbyInfoGlobals$ {
-  /** @deprecated use `GetLobbyInfoGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetLobbyInfoGlobals$inboundSchema;
-  /** @deprecated use `GetLobbyInfoGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetLobbyInfoGlobals$outboundSchema;
-  /** @deprecated use `GetLobbyInfoGlobals$Outbound` instead. */
-  export type Outbound = GetLobbyInfoGlobals$Outbound;
-}
-
-export function getLobbyInfoGlobalsToJSON(
-  getLobbyInfoGlobals: GetLobbyInfoGlobals,
-): string {
-  return JSON.stringify(
-    GetLobbyInfoGlobals$outboundSchema.parse(getLobbyInfoGlobals),
-  );
-}
-
-export function getLobbyInfoGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetLobbyInfoGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetLobbyInfoGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetLobbyInfoGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetLobbyInfoRequest$inboundSchema: z.ZodType<
-  GetLobbyInfoRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  roomId: z.string(),
-});
 
 /** @internal */
 export type GetLobbyInfoRequest$Outbound = {
@@ -96,33 +29,10 @@ export const GetLobbyInfoRequest$outboundSchema: z.ZodType<
   roomId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLobbyInfoRequest$ {
-  /** @deprecated use `GetLobbyInfoRequest$inboundSchema` instead. */
-  export const inboundSchema = GetLobbyInfoRequest$inboundSchema;
-  /** @deprecated use `GetLobbyInfoRequest$outboundSchema` instead. */
-  export const outboundSchema = GetLobbyInfoRequest$outboundSchema;
-  /** @deprecated use `GetLobbyInfoRequest$Outbound` instead. */
-  export type Outbound = GetLobbyInfoRequest$Outbound;
-}
-
 export function getLobbyInfoRequestToJSON(
   getLobbyInfoRequest: GetLobbyInfoRequest,
 ): string {
   return JSON.stringify(
     GetLobbyInfoRequest$outboundSchema.parse(getLobbyInfoRequest),
-  );
-}
-
-export function getLobbyInfoRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetLobbyInfoRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetLobbyInfoRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetLobbyInfoRequest' from JSON`,
   );
 }

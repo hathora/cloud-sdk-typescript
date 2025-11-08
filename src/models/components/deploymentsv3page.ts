@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  DeploymentV3,
-  DeploymentV3$inboundSchema,
-  DeploymentV3$Outbound,
-  DeploymentV3$outboundSchema,
-} from "./deploymentv3.js";
+import { DeploymentV3, DeploymentV3$inboundSchema } from "./deploymentv3.js";
 
 export type DeploymentsV3Page = {
   deployments: Array<DeploymentV3>;
@@ -25,41 +20,6 @@ export const DeploymentsV3Page$inboundSchema: z.ZodType<
 > = z.object({
   deployments: z.array(DeploymentV3$inboundSchema),
 });
-
-/** @internal */
-export type DeploymentsV3Page$Outbound = {
-  deployments: Array<DeploymentV3$Outbound>;
-};
-
-/** @internal */
-export const DeploymentsV3Page$outboundSchema: z.ZodType<
-  DeploymentsV3Page$Outbound,
-  z.ZodTypeDef,
-  DeploymentsV3Page
-> = z.object({
-  deployments: z.array(DeploymentV3$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeploymentsV3Page$ {
-  /** @deprecated use `DeploymentsV3Page$inboundSchema` instead. */
-  export const inboundSchema = DeploymentsV3Page$inboundSchema;
-  /** @deprecated use `DeploymentsV3Page$outboundSchema` instead. */
-  export const outboundSchema = DeploymentsV3Page$outboundSchema;
-  /** @deprecated use `DeploymentsV3Page$Outbound` instead. */
-  export type Outbound = DeploymentsV3Page$Outbound;
-}
-
-export function deploymentsV3PageToJSON(
-  deploymentsV3Page: DeploymentsV3Page,
-): string {
-  return JSON.stringify(
-    DeploymentsV3Page$outboundSchema.parse(deploymentsV3Page),
-  );
-}
 
 export function deploymentsV3PageFromJSON(
   jsonString: string,

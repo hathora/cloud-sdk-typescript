@@ -4,24 +4,11 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ContainerPort,
-  ContainerPort$inboundSchema,
-  ContainerPort$Outbound,
-  ContainerPort$outboundSchema,
-} from "./containerport.js";
-import {
-  PlanName,
-  PlanName$inboundSchema,
-  PlanName$outboundSchema,
-} from "./planname.js";
+import { ContainerPort, ContainerPort$inboundSchema } from "./containerport.js";
+import { PlanName, PlanName$inboundSchema } from "./planname.js";
 
 export type Env = {
   value: string;
@@ -126,36 +113,6 @@ export const Env$inboundSchema: z.ZodType<Env, z.ZodTypeDef, unknown> = z
     name: z.string(),
   });
 
-/** @internal */
-export type Env$Outbound = {
-  value: string;
-  name: string;
-};
-
-/** @internal */
-export const Env$outboundSchema: z.ZodType<Env$Outbound, z.ZodTypeDef, Env> = z
-  .object({
-    value: z.string(),
-    name: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Env$ {
-  /** @deprecated use `Env$inboundSchema` instead. */
-  export const inboundSchema = Env$inboundSchema;
-  /** @deprecated use `Env$outboundSchema` instead. */
-  export const outboundSchema = Env$outboundSchema;
-  /** @deprecated use `Env$Outbound` instead. */
-  export type Outbound = Env$Outbound;
-}
-
-export function envToJSON(env: Env): string {
-  return JSON.stringify(Env$outboundSchema.parse(env));
-}
-
 export function envFromJSON(
   jsonString: string,
 ): SafeParseResult<Env, SDKValidationError> {
@@ -176,27 +133,6 @@ export const DeploymentV1TransportType$inboundSchema: z.ZodType<
     z.nativeEnum(DeploymentV1TransportType),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const DeploymentV1TransportType$outboundSchema: z.ZodType<
-  DeploymentV1TransportType,
-  z.ZodTypeDef,
-  DeploymentV1TransportType
-> = z.union([
-  z.nativeEnum(DeploymentV1TransportType),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeploymentV1TransportType$ {
-  /** @deprecated use `DeploymentV1TransportType$inboundSchema` instead. */
-  export const inboundSchema = DeploymentV1TransportType$inboundSchema;
-  /** @deprecated use `DeploymentV1TransportType$outboundSchema` instead. */
-  export const outboundSchema = DeploymentV1TransportType$outboundSchema;
-}
 
 /** @internal */
 export const DeploymentV1$inboundSchema: z.ZodType<
@@ -220,65 +156,6 @@ export const DeploymentV1$inboundSchema: z.ZodType<
   buildId: z.number().int(),
   appId: z.string(),
 });
-
-/** @internal */
-export type DeploymentV1$Outbound = {
-  idleTimeoutEnabled: boolean;
-  env: Array<Env$Outbound>;
-  roomsPerProcess: number;
-  planName: string;
-  additionalContainerPorts: Array<ContainerPort$Outbound>;
-  defaultContainerPort: ContainerPort$Outbound;
-  transportType: string;
-  containerPort: number;
-  createdAt: string;
-  createdBy: string;
-  requestedMemoryMB: number;
-  requestedCPU: number;
-  deploymentId: number;
-  buildId: number;
-  appId: string;
-};
-
-/** @internal */
-export const DeploymentV1$outboundSchema: z.ZodType<
-  DeploymentV1$Outbound,
-  z.ZodTypeDef,
-  DeploymentV1
-> = z.object({
-  idleTimeoutEnabled: z.boolean().default(true),
-  env: z.array(z.lazy(() => Env$outboundSchema)),
-  roomsPerProcess: z.number().int(),
-  planName: PlanName$outboundSchema,
-  additionalContainerPorts: z.array(ContainerPort$outboundSchema),
-  defaultContainerPort: ContainerPort$outboundSchema,
-  transportType: DeploymentV1TransportType$outboundSchema,
-  containerPort: z.number(),
-  createdAt: z.date().transform(v => v.toISOString()),
-  createdBy: z.string(),
-  requestedMemoryMB: z.number().int(),
-  requestedCPU: z.number(),
-  deploymentId: z.number().int(),
-  buildId: z.number().int(),
-  appId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeploymentV1$ {
-  /** @deprecated use `DeploymentV1$inboundSchema` instead. */
-  export const inboundSchema = DeploymentV1$inboundSchema;
-  /** @deprecated use `DeploymentV1$outboundSchema` instead. */
-  export const outboundSchema = DeploymentV1$outboundSchema;
-  /** @deprecated use `DeploymentV1$Outbound` instead. */
-  export type Outbound = DeploymentV1$Outbound;
-}
-
-export function deploymentV1ToJSON(deploymentV1: DeploymentV1): string {
-  return JSON.stringify(DeploymentV1$outboundSchema.parse(deploymentV1));
-}
 
 export function deploymentV1FromJSON(
   jsonString: string,

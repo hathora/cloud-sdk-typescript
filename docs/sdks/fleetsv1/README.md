@@ -11,10 +11,10 @@ Operations to manage and view a [fleet](https://hathora.dev/docs/concepts/hathor
 * [createFleetDeprecated](#createfleetdeprecated) - CreateFleetDeprecated
 * [getFleetDeprecated](#getfleetdeprecated) - GetFleetDeprecated
 * [updateFleetDeprecated](#updatefleetdeprecated) - UpdateFleetDeprecated
-* [getFleetRegion](#getfleetregion) - GetFleetRegion
-* [updateFleetRegion](#updatefleetregion) - UpdateFleetRegion
-* [getFleetMetrics](#getfleetmetrics) - GetFleetMetrics
-* [getFleetRegionMetrics](#getfleetregionmetrics) - GetFleetRegionMetrics
+* [getFleetRegionDeprecated](#getfleetregiondeprecated) - GetFleetRegionDeprecated
+* [updateFleetRegionDeprecated](#updatefleetregiondeprecated) - UpdateFleetRegionDeprecated
+* [getFleetMetricsDeprecated](#getfleetmetricsdeprecated) - GetFleetMetricsDeprecated
+* [getFleetRegionMetricsDeprecated](#getfleetregionmetricsdeprecated) - GetFleetRegionMetricsDeprecated
 
 ## getFleetsDeprecated
 
@@ -334,13 +334,13 @@ run();
 | errors.ApiError         | 500                     | application/json        |
 | errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
-## getFleetRegion
+## getFleetRegionDeprecated
 
 Gets the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetFleetRegion" method="get" path="/fleets/v1/fleets/{fleetId}/regions/{region}" -->
+<!-- UsageSnippet language="typescript" operationID="GetFleetRegionDeprecated" method="get" path="/fleets/v1/fleets/{fleetId}/regions/{region}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -350,7 +350,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.fleetsV1.getFleetRegion("<id>", "Singapore");
+  const result = await hathoraCloud.fleetsV1.getFleetRegionDeprecated("<id>", "Sao_Paulo");
 
   console.log(result);
 }
@@ -364,7 +364,7 @@ The standalone function version of this method:
 
 ```typescript
 import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
-import { fleetsV1GetFleetRegion } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1GetFleetRegion.js";
+import { fleetsV1GetFleetRegionDeprecated } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1GetFleetRegionDeprecated.js";
 
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -374,12 +374,12 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await fleetsV1GetFleetRegion(hathoraCloud, "<id>", "Singapore");
+  const res = await fleetsV1GetFleetRegionDeprecated(hathoraCloud, "<id>", "Sao_Paulo");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("fleetsV1GetFleetRegion failed:", res.error);
+    console.log("fleetsV1GetFleetRegionDeprecated failed:", res.error);
   }
 }
 
@@ -408,13 +408,13 @@ run();
 | errors.ApiError         | 401, 404, 408, 422, 429 | application/json        |
 | errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
-## updateFleetRegion
+## updateFleetRegionDeprecated
 
 Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="UpdateFleetRegion" method="put" path="/fleets/v1/fleets/{fleetId}/regions/{region}" -->
+<!-- UsageSnippet language="typescript" operationID="UpdateFleetRegionDeprecated" method="put" path="/fleets/v1/fleets/{fleetId}/regions/{region}" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -424,8 +424,8 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  await hathoraCloud.fleetsV1.updateFleetRegion("<id>", "Chicago", {
-    cloudMinVcpus: 503995,
+  await hathoraCloud.fleetsV1.updateFleetRegionDeprecated("<id>", "Johannesburg", {
+    cloudMinVcpus: 122781,
   });
 
 
@@ -440,7 +440,7 @@ The standalone function version of this method:
 
 ```typescript
 import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
-import { fleetsV1UpdateFleetRegion } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1UpdateFleetRegion.js";
+import { fleetsV1UpdateFleetRegionDeprecated } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1UpdateFleetRegionDeprecated.js";
 
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -450,14 +450,14 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await fleetsV1UpdateFleetRegion(hathoraCloud, "<id>", "Chicago", {
-    cloudMinVcpus: 503995,
+  const res = await fleetsV1UpdateFleetRegionDeprecated(hathoraCloud, "<id>", "Johannesburg", {
+    cloudMinVcpus: 122781,
   });
   if (res.ok) {
     const { value: result } = res;
     
   } else {
-    console.log("fleetsV1UpdateFleetRegion failed:", res.error);
+    console.log("fleetsV1UpdateFleetRegionDeprecated failed:", res.error);
   }
 }
 
@@ -488,13 +488,13 @@ run();
 | errors.ApiError         | 500                     | application/json        |
 | errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
-## getFleetMetrics
+## getFleetMetricsDeprecated
 
 Gets aggregate metrics for a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetFleetMetrics" method="get" path="/fleets/v1/fleets/{fleetId}/metrics" -->
+<!-- UsageSnippet language="typescript" operationID="GetFleetMetricsDeprecated" method="get" path="/fleets/v1/fleets/{fleetId}/metrics" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -504,7 +504,7 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.fleetsV1.getFleetMetrics({
+  const result = await hathoraCloud.fleetsV1.getFleetMetricsDeprecated({
     fleetId: "<id>",
   });
 
@@ -520,7 +520,7 @@ The standalone function version of this method:
 
 ```typescript
 import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
-import { fleetsV1GetFleetMetrics } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1GetFleetMetrics.js";
+import { fleetsV1GetFleetMetricsDeprecated } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1GetFleetMetricsDeprecated.js";
 
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -530,14 +530,14 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await fleetsV1GetFleetMetrics(hathoraCloud, {
+  const res = await fleetsV1GetFleetMetricsDeprecated(hathoraCloud, {
     fleetId: "<id>",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("fleetsV1GetFleetMetrics failed:", res.error);
+    console.log("fleetsV1GetFleetMetricsDeprecated failed:", res.error);
   }
 }
 
@@ -548,7 +548,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetFleetMetricsRequest](../../models/operations/getfleetmetricsrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetFleetMetricsDeprecatedRequest](../../models/operations/getfleetmetricsdeprecatedrequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -565,13 +565,13 @@ run();
 | errors.ApiError         | 500                     | application/json        |
 | errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
-## getFleetRegionMetrics
+## getFleetRegionMetricsDeprecated
 
 Gets metrics for a region in a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetFleetRegionMetrics" method="get" path="/fleets/v1/fleets/{fleetId}/regions/{region}/metrics" -->
+<!-- UsageSnippet language="typescript" operationID="GetFleetRegionMetricsDeprecated" method="get" path="/fleets/v1/fleets/{fleetId}/regions/{region}/metrics" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -581,9 +581,9 @@ const hathoraCloud = new HathoraCloud({
 });
 
 async function run() {
-  const result = await hathoraCloud.fleetsV1.getFleetRegionMetrics({
+  const result = await hathoraCloud.fleetsV1.getFleetRegionMetricsDeprecated({
     fleetId: "<id>",
-    region: "Chicago",
+    region: "Dubai",
   });
 
   console.log(result);
@@ -598,7 +598,7 @@ The standalone function version of this method:
 
 ```typescript
 import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
-import { fleetsV1GetFleetRegionMetrics } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1GetFleetRegionMetrics.js";
+import { fleetsV1GetFleetRegionMetricsDeprecated } from "@hathora/cloud-sdk-typescript/funcs/fleetsV1GetFleetRegionMetricsDeprecated.js";
 
 // Use `HathoraCloudCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -608,15 +608,15 @@ const hathoraCloud = new HathoraCloudCore({
 });
 
 async function run() {
-  const res = await fleetsV1GetFleetRegionMetrics(hathoraCloud, {
+  const res = await fleetsV1GetFleetRegionMetricsDeprecated(hathoraCloud, {
     fleetId: "<id>",
-    region: "Chicago",
+    region: "Dubai",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("fleetsV1GetFleetRegionMetrics failed:", res.error);
+    console.log("fleetsV1GetFleetRegionMetricsDeprecated failed:", res.error);
   }
 }
 
@@ -627,7 +627,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetFleetRegionMetricsRequest](../../models/operations/getfleetregionmetricsrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetFleetRegionMetricsDeprecatedRequest](../../models/operations/getfleetregionmetricsdeprecatedrequest.md)                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

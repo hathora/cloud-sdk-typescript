@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateFleetGlobals = {
   orgId?: string | undefined;
@@ -17,74 +14,6 @@ export type CreateFleetRequest = {
   orgId?: string | undefined;
   createFleetV2: components.CreateFleetV2;
 };
-
-/** @internal */
-export const CreateFleetGlobals$inboundSchema: z.ZodType<
-  CreateFleetGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type CreateFleetGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const CreateFleetGlobals$outboundSchema: z.ZodType<
-  CreateFleetGlobals$Outbound,
-  z.ZodTypeDef,
-  CreateFleetGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateFleetGlobals$ {
-  /** @deprecated use `CreateFleetGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateFleetGlobals$inboundSchema;
-  /** @deprecated use `CreateFleetGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateFleetGlobals$outboundSchema;
-  /** @deprecated use `CreateFleetGlobals$Outbound` instead. */
-  export type Outbound = CreateFleetGlobals$Outbound;
-}
-
-export function createFleetGlobalsToJSON(
-  createFleetGlobals: CreateFleetGlobals,
-): string {
-  return JSON.stringify(
-    CreateFleetGlobals$outboundSchema.parse(createFleetGlobals),
-  );
-}
-
-export function createFleetGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateFleetGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateFleetGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFleetGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateFleetRequest$inboundSchema: z.ZodType<
-  CreateFleetRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-  CreateFleetV2: components.CreateFleetV2$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateFleetV2": "createFleetV2",
-  });
-});
 
 /** @internal */
 export type CreateFleetRequest$Outbound = {
@@ -106,33 +35,10 @@ export const CreateFleetRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateFleetRequest$ {
-  /** @deprecated use `CreateFleetRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateFleetRequest$inboundSchema;
-  /** @deprecated use `CreateFleetRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateFleetRequest$outboundSchema;
-  /** @deprecated use `CreateFleetRequest$Outbound` instead. */
-  export type Outbound = CreateFleetRequest$Outbound;
-}
-
 export function createFleetRequestToJSON(
   createFleetRequest: CreateFleetRequest,
 ): string {
   return JSON.stringify(
     CreateFleetRequest$outboundSchema.parse(createFleetRequest),
-  );
-}
-
-export function createFleetRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateFleetRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateFleetRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFleetRequest' from JSON`,
   );
 }

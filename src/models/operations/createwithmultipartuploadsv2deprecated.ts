@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateWithMultipartUploadsV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -17,89 +14,6 @@ export type CreateWithMultipartUploadsV2DeprecatedRequest = {
   appId?: string | undefined;
   createMultipartBuildParams: components.CreateMultipartBuildParams;
 };
-
-/** @internal */
-export const CreateWithMultipartUploadsV2DeprecatedGlobals$inboundSchema:
-  z.ZodType<
-    CreateWithMultipartUploadsV2DeprecatedGlobals,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    appId: z.string().optional(),
-  });
-
-/** @internal */
-export type CreateWithMultipartUploadsV2DeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const CreateWithMultipartUploadsV2DeprecatedGlobals$outboundSchema:
-  z.ZodType<
-    CreateWithMultipartUploadsV2DeprecatedGlobals$Outbound,
-    z.ZodTypeDef,
-    CreateWithMultipartUploadsV2DeprecatedGlobals
-  > = z.object({
-    appId: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateWithMultipartUploadsV2DeprecatedGlobals$ {
-  /** @deprecated use `CreateWithMultipartUploadsV2DeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateWithMultipartUploadsV2DeprecatedGlobals$inboundSchema;
-  /** @deprecated use `CreateWithMultipartUploadsV2DeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateWithMultipartUploadsV2DeprecatedGlobals$outboundSchema;
-  /** @deprecated use `CreateWithMultipartUploadsV2DeprecatedGlobals$Outbound` instead. */
-  export type Outbound = CreateWithMultipartUploadsV2DeprecatedGlobals$Outbound;
-}
-
-export function createWithMultipartUploadsV2DeprecatedGlobalsToJSON(
-  createWithMultipartUploadsV2DeprecatedGlobals:
-    CreateWithMultipartUploadsV2DeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    CreateWithMultipartUploadsV2DeprecatedGlobals$outboundSchema.parse(
-      createWithMultipartUploadsV2DeprecatedGlobals,
-    ),
-  );
-}
-
-export function createWithMultipartUploadsV2DeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateWithMultipartUploadsV2DeprecatedGlobals,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateWithMultipartUploadsV2DeprecatedGlobals$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateWithMultipartUploadsV2DeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateWithMultipartUploadsV2DeprecatedRequest$inboundSchema:
-  z.ZodType<
-    CreateWithMultipartUploadsV2DeprecatedRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    appId: z.string().optional(),
-    CreateMultipartBuildParams:
-      components.CreateMultipartBuildParams$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "CreateMultipartBuildParams": "createMultipartBuildParams",
-    });
-  });
 
 /** @internal */
 export type CreateWithMultipartUploadsV2DeprecatedRequest$Outbound = {
@@ -123,21 +37,6 @@ export const CreateWithMultipartUploadsV2DeprecatedRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateWithMultipartUploadsV2DeprecatedRequest$ {
-  /** @deprecated use `CreateWithMultipartUploadsV2DeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateWithMultipartUploadsV2DeprecatedRequest$inboundSchema;
-  /** @deprecated use `CreateWithMultipartUploadsV2DeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateWithMultipartUploadsV2DeprecatedRequest$outboundSchema;
-  /** @deprecated use `CreateWithMultipartUploadsV2DeprecatedRequest$Outbound` instead. */
-  export type Outbound = CreateWithMultipartUploadsV2DeprecatedRequest$Outbound;
-}
-
 export function createWithMultipartUploadsV2DeprecatedRequestToJSON(
   createWithMultipartUploadsV2DeprecatedRequest:
     CreateWithMultipartUploadsV2DeprecatedRequest,
@@ -146,21 +45,5 @@ export function createWithMultipartUploadsV2DeprecatedRequestToJSON(
     CreateWithMultipartUploadsV2DeprecatedRequest$outboundSchema.parse(
       createWithMultipartUploadsV2DeprecatedRequest,
     ),
-  );
-}
-
-export function createWithMultipartUploadsV2DeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateWithMultipartUploadsV2DeprecatedRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateWithMultipartUploadsV2DeprecatedRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateWithMultipartUploadsV2DeprecatedRequest' from JSON`,
   );
 }

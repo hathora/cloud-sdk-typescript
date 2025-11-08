@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetRoomInfoGlobals = {
   appId?: string | undefined;
@@ -15,70 +12,6 @@ export type GetRoomInfoRequest = {
   appId?: string | undefined;
   roomId: string;
 };
-
-/** @internal */
-export const GetRoomInfoGlobals$inboundSchema: z.ZodType<
-  GetRoomInfoGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetRoomInfoGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetRoomInfoGlobals$outboundSchema: z.ZodType<
-  GetRoomInfoGlobals$Outbound,
-  z.ZodTypeDef,
-  GetRoomInfoGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRoomInfoGlobals$ {
-  /** @deprecated use `GetRoomInfoGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetRoomInfoGlobals$inboundSchema;
-  /** @deprecated use `GetRoomInfoGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetRoomInfoGlobals$outboundSchema;
-  /** @deprecated use `GetRoomInfoGlobals$Outbound` instead. */
-  export type Outbound = GetRoomInfoGlobals$Outbound;
-}
-
-export function getRoomInfoGlobalsToJSON(
-  getRoomInfoGlobals: GetRoomInfoGlobals,
-): string {
-  return JSON.stringify(
-    GetRoomInfoGlobals$outboundSchema.parse(getRoomInfoGlobals),
-  );
-}
-
-export function getRoomInfoGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetRoomInfoGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetRoomInfoGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRoomInfoGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetRoomInfoRequest$inboundSchema: z.ZodType<
-  GetRoomInfoRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  roomId: z.string(),
-});
 
 /** @internal */
 export type GetRoomInfoRequest$Outbound = {
@@ -96,33 +29,10 @@ export const GetRoomInfoRequest$outboundSchema: z.ZodType<
   roomId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRoomInfoRequest$ {
-  /** @deprecated use `GetRoomInfoRequest$inboundSchema` instead. */
-  export const inboundSchema = GetRoomInfoRequest$inboundSchema;
-  /** @deprecated use `GetRoomInfoRequest$outboundSchema` instead. */
-  export const outboundSchema = GetRoomInfoRequest$outboundSchema;
-  /** @deprecated use `GetRoomInfoRequest$Outbound` instead. */
-  export type Outbound = GetRoomInfoRequest$Outbound;
-}
-
 export function getRoomInfoRequestToJSON(
   getRoomInfoRequest: GetRoomInfoRequest,
 ): string {
   return JSON.stringify(
     GetRoomInfoRequest$outboundSchema.parse(getRoomInfoRequest),
-  );
-}
-
-export function getRoomInfoRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetRoomInfoRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetRoomInfoRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRoomInfoRequest' from JSON`,
   );
 }

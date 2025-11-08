@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GoogleIdTokenObject = {
   /**
@@ -13,15 +10,6 @@ export type GoogleIdTokenObject = {
    */
   idToken: string;
 };
-
-/** @internal */
-export const GoogleIdTokenObject$inboundSchema: z.ZodType<
-  GoogleIdTokenObject,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idToken: z.string(),
-});
 
 /** @internal */
 export type GoogleIdTokenObject$Outbound = {
@@ -37,33 +25,10 @@ export const GoogleIdTokenObject$outboundSchema: z.ZodType<
   idToken: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GoogleIdTokenObject$ {
-  /** @deprecated use `GoogleIdTokenObject$inboundSchema` instead. */
-  export const inboundSchema = GoogleIdTokenObject$inboundSchema;
-  /** @deprecated use `GoogleIdTokenObject$outboundSchema` instead. */
-  export const outboundSchema = GoogleIdTokenObject$outboundSchema;
-  /** @deprecated use `GoogleIdTokenObject$Outbound` instead. */
-  export type Outbound = GoogleIdTokenObject$Outbound;
-}
-
 export function googleIdTokenObjectToJSON(
   googleIdTokenObject: GoogleIdTokenObject,
 ): string {
   return JSON.stringify(
     GoogleIdTokenObject$outboundSchema.parse(googleIdTokenObject),
-  );
-}
-
-export function googleIdTokenObjectFromJSON(
-  jsonString: string,
-): SafeParseResult<GoogleIdTokenObject, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GoogleIdTokenObject$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GoogleIdTokenObject' from JSON`,
   );
 }

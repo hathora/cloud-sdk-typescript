@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RunBuildDeprecatedGlobals = {
   appId?: string | undefined;
@@ -27,72 +24,6 @@ export type RunBuildDeprecatedRequest = {
   buildId: number;
   requestBody: RunBuildDeprecatedRequestBody;
 };
-
-/** @internal */
-export const RunBuildDeprecatedGlobals$inboundSchema: z.ZodType<
-  RunBuildDeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type RunBuildDeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const RunBuildDeprecatedGlobals$outboundSchema: z.ZodType<
-  RunBuildDeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  RunBuildDeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RunBuildDeprecatedGlobals$ {
-  /** @deprecated use `RunBuildDeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = RunBuildDeprecatedGlobals$inboundSchema;
-  /** @deprecated use `RunBuildDeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema = RunBuildDeprecatedGlobals$outboundSchema;
-  /** @deprecated use `RunBuildDeprecatedGlobals$Outbound` instead. */
-  export type Outbound = RunBuildDeprecatedGlobals$Outbound;
-}
-
-export function runBuildDeprecatedGlobalsToJSON(
-  runBuildDeprecatedGlobals: RunBuildDeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    RunBuildDeprecatedGlobals$outboundSchema.parse(runBuildDeprecatedGlobals),
-  );
-}
-
-export function runBuildDeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<RunBuildDeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RunBuildDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RunBuildDeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
-  .object({
-    fileName: z.string(),
-    content: z.union([
-      z.instanceof(ReadableStream<Uint8Array>),
-      z.instanceof(Blob),
-      z.instanceof(ArrayBuffer),
-      z.instanceof(Uint8Array),
-    ]),
-  });
 
 /** @internal */
 export type FileT$Outbound = {
@@ -115,41 +46,9 @@ export const FileT$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FileT$ {
-  /** @deprecated use `FileT$inboundSchema` instead. */
-  export const inboundSchema = FileT$inboundSchema;
-  /** @deprecated use `FileT$outboundSchema` instead. */
-  export const outboundSchema = FileT$outboundSchema;
-  /** @deprecated use `FileT$Outbound` instead. */
-  export type Outbound = FileT$Outbound;
-}
-
 export function fileToJSON(fileT: FileT): string {
   return JSON.stringify(FileT$outboundSchema.parse(fileT));
 }
-
-export function fileFromJSON(
-  jsonString: string,
-): SafeParseResult<FileT, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FileT$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FileT' from JSON`,
-  );
-}
-
-/** @internal */
-export const RunBuildDeprecatedRequestBody$inboundSchema: z.ZodType<
-  RunBuildDeprecatedRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  file: z.lazy(() => FileT$inboundSchema),
-});
 
 /** @internal */
 export type RunBuildDeprecatedRequestBody$Outbound = {
@@ -165,19 +64,6 @@ export const RunBuildDeprecatedRequestBody$outboundSchema: z.ZodType<
   file: z.lazy(() => FileT$outboundSchema).or(blobLikeSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RunBuildDeprecatedRequestBody$ {
-  /** @deprecated use `RunBuildDeprecatedRequestBody$inboundSchema` instead. */
-  export const inboundSchema = RunBuildDeprecatedRequestBody$inboundSchema;
-  /** @deprecated use `RunBuildDeprecatedRequestBody$outboundSchema` instead. */
-  export const outboundSchema = RunBuildDeprecatedRequestBody$outboundSchema;
-  /** @deprecated use `RunBuildDeprecatedRequestBody$Outbound` instead. */
-  export type Outbound = RunBuildDeprecatedRequestBody$Outbound;
-}
-
 export function runBuildDeprecatedRequestBodyToJSON(
   runBuildDeprecatedRequestBody: RunBuildDeprecatedRequestBody,
 ): string {
@@ -187,31 +73,6 @@ export function runBuildDeprecatedRequestBodyToJSON(
     ),
   );
 }
-
-export function runBuildDeprecatedRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<RunBuildDeprecatedRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RunBuildDeprecatedRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RunBuildDeprecatedRequestBody' from JSON`,
-  );
-}
-
-/** @internal */
-export const RunBuildDeprecatedRequest$inboundSchema: z.ZodType<
-  RunBuildDeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  buildId: z.number().int(),
-  RequestBody: z.lazy(() => RunBuildDeprecatedRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 
 /** @internal */
 export type RunBuildDeprecatedRequest$Outbound = {
@@ -235,33 +96,10 @@ export const RunBuildDeprecatedRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RunBuildDeprecatedRequest$ {
-  /** @deprecated use `RunBuildDeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = RunBuildDeprecatedRequest$inboundSchema;
-  /** @deprecated use `RunBuildDeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema = RunBuildDeprecatedRequest$outboundSchema;
-  /** @deprecated use `RunBuildDeprecatedRequest$Outbound` instead. */
-  export type Outbound = RunBuildDeprecatedRequest$Outbound;
-}
-
 export function runBuildDeprecatedRequestToJSON(
   runBuildDeprecatedRequest: RunBuildDeprecatedRequest,
 ): string {
   return JSON.stringify(
     RunBuildDeprecatedRequest$outboundSchema.parse(runBuildDeprecatedRequest),
-  );
-}
-
-export function runBuildDeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RunBuildDeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RunBuildDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RunBuildDeprecatedRequest' from JSON`,
   );
 }

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetDeploymentsV1DeprecatedGlobals = {
   appId?: string | undefined;
@@ -14,72 +11,6 @@ export type GetDeploymentsV1DeprecatedGlobals = {
 export type GetDeploymentsV1DeprecatedRequest = {
   appId?: string | undefined;
 };
-
-/** @internal */
-export const GetDeploymentsV1DeprecatedGlobals$inboundSchema: z.ZodType<
-  GetDeploymentsV1DeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetDeploymentsV1DeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetDeploymentsV1DeprecatedGlobals$outboundSchema: z.ZodType<
-  GetDeploymentsV1DeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsV1DeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentsV1DeprecatedGlobals$ {
-  /** @deprecated use `GetDeploymentsV1DeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentsV1DeprecatedGlobals$inboundSchema;
-  /** @deprecated use `GetDeploymentsV1DeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDeploymentsV1DeprecatedGlobals$outboundSchema;
-  /** @deprecated use `GetDeploymentsV1DeprecatedGlobals$Outbound` instead. */
-  export type Outbound = GetDeploymentsV1DeprecatedGlobals$Outbound;
-}
-
-export function getDeploymentsV1DeprecatedGlobalsToJSON(
-  getDeploymentsV1DeprecatedGlobals: GetDeploymentsV1DeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    GetDeploymentsV1DeprecatedGlobals$outboundSchema.parse(
-      getDeploymentsV1DeprecatedGlobals,
-    ),
-  );
-}
-
-export function getDeploymentsV1DeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsV1DeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsV1DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsV1DeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsV1DeprecatedRequest$inboundSchema: z.ZodType<
-  GetDeploymentsV1DeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
 
 /** @internal */
 export type GetDeploymentsV1DeprecatedRequest$Outbound = {
@@ -95,20 +26,6 @@ export const GetDeploymentsV1DeprecatedRequest$outboundSchema: z.ZodType<
   appId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentsV1DeprecatedRequest$ {
-  /** @deprecated use `GetDeploymentsV1DeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentsV1DeprecatedRequest$inboundSchema;
-  /** @deprecated use `GetDeploymentsV1DeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDeploymentsV1DeprecatedRequest$outboundSchema;
-  /** @deprecated use `GetDeploymentsV1DeprecatedRequest$Outbound` instead. */
-  export type Outbound = GetDeploymentsV1DeprecatedRequest$Outbound;
-}
-
 export function getDeploymentsV1DeprecatedRequestToJSON(
   getDeploymentsV1DeprecatedRequest: GetDeploymentsV1DeprecatedRequest,
 ): string {
@@ -116,15 +33,5 @@ export function getDeploymentsV1DeprecatedRequestToJSON(
     GetDeploymentsV1DeprecatedRequest$outboundSchema.parse(
       getDeploymentsV1DeprecatedRequest,
     ),
-  );
-}
-
-export function getDeploymentsV1DeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsV1DeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsV1DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsV1DeprecatedRequest' from JSON`,
   );
 }

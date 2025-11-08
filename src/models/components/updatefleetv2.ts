@@ -3,20 +3,12 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AutoscalerConfig,
-  AutoscalerConfig$inboundSchema,
   AutoscalerConfig$Outbound,
   AutoscalerConfig$outboundSchema,
 } from "./autoscalerconfig.js";
-import {
-  NodeShapeId,
-  NodeShapeId$inboundSchema,
-  NodeShapeId$outboundSchema,
-} from "./nodeshapeid.js";
+import { NodeShapeId, NodeShapeId$outboundSchema } from "./nodeshapeid.js";
 
 export type UpdateFleetV2 = {
   nodeShapeId?: NodeShapeId | undefined;
@@ -26,17 +18,6 @@ export type UpdateFleetV2 = {
    */
   name?: string | undefined;
 };
-
-/** @internal */
-export const UpdateFleetV2$inboundSchema: z.ZodType<
-  UpdateFleetV2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  nodeShapeId: NodeShapeId$inboundSchema.optional(),
-  autoscalerConfig: AutoscalerConfig$inboundSchema,
-  name: z.string().optional(),
-});
 
 /** @internal */
 export type UpdateFleetV2$Outbound = {
@@ -56,29 +37,6 @@ export const UpdateFleetV2$outboundSchema: z.ZodType<
   name: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFleetV2$ {
-  /** @deprecated use `UpdateFleetV2$inboundSchema` instead. */
-  export const inboundSchema = UpdateFleetV2$inboundSchema;
-  /** @deprecated use `UpdateFleetV2$outboundSchema` instead. */
-  export const outboundSchema = UpdateFleetV2$outboundSchema;
-  /** @deprecated use `UpdateFleetV2$Outbound` instead. */
-  export type Outbound = UpdateFleetV2$Outbound;
-}
-
 export function updateFleetV2ToJSON(updateFleetV2: UpdateFleetV2): string {
   return JSON.stringify(UpdateFleetV2$outboundSchema.parse(updateFleetV2));
-}
-
-export function updateFleetV2FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFleetV2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFleetV2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFleetV2' from JSON`,
-  );
 }

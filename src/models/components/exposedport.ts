@@ -6,11 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  TransportType,
-  TransportType$inboundSchema,
-  TransportType$outboundSchema,
-} from "./transporttype.js";
+import { TransportType, TransportType$inboundSchema } from "./transporttype.js";
 
 /**
  * Connection details for an active process.
@@ -36,43 +32,6 @@ export const ExposedPort$inboundSchema: z.ZodType<
   host: z.string(),
   name: z.string(),
 });
-
-/** @internal */
-export type ExposedPort$Outbound = {
-  transportType: string;
-  port: number;
-  host: string;
-  name: string;
-};
-
-/** @internal */
-export const ExposedPort$outboundSchema: z.ZodType<
-  ExposedPort$Outbound,
-  z.ZodTypeDef,
-  ExposedPort
-> = z.object({
-  transportType: TransportType$outboundSchema,
-  port: z.number().int(),
-  host: z.string(),
-  name: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ExposedPort$ {
-  /** @deprecated use `ExposedPort$inboundSchema` instead. */
-  export const inboundSchema = ExposedPort$inboundSchema;
-  /** @deprecated use `ExposedPort$outboundSchema` instead. */
-  export const outboundSchema = ExposedPort$outboundSchema;
-  /** @deprecated use `ExposedPort$Outbound` instead. */
-  export type Outbound = ExposedPort$Outbound;
-}
-
-export function exposedPortToJSON(exposedPort: ExposedPort): string {
-  return JSON.stringify(ExposedPort$outboundSchema.parse(exposedPort));
-}
 
 export function exposedPortFromJSON(
   jsonString: string,

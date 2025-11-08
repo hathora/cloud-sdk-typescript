@@ -6,11 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  InvoiceStatus,
-  InvoiceStatus$inboundSchema,
-  InvoiceStatus$outboundSchema,
-} from "./invoicestatus.js";
+import { InvoiceStatus, InvoiceStatus$inboundSchema } from "./invoicestatus.js";
 
 export type Invoice = {
   status: InvoiceStatus;
@@ -33,49 +29,6 @@ export const Invoice$inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, unknown> =
     month: z.number(),
     id: z.string(),
   });
-
-/** @internal */
-export type Invoice$Outbound = {
-  status: string;
-  amountDue: number;
-  pdfUrl: string;
-  dueDate: string;
-  year: number;
-  month: number;
-  id: string;
-};
-
-/** @internal */
-export const Invoice$outboundSchema: z.ZodType<
-  Invoice$Outbound,
-  z.ZodTypeDef,
-  Invoice
-> = z.object({
-  status: InvoiceStatus$outboundSchema,
-  amountDue: z.number(),
-  pdfUrl: z.string(),
-  dueDate: z.date().transform(v => v.toISOString()),
-  year: z.number(),
-  month: z.number(),
-  id: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Invoice$ {
-  /** @deprecated use `Invoice$inboundSchema` instead. */
-  export const inboundSchema = Invoice$inboundSchema;
-  /** @deprecated use `Invoice$outboundSchema` instead. */
-  export const outboundSchema = Invoice$outboundSchema;
-  /** @deprecated use `Invoice$Outbound` instead. */
-  export type Outbound = Invoice$Outbound;
-}
-
-export function invoiceToJSON(invoice: Invoice): string {
-  return JSON.stringify(Invoice$outboundSchema.parse(invoice));
-}
 
 export function invoiceFromJSON(
   jsonString: string,

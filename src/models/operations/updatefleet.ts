@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateFleetGlobals = {
   orgId?: string | undefined;
@@ -18,75 +15,6 @@ export type UpdateFleetRequest = {
   orgId?: string | undefined;
   updateFleetV2: components.UpdateFleetV2;
 };
-
-/** @internal */
-export const UpdateFleetGlobals$inboundSchema: z.ZodType<
-  UpdateFleetGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type UpdateFleetGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const UpdateFleetGlobals$outboundSchema: z.ZodType<
-  UpdateFleetGlobals$Outbound,
-  z.ZodTypeDef,
-  UpdateFleetGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFleetGlobals$ {
-  /** @deprecated use `UpdateFleetGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateFleetGlobals$inboundSchema;
-  /** @deprecated use `UpdateFleetGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateFleetGlobals$outboundSchema;
-  /** @deprecated use `UpdateFleetGlobals$Outbound` instead. */
-  export type Outbound = UpdateFleetGlobals$Outbound;
-}
-
-export function updateFleetGlobalsToJSON(
-  updateFleetGlobals: UpdateFleetGlobals,
-): string {
-  return JSON.stringify(
-    UpdateFleetGlobals$outboundSchema.parse(updateFleetGlobals),
-  );
-}
-
-export function updateFleetGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFleetGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFleetGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFleetGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateFleetRequest$inboundSchema: z.ZodType<
-  UpdateFleetRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fleetId: z.string(),
-  orgId: z.string().optional(),
-  UpdateFleetV2: components.UpdateFleetV2$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "UpdateFleetV2": "updateFleetV2",
-  });
-});
 
 /** @internal */
 export type UpdateFleetRequest$Outbound = {
@@ -110,33 +38,10 @@ export const UpdateFleetRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFleetRequest$ {
-  /** @deprecated use `UpdateFleetRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateFleetRequest$inboundSchema;
-  /** @deprecated use `UpdateFleetRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateFleetRequest$outboundSchema;
-  /** @deprecated use `UpdateFleetRequest$Outbound` instead. */
-  export type Outbound = UpdateFleetRequest$Outbound;
-}
-
 export function updateFleetRequestToJSON(
   updateFleetRequest: UpdateFleetRequest,
 ): string {
   return JSON.stringify(
     UpdateFleetRequest$outboundSchema.parse(updateFleetRequest),
-  );
-}
-
-export function updateFleetRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFleetRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFleetRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFleetRequest' from JSON`,
   );
 }

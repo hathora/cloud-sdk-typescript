@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateBuildDeprecatedGlobals = {
   appId?: string | undefined;
@@ -17,76 +14,6 @@ export type CreateBuildDeprecatedRequest = {
   appId?: string | undefined;
   createBuildParams: components.CreateBuildParams;
 };
-
-/** @internal */
-export const CreateBuildDeprecatedGlobals$inboundSchema: z.ZodType<
-  CreateBuildDeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type CreateBuildDeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const CreateBuildDeprecatedGlobals$outboundSchema: z.ZodType<
-  CreateBuildDeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  CreateBuildDeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBuildDeprecatedGlobals$ {
-  /** @deprecated use `CreateBuildDeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateBuildDeprecatedGlobals$inboundSchema;
-  /** @deprecated use `CreateBuildDeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateBuildDeprecatedGlobals$outboundSchema;
-  /** @deprecated use `CreateBuildDeprecatedGlobals$Outbound` instead. */
-  export type Outbound = CreateBuildDeprecatedGlobals$Outbound;
-}
-
-export function createBuildDeprecatedGlobalsToJSON(
-  createBuildDeprecatedGlobals: CreateBuildDeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    CreateBuildDeprecatedGlobals$outboundSchema.parse(
-      createBuildDeprecatedGlobals,
-    ),
-  );
-}
-
-export function createBuildDeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateBuildDeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateBuildDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateBuildDeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateBuildDeprecatedRequest$inboundSchema: z.ZodType<
-  CreateBuildDeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  CreateBuildParams: components.CreateBuildParams$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateBuildParams": "createBuildParams",
-  });
-});
 
 /** @internal */
 export type CreateBuildDeprecatedRequest$Outbound = {
@@ -108,19 +35,6 @@ export const CreateBuildDeprecatedRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBuildDeprecatedRequest$ {
-  /** @deprecated use `CreateBuildDeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateBuildDeprecatedRequest$inboundSchema;
-  /** @deprecated use `CreateBuildDeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateBuildDeprecatedRequest$outboundSchema;
-  /** @deprecated use `CreateBuildDeprecatedRequest$Outbound` instead. */
-  export type Outbound = CreateBuildDeprecatedRequest$Outbound;
-}
-
 export function createBuildDeprecatedRequestToJSON(
   createBuildDeprecatedRequest: CreateBuildDeprecatedRequest,
 ): string {
@@ -128,15 +42,5 @@ export function createBuildDeprecatedRequestToJSON(
     CreateBuildDeprecatedRequest$outboundSchema.parse(
       createBuildDeprecatedRequest,
     ),
-  );
-}
-
-export function createBuildDeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateBuildDeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateBuildDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateBuildDeprecatedRequest' from JSON`,
   );
 }

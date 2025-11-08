@@ -3,22 +3,10 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type VerificationEmailRequest = {
   userId: string;
 };
-
-/** @internal */
-export const VerificationEmailRequest$inboundSchema: z.ZodType<
-  VerificationEmailRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  userId: z.string(),
-});
 
 /** @internal */
 export type VerificationEmailRequest$Outbound = {
@@ -34,33 +22,10 @@ export const VerificationEmailRequest$outboundSchema: z.ZodType<
   userId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VerificationEmailRequest$ {
-  /** @deprecated use `VerificationEmailRequest$inboundSchema` instead. */
-  export const inboundSchema = VerificationEmailRequest$inboundSchema;
-  /** @deprecated use `VerificationEmailRequest$outboundSchema` instead. */
-  export const outboundSchema = VerificationEmailRequest$outboundSchema;
-  /** @deprecated use `VerificationEmailRequest$Outbound` instead. */
-  export type Outbound = VerificationEmailRequest$Outbound;
-}
-
 export function verificationEmailRequestToJSON(
   verificationEmailRequest: VerificationEmailRequest,
 ): string {
   return JSON.stringify(
     VerificationEmailRequest$outboundSchema.parse(verificationEmailRequest),
-  );
-}
-
-export function verificationEmailRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<VerificationEmailRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => VerificationEmailRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'VerificationEmailRequest' from JSON`,
   );
 }

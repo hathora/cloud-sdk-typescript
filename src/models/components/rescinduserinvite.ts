@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RescindUserInvite = {
   /**
@@ -13,15 +10,6 @@ export type RescindUserInvite = {
    */
   userEmail: string;
 };
-
-/** @internal */
-export const RescindUserInvite$inboundSchema: z.ZodType<
-  RescindUserInvite,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  userEmail: z.string(),
-});
 
 /** @internal */
 export type RescindUserInvite$Outbound = {
@@ -37,33 +25,10 @@ export const RescindUserInvite$outboundSchema: z.ZodType<
   userEmail: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RescindUserInvite$ {
-  /** @deprecated use `RescindUserInvite$inboundSchema` instead. */
-  export const inboundSchema = RescindUserInvite$inboundSchema;
-  /** @deprecated use `RescindUserInvite$outboundSchema` instead. */
-  export const outboundSchema = RescindUserInvite$outboundSchema;
-  /** @deprecated use `RescindUserInvite$Outbound` instead. */
-  export type Outbound = RescindUserInvite$Outbound;
-}
-
 export function rescindUserInviteToJSON(
   rescindUserInvite: RescindUserInvite,
 ): string {
   return JSON.stringify(
     RescindUserInvite$outboundSchema.parse(rescindUserInvite),
-  );
-}
-
-export function rescindUserInviteFromJSON(
-  jsonString: string,
-): SafeParseResult<RescindUserInvite, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RescindUserInvite$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RescindUserInvite' from JSON`,
   );
 }

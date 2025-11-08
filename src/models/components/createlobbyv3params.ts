@@ -3,19 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LobbyVisibility,
-  LobbyVisibility$inboundSchema,
   LobbyVisibility$outboundSchema,
 } from "./lobbyvisibility.js";
-import {
-  Region,
-  Region$inboundSchema,
-  Region$outboundSchema,
-} from "./region.js";
+import { Region, Region$outboundSchema } from "./region.js";
 
 export type CreateLobbyV3Params = {
   /**
@@ -38,17 +30,6 @@ export type CreateLobbyV3Params = {
 };
 
 /** @internal */
-export const CreateLobbyV3Params$inboundSchema: z.ZodType<
-  CreateLobbyV3Params,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  visibility: LobbyVisibility$inboundSchema,
-  roomConfig: z.string().optional(),
-  region: Region$inboundSchema,
-});
-
-/** @internal */
 export type CreateLobbyV3Params$Outbound = {
   visibility: string;
   roomConfig?: string | undefined;
@@ -66,33 +47,10 @@ export const CreateLobbyV3Params$outboundSchema: z.ZodType<
   region: Region$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateLobbyV3Params$ {
-  /** @deprecated use `CreateLobbyV3Params$inboundSchema` instead. */
-  export const inboundSchema = CreateLobbyV3Params$inboundSchema;
-  /** @deprecated use `CreateLobbyV3Params$outboundSchema` instead. */
-  export const outboundSchema = CreateLobbyV3Params$outboundSchema;
-  /** @deprecated use `CreateLobbyV3Params$Outbound` instead. */
-  export type Outbound = CreateLobbyV3Params$Outbound;
-}
-
 export function createLobbyV3ParamsToJSON(
   createLobbyV3Params: CreateLobbyV3Params,
 ): string {
   return JSON.stringify(
     CreateLobbyV3Params$outboundSchema.parse(createLobbyV3Params),
-  );
-}
-
-export function createLobbyV3ParamsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateLobbyV3Params, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateLobbyV3Params$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateLobbyV3Params' from JSON`,
   );
 }

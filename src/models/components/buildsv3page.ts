@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  BuildV3,
-  BuildV3$inboundSchema,
-  BuildV3$Outbound,
-  BuildV3$outboundSchema,
-} from "./buildv3.js";
+import { BuildV3, BuildV3$inboundSchema } from "./buildv3.js";
 
 export type BuildsV3Page = {
   builds: Array<BuildV3>;
@@ -25,37 +20,6 @@ export const BuildsV3Page$inboundSchema: z.ZodType<
 > = z.object({
   builds: z.array(BuildV3$inboundSchema),
 });
-
-/** @internal */
-export type BuildsV3Page$Outbound = {
-  builds: Array<BuildV3$Outbound>;
-};
-
-/** @internal */
-export const BuildsV3Page$outboundSchema: z.ZodType<
-  BuildsV3Page$Outbound,
-  z.ZodTypeDef,
-  BuildsV3Page
-> = z.object({
-  builds: z.array(BuildV3$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuildsV3Page$ {
-  /** @deprecated use `BuildsV3Page$inboundSchema` instead. */
-  export const inboundSchema = BuildsV3Page$inboundSchema;
-  /** @deprecated use `BuildsV3Page$outboundSchema` instead. */
-  export const outboundSchema = BuildsV3Page$outboundSchema;
-  /** @deprecated use `BuildsV3Page$Outbound` instead. */
-  export type Outbound = BuildsV3Page$Outbound;
-}
-
-export function buildsV3PageToJSON(buildsV3Page: BuildsV3Page): string {
-  return JSON.stringify(BuildsV3Page$outboundSchema.parse(buildsV3Page));
-}
 
 export function buildsV3PageFromJSON(
   jsonString: string,

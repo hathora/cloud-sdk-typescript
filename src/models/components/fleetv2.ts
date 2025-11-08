@@ -9,14 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AutoscalerConfig,
   AutoscalerConfig$inboundSchema,
-  AutoscalerConfig$Outbound,
-  AutoscalerConfig$outboundSchema,
 } from "./autoscalerconfig.js";
-import {
-  NodeShapeId,
-  NodeShapeId$inboundSchema,
-  NodeShapeId$outboundSchema,
-} from "./nodeshapeid.js";
+import { NodeShapeId, NodeShapeId$inboundSchema } from "./nodeshapeid.js";
 
 /**
  * A fleet is a collection of nodes across your regions that can scale up and down based on demand.
@@ -47,45 +41,6 @@ export const FleetV2$inboundSchema: z.ZodType<FleetV2, z.ZodTypeDef, unknown> =
     orgId: z.string(),
     fleetId: z.string(),
   });
-
-/** @internal */
-export type FleetV2$Outbound = {
-  nodeShapeId: string;
-  autoscalerConfig?: AutoscalerConfig$Outbound | undefined;
-  name: string;
-  orgId: string;
-  fleetId: string;
-};
-
-/** @internal */
-export const FleetV2$outboundSchema: z.ZodType<
-  FleetV2$Outbound,
-  z.ZodTypeDef,
-  FleetV2
-> = z.object({
-  nodeShapeId: NodeShapeId$outboundSchema,
-  autoscalerConfig: AutoscalerConfig$outboundSchema.optional(),
-  name: z.string(),
-  orgId: z.string(),
-  fleetId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FleetV2$ {
-  /** @deprecated use `FleetV2$inboundSchema` instead. */
-  export const inboundSchema = FleetV2$inboundSchema;
-  /** @deprecated use `FleetV2$outboundSchema` instead. */
-  export const outboundSchema = FleetV2$outboundSchema;
-  /** @deprecated use `FleetV2$Outbound` instead. */
-  export type Outbound = FleetV2$Outbound;
-}
-
-export function fleetV2ToJSON(fleetV2: FleetV2): string {
-  return JSON.stringify(FleetV2$outboundSchema.parse(fleetV2));
-}
 
 export function fleetV2FromJSON(
   jsonString: string,

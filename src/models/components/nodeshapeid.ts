@@ -46,7 +46,6 @@ export const NodeShapeId$inboundSchema: z.ZodType<
     z.nativeEnum(NodeShapeId),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const NodeShapeId$outboundSchema: z.ZodType<
   NodeShapeId,
@@ -56,14 +55,3 @@ export const NodeShapeId$outboundSchema: z.ZodType<
   z.nativeEnum(NodeShapeId),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NodeShapeId$ {
-  /** @deprecated use `NodeShapeId$inboundSchema` instead. */
-  export const inboundSchema = NodeShapeId$inboundSchema;
-  /** @deprecated use `NodeShapeId$outboundSchema` instead. */
-  export const outboundSchema = NodeShapeId$outboundSchema;
-}

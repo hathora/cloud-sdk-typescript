@@ -26,7 +26,6 @@ export const AutoscalerConfig$inboundSchema: z.ZodType<
 > = z.object({
   scaleUpThreshold: z.number().int(),
 });
-
 /** @internal */
 export type AutoscalerConfig$Outbound = {
   scaleUpThreshold: number;
@@ -41,19 +40,6 @@ export const AutoscalerConfig$outboundSchema: z.ZodType<
   scaleUpThreshold: z.number().int(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AutoscalerConfig$ {
-  /** @deprecated use `AutoscalerConfig$inboundSchema` instead. */
-  export const inboundSchema = AutoscalerConfig$inboundSchema;
-  /** @deprecated use `AutoscalerConfig$outboundSchema` instead. */
-  export const outboundSchema = AutoscalerConfig$outboundSchema;
-  /** @deprecated use `AutoscalerConfig$Outbound` instead. */
-  export type Outbound = AutoscalerConfig$Outbound;
-}
-
 export function autoscalerConfigToJSON(
   autoscalerConfig: AutoscalerConfig,
 ): string {
@@ -61,7 +47,6 @@ export function autoscalerConfigToJSON(
     AutoscalerConfig$outboundSchema.parse(autoscalerConfig),
   );
 }
-
 export function autoscalerConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<AutoscalerConfig, SDKValidationError> {

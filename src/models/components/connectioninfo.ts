@@ -9,14 +9,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ActiveConnectionInfo,
   ActiveConnectionInfo$inboundSchema,
-  ActiveConnectionInfo$Outbound,
-  ActiveConnectionInfo$outboundSchema,
 } from "./activeconnectioninfo.js";
 import {
   StartingConnectionInfo,
   StartingConnectionInfo$inboundSchema,
-  StartingConnectionInfo$Outbound,
-  StartingConnectionInfo$outboundSchema,
 } from "./startingconnectioninfo.js";
 
 /**
@@ -33,38 +29,6 @@ export const ConnectionInfo$inboundSchema: z.ZodType<
   ActiveConnectionInfo$inboundSchema,
   StartingConnectionInfo$inboundSchema,
 ]);
-
-/** @internal */
-export type ConnectionInfo$Outbound =
-  | ActiveConnectionInfo$Outbound
-  | StartingConnectionInfo$Outbound;
-
-/** @internal */
-export const ConnectionInfo$outboundSchema: z.ZodType<
-  ConnectionInfo$Outbound,
-  z.ZodTypeDef,
-  ConnectionInfo
-> = z.union([
-  ActiveConnectionInfo$outboundSchema,
-  StartingConnectionInfo$outboundSchema,
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectionInfo$ {
-  /** @deprecated use `ConnectionInfo$inboundSchema` instead. */
-  export const inboundSchema = ConnectionInfo$inboundSchema;
-  /** @deprecated use `ConnectionInfo$outboundSchema` instead. */
-  export const outboundSchema = ConnectionInfo$outboundSchema;
-  /** @deprecated use `ConnectionInfo$Outbound` instead. */
-  export type Outbound = ConnectionInfo$Outbound;
-}
-
-export function connectionInfoToJSON(connectionInfo: ConnectionInfo): string {
-  return JSON.stringify(ConnectionInfo$outboundSchema.parse(connectionInfo));
-}
 
 export function connectionInfoFromJSON(
   jsonString: string,

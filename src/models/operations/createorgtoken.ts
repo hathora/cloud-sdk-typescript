@@ -4,29 +4,12 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateOrgTokenRequest = {
   orgId: string;
   createOrgToken: components.CreateOrgToken;
 };
-
-/** @internal */
-export const CreateOrgTokenRequest$inboundSchema: z.ZodType<
-  CreateOrgTokenRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string(),
-  CreateOrgToken: z.lazy(() => components.CreateOrgToken$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "CreateOrgToken": "createOrgToken",
-  });
-});
 
 /** @internal */
 export type CreateOrgTokenRequest$Outbound = {
@@ -48,33 +31,10 @@ export const CreateOrgTokenRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOrgTokenRequest$ {
-  /** @deprecated use `CreateOrgTokenRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateOrgTokenRequest$inboundSchema;
-  /** @deprecated use `CreateOrgTokenRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateOrgTokenRequest$outboundSchema;
-  /** @deprecated use `CreateOrgTokenRequest$Outbound` instead. */
-  export type Outbound = CreateOrgTokenRequest$Outbound;
-}
-
 export function createOrgTokenRequestToJSON(
   createOrgTokenRequest: CreateOrgTokenRequest,
 ): string {
   return JSON.stringify(
     CreateOrgTokenRequest$outboundSchema.parse(createOrgTokenRequest),
-  );
-}
-
-export function createOrgTokenRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateOrgTokenRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateOrgTokenRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateOrgTokenRequest' from JSON`,
   );
 }

@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateAppGlobals = {
   orgId?: string | undefined;
@@ -17,74 +14,6 @@ export type CreateAppRequest = {
   orgId?: string | undefined;
   createAppConfig: components.CreateAppConfig;
 };
-
-/** @internal */
-export const CreateAppGlobals$inboundSchema: z.ZodType<
-  CreateAppGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type CreateAppGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const CreateAppGlobals$outboundSchema: z.ZodType<
-  CreateAppGlobals$Outbound,
-  z.ZodTypeDef,
-  CreateAppGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAppGlobals$ {
-  /** @deprecated use `CreateAppGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateAppGlobals$inboundSchema;
-  /** @deprecated use `CreateAppGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateAppGlobals$outboundSchema;
-  /** @deprecated use `CreateAppGlobals$Outbound` instead. */
-  export type Outbound = CreateAppGlobals$Outbound;
-}
-
-export function createAppGlobalsToJSON(
-  createAppGlobals: CreateAppGlobals,
-): string {
-  return JSON.stringify(
-    CreateAppGlobals$outboundSchema.parse(createAppGlobals),
-  );
-}
-
-export function createAppGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateAppGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateAppGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateAppGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateAppRequest$inboundSchema: z.ZodType<
-  CreateAppRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-  CreateAppConfig: components.CreateAppConfig$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateAppConfig": "createAppConfig",
-  });
-});
 
 /** @internal */
 export type CreateAppRequest$Outbound = {
@@ -106,33 +35,10 @@ export const CreateAppRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAppRequest$ {
-  /** @deprecated use `CreateAppRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateAppRequest$inboundSchema;
-  /** @deprecated use `CreateAppRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateAppRequest$outboundSchema;
-  /** @deprecated use `CreateAppRequest$Outbound` instead. */
-  export type Outbound = CreateAppRequest$Outbound;
-}
-
 export function createAppRequestToJSON(
   createAppRequest: CreateAppRequest,
 ): string {
   return JSON.stringify(
     CreateAppRequest$outboundSchema.parse(createAppRequest),
-  );
-}
-
-export function createAppRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateAppRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateAppRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateAppRequest' from JSON`,
   );
 }

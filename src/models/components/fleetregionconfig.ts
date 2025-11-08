@@ -3,22 +3,10 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type FleetRegionConfig = {
   cloudMinVcpus: number;
 };
-
-/** @internal */
-export const FleetRegionConfig$inboundSchema: z.ZodType<
-  FleetRegionConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cloudMinVcpus: z.number().int(),
-});
 
 /** @internal */
 export type FleetRegionConfig$Outbound = {
@@ -34,33 +22,10 @@ export const FleetRegionConfig$outboundSchema: z.ZodType<
   cloudMinVcpus: z.number().int(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FleetRegionConfig$ {
-  /** @deprecated use `FleetRegionConfig$inboundSchema` instead. */
-  export const inboundSchema = FleetRegionConfig$inboundSchema;
-  /** @deprecated use `FleetRegionConfig$outboundSchema` instead. */
-  export const outboundSchema = FleetRegionConfig$outboundSchema;
-  /** @deprecated use `FleetRegionConfig$Outbound` instead. */
-  export type Outbound = FleetRegionConfig$Outbound;
-}
-
 export function fleetRegionConfigToJSON(
   fleetRegionConfig: FleetRegionConfig,
 ): string {
   return JSON.stringify(
     FleetRegionConfig$outboundSchema.parse(fleetRegionConfig),
-  );
-}
-
-export function fleetRegionConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<FleetRegionConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FleetRegionConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FleetRegionConfig' from JSON`,
   );
 }

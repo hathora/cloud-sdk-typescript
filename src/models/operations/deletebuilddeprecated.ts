@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteBuildDeprecatedGlobals = {
   appId?: string | undefined;
@@ -15,72 +12,6 @@ export type DeleteBuildDeprecatedRequest = {
   appId?: string | undefined;
   buildId: number;
 };
-
-/** @internal */
-export const DeleteBuildDeprecatedGlobals$inboundSchema: z.ZodType<
-  DeleteBuildDeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type DeleteBuildDeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const DeleteBuildDeprecatedGlobals$outboundSchema: z.ZodType<
-  DeleteBuildDeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  DeleteBuildDeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteBuildDeprecatedGlobals$ {
-  /** @deprecated use `DeleteBuildDeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = DeleteBuildDeprecatedGlobals$inboundSchema;
-  /** @deprecated use `DeleteBuildDeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema = DeleteBuildDeprecatedGlobals$outboundSchema;
-  /** @deprecated use `DeleteBuildDeprecatedGlobals$Outbound` instead. */
-  export type Outbound = DeleteBuildDeprecatedGlobals$Outbound;
-}
-
-export function deleteBuildDeprecatedGlobalsToJSON(
-  deleteBuildDeprecatedGlobals: DeleteBuildDeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    DeleteBuildDeprecatedGlobals$outboundSchema.parse(
-      deleteBuildDeprecatedGlobals,
-    ),
-  );
-}
-
-export function deleteBuildDeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteBuildDeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteBuildDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteBuildDeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const DeleteBuildDeprecatedRequest$inboundSchema: z.ZodType<
-  DeleteBuildDeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  buildId: z.number().int(),
-});
 
 /** @internal */
 export type DeleteBuildDeprecatedRequest$Outbound = {
@@ -98,19 +29,6 @@ export const DeleteBuildDeprecatedRequest$outboundSchema: z.ZodType<
   buildId: z.number().int(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteBuildDeprecatedRequest$ {
-  /** @deprecated use `DeleteBuildDeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteBuildDeprecatedRequest$inboundSchema;
-  /** @deprecated use `DeleteBuildDeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteBuildDeprecatedRequest$outboundSchema;
-  /** @deprecated use `DeleteBuildDeprecatedRequest$Outbound` instead. */
-  export type Outbound = DeleteBuildDeprecatedRequest$Outbound;
-}
-
 export function deleteBuildDeprecatedRequestToJSON(
   deleteBuildDeprecatedRequest: DeleteBuildDeprecatedRequest,
 ): string {
@@ -118,15 +36,5 @@ export function deleteBuildDeprecatedRequestToJSON(
     DeleteBuildDeprecatedRequest$outboundSchema.parse(
       deleteBuildDeprecatedRequest,
     ),
-  );
-}
-
-export function deleteBuildDeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteBuildDeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteBuildDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteBuildDeprecatedRequest' from JSON`,
   );
 }

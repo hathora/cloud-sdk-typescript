@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  FleetV2,
-  FleetV2$inboundSchema,
-  FleetV2$Outbound,
-  FleetV2$outboundSchema,
-} from "./fleetv2.js";
+import { FleetV2, FleetV2$inboundSchema } from "./fleetv2.js";
 
 export type FleetsPageV2 = {
   fleets: Array<FleetV2>;
@@ -25,37 +20,6 @@ export const FleetsPageV2$inboundSchema: z.ZodType<
 > = z.object({
   fleets: z.array(FleetV2$inboundSchema),
 });
-
-/** @internal */
-export type FleetsPageV2$Outbound = {
-  fleets: Array<FleetV2$Outbound>;
-};
-
-/** @internal */
-export const FleetsPageV2$outboundSchema: z.ZodType<
-  FleetsPageV2$Outbound,
-  z.ZodTypeDef,
-  FleetsPageV2
-> = z.object({
-  fleets: z.array(FleetV2$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FleetsPageV2$ {
-  /** @deprecated use `FleetsPageV2$inboundSchema` instead. */
-  export const inboundSchema = FleetsPageV2$inboundSchema;
-  /** @deprecated use `FleetsPageV2$outboundSchema` instead. */
-  export const outboundSchema = FleetsPageV2$outboundSchema;
-  /** @deprecated use `FleetsPageV2$Outbound` instead. */
-  export type Outbound = FleetsPageV2$Outbound;
-}
-
-export function fleetsPageV2ToJSON(fleetsPageV2: FleetsPageV2): string {
-  return JSON.stringify(FleetsPageV2$outboundSchema.parse(fleetsPageV2));
-}
 
 export function fleetsPageV2FromJSON(
   jsonString: string,

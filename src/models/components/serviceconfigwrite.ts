@@ -3,24 +3,18 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LoadBalancerConfig,
-  LoadBalancerConfig$inboundSchema,
   LoadBalancerConfig$Outbound,
   LoadBalancerConfig$outboundSchema,
 } from "./loadbalancerconfig.js";
 import {
   ProcessAutoscalerConfig,
-  ProcessAutoscalerConfig$inboundSchema,
   ProcessAutoscalerConfig$Outbound,
   ProcessAutoscalerConfig$outboundSchema,
 } from "./processautoscalerconfig.js";
 import {
   StaticProcessAllocationConfigWrite,
-  StaticProcessAllocationConfigWrite$inboundSchema,
   StaticProcessAllocationConfigWrite$Outbound,
   StaticProcessAllocationConfigWrite$outboundSchema,
 } from "./staticprocessallocationconfigwrite.js";
@@ -37,19 +31,6 @@ export type ServiceConfigWrite = {
   loadBalancer?: LoadBalancerConfig | undefined;
   staticProcessAllocation: Array<StaticProcessAllocationConfigWrite>;
 };
-
-/** @internal */
-export const ServiceConfigWrite$inboundSchema: z.ZodType<
-  ServiceConfigWrite,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  processAutoscalerConfig: ProcessAutoscalerConfig$inboundSchema.optional(),
-  loadBalancer: LoadBalancerConfig$inboundSchema.optional(),
-  staticProcessAllocation: z.array(
-    StaticProcessAllocationConfigWrite$inboundSchema,
-  ),
-});
 
 /** @internal */
 export type ServiceConfigWrite$Outbound = {
@@ -71,33 +52,10 @@ export const ServiceConfigWrite$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ServiceConfigWrite$ {
-  /** @deprecated use `ServiceConfigWrite$inboundSchema` instead. */
-  export const inboundSchema = ServiceConfigWrite$inboundSchema;
-  /** @deprecated use `ServiceConfigWrite$outboundSchema` instead. */
-  export const outboundSchema = ServiceConfigWrite$outboundSchema;
-  /** @deprecated use `ServiceConfigWrite$Outbound` instead. */
-  export type Outbound = ServiceConfigWrite$Outbound;
-}
-
 export function serviceConfigWriteToJSON(
   serviceConfigWrite: ServiceConfigWrite,
 ): string {
   return JSON.stringify(
     ServiceConfigWrite$outboundSchema.parse(serviceConfigWrite),
-  );
-}
-
-export function serviceConfigWriteFromJSON(
-  jsonString: string,
-): SafeParseResult<ServiceConfigWrite, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ServiceConfigWrite$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ServiceConfigWrite' from JSON`,
   );
 }

@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateLocalLobbyGlobals = {
   appId?: string | undefined;
@@ -32,69 +29,6 @@ export type CreateLocalLobbyRequest = {
 };
 
 /** @internal */
-export const CreateLocalLobbyGlobals$inboundSchema: z.ZodType<
-  CreateLocalLobbyGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type CreateLocalLobbyGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const CreateLocalLobbyGlobals$outboundSchema: z.ZodType<
-  CreateLocalLobbyGlobals$Outbound,
-  z.ZodTypeDef,
-  CreateLocalLobbyGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateLocalLobbyGlobals$ {
-  /** @deprecated use `CreateLocalLobbyGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateLocalLobbyGlobals$inboundSchema;
-  /** @deprecated use `CreateLocalLobbyGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateLocalLobbyGlobals$outboundSchema;
-  /** @deprecated use `CreateLocalLobbyGlobals$Outbound` instead. */
-  export type Outbound = CreateLocalLobbyGlobals$Outbound;
-}
-
-export function createLocalLobbyGlobalsToJSON(
-  createLocalLobbyGlobals: CreateLocalLobbyGlobals,
-): string {
-  return JSON.stringify(
-    CreateLocalLobbyGlobals$outboundSchema.parse(createLocalLobbyGlobals),
-  );
-}
-
-export function createLocalLobbyGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateLocalLobbyGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateLocalLobbyGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateLocalLobbyGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateLocalLobbySecurity$inboundSchema: z.ZodType<
-  CreateLocalLobbySecurity,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  playerAuth: z.string(),
-});
-
-/** @internal */
 export type CreateLocalLobbySecurity$Outbound = {
   playerAuth: string;
 };
@@ -108,19 +42,6 @@ export const CreateLocalLobbySecurity$outboundSchema: z.ZodType<
   playerAuth: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateLocalLobbySecurity$ {
-  /** @deprecated use `CreateLocalLobbySecurity$inboundSchema` instead. */
-  export const inboundSchema = CreateLocalLobbySecurity$inboundSchema;
-  /** @deprecated use `CreateLocalLobbySecurity$outboundSchema` instead. */
-  export const outboundSchema = CreateLocalLobbySecurity$outboundSchema;
-  /** @deprecated use `CreateLocalLobbySecurity$Outbound` instead. */
-  export type Outbound = CreateLocalLobbySecurity$Outbound;
-}
-
 export function createLocalLobbySecurityToJSON(
   createLocalLobbySecurity: CreateLocalLobbySecurity,
 ): string {
@@ -128,26 +49,6 @@ export function createLocalLobbySecurityToJSON(
     CreateLocalLobbySecurity$outboundSchema.parse(createLocalLobbySecurity),
   );
 }
-
-export function createLocalLobbySecurityFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateLocalLobbySecurity, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateLocalLobbySecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateLocalLobbySecurity' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateLocalLobbyRequestBody$inboundSchema: z.ZodType<
-  CreateLocalLobbyRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  initialConfig: z.any().optional(),
-  region: components.Region$inboundSchema,
-});
 
 /** @internal */
 export type CreateLocalLobbyRequestBody$Outbound = {
@@ -165,19 +66,6 @@ export const CreateLocalLobbyRequestBody$outboundSchema: z.ZodType<
   region: components.Region$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateLocalLobbyRequestBody$ {
-  /** @deprecated use `CreateLocalLobbyRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateLocalLobbyRequestBody$inboundSchema;
-  /** @deprecated use `CreateLocalLobbyRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreateLocalLobbyRequestBody$outboundSchema;
-  /** @deprecated use `CreateLocalLobbyRequestBody$Outbound` instead. */
-  export type Outbound = CreateLocalLobbyRequestBody$Outbound;
-}
-
 export function createLocalLobbyRequestBodyToJSON(
   createLocalLobbyRequestBody: CreateLocalLobbyRequestBody,
 ): string {
@@ -187,31 +75,6 @@ export function createLocalLobbyRequestBodyToJSON(
     ),
   );
 }
-
-export function createLocalLobbyRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateLocalLobbyRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateLocalLobbyRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateLocalLobbyRequestBody' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateLocalLobbyRequest$inboundSchema: z.ZodType<
-  CreateLocalLobbyRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  roomId: z.string().optional(),
-  RequestBody: z.lazy(() => CreateLocalLobbyRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 
 /** @internal */
 export type CreateLocalLobbyRequest$Outbound = {
@@ -235,33 +98,10 @@ export const CreateLocalLobbyRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateLocalLobbyRequest$ {
-  /** @deprecated use `CreateLocalLobbyRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateLocalLobbyRequest$inboundSchema;
-  /** @deprecated use `CreateLocalLobbyRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateLocalLobbyRequest$outboundSchema;
-  /** @deprecated use `CreateLocalLobbyRequest$Outbound` instead. */
-  export type Outbound = CreateLocalLobbyRequest$Outbound;
-}
-
 export function createLocalLobbyRequestToJSON(
   createLocalLobbyRequest: CreateLocalLobbyRequest,
 ): string {
   return JSON.stringify(
     CreateLocalLobbyRequest$outboundSchema.parse(createLocalLobbyRequest),
-  );
-}
-
-export function createLocalLobbyRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateLocalLobbyRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateLocalLobbyRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateLocalLobbyRequest' from JSON`,
   );
 }

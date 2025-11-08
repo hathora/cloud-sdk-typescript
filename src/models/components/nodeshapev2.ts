@@ -6,16 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  NodeFamilyId,
-  NodeFamilyId$inboundSchema,
-  NodeFamilyId$outboundSchema,
-} from "./nodefamilyid.js";
-import {
-  NodeShapeId,
-  NodeShapeId$inboundSchema,
-  NodeShapeId$outboundSchema,
-} from "./nodeshapeid.js";
+import { NodeFamilyId, NodeFamilyId$inboundSchema } from "./nodefamilyid.js";
+import { NodeShapeId, NodeShapeId$inboundSchema } from "./nodeshapeid.js";
 
 export type NodeShapeV2 = {
   /**
@@ -65,49 +57,6 @@ export const NodeShapeV2$inboundSchema: z.ZodType<
   name: z.string(),
   nodeShapeId: NodeShapeId$inboundSchema,
 });
-
-/** @internal */
-export type NodeShapeV2$Outbound = {
-  minMemoryMB: number;
-  minCPU: number;
-  minGPU: number;
-  familyName: string;
-  familyId: string;
-  name: string;
-  nodeShapeId: string;
-};
-
-/** @internal */
-export const NodeShapeV2$outboundSchema: z.ZodType<
-  NodeShapeV2$Outbound,
-  z.ZodTypeDef,
-  NodeShapeV2
-> = z.object({
-  minMemoryMB: z.number(),
-  minCPU: z.number(),
-  minGPU: z.number(),
-  familyName: z.string(),
-  familyId: NodeFamilyId$outboundSchema,
-  name: z.string(),
-  nodeShapeId: NodeShapeId$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NodeShapeV2$ {
-  /** @deprecated use `NodeShapeV2$inboundSchema` instead. */
-  export const inboundSchema = NodeShapeV2$inboundSchema;
-  /** @deprecated use `NodeShapeV2$outboundSchema` instead. */
-  export const outboundSchema = NodeShapeV2$outboundSchema;
-  /** @deprecated use `NodeShapeV2$Outbound` instead. */
-  export type Outbound = NodeShapeV2$Outbound;
-}
-
-export function nodeShapeV2ToJSON(nodeShapeV2: NodeShapeV2): string {
-  return JSON.stringify(NodeShapeV2$outboundSchema.parse(nodeShapeV2));
-}
 
 export function nodeShapeV2FromJSON(
   jsonString: string,

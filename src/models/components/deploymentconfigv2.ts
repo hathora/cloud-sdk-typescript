@@ -3,18 +3,13 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ContainerPort,
-  ContainerPort$inboundSchema,
   ContainerPort$Outbound,
   ContainerPort$outboundSchema,
 } from "./containerport.js";
 import {
   TransportType,
-  TransportType$inboundSchema,
   TransportType$outboundSchema,
 } from "./transporttype.js";
 
@@ -62,16 +57,6 @@ export type DeploymentConfigV2 = {
 };
 
 /** @internal */
-export const DeploymentConfigV2Env$inboundSchema: z.ZodType<
-  DeploymentConfigV2Env,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: z.string(),
-  name: z.string(),
-});
-
-/** @internal */
 export type DeploymentConfigV2Env$Outbound = {
   value: string;
   name: string;
@@ -87,19 +72,6 @@ export const DeploymentConfigV2Env$outboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeploymentConfigV2Env$ {
-  /** @deprecated use `DeploymentConfigV2Env$inboundSchema` instead. */
-  export const inboundSchema = DeploymentConfigV2Env$inboundSchema;
-  /** @deprecated use `DeploymentConfigV2Env$outboundSchema` instead. */
-  export const outboundSchema = DeploymentConfigV2Env$outboundSchema;
-  /** @deprecated use `DeploymentConfigV2Env$Outbound` instead. */
-  export type Outbound = DeploymentConfigV2Env$Outbound;
-}
-
 export function deploymentConfigV2EnvToJSON(
   deploymentConfigV2Env: DeploymentConfigV2Env,
 ): string {
@@ -107,32 +79,6 @@ export function deploymentConfigV2EnvToJSON(
     DeploymentConfigV2Env$outboundSchema.parse(deploymentConfigV2Env),
   );
 }
-
-export function deploymentConfigV2EnvFromJSON(
-  jsonString: string,
-): SafeParseResult<DeploymentConfigV2Env, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeploymentConfigV2Env$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeploymentConfigV2Env' from JSON`,
-  );
-}
-
-/** @internal */
-export const DeploymentConfigV2$inboundSchema: z.ZodType<
-  DeploymentConfigV2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idleTimeoutEnabled: z.boolean(),
-  env: z.array(z.lazy(() => DeploymentConfigV2Env$inboundSchema)),
-  roomsPerProcess: z.number().int(),
-  additionalContainerPorts: z.array(ContainerPort$inboundSchema).optional(),
-  transportType: TransportType$inboundSchema,
-  containerPort: z.number().int(),
-  requestedMemoryMB: z.number(),
-  requestedCPU: z.number(),
-});
 
 /** @internal */
 export type DeploymentConfigV2$Outbound = {
@@ -162,33 +108,10 @@ export const DeploymentConfigV2$outboundSchema: z.ZodType<
   requestedCPU: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeploymentConfigV2$ {
-  /** @deprecated use `DeploymentConfigV2$inboundSchema` instead. */
-  export const inboundSchema = DeploymentConfigV2$inboundSchema;
-  /** @deprecated use `DeploymentConfigV2$outboundSchema` instead. */
-  export const outboundSchema = DeploymentConfigV2$outboundSchema;
-  /** @deprecated use `DeploymentConfigV2$Outbound` instead. */
-  export type Outbound = DeploymentConfigV2$Outbound;
-}
-
 export function deploymentConfigV2ToJSON(
   deploymentConfigV2: DeploymentConfigV2,
 ): string {
   return JSON.stringify(
     DeploymentConfigV2$outboundSchema.parse(deploymentConfigV2),
-  );
-}
-
-export function deploymentConfigV2FromJSON(
-  jsonString: string,
-): SafeParseResult<DeploymentConfigV2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeploymentConfigV2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeploymentConfigV2' from JSON`,
   );
 }

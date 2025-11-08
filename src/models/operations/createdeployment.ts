@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateDeploymentGlobals = {
   appId?: string | undefined;
@@ -17,74 +14,6 @@ export type CreateDeploymentRequest = {
   appId?: string | undefined;
   deploymentConfigV3: components.DeploymentConfigV3;
 };
-
-/** @internal */
-export const CreateDeploymentGlobals$inboundSchema: z.ZodType<
-  CreateDeploymentGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type CreateDeploymentGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const CreateDeploymentGlobals$outboundSchema: z.ZodType<
-  CreateDeploymentGlobals$Outbound,
-  z.ZodTypeDef,
-  CreateDeploymentGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDeploymentGlobals$ {
-  /** @deprecated use `CreateDeploymentGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateDeploymentGlobals$inboundSchema;
-  /** @deprecated use `CreateDeploymentGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateDeploymentGlobals$outboundSchema;
-  /** @deprecated use `CreateDeploymentGlobals$Outbound` instead. */
-  export type Outbound = CreateDeploymentGlobals$Outbound;
-}
-
-export function createDeploymentGlobalsToJSON(
-  createDeploymentGlobals: CreateDeploymentGlobals,
-): string {
-  return JSON.stringify(
-    CreateDeploymentGlobals$outboundSchema.parse(createDeploymentGlobals),
-  );
-}
-
-export function createDeploymentGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateDeploymentGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateDeploymentGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateDeploymentRequest$inboundSchema: z.ZodType<
-  CreateDeploymentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  DeploymentConfigV3: components.DeploymentConfigV3$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "DeploymentConfigV3": "deploymentConfigV3",
-  });
-});
 
 /** @internal */
 export type CreateDeploymentRequest$Outbound = {
@@ -106,33 +35,10 @@ export const CreateDeploymentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDeploymentRequest$ {
-  /** @deprecated use `CreateDeploymentRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateDeploymentRequest$inboundSchema;
-  /** @deprecated use `CreateDeploymentRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateDeploymentRequest$outboundSchema;
-  /** @deprecated use `CreateDeploymentRequest$Outbound` instead. */
-  export type Outbound = CreateDeploymentRequest$Outbound;
-}
-
 export function createDeploymentRequestToJSON(
   createDeploymentRequest: CreateDeploymentRequest,
 ): string {
   return JSON.stringify(
     CreateDeploymentRequest$outboundSchema.parse(createDeploymentRequest),
-  );
-}
-
-export function createDeploymentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateDeploymentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateDeploymentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentRequest' from JSON`,
   );
 }

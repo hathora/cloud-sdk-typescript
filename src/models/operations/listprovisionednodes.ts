@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListProvisionedNodesGlobals = {
   orgId?: string | undefined;
@@ -17,73 +14,6 @@ export type ListProvisionedNodesRequest = {
   orgId?: string | undefined;
   region?: components.Region | undefined;
 };
-
-/** @internal */
-export const ListProvisionedNodesGlobals$inboundSchema: z.ZodType<
-  ListProvisionedNodesGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type ListProvisionedNodesGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const ListProvisionedNodesGlobals$outboundSchema: z.ZodType<
-  ListProvisionedNodesGlobals$Outbound,
-  z.ZodTypeDef,
-  ListProvisionedNodesGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListProvisionedNodesGlobals$ {
-  /** @deprecated use `ListProvisionedNodesGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListProvisionedNodesGlobals$inboundSchema;
-  /** @deprecated use `ListProvisionedNodesGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListProvisionedNodesGlobals$outboundSchema;
-  /** @deprecated use `ListProvisionedNodesGlobals$Outbound` instead. */
-  export type Outbound = ListProvisionedNodesGlobals$Outbound;
-}
-
-export function listProvisionedNodesGlobalsToJSON(
-  listProvisionedNodesGlobals: ListProvisionedNodesGlobals,
-): string {
-  return JSON.stringify(
-    ListProvisionedNodesGlobals$outboundSchema.parse(
-      listProvisionedNodesGlobals,
-    ),
-  );
-}
-
-export function listProvisionedNodesGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<ListProvisionedNodesGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListProvisionedNodesGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListProvisionedNodesGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const ListProvisionedNodesRequest$inboundSchema: z.ZodType<
-  ListProvisionedNodesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fleetId: z.string(),
-  orgId: z.string().optional(),
-  region: components.Region$inboundSchema.optional(),
-});
 
 /** @internal */
 export type ListProvisionedNodesRequest$Outbound = {
@@ -103,19 +33,6 @@ export const ListProvisionedNodesRequest$outboundSchema: z.ZodType<
   region: components.Region$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListProvisionedNodesRequest$ {
-  /** @deprecated use `ListProvisionedNodesRequest$inboundSchema` instead. */
-  export const inboundSchema = ListProvisionedNodesRequest$inboundSchema;
-  /** @deprecated use `ListProvisionedNodesRequest$outboundSchema` instead. */
-  export const outboundSchema = ListProvisionedNodesRequest$outboundSchema;
-  /** @deprecated use `ListProvisionedNodesRequest$Outbound` instead. */
-  export type Outbound = ListProvisionedNodesRequest$Outbound;
-}
-
 export function listProvisionedNodesRequestToJSON(
   listProvisionedNodesRequest: ListProvisionedNodesRequest,
 ): string {
@@ -123,15 +40,5 @@ export function listProvisionedNodesRequestToJSON(
     ListProvisionedNodesRequest$outboundSchema.parse(
       listProvisionedNodesRequest,
     ),
-  );
-}
-
-export function listProvisionedNodesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListProvisionedNodesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListProvisionedNodesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListProvisionedNodesRequest' from JSON`,
   );
 }

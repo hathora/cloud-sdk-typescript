@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateDeploymentV1DeprecatedGlobals = {
   appId?: string | undefined;
@@ -18,80 +15,6 @@ export type CreateDeploymentV1DeprecatedRequest = {
   buildId: number;
   deploymentConfig: components.DeploymentConfig;
 };
-
-/** @internal */
-export const CreateDeploymentV1DeprecatedGlobals$inboundSchema: z.ZodType<
-  CreateDeploymentV1DeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type CreateDeploymentV1DeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const CreateDeploymentV1DeprecatedGlobals$outboundSchema: z.ZodType<
-  CreateDeploymentV1DeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  CreateDeploymentV1DeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDeploymentV1DeprecatedGlobals$ {
-  /** @deprecated use `CreateDeploymentV1DeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDeploymentV1DeprecatedGlobals$inboundSchema;
-  /** @deprecated use `CreateDeploymentV1DeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDeploymentV1DeprecatedGlobals$outboundSchema;
-  /** @deprecated use `CreateDeploymentV1DeprecatedGlobals$Outbound` instead. */
-  export type Outbound = CreateDeploymentV1DeprecatedGlobals$Outbound;
-}
-
-export function createDeploymentV1DeprecatedGlobalsToJSON(
-  createDeploymentV1DeprecatedGlobals: CreateDeploymentV1DeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    CreateDeploymentV1DeprecatedGlobals$outboundSchema.parse(
-      createDeploymentV1DeprecatedGlobals,
-    ),
-  );
-}
-
-export function createDeploymentV1DeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateDeploymentV1DeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateDeploymentV1DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentV1DeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateDeploymentV1DeprecatedRequest$inboundSchema: z.ZodType<
-  CreateDeploymentV1DeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  buildId: z.number().int(),
-  DeploymentConfig: components.DeploymentConfig$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "DeploymentConfig": "deploymentConfig",
-  });
-});
 
 /** @internal */
 export type CreateDeploymentV1DeprecatedRequest$Outbound = {
@@ -115,21 +38,6 @@ export const CreateDeploymentV1DeprecatedRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDeploymentV1DeprecatedRequest$ {
-  /** @deprecated use `CreateDeploymentV1DeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDeploymentV1DeprecatedRequest$inboundSchema;
-  /** @deprecated use `CreateDeploymentV1DeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDeploymentV1DeprecatedRequest$outboundSchema;
-  /** @deprecated use `CreateDeploymentV1DeprecatedRequest$Outbound` instead. */
-  export type Outbound = CreateDeploymentV1DeprecatedRequest$Outbound;
-}
-
 export function createDeploymentV1DeprecatedRequestToJSON(
   createDeploymentV1DeprecatedRequest: CreateDeploymentV1DeprecatedRequest,
 ): string {
@@ -137,16 +45,5 @@ export function createDeploymentV1DeprecatedRequestToJSON(
     CreateDeploymentV1DeprecatedRequest$outboundSchema.parse(
       createDeploymentV1DeprecatedRequest,
     ),
-  );
-}
-
-export function createDeploymentV1DeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateDeploymentV1DeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateDeploymentV1DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentV1DeprecatedRequest' from JSON`,
   );
 }

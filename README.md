@@ -187,10 +187,10 @@ run();
 * [createFleetDeprecated](docs/sdks/fleetsv1/README.md#createfleetdeprecated) - CreateFleetDeprecated
 * [getFleetDeprecated](docs/sdks/fleetsv1/README.md#getfleetdeprecated) - GetFleetDeprecated
 * [updateFleetDeprecated](docs/sdks/fleetsv1/README.md#updatefleetdeprecated) - UpdateFleetDeprecated
-* [getFleetRegion](docs/sdks/fleetsv1/README.md#getfleetregion) - GetFleetRegion
-* [updateFleetRegion](docs/sdks/fleetsv1/README.md#updatefleetregion) - UpdateFleetRegion
-* [getFleetMetrics](docs/sdks/fleetsv1/README.md#getfleetmetrics) - GetFleetMetrics
-* [getFleetRegionMetrics](docs/sdks/fleetsv1/README.md#getfleetregionmetrics) - GetFleetRegionMetrics
+* [getFleetRegionDeprecated](docs/sdks/fleetsv1/README.md#getfleetregiondeprecated) - GetFleetRegionDeprecated
+* [updateFleetRegionDeprecated](docs/sdks/fleetsv1/README.md#updatefleetregiondeprecated) - UpdateFleetRegionDeprecated
+* [getFleetMetricsDeprecated](docs/sdks/fleetsv1/README.md#getfleetmetricsdeprecated) - GetFleetMetricsDeprecated
+* [getFleetRegionMetricsDeprecated](docs/sdks/fleetsv1/README.md#getfleetregionmetricsdeprecated) - GetFleetRegionMetricsDeprecated
 
 ### [fleetsV2](docs/sdks/fleetsv2/README.md)
 
@@ -199,6 +199,10 @@ run();
 * [createFleet](docs/sdks/fleetsv2/README.md#createfleet) - CreateFleet
 * [getFleet](docs/sdks/fleetsv2/README.md#getfleet) - GetFleet
 * [updateFleet](docs/sdks/fleetsv2/README.md#updatefleet) - UpdateFleet
+* [getFleetRegion](docs/sdks/fleetsv2/README.md#getfleetregion) - GetFleetRegion
+* [updateFleetRegion](docs/sdks/fleetsv2/README.md#updatefleetregion) - UpdateFleetRegion
+* [getFleetMetrics](docs/sdks/fleetsv2/README.md#getfleetmetrics) - GetFleetMetrics
+* [getFleetRegionMetrics](docs/sdks/fleetsv2/README.md#getfleetregionmetrics) - GetFleetRegionMetrics
 
 ### [~~lobbiesV1~~](docs/sdks/lobbiesv1/README.md)
 
@@ -409,7 +413,7 @@ You can override the default server globally by passing a server index to the `s
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
 const hathoraCloud = new HathoraCloud({
-  serverIdx: 1,
+  serverIdx: 0,
   hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
@@ -611,17 +615,21 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`discoveryV2GetPingServiceEndpoints`](docs/sdks/discoveryv2/README.md#getpingserviceendpoints) - GetPingServiceEndpoints
 - [`fleetsV1CreateFleetDeprecated`](docs/sdks/fleetsv1/README.md#createfleetdeprecated) - CreateFleetDeprecated
 - [`fleetsV1GetFleetDeprecated`](docs/sdks/fleetsv1/README.md#getfleetdeprecated) - GetFleetDeprecated
-- [`fleetsV1GetFleetMetrics`](docs/sdks/fleetsv1/README.md#getfleetmetrics) - GetFleetMetrics
-- [`fleetsV1GetFleetRegion`](docs/sdks/fleetsv1/README.md#getfleetregion) - GetFleetRegion
-- [`fleetsV1GetFleetRegionMetrics`](docs/sdks/fleetsv1/README.md#getfleetregionmetrics) - GetFleetRegionMetrics
+- [`fleetsV1GetFleetMetricsDeprecated`](docs/sdks/fleetsv1/README.md#getfleetmetricsdeprecated) - GetFleetMetricsDeprecated
+- [`fleetsV1GetFleetRegionDeprecated`](docs/sdks/fleetsv1/README.md#getfleetregiondeprecated) - GetFleetRegionDeprecated
+- [`fleetsV1GetFleetRegionMetricsDeprecated`](docs/sdks/fleetsv1/README.md#getfleetregionmetricsdeprecated) - GetFleetRegionMetricsDeprecated
 - [`fleetsV1GetFleetsDeprecated`](docs/sdks/fleetsv1/README.md#getfleetsdeprecated) - GetFleetsDeprecated
 - [`fleetsV1UpdateFleetDeprecated`](docs/sdks/fleetsv1/README.md#updatefleetdeprecated) - UpdateFleetDeprecated
-- [`fleetsV1UpdateFleetRegion`](docs/sdks/fleetsv1/README.md#updatefleetregion) - UpdateFleetRegion
+- [`fleetsV1UpdateFleetRegionDeprecated`](docs/sdks/fleetsv1/README.md#updatefleetregiondeprecated) - UpdateFleetRegionDeprecated
 - [`fleetsV2CreateFleet`](docs/sdks/fleetsv2/README.md#createfleet) - CreateFleet
 - [`fleetsV2GetFleet`](docs/sdks/fleetsv2/README.md#getfleet) - GetFleet
+- [`fleetsV2GetFleetMetrics`](docs/sdks/fleetsv2/README.md#getfleetmetrics) - GetFleetMetrics
+- [`fleetsV2GetFleetRegion`](docs/sdks/fleetsv2/README.md#getfleetregion) - GetFleetRegion
+- [`fleetsV2GetFleetRegionMetrics`](docs/sdks/fleetsv2/README.md#getfleetregionmetrics) - GetFleetRegionMetrics
 - [`fleetsV2GetFleets`](docs/sdks/fleetsv2/README.md#getfleets) - GetFleets
 - [`fleetsV2GetNodeShapes`](docs/sdks/fleetsv2/README.md#getnodeshapes) - GetNodeShapes
 - [`fleetsV2UpdateFleet`](docs/sdks/fleetsv2/README.md#updatefleet) - UpdateFleet
+- [`fleetsV2UpdateFleetRegion`](docs/sdks/fleetsv2/README.md#updatefleetregion) - UpdateFleetRegion
 - [`lobbiesV3CreateLobby`](docs/sdks/lobbiesv3/README.md#createlobby) - CreateLobby
 - [`lobbiesV3GetLobbyInfoByRoomId`](docs/sdks/lobbiesv3/README.md#getlobbyinfobyroomid) - GetLobbyInfoByRoomId
 - [`lobbiesV3GetLobbyInfoByShortCode`](docs/sdks/lobbiesv3/README.md#getlobbyinfobyshortcode) - GetLobbyInfoByShortCode

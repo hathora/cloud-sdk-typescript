@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateRoomGlobals = {
   appId?: string | undefined;
@@ -18,75 +15,6 @@ export type CreateRoomRequest = {
   roomId?: string | undefined;
   createRoomParams: components.CreateRoomParams;
 };
-
-/** @internal */
-export const CreateRoomGlobals$inboundSchema: z.ZodType<
-  CreateRoomGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type CreateRoomGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const CreateRoomGlobals$outboundSchema: z.ZodType<
-  CreateRoomGlobals$Outbound,
-  z.ZodTypeDef,
-  CreateRoomGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRoomGlobals$ {
-  /** @deprecated use `CreateRoomGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateRoomGlobals$inboundSchema;
-  /** @deprecated use `CreateRoomGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateRoomGlobals$outboundSchema;
-  /** @deprecated use `CreateRoomGlobals$Outbound` instead. */
-  export type Outbound = CreateRoomGlobals$Outbound;
-}
-
-export function createRoomGlobalsToJSON(
-  createRoomGlobals: CreateRoomGlobals,
-): string {
-  return JSON.stringify(
-    CreateRoomGlobals$outboundSchema.parse(createRoomGlobals),
-  );
-}
-
-export function createRoomGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateRoomGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateRoomGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateRoomGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateRoomRequest$inboundSchema: z.ZodType<
-  CreateRoomRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  roomId: z.string().optional(),
-  CreateRoomParams: components.CreateRoomParams$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateRoomParams": "createRoomParams",
-  });
-});
 
 /** @internal */
 export type CreateRoomRequest$Outbound = {
@@ -110,33 +38,10 @@ export const CreateRoomRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRoomRequest$ {
-  /** @deprecated use `CreateRoomRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateRoomRequest$inboundSchema;
-  /** @deprecated use `CreateRoomRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateRoomRequest$outboundSchema;
-  /** @deprecated use `CreateRoomRequest$Outbound` instead. */
-  export type Outbound = CreateRoomRequest$Outbound;
-}
-
 export function createRoomRequestToJSON(
   createRoomRequest: CreateRoomRequest,
 ): string {
   return JSON.stringify(
     CreateRoomRequest$outboundSchema.parse(createRoomRequest),
-  );
-}
-
-export function createRoomRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateRoomRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateRoomRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateRoomRequest' from JSON`,
   );
 }

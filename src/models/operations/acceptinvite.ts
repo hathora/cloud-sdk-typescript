@@ -3,22 +3,10 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AcceptInviteRequest = {
   orgId: string;
 };
-
-/** @internal */
-export const AcceptInviteRequest$inboundSchema: z.ZodType<
-  AcceptInviteRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string(),
-});
 
 /** @internal */
 export type AcceptInviteRequest$Outbound = {
@@ -34,33 +22,10 @@ export const AcceptInviteRequest$outboundSchema: z.ZodType<
   orgId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AcceptInviteRequest$ {
-  /** @deprecated use `AcceptInviteRequest$inboundSchema` instead. */
-  export const inboundSchema = AcceptInviteRequest$inboundSchema;
-  /** @deprecated use `AcceptInviteRequest$outboundSchema` instead. */
-  export const outboundSchema = AcceptInviteRequest$outboundSchema;
-  /** @deprecated use `AcceptInviteRequest$Outbound` instead. */
-  export type Outbound = AcceptInviteRequest$Outbound;
-}
-
 export function acceptInviteRequestToJSON(
   acceptInviteRequest: AcceptInviteRequest,
 ): string {
   return JSON.stringify(
     AcceptInviteRequest$outboundSchema.parse(acceptInviteRequest),
-  );
-}
-
-export function acceptInviteRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AcceptInviteRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AcceptInviteRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AcceptInviteRequest' from JSON`,
   );
 }

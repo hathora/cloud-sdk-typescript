@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SuspendRoomDeprecatedGlobals = {
   appId?: string | undefined;
@@ -15,72 +12,6 @@ export type SuspendRoomDeprecatedRequest = {
   appId?: string | undefined;
   roomId: string;
 };
-
-/** @internal */
-export const SuspendRoomDeprecatedGlobals$inboundSchema: z.ZodType<
-  SuspendRoomDeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type SuspendRoomDeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const SuspendRoomDeprecatedGlobals$outboundSchema: z.ZodType<
-  SuspendRoomDeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  SuspendRoomDeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SuspendRoomDeprecatedGlobals$ {
-  /** @deprecated use `SuspendRoomDeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = SuspendRoomDeprecatedGlobals$inboundSchema;
-  /** @deprecated use `SuspendRoomDeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema = SuspendRoomDeprecatedGlobals$outboundSchema;
-  /** @deprecated use `SuspendRoomDeprecatedGlobals$Outbound` instead. */
-  export type Outbound = SuspendRoomDeprecatedGlobals$Outbound;
-}
-
-export function suspendRoomDeprecatedGlobalsToJSON(
-  suspendRoomDeprecatedGlobals: SuspendRoomDeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    SuspendRoomDeprecatedGlobals$outboundSchema.parse(
-      suspendRoomDeprecatedGlobals,
-    ),
-  );
-}
-
-export function suspendRoomDeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<SuspendRoomDeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SuspendRoomDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SuspendRoomDeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const SuspendRoomDeprecatedRequest$inboundSchema: z.ZodType<
-  SuspendRoomDeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  roomId: z.string(),
-});
 
 /** @internal */
 export type SuspendRoomDeprecatedRequest$Outbound = {
@@ -98,19 +29,6 @@ export const SuspendRoomDeprecatedRequest$outboundSchema: z.ZodType<
   roomId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SuspendRoomDeprecatedRequest$ {
-  /** @deprecated use `SuspendRoomDeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = SuspendRoomDeprecatedRequest$inboundSchema;
-  /** @deprecated use `SuspendRoomDeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema = SuspendRoomDeprecatedRequest$outboundSchema;
-  /** @deprecated use `SuspendRoomDeprecatedRequest$Outbound` instead. */
-  export type Outbound = SuspendRoomDeprecatedRequest$Outbound;
-}
-
 export function suspendRoomDeprecatedRequestToJSON(
   suspendRoomDeprecatedRequest: SuspendRoomDeprecatedRequest,
 ): string {
@@ -118,15 +36,5 @@ export function suspendRoomDeprecatedRequestToJSON(
     SuspendRoomDeprecatedRequest$outboundSchema.parse(
       suspendRoomDeprecatedRequest,
     ),
-  );
-}
-
-export function suspendRoomDeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<SuspendRoomDeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SuspendRoomDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SuspendRoomDeprecatedRequest' from JSON`,
   );
 }

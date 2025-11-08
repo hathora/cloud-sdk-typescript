@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateLobbyDeprecatedGlobals = {
   appId?: string | undefined;
@@ -24,71 +21,6 @@ export type CreateLobbyDeprecatedRequest = {
 };
 
 /** @internal */
-export const CreateLobbyDeprecatedGlobals$inboundSchema: z.ZodType<
-  CreateLobbyDeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type CreateLobbyDeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const CreateLobbyDeprecatedGlobals$outboundSchema: z.ZodType<
-  CreateLobbyDeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  CreateLobbyDeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateLobbyDeprecatedGlobals$ {
-  /** @deprecated use `CreateLobbyDeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateLobbyDeprecatedGlobals$inboundSchema;
-  /** @deprecated use `CreateLobbyDeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateLobbyDeprecatedGlobals$outboundSchema;
-  /** @deprecated use `CreateLobbyDeprecatedGlobals$Outbound` instead. */
-  export type Outbound = CreateLobbyDeprecatedGlobals$Outbound;
-}
-
-export function createLobbyDeprecatedGlobalsToJSON(
-  createLobbyDeprecatedGlobals: CreateLobbyDeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    CreateLobbyDeprecatedGlobals$outboundSchema.parse(
-      createLobbyDeprecatedGlobals,
-    ),
-  );
-}
-
-export function createLobbyDeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateLobbyDeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateLobbyDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateLobbyDeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateLobbyDeprecatedSecurity$inboundSchema: z.ZodType<
-  CreateLobbyDeprecatedSecurity,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  playerAuth: z.string(),
-});
-
-/** @internal */
 export type CreateLobbyDeprecatedSecurity$Outbound = {
   playerAuth: string;
 };
@@ -102,19 +34,6 @@ export const CreateLobbyDeprecatedSecurity$outboundSchema: z.ZodType<
   playerAuth: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateLobbyDeprecatedSecurity$ {
-  /** @deprecated use `CreateLobbyDeprecatedSecurity$inboundSchema` instead. */
-  export const inboundSchema = CreateLobbyDeprecatedSecurity$inboundSchema;
-  /** @deprecated use `CreateLobbyDeprecatedSecurity$outboundSchema` instead. */
-  export const outboundSchema = CreateLobbyDeprecatedSecurity$outboundSchema;
-  /** @deprecated use `CreateLobbyDeprecatedSecurity$Outbound` instead. */
-  export type Outbound = CreateLobbyDeprecatedSecurity$Outbound;
-}
-
 export function createLobbyDeprecatedSecurityToJSON(
   createLobbyDeprecatedSecurity: CreateLobbyDeprecatedSecurity,
 ): string {
@@ -124,31 +43,6 @@ export function createLobbyDeprecatedSecurityToJSON(
     ),
   );
 }
-
-export function createLobbyDeprecatedSecurityFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateLobbyDeprecatedSecurity, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateLobbyDeprecatedSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateLobbyDeprecatedSecurity' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateLobbyDeprecatedRequest$inboundSchema: z.ZodType<
-  CreateLobbyDeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  roomId: z.string().optional(),
-  CreateLobbyParams: components.CreateLobbyParams$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateLobbyParams": "createLobbyParams",
-  });
-});
 
 /** @internal */
 export type CreateLobbyDeprecatedRequest$Outbound = {
@@ -172,19 +66,6 @@ export const CreateLobbyDeprecatedRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateLobbyDeprecatedRequest$ {
-  /** @deprecated use `CreateLobbyDeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateLobbyDeprecatedRequest$inboundSchema;
-  /** @deprecated use `CreateLobbyDeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateLobbyDeprecatedRequest$outboundSchema;
-  /** @deprecated use `CreateLobbyDeprecatedRequest$Outbound` instead. */
-  export type Outbound = CreateLobbyDeprecatedRequest$Outbound;
-}
-
 export function createLobbyDeprecatedRequestToJSON(
   createLobbyDeprecatedRequest: CreateLobbyDeprecatedRequest,
 ): string {
@@ -192,15 +73,5 @@ export function createLobbyDeprecatedRequestToJSON(
     CreateLobbyDeprecatedRequest$outboundSchema.parse(
       createLobbyDeprecatedRequest,
     ),
-  );
-}
-
-export function createLobbyDeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateLobbyDeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateLobbyDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateLobbyDeprecatedRequest' from JSON`,
   );
 }

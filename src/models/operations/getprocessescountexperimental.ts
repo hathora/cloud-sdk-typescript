@@ -27,77 +27,6 @@ export type GetProcessesCountExperimentalResponseBody = {
 };
 
 /** @internal */
-export const GetProcessesCountExperimentalGlobals$inboundSchema: z.ZodType<
-  GetProcessesCountExperimentalGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetProcessesCountExperimentalGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetProcessesCountExperimentalGlobals$outboundSchema: z.ZodType<
-  GetProcessesCountExperimentalGlobals$Outbound,
-  z.ZodTypeDef,
-  GetProcessesCountExperimentalGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProcessesCountExperimentalGlobals$ {
-  /** @deprecated use `GetProcessesCountExperimentalGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProcessesCountExperimentalGlobals$inboundSchema;
-  /** @deprecated use `GetProcessesCountExperimentalGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProcessesCountExperimentalGlobals$outboundSchema;
-  /** @deprecated use `GetProcessesCountExperimentalGlobals$Outbound` instead. */
-  export type Outbound = GetProcessesCountExperimentalGlobals$Outbound;
-}
-
-export function getProcessesCountExperimentalGlobalsToJSON(
-  getProcessesCountExperimentalGlobals: GetProcessesCountExperimentalGlobals,
-): string {
-  return JSON.stringify(
-    GetProcessesCountExperimentalGlobals$outboundSchema.parse(
-      getProcessesCountExperimentalGlobals,
-    ),
-  );
-}
-
-export function getProcessesCountExperimentalGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProcessesCountExperimentalGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetProcessesCountExperimentalGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProcessesCountExperimentalGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetProcessesCountExperimentalRequest$inboundSchema: z.ZodType<
-  GetProcessesCountExperimentalRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  status: z.array(components.ProcessStatus$inboundSchema).optional(),
-  region: z.array(components.Region$inboundSchema).optional(),
-  before: z.number().optional(),
-});
-
-/** @internal */
 export type GetProcessesCountExperimentalRequest$Outbound = {
   appId?: string | undefined;
   status?: Array<string> | undefined;
@@ -117,21 +46,6 @@ export const GetProcessesCountExperimentalRequest$outboundSchema: z.ZodType<
   before: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProcessesCountExperimentalRequest$ {
-  /** @deprecated use `GetProcessesCountExperimentalRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProcessesCountExperimentalRequest$inboundSchema;
-  /** @deprecated use `GetProcessesCountExperimentalRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProcessesCountExperimentalRequest$outboundSchema;
-  /** @deprecated use `GetProcessesCountExperimentalRequest$Outbound` instead. */
-  export type Outbound = GetProcessesCountExperimentalRequest$Outbound;
-}
-
 export function getProcessesCountExperimentalRequestToJSON(
   getProcessesCountExperimentalRequest: GetProcessesCountExperimentalRequest,
 ): string {
@@ -139,17 +53,6 @@ export function getProcessesCountExperimentalRequestToJSON(
     GetProcessesCountExperimentalRequest$outboundSchema.parse(
       getProcessesCountExperimentalRequest,
     ),
-  );
-}
-
-export function getProcessesCountExperimentalRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProcessesCountExperimentalRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetProcessesCountExperimentalRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProcessesCountExperimentalRequest' from JSON`,
   );
 }
 
@@ -161,47 +64,6 @@ export const GetProcessesCountExperimentalResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   count: z.number(),
 });
-
-/** @internal */
-export type GetProcessesCountExperimentalResponseBody$Outbound = {
-  count: number;
-};
-
-/** @internal */
-export const GetProcessesCountExperimentalResponseBody$outboundSchema:
-  z.ZodType<
-    GetProcessesCountExperimentalResponseBody$Outbound,
-    z.ZodTypeDef,
-    GetProcessesCountExperimentalResponseBody
-  > = z.object({
-    count: z.number(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProcessesCountExperimentalResponseBody$ {
-  /** @deprecated use `GetProcessesCountExperimentalResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProcessesCountExperimentalResponseBody$inboundSchema;
-  /** @deprecated use `GetProcessesCountExperimentalResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProcessesCountExperimentalResponseBody$outboundSchema;
-  /** @deprecated use `GetProcessesCountExperimentalResponseBody$Outbound` instead. */
-  export type Outbound = GetProcessesCountExperimentalResponseBody$Outbound;
-}
-
-export function getProcessesCountExperimentalResponseBodyToJSON(
-  getProcessesCountExperimentalResponseBody:
-    GetProcessesCountExperimentalResponseBody,
-): string {
-  return JSON.stringify(
-    GetProcessesCountExperimentalResponseBody$outboundSchema.parse(
-      getProcessesCountExperimentalResponseBody,
-    ),
-  );
-}
 
 export function getProcessesCountExperimentalResponseBodyFromJSON(
   jsonString: string,

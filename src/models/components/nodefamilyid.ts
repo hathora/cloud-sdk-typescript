@@ -3,11 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 
 export const NodeFamilyId = {
   FamilyAmd6412: "family-amd64-1-2",
@@ -31,24 +27,3 @@ export const NodeFamilyId$inboundSchema: z.ZodType<
     z.nativeEnum(NodeFamilyId),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const NodeFamilyId$outboundSchema: z.ZodType<
-  NodeFamilyId,
-  z.ZodTypeDef,
-  NodeFamilyId
-> = z.union([
-  z.nativeEnum(NodeFamilyId),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NodeFamilyId$ {
-  /** @deprecated use `NodeFamilyId$inboundSchema` instead. */
-  export const inboundSchema = NodeFamilyId$inboundSchema;
-  /** @deprecated use `NodeFamilyId$outboundSchema` instead. */
-  export const outboundSchema = NodeFamilyId$outboundSchema;
-}

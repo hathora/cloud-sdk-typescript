@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ApplicationWithLatestDeploymentAndBuild,
   ApplicationWithLatestDeploymentAndBuild$inboundSchema,
-  ApplicationWithLatestDeploymentAndBuild$Outbound,
-  ApplicationWithLatestDeploymentAndBuild$outboundSchema,
 } from "./applicationwithlatestdeploymentandbuild.js";
 
 export type ApplicationsPage = {
@@ -25,41 +23,6 @@ export const ApplicationsPage$inboundSchema: z.ZodType<
 > = z.object({
   applications: z.array(ApplicationWithLatestDeploymentAndBuild$inboundSchema),
 });
-
-/** @internal */
-export type ApplicationsPage$Outbound = {
-  applications: Array<ApplicationWithLatestDeploymentAndBuild$Outbound>;
-};
-
-/** @internal */
-export const ApplicationsPage$outboundSchema: z.ZodType<
-  ApplicationsPage$Outbound,
-  z.ZodTypeDef,
-  ApplicationsPage
-> = z.object({
-  applications: z.array(ApplicationWithLatestDeploymentAndBuild$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationsPage$ {
-  /** @deprecated use `ApplicationsPage$inboundSchema` instead. */
-  export const inboundSchema = ApplicationsPage$inboundSchema;
-  /** @deprecated use `ApplicationsPage$outboundSchema` instead. */
-  export const outboundSchema = ApplicationsPage$outboundSchema;
-  /** @deprecated use `ApplicationsPage$Outbound` instead. */
-  export type Outbound = ApplicationsPage$Outbound;
-}
-
-export function applicationsPageToJSON(
-  applicationsPage: ApplicationsPage,
-): string {
-  return JSON.stringify(
-    ApplicationsPage$outboundSchema.parse(applicationsPage),
-  );
-}
 
 export function applicationsPageFromJSON(
   jsonString: string,

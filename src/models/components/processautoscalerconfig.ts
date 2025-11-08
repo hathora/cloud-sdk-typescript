@@ -32,7 +32,6 @@ export const ProcessAutoscalerConfig$inboundSchema: z.ZodType<
 > = z.object({
   targetMetric: AutoscalerTargetMetric$inboundSchema,
 });
-
 /** @internal */
 export type ProcessAutoscalerConfig$Outbound = {
   targetMetric: AutoscalerTargetMetric$Outbound;
@@ -47,19 +46,6 @@ export const ProcessAutoscalerConfig$outboundSchema: z.ZodType<
   targetMetric: AutoscalerTargetMetric$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProcessAutoscalerConfig$ {
-  /** @deprecated use `ProcessAutoscalerConfig$inboundSchema` instead. */
-  export const inboundSchema = ProcessAutoscalerConfig$inboundSchema;
-  /** @deprecated use `ProcessAutoscalerConfig$outboundSchema` instead. */
-  export const outboundSchema = ProcessAutoscalerConfig$outboundSchema;
-  /** @deprecated use `ProcessAutoscalerConfig$Outbound` instead. */
-  export type Outbound = ProcessAutoscalerConfig$Outbound;
-}
-
 export function processAutoscalerConfigToJSON(
   processAutoscalerConfig: ProcessAutoscalerConfig,
 ): string {
@@ -67,7 +53,6 @@ export function processAutoscalerConfigToJSON(
     ProcessAutoscalerConfig$outboundSchema.parse(processAutoscalerConfig),
   );
 }
-
 export function processAutoscalerConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<ProcessAutoscalerConfig, SDKValidationError> {

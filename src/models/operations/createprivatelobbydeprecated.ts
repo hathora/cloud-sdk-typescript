@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreatePrivateLobbyDeprecatedGlobals = {
   appId?: string | undefined;
@@ -23,74 +20,6 @@ export type CreatePrivateLobbyDeprecatedRequest = {
 };
 
 /** @internal */
-export const CreatePrivateLobbyDeprecatedGlobals$inboundSchema: z.ZodType<
-  CreatePrivateLobbyDeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type CreatePrivateLobbyDeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const CreatePrivateLobbyDeprecatedGlobals$outboundSchema: z.ZodType<
-  CreatePrivateLobbyDeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  CreatePrivateLobbyDeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePrivateLobbyDeprecatedGlobals$ {
-  /** @deprecated use `CreatePrivateLobbyDeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    CreatePrivateLobbyDeprecatedGlobals$inboundSchema;
-  /** @deprecated use `CreatePrivateLobbyDeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    CreatePrivateLobbyDeprecatedGlobals$outboundSchema;
-  /** @deprecated use `CreatePrivateLobbyDeprecatedGlobals$Outbound` instead. */
-  export type Outbound = CreatePrivateLobbyDeprecatedGlobals$Outbound;
-}
-
-export function createPrivateLobbyDeprecatedGlobalsToJSON(
-  createPrivateLobbyDeprecatedGlobals: CreatePrivateLobbyDeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    CreatePrivateLobbyDeprecatedGlobals$outboundSchema.parse(
-      createPrivateLobbyDeprecatedGlobals,
-    ),
-  );
-}
-
-export function createPrivateLobbyDeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePrivateLobbyDeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreatePrivateLobbyDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePrivateLobbyDeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePrivateLobbyDeprecatedSecurity$inboundSchema: z.ZodType<
-  CreatePrivateLobbyDeprecatedSecurity,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  playerAuth: z.string(),
-});
-
-/** @internal */
 export type CreatePrivateLobbyDeprecatedSecurity$Outbound = {
   playerAuth: string;
 };
@@ -104,21 +33,6 @@ export const CreatePrivateLobbyDeprecatedSecurity$outboundSchema: z.ZodType<
   playerAuth: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePrivateLobbyDeprecatedSecurity$ {
-  /** @deprecated use `CreatePrivateLobbyDeprecatedSecurity$inboundSchema` instead. */
-  export const inboundSchema =
-    CreatePrivateLobbyDeprecatedSecurity$inboundSchema;
-  /** @deprecated use `CreatePrivateLobbyDeprecatedSecurity$outboundSchema` instead. */
-  export const outboundSchema =
-    CreatePrivateLobbyDeprecatedSecurity$outboundSchema;
-  /** @deprecated use `CreatePrivateLobbyDeprecatedSecurity$Outbound` instead. */
-  export type Outbound = CreatePrivateLobbyDeprecatedSecurity$Outbound;
-}
-
 export function createPrivateLobbyDeprecatedSecurityToJSON(
   createPrivateLobbyDeprecatedSecurity: CreatePrivateLobbyDeprecatedSecurity,
 ): string {
@@ -128,28 +42,6 @@ export function createPrivateLobbyDeprecatedSecurityToJSON(
     ),
   );
 }
-
-export function createPrivateLobbyDeprecatedSecurityFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePrivateLobbyDeprecatedSecurity, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreatePrivateLobbyDeprecatedSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePrivateLobbyDeprecatedSecurity' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePrivateLobbyDeprecatedRequest$inboundSchema: z.ZodType<
-  CreatePrivateLobbyDeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  region: components.Region$inboundSchema.optional(),
-  local: z.boolean().default(false),
-});
 
 /** @internal */
 export type CreatePrivateLobbyDeprecatedRequest$Outbound = {
@@ -169,21 +61,6 @@ export const CreatePrivateLobbyDeprecatedRequest$outboundSchema: z.ZodType<
   local: z.boolean().default(false),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePrivateLobbyDeprecatedRequest$ {
-  /** @deprecated use `CreatePrivateLobbyDeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    CreatePrivateLobbyDeprecatedRequest$inboundSchema;
-  /** @deprecated use `CreatePrivateLobbyDeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    CreatePrivateLobbyDeprecatedRequest$outboundSchema;
-  /** @deprecated use `CreatePrivateLobbyDeprecatedRequest$Outbound` instead. */
-  export type Outbound = CreatePrivateLobbyDeprecatedRequest$Outbound;
-}
-
 export function createPrivateLobbyDeprecatedRequestToJSON(
   createPrivateLobbyDeprecatedRequest: CreatePrivateLobbyDeprecatedRequest,
 ): string {
@@ -191,16 +68,5 @@ export function createPrivateLobbyDeprecatedRequestToJSON(
     CreatePrivateLobbyDeprecatedRequest$outboundSchema.parse(
       createPrivateLobbyDeprecatedRequest,
     ),
-  );
-}
-
-export function createPrivateLobbyDeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePrivateLobbyDeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreatePrivateLobbyDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePrivateLobbyDeprecatedRequest' from JSON`,
   );
 }

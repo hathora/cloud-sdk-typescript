@@ -3,18 +3,13 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AuthConfiguration,
-  AuthConfiguration$inboundSchema,
   AuthConfiguration$Outbound,
   AuthConfiguration$outboundSchema,
 } from "./authconfiguration.js";
 import {
   ServiceConfigWrite,
-  ServiceConfigWrite$inboundSchema,
   ServiceConfigWrite$Outbound,
   ServiceConfigWrite$outboundSchema,
 } from "./serviceconfigwrite.js";
@@ -30,17 +25,6 @@ export type AppConfigWithServiceConfig = {
    */
   appName: string;
 };
-
-/** @internal */
-export const AppConfigWithServiceConfig$inboundSchema: z.ZodType<
-  AppConfigWithServiceConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  serviceConfig: ServiceConfigWrite$inboundSchema.optional(),
-  authConfiguration: AuthConfiguration$inboundSchema,
-  appName: z.string(),
-});
 
 /** @internal */
 export type AppConfigWithServiceConfig$Outbound = {
@@ -60,33 +44,10 @@ export const AppConfigWithServiceConfig$outboundSchema: z.ZodType<
   appName: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AppConfigWithServiceConfig$ {
-  /** @deprecated use `AppConfigWithServiceConfig$inboundSchema` instead. */
-  export const inboundSchema = AppConfigWithServiceConfig$inboundSchema;
-  /** @deprecated use `AppConfigWithServiceConfig$outboundSchema` instead. */
-  export const outboundSchema = AppConfigWithServiceConfig$outboundSchema;
-  /** @deprecated use `AppConfigWithServiceConfig$Outbound` instead. */
-  export type Outbound = AppConfigWithServiceConfig$Outbound;
-}
-
 export function appConfigWithServiceConfigToJSON(
   appConfigWithServiceConfig: AppConfigWithServiceConfig,
 ): string {
   return JSON.stringify(
     AppConfigWithServiceConfig$outboundSchema.parse(appConfigWithServiceConfig),
-  );
-}
-
-export function appConfigWithServiceConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<AppConfigWithServiceConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AppConfigWithServiceConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AppConfigWithServiceConfig' from JSON`,
   );
 }

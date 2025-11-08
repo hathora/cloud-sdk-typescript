@@ -3,11 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 /**
  * Available metrics to query over time.
@@ -27,17 +23,6 @@ export const ProcessMetricName = {
 export type ProcessMetricName = OpenEnum<typeof ProcessMetricName>;
 
 /** @internal */
-export const ProcessMetricName$inboundSchema: z.ZodType<
-  ProcessMetricName,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(ProcessMetricName),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
-/** @internal */
 export const ProcessMetricName$outboundSchema: z.ZodType<
   ProcessMetricName,
   z.ZodTypeDef,
@@ -46,14 +31,3 @@ export const ProcessMetricName$outboundSchema: z.ZodType<
   z.nativeEnum(ProcessMetricName),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProcessMetricName$ {
-  /** @deprecated use `ProcessMetricName$inboundSchema` instead. */
-  export const inboundSchema = ProcessMetricName$inboundSchema;
-  /** @deprecated use `ProcessMetricName$outboundSchema` instead. */
-  export const outboundSchema = ProcessMetricName$outboundSchema;
-}

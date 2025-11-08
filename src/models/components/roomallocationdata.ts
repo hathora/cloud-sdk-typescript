@@ -6,16 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ExposedPort,
-  ExposedPort$inboundSchema,
-  ExposedPort$Outbound,
-  ExposedPort$outboundSchema,
-} from "./exposedport.js";
+import { ExposedPort, ExposedPort$inboundSchema } from "./exposedport.js";
 import {
   RoomReadyStatus,
   RoomReadyStatus$inboundSchema,
-  RoomReadyStatus$outboundSchema,
 } from "./roomreadystatus.js";
 
 /**
@@ -53,49 +47,6 @@ export const RoomAllocationData$inboundSchema: z.ZodType<
   roomId: z.string(),
   processId: z.string().optional(),
 });
-
-/** @internal */
-export type RoomAllocationData$Outbound = {
-  additionalExposedPorts: Array<ExposedPort$Outbound>;
-  exposedPort?: ExposedPort$Outbound | undefined;
-  status: string;
-  roomId: string;
-  processId?: string | undefined;
-};
-
-/** @internal */
-export const RoomAllocationData$outboundSchema: z.ZodType<
-  RoomAllocationData$Outbound,
-  z.ZodTypeDef,
-  RoomAllocationData
-> = z.object({
-  additionalExposedPorts: z.array(ExposedPort$outboundSchema),
-  exposedPort: ExposedPort$outboundSchema.optional(),
-  status: RoomReadyStatus$outboundSchema,
-  roomId: z.string(),
-  processId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RoomAllocationData$ {
-  /** @deprecated use `RoomAllocationData$inboundSchema` instead. */
-  export const inboundSchema = RoomAllocationData$inboundSchema;
-  /** @deprecated use `RoomAllocationData$outboundSchema` instead. */
-  export const outboundSchema = RoomAllocationData$outboundSchema;
-  /** @deprecated use `RoomAllocationData$Outbound` instead. */
-  export type Outbound = RoomAllocationData$Outbound;
-}
-
-export function roomAllocationDataToJSON(
-  roomAllocationData: RoomAllocationData,
-): string {
-  return JSON.stringify(
-    RoomAllocationData$outboundSchema.parse(roomAllocationData),
-  );
-}
 
 export function roomAllocationDataFromJSON(
   jsonString: string,

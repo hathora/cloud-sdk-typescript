@@ -37,7 +37,6 @@ export const ContainerPort$inboundSchema: z.ZodType<
   port: z.number().int(),
   name: z.string(),
 });
-
 /** @internal */
 export type ContainerPort$Outbound = {
   transportType: string;
@@ -56,23 +55,9 @@ export const ContainerPort$outboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContainerPort$ {
-  /** @deprecated use `ContainerPort$inboundSchema` instead. */
-  export const inboundSchema = ContainerPort$inboundSchema;
-  /** @deprecated use `ContainerPort$outboundSchema` instead. */
-  export const outboundSchema = ContainerPort$outboundSchema;
-  /** @deprecated use `ContainerPort$Outbound` instead. */
-  export type Outbound = ContainerPort$Outbound;
-}
-
 export function containerPortToJSON(containerPort: ContainerPort): string {
   return JSON.stringify(ContainerPort$outboundSchema.parse(containerPort));
 }
-
 export function containerPortFromJSON(
   jsonString: string,
 ): SafeParseResult<ContainerPort, SDKValidationError> {

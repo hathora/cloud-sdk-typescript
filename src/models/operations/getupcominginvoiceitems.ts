@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetUpcomingInvoiceItemsGlobals = {
   orgId?: string | undefined;
@@ -14,71 +11,6 @@ export type GetUpcomingInvoiceItemsGlobals = {
 export type GetUpcomingInvoiceItemsRequest = {
   orgId?: string | undefined;
 };
-
-/** @internal */
-export const GetUpcomingInvoiceItemsGlobals$inboundSchema: z.ZodType<
-  GetUpcomingInvoiceItemsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type GetUpcomingInvoiceItemsGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const GetUpcomingInvoiceItemsGlobals$outboundSchema: z.ZodType<
-  GetUpcomingInvoiceItemsGlobals$Outbound,
-  z.ZodTypeDef,
-  GetUpcomingInvoiceItemsGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetUpcomingInvoiceItemsGlobals$ {
-  /** @deprecated use `GetUpcomingInvoiceItemsGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetUpcomingInvoiceItemsGlobals$inboundSchema;
-  /** @deprecated use `GetUpcomingInvoiceItemsGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetUpcomingInvoiceItemsGlobals$outboundSchema;
-  /** @deprecated use `GetUpcomingInvoiceItemsGlobals$Outbound` instead. */
-  export type Outbound = GetUpcomingInvoiceItemsGlobals$Outbound;
-}
-
-export function getUpcomingInvoiceItemsGlobalsToJSON(
-  getUpcomingInvoiceItemsGlobals: GetUpcomingInvoiceItemsGlobals,
-): string {
-  return JSON.stringify(
-    GetUpcomingInvoiceItemsGlobals$outboundSchema.parse(
-      getUpcomingInvoiceItemsGlobals,
-    ),
-  );
-}
-
-export function getUpcomingInvoiceItemsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetUpcomingInvoiceItemsGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetUpcomingInvoiceItemsGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetUpcomingInvoiceItemsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetUpcomingInvoiceItemsRequest$inboundSchema: z.ZodType<
-  GetUpcomingInvoiceItemsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
 
 /** @internal */
 export type GetUpcomingInvoiceItemsRequest$Outbound = {
@@ -94,19 +26,6 @@ export const GetUpcomingInvoiceItemsRequest$outboundSchema: z.ZodType<
   orgId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetUpcomingInvoiceItemsRequest$ {
-  /** @deprecated use `GetUpcomingInvoiceItemsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetUpcomingInvoiceItemsRequest$inboundSchema;
-  /** @deprecated use `GetUpcomingInvoiceItemsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetUpcomingInvoiceItemsRequest$outboundSchema;
-  /** @deprecated use `GetUpcomingInvoiceItemsRequest$Outbound` instead. */
-  export type Outbound = GetUpcomingInvoiceItemsRequest$Outbound;
-}
-
 export function getUpcomingInvoiceItemsRequestToJSON(
   getUpcomingInvoiceItemsRequest: GetUpcomingInvoiceItemsRequest,
 ): string {
@@ -114,15 +33,5 @@ export function getUpcomingInvoiceItemsRequestToJSON(
     GetUpcomingInvoiceItemsRequest$outboundSchema.parse(
       getUpcomingInvoiceItemsRequest,
     ),
-  );
-}
-
-export function getUpcomingInvoiceItemsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetUpcomingInvoiceItemsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetUpcomingInvoiceItemsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetUpcomingInvoiceItemsRequest' from JSON`,
   );
 }

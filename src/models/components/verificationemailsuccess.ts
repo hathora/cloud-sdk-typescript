@@ -3,11 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 
 export const VerificationEmailSuccess = {
   Success: "success",
@@ -26,24 +22,3 @@ export const VerificationEmailSuccess$inboundSchema: z.ZodType<
     z.nativeEnum(VerificationEmailSuccess),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const VerificationEmailSuccess$outboundSchema: z.ZodType<
-  VerificationEmailSuccess,
-  z.ZodTypeDef,
-  VerificationEmailSuccess
-> = z.union([
-  z.nativeEnum(VerificationEmailSuccess),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VerificationEmailSuccess$ {
-  /** @deprecated use `VerificationEmailSuccess$inboundSchema` instead. */
-  export const inboundSchema = VerificationEmailSuccess$inboundSchema;
-  /** @deprecated use `VerificationEmailSuccess$outboundSchema` instead. */
-  export const outboundSchema = VerificationEmailSuccess$outboundSchema;
-}

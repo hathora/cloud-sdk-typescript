@@ -6,11 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  CardBrand,
-  CardBrand$inboundSchema,
-  CardBrand$outboundSchema,
-} from "./cardbrand.js";
+import { CardBrand, CardBrand$inboundSchema } from "./cardbrand.js";
 
 export type CardPaymentMethod = {
   last4: string;
@@ -26,43 +22,6 @@ export const CardPaymentMethod$inboundSchema: z.ZodType<
   last4: z.string(),
   brand: CardBrand$inboundSchema,
 });
-
-/** @internal */
-export type CardPaymentMethod$Outbound = {
-  last4: string;
-  brand: string;
-};
-
-/** @internal */
-export const CardPaymentMethod$outboundSchema: z.ZodType<
-  CardPaymentMethod$Outbound,
-  z.ZodTypeDef,
-  CardPaymentMethod
-> = z.object({
-  last4: z.string(),
-  brand: CardBrand$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardPaymentMethod$ {
-  /** @deprecated use `CardPaymentMethod$inboundSchema` instead. */
-  export const inboundSchema = CardPaymentMethod$inboundSchema;
-  /** @deprecated use `CardPaymentMethod$outboundSchema` instead. */
-  export const outboundSchema = CardPaymentMethod$outboundSchema;
-  /** @deprecated use `CardPaymentMethod$Outbound` instead. */
-  export type Outbound = CardPaymentMethod$Outbound;
-}
-
-export function cardPaymentMethodToJSON(
-  cardPaymentMethod: CardPaymentMethod,
-): string {
-  return JSON.stringify(
-    CardPaymentMethod$outboundSchema.parse(cardPaymentMethod),
-  );
-}
 
 export function cardPaymentMethodFromJSON(
   jsonString: string,

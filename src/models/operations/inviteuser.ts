@@ -4,29 +4,12 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InviteUserRequest = {
   orgId: string;
   createUserInvite: components.CreateUserInvite;
 };
-
-/** @internal */
-export const InviteUserRequest$inboundSchema: z.ZodType<
-  InviteUserRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string(),
-  CreateUserInvite: components.CreateUserInvite$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateUserInvite": "createUserInvite",
-  });
-});
 
 /** @internal */
 export type InviteUserRequest$Outbound = {
@@ -48,33 +31,10 @@ export const InviteUserRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InviteUserRequest$ {
-  /** @deprecated use `InviteUserRequest$inboundSchema` instead. */
-  export const inboundSchema = InviteUserRequest$inboundSchema;
-  /** @deprecated use `InviteUserRequest$outboundSchema` instead. */
-  export const outboundSchema = InviteUserRequest$outboundSchema;
-  /** @deprecated use `InviteUserRequest$Outbound` instead. */
-  export type Outbound = InviteUserRequest$Outbound;
-}
-
 export function inviteUserRequestToJSON(
   inviteUserRequest: InviteUserRequest,
 ): string {
   return JSON.stringify(
     InviteUserRequest$outboundSchema.parse(inviteUserRequest),
-  );
-}
-
-export function inviteUserRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<InviteUserRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InviteUserRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InviteUserRequest' from JSON`,
   );
 }

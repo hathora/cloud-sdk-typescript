@@ -3,26 +3,12 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RegistryConfig = {
   auth?: string | undefined;
   registryUrl?: string | undefined;
   image: string;
 };
-
-/** @internal */
-export const RegistryConfig$inboundSchema: z.ZodType<
-  RegistryConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  auth: z.string().optional(),
-  registryUrl: z.string().optional(),
-  image: z.string(),
-});
 
 /** @internal */
 export type RegistryConfig$Outbound = {
@@ -42,29 +28,6 @@ export const RegistryConfig$outboundSchema: z.ZodType<
   image: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RegistryConfig$ {
-  /** @deprecated use `RegistryConfig$inboundSchema` instead. */
-  export const inboundSchema = RegistryConfig$inboundSchema;
-  /** @deprecated use `RegistryConfig$outboundSchema` instead. */
-  export const outboundSchema = RegistryConfig$outboundSchema;
-  /** @deprecated use `RegistryConfig$Outbound` instead. */
-  export type Outbound = RegistryConfig$Outbound;
-}
-
 export function registryConfigToJSON(registryConfig: RegistryConfig): string {
   return JSON.stringify(RegistryConfig$outboundSchema.parse(registryConfig));
-}
-
-export function registryConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<RegistryConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RegistryConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RegistryConfig' from JSON`,
-  );
 }

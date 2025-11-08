@@ -3,22 +3,10 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetOrgTokensRequest = {
   orgId: string;
 };
-
-/** @internal */
-export const GetOrgTokensRequest$inboundSchema: z.ZodType<
-  GetOrgTokensRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string(),
-});
 
 /** @internal */
 export type GetOrgTokensRequest$Outbound = {
@@ -34,33 +22,10 @@ export const GetOrgTokensRequest$outboundSchema: z.ZodType<
   orgId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrgTokensRequest$ {
-  /** @deprecated use `GetOrgTokensRequest$inboundSchema` instead. */
-  export const inboundSchema = GetOrgTokensRequest$inboundSchema;
-  /** @deprecated use `GetOrgTokensRequest$outboundSchema` instead. */
-  export const outboundSchema = GetOrgTokensRequest$outboundSchema;
-  /** @deprecated use `GetOrgTokensRequest$Outbound` instead. */
-  export type Outbound = GetOrgTokensRequest$Outbound;
-}
-
 export function getOrgTokensRequestToJSON(
   getOrgTokensRequest: GetOrgTokensRequest,
 ): string {
   return JSON.stringify(
     GetOrgTokensRequest$outboundSchema.parse(getOrgTokensRequest),
-  );
-}
-
-export function getOrgTokensRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetOrgTokensRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetOrgTokensRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetOrgTokensRequest' from JSON`,
   );
 }

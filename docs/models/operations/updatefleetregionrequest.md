@@ -9,7 +9,7 @@ let value: UpdateFleetRegionRequest = {
   fleetId: "<id>",
   region: "Tokyo",
   fleetRegionConfig: {
-    cloudMinVcpus: 385222,
+    cloudMinVcpus: 758709,
   },
 };
 ```

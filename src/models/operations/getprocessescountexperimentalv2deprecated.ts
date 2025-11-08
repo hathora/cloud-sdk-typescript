@@ -26,86 +26,6 @@ export type GetProcessesCountExperimentalV2DeprecatedResponseBody = {
 };
 
 /** @internal */
-export const GetProcessesCountExperimentalV2DeprecatedGlobals$inboundSchema:
-  z.ZodType<
-    GetProcessesCountExperimentalV2DeprecatedGlobals,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    appId: z.string().optional(),
-  });
-
-/** @internal */
-export type GetProcessesCountExperimentalV2DeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetProcessesCountExperimentalV2DeprecatedGlobals$outboundSchema:
-  z.ZodType<
-    GetProcessesCountExperimentalV2DeprecatedGlobals$Outbound,
-    z.ZodTypeDef,
-    GetProcessesCountExperimentalV2DeprecatedGlobals
-  > = z.object({
-    appId: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProcessesCountExperimentalV2DeprecatedGlobals$ {
-  /** @deprecated use `GetProcessesCountExperimentalV2DeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProcessesCountExperimentalV2DeprecatedGlobals$inboundSchema;
-  /** @deprecated use `GetProcessesCountExperimentalV2DeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProcessesCountExperimentalV2DeprecatedGlobals$outboundSchema;
-  /** @deprecated use `GetProcessesCountExperimentalV2DeprecatedGlobals$Outbound` instead. */
-  export type Outbound =
-    GetProcessesCountExperimentalV2DeprecatedGlobals$Outbound;
-}
-
-export function getProcessesCountExperimentalV2DeprecatedGlobalsToJSON(
-  getProcessesCountExperimentalV2DeprecatedGlobals:
-    GetProcessesCountExperimentalV2DeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    GetProcessesCountExperimentalV2DeprecatedGlobals$outboundSchema.parse(
-      getProcessesCountExperimentalV2DeprecatedGlobals,
-    ),
-  );
-}
-
-export function getProcessesCountExperimentalV2DeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetProcessesCountExperimentalV2DeprecatedGlobals,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetProcessesCountExperimentalV2DeprecatedGlobals$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetProcessesCountExperimentalV2DeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetProcessesCountExperimentalV2DeprecatedRequest$inboundSchema:
-  z.ZodType<
-    GetProcessesCountExperimentalV2DeprecatedRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    appId: z.string().optional(),
-    status: z.array(components.ProcessStatus$inboundSchema).optional(),
-    region: z.array(components.Region$inboundSchema).optional(),
-  });
-
-/** @internal */
 export type GetProcessesCountExperimentalV2DeprecatedRequest$Outbound = {
   appId?: string | undefined;
   status?: Array<string> | undefined;
@@ -124,22 +44,6 @@ export const GetProcessesCountExperimentalV2DeprecatedRequest$outboundSchema:
     region: z.array(components.Region$outboundSchema).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProcessesCountExperimentalV2DeprecatedRequest$ {
-  /** @deprecated use `GetProcessesCountExperimentalV2DeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProcessesCountExperimentalV2DeprecatedRequest$inboundSchema;
-  /** @deprecated use `GetProcessesCountExperimentalV2DeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProcessesCountExperimentalV2DeprecatedRequest$outboundSchema;
-  /** @deprecated use `GetProcessesCountExperimentalV2DeprecatedRequest$Outbound` instead. */
-  export type Outbound =
-    GetProcessesCountExperimentalV2DeprecatedRequest$Outbound;
-}
-
 export function getProcessesCountExperimentalV2DeprecatedRequestToJSON(
   getProcessesCountExperimentalV2DeprecatedRequest:
     GetProcessesCountExperimentalV2DeprecatedRequest,
@@ -148,22 +52,6 @@ export function getProcessesCountExperimentalV2DeprecatedRequestToJSON(
     GetProcessesCountExperimentalV2DeprecatedRequest$outboundSchema.parse(
       getProcessesCountExperimentalV2DeprecatedRequest,
     ),
-  );
-}
-
-export function getProcessesCountExperimentalV2DeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetProcessesCountExperimentalV2DeprecatedRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetProcessesCountExperimentalV2DeprecatedRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetProcessesCountExperimentalV2DeprecatedRequest' from JSON`,
   );
 }
 
@@ -176,48 +64,6 @@ export const GetProcessesCountExperimentalV2DeprecatedResponseBody$inboundSchema
   > = z.object({
     count: z.number(),
   });
-
-/** @internal */
-export type GetProcessesCountExperimentalV2DeprecatedResponseBody$Outbound = {
-  count: number;
-};
-
-/** @internal */
-export const GetProcessesCountExperimentalV2DeprecatedResponseBody$outboundSchema:
-  z.ZodType<
-    GetProcessesCountExperimentalV2DeprecatedResponseBody$Outbound,
-    z.ZodTypeDef,
-    GetProcessesCountExperimentalV2DeprecatedResponseBody
-  > = z.object({
-    count: z.number(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProcessesCountExperimentalV2DeprecatedResponseBody$ {
-  /** @deprecated use `GetProcessesCountExperimentalV2DeprecatedResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProcessesCountExperimentalV2DeprecatedResponseBody$inboundSchema;
-  /** @deprecated use `GetProcessesCountExperimentalV2DeprecatedResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProcessesCountExperimentalV2DeprecatedResponseBody$outboundSchema;
-  /** @deprecated use `GetProcessesCountExperimentalV2DeprecatedResponseBody$Outbound` instead. */
-  export type Outbound =
-    GetProcessesCountExperimentalV2DeprecatedResponseBody$Outbound;
-}
-
-export function getProcessesCountExperimentalV2DeprecatedResponseBodyToJSON(
-  getProcessesCountExperimentalV2DeprecatedResponseBody:
-    GetProcessesCountExperimentalV2DeprecatedResponseBody,
-): string {
-  return JSON.stringify(
-    GetProcessesCountExperimentalV2DeprecatedResponseBody$outboundSchema.parse(
-      getProcessesCountExperimentalV2DeprecatedResponseBody,
-    ),
-  );
-}
 
 export function getProcessesCountExperimentalV2DeprecatedResponseBodyFromJSON(
   jsonString: string,

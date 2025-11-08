@@ -3,24 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RevokeOrgTokenRequest = {
   orgId: string;
   orgTokenId: string;
 };
-
-/** @internal */
-export const RevokeOrgTokenRequest$inboundSchema: z.ZodType<
-  RevokeOrgTokenRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string(),
-  orgTokenId: z.string(),
-});
 
 /** @internal */
 export type RevokeOrgTokenRequest$Outbound = {
@@ -38,33 +25,10 @@ export const RevokeOrgTokenRequest$outboundSchema: z.ZodType<
   orgTokenId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RevokeOrgTokenRequest$ {
-  /** @deprecated use `RevokeOrgTokenRequest$inboundSchema` instead. */
-  export const inboundSchema = RevokeOrgTokenRequest$inboundSchema;
-  /** @deprecated use `RevokeOrgTokenRequest$outboundSchema` instead. */
-  export const outboundSchema = RevokeOrgTokenRequest$outboundSchema;
-  /** @deprecated use `RevokeOrgTokenRequest$Outbound` instead. */
-  export type Outbound = RevokeOrgTokenRequest$Outbound;
-}
-
 export function revokeOrgTokenRequestToJSON(
   revokeOrgTokenRequest: RevokeOrgTokenRequest,
 ): string {
   return JSON.stringify(
     RevokeOrgTokenRequest$outboundSchema.parse(revokeOrgTokenRequest),
-  );
-}
-
-export function revokeOrgTokenRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RevokeOrgTokenRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RevokeOrgTokenRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RevokeOrgTokenRequest' from JSON`,
   );
 }

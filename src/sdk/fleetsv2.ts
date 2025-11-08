@@ -4,11 +4,16 @@
 
 import { fleetsV2CreateFleet } from "../funcs/fleetsV2CreateFleet.js";
 import { fleetsV2GetFleet } from "../funcs/fleetsV2GetFleet.js";
+import { fleetsV2GetFleetMetrics } from "../funcs/fleetsV2GetFleetMetrics.js";
+import { fleetsV2GetFleetRegion } from "../funcs/fleetsV2GetFleetRegion.js";
+import { fleetsV2GetFleetRegionMetrics } from "../funcs/fleetsV2GetFleetRegionMetrics.js";
 import { fleetsV2GetFleets } from "../funcs/fleetsV2GetFleets.js";
 import { fleetsV2GetNodeShapes } from "../funcs/fleetsV2GetNodeShapes.js";
 import { fleetsV2UpdateFleet } from "../funcs/fleetsV2UpdateFleet.js";
+import { fleetsV2UpdateFleetRegion } from "../funcs/fleetsV2UpdateFleetRegion.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class FleetsV2 extends ClientSDK {
@@ -95,6 +100,84 @@ export class FleetsV2 extends ClientSDK {
       fleetId,
       updateFleetV2,
       orgId,
+      options,
+    ));
+  }
+
+  /**
+   * GetFleetRegion
+   *
+   * @remarks
+   * Gets the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
+   */
+  async getFleetRegion(
+    fleetId: string,
+    region: components.Region,
+    orgId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.FleetRegion> {
+    return unwrapAsync(fleetsV2GetFleetRegion(
+      this,
+      fleetId,
+      region,
+      orgId,
+      options,
+    ));
+  }
+
+  /**
+   * UpdateFleetRegion
+   *
+   * @remarks
+   * Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
+   */
+  async updateFleetRegion(
+    fleetId: string,
+    region: components.Region,
+    fleetRegionConfig: components.FleetRegionConfig,
+    orgId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(fleetsV2UpdateFleetRegion(
+      this,
+      fleetId,
+      region,
+      fleetRegionConfig,
+      orgId,
+      options,
+    ));
+  }
+
+  /**
+   * GetFleetMetrics
+   *
+   * @remarks
+   * Gets aggregate metrics for a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet).
+   */
+  async getFleetMetrics(
+    request: operations.GetFleetMetricsRequest,
+    options?: RequestOptions,
+  ): Promise<components.FleetMetricsData> {
+    return unwrapAsync(fleetsV2GetFleetMetrics(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * GetFleetRegionMetrics
+   *
+   * @remarks
+   * Gets metrics for a region in a [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet).
+   */
+  async getFleetRegionMetrics(
+    request: operations.GetFleetRegionMetricsRequest,
+    options?: RequestOptions,
+  ): Promise<components.FleetMetricsData> {
+    return unwrapAsync(fleetsV2GetFleetRegionMetrics(
+      this,
+      request,
       options,
     ));
   }

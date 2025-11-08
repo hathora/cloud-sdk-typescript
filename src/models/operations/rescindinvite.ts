@@ -4,29 +4,12 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RescindInviteRequest = {
   orgId: string;
   rescindUserInvite: components.RescindUserInvite;
 };
-
-/** @internal */
-export const RescindInviteRequest$inboundSchema: z.ZodType<
-  RescindInviteRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string(),
-  RescindUserInvite: components.RescindUserInvite$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "RescindUserInvite": "rescindUserInvite",
-  });
-});
 
 /** @internal */
 export type RescindInviteRequest$Outbound = {
@@ -48,33 +31,10 @@ export const RescindInviteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RescindInviteRequest$ {
-  /** @deprecated use `RescindInviteRequest$inboundSchema` instead. */
-  export const inboundSchema = RescindInviteRequest$inboundSchema;
-  /** @deprecated use `RescindInviteRequest$outboundSchema` instead. */
-  export const outboundSchema = RescindInviteRequest$outboundSchema;
-  /** @deprecated use `RescindInviteRequest$Outbound` instead. */
-  export type Outbound = RescindInviteRequest$Outbound;
-}
-
 export function rescindInviteRequestToJSON(
   rescindInviteRequest: RescindInviteRequest,
 ): string {
   return JSON.stringify(
     RescindInviteRequest$outboundSchema.parse(rescindInviteRequest),
-  );
-}
-
-export function rescindInviteRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RescindInviteRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RescindInviteRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RescindInviteRequest' from JSON`,
   );
 }

@@ -3,18 +3,13 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AuthConfiguration,
-  AuthConfiguration$inboundSchema,
   AuthConfiguration$Outbound,
   AuthConfiguration$outboundSchema,
 } from "./authconfiguration.js";
 import {
   ServiceConfigWrite,
-  ServiceConfigWrite$inboundSchema,
   ServiceConfigWrite$Outbound,
   ServiceConfigWrite$outboundSchema,
 } from "./serviceconfigwrite.js";
@@ -30,17 +25,6 @@ export type PartialAppConfigWithServiceConfig = {
   authConfiguration?: AuthConfiguration | undefined;
   serviceConfig?: ServiceConfigWrite | undefined;
 };
-
-/** @internal */
-export const PartialAppConfigWithServiceConfig$inboundSchema: z.ZodType<
-  PartialAppConfigWithServiceConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appName: z.string().optional(),
-  authConfiguration: AuthConfiguration$inboundSchema.optional(),
-  serviceConfig: ServiceConfigWrite$inboundSchema.optional(),
-});
 
 /** @internal */
 export type PartialAppConfigWithServiceConfig$Outbound = {
@@ -60,20 +44,6 @@ export const PartialAppConfigWithServiceConfig$outboundSchema: z.ZodType<
   serviceConfig: ServiceConfigWrite$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PartialAppConfigWithServiceConfig$ {
-  /** @deprecated use `PartialAppConfigWithServiceConfig$inboundSchema` instead. */
-  export const inboundSchema = PartialAppConfigWithServiceConfig$inboundSchema;
-  /** @deprecated use `PartialAppConfigWithServiceConfig$outboundSchema` instead. */
-  export const outboundSchema =
-    PartialAppConfigWithServiceConfig$outboundSchema;
-  /** @deprecated use `PartialAppConfigWithServiceConfig$Outbound` instead. */
-  export type Outbound = PartialAppConfigWithServiceConfig$Outbound;
-}
-
 export function partialAppConfigWithServiceConfigToJSON(
   partialAppConfigWithServiceConfig: PartialAppConfigWithServiceConfig,
 ): string {
@@ -81,15 +51,5 @@ export function partialAppConfigWithServiceConfigToJSON(
     PartialAppConfigWithServiceConfig$outboundSchema.parse(
       partialAppConfigWithServiceConfig,
     ),
-  );
-}
-
-export function partialAppConfigWithServiceConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<PartialAppConfigWithServiceConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PartialAppConfigWithServiceConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PartialAppConfigWithServiceConfig' from JSON`,
   );
 }

@@ -3,18 +3,13 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ContainerPort,
-  ContainerPort$inboundSchema,
   ContainerPort$Outbound,
   ContainerPort$outboundSchema,
 } from "./containerport.js";
 import {
   TransportType,
-  TransportType$inboundSchema,
   TransportType$outboundSchema,
 } from "./transporttype.js";
 
@@ -89,16 +84,6 @@ export type DeploymentConfigV3 = {
 };
 
 /** @internal */
-export const DeploymentConfigV3Env$inboundSchema: z.ZodType<
-  DeploymentConfigV3Env,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: z.string(),
-  name: z.string(),
-});
-
-/** @internal */
 export type DeploymentConfigV3Env$Outbound = {
   value: string;
   name: string;
@@ -114,19 +99,6 @@ export const DeploymentConfigV3Env$outboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeploymentConfigV3Env$ {
-  /** @deprecated use `DeploymentConfigV3Env$inboundSchema` instead. */
-  export const inboundSchema = DeploymentConfigV3Env$inboundSchema;
-  /** @deprecated use `DeploymentConfigV3Env$outboundSchema` instead. */
-  export const outboundSchema = DeploymentConfigV3Env$outboundSchema;
-  /** @deprecated use `DeploymentConfigV3Env$Outbound` instead. */
-  export type Outbound = DeploymentConfigV3Env$Outbound;
-}
-
 export function deploymentConfigV3EnvToJSON(
   deploymentConfigV3Env: DeploymentConfigV3Env,
 ): string {
@@ -134,37 +106,6 @@ export function deploymentConfigV3EnvToJSON(
     DeploymentConfigV3Env$outboundSchema.parse(deploymentConfigV3Env),
   );
 }
-
-export function deploymentConfigV3EnvFromJSON(
-  jsonString: string,
-): SafeParseResult<DeploymentConfigV3Env, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeploymentConfigV3Env$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeploymentConfigV3Env' from JSON`,
-  );
-}
-
-/** @internal */
-export const DeploymentConfigV3$inboundSchema: z.ZodType<
-  DeploymentConfigV3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fleetId: z.string().optional(),
-  deploymentTag: z.string().optional(),
-  idleTimeoutEnabled: z.boolean(),
-  env: z.array(z.lazy(() => DeploymentConfigV3Env$inboundSchema)),
-  roomsPerProcess: z.number().int(),
-  additionalContainerPorts: z.array(ContainerPort$inboundSchema).optional(),
-  transportType: TransportType$inboundSchema,
-  containerPort: z.number().int(),
-  requestedGPU: z.number().optional(),
-  experimentalRequestedGPU: z.number().optional(),
-  requestedMemoryMB: z.number(),
-  requestedCPU: z.number(),
-  buildId: z.string(),
-});
 
 /** @internal */
 export type DeploymentConfigV3$Outbound = {
@@ -204,33 +145,10 @@ export const DeploymentConfigV3$outboundSchema: z.ZodType<
   buildId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeploymentConfigV3$ {
-  /** @deprecated use `DeploymentConfigV3$inboundSchema` instead. */
-  export const inboundSchema = DeploymentConfigV3$inboundSchema;
-  /** @deprecated use `DeploymentConfigV3$outboundSchema` instead. */
-  export const outboundSchema = DeploymentConfigV3$outboundSchema;
-  /** @deprecated use `DeploymentConfigV3$Outbound` instead. */
-  export type Outbound = DeploymentConfigV3$Outbound;
-}
-
 export function deploymentConfigV3ToJSON(
   deploymentConfigV3: DeploymentConfigV3,
 ): string {
   return JSON.stringify(
     DeploymentConfigV3$outboundSchema.parse(deploymentConfigV3),
-  );
-}
-
-export function deploymentConfigV3FromJSON(
-  jsonString: string,
-): SafeParseResult<DeploymentConfigV3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeploymentConfigV3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeploymentConfigV3' from JSON`,
   );
 }

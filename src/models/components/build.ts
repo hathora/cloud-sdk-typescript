@@ -6,16 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  BuildStatus,
-  BuildStatus$inboundSchema,
-  BuildStatus$outboundSchema,
-} from "./buildstatus.js";
-import {
-  Region,
-  Region$inboundSchema,
-  Region$outboundSchema,
-} from "./region.js";
+import { BuildStatus, BuildStatus$inboundSchema } from "./buildstatus.js";
+import { Region, Region$inboundSchema } from "./region.js";
 
 export type RegionalContainerTags = {
   containerTag: string;
@@ -77,43 +69,6 @@ export const RegionalContainerTags$inboundSchema: z.ZodType<
   region: Region$inboundSchema,
 });
 
-/** @internal */
-export type RegionalContainerTags$Outbound = {
-  containerTag: string;
-  region: string;
-};
-
-/** @internal */
-export const RegionalContainerTags$outboundSchema: z.ZodType<
-  RegionalContainerTags$Outbound,
-  z.ZodTypeDef,
-  RegionalContainerTags
-> = z.object({
-  containerTag: z.string(),
-  region: Region$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RegionalContainerTags$ {
-  /** @deprecated use `RegionalContainerTags$inboundSchema` instead. */
-  export const inboundSchema = RegionalContainerTags$inboundSchema;
-  /** @deprecated use `RegionalContainerTags$outboundSchema` instead. */
-  export const outboundSchema = RegionalContainerTags$outboundSchema;
-  /** @deprecated use `RegionalContainerTags$Outbound` instead. */
-  export type Outbound = RegionalContainerTags$Outbound;
-}
-
-export function regionalContainerTagsToJSON(
-  regionalContainerTags: RegionalContainerTags,
-): string {
-  return JSON.stringify(
-    RegionalContainerTags$outboundSchema.parse(regionalContainerTags),
-  );
-}
-
 export function regionalContainerTagsFromJSON(
   jsonString: string,
 ): SafeParseResult<RegionalContainerTags, SDKValidationError> {
@@ -151,61 +106,6 @@ export const Build$inboundSchema: z.ZodType<Build, z.ZodTypeDef, unknown> = z
     buildId: z.number().int(),
     appId: z.string(),
   });
-
-/** @internal */
-export type Build$Outbound = {
-  expiredAt?: string | undefined;
-  buildTag?: string | null | undefined;
-  regionalContainerTags: Array<RegionalContainerTags$Outbound>;
-  imageSize: number;
-  status: string;
-  deletedAt: string | null;
-  finishedAt: string | null;
-  startedAt: string | null;
-  createdAt: string;
-  createdBy: string;
-  buildId: number;
-  appId: string;
-};
-
-/** @internal */
-export const Build$outboundSchema: z.ZodType<
-  Build$Outbound,
-  z.ZodTypeDef,
-  Build
-> = z.object({
-  expiredAt: z.date().transform(v => v.toISOString()).optional(),
-  buildTag: z.nullable(z.string()).optional(),
-  regionalContainerTags: z.array(
-    z.lazy(() => RegionalContainerTags$outboundSchema),
-  ),
-  imageSize: z.number().int(),
-  status: BuildStatus$outboundSchema,
-  deletedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  finishedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  startedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  createdAt: z.date().transform(v => v.toISOString()),
-  createdBy: z.string(),
-  buildId: z.number().int(),
-  appId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Build$ {
-  /** @deprecated use `Build$inboundSchema` instead. */
-  export const inboundSchema = Build$inboundSchema;
-  /** @deprecated use `Build$outboundSchema` instead. */
-  export const outboundSchema = Build$outboundSchema;
-  /** @deprecated use `Build$Outbound` instead. */
-  export type Outbound = Build$Outbound;
-}
-
-export function buildToJSON(build: Build): string {
-  return JSON.stringify(Build$outboundSchema.parse(build));
-}
 
 export function buildFromJSON(
   jsonString: string,

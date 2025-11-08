@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateAppGlobals = {
   appId?: string | undefined;
@@ -17,75 +14,6 @@ export type UpdateAppRequest = {
   appId?: string | undefined;
   appConfigWithServiceConfig: components.AppConfigWithServiceConfig;
 };
-
-/** @internal */
-export const UpdateAppGlobals$inboundSchema: z.ZodType<
-  UpdateAppGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type UpdateAppGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const UpdateAppGlobals$outboundSchema: z.ZodType<
-  UpdateAppGlobals$Outbound,
-  z.ZodTypeDef,
-  UpdateAppGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAppGlobals$ {
-  /** @deprecated use `UpdateAppGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateAppGlobals$inboundSchema;
-  /** @deprecated use `UpdateAppGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateAppGlobals$outboundSchema;
-  /** @deprecated use `UpdateAppGlobals$Outbound` instead. */
-  export type Outbound = UpdateAppGlobals$Outbound;
-}
-
-export function updateAppGlobalsToJSON(
-  updateAppGlobals: UpdateAppGlobals,
-): string {
-  return JSON.stringify(
-    UpdateAppGlobals$outboundSchema.parse(updateAppGlobals),
-  );
-}
-
-export function updateAppGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateAppGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateAppGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateAppGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateAppRequest$inboundSchema: z.ZodType<
-  UpdateAppRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  AppConfigWithServiceConfig:
-    components.AppConfigWithServiceConfig$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "AppConfigWithServiceConfig": "appConfigWithServiceConfig",
-  });
-});
 
 /** @internal */
 export type UpdateAppRequest$Outbound = {
@@ -108,33 +36,10 @@ export const UpdateAppRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAppRequest$ {
-  /** @deprecated use `UpdateAppRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateAppRequest$inboundSchema;
-  /** @deprecated use `UpdateAppRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateAppRequest$outboundSchema;
-  /** @deprecated use `UpdateAppRequest$Outbound` instead. */
-  export type Outbound = UpdateAppRequest$Outbound;
-}
-
 export function updateAppRequestToJSON(
   updateAppRequest: UpdateAppRequest,
 ): string {
   return JSON.stringify(
     UpdateAppRequest$outboundSchema.parse(updateAppRequest),
-  );
-}
-
-export function updateAppRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateAppRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateAppRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateAppRequest' from JSON`,
   );
 }

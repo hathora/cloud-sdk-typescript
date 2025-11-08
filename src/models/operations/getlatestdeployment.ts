@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetLatestDeploymentGlobals = {
   appId?: string | undefined;
@@ -14,69 +11,6 @@ export type GetLatestDeploymentGlobals = {
 export type GetLatestDeploymentRequest = {
   appId?: string | undefined;
 };
-
-/** @internal */
-export const GetLatestDeploymentGlobals$inboundSchema: z.ZodType<
-  GetLatestDeploymentGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetLatestDeploymentGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetLatestDeploymentGlobals$outboundSchema: z.ZodType<
-  GetLatestDeploymentGlobals$Outbound,
-  z.ZodTypeDef,
-  GetLatestDeploymentGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLatestDeploymentGlobals$ {
-  /** @deprecated use `GetLatestDeploymentGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetLatestDeploymentGlobals$inboundSchema;
-  /** @deprecated use `GetLatestDeploymentGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetLatestDeploymentGlobals$outboundSchema;
-  /** @deprecated use `GetLatestDeploymentGlobals$Outbound` instead. */
-  export type Outbound = GetLatestDeploymentGlobals$Outbound;
-}
-
-export function getLatestDeploymentGlobalsToJSON(
-  getLatestDeploymentGlobals: GetLatestDeploymentGlobals,
-): string {
-  return JSON.stringify(
-    GetLatestDeploymentGlobals$outboundSchema.parse(getLatestDeploymentGlobals),
-  );
-}
-
-export function getLatestDeploymentGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetLatestDeploymentGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetLatestDeploymentGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetLatestDeploymentGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetLatestDeploymentRequest$inboundSchema: z.ZodType<
-  GetLatestDeploymentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
 
 /** @internal */
 export type GetLatestDeploymentRequest$Outbound = {
@@ -92,33 +26,10 @@ export const GetLatestDeploymentRequest$outboundSchema: z.ZodType<
   appId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLatestDeploymentRequest$ {
-  /** @deprecated use `GetLatestDeploymentRequest$inboundSchema` instead. */
-  export const inboundSchema = GetLatestDeploymentRequest$inboundSchema;
-  /** @deprecated use `GetLatestDeploymentRequest$outboundSchema` instead. */
-  export const outboundSchema = GetLatestDeploymentRequest$outboundSchema;
-  /** @deprecated use `GetLatestDeploymentRequest$Outbound` instead. */
-  export type Outbound = GetLatestDeploymentRequest$Outbound;
-}
-
 export function getLatestDeploymentRequestToJSON(
   getLatestDeploymentRequest: GetLatestDeploymentRequest,
 ): string {
   return JSON.stringify(
     GetLatestDeploymentRequest$outboundSchema.parse(getLatestDeploymentRequest),
-  );
-}
-
-export function getLatestDeploymentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetLatestDeploymentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetLatestDeploymentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetLatestDeploymentRequest' from JSON`,
   );
 }

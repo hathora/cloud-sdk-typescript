@@ -4,23 +4,11 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Hosting,
-  Hosting$inboundSchema,
-  Hosting$outboundSchema,
-} from "./hosting.js";
-import {
-  Region,
-  Region$inboundSchema,
-  Region$outboundSchema,
-} from "./region.js";
+import { Hosting, Hosting$inboundSchema } from "./hosting.js";
+import { Region, Region$inboundSchema } from "./region.js";
 
 export const NodeV1Status = {
   Running: "running",
@@ -54,27 +42,6 @@ export const NodeV1Status$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const NodeV1Status$outboundSchema: z.ZodType<
-  NodeV1Status,
-  z.ZodTypeDef,
-  NodeV1Status
-> = z.union([
-  z.nativeEnum(NodeV1Status),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NodeV1Status$ {
-  /** @deprecated use `NodeV1Status$inboundSchema` instead. */
-  export const inboundSchema = NodeV1Status$inboundSchema;
-  /** @deprecated use `NodeV1Status$outboundSchema` instead. */
-  export const outboundSchema = NodeV1Status$outboundSchema;
-}
-
-/** @internal */
 export const NodeV1$inboundSchema: z.ZodType<NodeV1, z.ZodTypeDef, unknown> = z
   .object({
     stoppedAt: z.nullable(
@@ -92,55 +59,6 @@ export const NodeV1$inboundSchema: z.ZodType<NodeV1, z.ZodTypeDef, unknown> = z
     host: z.string(),
     nodeId: z.string(),
   });
-
-/** @internal */
-export type NodeV1$Outbound = {
-  stoppedAt: string | null;
-  startedAt: string;
-  gpu: number | null;
-  memoryMb: number;
-  cpu: number;
-  region: string;
-  status: string;
-  hosting: string;
-  host: string;
-  nodeId: string;
-};
-
-/** @internal */
-export const NodeV1$outboundSchema: z.ZodType<
-  NodeV1$Outbound,
-  z.ZodTypeDef,
-  NodeV1
-> = z.object({
-  stoppedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  startedAt: z.date().transform(v => v.toISOString()),
-  gpu: z.nullable(z.number()),
-  memoryMb: z.number(),
-  cpu: z.number(),
-  region: Region$outboundSchema,
-  status: NodeV1Status$outboundSchema,
-  hosting: Hosting$outboundSchema,
-  host: z.string(),
-  nodeId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NodeV1$ {
-  /** @deprecated use `NodeV1$inboundSchema` instead. */
-  export const inboundSchema = NodeV1$inboundSchema;
-  /** @deprecated use `NodeV1$outboundSchema` instead. */
-  export const outboundSchema = NodeV1$outboundSchema;
-  /** @deprecated use `NodeV1$Outbound` instead. */
-  export type Outbound = NodeV1$Outbound;
-}
-
-export function nodeV1ToJSON(nodeV1: NodeV1): string {
-  return JSON.stringify(NodeV1$outboundSchema.parse(nodeV1));
-}
 
 export function nodeV1FromJSON(
   jsonString: string,

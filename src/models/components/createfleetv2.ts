@@ -3,20 +3,12 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AutoscalerConfig,
-  AutoscalerConfig$inboundSchema,
   AutoscalerConfig$Outbound,
   AutoscalerConfig$outboundSchema,
 } from "./autoscalerconfig.js";
-import {
-  NodeShapeId,
-  NodeShapeId$inboundSchema,
-  NodeShapeId$outboundSchema,
-} from "./nodeshapeid.js";
+import { NodeShapeId, NodeShapeId$outboundSchema } from "./nodeshapeid.js";
 
 export type CreateFleetV2 = {
   nodeShapeId: NodeShapeId;
@@ -26,17 +18,6 @@ export type CreateFleetV2 = {
    */
   name: string;
 };
-
-/** @internal */
-export const CreateFleetV2$inboundSchema: z.ZodType<
-  CreateFleetV2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  nodeShapeId: NodeShapeId$inboundSchema,
-  autoscalerConfig: AutoscalerConfig$inboundSchema,
-  name: z.string(),
-});
 
 /** @internal */
 export type CreateFleetV2$Outbound = {
@@ -56,29 +37,6 @@ export const CreateFleetV2$outboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateFleetV2$ {
-  /** @deprecated use `CreateFleetV2$inboundSchema` instead. */
-  export const inboundSchema = CreateFleetV2$inboundSchema;
-  /** @deprecated use `CreateFleetV2$outboundSchema` instead. */
-  export const outboundSchema = CreateFleetV2$outboundSchema;
-  /** @deprecated use `CreateFleetV2$Outbound` instead. */
-  export type Outbound = CreateFleetV2$Outbound;
-}
-
 export function createFleetV2ToJSON(createFleetV2: CreateFleetV2): string {
   return JSON.stringify(CreateFleetV2$outboundSchema.parse(createFleetV2));
-}
-
-export function createFleetV2FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateFleetV2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateFleetV2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFleetV2' from JSON`,
-  );
 }

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LoginAnonymousGlobals = {
   appId?: string | undefined;
@@ -14,69 +11,6 @@ export type LoginAnonymousGlobals = {
 export type LoginAnonymousRequest = {
   appId?: string | undefined;
 };
-
-/** @internal */
-export const LoginAnonymousGlobals$inboundSchema: z.ZodType<
-  LoginAnonymousGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type LoginAnonymousGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const LoginAnonymousGlobals$outboundSchema: z.ZodType<
-  LoginAnonymousGlobals$Outbound,
-  z.ZodTypeDef,
-  LoginAnonymousGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LoginAnonymousGlobals$ {
-  /** @deprecated use `LoginAnonymousGlobals$inboundSchema` instead. */
-  export const inboundSchema = LoginAnonymousGlobals$inboundSchema;
-  /** @deprecated use `LoginAnonymousGlobals$outboundSchema` instead. */
-  export const outboundSchema = LoginAnonymousGlobals$outboundSchema;
-  /** @deprecated use `LoginAnonymousGlobals$Outbound` instead. */
-  export type Outbound = LoginAnonymousGlobals$Outbound;
-}
-
-export function loginAnonymousGlobalsToJSON(
-  loginAnonymousGlobals: LoginAnonymousGlobals,
-): string {
-  return JSON.stringify(
-    LoginAnonymousGlobals$outboundSchema.parse(loginAnonymousGlobals),
-  );
-}
-
-export function loginAnonymousGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<LoginAnonymousGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LoginAnonymousGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LoginAnonymousGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const LoginAnonymousRequest$inboundSchema: z.ZodType<
-  LoginAnonymousRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
 
 /** @internal */
 export type LoginAnonymousRequest$Outbound = {
@@ -92,33 +26,10 @@ export const LoginAnonymousRequest$outboundSchema: z.ZodType<
   appId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LoginAnonymousRequest$ {
-  /** @deprecated use `LoginAnonymousRequest$inboundSchema` instead. */
-  export const inboundSchema = LoginAnonymousRequest$inboundSchema;
-  /** @deprecated use `LoginAnonymousRequest$outboundSchema` instead. */
-  export const outboundSchema = LoginAnonymousRequest$outboundSchema;
-  /** @deprecated use `LoginAnonymousRequest$Outbound` instead. */
-  export type Outbound = LoginAnonymousRequest$Outbound;
-}
-
 export function loginAnonymousRequestToJSON(
   loginAnonymousRequest: LoginAnonymousRequest,
 ): string {
   return JSON.stringify(
     LoginAnonymousRequest$outboundSchema.parse(loginAnonymousRequest),
-  );
-}
-
-export function loginAnonymousRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LoginAnonymousRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LoginAnonymousRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LoginAnonymousRequest' from JSON`,
   );
 }

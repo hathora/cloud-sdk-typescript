@@ -6,17 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  BuildPart,
-  BuildPart$inboundSchema,
-  BuildPart$Outbound,
-  BuildPart$outboundSchema,
-} from "./buildpart.js";
-import {
-  BuildStatus,
-  BuildStatus$inboundSchema,
-  BuildStatus$outboundSchema,
-} from "./buildstatus.js";
+import { BuildPart, BuildPart$inboundSchema } from "./buildpart.js";
+import { BuildStatus, BuildStatus$inboundSchema } from "./buildstatus.js";
 
 /**
  * A build represents a game server artifact and its associated metadata.
@@ -100,73 +91,6 @@ export const CreatedBuildV3WithMultipartUrls$inboundSchema: z.ZodType<
   maxChunkSize: z.number(),
   uploadParts: z.array(BuildPart$inboundSchema),
 });
-
-/** @internal */
-export type CreatedBuildV3WithMultipartUrls$Outbound = {
-  expiredAt?: string | undefined;
-  shareUrl?: string | undefined;
-  contentHash?: string | undefined;
-  buildTag?: string | undefined;
-  imageSize: number;
-  status: string;
-  deletedAt: string | null;
-  finishedAt: string | null;
-  startedAt: string | null;
-  createdAt: string;
-  createdBy: string;
-  buildId: string;
-  orgId: string;
-  completeUploadPostRequestUrl: string;
-  maxChunkSize: number;
-  uploadParts: Array<BuildPart$Outbound>;
-};
-
-/** @internal */
-export const CreatedBuildV3WithMultipartUrls$outboundSchema: z.ZodType<
-  CreatedBuildV3WithMultipartUrls$Outbound,
-  z.ZodTypeDef,
-  CreatedBuildV3WithMultipartUrls
-> = z.object({
-  expiredAt: z.date().transform(v => v.toISOString()).optional(),
-  shareUrl: z.string().optional(),
-  contentHash: z.string().optional(),
-  buildTag: z.string().optional(),
-  imageSize: z.number().int(),
-  status: BuildStatus$outboundSchema,
-  deletedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  finishedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  startedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  createdAt: z.date().transform(v => v.toISOString()),
-  createdBy: z.string(),
-  buildId: z.string(),
-  orgId: z.string(),
-  completeUploadPostRequestUrl: z.string(),
-  maxChunkSize: z.number(),
-  uploadParts: z.array(BuildPart$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatedBuildV3WithMultipartUrls$ {
-  /** @deprecated use `CreatedBuildV3WithMultipartUrls$inboundSchema` instead. */
-  export const inboundSchema = CreatedBuildV3WithMultipartUrls$inboundSchema;
-  /** @deprecated use `CreatedBuildV3WithMultipartUrls$outboundSchema` instead. */
-  export const outboundSchema = CreatedBuildV3WithMultipartUrls$outboundSchema;
-  /** @deprecated use `CreatedBuildV3WithMultipartUrls$Outbound` instead. */
-  export type Outbound = CreatedBuildV3WithMultipartUrls$Outbound;
-}
-
-export function createdBuildV3WithMultipartUrlsToJSON(
-  createdBuildV3WithMultipartUrls: CreatedBuildV3WithMultipartUrls,
-): string {
-  return JSON.stringify(
-    CreatedBuildV3WithMultipartUrls$outboundSchema.parse(
-      createdBuildV3WithMultipartUrls,
-    ),
-  );
-}
 
 export function createdBuildV3WithMultipartUrlsFromJSON(
   jsonString: string,

@@ -6,11 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Region,
-  Region$inboundSchema,
-  Region$outboundSchema,
-} from "./region.js";
+import { Region, Region$inboundSchema } from "./region.js";
 
 export type StaticProcessAllocationConfig = {
   /**
@@ -56,51 +52,6 @@ export const StaticProcessAllocationConfig$inboundSchema: z.ZodType<
   minProcesses: z.number().int(),
   region: Region$inboundSchema,
 });
-
-/** @internal */
-export type StaticProcessAllocationConfig$Outbound = {
-  autoscalingEnabled?: boolean | undefined;
-  maxProcesses: number;
-  targetProcesses: number;
-  minProcesses: number;
-  region: string;
-};
-
-/** @internal */
-export const StaticProcessAllocationConfig$outboundSchema: z.ZodType<
-  StaticProcessAllocationConfig$Outbound,
-  z.ZodTypeDef,
-  StaticProcessAllocationConfig
-> = z.object({
-  autoscalingEnabled: z.boolean().optional(),
-  maxProcesses: z.number().int(),
-  targetProcesses: z.number().int(),
-  minProcesses: z.number().int(),
-  region: Region$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StaticProcessAllocationConfig$ {
-  /** @deprecated use `StaticProcessAllocationConfig$inboundSchema` instead. */
-  export const inboundSchema = StaticProcessAllocationConfig$inboundSchema;
-  /** @deprecated use `StaticProcessAllocationConfig$outboundSchema` instead. */
-  export const outboundSchema = StaticProcessAllocationConfig$outboundSchema;
-  /** @deprecated use `StaticProcessAllocationConfig$Outbound` instead. */
-  export type Outbound = StaticProcessAllocationConfig$Outbound;
-}
-
-export function staticProcessAllocationConfigToJSON(
-  staticProcessAllocationConfig: StaticProcessAllocationConfig,
-): string {
-  return JSON.stringify(
-    StaticProcessAllocationConfig$outboundSchema.parse(
-      staticProcessAllocationConfig,
-    ),
-  );
-}
 
 export function staticProcessAllocationConfigFromJSON(
   jsonString: string,

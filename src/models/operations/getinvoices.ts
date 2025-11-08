@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetInvoicesGlobals = {
   orgId?: string | undefined;
@@ -14,69 +11,6 @@ export type GetInvoicesGlobals = {
 export type GetInvoicesRequest = {
   orgId?: string | undefined;
 };
-
-/** @internal */
-export const GetInvoicesGlobals$inboundSchema: z.ZodType<
-  GetInvoicesGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type GetInvoicesGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const GetInvoicesGlobals$outboundSchema: z.ZodType<
-  GetInvoicesGlobals$Outbound,
-  z.ZodTypeDef,
-  GetInvoicesGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetInvoicesGlobals$ {
-  /** @deprecated use `GetInvoicesGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetInvoicesGlobals$inboundSchema;
-  /** @deprecated use `GetInvoicesGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetInvoicesGlobals$outboundSchema;
-  /** @deprecated use `GetInvoicesGlobals$Outbound` instead. */
-  export type Outbound = GetInvoicesGlobals$Outbound;
-}
-
-export function getInvoicesGlobalsToJSON(
-  getInvoicesGlobals: GetInvoicesGlobals,
-): string {
-  return JSON.stringify(
-    GetInvoicesGlobals$outboundSchema.parse(getInvoicesGlobals),
-  );
-}
-
-export function getInvoicesGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetInvoicesGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetInvoicesGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetInvoicesGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetInvoicesRequest$inboundSchema: z.ZodType<
-  GetInvoicesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
 
 /** @internal */
 export type GetInvoicesRequest$Outbound = {
@@ -92,33 +26,10 @@ export const GetInvoicesRequest$outboundSchema: z.ZodType<
   orgId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetInvoicesRequest$ {
-  /** @deprecated use `GetInvoicesRequest$inboundSchema` instead. */
-  export const inboundSchema = GetInvoicesRequest$inboundSchema;
-  /** @deprecated use `GetInvoicesRequest$outboundSchema` instead. */
-  export const outboundSchema = GetInvoicesRequest$outboundSchema;
-  /** @deprecated use `GetInvoicesRequest$Outbound` instead. */
-  export type Outbound = GetInvoicesRequest$Outbound;
-}
-
 export function getInvoicesRequestToJSON(
   getInvoicesRequest: GetInvoicesRequest,
 ): string {
   return JSON.stringify(
     GetInvoicesRequest$outboundSchema.parse(getInvoicesRequest),
-  );
-}
-
-export function getInvoicesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetInvoicesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetInvoicesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetInvoicesRequest' from JSON`,
   );
 }

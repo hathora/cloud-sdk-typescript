@@ -3,19 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LobbyVisibility,
-  LobbyVisibility$inboundSchema,
   LobbyVisibility$outboundSchema,
 } from "./lobbyvisibility.js";
-import {
-  Region,
-  Region$inboundSchema,
-  Region$outboundSchema,
-} from "./region.js";
+import { Region, Region$outboundSchema } from "./region.js";
 
 export type CreateLobbyParams = {
   /**
@@ -38,17 +30,6 @@ export type CreateLobbyParams = {
 };
 
 /** @internal */
-export const CreateLobbyParams$inboundSchema: z.ZodType<
-  CreateLobbyParams,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  visibility: LobbyVisibility$inboundSchema,
-  initialConfig: z.any().optional(),
-  region: Region$inboundSchema,
-});
-
-/** @internal */
 export type CreateLobbyParams$Outbound = {
   visibility: string;
   initialConfig?: any | undefined;
@@ -66,33 +47,10 @@ export const CreateLobbyParams$outboundSchema: z.ZodType<
   region: Region$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateLobbyParams$ {
-  /** @deprecated use `CreateLobbyParams$inboundSchema` instead. */
-  export const inboundSchema = CreateLobbyParams$inboundSchema;
-  /** @deprecated use `CreateLobbyParams$outboundSchema` instead. */
-  export const outboundSchema = CreateLobbyParams$outboundSchema;
-  /** @deprecated use `CreateLobbyParams$Outbound` instead. */
-  export type Outbound = CreateLobbyParams$Outbound;
-}
-
 export function createLobbyParamsToJSON(
   createLobbyParams: CreateLobbyParams,
 ): string {
   return JSON.stringify(
     CreateLobbyParams$outboundSchema.parse(createLobbyParams),
-  );
-}
-
-export function createLobbyParamsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateLobbyParams, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateLobbyParams$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateLobbyParams' from JSON`,
   );
 }

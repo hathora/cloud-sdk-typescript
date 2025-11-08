@@ -9,13 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LobbyVisibility,
   LobbyVisibility$inboundSchema,
-  LobbyVisibility$outboundSchema,
 } from "./lobbyvisibility.js";
-import {
-  Region,
-  Region$inboundSchema,
-  Region$outboundSchema,
-} from "./region.js";
+import { Region, Region$inboundSchema } from "./region.js";
 
 /**
  * UserId or email address for the user that created the lobby.
@@ -80,33 +75,6 @@ export const CreatedBy$inboundSchema: z.ZodType<
   unknown
 > = z.union([z.string(), z.number()]);
 
-/** @internal */
-export type CreatedBy$Outbound = string | number;
-
-/** @internal */
-export const CreatedBy$outboundSchema: z.ZodType<
-  CreatedBy$Outbound,
-  z.ZodTypeDef,
-  CreatedBy
-> = z.union([z.string(), z.number()]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatedBy$ {
-  /** @deprecated use `CreatedBy$inboundSchema` instead. */
-  export const inboundSchema = CreatedBy$inboundSchema;
-  /** @deprecated use `CreatedBy$outboundSchema` instead. */
-  export const outboundSchema = CreatedBy$outboundSchema;
-  /** @deprecated use `CreatedBy$Outbound` instead. */
-  export type Outbound = CreatedBy$Outbound;
-}
-
-export function createdByToJSON(createdBy: CreatedBy): string {
-  return JSON.stringify(CreatedBy$outboundSchema.parse(createdBy));
-}
-
 export function createdByFromJSON(
   jsonString: string,
 ): SafeParseResult<CreatedBy, SDKValidationError> {
@@ -133,55 +101,6 @@ export const Lobby$inboundSchema: z.ZodType<Lobby, z.ZodTypeDef, unknown> = z
     roomId: z.string(),
     appId: z.string(),
   });
-
-/** @internal */
-export type Lobby$Outbound = {
-  shortCode: string | null;
-  state?: any | null | undefined;
-  initialConfig?: any | undefined;
-  createdAt: string;
-  createdBy: string | number;
-  local: boolean;
-  visibility: string;
-  region: string;
-  roomId: string;
-  appId: string;
-};
-
-/** @internal */
-export const Lobby$outboundSchema: z.ZodType<
-  Lobby$Outbound,
-  z.ZodTypeDef,
-  Lobby
-> = z.object({
-  shortCode: z.nullable(z.string()),
-  state: z.nullable(z.any()).optional(),
-  initialConfig: z.any().optional(),
-  createdAt: z.date().transform(v => v.toISOString()),
-  createdBy: z.union([z.string(), z.number()]),
-  local: z.boolean(),
-  visibility: LobbyVisibility$outboundSchema,
-  region: Region$outboundSchema,
-  roomId: z.string(),
-  appId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Lobby$ {
-  /** @deprecated use `Lobby$inboundSchema` instead. */
-  export const inboundSchema = Lobby$inboundSchema;
-  /** @deprecated use `Lobby$outboundSchema` instead. */
-  export const outboundSchema = Lobby$outboundSchema;
-  /** @deprecated use `Lobby$Outbound` instead. */
-  export type Outbound = Lobby$Outbound;
-}
-
-export function lobbyToJSON(lobby: Lobby): string {
-  return JSON.stringify(Lobby$outboundSchema.parse(lobby));
-}
 
 export function lobbyFromJSON(
   jsonString: string,

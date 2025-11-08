@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetAppsGlobals = {
   orgId?: string | undefined;
@@ -14,65 +11,6 @@ export type GetAppsGlobals = {
 export type GetAppsRequest = {
   orgId?: string | undefined;
 };
-
-/** @internal */
-export const GetAppsGlobals$inboundSchema: z.ZodType<
-  GetAppsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type GetAppsGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const GetAppsGlobals$outboundSchema: z.ZodType<
-  GetAppsGlobals$Outbound,
-  z.ZodTypeDef,
-  GetAppsGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAppsGlobals$ {
-  /** @deprecated use `GetAppsGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetAppsGlobals$inboundSchema;
-  /** @deprecated use `GetAppsGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetAppsGlobals$outboundSchema;
-  /** @deprecated use `GetAppsGlobals$Outbound` instead. */
-  export type Outbound = GetAppsGlobals$Outbound;
-}
-
-export function getAppsGlobalsToJSON(getAppsGlobals: GetAppsGlobals): string {
-  return JSON.stringify(GetAppsGlobals$outboundSchema.parse(getAppsGlobals));
-}
-
-export function getAppsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAppsGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAppsGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAppsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetAppsRequest$inboundSchema: z.ZodType<
-  GetAppsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
 
 /** @internal */
 export type GetAppsRequest$Outbound = {
@@ -88,29 +26,6 @@ export const GetAppsRequest$outboundSchema: z.ZodType<
   orgId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAppsRequest$ {
-  /** @deprecated use `GetAppsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAppsRequest$inboundSchema;
-  /** @deprecated use `GetAppsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAppsRequest$outboundSchema;
-  /** @deprecated use `GetAppsRequest$Outbound` instead. */
-  export type Outbound = GetAppsRequest$Outbound;
-}
-
 export function getAppsRequestToJSON(getAppsRequest: GetAppsRequest): string {
   return JSON.stringify(GetAppsRequest$outboundSchema.parse(getAppsRequest));
-}
-
-export function getAppsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAppsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAppsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAppsRequest' from JSON`,
-  );
 }

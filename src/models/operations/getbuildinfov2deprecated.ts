@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetBuildInfoV2DeprecatedGlobals = {
   appId?: string | undefined;
@@ -15,72 +12,6 @@ export type GetBuildInfoV2DeprecatedRequest = {
   appId?: string | undefined;
   buildId: number;
 };
-
-/** @internal */
-export const GetBuildInfoV2DeprecatedGlobals$inboundSchema: z.ZodType<
-  GetBuildInfoV2DeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetBuildInfoV2DeprecatedGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetBuildInfoV2DeprecatedGlobals$outboundSchema: z.ZodType<
-  GetBuildInfoV2DeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  GetBuildInfoV2DeprecatedGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBuildInfoV2DeprecatedGlobals$ {
-  /** @deprecated use `GetBuildInfoV2DeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetBuildInfoV2DeprecatedGlobals$inboundSchema;
-  /** @deprecated use `GetBuildInfoV2DeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetBuildInfoV2DeprecatedGlobals$outboundSchema;
-  /** @deprecated use `GetBuildInfoV2DeprecatedGlobals$Outbound` instead. */
-  export type Outbound = GetBuildInfoV2DeprecatedGlobals$Outbound;
-}
-
-export function getBuildInfoV2DeprecatedGlobalsToJSON(
-  getBuildInfoV2DeprecatedGlobals: GetBuildInfoV2DeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    GetBuildInfoV2DeprecatedGlobals$outboundSchema.parse(
-      getBuildInfoV2DeprecatedGlobals,
-    ),
-  );
-}
-
-export function getBuildInfoV2DeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetBuildInfoV2DeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetBuildInfoV2DeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetBuildInfoV2DeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetBuildInfoV2DeprecatedRequest$inboundSchema: z.ZodType<
-  GetBuildInfoV2DeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  buildId: z.number().int(),
-});
 
 /** @internal */
 export type GetBuildInfoV2DeprecatedRequest$Outbound = {
@@ -98,19 +29,6 @@ export const GetBuildInfoV2DeprecatedRequest$outboundSchema: z.ZodType<
   buildId: z.number().int(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBuildInfoV2DeprecatedRequest$ {
-  /** @deprecated use `GetBuildInfoV2DeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = GetBuildInfoV2DeprecatedRequest$inboundSchema;
-  /** @deprecated use `GetBuildInfoV2DeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema = GetBuildInfoV2DeprecatedRequest$outboundSchema;
-  /** @deprecated use `GetBuildInfoV2DeprecatedRequest$Outbound` instead. */
-  export type Outbound = GetBuildInfoV2DeprecatedRequest$Outbound;
-}
-
 export function getBuildInfoV2DeprecatedRequestToJSON(
   getBuildInfoV2DeprecatedRequest: GetBuildInfoV2DeprecatedRequest,
 ): string {
@@ -118,15 +36,5 @@ export function getBuildInfoV2DeprecatedRequestToJSON(
     GetBuildInfoV2DeprecatedRequest$outboundSchema.parse(
       getBuildInfoV2DeprecatedRequest,
     ),
-  );
-}
-
-export function getBuildInfoV2DeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetBuildInfoV2DeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetBuildInfoV2DeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetBuildInfoV2DeprecatedRequest' from JSON`,
   );
 }

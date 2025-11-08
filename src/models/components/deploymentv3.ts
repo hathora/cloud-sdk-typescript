@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ContainerPort,
-  ContainerPort$inboundSchema,
-  ContainerPort$Outbound,
-  ContainerPort$outboundSchema,
-} from "./containerport.js";
+import { ContainerPort, ContainerPort$inboundSchema } from "./containerport.js";
 
 export type DeploymentV3Env = {
   value: string;
@@ -109,41 +104,6 @@ export const DeploymentV3Env$inboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/** @internal */
-export type DeploymentV3Env$Outbound = {
-  value: string;
-  name: string;
-};
-
-/** @internal */
-export const DeploymentV3Env$outboundSchema: z.ZodType<
-  DeploymentV3Env$Outbound,
-  z.ZodTypeDef,
-  DeploymentV3Env
-> = z.object({
-  value: z.string(),
-  name: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeploymentV3Env$ {
-  /** @deprecated use `DeploymentV3Env$inboundSchema` instead. */
-  export const inboundSchema = DeploymentV3Env$inboundSchema;
-  /** @deprecated use `DeploymentV3Env$outboundSchema` instead. */
-  export const outboundSchema = DeploymentV3Env$outboundSchema;
-  /** @deprecated use `DeploymentV3Env$Outbound` instead. */
-  export type Outbound = DeploymentV3Env$Outbound;
-}
-
-export function deploymentV3EnvToJSON(
-  deploymentV3Env: DeploymentV3Env,
-): string {
-  return JSON.stringify(DeploymentV3Env$outboundSchema.parse(deploymentV3Env));
-}
-
 export function deploymentV3EnvFromJSON(
   jsonString: string,
 ): SafeParseResult<DeploymentV3Env, SDKValidationError> {
@@ -178,69 +138,6 @@ export const DeploymentV3$inboundSchema: z.ZodType<
   buildId: z.string(),
   appId: z.string(),
 });
-
-/** @internal */
-export type DeploymentV3$Outbound = {
-  fleetId?: string | undefined;
-  deploymentTag?: string | undefined;
-  idleTimeoutEnabled: boolean;
-  env: Array<DeploymentV3Env$Outbound>;
-  roomsPerProcess: number;
-  additionalContainerPorts: Array<ContainerPort$Outbound>;
-  defaultContainerPort: ContainerPort$Outbound;
-  createdAt: string;
-  createdBy: string;
-  requestedGPU?: number | undefined;
-  experimentalRequestedGPU?: number | undefined;
-  requestedMemoryMB: number;
-  requestedCPU: number;
-  deploymentId: string;
-  buildTag?: string | undefined;
-  buildId: string;
-  appId: string;
-};
-
-/** @internal */
-export const DeploymentV3$outboundSchema: z.ZodType<
-  DeploymentV3$Outbound,
-  z.ZodTypeDef,
-  DeploymentV3
-> = z.object({
-  fleetId: z.string().optional(),
-  deploymentTag: z.string().optional(),
-  idleTimeoutEnabled: z.boolean(),
-  env: z.array(z.lazy(() => DeploymentV3Env$outboundSchema)),
-  roomsPerProcess: z.number().int(),
-  additionalContainerPorts: z.array(ContainerPort$outboundSchema),
-  defaultContainerPort: ContainerPort$outboundSchema,
-  createdAt: z.date().transform(v => v.toISOString()),
-  createdBy: z.string(),
-  requestedGPU: z.number().optional(),
-  experimentalRequestedGPU: z.number().optional(),
-  requestedMemoryMB: z.number(),
-  requestedCPU: z.number(),
-  deploymentId: z.string(),
-  buildTag: z.string().optional(),
-  buildId: z.string(),
-  appId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeploymentV3$ {
-  /** @deprecated use `DeploymentV3$inboundSchema` instead. */
-  export const inboundSchema = DeploymentV3$inboundSchema;
-  /** @deprecated use `DeploymentV3$outboundSchema` instead. */
-  export const outboundSchema = DeploymentV3$outboundSchema;
-  /** @deprecated use `DeploymentV3$Outbound` instead. */
-  export type Outbound = DeploymentV3$Outbound;
-}
-
-export function deploymentV3ToJSON(deploymentV3: DeploymentV3): string {
-  return JSON.stringify(DeploymentV3$outboundSchema.parse(deploymentV3));
-}
 
 export function deploymentV3FromJSON(
   jsonString: string,

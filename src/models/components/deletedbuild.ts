@@ -18,7 +18,6 @@ export const DeletedBuild$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type DeletedBuild$Outbound = {};
 
@@ -29,23 +28,9 @@ export const DeletedBuild$outboundSchema: z.ZodType<
   DeletedBuild
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeletedBuild$ {
-  /** @deprecated use `DeletedBuild$inboundSchema` instead. */
-  export const inboundSchema = DeletedBuild$inboundSchema;
-  /** @deprecated use `DeletedBuild$outboundSchema` instead. */
-  export const outboundSchema = DeletedBuild$outboundSchema;
-  /** @deprecated use `DeletedBuild$Outbound` instead. */
-  export type Outbound = DeletedBuild$Outbound;
-}
-
 export function deletedBuildToJSON(deletedBuild: DeletedBuild): string {
   return JSON.stringify(DeletedBuild$outboundSchema.parse(deletedBuild));
 }
-
 export function deletedBuildFromJSON(
   jsonString: string,
 ): SafeParseResult<DeletedBuild, SDKValidationError> {

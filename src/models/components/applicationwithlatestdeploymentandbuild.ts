@@ -9,38 +9,20 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AuthConfiguration,
   AuthConfiguration$inboundSchema,
-  AuthConfiguration$Outbound,
-  AuthConfiguration$outboundSchema,
 } from "./authconfiguration.js";
-import {
-  BuildV3,
-  BuildV3$inboundSchema,
-  BuildV3$Outbound,
-  BuildV3$outboundSchema,
-} from "./buildv3.js";
-import {
-  ContainerPort,
-  ContainerPort$inboundSchema,
-  ContainerPort$Outbound,
-  ContainerPort$outboundSchema,
-} from "./containerport.js";
+import { BuildV3, BuildV3$inboundSchema } from "./buildv3.js";
+import { ContainerPort, ContainerPort$inboundSchema } from "./containerport.js";
 import {
   LoadBalancerConfig,
   LoadBalancerConfig$inboundSchema,
-  LoadBalancerConfig$Outbound,
-  LoadBalancerConfig$outboundSchema,
 } from "./loadbalancerconfig.js";
 import {
   ProcessAutoscalerConfig,
   ProcessAutoscalerConfig$inboundSchema,
-  ProcessAutoscalerConfig$Outbound,
-  ProcessAutoscalerConfig$outboundSchema,
 } from "./processautoscalerconfig.js";
 import {
   StaticProcessAllocationConfig,
   StaticProcessAllocationConfig$inboundSchema,
-  StaticProcessAllocationConfig$Outbound,
-  StaticProcessAllocationConfig$outboundSchema,
 } from "./staticprocessallocationconfig.js";
 
 export type ApplicationWithLatestDeploymentAndBuildServiceConfig = {
@@ -204,54 +186,6 @@ export const ApplicationWithLatestDeploymentAndBuildServiceConfig$inboundSchema:
     ),
   });
 
-/** @internal */
-export type ApplicationWithLatestDeploymentAndBuildServiceConfig$Outbound = {
-  processAutoscalerConfig?: ProcessAutoscalerConfig$Outbound | undefined;
-  loadBalancer?: LoadBalancerConfig$Outbound | undefined;
-  staticProcessAllocation: Array<StaticProcessAllocationConfig$Outbound>;
-};
-
-/** @internal */
-export const ApplicationWithLatestDeploymentAndBuildServiceConfig$outboundSchema:
-  z.ZodType<
-    ApplicationWithLatestDeploymentAndBuildServiceConfig$Outbound,
-    z.ZodTypeDef,
-    ApplicationWithLatestDeploymentAndBuildServiceConfig
-  > = z.object({
-    processAutoscalerConfig: ProcessAutoscalerConfig$outboundSchema.optional(),
-    loadBalancer: LoadBalancerConfig$outboundSchema.optional(),
-    staticProcessAllocation: z.array(
-      StaticProcessAllocationConfig$outboundSchema,
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationWithLatestDeploymentAndBuildServiceConfig$ {
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildServiceConfig$inboundSchema` instead. */
-  export const inboundSchema =
-    ApplicationWithLatestDeploymentAndBuildServiceConfig$inboundSchema;
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildServiceConfig$outboundSchema` instead. */
-  export const outboundSchema =
-    ApplicationWithLatestDeploymentAndBuildServiceConfig$outboundSchema;
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildServiceConfig$Outbound` instead. */
-  export type Outbound =
-    ApplicationWithLatestDeploymentAndBuildServiceConfig$Outbound;
-}
-
-export function applicationWithLatestDeploymentAndBuildServiceConfigToJSON(
-  applicationWithLatestDeploymentAndBuildServiceConfig:
-    ApplicationWithLatestDeploymentAndBuildServiceConfig,
-): string {
-  return JSON.stringify(
-    ApplicationWithLatestDeploymentAndBuildServiceConfig$outboundSchema.parse(
-      applicationWithLatestDeploymentAndBuildServiceConfig,
-    ),
-  );
-}
-
 export function applicationWithLatestDeploymentAndBuildServiceConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -275,49 +209,6 @@ export const ApplicationWithLatestDeploymentAndBuildEnv$inboundSchema:
       value: z.string(),
       name: z.string(),
     });
-
-/** @internal */
-export type ApplicationWithLatestDeploymentAndBuildEnv$Outbound = {
-  value: string;
-  name: string;
-};
-
-/** @internal */
-export const ApplicationWithLatestDeploymentAndBuildEnv$outboundSchema:
-  z.ZodType<
-    ApplicationWithLatestDeploymentAndBuildEnv$Outbound,
-    z.ZodTypeDef,
-    ApplicationWithLatestDeploymentAndBuildEnv
-  > = z.object({
-    value: z.string(),
-    name: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationWithLatestDeploymentAndBuildEnv$ {
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildEnv$inboundSchema` instead. */
-  export const inboundSchema =
-    ApplicationWithLatestDeploymentAndBuildEnv$inboundSchema;
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildEnv$outboundSchema` instead. */
-  export const outboundSchema =
-    ApplicationWithLatestDeploymentAndBuildEnv$outboundSchema;
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildEnv$Outbound` instead. */
-  export type Outbound = ApplicationWithLatestDeploymentAndBuildEnv$Outbound;
-}
-
-export function applicationWithLatestDeploymentAndBuildEnvToJSON(
-  applicationWithLatestDeploymentAndBuildEnv:
-    ApplicationWithLatestDeploymentAndBuildEnv,
-): string {
-  return JSON.stringify(
-    ApplicationWithLatestDeploymentAndBuildEnv$outboundSchema.parse(
-      applicationWithLatestDeploymentAndBuildEnv,
-    ),
-  );
-}
 
 export function applicationWithLatestDeploymentAndBuildEnvFromJSON(
   jsonString: string,
@@ -366,84 +257,6 @@ export const ApplicationWithLatestDeploymentAndBuildDeployment$inboundSchema:
     build: BuildV3$inboundSchema,
   });
 
-/** @internal */
-export type ApplicationWithLatestDeploymentAndBuildDeployment$Outbound = {
-  fleetId?: string | undefined;
-  deploymentTag?: string | undefined;
-  idleTimeoutEnabled: boolean;
-  env: Array<ApplicationWithLatestDeploymentAndBuildEnv$Outbound>;
-  roomsPerProcess: number;
-  additionalContainerPorts: Array<ContainerPort$Outbound>;
-  defaultContainerPort: ContainerPort$Outbound;
-  createdAt: string;
-  createdBy: string;
-  requestedGPU?: number | undefined;
-  experimentalRequestedGPU?: number | undefined;
-  requestedMemoryMB: number;
-  requestedCPU: number;
-  deploymentId: string;
-  buildTag?: string | undefined;
-  buildId: string;
-  appId: string;
-  build: BuildV3$Outbound;
-};
-
-/** @internal */
-export const ApplicationWithLatestDeploymentAndBuildDeployment$outboundSchema:
-  z.ZodType<
-    ApplicationWithLatestDeploymentAndBuildDeployment$Outbound,
-    z.ZodTypeDef,
-    ApplicationWithLatestDeploymentAndBuildDeployment
-  > = z.object({
-    fleetId: z.string().optional(),
-    deploymentTag: z.string().optional(),
-    idleTimeoutEnabled: z.boolean(),
-    env: z.array(
-      z.lazy(() => ApplicationWithLatestDeploymentAndBuildEnv$outboundSchema),
-    ),
-    roomsPerProcess: z.number().int(),
-    additionalContainerPorts: z.array(ContainerPort$outboundSchema),
-    defaultContainerPort: ContainerPort$outboundSchema,
-    createdAt: z.date().transform(v => v.toISOString()),
-    createdBy: z.string(),
-    requestedGPU: z.number().optional(),
-    experimentalRequestedGPU: z.number().optional(),
-    requestedMemoryMB: z.number(),
-    requestedCPU: z.number(),
-    deploymentId: z.string(),
-    buildTag: z.string().optional(),
-    buildId: z.string(),
-    appId: z.string(),
-    build: BuildV3$outboundSchema,
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationWithLatestDeploymentAndBuildDeployment$ {
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildDeployment$inboundSchema` instead. */
-  export const inboundSchema =
-    ApplicationWithLatestDeploymentAndBuildDeployment$inboundSchema;
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildDeployment$outboundSchema` instead. */
-  export const outboundSchema =
-    ApplicationWithLatestDeploymentAndBuildDeployment$outboundSchema;
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuildDeployment$Outbound` instead. */
-  export type Outbound =
-    ApplicationWithLatestDeploymentAndBuildDeployment$Outbound;
-}
-
-export function applicationWithLatestDeploymentAndBuildDeploymentToJSON(
-  applicationWithLatestDeploymentAndBuildDeployment:
-    ApplicationWithLatestDeploymentAndBuildDeployment,
-): string {
-  return JSON.stringify(
-    ApplicationWithLatestDeploymentAndBuildDeployment$outboundSchema.parse(
-      applicationWithLatestDeploymentAndBuildDeployment,
-    ),
-  );
-}
-
 export function applicationWithLatestDeploymentAndBuildDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -486,76 +299,6 @@ export const ApplicationWithLatestDeploymentAndBuild$inboundSchema: z.ZodType<
     ApplicationWithLatestDeploymentAndBuildDeployment$inboundSchema
   ).optional(),
 });
-
-/** @internal */
-export type ApplicationWithLatestDeploymentAndBuild$Outbound = {
-  deletedBy: string | null;
-  deletedAt: string | null;
-  createdAt: string;
-  createdBy: string;
-  orgId: string;
-  serviceConfig:
-    | ApplicationWithLatestDeploymentAndBuildServiceConfig$Outbound
-    | null;
-  authConfiguration: AuthConfiguration$Outbound;
-  appSecret: string;
-  appId: string;
-  appName: string;
-  deployment?:
-    | ApplicationWithLatestDeploymentAndBuildDeployment$Outbound
-    | undefined;
-};
-
-/** @internal */
-export const ApplicationWithLatestDeploymentAndBuild$outboundSchema: z.ZodType<
-  ApplicationWithLatestDeploymentAndBuild$Outbound,
-  z.ZodTypeDef,
-  ApplicationWithLatestDeploymentAndBuild
-> = z.object({
-  deletedBy: z.nullable(z.string()),
-  deletedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  createdAt: z.date().transform(v => v.toISOString()),
-  createdBy: z.string(),
-  orgId: z.string(),
-  serviceConfig: z.nullable(
-    z.lazy(() =>
-      ApplicationWithLatestDeploymentAndBuildServiceConfig$outboundSchema
-    ),
-  ),
-  authConfiguration: AuthConfiguration$outboundSchema,
-  appSecret: z.string(),
-  appId: z.string(),
-  appName: z.string(),
-  deployment: z.lazy(() =>
-    ApplicationWithLatestDeploymentAndBuildDeployment$outboundSchema
-  ).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationWithLatestDeploymentAndBuild$ {
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuild$inboundSchema` instead. */
-  export const inboundSchema =
-    ApplicationWithLatestDeploymentAndBuild$inboundSchema;
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuild$outboundSchema` instead. */
-  export const outboundSchema =
-    ApplicationWithLatestDeploymentAndBuild$outboundSchema;
-  /** @deprecated use `ApplicationWithLatestDeploymentAndBuild$Outbound` instead. */
-  export type Outbound = ApplicationWithLatestDeploymentAndBuild$Outbound;
-}
-
-export function applicationWithLatestDeploymentAndBuildToJSON(
-  applicationWithLatestDeploymentAndBuild:
-    ApplicationWithLatestDeploymentAndBuild,
-): string {
-  return JSON.stringify(
-    ApplicationWithLatestDeploymentAndBuild$outboundSchema.parse(
-      applicationWithLatestDeploymentAndBuild,
-    ),
-  );
-}
 
 export function applicationWithLatestDeploymentAndBuildFromJSON(
   jsonString: string,

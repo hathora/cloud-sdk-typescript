@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetLobbyInfoByShortCodeGlobals = {
   appId?: string | undefined;
@@ -15,72 +12,6 @@ export type GetLobbyInfoByShortCodeRequest = {
   appId?: string | undefined;
   shortCode: string;
 };
-
-/** @internal */
-export const GetLobbyInfoByShortCodeGlobals$inboundSchema: z.ZodType<
-  GetLobbyInfoByShortCodeGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetLobbyInfoByShortCodeGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetLobbyInfoByShortCodeGlobals$outboundSchema: z.ZodType<
-  GetLobbyInfoByShortCodeGlobals$Outbound,
-  z.ZodTypeDef,
-  GetLobbyInfoByShortCodeGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLobbyInfoByShortCodeGlobals$ {
-  /** @deprecated use `GetLobbyInfoByShortCodeGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetLobbyInfoByShortCodeGlobals$inboundSchema;
-  /** @deprecated use `GetLobbyInfoByShortCodeGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetLobbyInfoByShortCodeGlobals$outboundSchema;
-  /** @deprecated use `GetLobbyInfoByShortCodeGlobals$Outbound` instead. */
-  export type Outbound = GetLobbyInfoByShortCodeGlobals$Outbound;
-}
-
-export function getLobbyInfoByShortCodeGlobalsToJSON(
-  getLobbyInfoByShortCodeGlobals: GetLobbyInfoByShortCodeGlobals,
-): string {
-  return JSON.stringify(
-    GetLobbyInfoByShortCodeGlobals$outboundSchema.parse(
-      getLobbyInfoByShortCodeGlobals,
-    ),
-  );
-}
-
-export function getLobbyInfoByShortCodeGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetLobbyInfoByShortCodeGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetLobbyInfoByShortCodeGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetLobbyInfoByShortCodeGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetLobbyInfoByShortCodeRequest$inboundSchema: z.ZodType<
-  GetLobbyInfoByShortCodeRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  shortCode: z.string(),
-});
 
 /** @internal */
 export type GetLobbyInfoByShortCodeRequest$Outbound = {
@@ -98,19 +29,6 @@ export const GetLobbyInfoByShortCodeRequest$outboundSchema: z.ZodType<
   shortCode: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLobbyInfoByShortCodeRequest$ {
-  /** @deprecated use `GetLobbyInfoByShortCodeRequest$inboundSchema` instead. */
-  export const inboundSchema = GetLobbyInfoByShortCodeRequest$inboundSchema;
-  /** @deprecated use `GetLobbyInfoByShortCodeRequest$outboundSchema` instead. */
-  export const outboundSchema = GetLobbyInfoByShortCodeRequest$outboundSchema;
-  /** @deprecated use `GetLobbyInfoByShortCodeRequest$Outbound` instead. */
-  export type Outbound = GetLobbyInfoByShortCodeRequest$Outbound;
-}
-
 export function getLobbyInfoByShortCodeRequestToJSON(
   getLobbyInfoByShortCodeRequest: GetLobbyInfoByShortCodeRequest,
 ): string {
@@ -118,15 +36,5 @@ export function getLobbyInfoByShortCodeRequestToJSON(
     GetLobbyInfoByShortCodeRequest$outboundSchema.parse(
       getLobbyInfoByShortCodeRequest,
     ),
-  );
-}
-
-export function getLobbyInfoByShortCodeRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetLobbyInfoByShortCodeRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetLobbyInfoByShortCodeRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetLobbyInfoByShortCodeRequest' from JSON`,
   );
 }

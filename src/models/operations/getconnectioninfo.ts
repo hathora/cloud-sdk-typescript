@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetConnectionInfoGlobals = {
   appId?: string | undefined;
@@ -15,70 +12,6 @@ export type GetConnectionInfoRequest = {
   appId?: string | undefined;
   roomId: string;
 };
-
-/** @internal */
-export const GetConnectionInfoGlobals$inboundSchema: z.ZodType<
-  GetConnectionInfoGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetConnectionInfoGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetConnectionInfoGlobals$outboundSchema: z.ZodType<
-  GetConnectionInfoGlobals$Outbound,
-  z.ZodTypeDef,
-  GetConnectionInfoGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConnectionInfoGlobals$ {
-  /** @deprecated use `GetConnectionInfoGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetConnectionInfoGlobals$inboundSchema;
-  /** @deprecated use `GetConnectionInfoGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetConnectionInfoGlobals$outboundSchema;
-  /** @deprecated use `GetConnectionInfoGlobals$Outbound` instead. */
-  export type Outbound = GetConnectionInfoGlobals$Outbound;
-}
-
-export function getConnectionInfoGlobalsToJSON(
-  getConnectionInfoGlobals: GetConnectionInfoGlobals,
-): string {
-  return JSON.stringify(
-    GetConnectionInfoGlobals$outboundSchema.parse(getConnectionInfoGlobals),
-  );
-}
-
-export function getConnectionInfoGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetConnectionInfoGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetConnectionInfoGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetConnectionInfoGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConnectionInfoRequest$inboundSchema: z.ZodType<
-  GetConnectionInfoRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  roomId: z.string(),
-});
 
 /** @internal */
 export type GetConnectionInfoRequest$Outbound = {
@@ -96,33 +29,10 @@ export const GetConnectionInfoRequest$outboundSchema: z.ZodType<
   roomId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConnectionInfoRequest$ {
-  /** @deprecated use `GetConnectionInfoRequest$inboundSchema` instead. */
-  export const inboundSchema = GetConnectionInfoRequest$inboundSchema;
-  /** @deprecated use `GetConnectionInfoRequest$outboundSchema` instead. */
-  export const outboundSchema = GetConnectionInfoRequest$outboundSchema;
-  /** @deprecated use `GetConnectionInfoRequest$Outbound` instead. */
-  export type Outbound = GetConnectionInfoRequest$Outbound;
-}
-
 export function getConnectionInfoRequestToJSON(
   getConnectionInfoRequest: GetConnectionInfoRequest,
 ): string {
   return JSON.stringify(
     GetConnectionInfoRequest$outboundSchema.parse(getConnectionInfoRequest),
-  );
-}
-
-export function getConnectionInfoRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetConnectionInfoRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetConnectionInfoRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetConnectionInfoRequest' from JSON`,
   );
 }

@@ -6,22 +6,9 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ExposedPort,
-  ExposedPort$inboundSchema,
-  ExposedPort$Outbound,
-  ExposedPort$outboundSchema,
-} from "./exposedport.js";
-import {
-  Region,
-  Region$inboundSchema,
-  Region$outboundSchema,
-} from "./region.js";
-import {
-  TransportType,
-  TransportType$inboundSchema,
-  TransportType$outboundSchema,
-} from "./transporttype.js";
+import { ExposedPort, ExposedPort$inboundSchema } from "./exposedport.js";
+import { Region, Region$inboundSchema } from "./region.js";
+import { TransportType, TransportType$inboundSchema } from "./transporttype.js";
 
 /**
  * Connection details for an active process.
@@ -132,47 +119,6 @@ export const ProcessExposedPort$inboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/** @internal */
-export type ProcessExposedPort$Outbound = {
-  transportType: string;
-  port: number;
-  host: string;
-  name: string;
-};
-
-/** @internal */
-export const ProcessExposedPort$outboundSchema: z.ZodType<
-  ProcessExposedPort$Outbound,
-  z.ZodTypeDef,
-  ProcessExposedPort
-> = z.object({
-  transportType: TransportType$outboundSchema,
-  port: z.number().int(),
-  host: z.string(),
-  name: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProcessExposedPort$ {
-  /** @deprecated use `ProcessExposedPort$inboundSchema` instead. */
-  export const inboundSchema = ProcessExposedPort$inboundSchema;
-  /** @deprecated use `ProcessExposedPort$outboundSchema` instead. */
-  export const outboundSchema = ProcessExposedPort$outboundSchema;
-  /** @deprecated use `ProcessExposedPort$Outbound` instead. */
-  export type Outbound = ProcessExposedPort$Outbound;
-}
-
-export function processExposedPortToJSON(
-  processExposedPort: ProcessExposedPort,
-): string {
-  return JSON.stringify(
-    ProcessExposedPort$outboundSchema.parse(processExposedPort),
-  );
-}
-
 export function processExposedPortFromJSON(
   jsonString: string,
 ): SafeParseResult<ProcessExposedPort, SDKValidationError> {
@@ -224,79 +170,6 @@ export const Process$inboundSchema: z.ZodType<Process, z.ZodTypeDef, unknown> =
     deploymentId: z.number().int(),
     appId: z.string(),
   });
-
-/** @internal */
-export type Process$Outbound = {
-  egressedBytes: number;
-  idleSince: string | null;
-  activeConnectionsUpdatedAt: string;
-  activeConnections: number;
-  roomsAllocatedUpdatedAt: string;
-  roomsAllocated: number;
-  roomSlotsAvailableUpdatedAt: string;
-  roomSlotsAvailable: number;
-  draining: boolean;
-  terminatedAt: string | null;
-  stoppingAt: string | null;
-  startedAt: string | null;
-  startingAt: string;
-  roomsPerProcess: number;
-  additionalExposedPorts: Array<ExposedPort$Outbound>;
-  exposedPort: ProcessExposedPort$Outbound | null;
-  port: number;
-  host: string;
-  region: string;
-  processId: string;
-  deploymentId: number;
-  appId: string;
-};
-
-/** @internal */
-export const Process$outboundSchema: z.ZodType<
-  Process$Outbound,
-  z.ZodTypeDef,
-  Process
-> = z.object({
-  egressedBytes: z.number().int(),
-  idleSince: z.nullable(z.date().transform(v => v.toISOString())),
-  activeConnectionsUpdatedAt: z.date().transform(v => v.toISOString()),
-  activeConnections: z.number().int(),
-  roomsAllocatedUpdatedAt: z.date().transform(v => v.toISOString()),
-  roomsAllocated: z.number().int(),
-  roomSlotsAvailableUpdatedAt: z.date().transform(v => v.toISOString()),
-  roomSlotsAvailable: z.number(),
-  draining: z.boolean(),
-  terminatedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  stoppingAt: z.nullable(z.date().transform(v => v.toISOString())),
-  startedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  startingAt: z.date().transform(v => v.toISOString()),
-  roomsPerProcess: z.number().int(),
-  additionalExposedPorts: z.array(ExposedPort$outboundSchema),
-  exposedPort: z.nullable(z.lazy(() => ProcessExposedPort$outboundSchema)),
-  port: z.number(),
-  host: z.string(),
-  region: Region$outboundSchema,
-  processId: z.string(),
-  deploymentId: z.number().int(),
-  appId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Process$ {
-  /** @deprecated use `Process$inboundSchema` instead. */
-  export const inboundSchema = Process$inboundSchema;
-  /** @deprecated use `Process$outboundSchema` instead. */
-  export const outboundSchema = Process$outboundSchema;
-  /** @deprecated use `Process$Outbound` instead. */
-  export type Outbound = Process$Outbound;
-}
-
-export function processToJSON(process: Process): string {
-  return JSON.stringify(Process$outboundSchema.parse(process));
-}
 
 export function processFromJSON(
   jsonString: string,

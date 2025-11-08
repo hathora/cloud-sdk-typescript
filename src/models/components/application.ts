@@ -9,26 +9,18 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AuthConfiguration,
   AuthConfiguration$inboundSchema,
-  AuthConfiguration$Outbound,
-  AuthConfiguration$outboundSchema,
 } from "./authconfiguration.js";
 import {
   LoadBalancerConfig,
   LoadBalancerConfig$inboundSchema,
-  LoadBalancerConfig$Outbound,
-  LoadBalancerConfig$outboundSchema,
 } from "./loadbalancerconfig.js";
 import {
   ProcessAutoscalerConfig,
   ProcessAutoscalerConfig$inboundSchema,
-  ProcessAutoscalerConfig$Outbound,
-  ProcessAutoscalerConfig$outboundSchema,
 } from "./processautoscalerconfig.js";
 import {
   StaticProcessAllocationConfig,
   StaticProcessAllocationConfig$inboundSchema,
-  StaticProcessAllocationConfig$Outbound,
-  StaticProcessAllocationConfig$outboundSchema,
 } from "./staticprocessallocationconfig.js";
 
 export type ApplicationServiceConfig = {
@@ -98,47 +90,6 @@ export const ApplicationServiceConfig$inboundSchema: z.ZodType<
   staticProcessAllocation: z.array(StaticProcessAllocationConfig$inboundSchema),
 });
 
-/** @internal */
-export type ApplicationServiceConfig$Outbound = {
-  processAutoscalerConfig?: ProcessAutoscalerConfig$Outbound | undefined;
-  loadBalancer?: LoadBalancerConfig$Outbound | undefined;
-  staticProcessAllocation: Array<StaticProcessAllocationConfig$Outbound>;
-};
-
-/** @internal */
-export const ApplicationServiceConfig$outboundSchema: z.ZodType<
-  ApplicationServiceConfig$Outbound,
-  z.ZodTypeDef,
-  ApplicationServiceConfig
-> = z.object({
-  processAutoscalerConfig: ProcessAutoscalerConfig$outboundSchema.optional(),
-  loadBalancer: LoadBalancerConfig$outboundSchema.optional(),
-  staticProcessAllocation: z.array(
-    StaticProcessAllocationConfig$outboundSchema,
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationServiceConfig$ {
-  /** @deprecated use `ApplicationServiceConfig$inboundSchema` instead. */
-  export const inboundSchema = ApplicationServiceConfig$inboundSchema;
-  /** @deprecated use `ApplicationServiceConfig$outboundSchema` instead. */
-  export const outboundSchema = ApplicationServiceConfig$outboundSchema;
-  /** @deprecated use `ApplicationServiceConfig$Outbound` instead. */
-  export type Outbound = ApplicationServiceConfig$Outbound;
-}
-
-export function applicationServiceConfigToJSON(
-  applicationServiceConfig: ApplicationServiceConfig,
-): string {
-  return JSON.stringify(
-    ApplicationServiceConfig$outboundSchema.parse(applicationServiceConfig),
-  );
-}
-
 export function applicationServiceConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<ApplicationServiceConfig, SDKValidationError> {
@@ -170,57 +121,6 @@ export const Application$inboundSchema: z.ZodType<
   appId: z.string(),
   appName: z.string(),
 });
-
-/** @internal */
-export type Application$Outbound = {
-  deletedBy: string | null;
-  deletedAt: string | null;
-  createdAt: string;
-  createdBy: string;
-  orgId: string;
-  serviceConfig: ApplicationServiceConfig$Outbound | null;
-  authConfiguration: AuthConfiguration$Outbound;
-  appSecret: string;
-  appId: string;
-  appName: string;
-};
-
-/** @internal */
-export const Application$outboundSchema: z.ZodType<
-  Application$Outbound,
-  z.ZodTypeDef,
-  Application
-> = z.object({
-  deletedBy: z.nullable(z.string()),
-  deletedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  createdAt: z.date().transform(v => v.toISOString()),
-  createdBy: z.string(),
-  orgId: z.string(),
-  serviceConfig: z.nullable(
-    z.lazy(() => ApplicationServiceConfig$outboundSchema),
-  ),
-  authConfiguration: AuthConfiguration$outboundSchema,
-  appSecret: z.string(),
-  appId: z.string(),
-  appName: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Application$ {
-  /** @deprecated use `Application$inboundSchema` instead. */
-  export const inboundSchema = Application$inboundSchema;
-  /** @deprecated use `Application$outboundSchema` instead. */
-  export const outboundSchema = Application$outboundSchema;
-  /** @deprecated use `Application$Outbound` instead. */
-  export type Outbound = Application$Outbound;
-}
-
-export function applicationToJSON(application: Application): string {
-  return JSON.stringify(Application$outboundSchema.parse(application));
-}
 
 export function applicationFromJSON(
   jsonString: string,

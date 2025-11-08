@@ -7,12 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  MetricValue,
-  MetricValue$inboundSchema,
-  MetricValue$Outbound,
-  MetricValue$outboundSchema,
-} from "./metricvalue.js";
+import { MetricValue, MetricValue$inboundSchema } from "./metricvalue.js";
 
 export type DeprecatedProcessMetricsData = {
   activeConnections?: Array<MetricValue> | undefined;
@@ -40,57 +35,6 @@ export const DeprecatedProcessMetricsData$inboundSchema: z.ZodType<
     "rate_egress": "rateEgress",
   });
 });
-
-/** @internal */
-export type DeprecatedProcessMetricsData$Outbound = {
-  active_connections?: Array<MetricValue$Outbound> | undefined;
-  total_egress?: Array<MetricValue$Outbound> | undefined;
-  rate_egress?: Array<MetricValue$Outbound> | undefined;
-  memory?: Array<MetricValue$Outbound> | undefined;
-  cpu?: Array<MetricValue$Outbound> | undefined;
-};
-
-/** @internal */
-export const DeprecatedProcessMetricsData$outboundSchema: z.ZodType<
-  DeprecatedProcessMetricsData$Outbound,
-  z.ZodTypeDef,
-  DeprecatedProcessMetricsData
-> = z.object({
-  activeConnections: z.array(MetricValue$outboundSchema).optional(),
-  totalEgress: z.array(MetricValue$outboundSchema).optional(),
-  rateEgress: z.array(MetricValue$outboundSchema).optional(),
-  memory: z.array(MetricValue$outboundSchema).optional(),
-  cpu: z.array(MetricValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    activeConnections: "active_connections",
-    totalEgress: "total_egress",
-    rateEgress: "rate_egress",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeprecatedProcessMetricsData$ {
-  /** @deprecated use `DeprecatedProcessMetricsData$inboundSchema` instead. */
-  export const inboundSchema = DeprecatedProcessMetricsData$inboundSchema;
-  /** @deprecated use `DeprecatedProcessMetricsData$outboundSchema` instead. */
-  export const outboundSchema = DeprecatedProcessMetricsData$outboundSchema;
-  /** @deprecated use `DeprecatedProcessMetricsData$Outbound` instead. */
-  export type Outbound = DeprecatedProcessMetricsData$Outbound;
-}
-
-export function deprecatedProcessMetricsDataToJSON(
-  deprecatedProcessMetricsData: DeprecatedProcessMetricsData,
-): string {
-  return JSON.stringify(
-    DeprecatedProcessMetricsData$outboundSchema.parse(
-      deprecatedProcessMetricsData,
-    ),
-  );
-}
 
 export function deprecatedProcessMetricsDataFromJSON(
   jsonString: string,

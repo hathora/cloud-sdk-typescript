@@ -6,12 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import { Scope, Scope$inboundSchema, Scope$outboundSchema } from "./scope.js";
-import {
-  UserRole,
-  UserRole$inboundSchema,
-  UserRole$outboundSchema,
-} from "./userrole.js";
+import { Scope, Scope$inboundSchema } from "./scope.js";
+import { UserRole, UserRole$inboundSchema } from "./userrole.js";
 
 export type PendingOrgInviteScopes = UserRole | Array<Scope>;
 
@@ -36,37 +32,6 @@ export const PendingOrgInviteScopes$inboundSchema: z.ZodType<
   unknown
 > = z.union([UserRole$inboundSchema, z.array(Scope$inboundSchema)]);
 
-/** @internal */
-export type PendingOrgInviteScopes$Outbound = string | Array<string>;
-
-/** @internal */
-export const PendingOrgInviteScopes$outboundSchema: z.ZodType<
-  PendingOrgInviteScopes$Outbound,
-  z.ZodTypeDef,
-  PendingOrgInviteScopes
-> = z.union([UserRole$outboundSchema, z.array(Scope$outboundSchema)]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PendingOrgInviteScopes$ {
-  /** @deprecated use `PendingOrgInviteScopes$inboundSchema` instead. */
-  export const inboundSchema = PendingOrgInviteScopes$inboundSchema;
-  /** @deprecated use `PendingOrgInviteScopes$outboundSchema` instead. */
-  export const outboundSchema = PendingOrgInviteScopes$outboundSchema;
-  /** @deprecated use `PendingOrgInviteScopes$Outbound` instead. */
-  export type Outbound = PendingOrgInviteScopes$Outbound;
-}
-
-export function pendingOrgInviteScopesToJSON(
-  pendingOrgInviteScopes: PendingOrgInviteScopes,
-): string {
-  return JSON.stringify(
-    PendingOrgInviteScopes$outboundSchema.parse(pendingOrgInviteScopes),
-  );
-}
-
 export function pendingOrgInviteScopesFromJSON(
   jsonString: string,
 ): SafeParseResult<PendingOrgInviteScopes, SDKValidationError> {
@@ -89,49 +54,6 @@ export const PendingOrgInvite$inboundSchema: z.ZodType<
   userEmail: z.string(),
   orgId: z.string(),
 });
-
-/** @internal */
-export type PendingOrgInvite$Outbound = {
-  scopes: string | Array<string>;
-  createdAt: string;
-  invitedBy: string;
-  userEmail: string;
-  orgId: string;
-};
-
-/** @internal */
-export const PendingOrgInvite$outboundSchema: z.ZodType<
-  PendingOrgInvite$Outbound,
-  z.ZodTypeDef,
-  PendingOrgInvite
-> = z.object({
-  scopes: z.union([UserRole$outboundSchema, z.array(Scope$outboundSchema)]),
-  createdAt: z.date().transform(v => v.toISOString()),
-  invitedBy: z.string(),
-  userEmail: z.string(),
-  orgId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PendingOrgInvite$ {
-  /** @deprecated use `PendingOrgInvite$inboundSchema` instead. */
-  export const inboundSchema = PendingOrgInvite$inboundSchema;
-  /** @deprecated use `PendingOrgInvite$outboundSchema` instead. */
-  export const outboundSchema = PendingOrgInvite$outboundSchema;
-  /** @deprecated use `PendingOrgInvite$Outbound` instead. */
-  export type Outbound = PendingOrgInvite$Outbound;
-}
-
-export function pendingOrgInviteToJSON(
-  pendingOrgInvite: PendingOrgInvite,
-): string {
-  return JSON.stringify(
-    PendingOrgInvite$outboundSchema.parse(pendingOrgInvite),
-  );
-}
 
 export function pendingOrgInviteFromJSON(
   jsonString: string,

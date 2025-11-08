@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  MetricValue,
-  MetricValue$inboundSchema,
-  MetricValue$Outbound,
-  MetricValue$outboundSchema,
-} from "./metricvalue.js";
+import { MetricValue, MetricValue$inboundSchema } from "./metricvalue.js";
 
 export type FleetMetricsData = {
   systemOverhead?: Array<MetricValue> | undefined;
@@ -33,49 +28,6 @@ export const FleetMetricsData$inboundSchema: z.ZodType<
   provisionedBareMetal: z.array(MetricValue$inboundSchema).optional(),
   provisionedTotal: z.array(MetricValue$inboundSchema).optional(),
 });
-
-/** @internal */
-export type FleetMetricsData$Outbound = {
-  systemOverhead?: Array<MetricValue$Outbound> | undefined;
-  utilized?: Array<MetricValue$Outbound> | undefined;
-  provisionedCloud?: Array<MetricValue$Outbound> | undefined;
-  provisionedBareMetal?: Array<MetricValue$Outbound> | undefined;
-  provisionedTotal?: Array<MetricValue$Outbound> | undefined;
-};
-
-/** @internal */
-export const FleetMetricsData$outboundSchema: z.ZodType<
-  FleetMetricsData$Outbound,
-  z.ZodTypeDef,
-  FleetMetricsData
-> = z.object({
-  systemOverhead: z.array(MetricValue$outboundSchema).optional(),
-  utilized: z.array(MetricValue$outboundSchema).optional(),
-  provisionedCloud: z.array(MetricValue$outboundSchema).optional(),
-  provisionedBareMetal: z.array(MetricValue$outboundSchema).optional(),
-  provisionedTotal: z.array(MetricValue$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FleetMetricsData$ {
-  /** @deprecated use `FleetMetricsData$inboundSchema` instead. */
-  export const inboundSchema = FleetMetricsData$inboundSchema;
-  /** @deprecated use `FleetMetricsData$outboundSchema` instead. */
-  export const outboundSchema = FleetMetricsData$outboundSchema;
-  /** @deprecated use `FleetMetricsData$Outbound` instead. */
-  export type Outbound = FleetMetricsData$Outbound;
-}
-
-export function fleetMetricsDataToJSON(
-  fleetMetricsData: FleetMetricsData,
-): string {
-  return JSON.stringify(
-    FleetMetricsData$outboundSchema.parse(fleetMetricsData),
-  );
-}
 
 export function fleetMetricsDataFromJSON(
   jsonString: string,

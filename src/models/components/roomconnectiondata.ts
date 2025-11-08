@@ -6,16 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ExposedPort,
-  ExposedPort$inboundSchema,
-  ExposedPort$Outbound,
-  ExposedPort$outboundSchema,
-} from "./exposedport.js";
+import { ExposedPort, ExposedPort$inboundSchema } from "./exposedport.js";
 import {
   RoomReadyStatus,
   RoomReadyStatus$inboundSchema,
-  RoomReadyStatus$outboundSchema,
 } from "./roomreadystatus.js";
 
 /**
@@ -53,49 +47,6 @@ export const RoomConnectionData$inboundSchema: z.ZodType<
   roomId: z.string(),
   processId: z.string(),
 });
-
-/** @internal */
-export type RoomConnectionData$Outbound = {
-  additionalExposedPorts: Array<ExposedPort$Outbound>;
-  exposedPort?: ExposedPort$Outbound | undefined;
-  status: string;
-  roomId: string;
-  processId: string;
-};
-
-/** @internal */
-export const RoomConnectionData$outboundSchema: z.ZodType<
-  RoomConnectionData$Outbound,
-  z.ZodTypeDef,
-  RoomConnectionData
-> = z.object({
-  additionalExposedPorts: z.array(ExposedPort$outboundSchema),
-  exposedPort: ExposedPort$outboundSchema.optional(),
-  status: RoomReadyStatus$outboundSchema,
-  roomId: z.string(),
-  processId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RoomConnectionData$ {
-  /** @deprecated use `RoomConnectionData$inboundSchema` instead. */
-  export const inboundSchema = RoomConnectionData$inboundSchema;
-  /** @deprecated use `RoomConnectionData$outboundSchema` instead. */
-  export const outboundSchema = RoomConnectionData$outboundSchema;
-  /** @deprecated use `RoomConnectionData$Outbound` instead. */
-  export type Outbound = RoomConnectionData$Outbound;
-}
-
-export function roomConnectionDataToJSON(
-  roomConnectionData: RoomConnectionData,
-): string {
-  return JSON.stringify(
-    RoomConnectionData$outboundSchema.parse(roomConnectionData),
-  );
-}
 
 export function roomConnectionDataFromJSON(
   jsonString: string,

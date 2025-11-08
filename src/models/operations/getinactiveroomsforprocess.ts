@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetInactiveRoomsForProcessGlobals = {
   appId?: string | undefined;
@@ -15,73 +12,6 @@ export type GetInactiveRoomsForProcessRequest = {
   appId?: string | undefined;
   processId: string;
 };
-
-/** @internal */
-export const GetInactiveRoomsForProcessGlobals$inboundSchema: z.ZodType<
-  GetInactiveRoomsForProcessGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetInactiveRoomsForProcessGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetInactiveRoomsForProcessGlobals$outboundSchema: z.ZodType<
-  GetInactiveRoomsForProcessGlobals$Outbound,
-  z.ZodTypeDef,
-  GetInactiveRoomsForProcessGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetInactiveRoomsForProcessGlobals$ {
-  /** @deprecated use `GetInactiveRoomsForProcessGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetInactiveRoomsForProcessGlobals$inboundSchema;
-  /** @deprecated use `GetInactiveRoomsForProcessGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    GetInactiveRoomsForProcessGlobals$outboundSchema;
-  /** @deprecated use `GetInactiveRoomsForProcessGlobals$Outbound` instead. */
-  export type Outbound = GetInactiveRoomsForProcessGlobals$Outbound;
-}
-
-export function getInactiveRoomsForProcessGlobalsToJSON(
-  getInactiveRoomsForProcessGlobals: GetInactiveRoomsForProcessGlobals,
-): string {
-  return JSON.stringify(
-    GetInactiveRoomsForProcessGlobals$outboundSchema.parse(
-      getInactiveRoomsForProcessGlobals,
-    ),
-  );
-}
-
-export function getInactiveRoomsForProcessGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetInactiveRoomsForProcessGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetInactiveRoomsForProcessGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetInactiveRoomsForProcessGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetInactiveRoomsForProcessRequest$inboundSchema: z.ZodType<
-  GetInactiveRoomsForProcessRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  processId: z.string(),
-});
 
 /** @internal */
 export type GetInactiveRoomsForProcessRequest$Outbound = {
@@ -99,20 +29,6 @@ export const GetInactiveRoomsForProcessRequest$outboundSchema: z.ZodType<
   processId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetInactiveRoomsForProcessRequest$ {
-  /** @deprecated use `GetInactiveRoomsForProcessRequest$inboundSchema` instead. */
-  export const inboundSchema = GetInactiveRoomsForProcessRequest$inboundSchema;
-  /** @deprecated use `GetInactiveRoomsForProcessRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetInactiveRoomsForProcessRequest$outboundSchema;
-  /** @deprecated use `GetInactiveRoomsForProcessRequest$Outbound` instead. */
-  export type Outbound = GetInactiveRoomsForProcessRequest$Outbound;
-}
-
 export function getInactiveRoomsForProcessRequestToJSON(
   getInactiveRoomsForProcessRequest: GetInactiveRoomsForProcessRequest,
 ): string {
@@ -120,15 +36,5 @@ export function getInactiveRoomsForProcessRequestToJSON(
     GetInactiveRoomsForProcessRequest$outboundSchema.parse(
       getInactiveRoomsForProcessRequest,
     ),
-  );
-}
-
-export function getInactiveRoomsForProcessRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetInactiveRoomsForProcessRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetInactiveRoomsForProcessRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetInactiveRoomsForProcessRequest' from JSON`,
   );
 }

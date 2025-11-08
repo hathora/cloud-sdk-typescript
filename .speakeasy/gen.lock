@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 52dfc4817d948b8125c83a166b79f318
+  docChecksum: 43af4c12f05360337d531705aa3cfbf0
   docVersion: 0.0.1
-  speakeasyVersion: 1.643.3
-  generationVersion: 2.731.9
-  releaseVersion: 2.24.2
-  configChecksum: b280ce6bf3f81623bbe26f24ef4729e0
+  speakeasyVersion: 1.651.0
+  generationVersion: 2.745.2
+  releaseVersion: 2.25.0
+  configChecksum: 2c000e1866f683dbd6605b94d8fc9478
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.24.2
+    core: 3.26.3
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -24,7 +24,7 @@ features:
     globalSecurity: 2.82.14
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
-    globalServerURLs: 2.82.5
+    globalServerURLs: 2.83.0
     globals: 2.82.2
     groups: 2.81.3
     methodSecurity: 2.82.6
@@ -321,9 +321,15 @@ generatedFiles:
   - docs/models/operations/getfleetdeprecatedglobals.md
   - docs/models/operations/getfleetdeprecatedrequest.md
   - docs/models/operations/getfleetglobals.md
+  - docs/models/operations/getfleetmetricsdeprecatedglobals.md
+  - docs/models/operations/getfleetmetricsdeprecatedrequest.md
   - docs/models/operations/getfleetmetricsglobals.md
   - docs/models/operations/getfleetmetricsrequest.md
+  - docs/models/operations/getfleetregiondeprecatedglobals.md
+  - docs/models/operations/getfleetregiondeprecatedrequest.md
   - docs/models/operations/getfleetregionglobals.md
+  - docs/models/operations/getfleetregionmetricsdeprecatedglobals.md
+  - docs/models/operations/getfleetregionmetricsdeprecatedrequest.md
   - docs/models/operations/getfleetregionmetricsglobals.md
   - docs/models/operations/getfleetregionmetricsrequest.md
   - docs/models/operations/getfleetregionrequest.md
@@ -447,6 +453,8 @@ generatedFiles:
   - docs/models/operations/updatefleetdeprecatedglobals.md
   - docs/models/operations/updatefleetdeprecatedrequest.md
   - docs/models/operations/updatefleetglobals.md
+  - docs/models/operations/updatefleetregiondeprecatedglobals.md
+  - docs/models/operations/updatefleetregiondeprecatedrequest.md
   - docs/models/operations/updatefleetregionglobals.md
   - docs/models/operations/updatefleetregionrequest.md
   - docs/models/operations/updatefleetrequest.md
@@ -544,17 +552,21 @@ generatedFiles:
   - src/funcs/discoveryV2GetPingServiceEndpoints.ts
   - src/funcs/fleetsV1CreateFleetDeprecated.ts
   - src/funcs/fleetsV1GetFleetDeprecated.ts
-  - src/funcs/fleetsV1GetFleetMetrics.ts
-  - src/funcs/fleetsV1GetFleetRegion.ts
-  - src/funcs/fleetsV1GetFleetRegionMetrics.ts
+  - src/funcs/fleetsV1GetFleetMetricsDeprecated.ts
+  - src/funcs/fleetsV1GetFleetRegionDeprecated.ts
+  - src/funcs/fleetsV1GetFleetRegionMetricsDeprecated.ts
   - src/funcs/fleetsV1GetFleetsDeprecated.ts
   - src/funcs/fleetsV1UpdateFleetDeprecated.ts
-  - src/funcs/fleetsV1UpdateFleetRegion.ts
+  - src/funcs/fleetsV1UpdateFleetRegionDeprecated.ts
   - src/funcs/fleetsV2CreateFleet.ts
   - src/funcs/fleetsV2GetFleet.ts
+  - src/funcs/fleetsV2GetFleetMetrics.ts
+  - src/funcs/fleetsV2GetFleetRegion.ts
+  - src/funcs/fleetsV2GetFleetRegionMetrics.ts
   - src/funcs/fleetsV2GetFleets.ts
   - src/funcs/fleetsV2GetNodeShapes.ts
   - src/funcs/fleetsV2UpdateFleet.ts
+  - src/funcs/fleetsV2UpdateFleetRegion.ts
   - src/funcs/lobbiesV1CreatePrivateLobbyDeprecated.ts
   - src/funcs/lobbiesV1CreatePublicLobbyDeprecated.ts
   - src/funcs/lobbiesV1ListActivePublicLobbiesDeprecatedV1.ts
@@ -822,8 +834,11 @@ generatedFiles:
   - src/models/operations/getfleet.ts
   - src/models/operations/getfleetdeprecated.ts
   - src/models/operations/getfleetmetrics.ts
+  - src/models/operations/getfleetmetricsdeprecated.ts
   - src/models/operations/getfleetregion.ts
+  - src/models/operations/getfleetregiondeprecated.ts
   - src/models/operations/getfleetregionmetrics.ts
+  - src/models/operations/getfleetregionmetricsdeprecated.ts
   - src/models/operations/getfleets.ts
   - src/models/operations/getfleetsdeprecated.ts
   - src/models/operations/getinactiveroomsforprocess.ts
@@ -887,6 +902,7 @@ generatedFiles:
   - src/models/operations/updatefleet.ts
   - src/models/operations/updatefleetdeprecated.ts
   - src/models/operations/updatefleetregion.ts
+  - src/models/operations/updatefleetregiondeprecated.ts
   - src/models/operations/updateroomconfig.ts
   - src/models/operations/updateuserinvite.ts
   - src/sdk/appsv1.ts
@@ -2480,19 +2496,78 @@ examples:
           application/json: {"message": "<value>"}
         "500":
           application/json: {"message": "<value>"}
+  GetFleetRegionDeprecated:
+    speakeasy-default-get-fleet-region-deprecated:
+      parameters:
+        path:
+          fleetId: "<id>"
+          region: "Sao_Paulo"
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      responses:
+        "200":
+          application/json: {"cloudMinVcpusUpdatedAt": "2023-08-15T11:29:36.500Z", "cloudMinVcpus": 467124, "scaleIncrementVcpus": 588775}
+        "401":
+          application/json: {"message": "<value>"}
+  UpdateFleetRegionDeprecated:
+    speakeasy-default-update-fleet-region-deprecated:
+      parameters:
+        path:
+          fleetId: "<id>"
+          region: "Johannesburg"
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      requestBody:
+        application/json: {"cloudMinVcpus": 122781}
+      responses:
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+  GetFleetMetricsDeprecated:
+    speakeasy-default-get-fleet-metrics-deprecated:
+      parameters:
+        path:
+          fleetId: "<id>"
+        query:
+          step: 60
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+  GetFleetRegionMetricsDeprecated:
+    speakeasy-default-get-fleet-region-metrics-deprecated:
+      parameters:
+        path:
+          fleetId: "<id>"
+          region: "Dubai"
+        query:
+          step: 60
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Typescript SDK Changes Detected:
-  * `hathoracloud.fleetsV1.getFleetsDeprecated()`: **Added**
-  * `hathoracloud.fleetsV1.createFleetDeprecated()`: **Added**
-  * `hathoracloud.fleetsV1.getFleetDeprecated()`: **Added**
-  * `hathoracloud.fleetsV1.updateFleetDeprecated()`: **Added**
-  * `hathoracloud.fleetsV2.getFleets()`: **Added**
-  * `hathoracloud.fleetsV2.createFleet()`: **Added**
-  * `hathoracloud.fleetsV2.getFleet()`: **Added**
-  * `hathoracloud.fleetsV2.updateFleet()`: **Added**
-  * `hathoracloud.fleetsV1.getFleets()`: **Deleted** **Breaking** :warning:
-  * `hathoracloud.fleetsV1.createFleet()`: **Deleted** **Breaking** :warning:
-  * `hathoracloud.fleetsV1.getFleet()`: **Deleted** **Breaking** :warning:
-  * `hathoracloud.fleetsV1.updateFleet()`: **Deleted** **Breaking** :warning:
+  * `hathoracloud.fleetsV1.getFleetRegionDeprecated()`: **Added**
+  * `hathoracloud.fleetsV1.updateFleetRegionDeprecated()`: **Added**
+  * `hathoracloud.fleetsV1.getFleetMetricsDeprecated()`: **Added**
+  * `hathoracloud.fleetsV1.getFleetRegionMetricsDeprecated()`: **Added**
+  * `hathoracloud.fleetsV2.getFleetRegion()`: **Added**
+  * `hathoracloud.fleetsV2.updateFleetRegion()`: **Added**
+  * `hathoracloud.fleetsV2.getFleetMetrics()`: **Added**
+  * `hathoracloud.fleetsV2.getFleetRegionMetrics()`: **Added**
+  * `hathoracloud.fleetsV1.getFleetRegion()`: **Deleted** **Breaking** :warning:
+  * `hathoracloud.fleetsV1.updateFleetRegion()`: **Deleted** **Breaking** :warning:
+  * `hathoracloud.fleetsV1.getFleetMetrics()`: **Deleted** **Breaking** :warning:
+  * `hathoracloud.fleetsV1.getFleetRegionMetrics()`: **Deleted** **Breaking** :warning:

@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateBuildGlobals = {
   orgId?: string | undefined;
@@ -17,75 +14,6 @@ export type CreateBuildRequest = {
   orgId?: string | undefined;
   createMultipartBuildParams: components.CreateMultipartBuildParams;
 };
-
-/** @internal */
-export const CreateBuildGlobals$inboundSchema: z.ZodType<
-  CreateBuildGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type CreateBuildGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const CreateBuildGlobals$outboundSchema: z.ZodType<
-  CreateBuildGlobals$Outbound,
-  z.ZodTypeDef,
-  CreateBuildGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBuildGlobals$ {
-  /** @deprecated use `CreateBuildGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateBuildGlobals$inboundSchema;
-  /** @deprecated use `CreateBuildGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateBuildGlobals$outboundSchema;
-  /** @deprecated use `CreateBuildGlobals$Outbound` instead. */
-  export type Outbound = CreateBuildGlobals$Outbound;
-}
-
-export function createBuildGlobalsToJSON(
-  createBuildGlobals: CreateBuildGlobals,
-): string {
-  return JSON.stringify(
-    CreateBuildGlobals$outboundSchema.parse(createBuildGlobals),
-  );
-}
-
-export function createBuildGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateBuildGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateBuildGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateBuildGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateBuildRequest$inboundSchema: z.ZodType<
-  CreateBuildRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-  CreateMultipartBuildParams:
-    components.CreateMultipartBuildParams$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateMultipartBuildParams": "createMultipartBuildParams",
-  });
-});
 
 /** @internal */
 export type CreateBuildRequest$Outbound = {
@@ -108,33 +36,10 @@ export const CreateBuildRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBuildRequest$ {
-  /** @deprecated use `CreateBuildRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateBuildRequest$inboundSchema;
-  /** @deprecated use `CreateBuildRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateBuildRequest$outboundSchema;
-  /** @deprecated use `CreateBuildRequest$Outbound` instead. */
-  export type Outbound = CreateBuildRequest$Outbound;
-}
-
 export function createBuildRequestToJSON(
   createBuildRequest: CreateBuildRequest,
 ): string {
   return JSON.stringify(
     CreateBuildRequest$outboundSchema.parse(createBuildRequest),
-  );
-}
-
-export function createBuildRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateBuildRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateBuildRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateBuildRequest' from JSON`,
   );
 }

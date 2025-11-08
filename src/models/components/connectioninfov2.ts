@@ -6,16 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ExposedPort,
-  ExposedPort$inboundSchema,
-  ExposedPort$Outbound,
-  ExposedPort$outboundSchema,
-} from "./exposedport.js";
+import { ExposedPort, ExposedPort$inboundSchema } from "./exposedport.js";
 import {
   RoomReadyStatus,
   RoomReadyStatus$inboundSchema,
-  RoomReadyStatus$outboundSchema,
 } from "./roomreadystatus.js";
 
 /**
@@ -48,47 +42,6 @@ export const ConnectionInfoV2$inboundSchema: z.ZodType<
   status: RoomReadyStatus$inboundSchema,
   roomId: z.string(),
 });
-
-/** @internal */
-export type ConnectionInfoV2$Outbound = {
-  additionalExposedPorts: Array<ExposedPort$Outbound>;
-  exposedPort?: ExposedPort$Outbound | undefined;
-  status: string;
-  roomId: string;
-};
-
-/** @internal */
-export const ConnectionInfoV2$outboundSchema: z.ZodType<
-  ConnectionInfoV2$Outbound,
-  z.ZodTypeDef,
-  ConnectionInfoV2
-> = z.object({
-  additionalExposedPorts: z.array(ExposedPort$outboundSchema),
-  exposedPort: ExposedPort$outboundSchema.optional(),
-  status: RoomReadyStatus$outboundSchema,
-  roomId: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectionInfoV2$ {
-  /** @deprecated use `ConnectionInfoV2$inboundSchema` instead. */
-  export const inboundSchema = ConnectionInfoV2$inboundSchema;
-  /** @deprecated use `ConnectionInfoV2$outboundSchema` instead. */
-  export const outboundSchema = ConnectionInfoV2$outboundSchema;
-  /** @deprecated use `ConnectionInfoV2$Outbound` instead. */
-  export type Outbound = ConnectionInfoV2$Outbound;
-}
-
-export function connectionInfoV2ToJSON(
-  connectionInfoV2: ConnectionInfoV2,
-): string {
-  return JSON.stringify(
-    ConnectionInfoV2$outboundSchema.parse(connectionInfoV2),
-  );
-}
 
 export function connectionInfoV2FromJSON(
   jsonString: string,

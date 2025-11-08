@@ -6,22 +6,9 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  BuildPart,
-  BuildPart$inboundSchema,
-  BuildPart$Outbound,
-  BuildPart$outboundSchema,
-} from "./buildpart.js";
-import {
-  BuildStatus,
-  BuildStatus$inboundSchema,
-  BuildStatus$outboundSchema,
-} from "./buildstatus.js";
-import {
-  Region,
-  Region$inboundSchema,
-  Region$outboundSchema,
-} from "./region.js";
+import { BuildPart, BuildPart$inboundSchema } from "./buildpart.js";
+import { BuildStatus, BuildStatus$inboundSchema } from "./buildstatus.js";
+import { Region, Region$inboundSchema } from "./region.js";
 
 export type BuildWithMultipartUrlsRegionalContainerTags = {
   containerTag: string;
@@ -87,49 +74,6 @@ export const BuildWithMultipartUrlsRegionalContainerTags$inboundSchema:
     region: Region$inboundSchema,
   });
 
-/** @internal */
-export type BuildWithMultipartUrlsRegionalContainerTags$Outbound = {
-  containerTag: string;
-  region: string;
-};
-
-/** @internal */
-export const BuildWithMultipartUrlsRegionalContainerTags$outboundSchema:
-  z.ZodType<
-    BuildWithMultipartUrlsRegionalContainerTags$Outbound,
-    z.ZodTypeDef,
-    BuildWithMultipartUrlsRegionalContainerTags
-  > = z.object({
-    containerTag: z.string(),
-    region: Region$outboundSchema,
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuildWithMultipartUrlsRegionalContainerTags$ {
-  /** @deprecated use `BuildWithMultipartUrlsRegionalContainerTags$inboundSchema` instead. */
-  export const inboundSchema =
-    BuildWithMultipartUrlsRegionalContainerTags$inboundSchema;
-  /** @deprecated use `BuildWithMultipartUrlsRegionalContainerTags$outboundSchema` instead. */
-  export const outboundSchema =
-    BuildWithMultipartUrlsRegionalContainerTags$outboundSchema;
-  /** @deprecated use `BuildWithMultipartUrlsRegionalContainerTags$Outbound` instead. */
-  export type Outbound = BuildWithMultipartUrlsRegionalContainerTags$Outbound;
-}
-
-export function buildWithMultipartUrlsRegionalContainerTagsToJSON(
-  buildWithMultipartUrlsRegionalContainerTags:
-    BuildWithMultipartUrlsRegionalContainerTags,
-): string {
-  return JSON.stringify(
-    BuildWithMultipartUrlsRegionalContainerTags$outboundSchema.parse(
-      buildWithMultipartUrlsRegionalContainerTags,
-    ),
-  );
-}
-
 export function buildWithMultipartUrlsRegionalContainerTagsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -177,73 +121,6 @@ export const BuildWithMultipartUrls$inboundSchema: z.ZodType<
   maxChunkSize: z.number(),
   uploadParts: z.array(BuildPart$inboundSchema),
 });
-
-/** @internal */
-export type BuildWithMultipartUrls$Outbound = {
-  expiredAt?: string | undefined;
-  buildTag?: string | null | undefined;
-  regionalContainerTags: Array<
-    BuildWithMultipartUrlsRegionalContainerTags$Outbound
-  >;
-  imageSize: number;
-  status: string;
-  deletedAt: string | null;
-  finishedAt: string | null;
-  startedAt: string | null;
-  createdAt: string;
-  createdBy: string;
-  buildId: number;
-  appId: string;
-  completeUploadPostRequestUrl: string;
-  maxChunkSize: number;
-  uploadParts: Array<BuildPart$Outbound>;
-};
-
-/** @internal */
-export const BuildWithMultipartUrls$outboundSchema: z.ZodType<
-  BuildWithMultipartUrls$Outbound,
-  z.ZodTypeDef,
-  BuildWithMultipartUrls
-> = z.object({
-  expiredAt: z.date().transform(v => v.toISOString()).optional(),
-  buildTag: z.nullable(z.string()).optional(),
-  regionalContainerTags: z.array(
-    z.lazy(() => BuildWithMultipartUrlsRegionalContainerTags$outboundSchema),
-  ),
-  imageSize: z.number().int(),
-  status: BuildStatus$outboundSchema,
-  deletedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  finishedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  startedAt: z.nullable(z.date().transform(v => v.toISOString())),
-  createdAt: z.date().transform(v => v.toISOString()),
-  createdBy: z.string(),
-  buildId: z.number().int(),
-  appId: z.string(),
-  completeUploadPostRequestUrl: z.string(),
-  maxChunkSize: z.number(),
-  uploadParts: z.array(BuildPart$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuildWithMultipartUrls$ {
-  /** @deprecated use `BuildWithMultipartUrls$inboundSchema` instead. */
-  export const inboundSchema = BuildWithMultipartUrls$inboundSchema;
-  /** @deprecated use `BuildWithMultipartUrls$outboundSchema` instead. */
-  export const outboundSchema = BuildWithMultipartUrls$outboundSchema;
-  /** @deprecated use `BuildWithMultipartUrls$Outbound` instead. */
-  export type Outbound = BuildWithMultipartUrls$Outbound;
-}
-
-export function buildWithMultipartUrlsToJSON(
-  buildWithMultipartUrls: BuildWithMultipartUrls,
-): string {
-  return JSON.stringify(
-    BuildWithMultipartUrls$outboundSchema.parse(buildWithMultipartUrls),
-  );
-}
 
 export function buildWithMultipartUrlsFromJSON(
   jsonString: string,

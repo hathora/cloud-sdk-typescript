@@ -3,14 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Region,
-  Region$inboundSchema,
-  Region$outboundSchema,
-} from "./region.js";
+import { Region, Region$outboundSchema } from "./region.js";
 
 export type CreateRoomParams = {
   /**
@@ -27,18 +20,6 @@ export type CreateRoomParams = {
   roomConfig?: string | undefined;
   region: Region;
 };
-
-/** @internal */
-export const CreateRoomParams$inboundSchema: z.ZodType<
-  CreateRoomParams,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deploymentId: z.string().optional(),
-  clientIPs: z.array(z.string()).optional(),
-  roomConfig: z.string().optional(),
-  region: Region$inboundSchema,
-});
 
 /** @internal */
 export type CreateRoomParams$Outbound = {
@@ -60,33 +41,10 @@ export const CreateRoomParams$outboundSchema: z.ZodType<
   region: Region$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRoomParams$ {
-  /** @deprecated use `CreateRoomParams$inboundSchema` instead. */
-  export const inboundSchema = CreateRoomParams$inboundSchema;
-  /** @deprecated use `CreateRoomParams$outboundSchema` instead. */
-  export const outboundSchema = CreateRoomParams$outboundSchema;
-  /** @deprecated use `CreateRoomParams$Outbound` instead. */
-  export type Outbound = CreateRoomParams$Outbound;
-}
-
 export function createRoomParamsToJSON(
   createRoomParams: CreateRoomParams,
 ): string {
   return JSON.stringify(
     CreateRoomParams$outboundSchema.parse(createRoomParams),
-  );
-}
-
-export function createRoomParamsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateRoomParams, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateRoomParams$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateRoomParams' from JSON`,
   );
 }

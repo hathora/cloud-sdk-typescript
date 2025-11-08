@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetLatestProcessesGlobals = {
   appId?: string | undefined;
@@ -18,72 +15,6 @@ export type GetLatestProcessesRequest = {
   region?: Array<components.Region> | undefined;
   before?: number | undefined;
 };
-
-/** @internal */
-export const GetLatestProcessesGlobals$inboundSchema: z.ZodType<
-  GetLatestProcessesGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type GetLatestProcessesGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const GetLatestProcessesGlobals$outboundSchema: z.ZodType<
-  GetLatestProcessesGlobals$Outbound,
-  z.ZodTypeDef,
-  GetLatestProcessesGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLatestProcessesGlobals$ {
-  /** @deprecated use `GetLatestProcessesGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetLatestProcessesGlobals$inboundSchema;
-  /** @deprecated use `GetLatestProcessesGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetLatestProcessesGlobals$outboundSchema;
-  /** @deprecated use `GetLatestProcessesGlobals$Outbound` instead. */
-  export type Outbound = GetLatestProcessesGlobals$Outbound;
-}
-
-export function getLatestProcessesGlobalsToJSON(
-  getLatestProcessesGlobals: GetLatestProcessesGlobals,
-): string {
-  return JSON.stringify(
-    GetLatestProcessesGlobals$outboundSchema.parse(getLatestProcessesGlobals),
-  );
-}
-
-export function getLatestProcessesGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetLatestProcessesGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetLatestProcessesGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetLatestProcessesGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetLatestProcessesRequest$inboundSchema: z.ZodType<
-  GetLatestProcessesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-  status: z.array(components.ProcessStatus$inboundSchema).optional(),
-  region: z.array(components.Region$inboundSchema).optional(),
-  before: z.number().optional(),
-});
 
 /** @internal */
 export type GetLatestProcessesRequest$Outbound = {
@@ -105,33 +36,10 @@ export const GetLatestProcessesRequest$outboundSchema: z.ZodType<
   before: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLatestProcessesRequest$ {
-  /** @deprecated use `GetLatestProcessesRequest$inboundSchema` instead. */
-  export const inboundSchema = GetLatestProcessesRequest$inboundSchema;
-  /** @deprecated use `GetLatestProcessesRequest$outboundSchema` instead. */
-  export const outboundSchema = GetLatestProcessesRequest$outboundSchema;
-  /** @deprecated use `GetLatestProcessesRequest$Outbound` instead. */
-  export type Outbound = GetLatestProcessesRequest$Outbound;
-}
-
 export function getLatestProcessesRequestToJSON(
   getLatestProcessesRequest: GetLatestProcessesRequest,
 ): string {
   return JSON.stringify(
     GetLatestProcessesRequest$outboundSchema.parse(getLatestProcessesRequest),
-  );
-}
-
-export function getLatestProcessesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetLatestProcessesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetLatestProcessesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetLatestProcessesRequest' from JSON`,
   );
 }

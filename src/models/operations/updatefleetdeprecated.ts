@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateFleetDeprecatedGlobals = {
   orgId?: string | undefined;
@@ -18,77 +15,6 @@ export type UpdateFleetDeprecatedRequest = {
   orgId?: string | undefined;
   updateFleet: components.UpdateFleet;
 };
-
-/** @internal */
-export const UpdateFleetDeprecatedGlobals$inboundSchema: z.ZodType<
-  UpdateFleetDeprecatedGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/** @internal */
-export type UpdateFleetDeprecatedGlobals$Outbound = {
-  orgId?: string | undefined;
-};
-
-/** @internal */
-export const UpdateFleetDeprecatedGlobals$outboundSchema: z.ZodType<
-  UpdateFleetDeprecatedGlobals$Outbound,
-  z.ZodTypeDef,
-  UpdateFleetDeprecatedGlobals
-> = z.object({
-  orgId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFleetDeprecatedGlobals$ {
-  /** @deprecated use `UpdateFleetDeprecatedGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateFleetDeprecatedGlobals$inboundSchema;
-  /** @deprecated use `UpdateFleetDeprecatedGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateFleetDeprecatedGlobals$outboundSchema;
-  /** @deprecated use `UpdateFleetDeprecatedGlobals$Outbound` instead. */
-  export type Outbound = UpdateFleetDeprecatedGlobals$Outbound;
-}
-
-export function updateFleetDeprecatedGlobalsToJSON(
-  updateFleetDeprecatedGlobals: UpdateFleetDeprecatedGlobals,
-): string {
-  return JSON.stringify(
-    UpdateFleetDeprecatedGlobals$outboundSchema.parse(
-      updateFleetDeprecatedGlobals,
-    ),
-  );
-}
-
-export function updateFleetDeprecatedGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFleetDeprecatedGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFleetDeprecatedGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFleetDeprecatedGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateFleetDeprecatedRequest$inboundSchema: z.ZodType<
-  UpdateFleetDeprecatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fleetId: z.string(),
-  orgId: z.string().optional(),
-  UpdateFleet: components.UpdateFleet$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "UpdateFleet": "updateFleet",
-  });
-});
 
 /** @internal */
 export type UpdateFleetDeprecatedRequest$Outbound = {
@@ -112,19 +38,6 @@ export const UpdateFleetDeprecatedRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFleetDeprecatedRequest$ {
-  /** @deprecated use `UpdateFleetDeprecatedRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateFleetDeprecatedRequest$inboundSchema;
-  /** @deprecated use `UpdateFleetDeprecatedRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateFleetDeprecatedRequest$outboundSchema;
-  /** @deprecated use `UpdateFleetDeprecatedRequest$Outbound` instead. */
-  export type Outbound = UpdateFleetDeprecatedRequest$Outbound;
-}
-
 export function updateFleetDeprecatedRequestToJSON(
   updateFleetDeprecatedRequest: UpdateFleetDeprecatedRequest,
 ): string {
@@ -132,15 +45,5 @@ export function updateFleetDeprecatedRequestToJSON(
     UpdateFleetDeprecatedRequest$outboundSchema.parse(
       updateFleetDeprecatedRequest,
     ),
-  );
-}
-
-export function updateFleetDeprecatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFleetDeprecatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFleetDeprecatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFleetDeprecatedRequest' from JSON`,
   );
 }

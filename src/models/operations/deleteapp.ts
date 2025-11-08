@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteAppGlobals = {
   appId?: string | undefined;
@@ -14,69 +11,6 @@ export type DeleteAppGlobals = {
 export type DeleteAppRequest = {
   appId?: string | undefined;
 };
-
-/** @internal */
-export const DeleteAppGlobals$inboundSchema: z.ZodType<
-  DeleteAppGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/** @internal */
-export type DeleteAppGlobals$Outbound = {
-  appId?: string | undefined;
-};
-
-/** @internal */
-export const DeleteAppGlobals$outboundSchema: z.ZodType<
-  DeleteAppGlobals$Outbound,
-  z.ZodTypeDef,
-  DeleteAppGlobals
-> = z.object({
-  appId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteAppGlobals$ {
-  /** @deprecated use `DeleteAppGlobals$inboundSchema` instead. */
-  export const inboundSchema = DeleteAppGlobals$inboundSchema;
-  /** @deprecated use `DeleteAppGlobals$outboundSchema` instead. */
-  export const outboundSchema = DeleteAppGlobals$outboundSchema;
-  /** @deprecated use `DeleteAppGlobals$Outbound` instead. */
-  export type Outbound = DeleteAppGlobals$Outbound;
-}
-
-export function deleteAppGlobalsToJSON(
-  deleteAppGlobals: DeleteAppGlobals,
-): string {
-  return JSON.stringify(
-    DeleteAppGlobals$outboundSchema.parse(deleteAppGlobals),
-  );
-}
-
-export function deleteAppGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteAppGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteAppGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteAppGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const DeleteAppRequest$inboundSchema: z.ZodType<
-  DeleteAppRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: z.string().optional(),
-});
 
 /** @internal */
 export type DeleteAppRequest$Outbound = {
@@ -92,33 +26,10 @@ export const DeleteAppRequest$outboundSchema: z.ZodType<
   appId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteAppRequest$ {
-  /** @deprecated use `DeleteAppRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteAppRequest$inboundSchema;
-  /** @deprecated use `DeleteAppRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteAppRequest$outboundSchema;
-  /** @deprecated use `DeleteAppRequest$Outbound` instead. */
-  export type Outbound = DeleteAppRequest$Outbound;
-}
-
 export function deleteAppRequestToJSON(
   deleteAppRequest: DeleteAppRequest,
 ): string {
   return JSON.stringify(
     DeleteAppRequest$outboundSchema.parse(deleteAppRequest),
-  );
-}
-
-export function deleteAppRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteAppRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteAppRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteAppRequest' from JSON`,
   );
 }

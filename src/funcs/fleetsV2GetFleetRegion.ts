@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Gets the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
  */
-export function fleetsV1GetFleetRegion(
+export function fleetsV2GetFleetRegion(
   client: HathoraCloudCore,
   fleetId: string,
   region: components.Region,
@@ -112,7 +112,7 @@ async function $do(
     }),
   };
 
-  const path = pathToFunc("/fleets/v1/fleets/{fleetId}/regions/{region}")(
+  const path = pathToFunc("/fleets/v2/fleets/{fleetId}/regions/{region}")(
     pathParams,
   );
 

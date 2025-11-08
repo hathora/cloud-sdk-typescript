@@ -3,22 +3,10 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetOrgMembersRequest = {
   orgId: string;
 };
-
-/** @internal */
-export const GetOrgMembersRequest$inboundSchema: z.ZodType<
-  GetOrgMembersRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  orgId: z.string(),
-});
 
 /** @internal */
 export type GetOrgMembersRequest$Outbound = {
@@ -34,33 +22,10 @@ export const GetOrgMembersRequest$outboundSchema: z.ZodType<
   orgId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrgMembersRequest$ {
-  /** @deprecated use `GetOrgMembersRequest$inboundSchema` instead. */
-  export const inboundSchema = GetOrgMembersRequest$inboundSchema;
-  /** @deprecated use `GetOrgMembersRequest$outboundSchema` instead. */
-  export const outboundSchema = GetOrgMembersRequest$outboundSchema;
-  /** @deprecated use `GetOrgMembersRequest$Outbound` instead. */
-  export type Outbound = GetOrgMembersRequest$Outbound;
-}
-
 export function getOrgMembersRequestToJSON(
   getOrgMembersRequest: GetOrgMembersRequest,
 ): string {
   return JSON.stringify(
     GetOrgMembersRequest$outboundSchema.parse(getOrgMembersRequest),
-  );
-}
-
-export function getOrgMembersRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetOrgMembersRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetOrgMembersRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetOrgMembersRequest' from JSON`,
   );
 }
