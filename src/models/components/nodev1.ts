@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Hosting, Hosting$inboundSchema } from "./hosting.js";
@@ -35,11 +36,7 @@ export const NodeV1Status$inboundSchema: z.ZodType<
   NodeV1Status,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(NodeV1Status),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(NodeV1Status);
 
 /** @internal */
 export const NodeV1$inboundSchema: z.ZodType<NodeV1, z.ZodTypeDef, unknown> = z

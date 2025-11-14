@@ -3,11 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Transport type specifies the underlying communication protocol to the exposed port.
@@ -27,17 +24,10 @@ export const TransportType$inboundSchema: z.ZodType<
   TransportType,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(TransportType),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(TransportType);
 /** @internal */
 export const TransportType$outboundSchema: z.ZodType<
-  TransportType,
+  string,
   z.ZodTypeDef,
   TransportType
-> = z.union([
-  z.nativeEnum(TransportType),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(TransportType);

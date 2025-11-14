@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 43af4c12f05360337d531705aa3cfbf0
+  docChecksum: 5848564c29f15f88aa7d8fa6da71aa1d
   docVersion: 0.0.1
-  speakeasyVersion: 1.651.0
-  generationVersion: 2.745.2
-  releaseVersion: 2.25.0
-  configChecksum: 2c000e1866f683dbd6605b94d8fc9478
+  speakeasyVersion: 1.656.2
+  generationVersion: 2.753.6
+  releaseVersion: 2.25.1
+  configChecksum: aa7b439f3d30646763ebee28c37dc9f5
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.3
+    core: 3.26.6
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -2557,17 +2557,3 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `hathoracloud.fleetsV1.getFleetRegionDeprecated()`: **Added**
-  * `hathoracloud.fleetsV1.updateFleetRegionDeprecated()`: **Added**
-  * `hathoracloud.fleetsV1.getFleetMetricsDeprecated()`: **Added**
-  * `hathoracloud.fleetsV1.getFleetRegionMetricsDeprecated()`: **Added**
-  * `hathoracloud.fleetsV2.getFleetRegion()`: **Added**
-  * `hathoracloud.fleetsV2.updateFleetRegion()`: **Added**
-  * `hathoracloud.fleetsV2.getFleetMetrics()`: **Added**
-  * `hathoracloud.fleetsV2.getFleetRegionMetrics()`: **Added**
-  * `hathoracloud.fleetsV1.getFleetRegion()`: **Deleted** **Breaking** :warning:
-  * `hathoracloud.fleetsV1.updateFleetRegion()`: **Deleted** **Breaking** :warning:
-  * `hathoracloud.fleetsV1.getFleetMetrics()`: **Deleted** **Breaking** :warning:
-  * `hathoracloud.fleetsV1.getFleetRegionMetrics()`: **Deleted** **Breaking** :warning:

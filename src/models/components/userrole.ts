@@ -3,11 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const UserRole = {
   Admin: "admin",
@@ -21,17 +18,10 @@ export const UserRole$inboundSchema: z.ZodType<
   UserRole,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(UserRole),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(UserRole);
 /** @internal */
 export const UserRole$outboundSchema: z.ZodType<
-  UserRole,
+  string,
   z.ZodTypeDef,
   UserRole
-> = z.union([
-  z.nativeEnum(UserRole),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(UserRole);

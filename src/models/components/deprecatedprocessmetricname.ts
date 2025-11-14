@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const DeprecatedProcessMetricName = {
   Cpu: "cpu",
@@ -18,10 +19,7 @@ export type DeprecatedProcessMetricName = OpenEnum<
 
 /** @internal */
 export const DeprecatedProcessMetricName$outboundSchema: z.ZodType<
-  DeprecatedProcessMetricName,
+  string,
   z.ZodTypeDef,
   DeprecatedProcessMetricName
-> = z.union([
-  z.nativeEnum(DeprecatedProcessMetricName),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(DeprecatedProcessMetricName);

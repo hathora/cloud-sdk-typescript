@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const Hosting = {
   Metal: "metal",
@@ -14,8 +15,4 @@ export type Hosting = OpenEnum<typeof Hosting>;
 
 /** @internal */
 export const Hosting$inboundSchema: z.ZodType<Hosting, z.ZodTypeDef, unknown> =
-  z
-    .union([
-      z.nativeEnum(Hosting),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
+  openEnums.inboundSchema(Hosting);

@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { TransportType, TransportType$inboundSchema } from "./transporttype.js";
@@ -38,11 +39,7 @@ export const ActiveConnectionInfoStatus$inboundSchema: z.ZodType<
   ActiveConnectionInfoStatus,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(ActiveConnectionInfoStatus),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(ActiveConnectionInfoStatus);
 
 /** @internal */
 export const ActiveConnectionInfo$inboundSchema: z.ZodType<

@@ -3,11 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Types of lobbies a player can create.
@@ -43,17 +40,10 @@ export const LobbyVisibility$inboundSchema: z.ZodType<
   LobbyVisibility,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(LobbyVisibility),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(LobbyVisibility);
 /** @internal */
 export const LobbyVisibility$outboundSchema: z.ZodType<
-  LobbyVisibility,
+  string,
   z.ZodTypeDef,
   LobbyVisibility
-> = z.union([
-  z.nativeEnum(LobbyVisibility),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(LobbyVisibility);

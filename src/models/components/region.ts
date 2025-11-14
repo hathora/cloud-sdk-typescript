@@ -3,11 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const Region = {
   Seattle: "Seattle",
@@ -28,14 +25,8 @@ export const Region = {
 export type Region = OpenEnum<typeof Region>;
 
 /** @internal */
-export const Region$inboundSchema: z.ZodType<Region, z.ZodTypeDef, unknown> = z
-  .union([
-    z.nativeEnum(Region),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+export const Region$inboundSchema: z.ZodType<Region, z.ZodTypeDef, unknown> =
+  openEnums.inboundSchema(Region);
 /** @internal */
-export const Region$outboundSchema: z.ZodType<Region, z.ZodTypeDef, Region> = z
-  .union([
-    z.nativeEnum(Region),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+export const Region$outboundSchema: z.ZodType<string, z.ZodTypeDef, Region> =
+  openEnums.outboundSchema(Region);

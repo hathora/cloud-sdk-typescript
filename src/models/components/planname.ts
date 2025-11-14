@@ -3,11 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * A plan defines how much CPU and memory is required to run an instance of your game server.
@@ -48,17 +45,10 @@ export const PlanName$inboundSchema: z.ZodType<
   PlanName,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(PlanName),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(PlanName);
 /** @internal */
 export const PlanName$outboundSchema: z.ZodType<
-  PlanName,
+  string,
   z.ZodTypeDef,
   PlanName
-> = z.union([
-  z.nativeEnum(PlanName),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(PlanName);

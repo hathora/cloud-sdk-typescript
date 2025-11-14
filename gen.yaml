@@ -31,7 +31,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.25.0
+  version: 2.25.1
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -73,6 +73,7 @@ typescript:
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2
+  unionStrategy: left-to-right
   usageSDKInitImports: []
   useIndexModules: true
   zodVersion: v3

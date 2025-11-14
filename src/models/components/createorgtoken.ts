@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Scope, Scope$outboundSchema } from "./scope.js";
 
 export const Scopes2 = {
@@ -28,11 +29,8 @@ export type CreateOrgToken = {
 };
 
 /** @internal */
-export const Scopes2$outboundSchema: z.ZodType<Scopes2, z.ZodTypeDef, Scopes2> =
-  z.union([
-    z.nativeEnum(Scopes2),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+export const Scopes2$outboundSchema: z.ZodType<string, z.ZodTypeDef, Scopes2> =
+  openEnums.outboundSchema(Scopes2);
 
 /** @internal */
 export type CreateOrgTokenScopes$Outbound = Array<string> | string;

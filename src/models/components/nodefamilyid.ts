@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const NodeFamilyId = {
   FamilyAmd6412: "family-amd64-1-2",
@@ -22,8 +23,4 @@ export const NodeFamilyId$inboundSchema: z.ZodType<
   NodeFamilyId,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(NodeFamilyId),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(NodeFamilyId);

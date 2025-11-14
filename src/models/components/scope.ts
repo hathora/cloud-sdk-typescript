@@ -3,11 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const Scope = {
   BillingReadWrite: "billing:read-write",
@@ -32,14 +29,8 @@ export const Scope = {
 export type Scope = OpenEnum<typeof Scope>;
 
 /** @internal */
-export const Scope$inboundSchema: z.ZodType<Scope, z.ZodTypeDef, unknown> = z
-  .union([
-    z.nativeEnum(Scope),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+export const Scope$inboundSchema: z.ZodType<Scope, z.ZodTypeDef, unknown> =
+  openEnums.inboundSchema(Scope);
 /** @internal */
-export const Scope$outboundSchema: z.ZodType<Scope, z.ZodTypeDef, Scope> = z
-  .union([
-    z.nativeEnum(Scope),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+export const Scope$outboundSchema: z.ZodType<string, z.ZodTypeDef, Scope> =
+  openEnums.outboundSchema(Scope);

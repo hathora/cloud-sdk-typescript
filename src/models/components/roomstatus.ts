@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The allocation status of a room.
@@ -39,8 +40,4 @@ export const RoomStatus$inboundSchema: z.ZodType<
   RoomStatus,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(RoomStatus),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(RoomStatus);

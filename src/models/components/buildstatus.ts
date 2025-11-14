@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const BuildStatus = {
   Created: "created",
@@ -18,8 +19,4 @@ export const BuildStatus$inboundSchema: z.ZodType<
   BuildStatus,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(BuildStatus),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(BuildStatus);

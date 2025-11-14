@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Represents the valid metric names available to measure/manage fleets in a given region
@@ -22,10 +23,7 @@ export type FleetMetricName = OpenEnum<typeof FleetMetricName>;
 
 /** @internal */
 export const FleetMetricName$outboundSchema: z.ZodType<
-  FleetMetricName,
+  string,
   z.ZodTypeDef,
   FleetMetricName
-> = z.union([
-  z.nativeEnum(FleetMetricName),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(FleetMetricName);

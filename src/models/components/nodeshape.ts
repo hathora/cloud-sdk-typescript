@@ -3,11 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const NodeShape = {
   Cpu48: "cpu-4-8",
@@ -47,17 +44,10 @@ export const NodeShape$inboundSchema: z.ZodType<
   NodeShape,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(NodeShape),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(NodeShape);
 /** @internal */
 export const NodeShape$outboundSchema: z.ZodType<
-  NodeShape,
+  string,
   z.ZodTypeDef,
   NodeShape
-> = z.union([
-  z.nativeEnum(NodeShape),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(NodeShape);

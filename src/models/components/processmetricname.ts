@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Available metrics to query over time.
@@ -24,10 +25,7 @@ export type ProcessMetricName = OpenEnum<typeof ProcessMetricName>;
 
 /** @internal */
 export const ProcessMetricName$outboundSchema: z.ZodType<
-  ProcessMetricName,
+  string,
   z.ZodTypeDef,
   ProcessMetricName
-> = z.union([
-  z.nativeEnum(ProcessMetricName),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(ProcessMetricName);
