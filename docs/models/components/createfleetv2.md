@@ -6,7 +6,7 @@
 import { CreateFleetV2 } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: CreateFleetV2 = {
-  nodeShapeId: "shape-amd64-32-128",
+  nodeShapeId: "shape-amd64-16-64",
   autoscalerConfig: {
     scaleUpThreshold: 513844,
   },
