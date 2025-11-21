@@ -54,6 +54,7 @@ export * from "./fleetmetricname.js";
 export * from "./fleetmetricsdata.js";
 export * from "./fleetregion.js";
 export * from "./fleetregionconfig.js";
+export * from "./fleetregionconfigv2.js";
 export * from "./fleetspage.js";
 export * from "./fleetspagev2.js";
 export * from "./fleetv2.js";

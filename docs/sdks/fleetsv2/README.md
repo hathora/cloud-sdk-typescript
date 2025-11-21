@@ -11,6 +11,7 @@
 * [getFleet](#getfleet) - GetFleet
 * [updateFleet](#updatefleet) - UpdateFleet
 * [getFleetRegion](#getfleetregion) - GetFleetRegion
+* [~~deprecatedUpdateFleetRegionV2~~](#deprecatedupdatefleetregionv2) - DeprecatedUpdateFleetRegionV2 :warning: **Deprecated**
 * [updateFleetRegion](#updatefleetregion) - UpdateFleetRegion
 * [getFleetMetrics](#getfleetmetrics) - GetFleetMetrics
 * [getFleetRegionMetrics](#getfleetregionmetrics) - GetFleetRegionMetrics
@@ -480,13 +481,95 @@ run();
 | errors.ApiError         | 401, 404, 408, 422, 429 | application/json        |
 | errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
+## ~~deprecatedUpdateFleetRegionV2~~
+
+Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="DeprecatedUpdateFleetRegionV2" method="put" path="/fleets/v2/fleets/{fleetId}/regions/{region}" -->
+```typescript
+import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
+
+const hathoraCloud = new HathoraCloud({
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  await hathoraCloud.fleetsV2.deprecatedUpdateFleetRegionV2("<id>", "Singapore", {
+    cloudMinVcpus: 735068,
+  });
+
+
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { HathoraCloudCore } from "@hathora/cloud-sdk-typescript/core.js";
+import { fleetsV2DeprecatedUpdateFleetRegionV2 } from "@hathora/cloud-sdk-typescript/funcs/fleetsV2DeprecatedUpdateFleetRegionV2.js";
+
+// Use `HathoraCloudCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const hathoraCloud = new HathoraCloudCore({
+  orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",
+  hathoraDevToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await fleetsV2DeprecatedUpdateFleetRegionV2(hathoraCloud, "<id>", "Singapore", {
+    cloudMinVcpus: 735068,
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("fleetsV2DeprecatedUpdateFleetRegionV2 failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `fleetId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `region`                                                                                                                                                                       | [components.Region](../../models/components/region.md)                                                                                                                         | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `fleetRegionConfig`                                                                                                                                                            | [components.FleetRegionConfig](../../models/components/fleetregionconfig.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `orgId`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiError         | 401, 404, 408, 422, 429 | application/json        |
+| errors.ApiError         | 500                     | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+
 ## updateFleetRegion
 
 Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="UpdateFleetRegion" method="put" path="/fleets/v2/fleets/{fleetId}/regions/{region}" -->
+<!-- UsageSnippet language="typescript" operationID="UpdateFleetRegion" method="put" path="/fleets/v2/fleets/{fleetId}/regions/{region}/v2" -->
 ```typescript
 import { HathoraCloud } from "@hathora/cloud-sdk-typescript";
 
@@ -497,7 +580,7 @@ const hathoraCloud = new HathoraCloud({
 
 async function run() {
   await hathoraCloud.fleetsV2.updateFleetRegion("<id>", "Chicago", {
-    cloudMinVcpus: 503995,
+    nodeBaseline: 503995,
   });
 
 
@@ -523,7 +606,7 @@ const hathoraCloud = new HathoraCloudCore({
 
 async function run() {
   const res = await fleetsV2UpdateFleetRegion(hathoraCloud, "<id>", "Chicago", {
-    cloudMinVcpus: 503995,
+    nodeBaseline: 503995,
   });
   if (res.ok) {
     const { value: result } = res;
@@ -542,7 +625,7 @@ run();
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `fleetId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
 | `region`                                                                                                                                                                       | [components.Region](../../models/components/region.md)                                                                                                                         | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
-| `fleetRegionConfig`                                                                                                                                                            | [components.FleetRegionConfig](../../models/components/fleetregionconfig.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `fleetRegionConfigV2`                                                                                                                                                          | [components.FleetRegionConfigV2](../../models/components/fleetregionconfigv2.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
 | `orgId`                                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |

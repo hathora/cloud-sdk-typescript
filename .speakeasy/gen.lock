@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: a7d08d8f377e1a32f9776afbe7abeefe
+  docChecksum: f90429a22a961e266581a3a788aab201
   docVersion: 0.0.1
-  speakeasyVersion: 1.658.2
+  speakeasyVersion: 1.659.0
   generationVersion: 2.755.9
-  releaseVersion: 2.25.2
-  configChecksum: c2cc6e8cc8b41f89b6f96df84ca7e320
+  releaseVersion: 2.25.3
+  configChecksum: 90a71993e9885209213af4ca3441c35c
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -114,6 +114,7 @@ generatedFiles:
   - docs/models/components/fleetmetricsdata.md
   - docs/models/components/fleetregion.md
   - docs/models/components/fleetregionconfig.md
+  - docs/models/components/fleetregionconfigv2.md
   - docs/models/components/fleetspage.md
   - docs/models/components/fleetspagev2.md
   - docs/models/components/fleetv2.md
@@ -271,6 +272,8 @@ generatedFiles:
   - docs/models/operations/deletebuildrequest.md
   - docs/models/operations/deletebuildv2deprecatedglobals.md
   - docs/models/operations/deletebuildv2deprecatedrequest.md
+  - docs/models/operations/deprecatedupdatefleetregionv2globals.md
+  - docs/models/operations/deprecatedupdatefleetregionv2request.md
   - docs/models/operations/destroyroomdeprecatedglobals.md
   - docs/models/operations/destroyroomdeprecatedrequest.md
   - docs/models/operations/destroyroomglobals.md
@@ -559,6 +562,7 @@ generatedFiles:
   - src/funcs/fleetsV1UpdateFleetDeprecated.ts
   - src/funcs/fleetsV1UpdateFleetRegionDeprecated.ts
   - src/funcs/fleetsV2CreateFleet.ts
+  - src/funcs/fleetsV2DeprecatedUpdateFleetRegionV2.ts
   - src/funcs/fleetsV2GetFleet.ts
   - src/funcs/fleetsV2GetFleetMetrics.ts
   - src/funcs/fleetsV2GetFleetRegion.ts
@@ -701,6 +705,7 @@ generatedFiles:
   - src/models/components/fleetmetricsdata.ts
   - src/models/components/fleetregion.ts
   - src/models/components/fleetregionconfig.ts
+  - src/models/components/fleetregionconfigv2.ts
   - src/models/components/fleetspage.ts
   - src/models/components/fleetspagev2.ts
   - src/models/components/fleetv2.ts
@@ -808,6 +813,7 @@ generatedFiles:
   - src/models/operations/deletebuild.ts
   - src/models/operations/deletebuilddeprecated.ts
   - src/models/operations/deletebuildv2deprecated.ts
+  - src/models/operations/deprecatedupdatefleetregionv2.ts
   - src/models/operations/destroyroom.ts
   - src/models/operations/destroyroomdeprecated.ts
   - src/models/operations/downloadlogforprocess.ts
@@ -1704,7 +1710,7 @@ examples:
           orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       responses:
         "200":
-          application/json: {"cloudMinVcpusUpdatedAt": "2025-12-20T09:21:47.043Z", "cloudMinVcpus": 479860, "scaleIncrementVcpus": 979858}
+          application/json: {"cloudMinVcpusUpdatedAt": "2025-12-20T09:21:47.043Z", "nodeBaseline": 538905, "cloudMinVcpus": 479860, "scaleIncrementVcpus": 979858}
         "401":
           application/json: {"message": "<value>"}
   UpdateFleetRegion:
@@ -1716,7 +1722,7 @@ examples:
         query:
           orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       requestBody:
-        application/json: {"cloudMinVcpus": 503995}
+        application/json: {"nodeBaseline": 503995}
       responses:
         "401":
           application/json: {"message": "<value>"}
@@ -2506,7 +2512,7 @@ examples:
           orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
       responses:
         "200":
-          application/json: {"cloudMinVcpusUpdatedAt": "2023-08-15T11:29:36.500Z", "cloudMinVcpus": 467124, "scaleIncrementVcpus": 588775}
+          application/json: {"cloudMinVcpusUpdatedAt": "2023-08-15T11:29:36.500Z", "nodeBaseline": 753662, "cloudMinVcpus": 467124, "scaleIncrementVcpus": 588775}
         "401":
           application/json: {"message": "<value>"}
   UpdateFleetRegionDeprecated:
@@ -2555,5 +2561,26 @@ examples:
           application/json: {"message": "<value>"}
         "500":
           application/json: {"message": "<value>"}
+  DeprecatedUpdateFleetRegionV2:
+    speakeasy-default-deprecated-update-fleet-region-v2:
+      parameters:
+        path:
+          fleetId: "<id>"
+          region: "Singapore"
+        query:
+          orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39"
+      requestBody:
+        application/json: {"cloudMinVcpus": 735068}
+      responses:
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `hathoracloud.fleetsV2.updateFleetRegion()`:  `request` **Changed** **Breaking** :warning:
+  * `hathoracloud.fleetsV2.deprecatedUpdateFleetRegionV2()`: **Added**
+  * `hathoracloud.fleetsV1.getFleetRegionDeprecated()`:  `response.nodebaseline` **Added**
+  * `hathoracloud.fleetsV2.getFleetRegion()`:  `response.nodebaseline` **Added**

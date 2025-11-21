@@ -243,18 +243,18 @@ actions:
         - "lang": "typescript"
           "label": "GetFleetRegion"
           "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV2.getFleetRegion(\"<id>\", \"Singapore\");\n\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/fleets/v2/fleets/{fleetId}/regions/{region}"]["put"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "UpdateFleetRegion"
-          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  await hathoraCloud.fleetsV2.updateFleetRegion(\"<id>\", \"Chicago\", {\n    cloudMinVcpus: 503995,\n  });\n\n\n}\n\nrun();"
   - target: $["paths"]["/fleets/v2/fleets/{fleetId}/regions/{region}/metrics"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "GetFleetRegionMetrics"
           "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await hathoraCloud.fleetsV2.getFleetRegionMetrics({\n    fleetId: \"<id>\",\n    region: \"Chicago\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/fleets/v2/fleets/{fleetId}/regions/{region}/v2"]["put"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "UpdateFleetRegion"
+          "source": "import { HathoraCloud } from \"@hathora/cloud-sdk-typescript\";\n\nconst hathoraCloud = new HathoraCloud({\n  orgId: \"org-6f706e83-0ec1-437a-9a46-7d4281eb2f39\",\n  hathoraDevToken: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  await hathoraCloud.fleetsV2.updateFleetRegion(\"<id>\", \"Chicago\", {\n    nodeBaseline: 503995,\n  });\n\n\n}\n\nrun();"
   - target: $["paths"]["/fleets/v2/nodeShapes"]["get"]
     update:
       "x-codeSamples":

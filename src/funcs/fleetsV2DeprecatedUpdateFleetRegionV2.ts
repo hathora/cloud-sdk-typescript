@@ -28,16 +28,18 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * UpdateFleetRegion
+ * DeprecatedUpdateFleetRegionV2
  *
  * @remarks
  * Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
-export function fleetsV2UpdateFleetRegion(
+export function fleetsV2DeprecatedUpdateFleetRegionV2(
   client: HathoraCloudCore,
   fleetId: string,
   region: components.Region,
-  fleetRegionConfigV2: components.FleetRegionConfigV2,
+  fleetRegionConfig: components.FleetRegionConfig,
   orgId?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -58,7 +60,7 @@ export function fleetsV2UpdateFleetRegion(
     client,
     fleetId,
     region,
-    fleetRegionConfigV2,
+    fleetRegionConfig,
     orgId,
     options,
   ));
@@ -68,7 +70,7 @@ async function $do(
   client: HathoraCloudCore,
   fleetId: string,
   region: components.Region,
-  fleetRegionConfigV2: components.FleetRegionConfigV2,
+  fleetRegionConfig: components.FleetRegionConfig,
   orgId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -88,25 +90,26 @@ async function $do(
     APICall,
   ]
 > {
-  const input: operations.UpdateFleetRegionRequest = {
+  const input: operations.DeprecatedUpdateFleetRegionV2Request = {
     fleetId: fleetId,
     region: region,
-    fleetRegionConfigV2: fleetRegionConfigV2,
+    fleetRegionConfig: fleetRegionConfig,
     orgId: orgId,
   };
 
   const parsed = safeParse(
     input,
-    (value) => operations.UpdateFleetRegionRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.DeprecatedUpdateFleetRegionV2Request$outboundSchema.parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.FleetRegionConfigV2, {
-    explode: true,
-  });
+  const body = encodeJSON("body", payload.FleetRegionConfig, { explode: true });
 
   const pathParams = {
     fleetId: encodeSimple("fleetId", payload.fleetId, {
@@ -119,7 +122,7 @@ async function $do(
     }),
   };
 
-  const path = pathToFunc("/fleets/v2/fleets/{fleetId}/regions/{region}/v2")(
+  const path = pathToFunc("/fleets/v2/fleets/{fleetId}/regions/{region}")(
     pathParams,
   );
 
@@ -139,7 +142,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "UpdateFleetRegion",
+    operationID: "DeprecatedUpdateFleetRegionV2",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,

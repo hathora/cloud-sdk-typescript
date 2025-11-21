@@ -32,6 +32,7 @@ export * from "./deleteappv1deprecated.js";
 export * from "./deletebuild.js";
 export * from "./deletebuilddeprecated.js";
 export * from "./deletebuildv2deprecated.js";
+export * from "./deprecatedupdatefleetregionv2.js";
 export * from "./destroyroom.js";
 export * from "./destroyroomdeprecated.js";
 export * from "./downloadlogforprocess.js";

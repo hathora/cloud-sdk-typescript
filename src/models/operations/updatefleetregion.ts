@@ -14,7 +14,7 @@ export type UpdateFleetRegionRequest = {
   fleetId: string;
   region: components.Region;
   orgId?: string | undefined;
-  fleetRegionConfig: components.FleetRegionConfig;
+  fleetRegionConfigV2: components.FleetRegionConfigV2;
 };
 
 /** @internal */
@@ -22,7 +22,7 @@ export type UpdateFleetRegionRequest$Outbound = {
   fleetId: string;
   region: string;
   orgId?: string | undefined;
-  FleetRegionConfig: components.FleetRegionConfig$Outbound;
+  FleetRegionConfigV2: components.FleetRegionConfigV2$Outbound;
 };
 
 /** @internal */
@@ -34,10 +34,10 @@ export const UpdateFleetRegionRequest$outboundSchema: z.ZodType<
   fleetId: z.string(),
   region: components.Region$outboundSchema,
   orgId: z.string().optional(),
-  fleetRegionConfig: components.FleetRegionConfig$outboundSchema,
+  fleetRegionConfigV2: components.FleetRegionConfigV2$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    fleetRegionConfig: "FleetRegionConfig",
+    fleetRegionConfigV2: "FleetRegionConfigV2",
   });
 });
 

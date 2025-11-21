@@ -3,6 +3,7 @@
  */
 
 import { fleetsV2CreateFleet } from "../funcs/fleetsV2CreateFleet.js";
+import { fleetsV2DeprecatedUpdateFleetRegionV2 } from "../funcs/fleetsV2DeprecatedUpdateFleetRegionV2.js";
 import { fleetsV2GetFleet } from "../funcs/fleetsV2GetFleet.js";
 import { fleetsV2GetFleetMetrics } from "../funcs/fleetsV2GetFleetMetrics.js";
 import { fleetsV2GetFleetRegion } from "../funcs/fleetsV2GetFleetRegion.js";
@@ -126,6 +127,31 @@ export class FleetsV2 extends ClientSDK {
   }
 
   /**
+   * DeprecatedUpdateFleetRegionV2
+   *
+   * @remarks
+   * Updates the configuration for a given [fleet](https://hathora.dev/docs/concepts/hathora-entities#fleet) in a region.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async deprecatedUpdateFleetRegionV2(
+    fleetId: string,
+    region: components.Region,
+    fleetRegionConfig: components.FleetRegionConfig,
+    orgId?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(fleetsV2DeprecatedUpdateFleetRegionV2(
+      this,
+      fleetId,
+      region,
+      fleetRegionConfig,
+      orgId,
+      options,
+    ));
+  }
+
+  /**
    * UpdateFleetRegion
    *
    * @remarks
@@ -134,7 +160,7 @@ export class FleetsV2 extends ClientSDK {
   async updateFleetRegion(
     fleetId: string,
     region: components.Region,
-    fleetRegionConfig: components.FleetRegionConfig,
+    fleetRegionConfigV2: components.FleetRegionConfigV2,
     orgId?: string | undefined,
     options?: RequestOptions,
   ): Promise<void> {
@@ -142,7 +168,7 @@ export class FleetsV2 extends ClientSDK {
       this,
       fleetId,
       region,
-      fleetRegionConfig,
+      fleetRegionConfigV2,
       orgId,
       options,
     ));

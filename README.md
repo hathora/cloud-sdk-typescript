@@ -200,6 +200,7 @@ run();
 * [getFleet](docs/sdks/fleetsv2/README.md#getfleet) - GetFleet
 * [updateFleet](docs/sdks/fleetsv2/README.md#updatefleet) - UpdateFleet
 * [getFleetRegion](docs/sdks/fleetsv2/README.md#getfleetregion) - GetFleetRegion
+* [~~deprecatedUpdateFleetRegionV2~~](docs/sdks/fleetsv2/README.md#deprecatedupdatefleetregionv2) - DeprecatedUpdateFleetRegionV2 :warning: **Deprecated**
 * [updateFleetRegion](docs/sdks/fleetsv2/README.md#updatefleetregion) - UpdateFleetRegion
 * [getFleetMetrics](docs/sdks/fleetsv2/README.md#getfleetmetrics) - GetFleetMetrics
 * [getFleetRegionMetrics](docs/sdks/fleetsv2/README.md#getfleetregionmetrics) - GetFleetRegionMetrics
@@ -693,6 +694,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - ~~[`deploymentsV2GetDeploymentsV2Deprecated`](docs/sdks/deploymentsv2/README.md#getdeploymentsv2deprecated)~~ - GetDeploymentsV2Deprecated :warning: **Deprecated**
 - ~~[`deploymentsV2GetLatestDeploymentV2Deprecated`](docs/sdks/deploymentsv2/README.md#getlatestdeploymentv2deprecated)~~ - GetLatestDeploymentV2Deprecated :warning: **Deprecated**
 - ~~[`discoveryV1GetPingServiceEndpointsDeprecated`](docs/sdks/discoveryv1/README.md#getpingserviceendpointsdeprecated)~~ - GetPingServiceEndpointsDeprecated :warning: **Deprecated**
+- ~~[`fleetsV2DeprecatedUpdateFleetRegionV2`](docs/sdks/fleetsv2/README.md#deprecatedupdatefleetregionv2)~~ - DeprecatedUpdateFleetRegionV2 :warning: **Deprecated**
 - ~~[`lobbiesV1CreatePrivateLobbyDeprecated`](docs/sdks/lobbiesv1/README.md#createprivatelobbydeprecated)~~ - CreatePrivateLobbyDeprecated :warning: **Deprecated**
 - ~~[`lobbiesV1CreatePublicLobbyDeprecated`](docs/sdks/lobbiesv1/README.md#createpubliclobbydeprecated)~~ - CreatePublicLobbyDeprecated :warning: **Deprecated**
 - ~~[`lobbiesV1ListActivePublicLobbiesDeprecatedV1`](docs/sdks/lobbiesv1/README.md#listactivepubliclobbiesdeprecatedv1)~~ - ListActivePublicLobbiesDeprecatedV1 :warning: **Deprecated**

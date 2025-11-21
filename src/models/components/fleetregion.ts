@@ -16,6 +16,13 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type FleetRegion = {
   cloudMinVcpusUpdatedAt: Date;
+  /**
+   * The minimum number of nodes that should be running.
+   */
+  nodeBaseline: number;
+  /**
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   cloudMinVcpus: number;
   /**
    * This field is deprecated and may contain the value -1. For node increment values, refer to nodeShape on the Fleet.
@@ -34,6 +41,7 @@ export const FleetRegion$inboundSchema: z.ZodType<
   cloudMinVcpusUpdatedAt: z.string().datetime({ offset: true }).transform(v =>
     new Date(v)
   ),
+  nodeBaseline: z.number().int(),
   cloudMinVcpus: z.number().int(),
   scaleIncrementVcpus: z.number().int(),
 });
