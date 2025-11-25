@@ -41,13 +41,21 @@ export type ProcessV3 = {
    */
   terminatedAt: Date | null;
   /**
-   * When the process is issued to stop. We use this to determine when we should stop billing.
+   * When the process is issued to stop.
    */
   stoppingAt: Date | null;
   /**
-   * When the process bound to the specified port. We use this to determine when we should start billing.
+   * When the process bound to the specified port. We use this to determine when to register the process to the load balancer.
    */
   startedAt: Date | null;
+  /**
+   * When the container was fully downloaded and started booting.
+   */
+  bootedAt: Date | null;
+  /**
+   * When the process was assigned to an available node.
+   */
+  scheduledAt: Date | null;
   /**
    * When the process started being provisioned.
    */
@@ -116,6 +124,12 @@ export const ProcessV3$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ),
   startedAt: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ),
+  bootedAt: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ),
+  scheduledAt: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ),
   createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v)),

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: f90429a22a961e266581a3a788aab201
+  docChecksum: 34b5e25e88b494996a8b2c8613a17a52
   docVersion: 0.0.1
-  speakeasyVersion: 1.659.0
-  generationVersion: 2.755.9
-  releaseVersion: 2.25.3
-  configChecksum: 90a71993e9885209213af4ca3441c35c
+  speakeasyVersion: 1.660.0
+  generationVersion: 2.760.2
+  releaseVersion: 2.25.4
+  configChecksum: ec73333de4a746e38049bbbaf4109f27
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.7
+    core: 3.26.9
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -950,6 +950,7 @@ generatedFiles:
   - src/types/operations.ts
   - src/types/rfcdate.ts
   - src/types/streams.ts
+  - src/types/unrecognized.ts
   - tsconfig.json
 examples:
   GetOrgTokens:
@@ -1274,7 +1275,7 @@ examples:
           appId: "app-af469a92-5b45-4565-b3c4-b79878de67d2"
       responses:
         "200":
-          application/json: [{"status": "failed", "roomsAllocated": 1, "terminatedAt": "2024-07-14T18:20:47.129Z", "stoppingAt": "2023-10-14T11:58:55.392Z", "startedAt": "2025-12-17T22:22:22.070Z", "createdAt": "2023-11-02T16:30:59.530Z", "roomsPerProcess": 3, "additionalExposedPorts": [{"transportType": "tcp", "port": 72941, "host": "1.proxy.hathora.dev", "name": "debug"}], "exposedPort": {"transportType": "tcp", "port": 34567, "host": "1.proxy.hathora.dev", "name": "default"}, "region": "Dallas", "processId": "cbfcddd2-0006-43ae-996c-995fff7bed2e", "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}, {"status": "failed", "roomsAllocated": 1, "terminatedAt": "2024-07-14T18:20:47.129Z", "stoppingAt": "2023-10-14T11:58:55.392Z", "startedAt": "2025-12-17T22:22:22.070Z", "createdAt": "2023-11-02T16:30:59.530Z", "roomsPerProcess": 3, "additionalExposedPorts": [{"transportType": "tcp", "port": 72941, "host": "1.proxy.hathora.dev", "name": "debug"}], "exposedPort": {"transportType": "tcp", "port": 34567, "host": "1.proxy.hathora.dev", "name": "default"}, "region": "Dallas", "processId": "cbfcddd2-0006-43ae-996c-995fff7bed2e", "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}]
+          application/json: [{"status": "failed", "roomsAllocated": 1, "terminatedAt": "2024-07-14T18:20:47.129Z", "stoppingAt": "2023-10-14T11:58:55.392Z", "startedAt": "2025-12-17T22:22:22.070Z", "bootedAt": "2025-12-22T05:10:53.198Z", "scheduledAt": "2024-07-14T18:20:47.129Z", "createdAt": "2023-11-02T16:30:59.530Z", "roomsPerProcess": 3, "additionalExposedPorts": [{"transportType": "tcp", "port": 72941, "host": "1.proxy.hathora.dev", "name": "debug"}], "exposedPort": {"transportType": "tcp", "port": 34567, "host": "1.proxy.hathora.dev", "name": "default"}, "region": "Dallas", "processId": "cbfcddd2-0006-43ae-996c-995fff7bed2e", "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}, {"status": "failed", "roomsAllocated": 1, "terminatedAt": "2024-07-14T18:20:47.129Z", "stoppingAt": "2023-10-14T11:58:55.392Z", "startedAt": "2025-12-17T22:22:22.070Z", "bootedAt": "2023-10-14T11:58:55.392Z", "scheduledAt": "2025-12-17T22:22:22.070Z", "createdAt": "2023-11-02T16:30:59.530Z", "roomsPerProcess": 3, "additionalExposedPorts": [{"transportType": "tcp", "port": 72941, "host": "1.proxy.hathora.dev", "name": "debug"}], "exposedPort": {"transportType": "tcp", "port": 34567, "host": "1.proxy.hathora.dev", "name": "default"}, "region": "Dallas", "processId": "cbfcddd2-0006-43ae-996c-995fff7bed2e", "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}]
         "401":
           application/json: {"message": "<value>"}
   GetProcessesCountExperimental:
@@ -1295,7 +1296,7 @@ examples:
           region: "Mumbai"
       responses:
         "201":
-          application/json: {"status": "starting", "roomsAllocated": 1, "terminatedAt": "2023-07-26T15:15:13.711Z", "stoppingAt": "2023-04-13T23:37:02.582Z", "startedAt": "2025-12-26T12:31:53.271Z", "createdAt": "2023-08-25T03:13:53.342Z", "roomsPerProcess": 3, "additionalExposedPorts": [{"transportType": "tcp", "port": 72941, "host": "1.proxy.hathora.dev", "name": "debug"}], "exposedPort": {"transportType": "tcp", "port": 34567, "host": "1.proxy.hathora.dev", "name": "default"}, "region": "Los_Angeles", "processId": "cbfcddd2-0006-43ae-996c-995fff7bed2e", "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}
+          application/json: {"status": "starting", "roomsAllocated": 1, "terminatedAt": "2023-07-26T15:15:13.711Z", "stoppingAt": "2023-04-13T23:37:02.582Z", "startedAt": "2025-12-26T12:31:53.271Z", "bootedAt": "2023-04-07T10:34:00.420Z", "scheduledAt": "2023-07-26T15:15:13.711Z", "createdAt": "2023-08-25T03:13:53.342Z", "roomsPerProcess": 3, "additionalExposedPorts": [{"transportType": "tcp", "port": 72941, "host": "1.proxy.hathora.dev", "name": "debug"}], "exposedPort": {"transportType": "tcp", "port": 34567, "host": "1.proxy.hathora.dev", "name": "default"}, "region": "Los_Angeles", "processId": "cbfcddd2-0006-43ae-996c-995fff7bed2e", "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}
         "401":
           application/json: {"message": "<value>"}
         "500":
@@ -1308,7 +1309,7 @@ examples:
           processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e"
       responses:
         "200":
-          application/json: {"status": "draining", "roomsAllocated": 1, "terminatedAt": "2023-11-09T09:33:31.441Z", "stoppingAt": "2025-10-06T21:18:40.440Z", "startedAt": "2025-10-29T15:32:30.169Z", "createdAt": "2023-11-14T03:41:51.003Z", "roomsPerProcess": 3, "additionalExposedPorts": [{"transportType": "tcp", "port": 72941, "host": "1.proxy.hathora.dev", "name": "debug"}], "exposedPort": {"transportType": "tcp", "port": 34567, "host": "1.proxy.hathora.dev", "name": "default"}, "region": "Chicago", "processId": "cbfcddd2-0006-43ae-996c-995fff7bed2e", "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}
+          application/json: {"status": "draining", "roomsAllocated": 1, "terminatedAt": "2023-11-09T09:33:31.441Z", "stoppingAt": "2025-10-06T21:18:40.440Z", "startedAt": "2025-10-29T15:32:30.169Z", "bootedAt": "2025-09-23T19:03:41.640Z", "scheduledAt": "2023-07-03T22:42:09.537Z", "createdAt": "2023-11-14T03:41:51.003Z", "roomsPerProcess": 3, "additionalExposedPorts": [{"transportType": "tcp", "port": 72941, "host": "1.proxy.hathora.dev", "name": "debug"}], "exposedPort": {"transportType": "tcp", "port": 34567, "host": "1.proxy.hathora.dev", "name": "default"}, "region": "Chicago", "processId": "cbfcddd2-0006-43ae-996c-995fff7bed2e", "deploymentId": "dep-6d4c6a71-2d75-4b42-94e1-f312f57f33c5", "appId": "app-af469a92-5b45-4565-b3c4-b79878de67d2"}
         "401":
           application/json: {"message": "<value>"}
   StopProcess:
@@ -2580,7 +2581,6 @@ examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Typescript SDK Changes Detected:
-  * `hathoracloud.fleetsV2.updateFleetRegion()`:  `request` **Changed** **Breaking** :warning:
-  * `hathoracloud.fleetsV2.deprecatedUpdateFleetRegionV2()`: **Added**
-  * `hathoracloud.fleetsV1.getFleetRegionDeprecated()`:  `response.nodebaseline` **Added**
-  * `hathoracloud.fleetsV2.getFleetRegion()`:  `response.nodebaseline` **Added**
+  * `hathoracloud.processesV3.getLatestProcesses()`:  `response.[]` **Changed**
+  * `hathoracloud.processesV3.createProcess()`:  `response` **Changed**
+  * `hathoracloud.processesV3.getProcess()`:  `response` **Changed**
