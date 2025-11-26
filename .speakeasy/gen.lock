@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 34b5e25e88b494996a8b2c8613a17a52
+  docChecksum: 38bb018e0cf930e2d10d532ffb95ccf4
   docVersion: 0.0.1
-  speakeasyVersion: 1.660.0
-  generationVersion: 2.760.2
-  releaseVersion: 2.25.4
-  configChecksum: ec73333de4a746e38049bbbaf4109f27
+  speakeasyVersion: 1.661.2
+  generationVersion: 2.763.3
+  releaseVersion: 2.25.5
+  configChecksum: 156eaa5e0eabdcfa6c4428df49f66d1a
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.9
+    core: 3.26.10
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -2579,8 +2579,3 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `hathoracloud.processesV3.getLatestProcesses()`:  `response.[]` **Changed**
-  * `hathoracloud.processesV3.createProcess()`:  `response` **Changed**
-  * `hathoracloud.processesV3.getProcess()`:  `response` **Changed**

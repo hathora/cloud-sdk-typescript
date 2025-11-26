@@ -31,7 +31,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.25.4
+  version: 2.25.5
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -52,6 +52,7 @@ typescript:
   exportZodModelNamespace: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
+  formStringArrayEncodeMode: encoded-string
   forwardCompatibleEnumsByDefault: false
   generateExamples: true
   imports:
@@ -62,6 +63,7 @@ typescript:
       operations: models/operations
       shared: models/components
       webhooks: models/webhooks
+  inferUnionDiscriminators: true
   inputModelSuffix: input
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   jsonpath: legacy
