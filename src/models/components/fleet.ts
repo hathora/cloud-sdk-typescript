@@ -21,7 +21,7 @@ export type Fleet = {
   /**
    * Readable name for a fleet. Must be unique within an organization.
    */
-  name?: string | undefined;
+  name: string;
   /**
    * System generated unique identifier for an organization. Not guaranteed to have a specific format.
    */
@@ -37,7 +37,7 @@ export const Fleet$inboundSchema: z.ZodType<Fleet, z.ZodTypeDef, unknown> = z
   .object({
     nodeShape: NodeShape$inboundSchema,
     autoscalerConfig: AutoscalerConfig$inboundSchema.optional(),
-    name: z.string().optional(),
+    name: z.string(),
     orgId: z.string(),
     fleetId: z.string(),
   });

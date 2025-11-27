@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 38bb018e0cf930e2d10d532ffb95ccf4
+  docChecksum: d17d49e29ddb9caddb4a337629df1258
   docVersion: 0.0.1
-  speakeasyVersion: 1.661.2
+  speakeasyVersion: 1.662.0
   generationVersion: 2.763.3
-  releaseVersion: 2.25.5
-  configChecksum: 156eaa5e0eabdcfa6c4428df49f66d1a
+  releaseVersion: 2.25.6
+  configChecksum: aa65bb532505d9960f38daff24a20569
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
@@ -2579,3 +2579,8 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `hathoracloud.fleetsV1.getFleetsDeprecated()`:  `response.fleets.[].name` **Changed**
+  * `hathoracloud.fleetsV1.createFleetDeprecated()`:  `response.name` **Changed**
+  * `hathoracloud.fleetsV1.getFleetDeprecated()`:  `response.name` **Changed**
