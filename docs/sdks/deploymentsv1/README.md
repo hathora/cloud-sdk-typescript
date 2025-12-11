@@ -1,5 +1,7 @@
-# DeploymentsV1
-(*deploymentsV1*)
+# ~~DeploymentsV1~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
@@ -82,6 +84,7 @@ run();
 | Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | errors.ApiError    | 401, 404, 408, 429 | application/json   |
+| errors.ApiError    | 500                | application/json   |
 | errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## ~~getLatestDeploymentV1Deprecated~~

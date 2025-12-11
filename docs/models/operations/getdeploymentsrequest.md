@@ -18,3 +18,4 @@ let value: GetDeploymentsRequest = {
 | `appId`                                  | *string*                                 | :heavy_minus_sign:                       | N/A                                      | app-af469a92-5b45-4565-b3c4-b79878de67d2 |
 | `deploymentTag`                          | *string*                                 | :heavy_minus_sign:                       | N/A                                      | alpha                                    |
 | `buildTag`                               | *string*                                 | :heavy_minus_sign:                       | N/A                                      | 0.1.14-14c793                            |
+| `nextPageToken`                          | *string*                                 | :heavy_minus_sign:                       | N/A                                      |                                          |

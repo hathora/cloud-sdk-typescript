@@ -4,18 +4,11 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import * as openEnums from "../../types/enums.js";
-import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export const Status = {
-  Starting: "starting",
-} as const;
-export type Status = OpenEnum<typeof Status>;
-
 export type StartingConnectionInfo = {
-  status: Status;
+  status: "starting";
   /**
    * Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
    *
@@ -26,16 +19,12 @@ export type StartingConnectionInfo = {
 };
 
 /** @internal */
-export const Status$inboundSchema: z.ZodType<Status, z.ZodTypeDef, unknown> =
-  openEnums.inboundSchema(Status);
-
-/** @internal */
 export const StartingConnectionInfo$inboundSchema: z.ZodType<
   StartingConnectionInfo,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: Status$inboundSchema,
+  status: z.literal("starting"),
   roomId: z.string(),
 });
 

@@ -1,5 +1,7 @@
-# RoomsV1
-(*roomsV1*)
+# ~~RoomsV1~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 

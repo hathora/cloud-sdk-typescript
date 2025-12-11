@@ -1,5 +1,7 @@
-# MetricsV1
-(*metricsV1*)
+# ~~MetricsV1~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 

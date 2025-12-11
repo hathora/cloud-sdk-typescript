@@ -92,7 +92,7 @@ run();
 <details open>
 <summary>Available methods</summary>
 
-### [~~appsV1~~](docs/sdks/appsv1/README.md)
+### [~~AppsV1~~](docs/sdks/appsv1/README.md)
 
 * [~~getAppsV1Deprecated~~](docs/sdks/appsv1/README.md#getappsv1deprecated) - GetAppsV1Deprecated :warning: **Deprecated**
 * [~~createAppV1Deprecated~~](docs/sdks/appsv1/README.md#createappv1deprecated) - CreateAppV1Deprecated :warning: **Deprecated**
@@ -100,7 +100,7 @@ run();
 * [~~getAppInfoV1Deprecated~~](docs/sdks/appsv1/README.md#getappinfov1deprecated) - GetAppInfoV1Deprecated :warning: **Deprecated**
 * [~~deleteAppV1Deprecated~~](docs/sdks/appsv1/README.md#deleteappv1deprecated) - DeleteAppV1Deprecated :warning: **Deprecated**
 
-### [appsV2](docs/sdks/appsv2/README.md)
+### [AppsV2](docs/sdks/appsv2/README.md)
 
 * [getApps](docs/sdks/appsv2/README.md#getapps) - GetApps
 * [createApp](docs/sdks/appsv2/README.md#createapp) - CreateApp
@@ -109,13 +109,13 @@ run();
 * [getApp](docs/sdks/appsv2/README.md#getapp) - GetApp
 * [deleteApp](docs/sdks/appsv2/README.md#deleteapp) - DeleteApp
 
-### [authV1](docs/sdks/authv1/README.md)
+### [AuthV1](docs/sdks/authv1/README.md)
 
 * [loginAnonymous](docs/sdks/authv1/README.md#loginanonymous) - LoginAnonymous
 * [loginNickname](docs/sdks/authv1/README.md#loginnickname) - LoginNickname
 * [loginGoogle](docs/sdks/authv1/README.md#logingoogle) - LoginGoogle
 
-### [billingV1](docs/sdks/billingv1/README.md)
+### [BillingV1](docs/sdks/billingv1/README.md)
 
 * [~~getBalance~~](docs/sdks/billingv1/README.md#getbalance) - GetBalance :warning: **Deprecated**
 * [getUpcomingInvoiceItems](docs/sdks/billingv1/README.md#getupcominginvoiceitems) - GetUpcomingInvoiceItems
@@ -124,7 +124,7 @@ run();
 * [initStripeCustomerPortalUrl](docs/sdks/billingv1/README.md#initstripecustomerportalurl) - InitStripeCustomerPortalUrl
 * [getInvoices](docs/sdks/billingv1/README.md#getinvoices) - GetInvoices
 
-### [~~buildsV1~~](docs/sdks/buildsv1/README.md)
+### [~~BuildsV1~~](docs/sdks/buildsv1/README.md)
 
 * [~~getBuildsDeprecated~~](docs/sdks/buildsv1/README.md#getbuildsdeprecated) - GetBuildsDeprecated :warning: **Deprecated**
 * [~~getBuildInfoDeprecated~~](docs/sdks/buildsv1/README.md#getbuildinfodeprecated) - GetBuildInfoDeprecated :warning: **Deprecated**
@@ -132,7 +132,7 @@ run();
 * [~~deleteBuildDeprecated~~](docs/sdks/buildsv1/README.md#deletebuilddeprecated) - DeleteBuildDeprecated :warning: **Deprecated**
 * [~~runBuildDeprecated~~](docs/sdks/buildsv1/README.md#runbuilddeprecated) - RunBuildDeprecated :warning: **Deprecated**
 
-### [~~buildsV2~~](docs/sdks/buildsv2/README.md)
+### [~~BuildsV2~~](docs/sdks/buildsv2/README.md)
 
 * [~~getBuildsV2Deprecated~~](docs/sdks/buildsv2/README.md#getbuildsv2deprecated) - GetBuildsV2Deprecated :warning: **Deprecated**
 * [~~getBuildInfoV2Deprecated~~](docs/sdks/buildsv2/README.md#getbuildinfov2deprecated) - GetBuildInfoV2Deprecated :warning: **Deprecated**
@@ -142,7 +142,7 @@ run();
 * [~~deleteBuildV2Deprecated~~](docs/sdks/buildsv2/README.md#deletebuildv2deprecated) - DeleteBuildV2Deprecated :warning: **Deprecated**
 * [~~runBuildV2Deprecated~~](docs/sdks/buildsv2/README.md#runbuildv2deprecated) - RunBuildV2Deprecated :warning: **Deprecated**
 
-### [buildsV3](docs/sdks/buildsv3/README.md)
+### [BuildsV3](docs/sdks/buildsv3/README.md)
 
 * [getBuilds](docs/sdks/buildsv3/README.md#getbuilds) - GetBuilds
 * [createBuild](docs/sdks/buildsv3/README.md#createbuild) - CreateBuild
@@ -152,36 +152,36 @@ run();
 * [runBuild](docs/sdks/buildsv3/README.md#runbuild) - RunBuild
 * [runBuildRegistry](docs/sdks/buildsv3/README.md#runbuildregistry) - RunBuildRegistry
 
-### [~~deploymentsV1~~](docs/sdks/deploymentsv1/README.md)
+### [~~DeploymentsV1~~](docs/sdks/deploymentsv1/README.md)
 
 * [~~getDeploymentsV1Deprecated~~](docs/sdks/deploymentsv1/README.md#getdeploymentsv1deprecated) - GetDeploymentsV1Deprecated :warning: **Deprecated**
 * [~~getLatestDeploymentV1Deprecated~~](docs/sdks/deploymentsv1/README.md#getlatestdeploymentv1deprecated) - GetLatestDeploymentV1Deprecated :warning: **Deprecated**
 * [~~getDeploymentInfoV1Deprecated~~](docs/sdks/deploymentsv1/README.md#getdeploymentinfov1deprecated) - GetDeploymentInfoV1Deprecated :warning: **Deprecated**
 * [~~createDeploymentV1Deprecated~~](docs/sdks/deploymentsv1/README.md#createdeploymentv1deprecated) - CreateDeploymentV1Deprecated :warning: **Deprecated**
 
-### [~~deploymentsV2~~](docs/sdks/deploymentsv2/README.md)
+### [~~DeploymentsV2~~](docs/sdks/deploymentsv2/README.md)
 
 * [~~getDeploymentsV2Deprecated~~](docs/sdks/deploymentsv2/README.md#getdeploymentsv2deprecated) - GetDeploymentsV2Deprecated :warning: **Deprecated**
 * [~~getLatestDeploymentV2Deprecated~~](docs/sdks/deploymentsv2/README.md#getlatestdeploymentv2deprecated) - GetLatestDeploymentV2Deprecated :warning: **Deprecated**
 * [~~getDeploymentInfoV2Deprecated~~](docs/sdks/deploymentsv2/README.md#getdeploymentinfov2deprecated) - GetDeploymentInfoV2Deprecated :warning: **Deprecated**
 * [~~createDeploymentV2Deprecated~~](docs/sdks/deploymentsv2/README.md#createdeploymentv2deprecated) - CreateDeploymentV2Deprecated :warning: **Deprecated**
 
-### [deploymentsV3](docs/sdks/deploymentsv3/README.md)
+### [DeploymentsV3](docs/sdks/deploymentsv3/README.md)
 
 * [getDeployments](docs/sdks/deploymentsv3/README.md#getdeployments) - GetDeployments
 * [createDeployment](docs/sdks/deploymentsv3/README.md#createdeployment) - CreateDeployment
 * [getLatestDeployment](docs/sdks/deploymentsv3/README.md#getlatestdeployment) - GetLatestDeployment
 * [getDeployment](docs/sdks/deploymentsv3/README.md#getdeployment) - GetDeployment
 
-### [~~discoveryV1~~](docs/sdks/discoveryv1/README.md)
+### [~~DiscoveryV1~~](docs/sdks/discoveryv1/README.md)
 
 * [~~getPingServiceEndpointsDeprecated~~](docs/sdks/discoveryv1/README.md#getpingserviceendpointsdeprecated) - GetPingServiceEndpointsDeprecated :warning: **Deprecated**
 
-### [discoveryV2](docs/sdks/discoveryv2/README.md)
+### [DiscoveryV2](docs/sdks/discoveryv2/README.md)
 
 * [getPingServiceEndpoints](docs/sdks/discoveryv2/README.md#getpingserviceendpoints) - GetPingServiceEndpoints
 
-### [fleetsV1](docs/sdks/fleetsv1/README.md)
+### [FleetsV1](docs/sdks/fleetsv1/README.md)
 
 * [getFleetsDeprecated](docs/sdks/fleetsv1/README.md#getfleetsdeprecated) - GetFleetsDeprecated
 * [createFleetDeprecated](docs/sdks/fleetsv1/README.md#createfleetdeprecated) - CreateFleetDeprecated
@@ -192,7 +192,7 @@ run();
 * [getFleetMetricsDeprecated](docs/sdks/fleetsv1/README.md#getfleetmetricsdeprecated) - GetFleetMetricsDeprecated
 * [getFleetRegionMetricsDeprecated](docs/sdks/fleetsv1/README.md#getfleetregionmetricsdeprecated) - GetFleetRegionMetricsDeprecated
 
-### [fleetsV2](docs/sdks/fleetsv2/README.md)
+### [FleetsV2](docs/sdks/fleetsv2/README.md)
 
 * [getNodeShapes](docs/sdks/fleetsv2/README.md#getnodeshapes) - GetNodeShapes
 * [getFleets](docs/sdks/fleetsv2/README.md#getfleets) - GetFleets
@@ -205,13 +205,13 @@ run();
 * [getFleetMetrics](docs/sdks/fleetsv2/README.md#getfleetmetrics) - GetFleetMetrics
 * [getFleetRegionMetrics](docs/sdks/fleetsv2/README.md#getfleetregionmetrics) - GetFleetRegionMetrics
 
-### [~~lobbiesV1~~](docs/sdks/lobbiesv1/README.md)
+### [~~LobbiesV1~~](docs/sdks/lobbiesv1/README.md)
 
 * [~~createPrivateLobbyDeprecated~~](docs/sdks/lobbiesv1/README.md#createprivatelobbydeprecated) - CreatePrivateLobbyDeprecated :warning: **Deprecated**
 * [~~createPublicLobbyDeprecated~~](docs/sdks/lobbiesv1/README.md#createpubliclobbydeprecated) - CreatePublicLobbyDeprecated :warning: **Deprecated**
 * [~~listActivePublicLobbiesDeprecatedV1~~](docs/sdks/lobbiesv1/README.md#listactivepubliclobbiesdeprecatedv1) - ListActivePublicLobbiesDeprecatedV1 :warning: **Deprecated**
 
-### [~~lobbiesV2~~](docs/sdks/lobbiesv2/README.md)
+### [~~LobbiesV2~~](docs/sdks/lobbiesv2/README.md)
 
 * [~~createPrivateLobby~~](docs/sdks/lobbiesv2/README.md#createprivatelobby) - CreatePrivateLobby :warning: **Deprecated**
 * [~~createPublicLobby~~](docs/sdks/lobbiesv2/README.md#createpubliclobby) - CreatePublicLobby :warning: **Deprecated**
@@ -221,32 +221,32 @@ run();
 * [~~getLobbyInfo~~](docs/sdks/lobbiesv2/README.md#getlobbyinfo) - GetLobbyInfo :warning: **Deprecated**
 * [~~setLobbyState~~](docs/sdks/lobbiesv2/README.md#setlobbystate) - SetLobbyState :warning: **Deprecated**
 
-### [lobbiesV3](docs/sdks/lobbiesv3/README.md)
+### [LobbiesV3](docs/sdks/lobbiesv3/README.md)
 
 * [createLobby](docs/sdks/lobbiesv3/README.md#createlobby) - CreateLobby
 * [listActivePublicLobbies](docs/sdks/lobbiesv3/README.md#listactivepubliclobbies) - ListActivePublicLobbies
 * [getLobbyInfoByRoomId](docs/sdks/lobbiesv3/README.md#getlobbyinfobyroomid) - GetLobbyInfoByRoomId
 * [getLobbyInfoByShortCode](docs/sdks/lobbiesv3/README.md#getlobbyinfobyshortcode) - GetLobbyInfoByShortCode
 
-### [logsV1](docs/sdks/logsv1/README.md)
+### [LogsV1](docs/sdks/logsv1/README.md)
 
 * [getLogsForProcess](docs/sdks/logsv1/README.md#getlogsforprocess) - GetLogsForProcess
 * [downloadLogForProcess](docs/sdks/logsv1/README.md#downloadlogforprocess) - DownloadLogForProcess
 
-### [managementV1](docs/sdks/managementv1/README.md)
+### [ManagementV1](docs/sdks/managementv1/README.md)
 
 * [sendVerificationEmail](docs/sdks/managementv1/README.md#sendverificationemail) - SendVerificationEmail
 
-### [~~metricsV1~~](docs/sdks/metricsv1/README.md)
+### [~~MetricsV1~~](docs/sdks/metricsv1/README.md)
 
 * [~~getMetricsDeprecated~~](docs/sdks/metricsv1/README.md#getmetricsdeprecated) - GetMetricsDeprecated :warning: **Deprecated**
 
-### [nodesV1](docs/sdks/nodesv1/README.md)
+### [NodesV1](docs/sdks/nodesv1/README.md)
 
 * [getNode](docs/sdks/nodesv1/README.md#getnode) - GetNode
 * [listProvisionedNodes](docs/sdks/nodesv1/README.md#listprovisionednodes) - ListProvisionedNodes
 
-### [organizationsV1](docs/sdks/organizationsv1/README.md)
+### [OrganizationsV1](docs/sdks/organizationsv1/README.md)
 
 * [getOrgs](docs/sdks/organizationsv1/README.md#getorgs) - GetOrgs
 * [getUserPendingInvites](docs/sdks/organizationsv1/README.md#getuserpendinginvites) - GetUserPendingInvites
@@ -259,13 +259,13 @@ run();
 * [rejectInvite](docs/sdks/organizationsv1/README.md#rejectinvite) - RejectInvite
 * [getUsageLimits](docs/sdks/organizationsv1/README.md#getusagelimits) - GetUsageLimits
 
-### [~~processesV1~~](docs/sdks/processesv1/README.md)
+### [~~ProcessesV1~~](docs/sdks/processesv1/README.md)
 
 * [~~getRunningProcesses~~](docs/sdks/processesv1/README.md#getrunningprocesses) - GetRunningProcesses :warning: **Deprecated**
 * [~~getStoppedProcesses~~](docs/sdks/processesv1/README.md#getstoppedprocesses) - GetStoppedProcesses :warning: **Deprecated**
 * [~~getProcessInfoDeprecated~~](docs/sdks/processesv1/README.md#getprocessinfodeprecated) - GetProcessInfoDeprecated :warning: **Deprecated**
 
-### [~~processesV2~~](docs/sdks/processesv2/README.md)
+### [~~ProcessesV2~~](docs/sdks/processesv2/README.md)
 
 * [~~getProcessInfoV2Deprecated~~](docs/sdks/processesv2/README.md#getprocessinfov2deprecated) - GetProcessInfoV2Deprecated :warning: **Deprecated**
 * [~~getLatestProcessesV2Deprecated~~](docs/sdks/processesv2/README.md#getlatestprocessesv2deprecated) - GetLatestProcessesV2Deprecated :warning: **Deprecated**
@@ -273,7 +273,7 @@ run();
 * [~~stopProcessV2Deprecated~~](docs/sdks/processesv2/README.md#stopprocessv2deprecated) - StopProcessV2Deprecated :warning: **Deprecated**
 * [~~createProcessV2Deprecated~~](docs/sdks/processesv2/README.md#createprocessv2deprecated) - CreateProcessV2Deprecated :warning: **Deprecated**
 
-### [processesV3](docs/sdks/processesv3/README.md)
+### [ProcessesV3](docs/sdks/processesv3/README.md)
 
 * [getLatestProcesses](docs/sdks/processesv3/README.md#getlatestprocesses) - GetLatestProcesses
 * [getProcessesCountExperimental](docs/sdks/processesv3/README.md#getprocessescountexperimental) - GetProcessesCountExperimental
@@ -282,7 +282,7 @@ run();
 * [stopProcess](docs/sdks/processesv3/README.md#stopprocess) - StopProcess
 * [getProcessMetrics](docs/sdks/processesv3/README.md#getprocessmetrics) - GetProcessMetrics
 
-### [~~roomsV1~~](docs/sdks/roomsv1/README.md)
+### [~~RoomsV1~~](docs/sdks/roomsv1/README.md)
 
 * [~~createRoomDeprecated~~](docs/sdks/roomsv1/README.md#createroomdeprecated) - CreateRoomDeprecated :warning: **Deprecated**
 * [~~getRoomInfoDeprecated~~](docs/sdks/roomsv1/README.md#getroominfodeprecated) - GetRoomInfoDeprecated :warning: **Deprecated**
@@ -292,7 +292,7 @@ run();
 * [~~suspendRoomDeprecated~~](docs/sdks/roomsv1/README.md#suspendroomdeprecated) - SuspendRoomDeprecated :warning: **Deprecated**
 * [~~getConnectionInfoDeprecated~~](docs/sdks/roomsv1/README.md#getconnectioninfodeprecated) - GetConnectionInfoDeprecated :warning: **Deprecated**
 
-### [roomsV2](docs/sdks/roomsv2/README.md)
+### [RoomsV2](docs/sdks/roomsv2/README.md)
 
 * [createRoom](docs/sdks/roomsv2/README.md#createroom) - CreateRoom
 * [getRoomInfo](docs/sdks/roomsv2/README.md#getroominfo) - GetRoomInfo
@@ -304,7 +304,7 @@ run();
 * [updateRoomConfig](docs/sdks/roomsv2/README.md#updateroomconfig) - UpdateRoomConfig
 * [resumeRoom](docs/sdks/roomsv2/README.md#resumeroom) - ResumeRoom
 
-### [tokensV1](docs/sdks/tokensv1/README.md)
+### [TokensV1](docs/sdks/tokensv1/README.md)
 
 * [getOrgTokens](docs/sdks/tokensv1/README.md#getorgtokens) - GetOrgTokens
 * [createOrgToken](docs/sdks/tokensv1/README.md#createorgtoken) - CreateOrgToken

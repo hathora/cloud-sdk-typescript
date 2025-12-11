@@ -1,5 +1,4 @@
 # AppsV2
-(*appsV2*)
 
 ## Overview
 

@@ -21,6 +21,7 @@ export class DeploymentsV3 extends ClientSDK {
     appId?: string | undefined,
     deploymentTag?: string | undefined,
     buildTag?: string | undefined,
+    nextPageToken?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.DeploymentsV3Page> {
     return unwrapAsync(deploymentsV3GetDeployments(
@@ -28,6 +29,7 @@ export class DeploymentsV3 extends ClientSDK {
       appId,
       deploymentTag,
       buildTag,
+      nextPageToken,
       options,
     ));
   }

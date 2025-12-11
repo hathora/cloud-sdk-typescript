@@ -1,5 +1,4 @@
 # DiscoveryV2
-(*discoveryV2*)
 
 ## Overview
 

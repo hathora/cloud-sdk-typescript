@@ -1,5 +1,7 @@
-# ProcessesV2
-(*processesV2*)
+# ~~ProcessesV2~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 

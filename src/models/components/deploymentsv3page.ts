@@ -9,6 +9,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DeploymentV3, DeploymentV3$inboundSchema } from "./deploymentv3.js";
 
 export type DeploymentsV3Page = {
+  nextPageToken?: string | undefined;
   deployments: Array<DeploymentV3>;
 };
 
@@ -18,6 +19,7 @@ export const DeploymentsV3Page$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  nextPageToken: z.string().optional(),
   deployments: z.array(DeploymentV3$inboundSchema),
 });
 

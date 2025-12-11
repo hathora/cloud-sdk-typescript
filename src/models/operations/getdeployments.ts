@@ -12,6 +12,7 @@ export type GetDeploymentsRequest = {
   appId?: string | undefined;
   deploymentTag?: string | undefined;
   buildTag?: string | undefined;
+  nextPageToken?: string | undefined;
 };
 
 /** @internal */
@@ -19,6 +20,7 @@ export type GetDeploymentsRequest$Outbound = {
   appId?: string | undefined;
   deploymentTag?: string | undefined;
   buildTag?: string | undefined;
+  nextPageToken?: string | undefined;
 };
 
 /** @internal */
@@ -30,6 +32,7 @@ export const GetDeploymentsRequest$outboundSchema: z.ZodType<
   appId: z.string().optional(),
   deploymentTag: z.string().optional(),
   buildTag: z.string().optional(),
+  nextPageToken: z.string().optional(),
 });
 
 export function getDeploymentsRequestToJSON(

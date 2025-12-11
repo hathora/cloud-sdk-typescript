@@ -1,5 +1,7 @@
-# BuildsV1
-(*buildsV1*)
+# ~~BuildsV1~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 

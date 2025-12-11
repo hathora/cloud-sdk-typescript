@@ -1,5 +1,7 @@
-# LobbiesV2
-(*lobbiesV2*)
+# ~~LobbiesV2~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 

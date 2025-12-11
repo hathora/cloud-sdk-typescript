@@ -1,5 +1,7 @@
-# AppsV1
-(*appsV1*)
+# ~~AppsV1~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 

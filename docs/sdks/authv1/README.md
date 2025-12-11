@@ -1,5 +1,4 @@
 # AuthV1
-(*authV1*)
 
 ## Overview
 

@@ -1,5 +1,4 @@
 # NodesV1
-(*nodesV1*)
 
 ## Overview
 
