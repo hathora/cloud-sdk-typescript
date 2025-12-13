@@ -1,24 +1,24 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 1b966ae3a3b749737a780e7b3a4d577a
+  docChecksum: 9344367bd90f841c0bcee6521af3f75f
   docVersion: 0.0.1
-  speakeasyVersion: 1.675.4
-  generationVersion: 2.779.2
-  releaseVersion: 2.26.1
-  configChecksum: 4eb66b46f1319d1dd1bb13084c18adc9
+  speakeasyVersion: 1.676.1
+  generationVersion: 2.781.2
+  releaseVersion: 2.26.2
+  configChecksum: 3598d9008f7b3c265deca563bb02d7ad
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: c0f6fc2f-fc8c-44f2-9206-59d5b0bdee27
-  pristine_commit_hash: 85e38f18c0e1ef576fdae88c6d674dd78549ea81
-  pristine_tree_hash: b5c259a8e6cfe75467fd51175ad047defd69edf5
+  generation_id: dc7c2ca4-266f-48c1-8ffb-2d3a1f48ae94
+  pristine_commit_hash: e1a59982efc4f2ea5605bb33b10b056be90352e2
+  pristine_tree_hash: 9f87a873f8e9f891020ffc28ca1db8b07af3804d
 features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.14
+    core: 3.26.15
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -1878,12 +1878,12 @@ trackedFiles:
     pristine_git_object: ba57a3adc35055d533028cc01df4b5c2bd534faf
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:d8c1ac6903e7e76670b977310f428fe3c42a8275
-    pristine_git_object: 3e1f3036c858f6f07ee60e7992f05328ad935143
+    last_write_checksum: sha1:4a63a898c21ee445c6e6a03859effa4ac7c2c307
+    pristine_git_object: 4e492f9b287fcb4cd776def8e91a89ca3c34f764
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:647e880c5259d79a00cce335182e0d79df5fa1fc
-    pristine_git_object: 8874a9bcdbabff102dd87c27ee24b3f590b3e201
+    last_write_checksum: sha1:22ab91247249837d01756d58ca6dcd9d7de69b32
+    pristine_git_object: e481dc5ef089fca5990a7b7c39bee11d4324ca54
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:5bc0e874cd2f1a414cb1a343310bcda521151487
@@ -2446,8 +2446,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:9beec2de0edd0f4db37e9f70f07bb7b897387c2f
-    pristine_git_object: 4f6e067ca8dd9399c2ff85e97939b531429d1a46
+    last_write_checksum: sha1:e60bb8da1ee1abf110f34c02b250ec16901f3649
+    pristine_git_object: a86d400e6656854877a84dd6390920c2bae27425
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
