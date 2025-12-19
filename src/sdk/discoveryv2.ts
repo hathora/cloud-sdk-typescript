@@ -12,7 +12,7 @@ export class DiscoveryV2 extends ClientSDK {
    * GetPingServiceEndpoints
    *
    * @remarks
-   * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+   * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
    */
   async getPingServiceEndpoints(
     options?: RequestOptions,

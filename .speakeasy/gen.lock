@@ -1,24 +1,24 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: 9344367bd90f841c0bcee6521af3f75f
+  docChecksum: ac6f416e3d91bf3db1db40ff2aa5a039
   docVersion: 0.0.1
-  speakeasyVersion: 1.676.1
-  generationVersion: 2.781.2
-  releaseVersion: 2.26.2
-  configChecksum: 3598d9008f7b3c265deca563bb02d7ad
+  speakeasyVersion: 1.680.1
+  generationVersion: 2.788.5
+  releaseVersion: 2.26.3
+  configChecksum: 0447b30fdeda2da8440e55b7797c9283
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: dc7c2ca4-266f-48c1-8ffb-2d3a1f48ae94
-  pristine_commit_hash: e1a59982efc4f2ea5605bb33b10b056be90352e2
-  pristine_tree_hash: 9f87a873f8e9f891020ffc28ca1db8b07af3804d
+  generation_id: fbe1cdbe-a8b3-4469-8f11-8e130d1355fe
+  pristine_commit_hash: 21668d08fd21087a2cab21d2e2a6898767dbb2ad
+  pristine_tree_hash: ed2ae1ed1bea56f3eb030eb957891b821b30091a
 features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.15
+    core: 3.26.16
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -1790,8 +1790,8 @@ trackedFiles:
     pristine_git_object: 9c3d0a01d389e0a98dcf5cffcf596dbf2eec651d
   docs/sdks/discoveryv2/README.md:
     id: 82d743ad4312
-    last_write_checksum: sha1:056785762457fa34e871e79b7a6f55fe4cd57790
-    pristine_git_object: 418e32a80a8fb8793fff785f11612b3544446b1b
+    last_write_checksum: sha1:23a8884939a4726042b7c2f476e748b5451cd4b3
+    pristine_git_object: e32d0ed4fde3140a5dfda7272f0344119ffcb49f
   docs/sdks/fleetsv1/README.md:
     id: d0c124196699
     last_write_checksum: sha1:4c3ed8f3e74874d7ddae1e54a7e0deff5700171c
@@ -1878,12 +1878,12 @@ trackedFiles:
     pristine_git_object: ba57a3adc35055d533028cc01df4b5c2bd534faf
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:4a63a898c21ee445c6e6a03859effa4ac7c2c307
-    pristine_git_object: 4e492f9b287fcb4cd776def8e91a89ca3c34f764
+    last_write_checksum: sha1:ca08af1ec6d4e8378887ac8793dd8b01622b60a5
+    pristine_git_object: 6fa29b620a0b5dc01cc483e4dea6e402d843604b
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:22ab91247249837d01756d58ca6dcd9d7de69b32
-    pristine_git_object: e481dc5ef089fca5990a7b7c39bee11d4324ca54
+    last_write_checksum: sha1:a7868f172ee66f68d25462da86ede266fa1a6d58
+    pristine_git_object: 2e1df999a5c9425fcf0400dea23ab12efec7c233
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:5bc0e874cd2f1a414cb1a343310bcda521151487
@@ -2098,8 +2098,8 @@ trackedFiles:
     pristine_git_object: cb59e085d105d988e16460fcef665ba247ee7607
   src/funcs/discoveryV2GetPingServiceEndpoints.ts:
     id: 2390cc5e132d
-    last_write_checksum: sha1:9a434f098c11f96ec2a6aadd2faf2c7d8eacb74f
-    pristine_git_object: 7788d5c0d8571dbf2d5816b889583abf52e36f41
+    last_write_checksum: sha1:2d0e99ad73caa0a5c5f42c583d57d87bfad42c6b
+    pristine_git_object: 82d573d9a760b4ec76128ad39c614832c21ed606
   src/funcs/fleetsV1CreateFleetDeprecated.ts:
     id: 122e5e6e1d44
     last_write_checksum: sha1:5efda8c80e7aa39fe4f247a14fceef645ddc71c0
@@ -2446,8 +2446,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:e60bb8da1ee1abf110f34c02b250ec16901f3649
-    pristine_git_object: a86d400e6656854877a84dd6390920c2bae27425
+    last_write_checksum: sha1:7271782d26e7c7ac270eedc2d03355bdd60ba24d
+    pristine_git_object: af500e31d16fc835898c0b3b8dacbddf15741f05
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -2666,8 +2666,8 @@ trackedFiles:
     pristine_git_object: 9ed7945da0ed56e9351164db4f0a7c582f7fcf43
   src/models/components/deploymentv1.ts:
     id: 72716c2daea0
-    last_write_checksum: sha1:cec6c9b931a317a789dce57d07fee2bcf0db901d
-    pristine_git_object: 76bc7f6b98c954704a9390972f16e8a2f51db04b
+    last_write_checksum: sha1:ac7e01f55a170e3b99445aa40c48b0f74acc1f94
+    pristine_git_object: a31bb71f4e357fcc962a4e82b9d4d1557afd9ba3
   src/models/components/deploymentv2.ts:
     id: d344ba6454ad
     last_write_checksum: sha1:fb222e6f4fa69ed396ff9a1f3accdb77e86c5081
@@ -3578,8 +3578,8 @@ trackedFiles:
     pristine_git_object: 49f089c574fb35d5e946a1128c5464773838b310
   src/sdk/discoveryv2.ts:
     id: 33683d3e5083
-    last_write_checksum: sha1:e1bc001e4216de55e34ddfbf9671690f39236d8f
-    pristine_git_object: fca9b01440ffa16f130fbd31621c4477a327e3bb
+    last_write_checksum: sha1:374f02a5d24e04a5decd1f688004c0476a16594c
+    pristine_git_object: d4de3f10e239d1de841770e27cc15601850c5086
   src/sdk/fleetsv1.ts:
     id: 1c46e96265a6
     last_write_checksum: sha1:7ec7b79f52d2e726fbc0e8835a98f6fbce54825b

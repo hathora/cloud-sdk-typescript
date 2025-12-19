@@ -41,7 +41,7 @@ export type DeploymentV1 = {
    * @remarks
    * for five minutes.
    */
-  idleTimeoutEnabled?: boolean | undefined;
+  idleTimeoutEnabled: boolean;
   /**
    * The environment variable that our process will have access to at runtime.
    */
