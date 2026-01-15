@@ -8,12 +8,12 @@ import { ProcessV3 } from "@hathora/cloud-sdk-typescript/models/components";
 let value: ProcessV3 = {
   status: "draining",
   roomsAllocated: 1,
-  terminatedAt: new Date("2024-07-04T22:50:28.353Z"),
-  stoppingAt: new Date("2023-07-28T09:02:40.526Z"),
-  startedAt: new Date("2023-01-11T23:46:29.716Z"),
+  terminatedAt: new Date("2025-07-04T22:50:28.353Z"),
+  stoppingAt: new Date("2024-07-27T09:02:40.526Z"),
+  startedAt: new Date("2024-01-11T23:46:29.716Z"),
   bootedAt: null,
-  scheduledAt: new Date("2023-09-18T21:17:48.796Z"),
-  createdAt: new Date("2025-12-05T05:13:29.773Z"),
+  scheduledAt: new Date("2024-09-17T21:17:48.796Z"),
+  createdAt: new Date("2026-12-05T05:13:29.773Z"),
   roomsPerProcess: 3,
   additionalExposedPorts: [
     {

@@ -32,7 +32,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.26.3
+  version: 2.26.4
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -51,6 +51,7 @@ typescript:
   enableReactQuery: false
   enumFormat: union
   exportZodModelNamespace: false
+  flatAdditionalProperties: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
   formStringArrayEncodeMode: encoded-string
@@ -78,6 +79,7 @@ typescript:
   outputModelSuffix: output
   packageName: '@hathora/cloud-sdk-typescript'
   preApplyUnionDiscriminators: true
+  preserveModelFieldNames: false
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2

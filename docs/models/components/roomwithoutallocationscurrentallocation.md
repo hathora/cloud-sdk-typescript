@@ -8,8 +8,8 @@ Metadata on an allocated instance of a room.
 import { RoomWithoutAllocationsCurrentAllocation } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: RoomWithoutAllocationsCurrentAllocation = {
-  unscheduledAt: new Date("2025-12-13T22:31:10.347Z"),
-  scheduledAt: new Date("2023-12-21T02:39:38.610Z"),
+  unscheduledAt: new Date("2026-12-13T22:31:10.347Z"),
+  scheduledAt: new Date("2024-12-20T02:39:38.610Z"),
   processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
   roomAllocationId: "e3a0aa32-1711-4036-acfa-008b96061a78",
 };

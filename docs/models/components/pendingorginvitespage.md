@@ -11,7 +11,7 @@ let value: PendingOrgInvitesPage = {
       scopes: [
         "load-balancer:access",
       ],
-      createdAt: new Date("2024-03-04T23:16:22.046Z"),
+      createdAt: new Date("2025-03-04T23:16:22.046Z"),
       invitedBy: "noreply@hathora.dev",
       userEmail: "noreply@hathora.dev",
       orgId: "org-6f706e83-0ec1-437a-9a46-7d4281eb2f39",

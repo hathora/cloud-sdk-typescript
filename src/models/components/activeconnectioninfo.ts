@@ -4,12 +4,21 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { TransportType, TransportType$inboundSchema } from "./transporttype.js";
 
+export const ActiveConnectionInfoStatus = {
+  Active: "active",
+} as const;
+export type ActiveConnectionInfoStatus = OpenEnum<
+  typeof ActiveConnectionInfoStatus
+>;
+
 export type ActiveConnectionInfo = {
-  status: "active";
+  status: ActiveConnectionInfoStatus;
   /**
    * Transport type specifies the underlying communication protocol to the exposed port.
    */
@@ -26,12 +35,19 @@ export type ActiveConnectionInfo = {
 };
 
 /** @internal */
+export const ActiveConnectionInfoStatus$inboundSchema: z.ZodType<
+  ActiveConnectionInfoStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ActiveConnectionInfoStatus);
+
+/** @internal */
 export const ActiveConnectionInfo$inboundSchema: z.ZodType<
   ActiveConnectionInfo,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: z.literal("active"),
+  status: ActiveConnectionInfoStatus$inboundSchema,
   transportType: TransportType$inboundSchema,
   port: z.number(),
   host: z.string(),

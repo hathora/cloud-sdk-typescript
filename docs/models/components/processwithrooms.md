@@ -9,18 +9,18 @@ import { ProcessWithRooms } from "@hathora/cloud-sdk-typescript/models/component
 
 let value: ProcessWithRooms = {
   egressedBytes: 435,
-  idleSince: new Date("2025-05-27T01:22:15.608Z"),
-  activeConnectionsUpdatedAt: new Date("2023-04-21T15:26:09.486Z"),
+  idleSince: new Date("2026-05-27T01:22:15.608Z"),
+  activeConnectionsUpdatedAt: new Date("2024-04-20T15:26:09.486Z"),
   activeConnections: 10,
-  roomsAllocatedUpdatedAt: new Date("2023-03-29T05:45:42.964Z"),
+  roomsAllocatedUpdatedAt: new Date("2024-03-28T05:45:42.964Z"),
   roomsAllocated: 1,
-  roomSlotsAvailableUpdatedAt: new Date("2025-06-11T14:40:41.019Z"),
+  roomSlotsAvailableUpdatedAt: new Date("2026-06-11T14:40:41.019Z"),
   roomSlotsAvailable: 2538.82,
   draining: true,
-  terminatedAt: new Date("2025-07-22T22:18:05.549Z"),
-  stoppingAt: new Date("2024-11-21T20:57:48.070Z"),
-  startedAt: new Date("2024-11-26T14:35:19.412Z"),
-  startingAt: new Date("2024-11-19T16:34:06.479Z"),
+  terminatedAt: new Date("2026-07-22T22:18:05.549Z"),
+  stoppingAt: new Date("2025-11-21T20:57:48.070Z"),
+  startedAt: new Date("2025-11-26T14:35:19.412Z"),
+  startingAt: new Date("2025-11-19T16:34:06.479Z"),
   roomsPerProcess: 3,
   additionalExposedPorts: [
     {
@@ -45,8 +45,8 @@ let value: ProcessWithRooms = {
   rooms: [
     {
       currentAllocation: {
-        unscheduledAt: new Date("2025-08-07T11:22:38.157Z"),
-        scheduledAt: new Date("2023-05-23T18:54:41.544Z"),
+        unscheduledAt: new Date("2026-08-07T11:22:38.157Z"),
+        scheduledAt: new Date("2024-05-22T18:54:41.544Z"),
         processId: "cbfcddd2-0006-43ae-996c-995fff7bed2e",
         roomAllocationId: "e3a0aa32-1711-4036-acfa-008b96061a78",
       },

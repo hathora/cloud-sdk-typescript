@@ -18,7 +18,7 @@ import {
 /**
  * Connection information to the default port.
  */
-export type ConnectionInfo = StartingConnectionInfo | ActiveConnectionInfo;
+export type ConnectionInfo = ActiveConnectionInfo | StartingConnectionInfo;
 
 /** @internal */
 export const ConnectionInfo$inboundSchema: z.ZodType<
@@ -26,8 +26,8 @@ export const ConnectionInfo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  StartingConnectionInfo$inboundSchema,
   ActiveConnectionInfo$inboundSchema,
+  StartingConnectionInfo$inboundSchema,
 ]);
 
 export function connectionInfoFromJSON(

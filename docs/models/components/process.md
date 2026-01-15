@@ -9,18 +9,18 @@ import { Process } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: Process = {
   egressedBytes: 435,
-  idleSince: new Date("2025-03-17T07:31:10.918Z"),
-  activeConnectionsUpdatedAt: new Date("2024-09-11T08:07:44.377Z"),
+  idleSince: new Date("2026-03-17T07:31:10.918Z"),
+  activeConnectionsUpdatedAt: new Date("2025-09-11T08:07:44.377Z"),
   activeConnections: 10,
-  roomsAllocatedUpdatedAt: new Date("2025-11-08T14:10:18.462Z"),
+  roomsAllocatedUpdatedAt: new Date("2026-11-08T14:10:18.462Z"),
   roomsAllocated: 1,
-  roomSlotsAvailableUpdatedAt: new Date("2024-09-27T20:17:45.342Z"),
+  roomSlotsAvailableUpdatedAt: new Date("2025-09-27T20:17:45.342Z"),
   roomSlotsAvailable: 1960.33,
   draining: false,
-  terminatedAt: new Date("2024-10-23T02:26:03.729Z"),
-  stoppingAt: new Date("2023-11-25T21:02:02.274Z"),
-  startedAt: new Date("2025-02-18T12:26:17.653Z"),
-  startingAt: new Date("2023-02-09T07:32:28.745Z"),
+  terminatedAt: new Date("2025-10-23T02:26:03.729Z"),
+  stoppingAt: new Date("2024-11-24T21:02:02.274Z"),
+  startedAt: new Date("2026-02-18T12:26:17.653Z"),
+  startingAt: new Date("2024-02-09T07:32:28.745Z"),
   roomsPerProcess: 3,
   additionalExposedPorts: [
     {

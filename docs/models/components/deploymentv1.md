@@ -30,7 +30,7 @@ let value: DeploymentV1 = {
   },
   transportType: "udp",
   containerPort: 5918.31,
-  createdAt: new Date("2023-07-02T06:39:18.541Z"),
+  createdAt: new Date("2024-07-01T06:39:18.541Z"),
   createdBy: "noreply@hathora.dev",
   requestedMemoryMB: 1024,
   requestedCPU: 0.5,

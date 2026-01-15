@@ -9,7 +9,7 @@ let value: Invoice = {
   status: "pending",
   amountDue: 9115.15,
   pdfUrl: "https://discrete-tribe.org",
-  dueDate: new Date("2025-10-31T01:37:54.654Z"),
+  dueDate: new Date("2026-10-31T01:37:54.654Z"),
   year: 5534.8,
   month: 2871.43,
   id: "<id>",

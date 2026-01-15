@@ -7,7 +7,7 @@ import { NodeV1 } from "@hathora/cloud-sdk-typescript/models/components";
 
 let value: NodeV1 = {
   stoppedAt: null,
-  startedAt: new Date("2024-12-24T00:27:26.087Z"),
+  startedAt: new Date("2025-12-24T00:27:26.087Z"),
   gpu: 6846.36,
   memoryMb: 6568.87,
   cpu: 2213.36,
