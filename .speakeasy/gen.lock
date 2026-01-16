@@ -3,22 +3,22 @@ id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
   docChecksum: a8f5943e41389bde446e14064bd26055
   docVersion: 0.0.1
-  speakeasyVersion: 1.685.2
-  generationVersion: 2.795.6
-  releaseVersion: 2.26.4
-  configChecksum: 47bc58d282b633e115c07e1860aa722f
+  speakeasyVersion: 1.686.0
+  generationVersion: 2.796.1
+  releaseVersion: 2.26.5
+  configChecksum: c64242167de1b20b303aca9ab9e943d4
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: da9d7132-bee6-4e1f-aee8-c17bca3913d9
-  pristine_commit_hash: 18008797c227a9ed00e3360a09d57266337d4bb8
-  pristine_tree_hash: e746d17c6d5ffe1e4c1e290aa6f37be78a55cb69
+  generation_id: 45ca7196-e5ec-4949-8b53-6fe0e1c665d8
+  pristine_commit_hash: 9323a648378d4996028c6d997128ec2aba86c28e
+  pristine_tree_hash: c6ce0b53406f60229272a7799b7d10af6b9b6494
 features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.21
+    core: 3.26.22
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -1886,12 +1886,12 @@ trackedFiles:
     pristine_git_object: ba57a3adc35055d533028cc01df4b5c2bd534faf
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:9d31fe2e0c08ac0667b8321a354e7979e264e269
-    pristine_git_object: a989f004dae3f0e2b2cb294343df0957b7a7ea55
+    last_write_checksum: sha1:59ae06c426d6be1f3c49de48d6f28af7dcd49978
+    pristine_git_object: c434268b98f35523f1f9ecc2f6edab770e01343b
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:a54efec0a709ff63879edfdd48012d11495d68e0
-    pristine_git_object: 5b71fe7b32e80fd4b5bc48767ea20474d57deef1
+    last_write_checksum: sha1:47491571fe1cbc241a6f53b5989d1c17a5f62cee
+    pristine_git_object: 812f5f52e0c0fa96ea489641394e7c87cd2d6c24
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:5bc0e874cd2f1a414cb1a343310bcda521151487
@@ -2454,8 +2454,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:a2859894d586a5938dd4e4043fdecb469ac31f01
-    pristine_git_object: d2447e73e9da5b36e50785f0cff68a7357edcae4
+    last_write_checksum: sha1:8fbf8d0d7e9d7f3f9158da7a54a293156241ae49
+    pristine_git_object: 49d2f08d340b03f62b625984bf953e184dbc1c67
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
