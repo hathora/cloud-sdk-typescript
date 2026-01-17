@@ -11,11 +11,19 @@ import {
   AutoscalerConfig$inboundSchema,
 } from "./autoscalerconfig.js";
 import { NodeShape, NodeShape$inboundSchema } from "./nodeshape.js";
+import {
+  PartialRecordRegionFleetErrorState,
+  PartialRecordRegionFleetErrorState$inboundSchema,
+} from "./partialrecordregionfleeterrorstate.js";
 
 /**
  * A fleet is a collection of nodes across your regions that can scale up and down based on demand.
  */
 export type Fleet = {
+  /**
+   * Make all properties in T optional
+   */
+  errorState?: PartialRecordRegionFleetErrorState | undefined;
   nodeShape: NodeShape;
   autoscalerConfig?: AutoscalerConfig | undefined;
   /**
@@ -35,6 +43,7 @@ export type Fleet = {
 /** @internal */
 export const Fleet$inboundSchema: z.ZodType<Fleet, z.ZodTypeDef, unknown> = z
   .object({
+    errorState: PartialRecordRegionFleetErrorState$inboundSchema.optional(),
     nodeShape: NodeShape$inboundSchema,
     autoscalerConfig: AutoscalerConfig$inboundSchema.optional(),
     name: z.string(),
