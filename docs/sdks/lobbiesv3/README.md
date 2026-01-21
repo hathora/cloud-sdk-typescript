@@ -304,7 +304,7 @@ run();
 
 ### Errors
 
-| Error Type       | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.ApiError  | 404, 408, 429    | application/json |
-| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.ApiError    | 404, 408, 422, 429 | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |

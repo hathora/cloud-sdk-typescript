@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: a331b721fdf6763dcd1553c98780cf3e
+  docChecksum: da90b4953710df30c771b6cca700bbea
   docVersion: 0.0.1
-  speakeasyVersion: 1.687.1
-  generationVersion: 2.796.1
-  releaseVersion: 2.26.6
-  configChecksum: 5803d41c1bc310d3cb829e0a695234e0
+  speakeasyVersion: 1.691.0
+  generationVersion: 2.797.1
+  releaseVersion: 2.26.7
+  configChecksum: 791d2e7e21d43362229fdacfa1074e31
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 0acd4e01-7479-40a8-887e-4b1e570c8b92
-  pristine_commit_hash: 30bdc73a9d3cfc1a9eeab1975cf5a5c6e355b4d1
-  pristine_tree_hash: 065493b9cd1204917f6f638780b688118a95e4bf
+  generation_id: 4b1f0818-73a6-4823-9337-49e59a477428
+  pristine_commit_hash: e22bcea374295416d94ea81a8344ebf7d752ce89
+  pristine_tree_hash: 4e52fa45ca082f7491d6d05c9941102d593e9c43
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -1826,8 +1826,8 @@ trackedFiles:
     pristine_git_object: daab5079b1f4f748d06b1ab471071a59a75b854f
   docs/sdks/lobbiesv3/README.md:
     id: 09d8d4365dcb
-    last_write_checksum: sha1:7a352aa5762e4d3d1ab1e1a82062251a614adbee
-    pristine_git_object: e325fb874e2ad79c887eb990b28567701ca23527
+    last_write_checksum: sha1:369c2b96db556c3543585dfd284b6e398021202e
+    pristine_git_object: da6bb19b26a7ac6b9395ccc681f373950e99d284
   docs/sdks/logsv1/README.md:
     id: 7dbe43c624b6
     last_write_checksum: sha1:eae4d4af7c2c632ef397c1802f07db21f086a404
@@ -1894,12 +1894,12 @@ trackedFiles:
     pristine_git_object: ba57a3adc35055d533028cc01df4b5c2bd534faf
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:54a3ce10557cb0d617672edee692c88f374dec7f
-    pristine_git_object: bc95f13e8875c08548f3c1bf7c5335d04e9c1388
+    last_write_checksum: sha1:cccf5ace31f7b29a61151cd69706e57ab704861b
+    pristine_git_object: bc3a8b785f517c95955e27ee6e48b57d752a1bd6
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:352db23dc95bd8f943ea52eadb18cd60620aae60
-    pristine_git_object: b0b7042a3baf6afce56f204f734d8e1ab8cee27d
+    last_write_checksum: sha1:0020789552c8bfab8018f2568e9a48d944897b30
+    pristine_git_object: f4bfe3dee4e9e38124a8225f90c8c23419abe717
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:5bc0e874cd2f1a414cb1a343310bcda521151487
@@ -2238,8 +2238,8 @@ trackedFiles:
     pristine_git_object: 6331f95e44722a1f153f8b35dc1d08d5e0225ca2
   src/funcs/lobbiesV3GetLobbyInfoByShortCode.ts:
     id: 4dedff09cced
-    last_write_checksum: sha1:e8e44967cde054334712fe7f1fe5a7294b69d69f
-    pristine_git_object: 6861a8f71c227705acbf57ebe5e32f1fd41f9020
+    last_write_checksum: sha1:623960b2058de2b5f21a7e93cc6183768025c1c2
+    pristine_git_object: 5ec9b62093fb41f6b3900c7e8caf4c72e84c66f0
   src/funcs/lobbiesV3ListActivePublicLobbies.ts:
     id: 951ee7e53f57
     last_write_checksum: sha1:2c124772eef74d4a85a62e8df67def2cbf130ee9
@@ -2462,8 +2462,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:fe1dbae039d3d4424602754af20f600a44673a78
-    pristine_git_object: f40b87474a0782eb73280b658e4ac1de4d5859e4
+    last_write_checksum: sha1:ebe95ea5d1513516c6aa67a4806f1117997b945a
+    pristine_git_object: 719d71780bf472920c9c4753c2e61191ac3b9608
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -5353,9 +5353,7 @@ examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Typescript SDK Changes:
-  * `hathoracloud.fleetsV1.getFleetsDeprecated()`:  `response.fleets.[].errorState` **Added**
-  * `hathoracloud.fleetsV1.createFleetDeprecated()`:  `response.errorstate` **Added**
-  * `hathoracloud.fleetsV1.getFleetDeprecated()`:  `response.errorstate` **Added**
+  * `hathoracloud.lobbiesV3.getLobbyInfoByShortCode()`:  `error.status[422]` **Added**
 generatedFiles:
   - .gitattributes
   - .npmignore
