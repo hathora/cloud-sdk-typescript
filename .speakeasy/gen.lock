@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 1b06df09-5141-4b14-b0b7-5415dbf16cfb
 management:
-  docChecksum: da90b4953710df30c771b6cca700bbea
+  docChecksum: e44151bb6e9907cefa75764b4680fa8c
   docVersion: 0.0.1
-  speakeasyVersion: 1.691.0
+  speakeasyVersion: 1.692.0
   generationVersion: 2.797.1
-  releaseVersion: 2.26.7
-  configChecksum: 791d2e7e21d43362229fdacfa1074e31
+  releaseVersion: 2.26.8
+  configChecksum: 152426fb0083ee1b20948515177ce158
   repoURL: https://github.com/hathora/cloud-sdk-typescript.git
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 4b1f0818-73a6-4823-9337-49e59a477428
-  pristine_commit_hash: e22bcea374295416d94ea81a8344ebf7d752ce89
-  pristine_tree_hash: 4e52fa45ca082f7491d6d05c9941102d593e9c43
+  generation_id: 032966eb-6c66-41ac-a297-77430123528c
+  pristine_commit_hash: 828b4c81d12074111737630651c9989dd07acf45
+  pristine_tree_hash: 3c60957fc0cd79a14e39b5a3c6c857426d349845
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -1894,12 +1894,12 @@ trackedFiles:
     pristine_git_object: ba57a3adc35055d533028cc01df4b5c2bd534faf
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:cccf5ace31f7b29a61151cd69706e57ab704861b
-    pristine_git_object: bc3a8b785f517c95955e27ee6e48b57d752a1bd6
+    last_write_checksum: sha1:f2c38112951ca3d0291a31fc2f43916c212e2bc6
+    pristine_git_object: 629f27135aa60a2cdffac69d35f8a0b63c061a00
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:0020789552c8bfab8018f2568e9a48d944897b30
-    pristine_git_object: f4bfe3dee4e9e38124a8225f90c8c23419abe717
+    last_write_checksum: sha1:2a25bf10ad7fa063e808c359f339fb93e6a193d9
+    pristine_git_object: 49e0a4ea0d18b1b9647ea68ee2cefe9b90628f60
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:5bc0e874cd2f1a414cb1a343310bcda521151487
@@ -2462,8 +2462,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:ebe95ea5d1513516c6aa67a4806f1117997b945a
-    pristine_git_object: 719d71780bf472920c9c4753c2e61191ac3b9608
+    last_write_checksum: sha1:62412d01a94defc17b8bb172ef3e2b0237307366
+    pristine_git_object: fd4bdc237e8280812901b0c40f65be50c9a4c407
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -5351,9 +5351,6 @@ examples:
           application/json: {"message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes:
-  * `hathoracloud.lobbiesV3.getLobbyInfoByShortCode()`:  `error.status[422]` **Added**
 generatedFiles:
   - .gitattributes
   - .npmignore

@@ -1,21 +1,21 @@
-speakeasyVersion: 1.691.0
+speakeasyVersion: 1.692.0
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:14cf2c3ed02ba97a02c2aa2a34678a01ff5794ba07d6ab173bf32b22adb84e3d
-        sourceBlobDigest: sha256:4baeece22f74b65b6c629ba070e3d64de58cdef75b714227725c0714d45776d3
+        sourceRevisionDigest: sha256:5ba9cce6a40c62c5586fa62566ef655ab12d4c66d59a3351c1d9b377019cba92
+        sourceBlobDigest: sha256:26c4cd1994ba82b3ccea637de8d95263dbb5bf76467aa44c55be790d581c259b
         tags:
             - latest
-            - speakeasy-sdk-regen-1768954869
+            - speakeasy-sdk-regen-1769041283
             - 0.0.1
 targets:
     hathora-typescript:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:14cf2c3ed02ba97a02c2aa2a34678a01ff5794ba07d6ab173bf32b22adb84e3d
-        sourceBlobDigest: sha256:4baeece22f74b65b6c629ba070e3d64de58cdef75b714227725c0714d45776d3
+        sourceRevisionDigest: sha256:5ba9cce6a40c62c5586fa62566ef655ab12d4c66d59a3351c1d9b377019cba92
+        sourceBlobDigest: sha256:26c4cd1994ba82b3ccea637de8d95263dbb5bf76467aa44c55be790d581c259b
         codeSamplesNamespace: code-samples-typescript-hathora-typescript
-        codeSamplesRevisionDigest: sha256:4833bb02e921cc0a1de73a40e0bfc0ee2011f785a6a6c20a2a382e226ffb6280
+        codeSamplesRevisionDigest: sha256:b0c6e2647c95d8e45e1a2afd4e6f88b9fe48f7c64a0e4c0799a55e0de6ecf703
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
