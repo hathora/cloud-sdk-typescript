@@ -14,6 +14,6 @@ const value: string = "google-oauth2|107030234048588177467";
 ### `number`
 
 ```typescript
-const value: number = NaN;
+const value: number = 1284.03;
 ```
 

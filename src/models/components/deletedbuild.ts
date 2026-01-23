@@ -18,19 +18,7 @@ export const DeletedBuild$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type DeletedBuild$Outbound = {};
 
-/** @internal */
-export const DeletedBuild$outboundSchema: z.ZodType<
-  DeletedBuild$Outbound,
-  z.ZodTypeDef,
-  DeletedBuild
-> = z.object({});
-
-export function deletedBuildToJSON(deletedBuild: DeletedBuild): string {
-  return JSON.stringify(DeletedBuild$outboundSchema.parse(deletedBuild));
-}
 export function deletedBuildFromJSON(
   jsonString: string,
 ): SafeParseResult<DeletedBuild, SDKValidationError> {

@@ -100,6 +100,7 @@ export * from "./processstatus.js";
 export * from "./processv2.js";
 export * from "./processv3.js";
 export * from "./processwithrooms.js";
+export * from "./recordstringnever.js";
 export * from "./region.js";
 export * from "./registryconfig.js";
 export * from "./rescinduserinvite.js";
