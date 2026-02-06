@@ -21,6 +21,7 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  versioningStrategy: automatic
   persistentEdits: {}
   tests:
     generateTests: true
@@ -33,7 +34,7 @@ management:
   generationVersion: 2.188.3
   speakeasyVersion: 1.120.0
 typescript:
-  version: 2.26.9
+  version: 2.27.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -72,6 +73,7 @@ typescript:
   installationURL: https://github.com/hathora/cloud-sdk-typescript
   jsonpath: legacy
   laxMode: strict
+  legacyFileNaming: true
   maxMethodParams: 4
   methodArguments: require-security-and-request
   modelPropertyCasing: camel

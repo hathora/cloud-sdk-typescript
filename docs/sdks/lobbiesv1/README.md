@@ -81,7 +81,7 @@ run();
 
 ### Response
 
-**Promise\<[string](../../models/.md)\>**
+**Promise\<[string](../../models/roomid.md)\>**
 
 ### Errors
 
@@ -161,7 +161,7 @@ run();
 
 ### Response
 
-**Promise\<[string](../../models/.md)\>**
+**Promise\<[string](../../models/roomid.md)\>**
 
 ### Errors
 
