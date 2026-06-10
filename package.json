@@ -2,6 +2,7 @@
   "name": "@hathora/cloud-sdk-typescript",
   "version": "2.27.0",
   "author": "Hathora",
+  "license": "MIT",
   "main": "./index.js",
   "sideEffects": false,
   "repository": {
